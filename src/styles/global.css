@@ -177,7 +177,7 @@ h1 { margin: 27px 0 17px; font-size: clamp(56px, 6.3vw, 82px); line-height: .95;
   .site-header { min-height: 66px; grid-template-columns: auto 1fr; gap: 12px; padding: 0 16px; }
   .wordmark { font-size: 17px; }
   .wordmark-symbol { width: 29px; height: 29px; }
-  .main-nav { display: none; }
+  .site-header { min-height: 104px; grid-template-columns: 1fr auto; grid-template-rows: 60px 36px; align-content: center; gap: 0 12px; padding: 0 16px 6px; }\n  .main-nav { grid-column: 1 / -1; grid-row: 2; display: flex; justify-content: flex-start; gap: 22px; width: 100%; overflow-x: auto; scrollbar-width: none; }\n  .main-nav::-webkit-scrollbar { display: none; }\n  .main-nav a { flex: 0 0 auto; padding: 7px 0 8px; font-size: 9px; }\n  .main-nav a::after { bottom: 2px; }\n  .header-cta { grid-column: 2; grid-row: 1; }\n  .wordmark { grid-column: 1; grid-row: 1; }
   .header-cta { padding: 9px 11px; }
   .hero { grid-template-columns: minmax(0, 1fr); gap: 12px; padding-top: 16px; }
   .hero-card { min-height: unset; }
