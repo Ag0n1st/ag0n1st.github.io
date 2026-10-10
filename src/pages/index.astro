@@ -1,19 +1,62 @@
 ---
+import { getCollection } from "astro:content";
 import "../styles/global.css";
 
-const posts = [
-  { game: "ARKNIGHTS: ENDFIELD", type: "CHARAKTER-GUIDE", title: "Charakter-Guides, die wirklich erklären", description: "Skills, Rotationen, Waffen und Teams verständlich auf Deutsch.", accent: "pink", mark: "EF" },
-  { game: "NEVERNESS TO EVERNESS", type: "UPDATE & GAMEPLAY", title: "Neue Versionen gemeinsam entdecken", description: "Story, Progression und hilfreiche Tipps direkt zum Start.", accent: "cyan", mark: "NTE" },
-  { game: "ARKNIGHTS: ENDFIELD", type: "SYSTEM-GUIDE", title: "Komplexe Systeme einfach erklärt", description: "Von Veredelung bis Fabrik: nachvollziehbar statt unnötig kompliziert.", accent: "cyan", mark: "HOW" },
-  { game: "GACHA & COMMUNITY", type: "AUS DER COMMUNITY", title: "Waifu Hunting gehört dazu", description: "Pulls, Reaktionen und die Momente, über die wir gemeinsam lachen.", accent: "pink", mark: "♡" }
-];
+const posts = (await getCollection("posts", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 2);
 
-const videos = [
-  { title: "Veredelung RICHTIG nutzen!", game: "Arknights: Endfield", meta: "Guide · Deutsch", id: "endfield-refining" },
-  { title: "YVONNESKALATION", game: "Arknights: Endfield", meta: "Pulls · Community", id: "yvonne-pulls" },
-  { title: "Live Q&A & Progression", game: "Neverness to Everness", meta: "Gameplay · Q&A", id: "nte-live" }
-];
+async function getLatestVideos() {
+  try {
+    const channelResponse = await fetch("https://www.youtube.com/@Ag0n1st", {
+      headers: { "User-Agent": "Mozilla/5.0" },
+    });
+    if (!channelResponse.ok) throw new Error("YouTube-Kanal konnte nicht geladen werden");
+    const channelHtml = await channelResponse.text();
+    const channelId =
+      channelHtml.match(/"channelId":"(UC[\w-]+)"/)?.[1] ??
+      channelHtml.match(/itemprop="identifier" content="(UC[\w-]+)"/)?.[1];
+    if (!channelId) throw new Error("YouTube-Kanal-ID nicht gefunden");
+
+    const feedResponse = await fetch(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`);
+    if (!feedResponse.ok) throw new Error("YouTube-Feed konnte nicht geladen werden");
+    const feed = await feedResponse.text();
+    const entries = [...feed.matchAll(/<entry>([\s\S]*?)<\/entry>/g)].slice(0, 6);
+    const decode = (value: string) =>
+      value
+        .replace(/&amp;/g, "&")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;|&apos;/g, "'");
+
+    return entries.map(([_, entry]) => {
+      const tag = (name: string) => {
+        if (name === "yt:videoId") return entry.match(/<yt:videoId>(.*?)<\/yt:videoId>/s)?.[1] ?? "";
+        if (name === "title") return entry.match(/<title>(.*?)<\/title>/s)?.[1] ?? "";
+        if (name === "published") return entry.match(/<published>(.*?)<\/published>/s)?.[1] ?? "";
+        return "";
+      };
+      const id = tag("yt:videoId");
+      const title = decode(tag("title"));
+      const published = tag("published");
+      return {
+        id,
+        title,
+        published,
+        thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
+        href: `https://www.youtube.com/watch?v=${id}`,
+      };
+    }).filter((video) => video.id && video.title);
+  } catch (error) {
+    console.warn("YouTube-Feed konnte beim Build nicht geladen werden:", error);
+    return [];
+  }
+}
+
+const videos = await getLatestVideos();
 ---
+
 <!doctype html>
 <html lang="de">
   <head>
@@ -24,76 +67,197 @@ const videos = [
     <title>Ag0n1st — Gacha auf Deutsch</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;700&display=swap" rel="stylesheet" />
   </head>
   <body>
     <header class="site-header">
-      <a class="wordmark" href="/" aria-label="Ag0n1st Startseite"><span class="wordmark-symbol">A<span>0</span></span><span>Ag0n1st</span></a>
+      <a class="wordmark" href="/" aria-label="Ag0n1st – Startseite">
+        <span class="wordmark-symbol" aria-hidden="true">A<span>0</span></span>
+        <span>Ag0n1st</span>
+      </a>
+
       <nav class="main-nav" aria-label="Hauptnavigation">
-        <a href="#endfield">Arknights: Endfield</a>
-        <a href="#nte">Neverness to Everness</a>
-        <a href="#about">About Me</a>
+        <a href="/endfield/">Arknights: Endfield</a>
+        <a href="/nte/">Neverness to Everness</a>
+        <a href="/about/">About Me</a>
       </nav>
-      <a class="header-cta" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">Twitch <span aria-hidden="true">↗</span></a>
+
+      <a class="header-cta" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">
+        Twitch <span aria-hidden="true">↗</span>
+      </a>
     </header>
 
     <main>
-      <section class="hero section-wrap">
-        <div class="hero-copy panel">
-          <div class="eyebrow"><span class="eyebrow-line"></span> DEUTSCHER GACHA-CONTENT</div>
-          <h1>Willkommen im<br /><span>Agōkan.</span></h1>
-          <p class="hero-description">Live-Streams, Guides und Tools rund um aktuelle Gacha Games — <strong>alles auf Deutsch.</strong></p>
+      <section class="hero section-wrap" aria-label="Willkommen bei Ag0n1st">
+        <article class="hero-card hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> GACHA CONTENT. AUF DEUTSCH.</div>
+          <h1>Ag0n1st<span class="title-period">.</span></h1>
+          <p class="hero-description">Live-Streams, Guides, Tools rund um aktuelle Gacha Games – <strong>alles auf Deutsch.</strong></p>
           <div class="hero-actions">
-            <a class="button button-primary" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h18v12l-5 5h-4l-3 3H7v-3H3V6l1-3Zm2 3v11h4v3l3-3h4l3-3V6H6Zm5 2h2v5h-2V8Zm5 0h2v5h-2V8Z"/></svg> Zum Twitch-Stream <span>↗</span></a>
-            <a class="button button-secondary" href="https://youtube.com/@Ag0n1st" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.1a3 3 0 0 0-2.1-2.1C19 4.5 12 4.5 12 4.5s-7 0-8.9.5A3 3 0 0 0 1 7.1 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.9A3 3 0 0 0 3.1 19c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.5 12a31 31 0 0 0-.5-4.9ZM9.5 15.5v-7l6 3.5-6 3.5Z"/></svg> YouTube Guides <span>↗</span></a>
+            <a class="button button-primary" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h18v12l-5 5h-4l-3 3H7v-3H3V6l1-3Zm2 3v11h4v3l3-3h4l3-3V6H6Zm5 2h2v5h-2V8Zm5 0h2v5h-2V8Z"/></svg>
+              Zum Twitch Stream
+              <span class="button-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="button button-secondary" href="https://youtube.com/@Ag0n1st" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.1a3 3 0 0 0-2.1-2.1C19 4.5 12 4.5 12 4.5s-7 0-8.9.5A3 3 0 0 0 1 7.1 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.9A3 3 0 0 0 3.1 19c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.5 12a31 31 0 0 0-.5-4.9ZM9.5 15.5v-7l6 3.5-6 3.5Z"/></svg>
+              YouTube Guides
+              <span class="button-arrow" aria-hidden="true">↗</span>
+            </a>
           </div>
-          <div class="hero-foot"><span class="status-dot"></span> Guides, Gameplay & Community <span class="hero-foot-divider">/</span> Neue Inhalte regelmäßig</div>
-        </div>
+        </article>
 
-        <aside class="stream-card panel">
-          <div class="stream-card-top">
-            <div class="twitch-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2 1 6v15h5v3h4l3-3h4l6-6V2H4Zm17 12-4 4h-5l-3 3v-3H5V4h16v10ZM10 7h2v6h-2V7Zm5 0h2v6h-2V7Z"/></svg></div>
-            <div><span class="stream-label">FINDE MICH LIVE</span><strong>twitch.tv/Ag0n1st</strong></div>
-            <span class="live-pill"><span></span> CHANNEL</span>
+        <aside class="hero-card stream-card" aria-label="Twitch-Kanalstatus">
+          <div class="stream-card-header">
+            <a class="channel-link" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">
+              <span class="brand-icon twitch-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 2 1 6v15h5v3h4l3-3h4l6-6V2H4Zm17 12-4 4h-5l-3 3v-3H5V4h16v10ZM10 7h2v6h-2V7Zm5 0h2v6h-2V7Z"/></svg>
+              </span>
+              <span>twitch.tv/Ag0n1st</span>
+            </a>
+            <span class="live-pill" id="twitch-status" data-state="offline" aria-live="polite">
+              <span class="live-dot"></span>
+              <span class="live-text">OFFLINE</span>
+            </span>
           </div>
-          <div class="stream-art">
-            <div class="art-grid"></div><div class="art-orb orb-one"></div><div class="art-orb orb-two"></div>
-            <span class="art-kicker">THE AGŌKAN</span>
-            <span class="art-title">PLAY.<br /><em>LEARN.</em><br />PULL.</span>
-            <span class="art-caption">GACHA • GUIDES • GOOD VIBES</span>
-            <span class="art-stamp">AG0<br />N1ST</span>
+
+          <div class="stream-card-main">
+            <div class="stream-glow stream-glow-pink"></div>
+            <div class="stream-glow stream-glow-cyan"></div>
+            <div class="stream-grid" aria-hidden="true"></div>
+            <span class="stream-kicker">LIVE ON TWITCH</span>
+            <h2>PLAY.<br /><span>LEARN.</span><br />PULL.</h2>
+            <span class="stream-card-tag">GACHA · GUIDES · COMMUNITY</span>
+            <div class="stream-monogram" aria-hidden="true">A0<br />N1</div>
           </div>
-          <p class="stream-description">Schau im Stream vorbei, stell deine Fragen und lass uns gemeinsam die nächsten Games erkunden.</p>
-          <a class="stream-link" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">Zum Twitch-Kanal <span>↗</span></a>
+
+          <div class="stream-card-footer">
+            <p>Fragen stellen, gemeinsam pullen und Gacha-Games auf Deutsch erleben.</p>
+            <a href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">Zum Twitch-Kanal <span aria-hidden="true">↗</span></a>
+          </div>
         </aside>
       </section>
 
-      <section class="content-section section-wrap" id="endfield">
-        <div class="section-heading"><div><span class="section-kicker">ENTDECKEN & VERSTEHEN</span><h2>NEUESTE <span>BEITRÄGE</span></h2></div><span class="section-index">01 / CONTENT</span></div>
-        <div class="posts-grid">
-          {posts.map((post) => <article class:list={["post-card", post.accent]}><div class="post-visual"><span class="post-game">{post.game}</span><span class="post-mark">{post.mark}</span><span class="post-type">{post.type}</span></div><div class="post-body"><h3>{post.title}</h3><p>{post.description}</p><a href={post.game.includes("NEVERNESS") ? "#nte" : "https://youtube.com/@Ag0n1st"} target={post.game.includes("NEVERNESS") ? undefined : "_blank"} rel={post.game.includes("NEVERNESS") ? undefined : "noreferrer"}>Mehr entdecken <span>↗</span></a></div></article>)}
+      <section class="content-section section-wrap" id="beitraege">
+        <div class="section-heading">
+          <div><span class="section-kicker">WISSEN, DAS WEITERHILFT</span><h2>NEUESTE BEITRÄGE</h2></div>
         </div>
+        {posts.length > 0 ? (
+          <div class="posts-grid">
+            {posts.map((post, index) => (
+              <article class:list={["post-card", post.data.accent]}>
+                <a href={`/posts/${post.id}/`} class="post-card-link">
+                  <div class="post-visual">
+                    <span class="post-category">{post.data.category}</span>
+                    <span class="post-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                    <span class="post-type">{post.data.type}</span>
+                  </div>
+                  <div class="post-body">
+                    <h3>{post.data.title}</h3>
+                    <p>{post.data.description}</p>
+                    <div class="post-footer"><span class="text-link">Beitrag lesen <span aria-hidden="true">↗</span></span><time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString("de-DE", { day: "2-digit", month: "short", year: "numeric" })}</time></div>
+                  </div>
+                </a>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div class="posts-empty">
+            <span class="posts-empty-mark" aria-hidden="true">A0</span>
+            <div><h3>Neue Beiträge folgen hier automatisch.</h3><p>Sobald ein veröffentlichter Guide im Content-Ordner liegt, erscheinen die zwei neuesten Beiträge an dieser Stelle.</p></div>
+          </div>
+        )}
       </section>
 
-      <section class="content-section videos-section section-wrap" id="nte">
-        <div class="section-heading"><div><span class="section-kicker">WATCH. LEARN. REPEAT.</span><h2>LETZTE <span>VIDEOS</span></h2></div><span class="section-index">02 / YOUTUBE</span></div>
-        <div class="videos-grid">
-          {videos.map((video, i) => <a class:list={["video-card", "video-" + (i + 1)]} href="https://youtube.com/@Ag0n1st" target="_blank" rel="noreferrer"><div class="video-thumb"><span class="video-number">0{i + 1}</span><span class="video-game">{video.game}</span><span class="video-headline">{video.title}</span><span class="play-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7V5Z"/></svg></span></div><div class="video-meta"><div><strong>{video.title}</strong><span>{video.meta}</span></div><span class="video-arrow">↗</span></div></a>)}
+      <section class="content-section videos-section section-wrap" id="videos">
+        <div class="section-heading section-heading-row">
+          <div><span class="section-kicker">NEUES VOM KANAL</span><h2>LETZTE VIDEOS</h2></div>
+          <a class="button button-secondary all-videos-button" href="https://youtube.com/@Ag0n1st" target="_blank" rel="noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.1a3 3 0 0 0-2.1-2.1C19 4.5 12 4.5 12 4.5s-7 0-8.9.5A3 3 0 0 0 1 7.1 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.9A3 3 0 0 0 3.1 19c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.5 12a31 31 0 0 0-.5-4.9ZM9.5 15.5v-7l6 3.5-6 3.5Z"/></svg>
+            Alle Videos auf YouTube
+          </a>
         </div>
-        <div class="section-bottom"><p>Guides, First Impressions und die besten Gacha-Momente.</p><a class="button button-secondary" href="https://youtube.com/@Ag0n1st" target="_blank" rel="noreferrer">Alle Videos auf YouTube <span>↗</span></a></div>
-      </section>
 
-      <section class="about-section section-wrap" id="about">
-        <div class="about-mark">A<span>0</span></div>
-        <div class="about-copy"><span class="section-kicker">WER STECKT DAHINTER?</span><h2>Hi, ich bin <span>Ag0n1st.</span></h2><p>Gacha-Games, Charakter-Guides und eine Community, die gemeinsam pullt, lernt und Fortschritte feiert. Ohne unnötiges Gatekeeping — dafür mit Leidenschaft fürs Spiel.</p></div>
-        <a class="button button-primary" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">Werde Teil des Agōkans <span>↗</span></a>
+        {videos.length > 0 ? (
+          <div class="videos-grid">
+            {videos.map((video) => (
+              <a class="video-card" href={video.href} target="_blank" rel="noreferrer">
+                <div class="video-thumb">
+                  <img src={video.thumbnail} alt="" loading="lazy" />
+                  <span class="play-button" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z"/></svg></span>
+                </div>
+                <div class="video-meta">
+                  <h3>{video.title}</h3>
+                  <time datetime={video.published} data-relative-time={video.published}>{video.published}</time>
+                </div>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div class="videos-empty">
+            <span class="empty-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z"/></svg></span>
+            <div><h3>Die neuesten Videos erscheinen hier.</h3><p>Die Videoübersicht wird beim Website-Build automatisch mit öffentlichen Uploads von YouTube abgeglichen.</p></div>
+            <a href="https://youtube.com/@Ag0n1st" target="_blank" rel="noreferrer">Zum YouTube-Kanal ↗</a>
+          </div>
+        )}
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="social-links"><a href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer" aria-label="Twitch">TW</a><a href="https://youtube.com/@Ag0n1st" target="_blank" rel="noreferrer" aria-label="YouTube">YT</a><a href="https://linktr.ee/Ag0n1st" target="_blank" rel="noreferrer" aria-label="Alle Socials">↗</a></div>
-      <a class="footer-wordmark" href="/">Ag0n1st<span>.</span></a>
+      <nav class="social-links" aria-label="Social Media">
+        <a href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer" aria-label="Twitch">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2 1 6v15h5v3h4l3-3h4l6-6V2H4Zm17 12-4 4h-5l-3 3v-3H5V4h16v10ZM10 7h2v6h-2V7Zm5 0h2v6h-2V7Z"/></svg>
+        </a>
+        <a href="https://youtube.com/@Ag0n1st" target="_blank" rel="noreferrer" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.1a3 3 0 0 0-2.1-2.1C19 4.5 12 4.5 12 4.5s-7 0-8.9.5A3 3 0 0 0 1 7.1 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.9A3 3 0 0 0 3.1 19c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.5 12a31 31 0 0 0-.5-4.9ZM9.5 15.5v-7l6 3.5-6 3.5Z"/></svg>
+        </a>
+        <a href="https://linktr.ee/Ag0n1st" target="_blank" rel="noreferrer" aria-label="Alle Socials">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3ZM5 5h6v2H7v10h10v-4h2v6H5V5Z"/></svg>
+        </a>
+      </nav>
+      <a class="footer-wordmark" href="/" aria-label="Ag0n1st Startseite"><span class="wordmark-symbol" aria-hidden="true">A<span>0</span></span><span>Ag0n1st</span></a>
       <span class="copyright">© 2025 Ag0n1st. All rights reserved.</span>
     </footer>
+
+    <script>
+      const statusPill = document.querySelector("#twitch-status");
+      const statusText = statusPill?.querySelector(".live-text");
+
+      async function refreshTwitchStatus() {
+        if (!statusPill || !statusText) return;
+        try {
+          const response = await fetch("https://decapi.me/twitch/uptime/Ag0n1st?offline_msg=offline", { cache: "no-store" });
+          if (!response.ok) throw new Error("Twitch-Status nicht verfügbar");
+          const result = (await response.text()).trim().toLowerCase();
+          const isLive = result.length > 0 && !result.includes("offline") && !result.includes("not live") && !result.includes("error");
+          statusPill.dataset.state = isLive ? "live" : "offline";
+          statusText.textContent = isLive ? "LIVE" : "OFFLINE";
+        } catch {
+          statusPill.dataset.state = "offline";
+          statusText.textContent = "OFFLINE";
+        }
+      }
+
+      refreshTwitchStatus();
+      window.setInterval(refreshTwitchStatus, 60_000);
+
+      const formatRelativeTime = (dateString) => {
+        const seconds = Math.max(0, Math.floor((Date.now() - new Date(dateString).getTime()) / 1000));
+        if (seconds < 60) return "vor wenigen Sek.";
+        if (seconds < 3600) return `vor ${Math.floor(seconds / 60)} Min.`;
+        if (seconds < 86400) return `vor ${Math.floor(seconds / 3600)} Std.`;
+        if (seconds < 86400 * 30) return `vor ${Math.floor(seconds / 86400)} Tg.`;
+        if (seconds < 86400 * 365) return `vor ${Math.floor(seconds / (86400 * 30))} Mon.`;
+        return `vor ${Math.floor(seconds / (86400 * 365))} J.`;
+      };
+      document.querySelectorAll("[data-relative-time]").forEach((element) => {
+        const published = element.getAttribute("data-relative-time");
+        if (published) {
+          const update = () => { element.textContent = formatRelativeTime(published); };
+          update();
+          window.setInterval(update, 60_000);
+        }
+      });
+    </script>
   </body>
 </html>
