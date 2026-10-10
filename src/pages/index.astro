@@ -1,0 +1,99 @@
+---
+import "../styles/global.css";
+
+const posts = [
+  { game: "ARKNIGHTS: ENDFIELD", type: "CHARAKTER-GUIDE", title: "Charakter-Guides, die wirklich erklären", description: "Skills, Rotationen, Waffen und Teams verständlich auf Deutsch.", accent: "pink", mark: "EF" },
+  { game: "NEVERNESS TO EVERNESS", type: "UPDATE & GAMEPLAY", title: "Neue Versionen gemeinsam entdecken", description: "Story, Progression und hilfreiche Tipps direkt zum Start.", accent: "cyan", mark: "NTE" },
+  { game: "ARKNIGHTS: ENDFIELD", type: "SYSTEM-GUIDE", title: "Komplexe Systeme einfach erklärt", description: "Von Veredelung bis Fabrik: nachvollziehbar statt unnötig kompliziert.", accent: "cyan", mark: "HOW" },
+  { game: "GACHA & COMMUNITY", type: "AUS DER COMMUNITY", title: "Waifu Hunting gehört dazu", description: "Pulls, Reaktionen und die Momente, über die wir gemeinsam lachen.", accent: "pink", mark: "♡" }
+];
+
+const videos = [
+  { title: "Veredelung RICHTIG nutzen!", game: "Arknights: Endfield", meta: "Guide · Deutsch", id: "endfield-refining" },
+  { title: "YVONNESKALATION", game: "Arknights: Endfield", meta: "Pulls · Community", id: "yvonne-pulls" },
+  { title: "Live Q&A & Progression", game: "Neverness to Everness", meta: "Gameplay · Q&A", id: "nte-live" }
+];
+---
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#09090d" />
+    <meta name="description" content="Ag0n1st – Live-Streams, Guides und Tools rund um aktuelle Gacha Games. Alles auf Deutsch." />
+    <title>Ag0n1st — Gacha auf Deutsch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Ag0n1st Startseite"><span class="wordmark-symbol">A<span>0</span></span><span>Ag0n1st</span></a>
+      <nav class="main-nav" aria-label="Hauptnavigation">
+        <a href="#endfield">Arknights: Endfield</a>
+        <a href="#nte">Neverness to Everness</a>
+        <a href="#about">About Me</a>
+      </nav>
+      <a class="header-cta" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">Twitch <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main>
+      <section class="hero section-wrap">
+        <div class="hero-copy panel">
+          <div class="eyebrow"><span class="eyebrow-line"></span> DEUTSCHER GACHA-CONTENT</div>
+          <h1>Willkommen im<br /><span>Agōkan.</span></h1>
+          <p class="hero-description">Live-Streams, Guides und Tools rund um aktuelle Gacha Games — <strong>alles auf Deutsch.</strong></p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h18v12l-5 5h-4l-3 3H7v-3H3V6l1-3Zm2 3v11h4v3l3-3h4l3-3V6H6Zm5 2h2v5h-2V8Zm5 0h2v5h-2V8Z"/></svg> Zum Twitch-Stream <span>↗</span></a>
+            <a class="button button-secondary" href="https://youtube.com/@Ag0n1st" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.1a3 3 0 0 0-2.1-2.1C19 4.5 12 4.5 12 4.5s-7 0-8.9.5A3 3 0 0 0 1 7.1 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.9A3 3 0 0 0 3.1 19c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.5 12a31 31 0 0 0-.5-4.9ZM9.5 15.5v-7l6 3.5-6 3.5Z"/></svg> YouTube Guides <span>↗</span></a>
+          </div>
+          <div class="hero-foot"><span class="status-dot"></span> Guides, Gameplay & Community <span class="hero-foot-divider">/</span> Neue Inhalte regelmäßig</div>
+        </div>
+
+        <aside class="stream-card panel">
+          <div class="stream-card-top">
+            <div class="twitch-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2 1 6v15h5v3h4l3-3h4l6-6V2H4Zm17 12-4 4h-5l-3 3v-3H5V4h16v10ZM10 7h2v6h-2V7Zm5 0h2v6h-2V7Z"/></svg></div>
+            <div><span class="stream-label">FINDE MICH LIVE</span><strong>twitch.tv/Ag0n1st</strong></div>
+            <span class="live-pill"><span></span> CHANNEL</span>
+          </div>
+          <div class="stream-art">
+            <div class="art-grid"></div><div class="art-orb orb-one"></div><div class="art-orb orb-two"></div>
+            <span class="art-kicker">THE AGŌKAN</span>
+            <span class="art-title">PLAY.<br /><em>LEARN.</em><br />PULL.</span>
+            <span class="art-caption">GACHA • GUIDES • GOOD VIBES</span>
+            <span class="art-stamp">AG0<br />N1ST</span>
+          </div>
+          <p class="stream-description">Schau im Stream vorbei, stell deine Fragen und lass uns gemeinsam die nächsten Games erkunden.</p>
+          <a class="stream-link" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">Zum Twitch-Kanal <span>↗</span></a>
+        </aside>
+      </section>
+
+      <section class="content-section section-wrap" id="endfield">
+        <div class="section-heading"><div><span class="section-kicker">ENTDECKEN & VERSTEHEN</span><h2>NEUESTE <span>BEITRÄGE</span></h2></div><span class="section-index">01 / CONTENT</span></div>
+        <div class="posts-grid">
+          {posts.map((post) => <article class:list={["post-card", post.accent]}><div class="post-visual"><span class="post-game">{post.game}</span><span class="post-mark">{post.mark}</span><span class="post-type">{post.type}</span></div><div class="post-body"><h3>{post.title}</h3><p>{post.description}</p><a href={post.game.includes("NEVERNESS") ? "#nte" : "https://youtube.com/@Ag0n1st"} target={post.game.includes("NEVERNESS") ? undefined : "_blank"} rel={post.game.includes("NEVERNESS") ? undefined : "noreferrer"}>Mehr entdecken <span>↗</span></a></div></article>)}
+        </div>
+      </section>
+
+      <section class="content-section videos-section section-wrap" id="nte">
+        <div class="section-heading"><div><span class="section-kicker">WATCH. LEARN. REPEAT.</span><h2>LETZTE <span>VIDEOS</span></h2></div><span class="section-index">02 / YOUTUBE</span></div>
+        <div class="videos-grid">
+          {videos.map((video, i) => <a class:list={["video-card", "video-" + (i + 1)]} href="https://youtube.com/@Ag0n1st" target="_blank" rel="noreferrer"><div class="video-thumb"><span class="video-number">0{i + 1}</span><span class="video-game">{video.game}</span><span class="video-headline">{video.title}</span><span class="play-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7V5Z"/></svg></span></div><div class="video-meta"><div><strong>{video.title}</strong><span>{video.meta}</span></div><span class="video-arrow">↗</span></div></a>)}
+        </div>
+        <div class="section-bottom"><p>Guides, First Impressions und die besten Gacha-Momente.</p><a class="button button-secondary" href="https://youtube.com/@Ag0n1st" target="_blank" rel="noreferrer">Alle Videos auf YouTube <span>↗</span></a></div>
+      </section>
+
+      <section class="about-section section-wrap" id="about">
+        <div class="about-mark">A<span>0</span></div>
+        <div class="about-copy"><span class="section-kicker">WER STECKT DAHINTER?</span><h2>Hi, ich bin <span>Ag0n1st.</span></h2><p>Gacha-Games, Charakter-Guides und eine Community, die gemeinsam pullt, lernt und Fortschritte feiert. Ohne unnötiges Gatekeeping — dafür mit Leidenschaft fürs Spiel.</p></div>
+        <a class="button button-primary" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">Werde Teil des Agōkans <span>↗</span></a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="social-links"><a href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer" aria-label="Twitch">TW</a><a href="https://youtube.com/@Ag0n1st" target="_blank" rel="noreferrer" aria-label="YouTube">YT</a><a href="https://linktr.ee/Ag0n1st" target="_blank" rel="noreferrer" aria-label="Alle Socials">↗</a></div>
+      <a class="footer-wordmark" href="/">Ag0n1st<span>.</span></a>
+      <span class="copyright">© 2025 Ag0n1st. All rights reserved.</span>
+    </footer>
+  </body>
+</html>
