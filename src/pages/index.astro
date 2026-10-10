@@ -1,26 +1,10 @@
 ---
+import { getCollection } from "astro:content";
 import "../styles/global.css";
 
-const posts = [
-  {
-    category: "ARKNIGHTS: ENDFIELD",
-    type: "CHARAKTER-GUIDE",
-    title: "Charaktere verstehen. Besser spielen.",
-    description: "Verständliche Guides zu Skills, Rotationen, Waffen und Teams – auf Deutsch.",
-    href: "https://youtube.com/@Ag0n1st",
-    accent: "pink",
-    number: "01",
-  },
-  {
-    category: "GUIDES & SYSTEME",
-    type: "SYSTEM-GUIDE",
-    title: "Komplexe Mechaniken einfach erklärt.",
-    description: "Von Veredelung bis Fabrik: Schritt für Schritt erklärt, ohne unnötiges Gatekeeping.",
-    href: "https://youtube.com/@Ag0n1st",
-    accent: "cyan",
-    number: "02",
-  },
-];
+const posts = (await getCollection("posts", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 2);
 
 async function getLatestVideos() {
   try {
@@ -158,24 +142,31 @@ const videos = await getLatestVideos();
         <div class="section-heading">
           <div><span class="section-kicker">WISSEN, DAS WEITERHILFT</span><h2>NEUESTE BEITRÄGE</h2></div>
         </div>
-        <div class="posts-grid">
-          {posts.map((post) => (
-            <article class:list={["post-card", post.accent]}>
-              <a href={post.href} target="_blank" rel="noreferrer" class="post-card-link">
-                <div class="post-visual">
-                  <span class="post-category">{post.category}</span>
-                  <span class="post-number" aria-hidden="true">{post.number}</span>
-                  <span class="post-type">{post.type}</span>
-                </div>
-                <div class="post-body">
-                  <h3>{post.title}</h3>
-                  <p>{post.description}</p>
-                  <span class="text-link">Guides entdecken <span aria-hidden="true">↗</span></span>
-                </div>
-              </a>
-            </article>
-          ))}
-        </div>
+        {posts.length > 0 ? (
+          <div class="posts-grid">
+            {posts.map((post, index) => (
+              <article class:list={["post-card", post.data.accent]}>
+                <a href={`/posts/${post.id}/`} class="post-card-link">
+                  <div class="post-visual">
+                    <span class="post-category">{post.data.category}</span>
+                    <span class="post-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                    <span class="post-type">{post.data.type}</span>
+                  </div>
+                  <div class="post-body">
+                    <h3>{post.data.title}</h3>
+                    <p>{post.data.description}</p>
+                    <div class="post-footer"><span class="text-link">Beitrag lesen <span aria-hidden="true">↗</span></span><time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString("de-DE", { day: "2-digit", month: "short", year: "numeric" })}</time></div>
+                  </div>
+                </a>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div class="posts-empty">
+            <span class="posts-empty-mark" aria-hidden="true">A0</span>
+            <div><h3>Neue Beiträge folgen hier automatisch.</h3><p>Sobald ein veröffentlichter Guide im Content-Ordner liegt, erscheinen die zwei neuesten Beiträge an dieser Stelle.</p></div>
+          </div>
+        )}
       </section>
 
       <section class="content-section videos-section section-wrap" id="videos">
