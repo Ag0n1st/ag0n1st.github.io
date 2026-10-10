@@ -47,7 +47,12 @@ async function getLatestVideos() {
         .replace(/&#39;|&apos;/g, "'");
 
     return entries.map(([_, entry]) => {
-      const tag = (name: string) => entry.match(new RegExp(`<${name}>([\s\S]*?)</${name}>`))?.[1] ?? "";
+      const tag = (name: string) => {
+        if (name === "yt:videoId") return entry.match(/<yt:videoId>(.*?)<\\/yt:videoId>/s)?.[1] ?? "";
+        if (name === "title") return entry.match(/<title>(.*?)<\\/title>/s)?.[1] ?? "";
+        if (name === "published") return entry.match(/<published>(.*?)<\\/published>/s)?.[1] ?? "";
+        return "";
+      };
       const id = tag("yt:videoId");
       const title = decode(tag("title"));
       const published = tag("published");
