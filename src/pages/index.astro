@@ -457,6 +457,16 @@ const videos = await getLatestVideos();
 
           <div class="stream-card-main" id="twitch-player-container" aria-label="Twitch-Player von Ag0n1st">
             <div id="twitch-embed" class="twitch-embed"></div>
+            <div class="stream-offline-overlay" id="twitch-offline-overlay">
+              <span class="stream-offline-kicker">STREAM STATUS</span>
+              <h2>OFFLINE</h2>
+              <p>Agon ist gerade nicht Live. Folge jetzt auf Twitch, um keinen Stream mehr zu verpassen!</p>
+              <a class="stream-follow-button" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2 1 6v15h5v3h4l3-3h4l6-6V2H4Zm17 12-4 4h-5l-3 3v-3H5V4h16v10ZM10 7h2v6h-2V7Zm5 0h2v6h-2V7Z"/></svg>
+                <span>Auf Twitch folgen</span>
+                <span class="stream-follow-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
           </div>
 
           <div class="stream-card-footer">
@@ -556,6 +566,7 @@ const videos = await getLatestVideos();
         if (!statusPill || !statusText) return;
         statusPill.dataset.state = isLive ? "live" : "offline";
         statusText.textContent = isLive ? "LIVE" : "OFFLINE";
+        document.querySelector("#twitch-player-container")?.classList.toggle("is-offline", !isLive);
       }
 
       function initializeTwitchPlayer() {
