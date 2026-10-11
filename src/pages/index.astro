@@ -116,6 +116,14 @@ async function getLatestVideos() {
     // On a video page, videoDetails.channelId belongs to that exact upload,
     // unlike generic channelId values on a channel page that may refer to recommendations.
     let videoPageChannelId = "";
+    let referenceVideo: {
+      id: string;
+      title: string;
+      published: string;
+      publishedLabel: string;
+      thumbnail: string;
+      href: string;
+    } | null = null;
     try {
       const videoResponse = await fetch("https://www.youtube.com/watch?v=wNVJkGzkfMg", {
         headers: { "User-Agent": "Mozilla/5.0" },
@@ -124,12 +132,37 @@ async function getLatestVideos() {
       });
       if (videoResponse.ok) {
         const videoHtml = await videoResponse.text();
+        const detailsMatch = videoHtml.match(/"videoDetails":\{([\s\S]*?)\},"(?:playerMicroformatRenderer|annotations|storyboards|playabilityStatus)"/);
+        const details = detailsMatch?.[1] ?? videoHtml;
+        const titleRaw = details.match(/"title":"((?:\\.|[^"\\])*)"/)?.[1];
+        const title = titleRaw ? decodeJsonString(titleRaw) : "";
+        const dateRaw =
+          videoHtml.match(/"publishDate":"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
+          videoHtml.match(/"uploadDate":"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
+          videoHtml.match(/"datePublished":"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
+          "";
         videoPageChannelId =
           videoHtml.match(/"videoDetails":\{[\s\S]*?"channelId":"(UC[\w-]+)"/)?.[1] ?? "";
+        if (title) {
+          referenceVideo = {
+            id: "wNVJkGzkfMg",
+            title,
+            published: dateRaw,
+            publishedLabel: dateRaw
+              ? new Date(dateRaw + "T12:00:00Z").toLocaleDateString("de-DE", { day: "2-digit", month: "short", year: "numeric", timeZone: "UTC" })
+              : "",
+            thumbnail: "https://i.ytimg.com/vi/wNVJkGzkfMg/hqdefault.jpg",
+            href: "https://www.youtube.com/watch?v=wNVJkGzkfMg",
+          };
+        }
       }
     } catch (error) {
-      console.warn("Kanal-ID konnte nicht aus dem Referenzvideo gelesen werden:", error);
+      console.warn("Metadaten konnten nicht aus dem Referenzvideo gelesen werden:", error);
     }
+
+    // If YouTube serves the watch page but omits its embedded metadata, use its
+    // public oEmbed endpoint for the exact current title. oEmbed does not expose
+    // publication dates, so the date remains sourced from the watch-page metadata.
 
     const channelResponse = await fetch("https://www.youtube.com/@Ag0n1st", {
       headers: { "User-Agent": "Mozilla/5.0" },
@@ -179,15 +212,39 @@ async function getLatestVideos() {
     // YouTube blocks feed/page metadata during the static build. This is a
     // confirmed video link supplied by the channel owner; normal feeds still
     // take precedence whenever available.
-    console.warn("YouTube-Metadaten nicht verfügbar; zeige das bestätigte Referenzvideo als Fallback.");
-    return [{
-      id: "wNVJkGzkfMg",
-      title: "Video von Ag0n1st auf YouTube ansehen",
-      published: "",
-      publishedLabel: "Auf YouTube ansehen",
-      thumbnail: "https://i.ytimg.com/vi/wNVJkGzkfMg/hqdefault.jpg",
-      href: "https://www.youtube.com/watch?v=wNVJkGzkfMg",
-    }];
+    if (referenceVideo) {
+      console.warn("Feed/Kanalseite nicht verfügbar; verwende echte Metadaten des Referenzvideos.");
+      return [referenceVideo];
+    }
+
+    // Final metadata fallback: request YouTube's public oEmbed endpoint for the
+    // exact title rather than displaying a made-up placeholder. oEmbed does not
+    // provide a publication date; leave it blank if the watch-page date was blocked.
+    try {
+      const oembedResponse = await fetch(
+        "https://www.youtube.com/oembed?format=json&url=" +
+          encodeURIComponent("https://www.youtube.com/watch?v=wNVJkGzkfMg"),
+        { headers: { "User-Agent": "Mozilla/5.0" }, signal: AbortSignal.timeout(10000), cache: "no-store" },
+      );
+      if (oembedResponse.ok) {
+        const metadata = await oembedResponse.json();
+        if (typeof metadata.title === "string" && metadata.title.trim()) {
+          return [{
+            id: "wNVJkGzkfMg",
+            title: metadata.title,
+            published: "",
+            publishedLabel: "",
+            thumbnail: "https://i.ytimg.com/vi/wNVJkGzkfMg/hqdefault.jpg",
+            href: "https://www.youtube.com/watch?v=wNVJkGzkfMg",
+          }];
+        }
+      }
+    } catch (error) {
+      console.warn("YouTube-oEmbed-Fallback fehlgeschlagen:", error);
+    }
+
+    console.warn("YouTube-Metadaten sind beim Build nicht erreichbar; kein Platzhaltertitel wird ausgegeben.");
+    return [];
   } catch (error) {
     console.warn("YouTube-Videos konnten beim Build nicht geladen werden:", error);
     return [];
