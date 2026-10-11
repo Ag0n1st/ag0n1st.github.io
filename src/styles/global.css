@@ -89,6 +89,16 @@ h1 { margin: 27px 0 17px; font-size: clamp(56px, 6.3vw, 82px); line-height: .95;
 .stream-card-main { position: relative; flex: 1; min-height: 300px; overflow: hidden; border-radius: 11px; background: #000; }
 .twitch-embed { position: absolute; inset: 0; width: 100%; height: 100%; min-height: 300px; background: #000; }
 .twitch-embed iframe { display: block; width: 100%; height: 100%; border: 0; }
+.stream-offline-overlay { position: absolute; z-index: 2; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: space-evenly; gap: 16px; padding: clamp(22px, 3vw, 34px); overflow-y: auto; background: radial-gradient(ellipse at 12% 8%, rgba(240,91,212,.18), transparent 48%), radial-gradient(ellipse at 90% 92%, rgba(101,232,242,.12), transparent 46%), linear-gradient(140deg, #17121d, #10141a 70%, #101b20); text-align: center; }
+.stream-card-main.is-offline .stream-offline-overlay { display: flex; }
+.stream-offline-kicker { color: var(--cyan); font-size: 9px; font-weight: var(--font-bold); letter-spacing: .2em; }
+.stream-offline-overlay h2 { margin: 0; color: var(--white); font-size: clamp(42px, 4.6vw, 60px); line-height: 1; font-weight: var(--font-bold); letter-spacing: -.07em; }
+.stream-offline-overlay p { max-width: 340px; margin: 0; color: #c4bdcc; font-size: 12px; line-height: 1.75; }
+.stream-follow-button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; max-width: 100%; border: 1px solid #a879ff; border-radius: 9px; padding: 12px 15px; background: #9146ff; color: #fff; font-size: 12px; font-weight: var(--font-bold); transition: background .2s, transform .2s; }
+.stream-follow-button:hover { transform: translateY(-2px); background: #a970ff; }
+.stream-follow-button svg { width: 18px; height: 18px; flex: 0 0 auto; fill: currentColor; }
+.stream-follow-arrow { margin-left: 3px; font-size: 15px; }
+@media (max-width: 900px) { .stream-offline-overlay { padding: 20px; gap: 12px; } .stream-offline-overlay h2 { font-size: clamp(36px, 5vw, 48px); } .stream-offline-overlay p { font-size: 11px; } .stream-follow-button { padding: 11px 12px; font-size: 11px; } }
 .stream-grid { position: absolute; z-index: -1; inset: 0; background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px); background-size: 27px 27px; mask-image: linear-gradient(135deg, black, transparent 80%); }
 .stream-glow { position: absolute; z-index: -1; border: 1px solid; border-radius: 50%; pointer-events: none; }
 .stream-glow-pink { top: -48px; right: -34px; width: 235px; height: 235px; border-color: rgba(240,91,212,.55); box-shadow: 0 0 70px rgba(240,91,212,.12), inset 0 0 40px rgba(240,91,212,.08); }
