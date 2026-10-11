@@ -132,17 +132,44 @@ async function getLatestVideos() {
       });
       if (videoResponse.ok) {
         const videoHtml = await videoResponse.text();
-        const detailsMatch = videoHtml.match(/"videoDetails":\{([\s\S]*?)\},"(?:playerMicroformatRenderer|annotations|storyboards|playabilityStatus)"/);
-        const details = detailsMatch?.[1] ?? videoHtml;
-        const titleRaw = details.match(/"title":"((?:\\.|[^"\\])*)"/)?.[1];
+        // Extract each embedded JSON object with brace/string awareness. A broad
+        // regex can accidentally pick up a chapter title (for example "18")
+        // from elsewhere on the page instead of the actual video title.
+        const extractObject = (key: string) => {
+          const marker = '"' + key + '":{';
+          const markerIndex = videoHtml.indexOf(marker);
+          if (markerIndex < 0) return "";
+          const objectStart = markerIndex + marker.length - 1;
+          let depth = 0;
+          let inString = false;
+          let escaped = false;
+          for (let i = objectStart; i < videoHtml.length; i++) {
+            const char = videoHtml[i];
+            if (inString) {
+              if (escaped) escaped = false;
+              else if (char === "\\\\") escaped = true;
+              else if (char === '"') inString = false;
+              continue;
+            }
+            if (char === '"') inString = true;
+            else if (char === "{") depth++;
+            else if (char === "}") {
+              depth--;
+              if (depth === 0) return videoHtml.slice(objectStart, i + 1);
+            }
+          }
+          return "";
+        };
+        const details = extractObject("videoDetails");
+        const titleRaw = details.match(/"title":"((?:\\\\.|[^"\\\\])*)"/)?.[1];
         const title = titleRaw ? decodeJsonString(titleRaw) : "";
+        const microformat = extractObject("playerMicroformatRenderer");
         const dateRaw =
-          videoHtml.match(/"publishDate":"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
-          videoHtml.match(/"uploadDate":"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
+          microformat.match(/"publishDate":"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
+          microformat.match(/"uploadDate":"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
           videoHtml.match(/"datePublished":"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
           "";
-        videoPageChannelId =
-          videoHtml.match(/"videoDetails":\{[\s\S]*?"channelId":"(UC[\w-]+)"/)?.[1] ?? "";
+        videoPageChannelId = details.match(/"channelId":"(UC[\w-]+)"/)?.[1] ?? "";
         if (title) {
           referenceVideo = {
             id: "wNVJkGzkfMg",
