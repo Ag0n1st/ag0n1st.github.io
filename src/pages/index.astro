@@ -273,10 +273,17 @@ async function getLatestVideos() {
             },
           );
           const feedBody = await feedResponse.text();
+          if (!feedResponse.ok) {
+            if (feedResponse.status === 404) {
+              console.warn("YouTube-RSS nicht verfügbar (HTTP 404); verwende die Kanalseite.");
+              break;
+            }
+            throw new Error("YouTube-Feed antwortete mit HTTP " + feedResponse.status);
+          }
           const videos = parseFeed(feedBody);
           if (videos.length > 0) return videos;
-          if (!feedResponse.ok) throw new Error("YouTube-Feed antwortete mit HTTP " + feedResponse.status);
-          throw new Error("YouTube-Feed enthält keine Videos");
+          console.warn("YouTube-RSS enthält keine Einträge; verwende die Kanalseite.");
+          break;
         } catch (error) {
           console.warn("YouTube-Feed-Versuch " + (attempt + 1) + "/3 fehlgeschlagen:", error);
           if (attempt < 2) await new Promise((resolve) => setTimeout(resolve, 500 * (attempt + 1)));
