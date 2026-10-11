@@ -58,7 +58,7 @@ async function getLatestVideos() {
       href: string;
     }> = [];
     const seen = new Set<string>();
-    const rendererPattern = /"videoRenderer"\\s*:\\s*\\{/g;
+    const rendererPattern = /"videoRenderer"\s*:\s*\{/g;
 
     for (const match of html.matchAll(rendererPattern)) {
       const objectStart = (match.index ?? 0) + match[0].lastIndexOf("{");
@@ -71,7 +71,7 @@ async function getLatestVideos() {
         const char = html[i];
         if (inString) {
           if (escaped) escaped = false;
-          else if (char === "\\\\") escaped = true;
+          else if (char === "\\") escaped = true;
           else if (char === '"') inString = false;
           continue;
         }
