@@ -87,22 +87,57 @@ async function getLatestVideos() {
       }
       if (objectEnd < 0) continue;
 
-      // Read metadata only within this renderer, so IDs and titles cannot cross-pair.
+      // Keep each video's ID and title inside its own renderer.
       const renderer = html.slice(objectStart, objectEnd);
       const id = renderer.match(/"videoId":"([a-zA-Z0-9_-]{11})"/)?.[1] ?? "";
-      // Prefer actual video-title fields and explicitly reject YouTube's menu label
-      // "add to Queue", which can appear in lockup metadata on the first card.
-      const contentTitles = [...renderer.matchAll(/"title"\s*:\s*\{\s*"content"\s*:\s*"((?:\\\\.|[^"\\\\])*)"/g)]
-        .map((match) => decodeJsonString(match[1]))
-        .filter((value) => value && !/^(add to queue|save to playlist|share|report)$/i.test(value));
-      const titleMatch =
-        (contentTitles.length ? [null, JSON.stringify(contentTitles[0]).slice(1, -1)] as RegExpMatchArray : null) ??
-        renderer.match(/"title":\{"runs":\[\{"text":"((?:\\\\.|[^"\\\\])*)"/) ??
-        renderer.match(/"title":\{"simpleText":"((?:\\\\.|[^"\\\\])*)"/) ??
-        renderer.match(/"title":\{"content":"((?:\\\\.|[^"\\\\])*)"/);
-      if (!id || !titleMatch || seen.has(id)) continue;
+      let title = "";
 
-      const title = contentTitles.length ? contentTitles[0] : decodeJsonString(titleMatch[1]);
+      if (match[0].includes("lockupViewModel")) {
+        // In the new YouTube layout, menu actions can also have a "title.content"
+        // field. Only read the title from the dedicated lockup metadata object.
+        const metadataMarker = '"lockupMetadataViewModel"';
+        const metadataMarkerIndex = renderer.indexOf(metadataMarker);
+        const metadataObjectStart = metadataMarkerIndex < 0
+          ? -1
+          : renderer.indexOf("{", metadataMarkerIndex + metadataMarker.length);
+        if (metadataObjectStart >= 0) {
+          let metadataDepth = 0;
+          let metadataInString = false;
+          let metadataEscaped = false;
+          let metadataObjectEnd = -1;
+          for (let i = metadataObjectStart; i < renderer.length; i++) {
+            const char = renderer[i];
+            if (metadataInString) {
+              if (metadataEscaped) metadataEscaped = false;
+              else if (char === "\\") metadataEscaped = true;
+              else if (char === '"') metadataInString = false;
+              continue;
+            }
+            if (char === '"') metadataInString = true;
+            else if (char === "{") metadataDepth++;
+            else if (char === "}") {
+              metadataDepth--;
+              if (metadataDepth === 0) {
+                metadataObjectEnd = i + 1;
+                break;
+              }
+            }
+          }
+          if (metadataObjectEnd > 0) {
+            const metadataObject = renderer.slice(metadataObjectStart, metadataObjectEnd);
+            const titleRaw = metadataObject.match(/"title"\s*:\s*\{\s*"content"\s*:\s*"((?:\\.|[^"\\])*)"/)?.[1];
+            if (titleRaw) title = decodeJsonString(titleRaw);
+          }
+        }
+      } else {
+        const titleMatch =
+          renderer.match(/"title":\{"runs":\[\{"text":"((?:\\.|[^"\\])*)"/) ??
+          renderer.match(/"title":\{"simpleText":"((?:\\.|[^"\\])*)"/);
+        if (titleMatch) title = decodeJsonString(titleMatch[1]);
+      }
+
+      // Never substitute a menu action label for a video title.
+      if (!id || !title || /^(add to queue|save to playlist|share|report)$/i.test(title) || seen.has(id)) continue;
       const timeMatch = renderer.match(/"publishedTimeText":\{"simpleText":"((?:\\.|[^"\\])*)"/) ?? renderer.match(/"accessibilityLabel":"((?:\\.|[^"\\])*(?:ago|streamed|premiered)[^"\\]*)"/i);
       const publishedValue = timeMatch ? decodeJsonString(timeMatch[1]) : "";
       if (!title) continue;
