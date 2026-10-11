@@ -190,6 +190,9 @@ h1 { margin: 27px 0 17px; font-size: clamp(56px, 6.3vw, 82px); line-height: .95;
   .main-nav.is-open { display: flex; }
   .main-nav a { padding: 14px 4px; font-size: 11px; }
   .main-nav a::after { bottom: 7px; }
+  .hero { grid-template-columns: minmax(0, 1fr); }
+  .videos-grid { grid-template-columns: minmax(0, 1fr); }
+}
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
 
