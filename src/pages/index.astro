@@ -90,7 +90,7 @@ async function getLatestVideos() {
       // Read metadata only within this renderer, so IDs and titles cannot cross-pair.
       const renderer = html.slice(objectStart, objectEnd);
       const id = renderer.match(/"videoId":"([a-zA-Z0-9_-]{11})"/)?.[1] ?? "";
-      const titleMatch = renderer.match(/"title":\{"runs":\[\{"text":"((?:\\\\.|[^"\\\\])*)"/) ?? renderer.match(/"title":\{"simpleText":"((?:\\\\.|[^"\\\\])*)"/) ?? renderer.match(/"title":\{"content":"((?:\\\\.|[^"\\\\])*)"/);
+      const titleMatch = renderer.match(/"lockupMetadataViewModel"\s*:\s*\{[\s\S]*?"title"\s*:\s*\{\s*"content"\s*:\s*"((?:\\\\.|[^"\\\\])*)"/) ?? renderer.match(/"title":\{"runs":\[\{"text":"((?:\\\\.|[^"\\\\])*)"/) ?? renderer.match(/"title":\{"simpleText":"((?:\\\\.|[^"\\\\])*)"/) ?? renderer.match(/"title":\{"content":"((?:\\\\.|[^"\\\\])*)"/);
       if (!id || !titleMatch || seen.has(id)) continue;
 
       const title = decodeJsonString(titleMatch[1]);
