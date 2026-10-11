@@ -408,7 +408,9 @@ const videos = await getLatestVideos();
         <span>Ag0n1st</span>
       </a>
 
-      <nav class="main-nav" aria-label="Hauptnavigation">
+      <button class="menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-navigation"><span></span><span></span><span></span></button>
+
+      <nav class="main-nav" id="main-navigation" aria-label="Hauptnavigation">
         <a href="/endfield/">Arknights: Endfield</a>
         <a href="/nte/">Neverness to Everness</a>
         <a href="/about/">About Me</a>
@@ -547,7 +549,7 @@ const videos = await getLatestVideos();
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3ZM5 5h6v2H7v10h10v-4h2v6H5V5Z"/></svg>
         </a>
       </nav>
-      <a class="footer-wordmark" href="/" aria-label="Ag0n1st Startseite"><img class="wordmark-logo" src="/images/ag0n1st-logo.svg" alt="" aria-hidden="true" /><span>Ag0n1st</span></a>
+      <a class="footer-wordmark" href="/" aria-label="Ag0n1st Startseite"><img class="wordmark-logo" src="/images/ag0n1st-logo.svg" alt="Ag0n1st Logo" /></a>
       <span class="copyright">© 2025 Ag0n1st. All rights reserved.</span>
     </footer>
 
@@ -569,6 +571,17 @@ const videos = await getLatestVideos();
           statusText.textContent = "OFFLINE";
         }
       }
+
+      const menuToggle = document.querySelector(".menu-toggle");
+      const mainNav = document.querySelector("#main-navigation");
+      function setMenuOpen(open) {
+        if (!menuToggle || !mainNav) return;
+        menuToggle.setAttribute("aria-expanded", String(open));
+        menuToggle.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
+        mainNav.classList.toggle("is-open", open);
+      }
+      menuToggle?.addEventListener("click", () => setMenuOpen(menuToggle.getAttribute("aria-expanded") !== "true"));
+      mainNav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenuOpen(false)));
 
       refreshTwitchStatus();
       window.setInterval(refreshTwitchStatus, 60_000);
