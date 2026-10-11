@@ -112,17 +112,36 @@ async function getLatestVideos() {
   };
 
   try {
+    // Resolve the channel ID from a known video uploaded by Ag0n1st.
+    // On a video page, videoDetails.channelId belongs to that exact upload,
+    // unlike generic channelId values on a channel page that may refer to recommendations.
+    let videoPageChannelId = "";
+    try {
+      const videoResponse = await fetch("https://www.youtube.com/watch?v=wNVJkGzkfMg", {
+        headers: { "User-Agent": "Mozilla/5.0" },
+        signal: AbortSignal.timeout(10000),
+        cache: "no-store",
+      });
+      if (videoResponse.ok) {
+        const videoHtml = await videoResponse.text();
+        videoPageChannelId =
+          videoHtml.match(/"videoDetails":\{[\s\S]*?"channelId":"(UC[\w-]+)"/)?.[1] ?? "";
+      }
+    } catch (error) {
+      console.warn("Kanal-ID konnte nicht aus dem Referenzvideo gelesen werden:", error);
+    }
+
     const channelResponse = await fetch("https://www.youtube.com/@Ag0n1st", {
       headers: { "User-Agent": "Mozilla/5.0" },
       signal: AbortSignal.timeout(10000),
     });
     if (!channelResponse.ok) throw new Error("YouTube-Kanal konnte nicht geladen werden");
     const channelHtml = await channelResponse.text();
-    // Prefer the channel's own metadata. A generic "channelId" can belong
-    // to a recommended/featured channel elsewhere in the page and yields a 404 RSS feed.
+    // Prefer the ID from the known upload, then the channel's own metadata.
     const channelId =
-      channelHtml.match(/itemprop="identifier" content="(UC[\w-]+)"/)?.[1] ??
-      channelHtml.match(/"externalId":"(UC[\w-]+)"/)?.[1] ??
+      videoPageChannelId ||
+      channelHtml.match(/itemprop="identifier" content="(UC[\w-]+)"/)?.[1] ||
+      channelHtml.match(/"externalId":"(UC[\w-]+)"/)?.[1] ||
       channelHtml.match(/"channelId":"(UC[\w-]+)"/)?.[1];
 
     if (channelId) {
