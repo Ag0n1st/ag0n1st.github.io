@@ -455,20 +455,12 @@ const videos = await getLatestVideos();
             </span>
           </div>
 
-          <div class="stream-card-main" id="twitch-player-container">
-            <div class="stream-offline-state">
-              <div class="stream-glow stream-glow-pink"></div>
-              <div class="stream-glow stream-glow-cyan"></div>
-              <div class="stream-grid" aria-hidden="true"></div>
-              <span class="stream-kicker">LIVE ON TWITCH</span>
-              <h2>PLAY.<br /><span>LEARN.</span><br />PULL.</h2>
-              <span class="stream-card-tag">GACHA · GUIDES · COMMUNITY</span>
-              <div class="stream-monogram" aria-hidden="true">A0<br />N1</div>
-            </div>
+          <div class="stream-card-main" id="twitch-player-container" aria-label="Twitch-Player von Ag0n1st">
+            <div id="twitch-embed" class="twitch-embed"></div>
           </div>
 
           <div class="stream-card-footer">
-            <p>Fragen stellen, gemeinsam pullen und Gacha-Games auf Deutsch erleben.</p>
+            <p>Stelle deine Fragen jetzt Live auf Twitch!</p>
             <a href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">Zum Twitch-Kanal <span aria-hidden="true">↗</span></a>
           </div>
         </aside>
@@ -558,31 +550,53 @@ const videos = await getLatestVideos();
     <script>
       const statusPill = document.querySelector("#twitch-status");
       const statusText = statusPill?.querySelector(".live-text");
-      const twitchPlayerContainer = document.querySelector("#twitch-player-container");
-      let twitchPlayer = null;
       let lastKnownLiveState = null;
 
       function setTwitchLiveState(isLive) {
-        if (statusPill && statusText) {
-          statusPill.dataset.state = isLive ? "live" : "offline";
-          statusText.textContent = isLive ? "LIVE" : "OFFLINE";
-        }
-        if (!twitchPlayerContainer) return;
+        if (!statusPill || !statusText) return;
+        statusPill.dataset.state = isLive ? "live" : "offline";
+        statusText.textContent = isLive ? "LIVE" : "OFFLINE";
+      }
 
-        twitchPlayerContainer.classList.toggle("is-live", isLive);
-        if (isLive && !twitchPlayer) {
-          twitchPlayer = document.createElement("iframe");
-          twitchPlayer.className = "stream-player";
-          twitchPlayer.title = "Ag0n1st live auf Twitch";
-          twitchPlayer.src = "https://player.twitch.tv/?channel=Ag0n1st&parent=" + encodeURIComponent(window.location.hostname) + "&autoplay=false&muted=true";
-          twitchPlayer.allow = "autoplay; fullscreen";
-          twitchPlayer.allowFullscreen = true;
-          twitchPlayer.loading = "lazy";
-          twitchPlayerContainer.append(twitchPlayer);
-        } else if (!isLive && twitchPlayer) {
-          twitchPlayer.remove();
-          twitchPlayer = null;
+      function initializeTwitchPlayer() {
+        const mount = document.querySelector("#twitch-embed");
+        if (!mount || !window.Twitch?.Embed) return;
+        if (mount.dataset.initialized === "true") return;
+        mount.dataset.initialized = "true";
+
+        const embed = new window.Twitch.Embed("twitch-embed", {
+          width: "100%",
+          height: "100%",
+          channel: "Ag0n1st",
+          layout: "video",
+          autoplay: true,
+          muted: false,
+          parent: [window.location.hostname],
+        });
+
+        embed.addEventListener(window.Twitch.Embed.VIDEO_READY, () => {
+          const player = embed.getPlayer();
+          player.setVolume(0.1);
+          player.setMuted(false);
+        });
+      }
+
+      function loadTwitchEmbedSdk() {
+        if (window.Twitch?.Embed) {
+          initializeTwitchPlayer();
+          return;
         }
+        const existing = document.querySelector('script[data-twitch-embed-sdk]');
+        if (existing) {
+          existing.addEventListener("load", initializeTwitchPlayer, { once: true });
+          return;
+        }
+        const sdk = document.createElement("script");
+        sdk.src = "https://embed.twitch.tv/embed/v1.js";
+        sdk.async = true;
+        sdk.dataset.twitchEmbedSdk = "true";
+        sdk.addEventListener("load", initializeTwitchPlayer, { once: true });
+        document.head.append(sdk);
       }
 
       async function refreshTwitchStatus() {
@@ -611,6 +625,7 @@ const videos = await getLatestVideos();
       menuToggle?.addEventListener("click", () => setMenuOpen(menuToggle.getAttribute("aria-expanded") !== "true"));
       mainNav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenuOpen(false)));
 
+      loadTwitchEmbedSdk();
       refreshTwitchStatus();
       window.setInterval(refreshTwitchStatus, 60_000);
 
