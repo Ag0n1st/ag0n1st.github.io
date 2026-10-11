@@ -183,7 +183,7 @@ async function getLatestVideos() {
             const char = videoHtml[i];
             if (inString) {
               if (escaped) escaped = false;
-              else if (char === "\\\\") escaped = true;
+              else if (char === "\\") escaped = true;
               else if (char === '"') inString = false;
               continue;
             }
@@ -242,7 +242,7 @@ async function getLatestVideos() {
     // public oEmbed endpoint for the exact current title. oEmbed does not expose
     // publication dates, so the date remains sourced from the watch-page metadata.
 
-    const channelResponse = await fetch("https://www.youtube.com/@Ag0n1st", {
+    const channelResponse = await fetch("https://www.youtube.com/@Ag0n1st/videos", {
       headers: { "User-Agent": "Mozilla/5.0" },
       signal: AbortSignal.timeout(10000),
     });
