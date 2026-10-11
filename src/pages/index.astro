@@ -174,7 +174,20 @@ async function getLatestVideos() {
       console.warn("YouTube-RSS nicht verfügbar; verwende Video-Metadaten der Kanalseite als Fallback.");
       return fallbackVideos;
     }
-    throw new Error("Weder YouTube-RSS-Feed noch Video-Metadaten der Kanalseite verfügbar");
+
+    // Last-resort display fallback: keep the video section populated even if
+    // YouTube blocks feed/page metadata during the static build. This is a
+    // confirmed video link supplied by the channel owner; normal feeds still
+    // take precedence whenever available.
+    console.warn("YouTube-Metadaten nicht verfügbar; zeige das bestätigte Referenzvideo als Fallback.");
+    return [{
+      id: "wNVJkGzkfMg",
+      title: "Video von Ag0n1st auf YouTube ansehen",
+      published: "",
+      publishedLabel: "Auf YouTube ansehen",
+      thumbnail: "https://i.ytimg.com/vi/wNVJkGzkfMg/hqdefault.jpg",
+      href: "https://www.youtube.com/watch?v=wNVJkGzkfMg",
+    }];
   } catch (error) {
     console.warn("YouTube-Videos konnten beim Build nicht geladen werden:", error);
     return [];
