@@ -215,8 +215,8 @@ async function getLatestVideos() {
         // Some YouTube watch pages omit publishDate/uploadDate but still expose
         // a human-readable upload date in videoPrimaryInfoRenderer.dateText.
         const dateTextRaw =
-          videoHtml.match(/"dateText"\\s*:\\s*\\{\\s*"simpleText"\\s*:\\s*"((?:\\\\.|[^"\\\\])*)"/)?.[1] ??
-          videoHtml.match(/"dateText"\\s*:\\s*\\{\\s*"runs"\\s*:\\s*\\[\\s*\\{\\s*"text"\\s*:\\s*"((?:\\\\.|[^"\\\\])*)"/)?.[1] ??
+          videoHtml.match(/"dateText"\s*:\s*\{\s*"simpleText"\s*:\s*"([^"]*)"/)?.[1] ??
+          videoHtml.match(/"dateText"\s*:\s*\{\s*"runs"\s*:\s*\[\s*\{\s*"text"\s*:\s*"([^"]*)"/)?.[1] ??
           "";
         videoPageChannelId = details.match(/"channelId":"(UC[\w-]+)"/)?.[1] ?? "";
         if (title) {
