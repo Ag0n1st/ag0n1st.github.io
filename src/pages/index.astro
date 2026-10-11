@@ -46,8 +46,8 @@ async function getLatestVideos() {
     }).filter((video) => video.id && video.title);
   };
 
-  // The channel page can contain video metadata even when YouTube's RSS endpoint
-  // temporarily rejects requests from the build runner.
+  // Parse each YouTube videoRenderer as one JSON object. Looking for a videoId
+  // and then searching ahead for the next title can accidentally pair two videos.
   const parseChannelPage = (html: string) => {
     const videos: Array<{
       id: string;
@@ -58,28 +58,58 @@ async function getLatestVideos() {
       href: string;
     }> = [];
     const seen = new Set<string>();
-    const idPattern = /"videoId":"([a-zA-Z0-9_-]{11})"/g;
-    for (const match of html.matchAll(idPattern)) {
-      const id = match[1];
-      if (seen.has(id)) continue;
-      const start = match.index ?? 0;
-      const chunk = html.slice(start, start + 5000);
-      const titleMatch = chunk.match(/"title":\{"runs":\[\{"text":"((?:\\.|[^"\\])*)"/);
-      if (!titleMatch) continue;
-      const title = decodeJsonString(titleMatch[1]);
-      const timeMatch = chunk.match(/"publishedTimeText":\{"simpleText":"((?:\\.|[^"\\])*)"/);
-      const publishedLabel = timeMatch ? decodeJsonString(timeMatch[1]) : "";
-      if (!title) continue;
-      seen.add(id);
-      videos.push({
-        id,
-        title,
-        published: "",
-        publishedLabel,
-        thumbnail: "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg",
-        href: "https://www.youtube.com/watch?v=" + id,
-      });
-      if (videos.length >= 6) break;
+    const rendererPattern = /"videoRenderer"\\s*:\\s*\\{/g;
+
+    for (const match of html.matchAll(rendererPattern)) {
+      const objectStart = (match.index ?? 0) + match[0].lastIndexOf("{");
+      let depth = 0;
+      let inString = false;
+      let escaped = false;
+      let objectEnd = -1;
+
+      for (let i = objectStart; i < html.length; i++) {
+        const char = html[i];
+        if (inString) {
+          if (escaped) escaped = false;
+          else if (char === "\\\\") escaped = true;
+          else if (char === '"') inString = false;
+          continue;
+        }
+        if (char === '"') inString = true;
+        else if (char === "{") depth++;
+        else if (char === "}") {
+          depth--;
+          if (depth === 0) {
+            objectEnd = i + 1;
+            break;
+          }
+        }
+      }
+      if (objectEnd < 0) continue;
+
+      try {
+        const renderer = JSON.parse(html.slice(objectStart, objectEnd));
+        const id = typeof renderer.videoId === "string" ? renderer.videoId : "";
+        const title = Array.isArray(renderer.title?.runs)
+          ? renderer.title.runs.map((run: { text?: string }) => run.text ?? "").join("")
+          : "";
+        if (!id || !title || seen.has(id)) continue;
+
+        const publishedValue = renderer.publishedTimeText?.simpleText ??
+          renderer.publishedTimeText?.runs?.map((run: { text?: string }) => run.text ?? "").join("") ?? "";
+        seen.add(id);
+        videos.push({
+          id,
+          title,
+          published: "",
+          publishedLabel: publishedValue,
+          thumbnail: "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg",
+          href: "https://www.youtube.com/watch?v=" + id,
+        });
+        if (videos.length >= 6) break;
+      } catch {
+        // Ignore malformed/non-video renderer fragments and continue scanning.
+      }
     }
     return videos;
   };
