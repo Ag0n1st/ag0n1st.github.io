@@ -212,6 +212,12 @@ async function getLatestVideos() {
           videoHtml.match(/<meta[^>]+itemprop=["']datePublished["'][^>]+content=["'](\d{4}-\d{2}-\d{2})/i)?.[1] ??
           videoHtml.match(/<meta[^>]+content=["'](\d{4}-\d{2}-\d{2})[^>]+itemprop=["']datePublished["']/i)?.[1] ??
           "";
+        // Some YouTube watch pages omit publishDate/uploadDate but still expose
+        // a human-readable upload date in videoPrimaryInfoRenderer.dateText.
+        const dateTextRaw =
+          videoHtml.match(/"dateText"\\s*:\\s*\\{\\s*"simpleText"\\s*:\\s*"((?:\\\\.|[^"\\\\])*)"/)?.[1] ??
+          videoHtml.match(/"dateText"\\s*:\\s*\\{\\s*"runs"\\s*:\\s*\\[\\s*\\{\\s*"text"\\s*:\\s*"((?:\\\\.|[^"\\\\])*)"/)?.[1] ??
+          "";
         videoPageChannelId = details.match(/"channelId":"(UC[\w-]+)"/)?.[1] ?? "";
         if (title) {
           referenceVideo = {
@@ -220,7 +226,9 @@ async function getLatestVideos() {
             published: dateRaw,
             publishedLabel: dateRaw
               ? new Date(dateRaw + "T12:00:00Z").toLocaleDateString("de-DE", { day: "2-digit", month: "short", year: "numeric", timeZone: "UTC" })
-              : "",
+              : dateTextRaw
+                ? decodeJsonString(dateTextRaw)
+                : "",
             thumbnail: "https://i.ytimg.com/vi/wNVJkGzkfMg/hqdefault.jpg",
             href: "https://www.youtube.com/watch?v=wNVJkGzkfMg",
           };
