@@ -111,6 +111,42 @@ async function getLatestVideos() {
     return videos;
   };
 
+  const getPublishedLabelForVideo = (html: string, targetId: string) => {
+    const rendererPattern = /"videoRenderer"\s*:\s*\{/g;
+    for (const match of html.matchAll(rendererPattern)) {
+      const objectStart = (match.index ?? 0) + match[0].lastIndexOf("{");
+      let depth = 0;
+      let inString = false;
+      let escaped = false;
+      let objectEnd = -1;
+      for (let i = objectStart; i < html.length; i++) {
+        const char = html[i];
+        if (inString) {
+          if (escaped) escaped = false;
+          else if (char === "\\") escaped = true;
+          else if (char === '"') inString = false;
+          continue;
+        }
+        if (char === '"') inString = true;
+        else if (char === "{") depth++;
+        else if (char === "}") {
+          depth--;
+          if (depth === 0) {
+            objectEnd = i + 1;
+            break;
+          }
+        }
+      }
+      if (objectEnd < 0) continue;
+      const renderer = html.slice(objectStart, objectEnd);
+      const id = renderer.match(/"videoId":"([a-zA-Z0-9_-]{11})"/)?.[1] ?? "";
+      if (id !== targetId) continue;
+      const timeMatch = renderer.match(/"publishedTimeText":\{"simpleText":"((?:\\.|[^"\\])*)"/);
+      return timeMatch ? decodeJsonString(timeMatch[1]) : "";
+    }
+    return "";
+  };
+
   try {
     // Resolve the channel ID from a known video uploaded by Ag0n1st.
     // On a video page, videoDetails.channelId belongs to that exact upload,
@@ -197,6 +233,11 @@ async function getLatestVideos() {
     });
     if (!channelResponse.ok) throw new Error("YouTube-Kanal konnte nicht geladen werden");
     const channelHtml = await channelResponse.text();
+    // The watch page sometimes omits publishDate. In that case, get YouTube's
+    // own relative upload label for this exact video from its channel renderer.
+    if (referenceVideo && !referenceVideo.publishedLabel) {
+      referenceVideo.publishedLabel = getPublishedLabelForVideo(channelHtml, referenceVideo.id);
+    }
     // Prefer the ID from the known upload, then the channel's own metadata.
     const channelId =
       videoPageChannelId ||
@@ -474,7 +515,7 @@ const videos = await getLatestVideos();
         if (seconds < 86400 * 365) return `vor ${Math.floor(seconds / (86400 * 30))} Mon.`;
         return `vor ${Math.floor(seconds / (86400 * 365))} J.`;
       };
-      document.querySelectorAll("[data-relative-time]").forEach((element) => {
+      document.querySelectorAll("[data-relative-time], [data-relative-label]").forEach((element) => {
         const published = element.getAttribute("data-relative-time");
         if (published && !Number.isNaN(new Date(published).getTime())) {
           const update = () => { element.textContent = formatRelativeTime(published); };
