@@ -588,12 +588,31 @@ const videos = await getLatestVideos();
 
       const formatRelativeTime = (dateString) => {
         const seconds = Math.max(0, Math.floor((Date.now() - new Date(dateString).getTime()) / 1000));
-        if (seconds < 60) return "vor wenigen Sek.";
-        if (seconds < 3600) return `vor ${Math.floor(seconds / 60)} Min.`;
-        if (seconds < 86400) return `vor ${Math.floor(seconds / 3600)} Std.`;
-        if (seconds < 86400 * 30) return `vor ${Math.floor(seconds / 86400)} Tg.`;
-        if (seconds < 86400 * 365) return `vor ${Math.floor(seconds / (86400 * 30))} Mon.`;
-        return `vor ${Math.floor(seconds / (86400 * 365))} J.`;
+        if (seconds < 60) return "vor wenigen Sekunden";
+        if (seconds < 3600) return `vor ${Math.floor(seconds / 60)} Minuten`;
+        if (seconds < 86400) return `vor ${Math.floor(seconds / 3600)} Stunden`;
+        if (seconds < 86400 * 7) return `vor ${Math.floor(seconds / 86400)} Tagen`;
+        if (seconds < 86400 * 30) return `vor ${Math.floor(seconds / (86400 * 7))} Wochen`;
+        if (seconds < 86400 * 365) return `vor ${Math.floor(seconds / (86400 * 30))} Monaten`;
+        return `vor ${Math.floor(seconds / (86400 * 365))} Jahren`;
+      };
+
+      const translateRelativeLabel = (label) => {
+        const value = label.trim();
+        const match = value.match(/^(\d+)\s+(seconds?|minutes?|hours?|days?|weeks?|months?|years?)\s+ago$/i);
+        if (!match) return value;
+        const amount = Number(match[1]);
+        const unit = match[2].toLowerCase();
+        const units = {
+          second: "Sekunden", seconds: "Sekunden",
+          minute: "Minuten", minutes: "Minuten",
+          hour: "Stunden", hours: "Stunden",
+          day: "Tagen", days: "Tagen",
+          week: "Wochen", weeks: "Wochen",
+          month: "Monaten", months: "Monaten",
+          year: "Jahren", years: "Jahren",
+        };
+        return `vor ${amount} ${units[unit]}`;
       };
       document.querySelectorAll("[data-relative-time], [data-relative-label]").forEach((element) => {
         const published = element.getAttribute("data-relative-time");
@@ -604,7 +623,7 @@ const videos = await getLatestVideos();
         } else {
           // Keep YouTube's relative label (e.g. "vor 2 Tagen") for HTML-fallback videos.
           const label = element.getAttribute("data-relative-label");
-          if (label) element.textContent = label;
+          if (label) element.textContent = translateRelativeLabel(label);
         }
       });
     </script>
