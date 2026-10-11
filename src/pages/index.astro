@@ -87,29 +87,28 @@ async function getLatestVideos() {
       }
       if (objectEnd < 0) continue;
 
-      try {
-        const renderer = JSON.parse(html.slice(objectStart, objectEnd));
-        const id = typeof renderer.videoId === "string" ? renderer.videoId : "";
-        const title = Array.isArray(renderer.title?.runs)
-          ? renderer.title.runs.map((run: { text?: string }) => run.text ?? "").join("")
-          : "";
-        if (!id || !title || seen.has(id)) continue;
+      // Read fields only inside this renderer's own object. Avoid JSON.parse here:
+      // YouTube sometimes embeds escaped or augmented values that are not parseable
+      // as a standalone JSON object, even though the individual fields are present.
+      const renderer = html.slice(objectStart, objectEnd);
+      const id = renderer.match(/"videoId"\\s*:\\s*"([a-zA-Z0-9_-]{11})"/)?.[1] ?? "";
+      const titleMatch = renderer.match(/"title"\\s*:\\s*\\{\\s*"runs"\\s*:\\s*\\[\\s*\\{\\s*"text"\\s*:\\s*"((?:\\\\.|[^"\\\\])*)"/);
+      if (!id || !titleMatch || seen.has(id)) continue;
 
-        const publishedValue = renderer.publishedTimeText?.simpleText ??
-          renderer.publishedTimeText?.runs?.map((run: { text?: string }) => run.text ?? "").join("") ?? "";
-        seen.add(id);
-        videos.push({
-          id,
-          title,
-          published: "",
-          publishedLabel: publishedValue,
-          thumbnail: "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg",
-          href: "https://www.youtube.com/watch?v=" + id,
-        });
-        if (videos.length >= 6) break;
-      } catch {
-        // Ignore malformed/non-video renderer fragments and continue scanning.
-      }
+      const title = decodeJsonString(titleMatch[1]);
+      const timeMatch = renderer.match(/"publishedTimeText"\\s*:\\s*\\{\\s*"simpleText"\\s*:\\s*"((?:\\\\.|[^"\\\\])*)"/);
+      const publishedValue = timeMatch ? decodeJsonString(timeMatch[1]) : "";
+      if (!title) continue;
+      seen.add(id);
+      videos.push({
+        id,
+        title,
+        published: "",
+        publishedLabel: publishedValue,
+        thumbnail: "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg",
+        href: "https://www.youtube.com/watch?v=" + id,
+      });
+      if (videos.length >= 6) break;
     }
     return videos;
   };
