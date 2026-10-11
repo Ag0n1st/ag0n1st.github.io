@@ -260,27 +260,6 @@ async function getLatestVideos() {
       channelHtml.match(/"externalId":"(UC[\w-]+)"/)?.[1] ||
       channelHtml.match(/"channelId":"(UC[\w-]+)"/)?.[1];
 
-    console.warn("YouTube-Diagnose:", JSON.stringify({
-      channelId: channelId || null,
-      referenceVideoFound: Boolean(referenceVideo),
-      referenceTitleFound: Boolean(referenceVideo?.title),
-      videoPageChannelIdFound: Boolean(videoPageChannelId),
-      channelHtmlLength: channelHtml.length,
-      channelRendererVideos: parseChannelPage(channelHtml).length,
-      channelHtmlHasConsentScreen: /consent\\.youtube\\.com|Before you continue to YouTube|consentCookieIframe/i.test(channelHtml),
-      channelHtmlHasVideoRenderer: channelHtml.includes('"videoRenderer"'),
-      channelHtmlHasRichGrid: channelHtml.includes('"richGridRenderer"'),
-      gridVideoRendererCount: (channelHtml.match(/"gridVideoRenderer"\\s*:/g) || []).length,
-      videoIdCount: (channelHtml.match(/"videoId"\\s*:/g) || []).length,
-      lockupMetadataSnippet: (() => {
-        const index = channelHtml.indexOf('"lockupMetadataViewModel":{');
-        return index >= 0 ? channelHtml.slice(index, index + 2400) : "lockup metadata object not found";
-      })().replace(/\\s+/g, " "),
-      watchUrlCount: (channelHtml.match(/watch\\?v=/g) || []).length,
-      contentIdCount: (channelHtml.match(/"contentId"\\s*:/g) || []).length,
-      videoIdOccurrences: (channelHtml.match(/[a-zA-Z0-9_-]{11}/g) || []).length,
-    }));
-
     if (channelId) {
       // Retry transient RSS failures before falling back to the channel page.
       for (let attempt = 0; attempt < 3; attempt++) {
@@ -296,15 +275,6 @@ async function getLatestVideos() {
           const feedBody = await feedResponse.text();
           const videos = parseFeed(feedBody);
           if (videos.length > 0) return videos;
-          console.warn("YouTube-Feed-Diagnose:", JSON.stringify({
-            status: feedResponse.status,
-            contentType: feedResponse.headers.get("content-type"),
-            bodyLength: feedBody.length,
-            bodyStart: feedBody.slice(0, 240).replace(/\\s+/g, " "),
-            hasEntry: /<entry(?:\\s|>)/i.test(feedBody),
-            hasVideoId: /<yt:videoId>/i.test(feedBody),
-            requestedChannelId: channelId,
-          }));
           if (!feedResponse.ok) throw new Error("YouTube-Feed antwortete mit HTTP " + feedResponse.status);
           throw new Error("YouTube-Feed enthält keine Videos");
         } catch (error) {
