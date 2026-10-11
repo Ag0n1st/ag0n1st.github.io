@@ -87,16 +87,14 @@ async function getLatestVideos() {
       }
       if (objectEnd < 0) continue;
 
-      // Read fields only inside this renderer's own object. Avoid JSON.parse here:
-      // YouTube sometimes embeds escaped or augmented values that are not parseable
-      // as a standalone JSON object, even though the individual fields are present.
+      // Read metadata only within this renderer, so IDs and titles cannot cross-pair.
       const renderer = html.slice(objectStart, objectEnd);
-      const id = renderer.match(/"videoId"\\s*:\\s*"([a-zA-Z0-9_-]{11})"/)?.[1] ?? "";
-      const titleMatch = renderer.match(/"title"\\s*:\\s*\\{\\s*"runs"\\s*:\\s*\\[\\s*\\{\\s*"text"\\s*:\\s*"((?:\\\\.|[^"\\\\])*)"/);
+      const id = renderer.match(/"videoId":"([a-zA-Z0-9_-]{11})"/)?.[1] ?? "";
+      const titleMatch = renderer.match(/"title":\{"runs":\[\{"text":"((?:\\.|[^"\\])*)"/);
       if (!id || !titleMatch || seen.has(id)) continue;
 
       const title = decodeJsonString(titleMatch[1]);
-      const timeMatch = renderer.match(/"publishedTimeText"\\s*:\\s*\\{\\s*"simpleText"\\s*:\\s*"((?:\\\\.|[^"\\\\])*)"/);
+      const timeMatch = renderer.match(/"publishedTimeText":\{"simpleText":"((?:\\.|[^"\\])*)"/);
       const publishedValue = timeMatch ? decodeJsonString(timeMatch[1]) : "";
       if (!title) continue;
       seen.add(id);
