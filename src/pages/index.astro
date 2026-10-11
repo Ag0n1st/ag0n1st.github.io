@@ -272,9 +272,9 @@ async function getLatestVideos() {
       channelHtmlHasRichGrid: channelHtml.includes('"richGridRenderer"'),
       gridVideoRendererCount: (channelHtml.match(/"gridVideoRenderer"\\s*:/g) || []).length,
       videoIdCount: (channelHtml.match(/"videoId"\\s*:/g) || []).length,
-      lockupObjectSnippet: (() => {
-        const index = channelHtml.indexOf('"lockupViewModel":{');
-        return index >= 0 ? channelHtml.slice(index, index + 1800) : "lockup object not found";
+      lockupMetadataSnippet: (() => {
+        const index = channelHtml.indexOf('"lockupMetadataViewModel":{');
+        return index >= 0 ? channelHtml.slice(index, index + 2400) : "lockup metadata object not found";
       })().replace(/\\s+/g, " "),
       watchUrlCount: (channelHtml.match(/watch\\?v=/g) || []).length,
       contentIdCount: (channelHtml.match(/"contentId"\\s*:/g) || []).length,
