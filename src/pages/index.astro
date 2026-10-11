@@ -200,10 +200,17 @@ async function getLatestVideos() {
         const titleRaw = details.match(/"title":"((?:\\\\.|[^"\\\\])*)"/)?.[1];
         const title = titleRaw ? decodeJsonString(titleRaw) : "";
         const microformat = extractObject("playerMicroformatRenderer");
+        // YouTube can place the publication date in different parts of the
+        // watch-page metadata. Search the full page as well as the microformat
+        // object so the fallback card still gets a date when object parsing varies.
         const dateRaw =
-          microformat.match(/"publishDate":"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
-          microformat.match(/"uploadDate":"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
-          videoHtml.match(/"datePublished":"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
+          microformat.match(/"publishDate"\s*:\s*"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
+          microformat.match(/"uploadDate"\s*:\s*"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
+          videoHtml.match(/"publishDate"\s*:\s*"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
+          videoHtml.match(/"uploadDate"\s*:\s*"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
+          videoHtml.match(/"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
+          videoHtml.match(/<meta[^>]+itemprop=["']datePublished["'][^>]+content=["'](\d{4}-\d{2}-\d{2})/i)?.[1] ??
+          videoHtml.match(/<meta[^>]+content=["'](\d{4}-\d{2}-\d{2})[^>]+itemprop=["']datePublished["']/i)?.[1] ??
           "";
         videoPageChannelId = details.match(/"channelId":"(UC[\w-]+)"/)?.[1] ?? "";
         if (title) {
