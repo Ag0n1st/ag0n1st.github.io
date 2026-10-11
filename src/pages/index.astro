@@ -455,14 +455,16 @@ const videos = await getLatestVideos();
             </span>
           </div>
 
-          <div class="stream-card-main">
-            <div class="stream-glow stream-glow-pink"></div>
-            <div class="stream-glow stream-glow-cyan"></div>
-            <div class="stream-grid" aria-hidden="true"></div>
-            <span class="stream-kicker">LIVE ON TWITCH</span>
-            <h2>PLAY.<br /><span>LEARN.</span><br />PULL.</h2>
-            <span class="stream-card-tag">GACHA · GUIDES · COMMUNITY</span>
-            <div class="stream-monogram" aria-hidden="true">A0<br />N1</div>
+          <div class="stream-card-main" id="twitch-player-container">
+            <div class="stream-offline-state">
+              <div class="stream-glow stream-glow-pink"></div>
+              <div class="stream-glow stream-glow-cyan"></div>
+              <div class="stream-grid" aria-hidden="true"></div>
+              <span class="stream-kicker">LIVE ON TWITCH</span>
+              <h2>PLAY.<br /><span>LEARN.</span><br />PULL.</h2>
+              <span class="stream-card-tag">GACHA · GUIDES · COMMUNITY</span>
+              <div class="stream-monogram" aria-hidden="true">A0<br />N1</div>
+            </div>
           </div>
 
           <div class="stream-card-footer">
@@ -556,6 +558,32 @@ const videos = await getLatestVideos();
     <script>
       const statusPill = document.querySelector("#twitch-status");
       const statusText = statusPill?.querySelector(".live-text");
+      const twitchPlayerContainer = document.querySelector("#twitch-player-container");
+      let twitchPlayer = null;
+      let lastKnownLiveState = null;
+
+      function setTwitchLiveState(isLive) {
+        if (statusPill && statusText) {
+          statusPill.dataset.state = isLive ? "live" : "offline";
+          statusText.textContent = isLive ? "LIVE" : "OFFLINE";
+        }
+        if (!twitchPlayerContainer) return;
+
+        twitchPlayerContainer.classList.toggle("is-live", isLive);
+        if (isLive && !twitchPlayer) {
+          twitchPlayer = document.createElement("iframe");
+          twitchPlayer.className = "stream-player";
+          twitchPlayer.title = "Ag0n1st live auf Twitch";
+          twitchPlayer.src = "https://player.twitch.tv/?channel=Ag0n1st&parent=" + encodeURIComponent(window.location.hostname) + "&autoplay=false&muted=true";
+          twitchPlayer.allow = "autoplay; fullscreen";
+          twitchPlayer.allowFullscreen = true;
+          twitchPlayer.loading = "lazy";
+          twitchPlayerContainer.append(twitchPlayer);
+        } else if (!isLive && twitchPlayer) {
+          twitchPlayer.remove();
+          twitchPlayer = null;
+        }
+      }
 
       async function refreshTwitchStatus() {
         if (!statusPill || !statusText) return;
@@ -564,11 +592,11 @@ const videos = await getLatestVideos();
           if (!response.ok) throw new Error("Twitch-Status nicht verfügbar");
           const result = (await response.text()).trim().toLowerCase();
           const isLive = result.length > 0 && !result.includes("offline") && !result.includes("not live") && !result.includes("error");
-          statusPill.dataset.state = isLive ? "live" : "offline";
-          statusText.textContent = isLive ? "LIVE" : "OFFLINE";
+          lastKnownLiveState = isLive;
+          setTwitchLiveState(isLive);
         } catch {
-          statusPill.dataset.state = "offline";
-          statusText.textContent = "OFFLINE";
+          // Bei einem vorübergehenden Status-API-Fehler den letzten bekannten Zustand beibehalten.
+          if (lastKnownLiveState === null) setTwitchLiveState(false);
         }
       }
 
