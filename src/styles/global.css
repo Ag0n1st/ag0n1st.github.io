@@ -225,3 +225,72 @@ h1 { margin: 27px 0 17px; font-size: clamp(56px, 6.3vw, 82px); line-height: .95;
 .article-body h2, .article-body h3 { color: var(--white); line-height: 1.25; }
 .article-body a { color: var(--cyan); text-decoration: underline; text-underline-offset: 3px; }
 .article-body img { max-width: 100%; height: auto; border-radius: 12px; }
+
+
+/* Endfield portal and its persistent game navigation */
+.endfield-nav {
+  position: sticky;
+  top: 76px;
+  z-index: 49;
+  border-top: 1px solid rgba(255,255,255,.075);
+  border-bottom: 1px solid var(--line);
+  background: rgba(9,9,13,.88);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+  backdrop-filter: blur(18px) saturate(135%);
+}
+.endfield-nav-inner {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(18px, 2.2vw, 30px);
+  width: min(1160px, calc(100% - 48px));
+  min-height: 50px;
+  margin-inline: auto;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.endfield-nav-inner::-webkit-scrollbar { display: none; }
+.endfield-nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  min-height: 50px;
+  color: #aaa6b4;
+  font-size: 10px;
+  font-weight: var(--font-bold);
+  letter-spacing: .035em;
+  white-space: nowrap;
+  transition: color .2s ease;
+}
+.endfield-nav-link::after { position: absolute; right: 100%; bottom: 0; left: 0; height: 2px; background: var(--pink); content: ""; transition: right .2s ease; }
+.endfield-nav-link:hover, .endfield-nav-link:focus-visible, .endfield-nav-link.is-active { color: var(--white); }
+.endfield-nav-link:hover::after, .endfield-nav-link:focus-visible::after, .endfield-nav-link.is-active::after { right: 0; }
+.endfield-page { padding-bottom: 90px; }
+.endfield-intro { padding-top: clamp(58px, 8vw, 104px); padding-bottom: clamp(54px, 7vw, 88px); }
+.endfield-intro h1 { max-width: 950px; margin: 25px 0 22px; font-size: clamp(45px, 7.3vw, 88px); line-height: .98; }
+.endfield-heading-accent { color: var(--pink); }
+.endfield-lead { max-width: 660px; margin: 0; color: #c1bdc9; font-size: clamp(14px, 1.6vw, 17px); line-height: 1.85; }
+.endfield-intro-actions { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 28px; }
+.endfield-section { padding-top: 38px; padding-bottom: 42px; border-top: 1px solid var(--line); scroll-margin-top: 150px; }
+.endfield-section-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; }
+.endfield-section-heading h2 { margin: 12px 0 0; font-size: clamp(27px, 4vw, 42px); line-height: 1.1; letter-spacing: -.055em; }
+.endfield-section-note { color: var(--muted); font-size: 11px; text-align: right; }
+.endfield-section-copy { max-width: 700px; margin: 17px 0 22px; color: #bdb8c6; font-size: 13px; line-height: 1.8; }
+.endfield-feature-link { display: flex; align-items: center; justify-content: space-between; gap: 20px; max-width: 760px; min-height: 76px; padding: 17px 20px; border: 1px solid #302d39; border-radius: 12px; background: linear-gradient(110deg, rgba(240,91,212,.055), rgba(17,17,22,.72) 48%, rgba(101,232,242,.035)); transition: border-color .2s, transform .2s, background .2s; }
+.endfield-feature-link:hover { transform: translateY(-2px); border-color: rgba(101,232,242,.5); background-color: rgba(101,232,242,.035); }
+.endfield-feature-link > span:first-child { display: flex; flex-direction: column; gap: 6px; }
+.endfield-feature-link strong { font-size: 13px; }
+.endfield-feature-link small { color: var(--muted); font-size: 11px; }
+.endfield-link-arrow { color: var(--cyan); font-size: 20px; }
+.endfield-countdown-teaser { margin-top: 8px; border: 1px solid rgba(101,232,242,.2); border-radius: 14px; padding: 30px; background: linear-gradient(120deg, rgba(101,232,242,.045), rgba(17,17,22,.5) 60%, rgba(240,91,212,.045)); }
+@media (max-width: 680px) {
+  .endfield-nav { top: 66px; }
+  .endfield-nav-inner { width: 100%; min-height: 46px; gap: 23px; padding-inline: 16px; }
+  .endfield-nav-link { min-height: 46px; font-size: 10px; }
+  .endfield-intro { padding-top: 54px; }
+  .endfield-intro h1 { font-size: clamp(42px, 11vw, 60px); }
+  .endfield-section { padding-top: 29px; padding-bottom: 32px; scroll-margin-top: 125px; }
+  .endfield-section-heading { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .endfield-section-note { text-align: left; }
+  .endfield-countdown-teaser { padding: 21px; }
+}
