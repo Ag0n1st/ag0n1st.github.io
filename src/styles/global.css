@@ -42,8 +42,9 @@ svg { display: block; }
 }
 .wordmark, .footer-wordmark { display: inline-flex; align-items: center; gap: 10px; font-size: 19px; font-weight: var(--font-bold); letter-spacing: -.055em; white-space: nowrap; }
 .wordmark { justify-self: start; }
-.wordmark-symbol { display: grid; place-items: center; width: 31px; height: 31px; border: 1px solid rgba(240,91,212,.85); border-radius: 9px; font-size: 17px; letter-spacing: -.1em; }
-.wordmark-symbol > span { color: var(--pink); }
+.wordmark-logo { display: block; flex: 0 0 auto; width: 36px; height: 36px; object-fit: contain; }
+.footer-wordmark .wordmark-logo { width: 32px; height: 32px; }
+
 .main-nav { display: flex; align-items: center; justify-content: center; gap: clamp(18px, 2.6vw, 36px); }
 .main-nav a { position: relative; padding: 29px 0 27px; color: #c5c2cd; font-size: 10px; font-weight: var(--font-bold); letter-spacing: .075em; text-transform: uppercase; white-space: nowrap; transition: color .2s ease; }
 .main-nav a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 19px; height: 2px; background: var(--pink); transition: right .2s ease; }
