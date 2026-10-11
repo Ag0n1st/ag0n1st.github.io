@@ -260,6 +260,18 @@ async function getLatestVideos() {
       channelHtml.match(/"externalId":"(UC[\w-]+)"/)?.[1] ||
       channelHtml.match(/"channelId":"(UC[\w-]+)"/)?.[1];
 
+    console.warn("YouTube-Diagnose:", JSON.stringify({
+      channelId: channelId || null,
+      referenceVideoFound: Boolean(referenceVideo),
+      referenceTitleFound: Boolean(referenceVideo?.title),
+      videoPageChannelIdFound: Boolean(videoPageChannelId),
+      channelHtmlLength: channelHtml.length,
+      channelRendererVideos: parseChannelPage(channelHtml).length,
+      channelHtmlHasConsentScreen: /consent\\.youtube\\.com|Before you continue to YouTube|consentCookieIframe/i.test(channelHtml),
+      channelHtmlHasVideoRenderer: channelHtml.includes('"videoRenderer"'),
+      channelHtmlHasRichGrid: channelHtml.includes('"richGridRenderer"'),
+    }));
+
     if (channelId) {
       // Retry transient RSS failures before falling back to the channel page.
       for (let attempt = 0; attempt < 3; attempt++) {
@@ -272,9 +284,19 @@ async function getLatestVideos() {
               cache: "no-store",
             },
           );
-          if (!feedResponse.ok) throw new Error("YouTube-Feed antwortete mit HTTP " + feedResponse.status);
-          const videos = parseFeed(await feedResponse.text());
+          const feedBody = await feedResponse.text();
+          const videos = parseFeed(feedBody);
           if (videos.length > 0) return videos;
+          console.warn("YouTube-Feed-Diagnose:", JSON.stringify({
+            status: feedResponse.status,
+            contentType: feedResponse.headers.get("content-type"),
+            bodyLength: feedBody.length,
+            bodyStart: feedBody.slice(0, 240).replace(/\\s+/g, " "),
+            hasEntry: /<entry(?:\\s|>)/i.test(feedBody),
+            hasVideoId: /<yt:videoId>/i.test(feedBody),
+            requestedChannelId: channelId,
+          }));
+          if (!feedResponse.ok) throw new Error("YouTube-Feed antwortete mit HTTP " + feedResponse.status);
           throw new Error("YouTube-Feed enthält keine Videos");
         } catch (error) {
           console.warn("YouTube-Feed-Versuch " + (attempt + 1) + "/3 fehlgeschlagen:", error);
