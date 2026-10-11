@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# Astro generated files
+.astro/
+dist/
+
+# Local environment files
+.env
+.env.*
+
+# Keep example environment files
+!.env.example
