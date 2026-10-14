@@ -1,0 +1,292 @@
+---
+import EndfieldPlaceholder from "../../../layouts/EndfieldPlaceholder.astro";
+import "../../../styles/operator-guides.css";
+
+const skillTypes = [
+  { label: "Basis-Angriff", name: "[Name des Basis-Angriffs]", icon: "BA" },
+  { label: "Kampffertigkeit", name: "[Name der Kampffertigkeit]", icon: "KF" },
+  { label: "Kombofertigkeit", name: "[Name der Kombofertigkeit]", icon: "KO" },
+  { label: "Ultimative Fertigkeit", name: "[Name der Ultimate]", icon: "ULT" },
+];
+const weapons = [
+  { id:"bis",label:"Best in Slot",name:"[BiS-Waffe]",source:"[Bezugsquelle]",tier:"[Rang]" },
+  { id:"bp",label:"Battle Pass",name:"[BP-Waffe]",source:"Battle Pass",tier:"[Rang]" },
+  { id:"f2p",label:"F2P",name:"[F2P-Waffe]",source:"[Bezugsquelle]",tier:"[Rang]" },
+  { id:"alt",label:"Alternative",name:"[Alternative Waffe]",source:"[Bezugsquelle]",tier:"[Rang]" },
+];
+const builds = [
+  { id:"main",name:"Build A – Main DPS", role:"Main DPS",desc:"[Ausrüstung für Eigen-Schaden und die entsprechende Teamrolle]" },
+  { id:"support",name:"Build B – Support",role:"Support",desc:"[Ausrüstung für Teamverstärkung und unterstützende Effekte]" },
+  { id:"hybrid",name:"Build C – Hybrid",role:"Hybrid",desc:"[Ausrüstung für eine Mischung aus Schaden und Unterstützung]" },
+];
+const teams = [
+ { name:"[Main-DPS-Team A]", role:"main", note:"[Synergie / Besonderheit]",build:"main" },
+ { name:"[Main-DPS-Team B]", role:"main", note:"[Synergie / Besonderheit]",build:"main" },
+ { name:"[Support-Team A]", role:"support", note:"[Synergie / Besonderheit]",build:"support" },
+ { name:"[Support-Team B]", role:"support", note:"[Synergie / Besonderheit]",build:"support" },
+ { name:"[Hybrid-Team A]", role:"hybrid", note:"[Synergie / Besonderheit]",build:"hybrid" },
+ { name:"[Hybrid-Team B]", role:"hybrid", note:"[Synergie / Besonderheit]",build:"hybrid" },
+ { name:"[Main-DPS-Team C]", role:"main", note:"[Synergie / Besonderheit]",build:"main" },
+ { name:"[Support-Team C]", role:"support", note:"[Synergie / Besonderheit]",build:"support" },
+];
+const showcases = [
+ { id:"trial",name:"Operator-Probe",type:"Trial Run",desc:"[Probe-Run mit einer repräsentativen Rotation]",rotation:"[Optional: kurze Rotationsfolge, Timings und Tipps]" },
+ { id:"boss",name:"Boss-Showcase",type:"Bosskampf",desc:"[Beispiel für Gameplay in einer Bossbegegnung]",rotation:"[Optional: Besonderheiten dieser Kampfsituation]" },
+ { id:"speedrun",name:"Speedrun",type:"Speedrun",desc:"[Optimierter Run mit passender Teamkomposition]",rotation:"[Optional: entscheidende Aktionen des Runs]" },
+];
+---
+<EndfieldPlaceholder title="Typhoeus Guide" kicker="ARKNIGHTS: ENDFIELD · OPERATOREN" active="characters" description="Typhoeus – Operator-Build, Skills, Waffen, Ausrüstung und Teams.">
+<main class="op-page section-wrap">
+  <nav class="op-breadcrumb" aria-label="Brotkrumennavigation">
+    <a href="/endfield/">Endfield</a><span aria-hidden="true">›</span><a href="/endfield/operatoren/">Operatoren</a><span aria-hidden="true">›</span><span aria-current="page">Typhoeus</span>
+  </nav>
+  <div class="op-guide">
+  <div class="op-guide-content">
+
+  <!-- 1. Übersicht: starts immediately with the agreed summary cards; no redundant page header -->
+  <section class="op-section" id="uebersicht" aria-label="Übersicht">
+    <div class="op-divided">
+      <h2>Charakter-Profil</h2>
+      <div class="op-two">
+        <article class="op-cardlet op-profile-card">
+          <div class="op-profile-art">[Horizontales Charakter-Artwork]</div>
+          <h3>Typhoeus</h3>
+          <div class="op-chip-row">
+            <span class="op-chip is-pink">6★</span>
+            <span class="op-chip">[Klasse + Icon]</span>
+            <span class="op-chip">[Element + Icon]</span>
+            <span class="op-chip">[Waffentyp + Icon]</span>
+          </div>
+          <p style="margin-top:14px">Traits</p>
+          <div class="op-chip-row"><span class="op-chip">[Trait 1]</span><span class="op-chip">[Trait 2]</span><span class="op-chip">[Trait 3]</span></div>
+          <p style="margin-top:14px">Attribute</p>
+          <div class="op-chip-row"><span class="op-chip">Haupt: [Attribut]</span><span class="op-chip">Sekundär: [Attribut]</span></div>
+        </article>
+        <article class="op-cardlet">
+          <div class="op-video-placeholder"><div><span aria-hidden="true">▶</span><br />[YouTube-Thumbnail des Guides]</div></div>
+          <div class="op-video-meta"><strong>[Typhoeus – kompletter Video-Guide]</strong><p class="op-muted">Ag0n1st · [Videometadaten]</p></div>
+          <p class="op-placeholder">[Video-Link wird ergänzt]</p>
+        </article>
+      </div>
+      <div class="op-two" style="margin-top:14px">
+        <div class="op-cardlet"><h3>✓ Stärken</h3><p>[Stärke 1]</p><p>[Stärke 2]</p><p>[Stärke 3]</p></div>
+        <div class="op-cardlet"><h3>− Schwächen</h3><p>[Schwäche 1]</p><p>[Schwäche 2]</p><p>[Schwäche 3]</p></div>
+      </div>
+    </div>
+    <div class="op-divided">
+      <h2>Build auf einen Blick</h2>
+      <div class="op-two">
+        <article class="op-cardlet"><h3>Waffen</h3><div class="op-mini-list">{weapons.map(w=><div class="op-line"><div class="op-mini-art">[Bild]</div><div class="op-line-label"><span class="op-chip">{w.label}</span><strong>{w.name}</strong></div></div>)}</div></article>
+        <article class="op-cardlet"><h3>Ausrüstung · Meta-Set</h3><p>[Name des empfohlenen Sets]</p><div class="op-gear-parts">{[1,2,3,4].map(n=><div class="op-gear-part"><div class="op-mini-art">[Bild {n}]</div><small>[Teil {n}]</small></div>)}</div></article>
+        <article class="op-cardlet"><h3>Skill-Priorität</h3><div class="op-skill-row">{skillTypes.map((s,i)=><><div class="op-priority-skill"><div class="op-mini-art">{s.icon}</div><small>{s.label}</small><b>Lv. [X]</b></div>{i<3&&<span class="op-priority-symbol">{i===1?">=":">"}</span>}</>)}</div><p class="op-muted">Beispielreihenfolge: „&gt;“ = höher priorisiert, „&gt;=“ = gleichwertige Reihenfolge.</p></article>
+        <article class="op-cardlet"><h3>Partners</h3><div class="op-gear-parts">{[1,2,3,4,5,6,7,8].map(n=><div class="op-gear-part"><div class="op-mini-art">[Op]</div><small>[Name {n}]</small></div>)}</div><p class="op-muted">Empfohlene Teammitglieder ohne Rangfolge.</p></article>
+      </div>
+    </div>
+    <div class="op-divided">
+      <h2>Einordnung</h2>
+      {[
+        ["Spielschwierigkeit","Wie anspruchsvoll sind die Mechaniken?"],
+        ["Flexibilität","Wie leicht lässt sich der Operator in Teams einbauen?"],
+        ["Zugänglichkeit","Wie einfach kommt man an die benötigten Ressourcen?"]
+      ].map(([name,description])=><div class="op-rating"><div class="op-rating-header"><span>{name}</span><span>– / 5</span></div><div class="op-meter">{[1,2,3,4,5].map(()=><i></i>)}</div><p>{description}</p></div>)}
+    </div>
+  </section>
+
+  <!-- 2. Operator Kit -->
+  <section class="op-section" id="operator-kit">
+    <h2>Operator Kit</h2>
+    <div class="op-divided">
+      <h3>Operator-Profil & Spielweise</h3>
+      <div class="op-info-grid">{["Klasse","Element","Traits","Hauptattribut","Sekundärattribut","Waffentyp"].map(x=><div class="op-info-field"><small>{x}</small><strong>[Datenbankwert]</strong></div>)}</div>
+      <p class="op-muted">[Beschreibung des Charakters, seiner Rolle, Kernmechaniken und besonderen Synergien.]</p>
+    </div>
+    <div class="op-divided">
+      <h3>Charakter-Level & Aufstieg</h3>
+      <div class="op-table-wrap"><table class="op-table"><thead><tr><th>Aufstieg</th><th>Materialien</th><th>Freischaltung</th></tr></thead><tbody>{[1,2,3,4,5].map(n=><tr><td>[Stufe {n}]</td><td>[Materialien × Anzahl]</td><td>[Level / Story-Voraussetzung]</td></tr>)}</tbody></table></div>
+    </div>
+    <div class="op-divided"><h3>Ressourcen & Verfügbarkeit</h3><div class="op-cardlet"><strong>[Aufstiegsmaterial]</strong><p>Quelle: [Gebiet / Aktivität]</p><p>Voraussetzung: [Story-Fortschritt / Freischaltung]</p><p>Alternative Bezugsquellen: [Falls verfügbar]</p></div></div>
+  </section>
+
+  <!-- 3. Fertigkeiten -->
+  <section class="op-section" id="fertigkeiten">
+    <h2>Fertigkeiten</h2>
+    <div class="op-cardlet" style="margin-bottom:15px"><h3>Skill-Priorität</h3><div class="op-skill-row">{skillTypes.map((s,i)=><><div class="op-priority-skill"><div class="op-mini-art">{s.icon}</div><small>{s.label}</small><b>Lv. [X]</b></div>{i<3&&<span class="op-priority-symbol">{i===1?">=":">"}</span>}</>)}</div><p>Beispielhafter Aufbau, noch keine Level-Empfehlung für Typhoeus.</p></div>
+    <div class="op-divided"><h3>Kampffertigkeiten</h3>
+      <div class="op-mini-list">
+        {skillTypes.map((s,i)=><article class="op-cardlet">
+          <div class="op-line"><div class="op-mini-art">{s.icon}</div><div class="op-line-label"><span class="op-chip">{s.label}</span><strong>{s.name}</strong></div></div>
+          <p>[Vollständige offizielle Skillbeschreibung und besondere Effekte.]</p>
+          <div class="op-info-grid"><div class="op-info-field"><small>Multiplikator</small><strong>[Werte je Level]</strong></div><div class="op-info-field"><small>Kosten / Abklingzeit</small><strong>[Werte, falls relevant]</strong></div></div>
+          <p><strong>Bewertung</strong><br />[Erklärung der Funktionsweise, Synergien und praktischen Anwendung.]</p>
+          <details class="op-details"><summary>Levelwerte & Upgrade-Materialien anzeigen</summary><div class="op-details-body">
+            <div class="op-table-wrap"><table class="op-table"><thead><tr><th>Level</th><th>Werte / Multiplikatoren</th><th>Benötigte Materialien</th></tr></thead><tbody>{["1","2","3","…","9","M1","M2","M3"].map(l=><tr><td>{l}</td><td>[Werte]</td><td>[Materialien]</td></tr>)}</tbody></table></div>
+          </div></details>
+        </article>)}
+      </div>
+    </div>
+    <div class="op-divided"><h3>Combat Talents</h3><div class="op-two">{[1,2].map(n=><article class="op-cardlet"><div class="op-line"><div class="op-mini-art">[Icon]</div><strong>[Combat Talent {n}]</strong></div><p>[Beschreibung, Werte und Freischaltbedingungen]</p><p><strong>Bewertung:</strong> [Erklärung]</p></article>)}</div></div>
+    <div class="op-divided"><h3>Schiffstalente</h3><div class="op-two">{[1,2].map(n=><article class="op-cardlet"><div class="op-line"><div class="op-mini-art">[Icon]</div><strong>[Schiffstalent {n}]</strong></div><p>[Effekt, Beschreibung und Freischaltung]</p></article>)}</div></div>
+  </section>
+
+  <!-- 4. Waffen -->
+  <section class="op-section" id="waffen">
+    <h2>Waffen</h2>
+    <div class="op-divided"><h3>Waffenempfehlungen</h3>
+      <div class="op-cardlet" style="margin-bottom:10px"><div class="op-line"><div class="op-mini-art">[Bild]</div><div class="op-line-label"><span class="op-chip is-accent">Best in Slot</span><strong>[BiS-Waffe]</strong><span class="op-muted">[Seltenheit] · [Waffentyp]</span></div></div><p>[Warum diese Waffe die beste Wahl ist.]</p></div>
+      <div class="op-two">{weapons.slice(1).map(w=><div class="op-cardlet"><div class="op-line"><div class="op-mini-art">[Bild]</div><div class="op-line-label"><span class="op-chip">{w.label}</span><strong>{w.name}</strong></div></div><p>[Kurze Begründung]</p></div>)}</div>
+    </div>
+    <div class="op-divided"><h3>Waffendetails</h3>
+      <div class="op-pills" aria-label="Waffe auswählen">{weapons.map((w,i)=><button class="op-pill-button" type="button" data-weapon-button={w.id} aria-pressed={i===0?"true":"false"}>{w.label}</button>)}</div>
+      {weapons.map((w,i)=><div class="op-weapon-panel op-cardlet" data-weapon-panel={w.id} hidden={i!==0}>
+        <div class="op-line"><div class="op-mini-art">[Bild]</div><div class="op-line-label"><strong>{w.name}</strong><span class="op-muted">{w.label} · {w.source} · {w.tier}</span></div></div>
+        <div class="op-info-grid" style="margin-top:13px">{["Basis-ATK","Hauptattribut","Sekundärattribut","Zusatzwert"].map(a=><div class="op-info-field"><small>{a}</small><strong>[Wert]</strong></div>)}</div>
+        <p><strong>Waffeneffekt / Passive</strong><br />[Vollständige Beschreibung inklusive Auslöser, Dauer, Stacks, Skalierung und Veredelungsstufen.]</p>
+        <p><strong>Bewertung</strong><br />[Warum diese Waffe in bestimmten Builds funktioniert und wo ihre Grenzen liegen.]</p>
+        <details class="op-details"><summary>Level, Veredelung & Upgrade-Materialien</summary><div class="op-details-body"><p>[Werte bei verschiedenen Leveln, Veredelungsstufen und Materialkosten.]</p></div></details>
+      </div>)}
+    </div>
+    <div class="op-divided"><h3>Waffenvergleich</h3><p class="op-section-intro">Nur mit nachvollziehbaren Vergleichsdaten aus Tests oder Berechnungen.</p><div class="op-table-wrap"><table class="op-table"><thead><tr><th>Waffe</th><th>Relative Leistung</th><th>Vergleichsbedingungen</th></tr></thead><tbody>{weapons.map(w=><tr><td>{w.label}</td><td>[– %]</td><td>[Level / Veredelung / Rotation]</td></tr>)}</tbody></table></div></div>
+  </section>
+
+  <!-- 5. Ausrüstung -->
+  <section class="op-section" id="ausruestung">
+    <h2>Ausrüstung</h2>
+    <div class="op-divided">
+      <h3>Build-Finder</h3>
+      <p class="op-section-intro">Die Auswahl demonstriert das spätere Build-System; eine automatische Empfehlung anhand von Spieldaten folgt erst mit der Datenbank.</p>
+      <div class="op-two">
+        <label class="op-cardlet" style="font-size:12px">Charakter- / Ausrüstungslevel
+          <select class="op-select" id="op-level"><option>70</option><option>60</option><option>50</option><option>40</option></select>
+        </label>
+        <label class="op-cardlet" style="font-size:12px">Fabrikfortschritt
+          <select class="op-select" id="op-factory"><option value="einstieg">Einstieg</option><option value="fortgeschritten" selected>Fortgeschritten</option><option value="maximal">Vollständig ausgebaut</option></select>
+        </label>
+      </div>
+      <div class="op-notice" style="margin-top:12px">Ausgewählt: <strong id="op-build-config">Lv. 70 · Fortgeschritten</strong>. [Verfügbare Builds und Freischaltungen werden später aus den Daten ermittelt.]</div>
+    </div>
+    <div class="op-divided"><h3>Empfohlene Ausrüstung</h3>
+      <div class="op-pills" aria-label="Build auswählen">{builds.map((b,i)=><button type="button" class="op-pill-button" data-build-button={b.id} aria-pressed={i===0?"true":"false"}>{b.name}</button>)}</div>
+      {builds.map((b,i)=><div class="op-build-panel op-cardlet" data-build-panel={b.id} hidden={i!==0}>
+        <div class="op-subtitle"><h3 style="margin:0">{b.name}</h3><span class="op-chip">{b.role}</span></div>
+        <p>{b.desc}</p>
+        <div class="op-gear-parts">{[1,2,3,4].map(n=><div class="op-gear-part"><div class="op-mini-art">[Bild]</div><small>[Ausrüstungsteil {n}]</small></div>)}</div>
+        <p><strong>Seteffekte:</strong> [Aktive Boni und Effekte]</p>
+        <p><strong>Bewertung:</strong> [Eignung für die Teamrolle, Vorteile, Nachteile und Kompromisse]</p>
+        <p><strong>Empfohlen für:</strong> [Verknüpfte Teams]</p>
+        <details class="op-details"><summary>Werte, Herstellung & Freischaltungen</summary><div class="op-details-body"><div class="op-table-wrap"><table class="op-table"><thead><tr><th>Teil</th><th>Attribute</th><th>Materialien</th></tr></thead><tbody>{[1,2,3,4].map(n=><tr><td>[Teil {n}]</td><td>[Werte]</td><td>[Materialien × Anzahl]</td></tr>)}</tbody></table></div><p>[Story-Meilenstein und Fabriktechnologie]</p></div></details>
+      </div>)}
+    </div>
+    <div class="op-divided"><h3>Ausrüstungsprogression</h3><div class="op-mini-list">{["Early Game","Mid Game","Late Game","Endgame"].map((phase,i)=><div class="op-cardlet"><strong>{i+1}. {phase}</strong><p>[Verfügbarer Build, benötigtes Level, Story- und Fabrikfreischaltungen]</p></div>)}</div></div>
+  </section>
+
+  <!-- 6. Potenziale -->
+  <section class="op-section" id="potenziale">
+    <h2>Potenziale</h2>
+    <div class="op-notice"><strong>Friendly Disclaimer:</strong> Potenziale sind in Arknights: Endfield zwar nice to have, aber <strong>niemals ein Muss</strong>. Zusätzliche Kopien sind häufig weniger spürbar als in anderen Gacha-Spielen und trotzdem eine teure Investition.</div>
+    <div class="op-divided" style="margin-top:20px">
+      <h3>Potenzialübersicht</h3>
+      <div class="op-pills" aria-label="Potenzial auswählen">{[1,2,3,4,5].map(n=><button type="button" class="op-pill-button" data-potential-button={n} aria-pressed={n===1?"true":"false"}>P{n}</button>)}</div>
+      {[1,2,3,4,5].map(n=><div class="op-weapon-panel op-cardlet" data-potential-panel={n} hidden={n!==1}>
+        <h3>P{n} – [Potenzialname]</h3><p><strong>Effekt:</strong> [Offizielle Beschreibung mit Werten und Voraussetzungen]</p>
+        {(n===1||n===3||n===5)&&<div class="op-line"><div class="op-mini-art">[Bild]</div><div class="op-line-label"><strong>Freischaltbares Profilbild</strong><span class="op-muted">[Profilbild für P{n}]</span></div></div>}
+        <p><strong>Bewertung:</strong> [Praktischer Nutzen für Spielweise, Rotation und Team]</p>
+        <div class="op-two"><div class="op-info-field"><small>Gesamtgewinn vs. P0</small><strong>[Wert / qualitative Bewertung]</strong></div><div class="op-info-field"><small>Zusätzlicher Gewinn durch P{n}</small><strong>[Wert / qualitative Bewertung]</strong></div></div>
+      </div>)}
+    </div>
+    <div class="op-divided"><h3>Potenzialvergleich</h3><div class="op-table-wrap"><table class="op-table"><thead><tr><th>Potenzial</th><th>Zusätzlicher Nutzen</th><th>Gesamtsteigerung vs. P0</th></tr></thead><tbody>{[1,2,3,4,5].map(n=><tr><td>P{n}</td><td>[Effekt / Wert]</td><td>[Wert / Einordnung]</td></tr>)}</tbody></table></div></div>
+    <div class="op-divided"><h3>Pull-Empfehlung</h3><p class="op-muted">[Lohnt sich ein Potenzial? Welche Stufe ist ein sinnvoller Stopp-Punkt? P0 ist grundsätzlich ausreichend, sofern nicht anders begründet.]</p></div>
+  </section>
+
+  <!-- 7. Teams -->
+  <section class="op-section" id="teams">
+    <h2>Teams</h2>
+    <div class="op-divided"><h3>Teamrolle & Synergien</h3><p class="op-muted">[Kurz erklären, welche Rollen der Operator übernehmen kann und welche Synergien / Mechaniken für den Teambau wichtig sind.]</p></div>
+    <div class="op-divided">
+      <h3>Empfohlene Meta-Teams</h3>
+      <p class="op-section-intro">Ausgewählte Teams, die bei Bedarf eine kurze eigene Bewertung erhalten.</p>
+      <div class="op-two">{[1,2].map((n)=><article class="op-cardlet"><div class="op-subtitle"><h3 style="margin:0">[Meta-Team {n}]</h3><span class="op-chip">{n===1?"Main DPS":"Support"}</span></div><div class="op-team-operators">{[1,2,3,4].map(j=><div class="op-team-slot">[Op {j}]</div>)}</div><p><strong>Bewertung:</strong> [Kurze Erklärung der Synergien, Vorteile und Nachteile]</p><p><a class="op-link" href="#ausruestung" data-select-build={n===1?"main":"support"}>Empfohlene Ausrüstung ansehen ↗</a></p></article>)}</div>
+    </div>
+    <div class="op-divided">
+      <h3>Weitere Teamoptionen</h3>
+      <p class="op-section-intro">Inspirationen aus dem Theory Crafting. Beliebig erweiterbar, ohne zusätzliche Pflichtanalysen.</p>
+      <div class="op-role-filter" aria-label="Teams nach Rolle filtern">
+        {["all","main","support","hybrid"].map((r,i)=><button type="button" class="op-pill-button" data-team-filter={r} aria-pressed={i===0?"true":"false"}>{r==="all"?"Alle":r==="main"?"Main DPS":r==="support"?"Support":"Hybrid"}</button>)}
+      </div>
+      <div class="op-team-scroll" style="margin-top:12px">
+        {teams.map(team=><article class="op-cardlet op-compact-team" data-team-role={team.role}>
+          <div class="op-subtitle"><strong style="font-size:13px">{team.name}</strong><span class="op-chip">{team.role==="main"?"Main DPS":team.role==="support"?"Support":"Hybrid"}</span></div>
+          <div class="op-team-operators">{[1,2,3,4].map(n=><div class="op-team-slot">[Op {n}]</div>)}</div>
+          <p>{team.note} · <a class="op-link" href="#ausruestung" data-select-build={team.build}>Ausrüstung ↗</a></p>
+        </article>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Gameplay -->
+  <section class="op-section" id="gameplay">
+    <h2>Gameplay</h2>
+    <p class="op-section-intro">Eine schlanke Sammlung bestehender Runs. Rotation und Tipps sind optional und weitere Showcases lassen sich jederzeit ergänzen.</p>
+    <div class="op-divided">
+      {showcases.map((run,i)=><div class="op-showcase-panel op-cardlet" data-showcase-panel={run.id} hidden={i!==0}>
+        <div class="op-subtitle"><h3 style="margin:0">{run.name}</h3><span class="op-chip">{run.type}</span></div>
+        <div class="op-video-placeholder" style="margin-top:12px"><div><span aria-hidden="true">▶</span><br />[Gameplay-Video / Clip]</div></div>
+        <p>{run.desc}</p>
+        <details class="op-details"><summary>Rotation & Tipps (optional)</summary><div class="op-details-body"><p>{run.rotation}</p></div></details>
+      </div>)}
+    </div>
+    <div class="op-divided"><h3>Weitere Runs</h3>
+      <div class="op-media-list">{showcases.map((run,i)=><button type="button" class="op-cardlet op-showcase-button" data-showcase-button={run.id} aria-pressed={i===0?"true":"false"} style="text-align:left;color:inherit;font:inherit;cursor:pointer"><div class="op-faux-thumb">[Thumbnail]</div><strong style="display:block;font-size:12px;margin-top:10px">{run.name}</strong><span class="op-muted">{run.type}</span></button>)}</div>
+    </div>
+  </section>
+
+  <!-- 9. Fazit -->
+  <section class="op-section" id="fazit">
+    <h2>Fazit</h2>
+    <div class="op-cardlet"><div class="op-line"><div class="op-mini-art">[Bild]</div><div class="op-line-label"><strong>Typhoeus</strong><span class="op-muted">[Gesamturteil in einem Satz]</span></div></div><p><strong>Gesamtbewertung</strong><br />[Kurze Zusammenfassung der Stärken, Schwächen und Einordnung.]</p></div>
+    <div class="op-divided"><div class="op-cardlet"><div class="op-subtitle"><h3>Pull-Empfehlung</h3><span class="op-chip is-accent">[Empfehlung]</span></div><p>[Klare qualitative Einschätzung zu P0 und den Bedingungen für einen sinnvollen Pull.]</p></div><div class="op-two" style="margin-top:13px"><div class="op-cardlet"><h3>✓ Für wen lohnt es sich?</h3><p>[Spielertypen, Teams und Anforderungen]</p></div><div class="op-cardlet"><h3>− Wer kann verzichten?</h3><p>[Situationen ohne ausreichenden Mehrwert]</p></div></div></div>
+    <div class="op-divided"><h3>Abschließende Einschätzung</h3><p class="op-muted">[Optionales persönliches Schlusswort]</p></div>
+  </section>
+
+  </div>
+  <nav class="op-guide-toc" aria-label="Guide-Inhaltsverzeichnis">
+    <strong>Guide-Inhalt</strong>
+    {[
+      ["uebersicht","1. Übersicht"],["operator-kit","2. Operator Kit"],["fertigkeiten","3. Fertigkeiten"],["waffen","4. Waffen"],
+      ["ausruestung","5. Ausrüstung"],["potenziale","6. Potenziale"],["teams","7. Teams"],["gameplay","8. Gameplay"],["fazit","9. Fazit"]
+    ].map(([id,label])=><a href={"#"+id}>{label}</a>)}
+  </nav>
+  </div>
+</main>
+<script>
+  function setupButtons(buttonAttribute: string, panelAttribute: string) {
+    const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-" + buttonAttribute + "]"));
+    const panels = Array.from(document.querySelectorAll<HTMLElement>("[data-" + panelAttribute + "]"));
+    function activate(id: string) {
+      buttons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset[buttonAttribute.replace(/-([a-z])/g,(_,c)=>c.toUpperCase())]===id)));
+      panels.forEach(panel => panel.hidden = panel.dataset[panelAttribute.replace(/-([a-z])/g,(_,c)=>c.toUpperCase())]!==id);
+    }
+    buttons.forEach(button=>button.addEventListener("click",()=>activate(button.getAttribute("data-"+buttonAttribute)||"")));
+    return activate;
+  }
+  setupButtons("weapon-button","weapon-panel");
+  const showBuild = setupButtons("build-button","build-panel");
+  setupButtons("potential-button","potential-panel");
+  setupButtons("showcase-button","showcase-panel");
+  document.querySelectorAll<HTMLButtonElement>("[data-team-filter]").forEach(button=>{
+    button.addEventListener("click",()=>{
+      const value=button.dataset.teamFilter||"all";
+      document.querySelectorAll<HTMLButtonElement>("[data-team-filter]").forEach(b=>b.setAttribute("aria-pressed",String(b===button)));
+      document.querySelectorAll<HTMLElement>("[data-team-role]").forEach(card=>card.hidden=value!=="all"&&card.dataset.teamRole!==value);
+    });
+  });
+  document.querySelectorAll<HTMLAnchorElement>("[data-select-build]").forEach(link=>{
+    link.addEventListener("click",()=>showBuild(link.dataset.selectBuild||"main"));
+  });
+  const level=document.querySelector<HTMLSelectElement>("#op-level");
+  const factory=document.querySelector<HTMLSelectElement>("#op-factory");
+  const config=document.querySelector<HTMLElement>("#op-build-config");
+  function updateConfig(){if(config&&level&&factory){config.textContent="Lv. "+level.value+" · "+(factory.selectedOptions[0]?.textContent||"");}}
+  level?.addEventListener("change",updateConfig);
+  factory?.addEventListener("change",updateConfig);
+</script>
+</EndfieldPlaceholder>
