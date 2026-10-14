@@ -1,0 +1,32 @@
+---
+import EndfieldPlaceholder from "../../../layouts/EndfieldPlaceholder.astro";
+import "../../../styles/operator-guides.css";
+
+const operators = [
+  { name: "Typhoeus", slug: "typhoeus", rarity: "6★", klass: "[Klasse]", element: "[Element]", weapon: "[Waffentyp]" },
+];
+---
+<EndfieldPlaceholder title="Operatoren" kicker="ARKNIGHTS: ENDFIELD · OPERATOREN" active="characters" description="Operatoren und meine Charakter-Guides auf einen Blick.">
+  <main class="op-page section-wrap">
+    <span class="op-eyebrow">ARKNIGHTS: ENDFIELD / GUIDES</span>
+    <h1 class="op-page-heading">Operatoren<span class="title-period">.</span></h1>
+    <p class="op-muted op-page-intro">Wähle einen Operator aus, um seinen Guide mit Builds, Fertigkeiten, Teams und Gameplay zu öffnen.</p>
+    <div class="op-grid" aria-label="Operatoren">
+      {operators.map((operator) => (
+        <a class="op-card" href={`/endfield/operatoren/${operator.slug}/`} aria-label={`Guide für ${operator.name} öffnen`}>
+          <div class="op-card-art"><span class="op-image-placeholder">[Operator-Grafik]<br />{operator.name}</span></div>
+          <div class="op-card-info">
+            <h2>{operator.name}</h2>
+            <div class="op-chip-row">
+              <span class="op-chip is-pink">{operator.rarity}</span>
+              <span class="op-chip">{operator.klass}</span>
+              <span class="op-chip">{operator.element}</span>
+              <span class="op-chip">{operator.weapon}</span>
+            </div>
+            <div class="op-card-bottom"><span>Charakter-Guide ansehen</span><span aria-hidden="true">↗</span></div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </main>
+</EndfieldPlaceholder>
