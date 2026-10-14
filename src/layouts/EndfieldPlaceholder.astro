@@ -16,7 +16,7 @@ const { title, kicker, description, active } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#09090d" />
-    <meta name="description" content={`${title} — Arknights: Endfield bei Ag0n1st. Diese Seite befindet sich noch in Entstehung.`} />
+    <meta name="description" content={`${title} — Arknights: Endfield bei Ag0n1st. Guides, Builds und Informationen.`} />
     <title>{title} — Arknights: Endfield | Ag0n1st</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -44,14 +44,14 @@ const { title, kicker, description, active } = Astro.props;
 
     <EndfieldNav active={active} />
 
-    <main class="placeholder-page endfield-placeholder-page">
+    {Astro.slots.has("default") ? <slot /> : <main class="placeholder-page endfield-placeholder-page">
       <section class="placeholder-card">
         <span class="section-kicker">{kicker}</span>
         <h1>Diese Seite entsteht gerade<span class="title-period">.</span></h1>
         <p>{description}</p>
         <a class="back-home" href="/endfield/">← Zurück zur Endfield-Übersicht</a>
       </section>
-    </main>
+    </main>}
 
     <footer class="site-footer">
       <nav class="social-links" aria-label="Social Media">
