@@ -97,3 +97,8 @@
 .op-compact-team[hidden],.op-showcase-panel[hidden],.op-build-panel[hidden],.op-weapon-panel[hidden]{display:none}
 @media(max-width:1050px){.op-guide{grid-template-columns:minmax(0,1fr)}.op-guide-toc{position:static;order:-1;display:flex;align-items:center;flex-wrap:wrap;gap:2px}.op-guide-toc strong{margin-right:12px;margin-bottom:0}.op-guide-toc a{padding:8px}}
 @media(max-width:680px){.op-page{padding-top:22px}.op-two{grid-template-columns:1fr}.op-section{padding:16px}.op-cardlet{padding:13px}.op-priority-skill .op-mini-art{width:42px;height:42px}.op-priority-symbol{font-size:14px}.op-skill-row{gap:2px}.op-guide-toc{max-height:130px;overflow:auto}.op-guide-toc a{font-size:10px}.op-four{grid-template-columns:repeat(2,minmax(0,1fr))}.op-gear-parts{gap:5px}.op-gear-part .op-mini-art{min-width:0}.op-mini-art{flex-basis:42px;width:42px;height:42px}.op-team-slot{font-size:9px;padding:12px 3px}}
+
+.op-select{display:block;width:100%;margin-top:10px;padding:11px 12px;border:1px solid #4a404f;border-radius:9px;background:#121219;color:#f7f6fa;font:inherit;font-size:12px;cursor:pointer}
+.op-select:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.op-showcase-button[aria-pressed="true"]{border-color:var(--cyan);background:#22232b}
+.op-showcase-button:hover{border-color:var(--pink)}
