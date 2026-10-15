@@ -23,6 +23,41 @@
       "url": "https://endfield.gryphline.com/en-us/news/1340",
       "date": "2025-11-01",
       "type": "dev-comm"
+    },
+    {
+      "id": "official-version-20260312",
+      "publisher": "GRYPHLINE",
+      "url": "https://endfield.gryphline.com/en-us/news/8907",
+      "date": "2026-03-12",
+      "type": "version-notes"
+    },
+    {
+      "id": "official-version-20260417",
+      "publisher": "GRYPHLINE",
+      "url": "https://endfield.gryphline.com/en-us/news/0751",
+      "date": "2026-04-17",
+      "type": "version-notes"
+    },
+    {
+      "id": "official-version-20260605",
+      "publisher": "GRYPHLINE",
+      "url": "https://endfield.gryphline.com/en-us/news/0758",
+      "date": "2026-06-05",
+      "type": "version-notes"
+    },
+    {
+      "id": "official-version-20260716",
+      "publisher": "GRYPHLINE",
+      "url": "https://endfield.gryphline.com/en-us/news/5200",
+      "date": "2026-07-16",
+      "type": "version-notes"
+    },
+    {
+      "id": "official-game-tools-20260922",
+      "publisher": "GRYPHLINE",
+      "url": "https://endfield.gryphline.com/en-us/news/9562",
+      "date": "2026-09-22",
+      "type": "game-tools"
     }
   ],
   "regions": [
@@ -68,6 +103,96 @@
       "blueprintGearIds": []
     },
     {
+      "id": "qingbo-stockade",
+      "regionId": "wuling",
+      "name": "Qingbo Stockade",
+      "displayNameDe": "Qingbo Stockade",
+      "introduced": "2026-03-12",
+      "sourceIds": [
+        "official-version-20260312"
+      ],
+      "unlock": {
+        "status": "unverified",
+        "requiredMissionIds": []
+      },
+      "blueprintGearIds": []
+    },
+    {
+      "id": "marker-stone",
+      "regionId": "wuling",
+      "name": "Marker Stone",
+      "displayNameDe": "Marker Stone",
+      "introduced": "2026-04-17",
+      "sourceIds": [
+        "official-version-20260417"
+      ],
+      "unlock": {
+        "status": "unverified",
+        "requiredMissionIds": []
+      },
+      "blueprintGearIds": []
+    },
+    {
+      "id": "test-area",
+      "regionId": "wuling",
+      "name": "Test Area",
+      "displayNameDe": "Test Area",
+      "introduced": "2026-04-17",
+      "sourceIds": [
+        "official-version-20260417"
+      ],
+      "unlock": {
+        "status": "unverified",
+        "requiredMissionIds": []
+      },
+      "blueprintGearIds": []
+    },
+    {
+      "id": "sword-vault-dale",
+      "regionId": "wuling",
+      "name": "Sword Vault Dale",
+      "displayNameDe": "Sword Vault Dale",
+      "introduced": "2026-06-05",
+      "sourceIds": [
+        "official-version-20260605"
+      ],
+      "unlock": {
+        "status": "unverified",
+        "requiredMissionIds": []
+      },
+      "blueprintGearIds": []
+    },
+    {
+      "id": "yinglung-pass",
+      "regionId": "wuling",
+      "name": "Yinglung Pass",
+      "displayNameDe": "Yinglung Pass",
+      "introduced": "2026-07-16",
+      "sourceIds": [
+        "official-version-20260716"
+      ],
+      "unlock": {
+        "status": "unverified",
+        "requiredMissionIds": []
+      },
+      "blueprintGearIds": []
+    },
+    {
+      "id": "north-wuling-exclusion-zone",
+      "regionId": "wuling",
+      "name": "North Wuling Exclusion Zone",
+      "displayNameDe": "North Wuling Exclusion Zone",
+      "introduced": "2026-07-16",
+      "sourceIds": [
+        "official-version-20260716"
+      ],
+      "unlock": {
+        "status": "unverified",
+        "requiredMissionIds": []
+      },
+      "blueprintGearIds": []
+    },
+    {
       "id": "sis-painting",
       "regionId": "wuling",
       "name": "Si's Painting",
@@ -104,8 +229,53 @@
       ],
       "releaseState": "available-in-version",
       "unlockAreaIds": []
+    },
+    {
+      "id": "chapter-1-process-2",
+      "type": "main",
+      "name": "Chapter I Process II: Remediation Progress",
+      "sourceIds": [
+        "official-version-20260716"
+      ],
+      "releaseState": "previously-available",
+      "unlockAreaIds": []
+    },
+    {
+      "id": "chapter-2-process-1",
+      "type": "main",
+      "name": "Chapter II Process I: Arrival at Wuling",
+      "sourceIds": [
+        "official-version-20260716"
+      ],
+      "releaseState": "previously-available",
+      "unlockAreaIds": []
     }
   ],
   "blueprintAreaLinks": [],
-  "disclaimer": "The official update confirms new areas and new pieces for several gear sets, but does not identify the exact area/story prerequisites or item-to-blueprint positions. Unverified links remain absent."
+  "disclaimer": "Only publisher/SKPORT verified place names and release versions. Story area unlocks, individual blueprint pickup positions and ownership are separately unverified; version order never stands in for story progress.",
+  "versionNotices": [
+    {
+      "id": "sanctuary-of-ink",
+      "released": "2026-10-15",
+      "sourceId": "official-version-20261015",
+      "addedGearSetPieces": [
+        "Type 50 Yinglung",
+        "Pulser Labs",
+        "Eternal Xiranite",
+        "Rift Trekker",
+        "AIC Fieldwork"
+      ],
+      "gearItemIdMapping": "not-verified",
+      "blueprintLocationMapping": "not-verified"
+    }
+  ],
+  "regionAccessNotes": [
+    {
+      "regionId": "wuling",
+      "sourceId": "official-version-20260716",
+      "conditionDescription": "After Chapter I Process II: Remediation Progress, early access can be accepted for Chapter II Process I: Arrival at Wuling through Event Center. Completing Chapter I Process II alone does NOT confirm region access.",
+      "verification": "official-early-access-offer",
+      "requiresAcceptingMission": true
+    }
+  ]
 }
