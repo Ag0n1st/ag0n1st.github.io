@@ -6,6 +6,7 @@
  */
 import { chromium } from "playwright-core";
 import { extractDocument } from "./skport-extract.mjs";
+import {parseStandardGearRecipe,getPublicGearSourcePanel} from "./gear-recipe.mjs";
 
 const allow = /^\/web\/v1\/wiki\/item\/(catalog|list|info)$/;
 const observed = [];
@@ -139,6 +140,20 @@ try {
           }catch(error){return {term,error:String(error).slice(0,150)};}
         }));
         console.log("CRAFTING_DOM",JSON.stringify({gear:item.name,id,materialEls}).slice(0,7800));
+        try {
+          const sourceText=getPublicGearSourcePanel(text);
+          const index=Object.fromEntries(captures
+            .filter(x=>x.row.endpoint==="list").flatMap(c=>Object.entries(c.data.items??{}))
+            .filter(([k,v])=>/^\d+$/.test(k) && typeof v?.name==="string")
+            .map(([id,v])=>[v.name,id]));
+          const recipe=parseStandardGearRecipe(sourceText,{
+            gearId:id,gearName:item.name,snapshot:new Date().toISOString().slice(0,10),
+            itemsByName:index
+          });
+          console.log("VERIFIED_STANDARD_RECIPE",JSON.stringify(recipe));
+        }catch(error){
+          console.log("STANDARD_RECIPE_UNAVAILABLE",JSON.stringify({id,name:item.name,error:String(error).slice(0,250)}));
+        }
         console.log("RECIPE_DIAGNOSTIC",JSON.stringify({
           id,item:item.name,
           brief:item.brief,
