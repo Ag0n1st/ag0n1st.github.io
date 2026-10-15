@@ -6,18 +6,18 @@ Dieses Verzeichnis gehört zur redaktionellen Ebene der **Arknights: Endfield**-
 
 - Das Schema (`src/content/operatorGuideSchema.ts`) und die Astro Content Collection sind eingerichtet.
 - `src/content/operator-guides/_template.md` ist deine **kopierbare Vorlage**. Durch den führenden Unterstrich wird sie von der Collection ignoriert.
-- `src/content/operator-guides/typhoeus.md` ist ein **unveröffentlichter, noch leerer Testentwurf** zur Prüfung des Schemas.
-- **Wichtig:** Die aktuell öffentliche Typhoeus-Seite (`src/pages/endfield/operatoren/typhoeus/index.astro`) ist noch der bisherige Layout-Prototyp. Sie liest diese Markdown-Dateien **noch nicht** ein. Das automatisierte Erstellen/Veröffentlichen neuer Guide-Seiten folgt als separater Implementierungsschritt.
+- `src/content/operator-guides/typhoeus.md` ist ein **sichtbarer Layout-Prototyp** mit dem Status `draft`. Dies ist die einzige bewusst freigeschaltete Entwurfsseite.
+- Die Webseite verwendet jetzt `src/pages/endfield/operatoren/[slug].astro` und die gemeinsame Komponente `src/components/operator/OperatorGuide.astro`. **Alle veröffentlichten Guides** werden anhand der Markdown-Dateien automatisch erzeugt. Noch nicht importierte offizielle Spieldaten sind als Platzhalter gekennzeichnet.
 
 ## Neuen Guide vorbereiten
 
 1. `src/content/operator-guides/_template.md` kopieren.
 2. Neue Datei nach dem Slug benennen, etwa `si.md` oder `operator-name.md`.
-3. Ganz oben `operator: neuer-operator` auf denselben Slug wie den Dateinamen ändern.
+3. Ganz oben `operator: neuer-operator` auf denselben Slug wie den Dateinamen ändern und optional `displayName: Anzeigename` eintragen.
 4. Texte und Referenzen eintragen. Anfangs `status: draft` beibehalten.
 5. `npm install` (einmalig) und `npm run build` ausführen. Astro prüft das YAML mithilfe unseres Schemas und zeigt ungültige Felder oder fehlende Pflichtfelder an.
 6. Datei über GitHub Desktop oder per Commit ins Repository übernehmen.
-7. Erst nach der geplanten Anbindung des universellen Astro-Templates kann `status: published` die Veröffentlichung auslösen. **Bis dahin bewirkt das Feld allein noch keine Veröffentlichung.**
+7. Sobald der Guide inhaltlich bereit ist, `status: published` setzen und nach `main` pushen. Der nächste Build erstellt die Guide-Seite unter `/endfield/operatoren/<operator>/` und fügt die Card automatisch im Operatoren-Grid hinzu. `status: draft` hält andere Guides vollständig verborgen. **Typhoeus ist die einzige bewusst sichtbare Ausnahme.**
 
 ## Was muss ich selbst eingeben?
 
@@ -78,10 +78,9 @@ teams:
 
 ## Nächste technische Schritte
 
-1. Die importierten Spieldaten unter stabilen IDs strukturieren.
-2. Den vorhandenen Typhoeus-Prototyp in wiederverwendbare Astro-Komponenten zerlegen.
-3. Den Renderer an die Collection anbinden und ein dynamisches `[slug].astro`-Template hinzufügen.
-4. Das Operatoren-Grid aus der Liste veröffentlichter Guides generieren und Platzhalterbilder durch importierte Assets ersetzen.
-5. Zusätzliche Validierung gegen IDs der importierten Spiele-Datensätze einrichten.
+1. Die automatisch importierten Spieldaten unter stabilen IDs strukturieren.
+2. Den universalisierten Operator-Guide bei Bedarf in kleinere Abschnittskomponenten aufteilen.
+3. Das Operatoren-Grid und Guide-Template um importierte Spieldaten sowie optimierte Bilder/Icons erweitern.
+4. Zusätzliche Validierung gegen IDs der importierten Spiele-Datensätze einrichten.
 
 So entsteht später der gewünschte Ablauf: Datei kopieren → bearbeiten → GitHub-Push → automatischer Build → neue Guide-Seite.
