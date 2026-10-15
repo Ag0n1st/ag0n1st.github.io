@@ -148,6 +148,8 @@ const { guide, operatorName, preview, localized } = model;
   const buildButtons=Array.from(document.querySelectorAll<HTMLButtonElement>("[data-build-button]"));
   const factoryIcon=document.querySelector<HTMLImageElement>("#op-factory-icon");
   const savedKey="ag0n1st:endfield:build-story-progress:v1";
+  const resetProgress=document.querySelector<HTMLButtonElement>("#op-progress-reset");
+  const ownedBlueprintIds=new Set<string>();
   const statusText:Record<string,string>={
     available:"Passend","level-locked":"Level zu niedrig",
     "component-locked":"Komponente fehlt",...STORY_BUILD_STATUSES,
@@ -164,8 +166,10 @@ const { guide, operatorName, preview, localized } = model;
         region.value=saved.regionId;
       const selected=new Set(Array.isArray(saved.unlockedAreaIds)?saved.unlockedAreaIds:[]);
       areaCheckboxes.forEach(x=>x.checked=selected.has(x.value));
-      const owned=new Set(Array.isArray(saved.acquiredGearBlueprintIds)?saved.acquiredGearBlueprintIds:[]);
-      blueprintCheckboxes.forEach(x=>x.checked=owned.has(x.dataset.blueprintOwned));
+      const owned=Array.isArray(saved.acquiredGearBlueprintIds)?saved.acquiredGearBlueprintIds:[];
+      for(const id of owned)if(typeof id==="string"&&/^\d+$/.test(id)&&ownedBlueprintIds.size<500)
+        ownedBlueprintIds.add(id);
+      blueprintCheckboxes.forEach(x=>x.checked=ownedBlueprintIds.has(x.dataset.blueprintOwned||""));
       if(authority && Number.isSafeInteger(saved.authorityLevel)&&saved.authorityLevel>=0&&saved.authorityLevel<=200)
         authority.value=String(saved.authorityLevel);
       if(stock && Array.from(stock.options).some(x=>x.value===String(saved.stockRedistributionLevel)))
@@ -178,8 +182,7 @@ const { guide, operatorName, preview, localized } = model;
     return {
       regionId:region?.value||"",
       unlockedAreaIds:areaCheckboxes.filter(x=>x.checked).map(x=>x.value),
-      acquiredGearBlueprintIds:[...new Set(blueprintCheckboxes.filter(x=>x.checked)
-        .map(x=>x.dataset.blueprintOwned).filter((x):x is string=>Boolean(x)))],
+      acquiredGearBlueprintIds:[...ownedBlueprintIds],
       authorityLevel:number!==""&&Number.isInteger(Number(number))?Number(number):null,
       stockRedistributionLevel:stockValue!==""?Number(stockValue):null
     };
@@ -263,8 +266,24 @@ const { guide, operatorName, preview, localized } = model;
     const gearId=input.dataset.blueprintOwned;
     blueprintCheckboxes.filter(other=>other.dataset.blueprintOwned===gearId)
       .forEach(other=>other.checked=input.checked);
+    if(gearId && /^\d+$/.test(gearId)){
+      if(input.checked)ownedBlueprintIds.add(gearId);
+      else ownedBlueprintIds.delete(gearId);
+    }
     saveStoryProgress();updateConfig();
   }));
+  resetProgress?.addEventListener("click",()=>{
+    try{window.localStorage.removeItem(savedKey);}catch{}
+    ownedBlueprintIds.clear();
+    if(region)region.value="";
+    if(authority)authority.value="";
+    if(stock)stock.value="";
+    if(level)level.value="70";
+    if(factory)factory.value=DEFAULT_FACTORY_COMPONENT;
+    areaCheckboxes.forEach(x=>x.checked=false);
+    blueprintCheckboxes.forEach(x=>x.checked=false);
+    updateConfig();
+  });
   updateConfig();
 </script>
 
