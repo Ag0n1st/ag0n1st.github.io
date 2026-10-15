@@ -96,6 +96,14 @@ function makeFixture() {
   documentMap.potential=tableDocument(Array.from({length:5},(_,i)=>[
     "", "Passive "+i+"\nPOTENTIAL "+String(i+1).padStart(2,"0"), "Effect "+i
   ]));
+  // Like Liino, this document may contain another table with non-potential metadata.
+  documentMap.potential.blockIds.push("other-table");
+  documentMap.potential.blockMap["other-table"]={kind:"table",table:{
+    rowIds:["extra"],columnIds:["left","right"],cellMap:{
+      "extra_left":{text:{inlineElements:[{kind:"text",text:{text:"Snapshot"}}]}},
+      "extra_right":{text:{inlineElements:[{kind:"text",text:{text:"Image reward"}}]}}
+    }
+  }};
   register("Potential Phases",{tabList:[],tabDataMap:{default:{content:"potential"}}});
 
   const item={
@@ -138,6 +146,7 @@ test("parses entirely different operator ID and dynamic widget/tab IDs",()=>{
   assert.deepEqual(extras.talents[0].supplementalTables[0][0],["Bonus","Additional attribute metadata"]);
   assert.equal(extras.promotions.length,7);
   assert.equal(extras.potentials.length,5);
+  assert.deepEqual(extras.potentialSupplementalTables[0][0],["Snapshot","Image reward"]);
   assert.equal(extras.materials["109"].name,"Protoprism");
 });
 
