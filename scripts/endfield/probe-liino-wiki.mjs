@@ -6,6 +6,7 @@
 import { chromium } from "playwright-core";
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { extractDocument } from "./skport-extract.mjs";
 
 const target="Liino";
 const output=resolve("local-data/skport/liino-public-snapshot.json");
@@ -73,6 +74,24 @@ try{
   console.log("Public Liino item captures:",publicLiino.map(x=>({id:x.data.item.itemId,name:x.data.item.name,hasDocument:!!x.data.item.document})));
   if(publicLiino.length===1){
     const item=publicLiino[0].data.item;
+    const doc=item.document;
+    console.log("Liino chapter widgets:",JSON.stringify((doc.chapterGroup??[]).flatMap(group=>group.widgets??[]).map(w=>({name:w.title,id:w.id}))));
+    const talents=(doc.chapterGroup??[]).flatMap(group=>group.widgets??[]).find(w=>/talent nodes/i.test(w.title));
+    if(talents){
+      const w=doc.widgetCommonMap?.[talents.id];
+      for(const [id,tab] of Object.entries(w?.tabDataMap??{})){
+        const docId=String(tab?.content??"");
+        const sections=doc.documentMap?.[docId] ? extractDocument(docId,doc.documentMap[docId]).sections : [];
+        console.log("Liino talent tab:",JSON.stringify({
+          id,docId,intro:tab?.intro?.name??null,rawBlockIds:doc.documentMap?.[docId]?.blockIds??[],
+          sectionCount:sections.length,
+          types:sections.map(x=>x.kind),
+          texts:sections.filter(x=>x.kind==="text").map(x=>x.text.slice(0,250)),
+          tables:sections.filter(x=>x.kind==="table").map(x=>({rows:x.table.rows.length,columns:x.table.rows[0]?.cells.length}))
+        }));
+      }
+    }
+
     await mkdir(resolve("local-data/skport"),{recursive:true});
     await writeFile(output,JSON.stringify({code:0,data:{item}},null,2));
     if(list.length)await writeFile(resolve("local-data/skport/public-items-index.json"),JSON.stringify(list.at(-1).data.items,null,2));
