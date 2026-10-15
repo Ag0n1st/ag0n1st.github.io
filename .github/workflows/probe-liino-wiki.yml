@@ -1,0 +1,43 @@
+name: Probe public SKPORT Liino wiki
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/probe-liino-wiki.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install public browser runner
+        run: |
+          npm install --no-save --package-lock=false playwright-core
+          google-chrome --version
+      - name: Inspect official Liino entry anonymously
+        id: inspect
+        continue-on-error: true
+        run: node scripts/endfield/probe-liino-wiki.mjs
+      - name: Upload only sanitized public wiki responses
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: liino-skport-public-only
+          path: |
+            local-data/skport/liino-public-snapshot.json
+            local-data/skport/public-items-index.json
+          if-no-files-found: ignore
+          retention-days: 2
+      - name: Report unavailability
+        if: steps.inspect.outcome != 'success'
+        run: |
+          echo "::warning::No reliable public SKPORT Liino snapshot obtained. Import remains blocked."
