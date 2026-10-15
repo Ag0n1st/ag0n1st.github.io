@@ -1,13 +1,13 @@
 name: Probe public SKPORT Liino wiki
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - .github/workflows/probe-liino-wiki.yml
-      - scripts/endfield/probe-liino-wiki.mjs
-      - scripts/endfield/import-operator.mjs
   workflow_dispatch:
+    inputs:
+      publish:
+        description: 'Validated Liino game data wirklich nach main übertragen?'
+        required: true
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -37,7 +37,7 @@ jobs:
           node scripts/endfield/import-operator.mjs \
             --input local-data/skport/liino-public-snapshot.json \
             --items local-data/skport/public-items-index.json \
-            --id 1041 --slug liino --snapshot 2026-10-15 \
+            --id 1041 --slug liino --snapshot "$(date -u +%F)" \
             --out-dir local-data/generated
       - name: Summarize normalized Liino public data
         if: steps.normalize.outcome == 'success'
@@ -58,7 +58,7 @@ jobs:
             },null,2));
           '
       - name: Verify normalized records before publishing
-        if: steps.normalize.outcome == 'success'
+        if: steps.normalize.outcome == 'success' && inputs.publish == true
         run: |
           node --input-type=module -e '
             import fs from "node:fs";
@@ -77,13 +77,13 @@ jobs:
           cp local-data/generated/liino.json src/data/endfield/operators/liino.json
           cp local-data/generated/liino.extra.json src/data/endfield/operators/liino.extra.json
       - name: Verify complete Astro build with Liino data
-        if: steps.normalize.outcome == 'success'
+        if: steps.normalize.outcome == 'success' && inputs.publish == true
         run: |
           npm install
           npm run test:endfield
           npm run build
       - name: Commit only validated public Liino data
-        if: steps.normalize.outcome == 'success'
+        if: steps.normalize.outcome == 'success' && inputs.publish == true
         id: commit
         shell: bash
         run: |
