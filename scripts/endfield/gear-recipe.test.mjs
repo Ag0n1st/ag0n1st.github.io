@@ -14,12 +14,12 @@ const source70=source60.replace("*3000","*8000").replace("*20","*50");
 test("reads SKPORT Level 60 standard recipe without importing adjacent stats",()=>{
   const actual=parseStandardGearRecipe(getPublicGearSourcePanel(source60),{
     gearId:"1246",gearName:"AIC Fieldwork Medic Armor",snapshot:"2026-10-15",
-    itemsByName:{"Wuling Stock Bill":"1154","Xiranite Component":"1155"}
+    itemsByName:{"Wuling Stock Bill":"602","Xiranite Component":"528"}
   });
   assert.equal(actual.gear.id,"1246");
   assert.deepEqual(actual.recipes[0].materials,[
-    {itemId:"1154",name:"Wuling Stock Bill",count:3000},
-    {itemId:"1155",name:"Xiranite Component",count:20}
+    {itemId:"602",name:"Wuling Stock Bill",count:3000},
+    {itemId:"528",name:"Xiranite Component",count:20}
   ]);
   assert.equal(actual.alternateRecipesStatus,"not-verified");
   assert.equal(actual.recipes.length,1);
