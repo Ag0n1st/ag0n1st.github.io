@@ -1,0 +1,27 @@
+name: Probe public official Endfield SKPORT Map Tools
+
+on:
+  push:
+    branches: [endfield-story-area-registry-20261015]
+    paths:
+      - scripts/endfield/probe-official-map.mjs
+      - .github/workflows/probe-official-map.yml
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install anonymous Chrome runner
+        run: |
+          npm ci
+          npm install --no-save --package-lock=false playwright-core
+      - name: Inspect only public SKPORT map region and marker catalogue
+        run: node scripts/endfield/probe-official-map.mjs
