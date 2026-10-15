@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   probe:
@@ -29,13 +29,49 @@ jobs:
           google-chrome --version
       - name: Test local normalization
         run: node --test scripts/endfield/equipment-normalize.test.mjs
-      - name: Retrieve a small set of anonymous public SKPORT details
-        run: node scripts/endfield/import-equipment.mjs --limit 3
-      - name: Upload sanitized normalized sample, never raw browser sessions
+      - name: Retrieve ALL anonymously accessible official weapon and gear details
+        run: node scripts/endfield/import-equipment.mjs --all --out src/data/endfield/catalog/equipment-details.json
+      - name: Validate complete catalogue coverage before committing
+        run: |
+          node --input-type=module -e '
+            import fs from "node:fs";
+            const src=JSON.parse(fs.readFileSync("src/data/endfield/catalog/items.json","utf8"));
+            const result=JSON.parse(fs.readFileSync("src/data/endfield/catalog/equipment-details.json","utf8"));
+            const weaponIds=new Set(src.items.filter(x=>x.categories.includes("Weapons")).map(x=>x.id));
+            const gearIds=new Set(src.items.filter(x=>x.categories.includes("Gear")).map(x=>x.id));
+            if(result.coverage.errors!==0||
+              result.weapons.length!==weaponIds.size||result.gear.length!==gearIds.size ||
+              result.weapons.some(x=>!weaponIds.has(x.id)) ||
+              result.gear.some(x=>!gearIds.has(x.id)) ||
+              result.weapons.filter(x=>x.status==="verified").length<30 ||
+              result.gear.filter(x=>x.status==="verified").length<20) {
+              throw Error("Official SKPORT catalogue validation failed: "+JSON.stringify(result.coverage));
+            }
+            console.log("OFFICIAL_DETAIL_COVERAGE",JSON.stringify(result.coverage));
+          '
+      - name: Enforce 100 MB Endfield budget
+        run: node scripts/endfield/check-budget.mjs
+      - name: Check complete Astro build with official equipment data
+        run: |
+          npm run test:endfield
+          npm run build
+      - name: Commit only normalized public equipment values to feature branch
+        shell: bash
+        run: |
+          git add src/data/endfield/catalog/equipment-details.json
+          if git diff --cached --quiet; then
+            echo 'No changed official details'
+          else
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'Cache validated official SKPORT weapon and gear detail snapshot'
+            git push origin HEAD:${GITHUB_REF_NAME}
+          fi
+      - name: Upload sanitized normalized details, never raw browser sessions
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: skport-equipment-normalized-sample
-          path: local-data/endfield-equipment.json
+          name: skport-equipment-normalized
+          path: src/data/endfield/catalog/equipment-details.json
           if-no-files-found: ignore
           retention-days: 2
