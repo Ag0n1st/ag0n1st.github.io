@@ -1,6 +1,6 @@
 ---
 # Redaktioneller Entwurf zu unserem bestehenden Typhoeus-Prototyp.
-# Aktuell NOCH NICHT mit der öffentlichen Guide-Seite verbunden.
+# Mit der öffentlichen Guide-Seite verbunden, aber bewusst im Vorschau-Modus.
 # Alle echten Spielwerte kommen später aus dem separaten Endfield-Datenimport.
 operator: typhoeus
 displayName: Typhoeus
@@ -39,4 +39,4 @@ conclusion:
   skipIf: []
 ---
 
-<!-- Entwurf für eigene Texte. Der öffentliche Typhoeus-Guide nutzt noch das bisherige Astro-Prototyp-Layout. -->
+<!-- Typhoeus wird trotz status: draft als einzige Layout-Vorschau veröffentlicht. Andere Entwürfe bleiben verborgen. -->
