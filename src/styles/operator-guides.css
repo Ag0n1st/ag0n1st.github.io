@@ -167,3 +167,33 @@
 .op-factory-select-row img{flex:0 0 34px;width:34px;height:34px;object-fit:contain}
 .op-factory-select-row select{flex:1;min-width:0;max-width:100%}
 .op-factory-inline-icon{vertical-align:middle;display:inline-block;width:26px;height:26px;object-fit:contain;margin:0 5px 0 7px}
+
+
+/* Build-Finder: independently confirmed regions/areas and per-Gear blueprints */
+.op-story-filter{display:flex;flex-direction:column;gap:12px;margin:15px 0 0}
+.op-story-region-label{font-size:12px}
+.op-story-help strong{font-size:12px}
+.op-story-help p{margin:6px 0 0}
+.op-story-areas,.op-story-extra{border:1px solid var(--line);padding:10px 13px;border-radius:11px;background:#18171e}
+.op-story-areas>summary,.op-story-extra>summary{cursor:pointer;font-weight:650;font-size:12px;padding:4px 0}
+.op-story-areas>summary span{float:right;color:var(--cyan);font-weight:500}
+.op-story-areas-body{padding-top:12px}
+.op-story-area-group{border:0;padding:4px 0;margin:0;min-width:0}
+.op-story-area-group[hidden]{display:none}
+.op-story-area-group legend{font-size:12px;font-weight:700;margin-bottom:8px;color:var(--cyan)}
+.op-story-area-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 13px}
+.op-story-area-option,.op-blueprint-check{display:flex;align-items:flex-start;gap:9px;font-size:12px;line-height:1.4;color:#dfd9e5;cursor:pointer}
+.op-story-area-option input,.op-blueprint-check input{flex:0 0 auto;width:16px;height:16px;accent-color:var(--cyan);margin:0}
+.op-story-extra-fields{margin-top:12px}
+.op-story-extra-fields label{font-size:12px}
+.op-story-extra-fields .op-select{margin-top:6px}
+.op-blueprint-checklist{border:1px solid #433e4c;border-radius:10px;margin:14px 0;padding:13px;display:flex;flex-direction:column;gap:9px;min-width:0}
+.op-blueprint-checklist legend{color:var(--cyan);font-size:12px;font-weight:700;padding:0 6px}
+.op-blueprint-checklist p{margin:6px 0 0}
+.op-pill-button[data-availability="story-unverified"] .op-build-button-status,
+.op-pill-button[data-availability="blueprint-unconfirmed"] .op-build-button-status,
+.op-pill-button[data-availability="area-unconfirmed"] .op-build-button-status{color:#c0b0d4}
+.op-pill-button[data-availability="region-locked"] .op-build-button-status,
+.op-pill-button[data-availability="acquisition-locked"] .op-build-button-status,
+.op-pill-button[data-availability="component-locked"] .op-build-button-status{color:#e8b189}
+@media(max-width:680px){.op-story-area-options{grid-template-columns:1fr}.op-story-areas>summary span{float:none;display:inline;margin-left:8px}}
