@@ -1,0 +1,69 @@
+name: Promote validated official equipment snapshot
+
+on:
+  push:
+    branches: [endfield-official-weapon-gear-details-20261015]
+    paths:
+      - .github/workflows/promote-endfield-equipment.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout latest candidate code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install locked project dependencies
+        run: npm ci
+      - name: Retrieve ONLY our previously validated public SKPORT snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p local-data/equipment-approved
+          gh run download 38685743713 --repo Ag0n1st/ag0n1st.github.io \
+            --name skport-equipment-normalized --dir local-data/equipment-approved
+          test -s local-data/equipment-approved/equipment-details.json
+          cp local-data/equipment-approved/equipment-details.json \
+            src/data/endfield/catalog/equipment-details.json
+      - name: Verify official IDs and completeness of catalog coverage
+        run: |
+          node --input-type=module -e '
+            import fs from "node:fs";
+            const list=JSON.parse(fs.readFileSync("src/data/endfield/catalog/items.json","utf8"));
+            const data=JSON.parse(fs.readFileSync("src/data/endfield/catalog/equipment-details.json","utf8"));
+            const weaponIds=new Set(list.items.filter(x=>x.categories.includes("Weapons")).map(x=>x.id));
+            const gearIds=new Set(list.items.filter(x=>x.categories.includes("Gear")).map(x=>x.id));
+            if(data.source.provider!=="SKPORT Wiki"||data.coverage.requested!==342||
+              data.coverage.errors!==0||data.weapons.length!==84||data.gear.length!==258 ||
+              data.weapons.some(x=>!weaponIds.has(x.id))||data.gear.some(x=>!gearIds.has(x.id))){
+              throw Error("Unverified or incomplete official catalogue snapshot");
+            }
+            console.log("Validated snapshot",JSON.stringify(data.coverage));
+          '
+      - name: Check Endfield budget, parser tests and Astro build
+        run: |
+          node scripts/endfield/check-budget.mjs
+          npm run test:endfield
+          npm run build
+      - name: Save only normalized public equipment snapshot to feature branch
+        shell: bash
+        run: |
+          git add src/data/endfield/catalog/equipment-details.json
+          if git diff --cached --quiet; then
+            echo 'Official snapshot already exists, no change'
+          else
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'Cache validated public SKPORT details for 84 weapons and 258 gear items'
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
