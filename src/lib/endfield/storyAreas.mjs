@@ -86,3 +86,45 @@ export function getVerifiedBlueprintArea(registry,gearId){
     link.verification==="verified")??[];
   return links.map(link=>link.areaId);
 }
+
+
+/**
+ * Official acquisition notes describe conditions for finding or claiming
+ * templates. Being ELIGIBLE is not the same as HAVING the blueprint.
+ * Nothing here infers a specific crate's geographic area or location.
+ */
+export function evaluateGearAcquisition(gear,progress={}){
+  const requirement=classifyOfficialGearAcquisition(gear);
+  const gearId=requirement.gearId;
+  if((progress.acquiredGearBlueprintIds??[]).includes(gearId))
+    return {status:"acquired",kind:requirement.kind,reason:"Blaupause ausdrücklich als erhalten angegeben"};
+  switch(requirement.kind){
+    case "authority-level-reward":{
+      const current=progress.authorityLevel;
+      if(!Number.isSafeInteger(current)||current<0)
+        return {status:"unverified",kind:requirement.kind,reason:"Autoritätslevel unbekannt"};
+      if(current<requirement.authorityLevel)
+        return {status:"locked",kind:requirement.kind,reason:"Benötigt Autoritätslevel "+requirement.authorityLevel};
+      return {status:"eligible",kind:requirement.kind,reason:"Autoritätslevel erfüllt; Belohnung eventuell noch nicht beansprucht"};
+    }
+    case "regional-stock-redistribution":{
+      const current=progress.stockRedistributionLevels?.[requirement.regionId];
+      if(!Number.isSafeInteger(current)||current<0)
+        return {status:"unverified",kind:requirement.kind,reason:"Wuling-Warenumverteilungsstufe unbekannt"};
+      if(current<requirement.stockRedistributionLevel)
+        return {status:"locked",kind:requirement.kind,reason:"Benötigt Warenumverteilung Stufe "+requirement.stockRedistributionLevel};
+      return {status:"eligible",kind:requirement.kind,reason:"Warenumverteilung ausreichend; Tausch möglicherweise noch ausstehend"};
+    }
+    case "region-story-progress":{
+      if((progress.unlockedRegionIds??[]).includes(requirement.regionId))
+        return {status:"eligible",kind:requirement.kind,reason:"Wuling-Zugang bestätigt; Besitz der Ausrüstungsvorlage gesondert prüfen"};
+      if((progress.confirmedLockedRegionIds??[]).includes(requirement.regionId))
+        return {status:"locked",kind:requirement.kind,reason:"Region Wuling noch nicht freigeschaltet"};
+      return {status:"unverified",kind:requirement.kind,reason:"Wuling-Zugang unbekannt"};
+    }
+    case "template-crate":
+      return {status:"unverified",kind:requirement.kind,reason:"Fundort und Öffnung der Blaupausenkiste noch nicht bestätigt"};
+    default:
+      return {status:"unverified",kind:requirement.kind,reason:"Offizieller Erwerbsweg nicht eindeutig angegeben"};
+  }
+}
