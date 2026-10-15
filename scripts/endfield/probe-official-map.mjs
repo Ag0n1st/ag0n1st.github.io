@@ -1,52 +1,67 @@
 /**
- * One-time anonymous official SKPORT Map Tools audit.
- * Only prints safe public category/region metadata; never copies cookies,
- * profile data, or full private headers into logs.
+ * Analyze only PUBLIC anonymous SKPORT Map Tools metadata.
+ * All public maps and marker endpoints come directly from game.skport.com.
+ * Logs avoid cookies, accounts and user data.
  */
 import {chromium} from "playwright-core";
 const browser=await chromium.launch({channel:"chrome",headless:true,args:["--no-sandbox","--disable-dev-shm-usage"]});
-const responses=[];
-const counts=new Map();
-const summarize=(obj,depth=0)=>{
-  if(depth>2||obj===null)return null;
-  if(Array.isArray(obj))return {len:obj.length,examples:obj.slice(0,3).map(x=>summarize(x,depth+1))};
-  if(typeof obj==="object"){
-    return Object.fromEntries(Object.entries(obj).slice(0,12).map(([k,v])=>[k,summarize(v,depth+1)]));
+let tree=null,catalog=null,lists=new Map();
+const keys=new Set(["name","title","label","description","desc","id","templateId","regionId","levelId","mapId"]);
+const flatNames=(value,max=4000)=>{
+ const output=[];function walk(x,path=[],depth=0){
+  if(depth>7||output.length>max)return;
+  if(Array.isArray(x)){for(const q of x.slice(0,150))walk(q,path,depth+1);return;}
+  if(x && typeof x==="object"){
+   for(const [k,v] of Object.entries(x)){
+     if(typeof v==="string"&&(keys.has(k)||/(gear|crate|blueprint|template)/i.test(v)))output.push({path:[...path,k].join("."),text:v.slice(0,180)});
+     else if(typeof v==="object")walk(v,[...path,k],depth+1);
+   }
   }
-  return typeof obj==="string"?obj.slice(0,80):obj;
+ }walk(value);return output;
 };
 try{
- const context=await browser.newContext({locale:"en-US",viewport:{width:1280,height:900}});
+ const context=await browser.newContext({locale:"en-US",viewport:{width:1350,height:900}});
  const page=await context.newPage();
- page.on("response",async res=>{
-  try {
-   const url=new URL(res.url());
-   if(!url.hostname.endsWith("skport.com") ||
-      (!url.pathname.includes("/web/v1/game/endfield/map/")&&!url.pathname.includes("/map/endfield")))return;
-   if(url.pathname.includes("/map/endfield")&&!url.pathname.includes("/web/v1"))return;
-   counts.set(url.pathname,(counts.get(url.pathname)??0)+1);
-   if(res.status()!==200)return;
-   const json=await res.json().catch(()=>null);
-   if(json && responses.length<15)responses.push({path:url.pathname,query:url.search,
-     code:json.code,data:summarize(json.data)});
-  }catch{}
+ page.on("response",async r=>{
+   try{
+    const u=new URL(r.url()),p=u.pathname;
+    if(u.hostname!=="zonai.skport.com"||!p.startsWith("/web/v1/game/endfield/map/")||r.status()!==200)return;
+    const v=await r.json().catch(()=>null);
+    if(v?.code!==0||!v?.data)return;
+    if(p.endsWith("/tree"))tree=v.data;
+    if(p.endsWith("/catalog"))catalog=v.data;
+    if(p.endsWith("/mark/list")&&!u.searchParams.get("levelId")){
+      lists.set(u.searchParams.get("mapId"),v.data);
+    }
+   }catch{}
  });
- const result=await page.goto("https://game.skport.com/map/endfield",{waitUntil:"domcontentloaded",timeout:50000});
- await page.waitForTimeout(11000);
- const text=await page.locator("body").innerText().catch(()=>"");
- console.log("OFFICIAL_MAP_BROWSER",JSON.stringify({httpStatus:result?.status(),url:page.url(),
-   content:text.slice(0,700),calls:[...counts],responses}));
- // Same origin public APIs, no login or signing; only metadata.
- for(const endpoint of ["tree","catalog"]){
-  const uri="https://zonai.skport.com/web/v1/game/endfield/map/"+endpoint;
-  const val=await page.evaluate(async url=>{
-    try{
-      const r=await fetch(url,{credentials:"omit",headers:{"sk-language":"en"}});
-      return {status:r.status,body:await r.json().catch(()=>null)};
-    }catch(e){return {error:String(e)}}
-  },uri);
-  console.log("OFFICIAL_MAP_"+endpoint.toUpperCase(),JSON.stringify({
-    status:val.status,error:val.error,sample:summarize(val.body?.data)
-  }));
+ await page.goto("https://game.skport.com/map/endfield",{waitUntil:"domcontentloaded",timeout:45000});
+ await page.waitForTimeout(8000);
+ console.log("MAP_STATUS",JSON.stringify({tree:!!tree,catalog:!!catalog,lists:[...lists.keys()]}));
+ console.log("MAP_TREE_NAMES",JSON.stringify(flatNames(tree,800).filter(x=>x.text.length>0).slice(0,300)));
+ const catalogNames=flatNames(catalog,1200).filter(x=>/crate|template|blueprint|gear|box|chest/i.test(x.text));
+ console.log("MAP_CATALOG_GEAR_TYPES",JSON.stringify(catalogNames.slice(0,110)));
+ for(const [mapId,data] of lists){
+  const templates=data.markTemplates??[];
+  const marks=data.marks??[];
+  const groups=new Map();
+  for(const m of marks){
+    const key=String(m.templateId);
+    groups.set(key,(groups.get(key)||0)+1);
+  }
+  const selected=templates.map(t=>({...t,count:groups.get(String(t.id))||0}))
+    .filter(t=>/gear|template|blueprint|chest|crate|equipment|craft/i.test([t.name,t.desc].join(" ")));
+  console.log("MAP_GEAR_MARK_TYPES",JSON.stringify({mapId,totalMarks:marks.length,
+    totalTemplates:templates.length,matches:selected.slice(0,50).map(t=>({
+     id:t.id,name:t.name,desc:String(t.desc??"").slice(0,250),count:t.count
+    }))}));
+  for(const template of selected.filter(t=>t.count>0).slice(0,8)){
+   const hits=marks.filter(m=>String(m.templateId)===String(template.id));
+   console.log("MAP_GEAR_MARK_EXAMPLES",JSON.stringify({mapId,templateId:template.id,
+     name:template.name,markCount:hits.length,examples:hits.slice(0,6).map(m=>({
+       id:m.id,regionId:m.regionId,levelId:m.levelId,
+       coordinates:Array.isArray(m.pos)?m.pos:(typeof m.pos==="object"?m.pos:null)
+     }))}));
+  }
  }
 }finally{await browser.close();}
