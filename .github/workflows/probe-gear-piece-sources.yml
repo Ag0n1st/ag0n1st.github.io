@@ -1,0 +1,22 @@
+name: Probe exact per-piece source table
+on:
+  push:
+    branches: [endfield-exact-gear-locations-20261015]
+    paths:
+      - scripts/endfield/probe-gear-piece-sources.mjs
+      - .github/workflows/probe-gear-piece-sources.yml
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: |
+          npm ci
+          npm install --no-save --package-lock=false playwright-core
+      - run: node scripts/endfield/probe-gear-piece-sources.mjs
