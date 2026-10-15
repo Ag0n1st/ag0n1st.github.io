@@ -1,10 +1,19 @@
 ---
+import { getCollection } from "astro:content";
 import EndfieldPlaceholder from "../../../layouts/EndfieldPlaceholder.astro";
 import "../../../styles/operator-guides.css";
 
-const operators = [
-  { name: "Typhoeus", slug: "typhoeus", rarity: "6★", klass: "[Klasse]", element: "[Element]", weapon: "[Waffentyp]" },
-];
+// Every published guide is included automatically; Typhoeus is our one
+// explicitly visible prototype, even though its editorial file is still a draft.
+const entries = await getCollection("operator-guides", ({ data }) =>
+  data.status === "published" || data.operator === "typhoeus"
+);
+const operators = entries.map(entry => ({
+  name: entry.data.displayName ?? entry.data.operator.split("-").map(part => part[0].toUpperCase() + part.slice(1)).join(" "),
+  slug: entry.data.operator,
+  preview: entry.data.status === "draft",
+})).sort((a,b) => a.name.localeCompare(b.name, "de"));
+
 ---
 <EndfieldPlaceholder title="Operatoren" kicker="ARKNIGHTS: ENDFIELD · OPERATOREN" active="characters" description="Operatoren und meine Charakter-Guides auf einen Blick.">
   <main class="op-page section-wrap">
@@ -18,15 +27,16 @@ const operators = [
           <div class="op-card-info">
             <h2>{operator.name}</h2>
             <div class="op-chip-row">
-              <span class="op-chip is-pink">{operator.rarity}</span>
-              <span class="op-chip">{operator.klass}</span>
-              <span class="op-chip">{operator.element}</span>
-              <span class="op-chip">{operator.weapon}</span>
+              <span class="op-chip is-pink">[Seltenheit]</span>
+              <span class="op-chip">[Klasse]</span>
+              <span class="op-chip">[Element]</span>
+              {operator.preview && <span class="op-chip is-accent">Layout-Vorschau</span>}
             </div>
             <div class="op-card-bottom"><span>Charakter-Guide ansehen</span><span aria-hidden="true">↗</span></div>
           </div>
         </a>
       ))}
     </div>
+    {operators.length === 0 && <p class="op-muted">Noch keine veröffentlichten Operator-Guides vorhanden.</p>}
   </main>
 </EndfieldPlaceholder>
