@@ -7,6 +7,7 @@
  */
 import { readdir, stat } from "node:fs/promises";
 import { resolve, join } from "node:path";
+import { pathToFileURL } from "node:url";
 const MAX_BYTES = 100_000_000;
 const folders = [
   "public/images/endfield",
@@ -43,7 +44,7 @@ export async function endfieldBudget() {
   return {limitBytes:MAX_BYTES,bytes:total,files:filesCount,remainingBytes:MAX_BYTES-total,
     percent:Math.round(total/MAX_BYTES*10000)/100,groups};
 }
-if(process.argv[1] && import.meta.url===new URL("file://"+resolve(process.argv[1])).href) {
+if(process.argv[1] && import.meta.url===pathToFileURL(resolve(process.argv[1])).href) {
   const result=await endfieldBudget();
   console.log("ENDFIELD_BUDGET",JSON.stringify(result));
   if(result.bytes>MAX_BYTES){
