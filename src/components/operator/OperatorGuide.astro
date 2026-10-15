@@ -1,9 +1,14 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import type { ImportedOperator } from "../../lib/endfield/operatorData";
 
 type GuideData = CollectionEntry<"operator-guides">["data"];
-interface Props { guide: GuideData; operatorName: string; preview?: boolean; }
-const { guide, operatorName, preview = false } = Astro.props;
+interface Props { guide: GuideData; operatorName: string; preview?: boolean; gameData?: ImportedOperator; }
+const { guide, operatorName, preview = false, gameData } = Astro.props;
+const gameSkills = gameData?.skills ?? [];
+const importedBySlot = new Map(gameSkills.map(skill => [skill.slot,skill]));
+const defaultSkillRank = 8; // Rank 9, never a guide skill-priority recommendation.
+
 
 const missing = "[Noch keine Angaben]";
 const slotLabels: Record<string,string> = {
@@ -119,10 +124,10 @@ const potentialByLevel = new Map(guide.potentials.entries.map(p=>[p.level,p]));
               <div class="op-profile-art">[Horizontales Operator-Artwork]</div>
               <h3>{operatorName}</h3>
               <div class="op-chip-row">
-                <span class="op-chip is-pink">{guide.operator === "typhoeus" ? "6★" : "[Seltenheit]"}</span>
-                <span class="op-chip">[Klasse + Icon]</span>
-                <span class="op-chip">[Element + Icon]</span>
-                <span class="op-chip">[Waffentyp + Icon]</span>
+                <span class="op-chip is-pink">{gameData ? gameData.operator.rarity + "★" : "[Seltenheit]"}</span>
+                <span class="op-chip">{gameData?.operator.class || "[Klasse]"}</span>
+                <span class="op-chip">{gameData?.operator.element || "[Element]"}</span>
+                <span class="op-chip">{gameData?.operator.weaponType || "[Waffentyp]"}</span>
               </div>
               <p>Traits</p>
               <div class="op-chip-row"><span class="op-chip">[Trait 1]</span><span class="op-chip">[Trait 2]</span></div>
@@ -192,7 +197,11 @@ const potentialByLevel = new Map(guide.potentials.entries.map(p=>[p.level,p]));
         <h2>Operator Kit</h2>
         <div class="op-divided">
           <h3>Operator-Profil & Spielweise</h3>
-          <div class="op-info-grid">{["Klasse","Element","Traits","Hauptattribut","Sekundärattribut","Waffentyp"].map(label=><div class="op-info-field"><small>{label}</small><strong>[Spieldaten folgen]</strong></div>)}</div>
+          <div class="op-info-grid">{[
+              ["Klasse",gameData?.operator.class],["Element",gameData?.operator.element],
+              ["Fraktion",gameData?.operator.faction],["Hauptattribut",undefined],
+              ["Sekundärattribut",undefined],["Waffentyp",gameData?.operator.weaponType]
+            ].map(([label,value])=><div class="op-info-field"><small>{label}</small><strong>{value || "[Spieldaten folgen]"}</strong></div>)}</div>
           <p class="op-muted op-body-copy">{guide.operatorKit.playstyle || "[Spielweise und Grundlagen folgen]"}</p>
         </div>
         <div class="op-divided">
@@ -222,15 +231,44 @@ const potentialByLevel = new Map(guide.potentials.entries.map(p=>[p.level,p]));
         <div class="op-divided">
           <h3>Kampffertigkeiten</h3>
           <div class="op-mini-list">
-            {(["basic","battle","combo","ultimate"] as const).map(key=><article class="op-cardlet">
-              <div class="op-line"><div class="op-mini-art">{slotIcons[key]}</div><div class="op-line-label"><span class="op-chip">{slotLabels[key]}</span><strong>[Offizieller Skillname]</strong></div></div>
-              <p>[Offizielle Beschreibung, Multiplikatoren und Werte aus dem späteren Datenimport]</p>
-              <p class="op-body-copy"><strong>Bewertung</strong><br />{guide.skills.active[key] || "[Eigene Erklärung folgt]"}</p>
-              <details class="op-details"><summary>Levelwerte & Upgrade-Materialien anzeigen</summary>
-                <div class="op-details-body"><div class="op-table-wrap"><table class="op-table"><thead><tr><th>Level</th><th>Werte</th><th>Materialien</th></tr></thead>
-                <tbody>{["1","2","3","…","9","M1","M2","M3"].map(l=><tr><td>{l}</td><td>[Werte]</td><td>[Materialien]</td></tr>)}</tbody></table></div></div>
-              </details>
-            </article>)}
+            {(["basic","battle","combo","ultimate"] as const).map(key=>{
+              const official = importedBySlot.get(key);
+              return <article class="op-cardlet">
+                <div class="op-line">
+                  <div class="op-mini-art">{slotIcons[key]}</div>
+                  <div class="op-line-label"><span class="op-chip">{slotLabels[key]}</span><strong>{official?.name || "[Offizieller Skillname]"}</strong></div>
+                </div>
+                {official && <p class="op-muted" style="font-size:11px;margin:9px 0">SKPORT Wiki · Datenstand {gameData?.source.snapshot} · Sprache: {gameData?.source.language.toUpperCase()}</p>}
+                {official && gameData ? <>
+                  <div class="op-skill-selector">
+                    <label for={"skill-rank-"+key}>Skillstufe</label>
+                    <select id={"skill-rank-"+key} class="op-select" data-skill-rank={key}>
+                      {gameData.ranks.map((rank,i)=><option value={i} selected={i===defaultSkillRank}>{rank}</option>)}
+                    </select>
+                  </div>
+                  <div class="op-info-grid op-skill-stats">
+                    {official.metrics.slice(0,4).map(metric=><div class="op-info-field">
+                      <small>{metric[0]}</small>
+                      <strong data-skill-metric-value data-skill-values={JSON.stringify(metric.slice(1))}>{metric[defaultSkillRank+1]}</strong>
+                    </div>)}
+                  </div>
+                </> : <p class="op-placeholder">[Offizielle Fertigkeitswerte folgen]</p>}
+                <p class="op-body-copy"><strong>Bewertung</strong><br />{guide.skills.active[key] || "[Eigene Erklärung folgt]"}</p>
+                <details class="op-details"><summary>Alle Skill-Levelwerte anzeigen</summary>
+                  <div class="op-details-body">
+                    {official && gameData ? <>
+                      <div class="op-table-wrap">
+                        <table class="op-table op-skill-matrix">
+                          <thead><tr><th>Skillstufe</th>{official.metrics.map(metric=><th>{metric[0]}</th>)}</tr></thead>
+                          <tbody>{gameData.ranks.map((rank,i)=><tr><td>{rank}</td>{official.metrics.map(metric=><td>{metric[i+1]}</td>)}</tr>)}</tbody>
+                        </table>
+                      </div>
+                      <p class="op-muted" style="font-size:11px;margin-top:10px">Die Materialkosten werden nach Zuordnung ihrer Item-IDs ergänzt.</p>
+                    </> : <p class="op-placeholder">[Skilllevel und Aufstiegsmaterialien folgen]</p>}
+                  </div>
+                </details>
+              </article>;
+            })}
           </div>
         </div>
         <div class="op-divided"><h3>Combat Talents</h3>
@@ -451,6 +489,17 @@ const potentialByLevel = new Map(guide.potentials.entries.map(p=>[p.level,p]));
   </div>
 </main>
 <script>
+  // A single rank selector controls all displayed headline values in its skill.
+  document.querySelectorAll<HTMLSelectElement>("[data-skill-rank]").forEach(select => {
+    select.addEventListener("change", () => {
+      const card = select.closest(".op-cardlet");
+      const levelIndex = Number(select.value);
+      card?.querySelectorAll<HTMLElement>("[data-skill-metric-value]").forEach(value => {
+        const levels = JSON.parse(value.dataset.skillValues || "[]") as string[];
+        value.textContent = levels[levelIndex] || "–";
+      });
+    });
+  });
   // Keep the guide navigation in sync with the visible section.
   const toc = document.querySelector<HTMLElement>(".op-guide-toc");
   const tocLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>(".op-guide-toc-links a[href^='#']"));
