@@ -46,6 +46,7 @@ const { guide, operatorName, preview, localized } = model;
   </div>
 </main>
 <script>
+  import { evaluateBuildAvailability } from "../../lib/endfield/buildFinder.mjs";
   // A single rank selector controls all displayed headline values in its skill.
   document.querySelectorAll<HTMLSelectElement>("[data-skill-rank]").forEach(select => {
     select.addEventListener("change", () => {
@@ -117,13 +118,65 @@ const { guide, operatorName, preview, localized } = model;
     });
   });
   document.querySelectorAll<HTMLAnchorElement>("[data-select-build]").forEach(link=>{
-    link.addEventListener("click",()=>showBuild(link.dataset.selectBuild||"main"));
+    link.addEventListener("click",()=>{
+      const id=link.dataset.selectBuild||"";
+      const choice=Array.from(document.querySelectorAll<HTMLButtonElement>("[data-build-button]"))
+        .find(button=>button.dataset.buildButton===id);
+      if(!choice)return;
+      if(choice.hidden){
+        const checkbox=document.querySelector<HTMLInputElement>("#op-build-show-all");
+        if(checkbox)checkbox.checked=true;
+        checkbox?.dispatchEvent(new Event("change"));
+      }
+      showBuild(id);
+    });
   });
   const level=document.querySelector<HTMLSelectElement>("#op-level");
   const factory=document.querySelector<HTMLSelectElement>("#op-factory");
   const config=document.querySelector<HTMLElement>("#op-build-config");
-  function updateConfig(){if(config&&level&&factory){config.textContent="Lv. "+level.value+" · "+(factory.selectedOptions[0]?.textContent||"");}}
+  const showAllBuilds=document.querySelector<HTMLInputElement>("#op-build-show-all");
+  const buildResult=document.querySelector<HTMLElement>("#op-build-results");
+  const buildEmpty=document.querySelector<HTMLElement>("#op-build-empty");
+  const buildButtons=Array.from(document.querySelectorAll<HTMLButtonElement>("[data-build-button]"));
+  const statusText:Record<string,string>={
+    available:"Passend", "level-locked":"Level zu niedrig",
+    "factory-locked":"Fabrikstand zu niedrig", unverified:"Freischaltung ungeklärt"
+  };
+  function updateConfig(){
+    if(!level||!factory)return;
+    if(config)config.textContent="Lv. "+level.value+" · "+(factory.selectedOptions[0]?.textContent||"");
+    const statuses=buildButtons.map(button=>{
+      let requirement=null;
+      try{requirement=JSON.parse(button.dataset.buildRequirements||"null");}catch{}
+      const result=evaluateBuildAvailability(requirement,{
+        level:Number(level.value),factoryStage:factory.value
+      });
+      button.dataset.availability=result.status;
+      button.title=result.reason;
+      const status=button.querySelector<HTMLElement>("[data-build-status-label]");
+      if(status)status.textContent=statusText[result.status]||result.reason;
+      button.hidden=result.status!=="available"&&!showAllBuilds?.checked;
+      return result.status;
+    });
+    const available=statuses.filter(s=>s==="available").length;
+    const unverified=statuses.filter(s=>s==="unverified").length;
+    const locked=statuses.length-available-unverified;
+    if(buildResult)buildResult.textContent=statuses.length
+      ? available+" passend · "+locked+" noch gesperrt · "+unverified+" nicht geprüft"
+      : "Noch keine redaktionellen Ausrüstungs-Builds hinterlegt.";
+    const visible=buildButtons.filter(button=>!button.hidden);
+    if(buildEmpty)buildEmpty.hidden=visible.length>0;
+    const previous=visible.find(button=>button.getAttribute("aria-pressed")==="true");
+    const selected=previous??visible[0];
+    if(selected)showBuild(selected.dataset.buildButton||"");
+    else {
+      buildButtons.forEach(button=>button.setAttribute("aria-pressed","false"));
+      document.querySelectorAll<HTMLElement>("[data-build-panel]").forEach(panel=>panel.hidden=true);
+    }
+  }
   level?.addEventListener("change",updateConfig);
   factory?.addEventListener("change",updateConfig);
+  showAllBuilds?.addEventListener("change",updateConfig);
+  updateConfig();
 </script>
 

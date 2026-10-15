@@ -150,3 +150,13 @@
 .op-catalog-icon-sm{width:30px;height:30px}
 .op-catalog-icon-fallback{font-size:10px;color:var(--muted);overflow-wrap:anywhere}
 @media(max-width:680px){.op-resource-list{min-width:0;gap:4px}.op-resource{padding:2px 5px 2px 2px}.op-resource img{width:30px;height:30px}}
+
+/* Explicitly differentiate confirmed, locked and unverified guide builds. */
+.op-build-progress-status{font-size:12px;margin:5px 0 10px;color:var(--cyan)}
+.op-build-show-all{display:inline-flex;align-items:center;gap:9px;font-size:12px;color:#ddd5df;cursor:pointer}
+.op-build-show-all input{accent-color:var(--pink);width:16px;height:16px;flex:none}
+.op-pill-button[hidden],.op-build-panel[hidden],#op-build-empty[hidden]{display:none!important}
+.op-build-button-status{display:block;font-size:10px;margin-top:4px;color:var(--cyan);font-weight:500}
+.op-pill-button[data-availability="unverified"] .op-build-button-status{color:#b6abbf}
+.op-pill-button[data-availability="level-locked"] .op-build-button-status,
+.op-pill-button[data-availability="factory-locked"] .op-build-button-status{color:#e8b189}

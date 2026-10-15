@@ -46,6 +46,9 @@ const equipmentBuild = z.object({
   // Die vier Ausrüstungsplätze sind verbindlich.
   items: z.tuple([identifier, identifier, identifier, identifier]),
   availableFromLevel: equipmentLevel.optional(),
+  // Redaktionell geprüfter Fabrikfortschritt; SKPORT liefert keine einheitliche Stufen-Skala.
+  factoryStage: z.enum(["einstieg","fortgeschritten","maximal"]).optional(),
+  // Ohne dokumentierte Freischaltung bleibt der Build ungeprüft.
   factoryUnlock: text.optional(),
   teamContext: text.optional(),
   evaluation: text.default(""),

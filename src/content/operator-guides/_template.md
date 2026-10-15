@@ -76,8 +76,10 @@ equipment:
   #   title: "Standard-Build"
   #   role: main-dps # main-dps | support | hybrid | sub-dps | control | other
   #   items: ["1246", "1245", "1244", "1243"] # Beispiel-IDs, KEINE Build-Empfehlung. EXAKT 4
-  #   availableFromLevel: 70 # nur 50, 60 oder 70
-  #   factoryUnlock: "Benötigter Fabrikfortschritt"
+  #   availableFromLevel: 70 # redaktionelle Mindeststufe; offizielles Ausrüstungslevel wird zusätzlich geprüft
+  #   factoryStage: fortgeschritten # einstieg | fortgeschritten | maximal, NUR nach Prüfung eintragen!
+  #   factoryUnlock: "Konkreter Beleg für Blaupausen-/Story-/Fabrikfreischaltung"
+  #   # Ohne factoryStage und factoryUnlock wird kein Build als verfügbar ausgewiesen.
   #   teamContext: "Für Teams mit diesem Operator als Main DPS"
   #   evaluation: |
   #     Bewertung der Ausrüstung und ihrer Synergien.
