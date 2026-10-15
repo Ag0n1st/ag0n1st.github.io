@@ -25,9 +25,9 @@ const officialWeapons=shownWeapons.map(w=>{
         <div class="op-divided">
           <h3>Waffendetails</h3>
           {officialWeapons.length ? <>
-            <div class="op-pills" aria-label="Waffe auswählen">{officialWeapons.map((w,i)=><button class="op-pill-button" type="button" data-weapon-button={w.id} aria-pressed={i===0?"true":"false"}>{w.label} {officialWeapons.filter(x=>x.label===w.label).length>1 ? "· "+w.name : ""}</button>)}</div>
+            <div class="op-pills" aria-label="Waffe auswählen">{officialWeapons.map((w,i)=><button class="op-pill-button" type="button" data-weapon-button={w.id} aria-pressed={i===0?"true":"false"}>{w.label} {officialWeapons.filter(x=>x.label===w.label).length>1 ? "· "+(w.item?.name??w.name) : ""}</button>)}</div>
             {officialWeapons.map((w,i)=><div class="op-weapon-panel op-cardlet" data-weapon-panel={w.id} hidden={i!==0}>
-              <div class="op-line"><div class="op-mini-art">{w.item ? <ItemIcon id={w.item.id} /> : "[Icon]"}</div><div class="op-line-label"><strong>{w.name}</strong><span class="op-muted">{w.label}</span></div></div>
+              <div class="op-line"><div class="op-mini-art">{w.item ? <ItemIcon id={w.item.id} /> : "[Icon]"}</div><div class="op-line-label"><strong>{w.item?.name??w.name}</strong><span class="op-muted">{w.label}</span></div></div>
               {w.data?.status==="verified" ?
   <div class="op-table-wrap" style="margin-top:13px">
     <table class="op-table"><thead><tr>{(w.data.attributes[0]?.tables[0]?.columns??[]).map(label=><th>{label}</th>)}</tr></thead>
@@ -65,7 +65,7 @@ const officialWeapons=shownWeapons.map(w=>{
           {weapons.some(w=>w.performancePercent!==undefined) ?
             <div class="op-table-wrap"><table class="op-table">
               <thead><tr><th>Waffe</th><th>Relative Leistung</th><th>Vergleichsbedingungen</th></tr></thead>
-              <tbody>{weapons.filter(w=>w.performancePercent!==undefined).map(w=><tr><td>{w.name}</td><td>{w.performancePercent} %</td><td>{w.comparisonConditions}</td></tr>)}</tbody>
+              <tbody>{weapons.filter(w=>w.performancePercent!==undefined).map(w=><tr><td>{resolveOfficialItem(w.name,"Weapons")?.name??w.name}</td><td>{w.performancePercent} %</td><td>{w.comparisonConditions}</td></tr>)}</tbody>
             </table></div> :
             <p class="op-placeholder">[Noch keine belastbaren Vergleichswerte]</p>}
         </div>
