@@ -47,6 +47,7 @@ const { guide, operatorName, preview, localized } = model;
 </main>
 <script>
   import { evaluateBuildAvailability, FACTORY_COMPONENT_STAGES, DEFAULT_FACTORY_COMPONENT } from "../../lib/endfield/buildFinder.mjs";
+  import { STORY_BUILD_STATUSES } from "../../lib/endfield/buildStoryProgress.mjs";
   // A single rank selector controls all displayed headline values in its skill.
   document.querySelectorAll<HTMLSelectElement>("[data-skill-rank]").forEach(select => {
     select.addEventListener("change", () => {
@@ -133,62 +134,137 @@ const { guide, operatorName, preview, localized } = model;
   });
   const level=document.querySelector<HTMLSelectElement>("#op-level");
   const factory=document.querySelector<HTMLSelectElement>("#op-factory");
+  const region=document.querySelector<HTMLSelectElement>("#op-story-region");
+  const authority=document.querySelector<HTMLInputElement>("#op-authority-level");
+  const stock=document.querySelector<HTMLSelectElement>("#op-stock-level");
+  const areaCheckboxes=Array.from(document.querySelectorAll<HTMLInputElement>("[data-story-area]"));
+  const blueprintCheckboxes=Array.from(document.querySelectorAll<HTMLInputElement>("[data-blueprint-owned]"));
+  const areaCounter=document.querySelector<HTMLElement>("#op-story-area-counter");
+  const regionGroups=Array.from(document.querySelectorAll<HTMLElement>("[data-story-region-group]"));
   const config=document.querySelector<HTMLElement>("#op-build-config");
   const showAllBuilds=document.querySelector<HTMLInputElement>("#op-build-show-all");
   const buildResult=document.querySelector<HTMLElement>("#op-build-results");
   const buildEmpty=document.querySelector<HTMLElement>("#op-build-empty");
   const buildButtons=Array.from(document.querySelectorAll<HTMLButtonElement>("[data-build-button]"));
   const factoryIcon=document.querySelector<HTMLImageElement>("#op-factory-icon");
+  const savedKey="ag0n1st:endfield:build-story-progress:v1";
   const statusText:Record<string,string>={
-    available:"Passend", "level-locked":"Level zu niedrig",
-    "component-locked":"Komponente fehlt", "story-unverified":"Story ungeklärt",
+    available:"Passend","level-locked":"Level zu niedrig",
+    "component-locked":"Komponente fehlt",...STORY_BUILD_STATUSES,
     unverified:"Rezept/Daten ungeklärt"
   };
+
+  // No accounts or backend: keep only explicit selections locally.
+  // The factory always starts at the highest component as requested.
+  function restoreStoryProgress(){
+    try{
+      const saved=JSON.parse(window.localStorage.getItem(savedKey)||"null");
+      if(!saved||saved.version!==1)return;
+      if(region && Array.from(region.options).some(x=>x.value===saved.regionId))
+        region.value=saved.regionId;
+      const selected=new Set(Array.isArray(saved.unlockedAreaIds)?saved.unlockedAreaIds:[]);
+      areaCheckboxes.forEach(x=>x.checked=selected.has(x.value));
+      const owned=new Set(Array.isArray(saved.acquiredGearBlueprintIds)?saved.acquiredGearBlueprintIds:[]);
+      blueprintCheckboxes.forEach(x=>x.checked=owned.has(x.dataset.blueprintOwned));
+      if(authority && Number.isSafeInteger(saved.authorityLevel)&&saved.authorityLevel>=0&&saved.authorityLevel<=200)
+        authority.value=String(saved.authorityLevel);
+      if(stock && Array.from(stock.options).some(x=>x.value===String(saved.stockRedistributionLevel)))
+        stock.value=String(saved.stockRedistributionLevel);
+    }catch{/* Private browsing or corrupted old data: show empty selections. */}
+  }
+  function storySelection(){
+    const number=authority?.value.trim()||"";
+    const stockValue=stock?.value||"";
+    return {
+      regionId:region?.value||"",
+      unlockedAreaIds:areaCheckboxes.filter(x=>x.checked).map(x=>x.value),
+      acquiredGearBlueprintIds:[...new Set(blueprintCheckboxes.filter(x=>x.checked)
+        .map(x=>x.dataset.blueprintOwned).filter((x):x is string=>Boolean(x)))],
+      authorityLevel:number!==""&&Number.isInteger(Number(number))?Number(number):null,
+      stockRedistributionLevel:stockValue!==""?Number(stockValue):null
+    };
+  }
+  function saveStoryProgress(){
+    try{window.localStorage.setItem(savedKey,JSON.stringify({
+      version:1,...storySelection()
+    }));}catch{/* Local storage may be disabled; selection remains in this tab. */}
+  }
   function updateConfig(){
     if(!level||!factory)return;
     const component=FACTORY_COMPONENT_STAGES.find(stage=>stage.id===factory.value)
       ??FACTORY_COMPONENT_STAGES.find(stage=>stage.id===DEFAULT_FACTORY_COMPONENT);
-    if(config)config.textContent="Lv. "+level.value+" · "+(component?.label||"")+
-      " · "+(component?.phase||"");
-    if(factoryIcon && component){
+    if(factoryIcon&&component){
       factoryIcon.src="/images/endfield/materials/"+component.itemId+".webp";
-      factoryIcon.alt=component.label;
-      factoryIcon.title=component.label;
+      factoryIcon.alt=component.label;factoryIcon.title=component.label;
     }
+    const progress=storySelection();
+    const regionLabel=region?.selectedOptions[0]?.textContent?.trim()||"Nicht festgelegt";
+    const count=areaCheckboxes.filter(x=>x.checked && x.dataset.areaRegion===region?.value).length;
+    if(areaCounter)areaCounter.textContent=count+" freigeschaltet";
+    regionGroups.forEach(group=>group.hidden=group.dataset.storyRegionGroup!==region?.value);
+    if(config)config.textContent="Lv. "+level.value+" · "+(component?.label||"")+
+      " · "+(component?.phase||"")+" · Story: "+regionLabel+" ("+count+" Gebiete)";
     const statuses=buildButtons.map(button=>{
       let requirement=null;
       try{requirement=JSON.parse(button.dataset.buildRequirements||"null");}catch{}
       const result=evaluateBuildAvailability(requirement,{
-        level:Number(level.value),factoryComponent:factory.value
+        level:Number(level.value),factoryComponent:factory.value,
+        storyProgress:progress
       });
       button.dataset.availability=result.status;
       button.title=result.reason;
       const status=button.querySelector<HTMLElement>("[data-build-status-label]");
       if(status)status.textContent=statusText[result.status]||result.reason;
       button.hidden=result.status!=="available"&&!showAllBuilds?.checked;
+      const panel=Array.from(document.querySelectorAll<HTMLElement>("[data-build-panel]"))
+        .find(p=>p.dataset.buildPanel===button.dataset.buildButton);
+      const reason=panel?.querySelector<HTMLElement>("[data-build-reason]");
+      if(reason){
+        const checked=result.parts?.filter((part:{status:string})=>part.status==="available").length??0;
+        reason.textContent=result.status==="available"
+          ?"Alle vier Blaupausen bestätigt. Level und Komponenten reichen aus."
+          :(result.reason+" · "+checked+"/4 Blaupausen als erhalten markiert.");
+      }
       return result.status;
     });
-    const available=statuses.filter(s=>s==="available").length;
-    const unverified=statuses.filter(s=>s==="unverified"||s==="story-unverified").length;
-    const locked=statuses.length-available-unverified;
+    const available=statuses.filter(x=>x==="available").length;
+    const uncertain=statuses.filter(x=>[
+      "unverified","story-unverified","blueprint-unconfirmed","area-unconfirmed"
+    ].includes(x)).length;
+    const locked=statuses.length-available-uncertain;
     if(buildResult)buildResult.textContent=statuses.length
-      ? available+" passend · "+locked+" wegen Level/Komponente gesperrt · "+unverified+" nicht geprüft"
-      : "Noch keine redaktionellen Ausrüstungs-Builds hinterlegt.";
+      ?available+" passend · "+locked+" gesperrt · "+uncertain+" noch nicht bestätigt"
+      :"Noch keine redaktionellen Ausrüstungs-Builds hinterlegt.";
     const visible=buildButtons.filter(button=>!button.hidden);
     if(buildEmpty)buildEmpty.hidden=visible.length>0;
     const previous=visible.find(button=>button.getAttribute("aria-pressed")==="true");
     const selected=previous??visible[0];
     if(selected)showBuild(selected.dataset.buildButton||"");
-    else {
+    else{
       buildButtons.forEach(button=>button.setAttribute("aria-pressed","false"));
-      document.querySelectorAll<HTMLElement>("[data-build-panel]").forEach(panel=>panel.hidden=true);
+      document.querySelectorAll<HTMLElement>("[data-build-panel]")
+        .forEach(panel=>panel.hidden=true);
     }
   }
-  // Start on the highest crafting grade, even when the browser restores form state.
+
+  // Story progress is restored, but the highest factory stage ALWAYS wins on entry.
+  restoreStoryProgress();
   if(factory)factory.value=DEFAULT_FACTORY_COMPONENT;
   level?.addEventListener("change",updateConfig);
   factory?.addEventListener("change",updateConfig);
   showAllBuilds?.addEventListener("change",updateConfig);
+  region?.addEventListener("change",()=>{saveStoryProgress();updateConfig();});
+  authority?.addEventListener("change",()=>{saveStoryProgress();updateConfig();});
+  stock?.addEventListener("change",()=>{saveStoryProgress();updateConfig();});
+  areaCheckboxes.forEach(input=>input.addEventListener("change",()=>{
+    saveStoryProgress();updateConfig();
+  }));
+  blueprintCheckboxes.forEach(input=>input.addEventListener("change",()=>{
+    const gearId=input.dataset.blueprintOwned;
+    blueprintCheckboxes.filter(other=>other.dataset.blueprintOwned===gearId)
+      .forEach(other=>other.checked=input.checked);
+    saveStoryProgress();updateConfig();
+  }));
   updateConfig();
 </script>
 
