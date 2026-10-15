@@ -104,3 +104,11 @@
 .op-select:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
 .op-showcase-button[aria-pressed="true"]{border-color:var(--cyan);background:#22232b}
 .op-showcase-button:hover{border-color:var(--pink)}
+
+/* Data-driven operator guides: preserve authored line breaks and native video aspect ratios. */
+.op-body-copy{white-space:pre-line;overflow-wrap:anywhere}
+.op-video-embed{display:block;width:100%;aspect-ratio:16/9;height:auto;border:0;border-radius:10px;background:#08080c;margin-top:9px}
+.op-preview-banner{margin-bottom:18px;border-left-color:var(--pink);background:rgba(240,91,212,.06)}
+.op-profile-card .op-chip-row{margin-top:8px}
+.op-team-slot{overflow-wrap:anywhere}
+.op-gear-part .op-mini-art{overflow-wrap:anywhere}
