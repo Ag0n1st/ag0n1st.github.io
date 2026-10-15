@@ -1,0 +1,25 @@
+name: Diagnose official standard gear recipes
+
+on:
+  push:
+    branches: [endfield-official-weapon-gear-details-20261015]
+    paths:
+      - scripts/endfield/probe-equipment-recipes.mjs
+      - .github/workflows/probe-endfield-recipes.yml
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: |
+          npm ci
+          npm install --no-save --package-lock=false playwright-core
+      - run: node scripts/endfield/probe-equipment-recipes.mjs
