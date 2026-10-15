@@ -8,10 +8,9 @@ import "../../../styles/operator-guides.css";
 
 export async function getStaticPaths() {
   const entries = await getCollection("operator-guides");
-  // Typhoeus remains public as an explicitly marked prototype.
-  // All other drafts are excluded from the generated site.
+  // Show only published guides and explicitly marked layout previews.
   return entries
-    .filter(entry => entry.data.status === "published" || entry.data.operator === "typhoeus")
+    .filter(entry => entry.data.status === "published" || entry.data.status === "preview")
     .map(entry => {
       if (entry.id.replace(/\.md$/i, "") !== entry.data.operator) {
         throw new Error('Operator-Guide-Datei "' + entry.id + '.md" muss denselben Slug wie "operator: ' + entry.data.operator + '" besitzen.');
@@ -28,7 +27,7 @@ const extraData = getImportedOperatorExtras(guide.operator);
 const localized = getOperatorLocale(guide.operator,gameData?.source.snapshot);
 const operatorName = guide.displayName ?? guide.operator.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
 const { Content } = await render(entry);
-const isPreview = guide.status === "draft";
+const isPreview = guide.status === "preview";
 ---
 <EndfieldPlaceholder
   title={operatorName + " Guide"}
