@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "status": "manual-confirmations",
+  "policy": "Only add a confirmed Gear-ID + official SKPORT map Marker-ID when personally observed in game or backed by an unambiguous image/video of that precise crate and unlock. Never populate from a set-name-only hint.",
+  "confirmedLinks": [],
+  "entryTemplate": {
+    "gearId": "271",
+    "markerId": "official-32-character-SKPORT-map-marker-id",
+    "checkedOn": "2026-10-15",
+    "evidenceType": "in-game",
+    "evidenceNotes": "What exact Gear Template appeared on opening this precise crate?",
+    "reviewedBy": "Ag0n1st"
+  }
+}
