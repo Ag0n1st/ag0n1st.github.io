@@ -1,0 +1,26 @@
+name: Probe SKPORT weapons and gear catalogue
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install public browser runner
+        run: |
+          npm ci
+          npm install --no-save --package-lock=false playwright-core
+          google-chrome --version
+      - name: Inspect anonymous official SKPORT categories
+        run: node scripts/endfield/probe-equipment-wiki.mjs
