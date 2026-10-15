@@ -1,0 +1,187 @@
+{
+  "operator": "typhoeus",
+  "locale": "de",
+  "sourceLanguage": "en",
+  "sourceSnapshot": "2026-10-12",
+  "status": "redaktionelle-uebersetzung",
+  "terminologyNote": "Deutsche redaktionelle Übersetzung der englischen SKPORT-Wiki. Offizielle englische Skillnamen und spielinterne Fachbegriffe bleiben zum Abgleich sichtbar.",
+  "operatorTerms": {
+    "Agility": "Beweglichkeit",
+    "Will": "Willenskraft",
+    "Strength": "Stärke",
+    "Intellect": "Intelligenz",
+    "Base ATK": "Basis-ANG",
+    "Base HP": "Basis-LP",
+    "Nature": "Natur",
+    "Striker": "Striker",
+    "Arts Unit": "Arts Unit"
+  },
+  "skills": {
+    "basic": {
+      "name": "Wildlands Huntress",
+      "description": "BASISANGRIFF:\nEine Angriffsfolge aus bis zu fünf Treffern, die Naturschaden verursacht. Wird Typhoeus aktiv gesteuert, verursacht der letzte Treffer zusätzlich 17 Taumelschaden (Stagger).\n\nSTURZANGRIFF:\nEin in der Luft ausgeführter Basisangriff wird zu einem Sturzangriff, der Gegnern in der Nähe Naturschaden zufügt.\n\nFINISHER:\nEin Basisangriff in der Nähe eines taumelnden Gegners wird zum Finisher. Dieser verursacht hohen Naturschaden und stellt einen Teil der SP wieder her."
+    },
+    "battle": {
+      "name": "Piercing Arrows of the Woods",
+      "description": "Typhoeus springt in die Luft und geht kurz in den Schwebeflug (Hovering) über. In diesem Zustand kann sie fünf Luft-Basisangriffe (ABATK) ausführen. Jeder davon trifft bis zu zwei Ziele mit Pfeilen und verursacht Naturschaden.\n\nTrifft ein Luft-Basisangriff einen Gegner mit Natur-Anhaftung (Nature Infliction), wird ein Stapel davon verbraucht. Typhoeus erhält ein Zeichen (Sign) und zusätzliche Ultimate-Energie.\n\nBesitzt Typhoeus Jagdpfeile (Hunting Arrows), verbraucht sie einen davon und wandelt den Luft-Basisangriff in einen verstärkten Schuss (Power Shot) um.\n\nPOWER SHOT:\nNach einem Treffer löst er beim Gegner zwangsweise einen Natur-Ausbruch (Nature Burst) aus. Wird dabei Natur-Anhaftung verbraucht, erhöht sich der Schaden dieses Natur-Ausbruchs.\n\nWird Typhoeus aktiv gesteuert, zählt ihr fünfter Luft-Basisangriff als letzter Treffer (Final Strike) und als Power Shot, ohne Jagdpfeile zu verbrauchen."
+    },
+    "combo": {
+      "name": "Rampant Thorns",
+      "description": "KOMBO-AUSLÖSER:\nTyphoeus erreicht die maximale Anzahl an Zeichen (Signs).\n\nTyphoeus wandelt alle Zeichen in Jagdpfeile (Hunting Arrows) um und setzt die verfügbaren Luft-Basisangriffe (ABATK) zurück.\n\nSie fokussiert ihren „Huntress's Gaze“ und entfesselt einen Pfeilhagel auf das Ziel. Dadurch entsteht im Zielgebiet ein Hagelfeld (Barrage Array). Gegner darin erleiden fortlaufend Naturschaden, werden verlangsamt und erhalten erhöhten Schaden durch Natur-Ausbrüche (Nature Burst).\n\nJe zwei Zeichen werden in einen Jagdpfeil umgewandelt."
+    },
+    "ultimate": {
+      "name": "Call of Ice Mountain",
+      "description": "Typhoeus feuert einen verstärkten Pfeil (Imbued Arrow) ab. Beim Treffer explodiert er und verursacht hohen Naturschaden an Gegnern im Wirkungsbereich. Anschließend geht Typhoeus in den Schwebeflug (Hovering) über; ihre verfügbaren Luft-Basisangriffe (ABATK) werden zurückgesetzt.\n\nBei ihren nächsten fünf Luft-Basisangriffen löst jeder Treffer am Zielort einen Pfeilhagel (Hail of Arrows) aus, der Naturschaden verursacht. Der fünfte Pfeilhagel ist verstärkt und verursacht höheren Schaden.\n\nBeim Aktivieren der Ultimate erhält Typhoeus sofort zwei Jagdpfeile (Hunting Arrows)."
+    }
+  },
+  "metricLabels": {
+    "BATK SEQ 1 Multiplier": "Basisangriff – Treffer 1",
+    "BATK SEQ 2 Multiplier": "Basisangriff – Treffer 2",
+    "BATK SEQ 3 Multiplier": "Basisangriff – Treffer 3",
+    "BATK SEQ 4 Multiplier": "Basisangriff – Treffer 4",
+    "BATK SEQ 5 Multiplier": "Basisangriff – Treffer 5",
+    "Finisher ATK Multiplier": "Finisher-Schadensmultiplikator",
+    "Dive ATK Multiplier": "Sturzangriff-Multiplikator",
+    "SP Cost": "SP-Kosten",
+    "Initial Aerial Shot DMG Multiplier": "Erster Luftschuss – Schadensmultiplikator",
+    "ABATK DMG": "Luft-Basisangriff – Schaden",
+    "Aerial Final Strike DMG": "Letzter Lufttreffer – Schaden",
+    "Aerial Final Strike Stagger": "Letzter Lufttreffer – Stagger",
+    "Power Shot Nature Burst DMG Multiplier": "Power Shot – Natur-Ausbruch-Multiplikator",
+    "Additional Ultimate Energy": "Zusätzliche Ultimate-Energie",
+    "Cooldown": "Abklingzeit",
+    "\"Huntress's Gaze\" Hit DMG": "Huntress's Gaze – Trefferschaden",
+    "Stagger": "Taumelschaden (Stagger)",
+    "Ultimate Energy Gain": "Erhaltene Ultimate-Energie",
+    "Area DMG Over Time": "Flächenschaden über Zeit",
+    "Slow": "Verlangsamung",
+    "Nature Burst DMG Boost": "Bonus auf Natur-Ausbruch-Schaden",
+    "Ultimate Energy Cost": "Ultimate-Energiekosten",
+    "Imbued Arrow Explosion DMG": "Verstärkter Pfeil – Explosionsschaden",
+    "Imbued Arrow Stagger": "Verstärkter Pfeil – Stagger",
+    "Normal Hail of Arrows DMG": "Pfeilhagel – Schaden",
+    "Empowered Hail of Arrows DMG": "Verstärkter Pfeilhagel – Schaden"
+  },
+  "potentials": {
+    "1": {
+      "name": "Samifjod Fletching",
+      "effect": "Im Schwebeflug (Hovering) steigt der ANG-Wert um 18 %, und der Schaden von Luft-Basisangriffen (ABATK) wird auf das 1,2-Fache erhöht.\nDas Talent „Huntress's Focus“ wird verbessert: Die Schutzbarriere kann 3 Sekunden früher erneut aktiviert werden.\nSchaltet das Operator-Snapshot „Warmth of Winter Sun“ frei."
+    },
+    "2": {
+      "name": "Huntress's Stride",
+      "effect": "Beweglichkeit (Agility) +20, Arts-Intensität +16."
+    },
+    "3": {
+      "name": "Thorny Trap",
+      "effect": "Verbessert die Kombofertigkeit „Rampant Thorns“: Ihre Abklingzeit verringert sich um 2 Sekunden. Gegner innerhalb des Barrage Array erleiden 6 % mehr Schaden durch Natur-Ausbrüche.\nSchaltet das Operator-Snapshot „Little Huntress“ frei."
+    },
+    "4": {
+      "name": "No Escape",
+      "effect": "Verbessert die Ultimate „Call of Ice Mountain“: Die Kosten an Ultimate-Energie werden um 15 % reduziert."
+    },
+    "5": {
+      "name": "Fatal Shot",
+      "effect": "Verbessert die Ultimate „Call of Ice Mountain“: Typhoeus erhält einen zusätzlichen Jagdpfeil. Ihr Ultimate-Schaden wird auf das 1,2-Fache erhöht; außerdem steigt der Natur-Ausbruch-Schadensmultiplikator ihres Power Shot auf das 1,1-Fache.\nSchaltet das Operator-Snapshot und das Profilthema „Deep in the Icefield She Glances“ frei."
+    }
+  },
+  "talents": {
+    "skirmisher": {
+      "name": "Skirmisher",
+      "levelEffects": [
+        "Beweglichkeit des Operators +10",
+        "Beweglichkeit des Operators +15",
+        "Beweglichkeit des Operators +15",
+        "Beweglichkeit des Operators +20"
+      ]
+    },
+    "prey-checklist": {
+      "name": "Prey Checklist",
+      "levelEffects": [
+        "Wird an einem Gegner ein Natur-Ausbruch (Nature Burst) ausgelöst, erhält Typhoeus ein Zeichen (Sign). Der Schaden von Angriffen, die durch den Verbrauch von Jagdpfeilen (Hunting Arrows) verstärkt werden, steigt auf das 1,2-Fache.\nBeim Kampfbeginn erhält Typhoeus sofort 1 Zeichen.\nSie kann höchstens 4 Jagdpfeile und 8 Zeichen besitzen.\nWerden Natur-Ausbrüche gleichzeitig an mehreren Gegnern ausgelöst, zählt dies für die erhaltenen Zeichen nur als ein Ereignis.",
+        "Wird an einem Gegner ein Natur-Ausbruch (Nature Burst) ausgelöst, erhält Typhoeus ein Zeichen (Sign). Der Schaden von Angriffen, die durch den Verbrauch von Jagdpfeilen (Hunting Arrows) verstärkt werden, steigt auf das 1,4-Fache.\nBeim Kampfbeginn erhält Typhoeus sofort 2 Zeichen.\nSie kann höchstens 4 Jagdpfeile und 8 Zeichen besitzen.\nWerden Natur-Ausbrüche gleichzeitig an mehreren Gegnern ausgelöst, zählt dies für die erhaltenen Zeichen nur als ein Ereignis.",
+        "Wird an einem Gegner ein Natur-Ausbruch (Nature Burst) ausgelöst, erhält Typhoeus ein Zeichen (Sign). Der Schaden von Angriffen, die durch den Verbrauch von Jagdpfeilen (Hunting Arrows) verstärkt werden, steigt auf das 1,6-Fache.\nBeim Kampfbeginn erhält Typhoeus sofort 4 Zeichen.\nSie kann höchstens 4 Jagdpfeile und 8 Zeichen besitzen.\nWerden Natur-Ausbrüche gleichzeitig an mehreren Gegnern ausgelöst, zählt dies für die erhaltenen Zeichen nur als ein Ereignis."
+      ]
+    },
+    "huntress-s-focus": {
+      "name": "Huntress's Focus",
+      "levelEffects": [
+        "Im Schwebeflug aktiviert Typhoeus eine Schutzbarriere. Solange sie aktiv ist, erleidet sie 15 % weniger Schaden und wird schwerer unterbrochen. Erleidet Typhoeus Schaden, zerbricht die Barriere und kann erst nach 30 Sekunden erneut aktiviert werden.",
+        "Im Schwebeflug aktiviert Typhoeus eine Schutzbarriere. Solange sie aktiv ist, erleidet sie 30 % weniger Schaden und wird schwerer unterbrochen. Erleidet Typhoeus Schaden, zerbricht die Barriere und kann erst nach 18 Sekunden erneut aktiviert werden."
+      ]
+    },
+    "lithic-murmurs": {
+      "name": "Lithic Murmurs",
+      "levelEffects": [
+        "Bei Zuweisung zur Wachstumskammer steigt die Wachstumsrate seltener Mineralien um 20 %.",
+        "Bei Zuweisung zur Wachstumskammer steigt die Wachstumsrate seltener Mineralien um 30 %."
+      ]
+    },
+    "life-in-the-spores": {
+      "name": "Life in the Spores",
+      "levelEffects": [
+        "Bei Zuweisung zur Wachstumskammer steigt die Wachstumsrate von Pilzmaterial um 20 %.",
+        "Bei Zuweisung zur Wachstumskammer steigt die Wachstumsrate von Pilzmaterial um 30 %."
+      ]
+    }
+  },
+  "requirementLabels": {
+    "20% trust with the Operator": "20 % Vertrauen mit dem Operator",
+    "50% trust with the Operator": "50 % Vertrauen mit dem Operator",
+    "100% trust with the Operator": "100 % Vertrauen mit dem Operator",
+    "Promote to E1 to unlock": "Freischaltung ab Aufstieg E1",
+    "Promote to E2 to unlock": "Freischaltung ab Aufstieg E2",
+    "Promote to E3 to unlock": "Freischaltung ab Aufstieg E3",
+    "Promote to E4 to unlock": "Freischaltung ab Aufstieg E4",
+    "Operator Lv.20": "Operator-Level 20",
+    "Operator Lv.40": "Operator-Level 40",
+    "Operator Lv.60": "Operator-Level 60",
+    "Operator Lv.80": "Operator-Level 80"
+  },
+  "promotions": {
+    "Promotion I": {
+      "name": "Aufstieg I",
+      "effect": "Erhöht das maximale Operator-Level auf 40."
+    },
+    "Promotion II": {
+      "name": "Aufstieg II",
+      "effect": "Erhöht das maximale Operator-Level auf 60."
+    },
+    "Promotion III": {
+      "name": "Aufstieg III",
+      "effect": "Erhöht das maximale Operator-Level auf 80."
+    },
+    "Promotion IV": {
+      "name": "Aufstieg IV",
+      "effect": "Erhöht das maximale Operator-Level auf 90."
+    },
+    "Outfitting I": {
+      "name": "Ausrüstungsfreischaltung I",
+      "effect": "Erlaubt dem Operator, Ausrüstung blauer Qualität anzulegen."
+    },
+    "Outfitting II": {
+      "name": "Ausrüstungsfreischaltung II",
+      "effect": "Erlaubt dem Operator, Ausrüstung violetter Qualität anzulegen."
+    },
+    "Outfitting III": {
+      "name": "Ausrüstungsfreischaltung III",
+      "effect": "Erlaubt dem Operator, Ausrüstung goldener Qualität anzulegen."
+    }
+  },
+  "materials": {
+    "100": "Elementare Kampferfahrung",
+    "101": "Mittlere Kampferfahrung",
+    "102": "Fortgeschrittene Kampferfahrung",
+    "105": "Elementarer Kognitionsträger",
+    "106": "Fortgeschrittener Kognitionsträger",
+    "107": "Protodisk",
+    "108": "Protoset",
+    "109": "Protoprism",
+    "110": "Protohedron",
+    "112": "Tachyon-Siebgitter",
+    "128": "Rosa Röhrling",
+    "133": "Roter Röhrling",
+    "137": "Rubinröhrling",
+    "642": "T-Creds",
+    "1048": "Talos-Kappe"
+  }
+}
