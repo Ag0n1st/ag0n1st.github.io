@@ -1,0 +1,54 @@
+name: Cache official Endfield catalogue icons
+
+on:
+  push:
+    branches: [endfield-official-catalog-assets-20261015]
+    paths:
+      - scripts/endfield/catalog-assets.mjs
+      - scripts/endfield/check-budget.mjs
+      - .github/workflows/import-endfield-catalog-assets.yml
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: 'Cache verified official static images to the selected branch'
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    if: github.repository == 'Ag0n1st/ag0n1st.github.io'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install browser and WebP converter
+        run: |
+          npm ci
+          npm install --no-save --package-lock=false playwright-core sharp
+          google-chrome --version
+      - name: Discover official categories and cache optimised images
+        run: node scripts/endfield/catalog-assets.mjs
+      - name: Enforce 100 MB Endfield project budget
+        run: node scripts/endfield/check-budget.mjs
+      - name: Commit verified official catalogue assets and manifest
+        if: github.event_name == 'push' || inputs.publish == true
+        shell: bash
+        run: |
+          git add -A public/images/endfield/items/ src/data/endfield/catalog/items.json
+          if git diff --cached --quiet; then
+            echo 'No changed assets'
+          else
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'Cache official SKPORT Endfield item, gear and weapon WebP icons'
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi

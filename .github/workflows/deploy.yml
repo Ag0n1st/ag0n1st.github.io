@@ -30,6 +30,8 @@ jobs:
         run: npm install
       - name: Check Endfield import parser
         run: npm run test:endfield
+      - name: Enforce 100 MB Endfield project budget
+        run: node scripts/endfield/check-budget.mjs
       - name: Build
         run: npm run build
       - name: Upload Pages artifact
