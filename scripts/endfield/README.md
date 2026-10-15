@@ -1,58 +1,77 @@
-# SKPORT-Importer: Typhoeus
+# SKPORT-Import: Typhoeus
 
-## Status (15.10.2026)
+## Status
 
-Der Importer wurde an der **echten öffentlichen Wiki-Antwort** aus einer SKPORT-Netzwerkaufzeichnung für Typhoeus (`itemId=1173`) ausgerichtet. Die beigefügten 22 aufgezeichneten Requests enthielten auch Account-/Authentifizierungsantworten, weshalb wir **niemals den kompletten Netzwerk-Mitschnitt ins öffentliche GitHub-Repository übernehmen dürfen**.
+Die öffentliche SKPORT-Antwort vom 12.10.2026 (Wiki-Item **1173**) wurde auf folgende Strukturen geprüft und ihre Ergebnisse wurden getrennt ins GitHub-Repository übernommen:
 
-Es konnten in der Originalantwort nachgewiesen werden:
+- `src/data/endfield/operators/typhoeus.json`: Stammdaten sowie **4 Fertigkeiten × Rang 1–9 + Meisterschaft I–III**, mit englischen Originalkennzahlen.
+- `src/data/endfield/operators/typhoeus.extra.json`: **6 Attributstufen, 7 Promotions/Outfittings, 5 Talentknoten, P1–P5 und 15 Materialnamen** mit Item-IDs und Mengen.
+- `src/content/operator-guides/typhoeus.md`: Deine **redaktionellen Texte**, unabhängig vom Datenimport.
 
-| Skilltyp | Skillname | Beschreibung | Werte je Rang |
-|---|---|---|---|
-| Basic Attack | Wildlands Huntress | eigenes Dokument | 12 Spalten |
-| Battle Skill | Piercing Arrows of the Woods | eigenes Dokument | 12 Spalten |
-| Combo Skill | Rampant Thorns | eigenes Dokument | 12 Spalten |
-| Ultimate | Call of Ice Mountain | eigenes Dokument | 12 Spalten |
+Die vorhandene Astro-Vorlage verwendet diese beiden JSON-Datensätze. Wir benötigen für diese Seiten **keine laufende Datenbank und keine Live-Anbindung** an SKPORT.
 
-Die Rangfolge ist **RANK 1 bis RANK 9**, danach **Mastery I bis Mastery III**. Die einzelnen Fertigkeiten enthalten sieben bis acht Zahlen-/Kostenzeilen; die Kosten bestehen aus Itemreferenzen (`entry.id` plus `entry.count`).
+### Was die Quelldaten tatsächlich enthalten
 
-Die offizielle Wiki-Antwort liegt im Feld `response.data.item`. Der relevante Datenbaum ist `item.document` mit `documentMap`, `widgetCommonMap` und `extraInfo`. Das Skill-Widget `1SuOqtCW` enthält `tabList` (vier dynamische, zeitbasierte Tab-IDs) und `tabDataMap`. **Wichtig:** Die früher angenommenen Kennungen `gIuAIUyt`, `0ctR1S1J`, `CqJxefHj`, `tVlf3UYx` sind **Beschreibungs-Dokument-IDs und KEINE Tab-IDs**. Das Leveltabellen-Dokument steht unabhängig davon direkt in `tabDataMap[tabId].content`.
+- Operatorattribute: **LV.1 / 20 / 40 / 60 / 80 / 90**; Hauptattribut **Agility**, Sekundärattribut **Will**. Diese Level haben **nichts** mit unserem Ausrüstungsfilter (50/60/70) zu tun.
+- Talentknoten: **Skirmisher** (Attribut-Knoten), **Prey Checklist** und **Huntress's Focus** (Combat Talents), **Lithic Murmurs** und **Life in the Spores** (Schiffstalente).
+- Aufstieg: Promotion I–IV und Outfitting I–III. Voraussetzungen und Kosten wurden getrennt übernommen.
+- Potenziale: **Samifjod Fletching, Huntress's Stride, Thorny Trap, No Escape, Fatal Shot**.
+- Materialnamen aus der separat mitgelieferten öffentlichen `/web/v1/wiki/item/list`-Antwort: Item-ID, englischer Name, im Import gespeicherte Kostenmenge.
 
-Die Verarbeitung ist offline und schreibt ausschließlich Felder aus dem **öffentlichen Wiki-Datensatz**, nicht aus danebenliegenden Login-/User-Responses.
+## Für zukünftige lokale Updates
 
-## Lokale Verwendung
+**Wichtig:** Der originale Browser-Netzwerkmitschnitt kann auch Antworten von Account-/Login-Anfragen enthalten. Diese Rohdatei bitte **niemals** öffentlich in GitHub speichern oder teilen. `local-data/` ist in `.gitignore` ausgeschlossen.
 
-Den kompletten Nutzer-Mitschnitt nur lokal außerhalb des Repositorys ablegen:
+Speichere einen eigenen Roh-Mitschnitt lokal als:
 
-```text
-local-data/skport/skport-relevant.json
-```
+`local-data/skport/skport-relevant.json`
 
-Der Ordner `local-data/` ist bewusst in `.gitignore` ausgeschlossen. Das Script sucht aus dem Mitschnitt genau die öffentliche Antwort `/web/v1/wiki/item/info?id=1173` heraus. Alternativ akzeptiert es direkt die einzelne `response` oder `response.data.item` als JSON.
+Danach im Projektordner:
 
 ```bash
 npm run test:endfield
 
-node scripts/endfield/skport-extract.mjs \
+node scripts/endfield/import-typhoeus.mjs \
   --input local-data/skport/skport-relevant.json \
-  --report local-data/skport/typhoeus-inspection.json \
-  --out src/data/endfield/imports/typhoeus.skport.json
+  --snapshot 2026-10-12 \
+  --out-dir src/data/endfield/operators
+
+npm run build
 ```
 
-Bei Problemen mit Struktur, Skillnamen, Tabellen, Dokumentzuordnung oder Rangspalten wird `--out` verhindert. Mit `--report` kann die Fehlerdiagnose auch dann untersucht werden.
+`--snapshot` immer auf das tatsächliche Datum der jeweiligen Aufnahme setzen. Das Programm verarbeitet nur die öffentliche SKPORT-Typhoeus-Item-Antwort und die öffentliche Item-Namensliste, nicht die übrigen Anfragen des Mitschnitts. Bei unvollständigen Skill-Tabellen, ungültigen Zuordnungen oder fehlenden Materialnamen bricht es ab.
 
-**Der Status `validated-structure` bedeutet eine geprüfte Tabellenstruktur, aber nicht, dass die offizielle Quelle unveränderlich oder jeder Spielwert fachlich mit dem Live-Spiel verglichen wurde.** In der Quelle steht `lang: en`; eine deutsche Übersetzung muss separat erfolgen. URLs zu Animationen sind Metadaten und werden nicht als GIF-Dateien ins Repository gespeichert.
+**Vor dem Commit** die Änderung der generierten Daten vergleichen. Bei unplausiblen API-Änderungen den alten, gültigen JSON-Stand in Git beibehalten.
 
-## Hinweise zu Daten und Sicherheit
+Für einzelne öffentliche Antworten ohne Netzwerk-Mitschnitt:
 
-- Die vollständige Aufzeichnung darf wegen möglicher Kontodaten **nicht** veröffentlicht werden.
-- Im Export wird nur `response.data.item` verwendet; andere Requests werden vollständig ignoriert.
-- Der Quellfingerabdruck wird ausschließlich aus dem öffentlichen Wiki-Eintrag berechnet.
-- Eigene Guidebewertungen verbleiben unter `src/content/operator-guides/` und werden nicht überschrieben.
-- Itemreferenzen sind IDs: Materialnamen/Icons sind erst nach separater Item-Zuordnung bekannt.
-- Die kompakte Operatorstruktur enthält Seltenheit, Element, Klasse, Waffentyp, Fraktion sowie Cover-/Illustrations-URLs.
+```bash
+node scripts/endfield/skport-extras.mjs \
+  --input local-data/skport/typhoeus-public-item.json \
+  --items local-data/skport/public-items-index.json \
+  --snapshot 2026-10-12 \
+  --out src/data/endfield/operators/typhoeus.extra.json
+```
 
-## Nächster Schritt
+Die Datei `public-items-index.json` muss hierbei das Objekt `response.data.items` aus der öffentlichen Wiki-Itemlisten-Antwort enthalten.
 
-Den bereinigten Import in die Astro-Darstellung integrieren: Operatorprofil, vier Fertigkeiten einschließlich dynamischer 12-Rang-Tabelle und Materialreferenzen. Anschließend Talent-/Potenzial-/Aufstieg-Widgets ebenfalls prüfen. Vor dem produktiven Veröffentlichen müssen Sprache, Asset-Nutzung und Wertabgleich geklärt sein.
+Die Testdateien `skport-extract.test.mjs` und `skport-extras.test.mjs` laufen vor jedem GitHub-Pages-Deployment.
 
-Der CI-Test vor jedem Website-Deploy prüft den Parser mit reproduzierbaren Fixtures – **nicht** automatisch den aktuellen SKPORT-Server.
+## Fachliche Einschränkungen
+
+- **Stand und Sprache:** Originaldaten sind auf Englisch (EN). Eine deutsche Lokalisierung müssen wir separat einrichten.
+- **Werte:** Die Tabellenstruktur wurde auf Basis der Aufnahme kontrolliert, aber nicht jeder Zahlenwert mit dem laufenden Spiel gegengeprüft.
+- **Bewertungen:** Persönliche Builds, Teamlisten, Prozent-Vergleiche und Skill-Prioritäten sind **nicht** aus der SKPORT-API abzuleiten. Diese bleiben in den Markdown-Guides.
+- **Grafiken:** Die Quelle liefert URLs zu Operator-Artwork, Icons und teilweise Animationen. Die Dateibereinigung/Optimierung für unser Repository ist ein eigener Schritt; Videos/GIFs sollen nicht lokal gehostet werden.
+- **Materialkosten:** Wir zeigen die im SKPORT-Export angegebenen Kosten an. Ob diese als Einzel-/Gesamtkosten gelten, wird erst beim fachlichen Abgleich festgelegt. Keine frei erfundenen Summen.
+- **Ausfall:** Wenn die Quelle nicht erreichbar ist, baut Astro mit den letzten im Repository gespeicherten Dateien weiter. Kein Supabase erforderlich.
+
+## Technischer Aufbau
+
+`scripts/endfield/skport-extract.mjs` erkennt das Skill-Widget. Die früher verwechselten IDs `gIuAIUyt`, `0ctR1S1J`, `CqJxefHj`, `tVlf3UYx` sind **Beschreibungsdokumente** und nicht Tab-IDs. Jeder Skill besitzt eine getrennte Tabellen-Dokumentreferenz.
+
+`scripts/endfield/skport-extras.mjs` extrahiert weitere, im `chapterGroup` ausdrücklich benannte Widgets und ihre relationalen `documentMap`-Tabellen, einschließlich referenzierter Material-IDs.
+
+`scripts/endfield/import-typhoeus.mjs` führt beide Schritte zusammen und erzeugt nach Validierung die beiden versionierten Operator-JSON-Dateien.
+
+Offizielle Quelle: https://wiki.skport.com/endfield
