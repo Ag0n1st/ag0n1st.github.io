@@ -95,6 +95,16 @@ try{
     await mkdir(resolve("local-data/skport"),{recursive:true});
     await writeFile(output,JSON.stringify({code:0,data:{item}},null,2));
     if(list.length)await writeFile(resolve("local-data/skport/public-items-index.json"),JSON.stringify(list.at(-1).data.items,null,2));
+    const potentialWidget=(doc.chapterGroup??[]).flatMap(g=>g.widgets??[]).find(w=>/potential phases/i.test(w.title));
+    if(potentialWidget){
+      const widget=doc.widgetCommonMap?.[potentialWidget.id];
+      const ref=widget?.tabDataMap?.default?.content;
+      const grids=ref&&doc.documentMap?.[ref] ? extractDocument(ref,doc.documentMap[ref]).sections.filter(t=>t.kind==="table") : [];
+      console.log("Liino potential tables diagnostic:",JSON.stringify(grids.map((grid,i)=>({
+        i,rows:grid.table.rows.length,
+        preview:grid.table.rows.slice(0,6).map(row=>row.cells.map(c=>String(c).slice(0,190)))
+      }))));
+    }
     console.log("Success: public Liino Wiki response captured safely. Bytes:",JSON.stringify(item).length);
   }else{
     console.log("No unambiguous official Liino Wiki response. The probe did NOT produce game data.");
