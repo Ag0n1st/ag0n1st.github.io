@@ -8,7 +8,7 @@
 - **Bilder/Icons:** `public/images/endfield/operators/<slug>/` – lokale statische Dateien, soweit verfügbar.
 - **Astro-Seiten:** `src/pages/endfield/operatoren/[slug].astro` – eine Vorlage für jeden veröffentlichten Guide.
 
-Der gesamte Seitenaufruf funktioniert ohne Datenbank oder SKPORT-API-Verbindung.
+Der gesamte Seitenaufruf funktioniert ohne Datenbank oder SKPORT-API-Verbindung. Bei vorhandenen lokalen Grafiken wird auch kein SKPORT-CDN benötigt.
 
 ## Neuer allgemeiner Operator-Importer
 
@@ -49,11 +49,11 @@ npm run assets:endfield
 npm run assets:endfield -- --slug typhoeus
 ```
 
-Alternativ: <https://github.com/Ag0n1st/ag0n1st.github.io/actions/workflows/sync-endfield-assets.yml> → **Run workflow**. Diese Action synchronisiert die Bilder, committet nur die neuen statischen Bilddateien und startet dann den GitHub-Pages-Deploy.
+Alternativ: <https://github.com/Ag0n1st/ag0n1st.github.io/actions/workflows/sync-endfield-assets.yml> → **Run workflow**. Diese Action synchronisiert die Bilder, installiert einmalig den WebP-Optimierer `sharp`, reduziert die Bildgrößen und committet ausschließlich die optimierten statischen Bilddateien. Anschließend startet sie den GitHub-Pages-Deploy.
 
 Bereits gespeicherte Assets werden standardmäßig nicht überschrieben. Die Website bevorzugt lokale Kopien; andernfalls bleiben die in den importierten Daten hinterlegten SKPORT-CDN-URLs als Übergangslösung bestehen.
 
-Für Typhoeus sind **Cover, Illustration und vier Skill-Icons** bereits erfolgreich gesichert. Die große Illustration sollte vor einem Ausbau auf sehr viele Operatoren perspektivisch zu WebP optimiert werden, um die GitHub-Pages-Größengrenze zu schonen.
+Für Typhoeus sind **Cover, Illustration und vier Skill-Icons** bereits erfolgreich als WebP gesichert. Die sechs Dateien benötigen zusammen rund **0,74 MB statt zuvor 4,70 MB**. GIFs, Videos und Animationen werden nicht importiert.
 
 **Bildrechte:** Die Rechte an offiziellen Spielgrafiken liegen weiterhin bei den jeweiligen Rechteinhabern. Die Wiki ist als Quelle gekennzeichnet; das gilt nicht als eigene Nutzungsrechtsfreigabe.
 
@@ -132,7 +132,7 @@ Die Testdateien `skport-extract.test.mjs` und `skport-extras.test.mjs` laufen vo
 - **Werte:** Die Tabellenstruktur wurde auf Basis der Aufnahme kontrolliert, aber nicht jeder Zahlenwert mit dem laufenden Spiel gegengeprüft.
 - **Bewertungen:** Persönliche Builds, Teamlisten, Prozent-Vergleiche und Skill-Prioritäten sind **nicht** aus der SKPORT-API abzuleiten. Diese bleiben in den Markdown-Guides.
 - **Grafiken:** Die Quelle liefert URLs zu Operator-Artwork, Icons und teilweise Animationen. Die Dateibereinigung/Optimierung für unser Repository ist ein eigener Schritt; Videos/GIFs sollen nicht lokal gehostet werden.
-- **Materialkosten:** Wir zeigen die im SKPORT-Export angegebenen Kosten an. Ob diese als Einzel-/Gesamtkosten gelten, wird erst beim fachlichen Abgleich festgelegt. Keine frei erfundenen Summen.
+- **Materialkosten:** Wir zeigen die im SKPORT-Export je Fertigkeitsstufe angegebenen Materialkosten an, ohne unbestätigte Gesamtkosten zu errechnen.
 - **Ausfall:** Wenn die Quelle nicht erreichbar ist, baut Astro mit den letzten im Repository gespeicherten Dateien weiter. Kein Supabase erforderlich.
 
 ## Technischer Aufbau
