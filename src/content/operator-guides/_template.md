@@ -3,6 +3,7 @@
 # Neuen Guide anlegen: _template.md kopieren, z.B. nach si.md, operator ändern.
 # Der Operator-Slug muss zur Datei und später zum Import-Datensatz passen.
 operator: neuer-operator
+# displayName: "Angezeigter Operatorname" # optional bis Spieldaten-Import
 status: draft # erst nach dem Befüllen auf "published" ändern
 # updatedAt: 2026-10-15
 
@@ -14,8 +15,7 @@ guideVideo:
   # url: "https://www.youtube.com/watch?v=VIDEO_ID"
 
 overview:
-  summary: |
-    Eine kurze Erklärung in ein bis drei Sätzen.
+  summary: "" # vor Veröffentlichung ausfüllen
   strengths: []
   weaknesses: []
   ratings:
@@ -28,8 +28,7 @@ overview:
 
 # 2. OPERATOR KIT
 operatorKit:
-  playstyle: |
-    Hier die Rolle, grundlegende Mechaniken und Spielweise erklären.
+  playstyle: "" # Rolle, Kernmechaniken, Spielweise
   progressionNotes: ""
   resourceNotes: "" # Fundorte / Story- und Fabrik-Freischaltungen kommentieren
 
@@ -37,14 +36,15 @@ operatorKit:
 skills:
   # Später die wirkliche Priorität einstellen.
   # Vier Slots, genau drei Vergleichszeichen (">" oder ">=").
-  priority:
-    order: [battle, combo, ultimate, basic]
-    comparisons: [">", ">=", ">"]
-    targetLevels:
-      basic: "9"
-      battle: "M3"
-      combo: "9"
-      ultimate: "M1"
+  # priority:
+  #   order: [battle, combo, ultimate, basic]
+  #   comparisons: [">", ">=", ">"]
+  #   targetLevels:
+  #     basic: "9"
+  #     battle: "M3"
+  #     combo: "9"
+  #     ultimate: "M1"
+  # Dies ist nur ein STRUKTURBEISPIEL, KEINE tatsächliche Skill-Priorität.
   active:
     basic: ""
     battle: ""
@@ -86,9 +86,7 @@ equipment:
   progression: []
   # - stage: early # early | mid | late | endgame
   #   note: "Frühe Übergangsausrüstung und Freischaltung"
-  generalNotes: |
-    Achtet bei der Ausrüstung grundsätzlich darauf, Ausrüstungsteile zu
-    nutzen, die das Haupt- und Sekundärattribut des jeweiligen Operators erhöhen.
+  generalNotes: "" # zusätzlicher eigener Hinweis; Standard-Disclaimer ist bereits eingebaut
 
 # 6. POTENZIALE
 potentials:
@@ -99,13 +97,11 @@ potentials:
   #   increaseOverPreviousPercent: 0 # optional; nur mit Belegen
   #   increaseOverP0Percent: 0        # optional; nur mit Belegen
   #   comparisonConditions: "Annahmen, Team, Ausrüstung ..."
-  pullAdvice: |
-    Potenziale sind nice to have, nicht notwendig. Hier ggf. Pull-Stopp empfehlen.
+  pullAdvice: "" # persönlicher Stopp-Punkt; allgemeiner Disclaimer erscheint automatisch
 
 # 7. TEAMS
 teams:
-  introduction: |
-    Was braucht der Operator in einem Team? Welche Rollen kann er ausfüllen?
+  introduction: "" # Teambauprinzipien und mögliche Rollen
   roles: [] # mögliche Rollen: main-dps, support, hybrid, sub-dps, control, other
   meta: []
   # - id: meta-team-1
@@ -137,8 +133,7 @@ gameplay:
 
 # 9. FAZIT
 conclusion:
-  verdict: |
-    Hier das kurze Gesamturteil eintragen.
+  verdict: "" # vor Veröffentlichung ausfüllen
   # recommendation: conditional # recommended | conditional | optional
   pullAdvice: ""
   recommendedFor: []
@@ -147,7 +142,6 @@ conclusion:
 
 ---
 
-<!-- Dieser Markdown-Teil ist für zusätzliche längere Erklärungen reserviert.
-     Die neun standardisierten Guide-Bereiche stehen oben im YAML-Block.
-     Der Markdown-Teil wird erst nach der späteren Template-Anbindung gerendert. -->
+<!-- Zusätzlicher Markdown-Text wird am Ende des Fazits gerendert.
+     Hauptinhalt und alle neun Guide-Abschnitte werden aus dem YAML-Block oben erzeugt. -->
 
