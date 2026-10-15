@@ -1117,6 +1117,15 @@ Warum dieser Schritt zuerst: Die technische Engine ist vorhanden, aber `liino.md
 
 **Kleiner technisch sinnvoller Parallelpunkt:** Die **Autoritätslevel-Grenze 60** bei künftigen Patchänderungen zentral in `src/lib/endfield/buildStoryProgress.mjs` nachführen, UI/LocalStorage-/Testgrenzen nicht isoliert ändern.
 
+### 14.2a Fortsetzung nach Repository-Prüfung (15.10.2026)
+
+- Der aktuelle `main`-Commit wurde als `3f0e7125812216d7425c701dc95b66ce0e98e2fd` geprüft: Autoritätslevel-Begrenzung und Roadmap sind integriert.
+- Der einzige offene ältere PR war **#3** (temporäre SKPORT-Katalog-Recherche); er ist **nicht gemergt** und fachlich durch spätere Katalog-Imports weitgehend überholt. Vor einer Schliessung sind seine etwaigen individuellen Erkenntnisse noch gegen den aktuellen Stand abzugleichen.
+- `src/content/operator-guides/liino.md` ist weiterhin `status: preview` und hat `equipment.builds: []`; bei Typhoeus ebenso keine Builds. Keine redaktionelle Build-Empfehlung wurde erfunden oder veröffentlicht.
+- `docs/operator-guide-workflow.md` wurde auf den tatsächlich vorhandenen Gear-Katalog und einen expliziten **Liino-Build-Abnahmeplan** aktualisiert (Branch `docs-liino-build-handoff-20261015`).
+- **Offener nächster Produktschritt:** Creator-Freigabe von vier konkreten offiziellen Gear-IDs und ihrer Rolle/Bewertung für mindestens einen Liino-Build, danach Eingabe in `liino.md`, echte UI-Abnahme und CI. Bis dahin bleiben P1 und der vollständige Browser-E2E-Test ausdrücklich offen.
+- **Branch-Prüfstand:** Reine Dokumentationskorrektur; keine Laufzeit-/Spieldaten-Änderung. CI und Merge-/Deploy-Status erst nach GitHub-Rückmeldung als erfolgreich bezeichnen.
+
 ### 14.3 Sofortleseliste für die nächste KI
 
 1. **`ROADMAP.md`** – dieses Dokument vollständig für Kontext und Projektprioritäten.
