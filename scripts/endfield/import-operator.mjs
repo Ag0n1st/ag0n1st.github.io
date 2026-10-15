@@ -194,7 +194,16 @@ export function importOperator(itemResponse,publicItems,{itemId,slug,snapshot}){
   const talents=talentTabs.map((tab,i)=>{
     const tree=sections(document,tab.content);
     const name=tree.find(s=>s.kind==="text")?.text;
-    const talentTable=oneTable(document,tab.content,"Talent");
+    // SKPORT may attach a small supplemental metadata table to one talent.
+    // Select the unique upgrade table by its labelled columns and preserve
+    // supplemental data instead of assuming there can only be one table.
+    const grids=tree.filter(section=>section.kind==="table").map(section=>section.table);
+    const upgradeCandidates=grids.filter(table=>
+      table.rows.length>=2 && table.rows[0]?.cells.length>=4);
+    assert(upgradeCandidates.length===1,"Talent benötigt genau eine eindeutige Upgrade-Tabelle: "+tab.content);
+    const talentTable=upgradeCandidates[0];
+    const supplementalTables=grids.filter(table=>table!==talentTable).map(table=>
+      table.rows.map(row=>row.cells));
     const heading=talentTable.rows[0];
     const costCol=heading.cells.length-1;
     assert(costCol>=3,"Talent-Kostenspalte fehlt");
@@ -208,7 +217,8 @@ export function importOperator(itemResponse,publicItems,{itemId,slug,snapshot}){
     // For different talent counts, don't fabricate a category.
     const knownCategories=["attribute","combat","combat","ship","ship"];
     const category=talentTabs.length===5 ? knownCategories[i] : "other";
-    return {id:simplifyTalentSlug(name),name,category,levels:stages};
+    return {id:simplifyTalentSlug(name),name,category,levels:stages,
+      ...(supplementalTables.length ? {supplementalTables} : {})};
   });
   assert(new Set(talents.map(t=>t.id)).size===talents.length,"Doppelte Talent-ID");
 
