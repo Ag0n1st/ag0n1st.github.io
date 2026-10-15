@@ -5,6 +5,7 @@ import MaterialCosts from "../../endfield/MaterialCosts.astro";
 import {resolveOfficialItem} from "../../../lib/endfield/itemCatalog";
 import {getOfficialGear} from "../../../lib/endfield/equipmentDetails";
 import {getGearBlueprintResearch} from "../../../lib/endfield/gearBlueprintResearch";
+import storyAreaRegistry from "../../../data/endfield/progression/story-areas.json";
 import {FACTORY_COMPONENT_STAGES, DEFAULT_FACTORY_COMPONENT, FACTORY_LABELS, getBuildRequirements} from "../../../lib/endfield/buildFinder.mjs";
 
 interface Props { model: OperatorGuideModel }
@@ -18,6 +19,7 @@ const officialBuilds=builds.map(build=>{
  const requirements=getBuildRequirements(parts.map(part=>part.detail),{
    availableFromLevel:build.availableFromLevel,
    storyUnlock:build.storyUnlock,
+   locations:parts.map(part=>part.blueprint),
    preview
  });
  return {...build,parts,requirements};
@@ -27,7 +29,7 @@ const officialBuilds=builds.map(build=>{
         <h2>Ausrüstung</h2>
         <div class="op-divided">
           <h3>Build-Finder</h3>
-          <p class="op-section-intro">Filtert deine Ausrüstungs-Builds nach Level und der höchsten Komponente aus den offiziellen SKPORT-Herstellungsrezepten. Story- und Blaupausen-Freischaltungen werden getrennt geprüft.</p>
+          <p class="op-section-intro">Wähle Level, höchste herstellbare Fabrikkomponente und die bereits freigeschalteten Gebiete. Der Finder prüft bei jedem Build alle vier Ausrüstungsteile einzeln – einschließlich des Blaupausenbesitzes.</p>
           <div class="op-two">
             <label class="op-cardlet" style="font-size:12px">Operator- / Ausrüstungslevel
               <select class="op-select" id="op-level">
@@ -51,6 +53,53 @@ const officialBuilds=builds.map(build=>{
               </span>
             </label>
           </div>
+          <div class="op-story-filter">
+            <div class="op-two">
+              <label class="op-cardlet op-story-region-label">Story-Fortschritt · erreichte Region
+                <select class="op-select" id="op-story-region">
+                  <option value="">Nicht festgelegt</option>
+                  {storyAreaRegistry.regions.map(region=>
+                    <option value={region.id}>{region.displayNameDe}</option>)}
+                </select>
+              </label>
+              <div class="op-cardlet op-story-help">
+                <strong>Freigeschaltete Gebiete</strong>
+                <p class="op-muted">Wähle nur Gebiete, die du im Spiel tatsächlich betreten kannst. Ein Gebiet der aktuellen Version wird nicht automatisch freigeschaltet.</p>
+              </div>
+            </div>
+            <details class="op-details op-story-areas" id="op-story-areas-panel">
+              <summary>Einzelne Gebiete auswählen <span id="op-story-area-counter">0 ausgewählt</span></summary>
+              <div class="op-story-areas-body">
+                {storyAreaRegistry.regions.map(region=>
+                  <fieldset class="op-story-area-group" data-story-region-group={region.id}>
+                    <legend>{region.displayNameDe}</legend>
+                    <div class="op-story-area-options">
+                      {storyAreaRegistry.areas.filter(area=>area.regionId===region.id).map(area=>
+                        <label class="op-story-area-option">
+                          <input type="checkbox" value={area.id} data-story-area={area.id} data-area-region={region.id} />
+                          <span>{area.displayNameDe}</span>
+                        </label>)}
+                    </div>
+                  </fieldset>)}
+                <p class="op-muted">Die Auswahl bestätigt nur den Gebiets-Zugang, nicht das Einsammeln der dortigen Blaupausenkisten. Nebenmissionen können Gebiete unabhängig von der Hauptstory freischalten.</p>
+              </div>
+            </details>
+            <details class="op-details op-story-extra">
+              <summary>Weitere Fortschritte · Autoritätslevel und Wuling-Warenumverteilung</summary>
+              <div class="op-two op-story-extra-fields">
+                <label>Autoritätslevel
+                  <input class="op-select" id="op-authority-level" type="number" min="0" max="200" step="1" placeholder="Nicht angegeben" inputmode="numeric" />
+                </label>
+                <label>Wuling-Warenumverteilung
+                  <select class="op-select" id="op-stock-level">
+                    <option value="">Nicht angegeben</option>
+                    {[0,1,2,3].map(stage=><option value={stage}>Stufe {stage}</option>)}
+                  </select>
+                </label>
+              </div>
+              <p class="op-muted">Auch ein erreichtes Autoritätslevel oder eine Warenumverteilungsstufe bestätigt noch nicht, dass eine Vorlage abgeholt wurde.</p>
+            </details>
+          </div>
           <div class="op-notice" style="margin-top:12px">
             Ausgewählt: <strong id="op-build-config">Lv. 70 · Pyrrolit-Komponente · End-Game</strong>
             <p class="op-build-progress-status" id="op-build-results" role="status" aria-live="polite">Prüfe vorhandene Guide-Builds …</p>
@@ -59,14 +108,14 @@ const officialBuilds=builds.map(build=>{
               Auch noch gesperrte oder ungeprüfte Builds anzeigen
             </label>
           </div>
-          <p class="op-muted">Die Komponentenreihenfolge ist unsere Progressionsabstufung. Die benötigte Stufe je Build ergibt sich aus den offiziellen Standardrezepten. Eine Komponente allein bestätigt nicht, dass die erforderliche Story, Facility oder Blaupause bereits freigeschaltet ist.</p>
+          <p class="op-muted">Die Komponentenstufe stammt aus offiziellen Standardrezepten; die Gebiets- und Einzelteilhinweise aus unserer gekennzeichneten Recherche. Reicht ein Fundortnachweis nicht aus, bleibt das Ergebnis ungeklärt. Deine Eingaben werden nur in diesem Browser gespeichert, ohne Login.</p>
           <div class="op-notice op-gear-disclaimer" style="margin-top:12px"><strong>Hinweis zur Ausrüstung:</strong> Achtet bei der Ausrüstung grundsätzlich darauf, Ausrüstungsteile zu nutzen, die das Haupt- und Sekundärattribut des jeweiligen Operators erhöhen. Das gilt besonders für Builds auf niedrigeren Leveln.</div>
           {guide.equipment.generalNotes && <p class="op-body-copy">{guide.equipment.generalNotes}</p>}
         </div>
         <div class="op-divided">
           <h3>Empfohlene Ausrüstung</h3>
           {officialBuilds.length ? <>
-            <p id="op-build-empty" class="op-notice" hidden>Für deinen Fortschritt ist noch kein geprüft verfügbarer Build eingetragen. Ändere die Auswahl oder aktiviere die Anzeige ungeprüfter Builds.</p>
+            <p id="op-build-empty" class="op-notice" hidden>Kein Build ist für deine bisherigen Angaben vollständig verfügbar. Ändere den Fortschritt, bestätige die eigenen Blaupausen oder aktiviere die Anzeige gesperrter Builds.</p>
             <div class="op-pills" aria-label="Build auswählen">{officialBuilds.map((b,i)=><button type="button" class="op-pill-button" data-build-button={b.id} data-build-requirements={JSON.stringify(b.requirements)} aria-pressed={i===0?"true":"false"}>{b.title}<span class="op-build-button-status" data-build-status-label></span></button>)}</div>
             {officialBuilds.map((b,i)=><div class="op-build-panel op-cardlet" data-build-panel={b.id} hidden={i!==0}>
               <div class="op-subtitle"><h3 style="margin:0">{b.title}</h3><span class="op-chip">{roleLabels[b.role]}</span></div>
@@ -80,9 +129,17 @@ const officialBuilds=builds.map(build=>{
                     {FACTORY_LABELS[b.requirements.requiredComponent]}
                   </> : "Herstellungsrezept noch nicht zugeordnet"}
               </p>
-              {b.storyUnlock
-                ? <p class="op-body-copy"><strong>Story-/Blaupausen-Freischaltung:</strong> {b.storyUnlock}</p>
-                : <p class="op-muted">Story-/Blaupausen-Freischaltung noch nicht redaktionell geprüft.</p>}
+              {b.storyUnlock && <p class="op-body-copy"><strong>Redaktioneller Story-Hinweis:</strong> {b.storyUnlock}</p>}
+              <p class="op-body-copy" data-build-reason aria-live="polite">Story- und Blaupausenstatus wird geprüft …</p>
+              <fieldset class="op-blueprint-checklist">
+                <legend>Blaupausenbesitz bestätigen</legend>
+                {b.parts.map(part=><label class="op-blueprint-check">
+                  <input type="checkbox" data-blueprint-owned={part.catalog?.id??part.reference}
+                    disabled={!part.catalog} />
+                  <span>{part.catalog?.name??part.reference}</span>
+                </label>)}
+                <p class="op-muted">Markiere nur Blaupausen, die du bereits tatsächlich erhalten hast. Diese Angaben gelten für das jeweilige Ausrüstungsteil – auch in anderen Guides.</p>
+              </fieldset>
               {b.teamContext && <p class="op-body-copy"><strong>Einsatzbereich:</strong> {b.teamContext}</p>}
               {b.setBonusNotes && <p class="op-body-copy"><strong>Seteffekte:</strong> {b.setBonusNotes}</p>}
               <p class="op-body-copy"><strong>Bewertung:</strong> {b.evaluation || missing}</p>
