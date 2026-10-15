@@ -62,6 +62,15 @@ async function main(){
       if(!link)continue;
       const {ext}=imageSource(link);
       const target=join(targetRoot,slug,stem+ext);
+      // Optimized WebP satisfies the same asset and must not trigger a new download.
+      const optimized=join(targetRoot,slug,stem+".webp");
+      try {
+        await stat(optimized);
+        console.log("Optimiertes Asset vorhanden: "+optimized);
+        continue;
+      } catch(error) {
+        if(error.code!=="ENOENT")throw error;
+      }
       try{
         await stat(target);console.log("Bereits vorhanden: "+target);
       }catch(error){
