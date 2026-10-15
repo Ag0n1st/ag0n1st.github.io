@@ -253,6 +253,30 @@ Die Testdateien `skport-extract.test.mjs` und `skport-extras.test.mjs` laufen vo
 - **Materialkosten:** Wir zeigen die im SKPORT-Export je Fertigkeitsstufe angegebenen Materialkosten an, ohne unbestätigte Gesamtkosten zu errechnen.
 - **Ausfall:** Wenn die Quelle nicht erreichbar ist, baut Astro mit den letzten im Repository gespeicherten Dateien weiter. Kein Supabase erforderlich.
 
+
+## Blaupausen-Recherche (offizielle Kisten + Community-Fundorte, Oktober 2026)
+
+Nach der offiziellen Gebiets- und Markergrundlage wurde eine **eigenständige, klar
+als Community-Recherche gekennzeichnete** Fundortdatenbank angelegt:
+
+- `src/data/endfield/progression/blueprint-community-claims.json`:
+  27 quellenverlinkte Wuling-Kistenhinweise, davon 15 mit Set-/Einzelteilangaben;
+  bekannte Gebietseingänge und Story-Hinweise werden separat gesammelt.
+- `src/data/endfield/progression/blueprint-research-index.json`:
+  100 vorläufige Gear-ID-Kandidaten aus 125 offiziellen Kistenerwerbswegen;
+  21 mit mehreren möglichen Gebieten, 25 ohne hinreichend konkrete Zuordnung.
+- `src/data/endfield/progression/blueprint-confirmations.json`:
+  für später **persönlich bestätigte** Gear-ID plus Marker-ID-Verbindungen.
+- `src/lib/endfield/blueprintResearch.mjs`, `blueprintConfirmations.mjs` und
+  `gearBlueprintResearch.ts`: reproduzierbare Datenverknüpfung,
+  Bestätigungsvalidierung und Website-Lookup.
+- `docs/endfield-blueprint-research.md`: sämtliche 27 Hinweise, Quellen,
+  Gebiets-/Storyrecherche und editierbarer Bestätigungsprozess.
+
+Alle vorläufigen Hinweise werden auf der Website als Community-Recherche
+gekennzeichnet. **Kein unbestätigter Fundort entsperrt automatisch einen Build.**
+Bei neuen Einträgen `node scripts/endfield/build-blueprint-index.mjs`
+ausführen, danach `npm run test:endfield` und `npm run build`.
 ## Technischer Aufbau
 
 `scripts/endfield/skport-extract.mjs` erkennt das Skill-Widget. Die früher verwechselten IDs `gIuAIUyt`, `0ctR1S1J`, `CqJxefHj`, `tVlf3UYx` sind **Beschreibungsdokumente** und nicht Tab-IDs. Jeder Skill besitzt eine getrennte Tabellen-Dokumentreferenz.

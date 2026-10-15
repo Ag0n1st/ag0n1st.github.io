@@ -181,3 +181,7 @@ Diese beiden Bedingungen bleiben separate Felder.
 noch nicht erweitert. Diese Änderung schafft zunächst nur ein geprüftes
 Register und seine wiederverwendbaren Auswertungsfunktionen; bestehende
 redaktionelle Guide-Daten bleiben unberührt.
+
+## Ergänzende Community-Fundortrecherche
+
+Die Quellenrecherche, 27 konkreten Landmark-Beschreibungen, 100 **vorläufigen** Gear-Kandidaten und die strukturierten Hinweise zu Gebietseingängen/Storymissionen sind separat in [`docs/endfield-blueprint-research.md`](endfield-blueprint-research.md) dokumentiert. Sie erweitern die offiziellen SKPORT-Daten, ersetzen sie aber nicht. Community-Kandidaten dürfen weder als endgültige Kisteninhalte noch als erfüllte Story-Freischaltungen behandelt werden.

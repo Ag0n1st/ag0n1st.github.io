@@ -4,6 +4,7 @@ import ItemIcon from "../../endfield/ItemIcon.astro";
 import MaterialCosts from "../../endfield/MaterialCosts.astro";
 import {resolveOfficialItem} from "../../../lib/endfield/itemCatalog";
 import {getOfficialGear} from "../../../lib/endfield/equipmentDetails";
+import {getGearBlueprintResearch} from "../../../lib/endfield/gearBlueprintResearch";
 import {FACTORY_COMPONENT_STAGES, DEFAULT_FACTORY_COMPONENT, FACTORY_LABELS, getBuildRequirements} from "../../../lib/endfield/buildFinder.mjs";
 
 interface Props { model: OperatorGuideModel }
@@ -12,7 +13,7 @@ const { guide, missing, roleLabels, stageLabels, builds, preview } = model;
 const officialBuilds=builds.map(build=>{
  const parts=build.items.map(reference=>{
    const catalog=resolveOfficialItem(reference,"Gear");
-   return {reference,catalog,detail:catalog?getOfficialGear(catalog.id):undefined};
+   return {reference,catalog,detail:catalog?getOfficialGear(catalog.id):undefined,blueprint:catalog?getGearBlueprintResearch(catalog.id):null};
  });
  const requirements=getBuildRequirements(parts.map(part=>part.detail),{
    availableFromLevel:build.availableFromLevel,
@@ -93,7 +94,21 @@ const officialBuilds=builds.map(build=>{
     <div class="op-muted">Level {part.detail.level??"?"} · {part.detail.gearSlot??"Ausrüstung"}</div>
     {(part.detail.stats[0]?.tables[0]?.rows??[]).map(row=><div>{row.cells[0]}: {row.cells[1]}</div>)}
     {part.detail.setEffect&&<details class="op-details"><summary>{part.detail.setName} – Setbonus</summary><p class="op-body-copy">{part.detail.setEffect}</p></details>}
-    {part.detail.acquisitionNotes?.length>0&&<p class="op-body-copy"><strong>Offizielle Blaupausen-Freischaltung:</strong> {part.detail.acquisitionNotes.join(" · ")}</p>}
+    {part.detail.acquisitionNotes?.length>0&&<p class="op-body-copy"><strong>Offizielle Blaupausen-Erwerbsart:</strong> {part.detail.acquisitionNotes.join(" · ")}</p>}
+    {part.blueprint?.kind==="template-crate" && <details class="op-details">
+      <summary>Blaupausen-Fundort · {part.blueprint.status==="owner-confirmed" ? "persönlich geprüft" : "Community-Recherche"}</summary>
+      <div class="op-details-body">
+        {part.blueprint.areas.length>0 ? <>
+          <p class="op-body-copy"><strong>{part.blueprint.status==="owner-confirmed" ? "Geprüfte Gebiete" : "Mögliche Fundgebiete"}:</strong> {part.blueprint.areas.map(x=>x.name).join(", ")}</p>
+          {part.blueprint.status!=="owner-confirmed"&&<p class="op-muted">Vorläufig: Der Hinweis kann das Set betreffen, nicht zwingend dieses einzelne Ausrüstungsteil. Die genaue SKPORT-Kiste und der Besitz der Blaupause sind noch nicht bestätigt.</p>}
+          {part.blueprint.claims.map(x=><p class="op-body-copy">Fundorthinweis: {x.landmark}</p>)}
+          {part.blueprint.sources.length>0 && <p class="op-body-copy">
+            <strong>Quellen:</strong>{" "}
+            {part.blueprint.sources.map((x,i)=><span>{i>0?" · ":""}<a href={x.url} target="_blank" rel="noopener noreferrer">{x.title}</a></span>)}
+          </p>}
+        </> : <p class="op-muted">Kein belastbar zugeordneter Kistenfundort vorhanden. Persönliche Prüfung erforderlich.</p>}
+      </div>
+    </details>}
     {part.detail.artificing.length>0&&<details class="op-details"><summary>Veredelungswerte</summary>
       {part.detail.artificing.flatMap(tab=>tab.tables).map(table=><table class="op-table">
         <thead><tr>{table.columns.map(value=><th>{value}</th>)}</tr></thead>

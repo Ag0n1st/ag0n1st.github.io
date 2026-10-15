@@ -1,0 +1,5832 @@
+{
+  "schemaVersion": 1,
+  "snapshot": "2026-10-15",
+  "provenance": "Community-derived candidate links, not official proof of a specific Gear Template Crate reward.",
+  "accessPolicy": "Never mark a blueprint acquired or a build accessible using this research alone.",
+  "coverage": {
+    "gear": 258,
+    "templateCrateGear": 125,
+    "withCandidate": 100,
+    "ambiguous": 21,
+    "unmatchedTemplateGear": 25,
+    "totalClaims": 27,
+    "rewardClaims": 15,
+    "markers": 27
+  },
+  "claims": [
+    {
+      "claimId": "jingyu-valley-1",
+      "areaId": "jingyu-valley",
+      "landmark": "Passage northwest of Gloomvale",
+      "sourceIds": [
+        "game8-crates",
+        "nerds-jingyu"
+      ],
+      "confidence": "corroborated",
+      "rewardHints": [
+        {
+          "type": "set",
+          "name": "Swordmancer"
+        },
+        {
+          "type": "piece",
+          "name": "LYNX Gauntlets"
+        }
+      ],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "27627af48b14093bf8711adbf8815970",
+        "39adc3d6ba1f74f8281e2d8aef8955f9",
+        "857e77d3ed4ba130e3acb7475a5d76fa",
+        "fe2076c45d4fe7142bcf58d40275cfb9"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "jingyu-valley-2",
+      "areaId": "jingyu-valley",
+      "landmark": "Dock at Stragglers Ford",
+      "sourceIds": [
+        "game8-crates",
+        "nerds-jingyu"
+      ],
+      "confidence": "corroborated",
+      "rewardHints": [
+        {
+          "type": "set",
+          "name": "Eternal Xiranite"
+        }
+      ],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "27627af48b14093bf8711adbf8815970",
+        "39adc3d6ba1f74f8281e2d8aef8955f9",
+        "857e77d3ed4ba130e3acb7475a5d76fa",
+        "fe2076c45d4fe7142bcf58d40275cfb9"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "jingyu-valley-3",
+      "areaId": "jingyu-valley",
+      "landmark": "Cliff north of Sky King Flats",
+      "sourceIds": [
+        "game8-crates",
+        "nerds-jingyu"
+      ],
+      "confidence": "corroborated",
+      "rewardHints": [
+        {
+          "type": "set",
+          "name": "Tide Surge"
+        },
+        {
+          "type": "piece",
+          "name": "Eternal Xiranite Aux Arm"
+        }
+      ],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "27627af48b14093bf8711adbf8815970",
+        "39adc3d6ba1f74f8281e2d8aef8955f9",
+        "857e77d3ed4ba130e3acb7475a5d76fa",
+        "fe2076c45d4fe7142bcf58d40275cfb9"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "jingyu-valley-4",
+      "areaId": "jingyu-valley",
+      "landmark": "North of Ecological Research Station, city approach",
+      "sourceIds": [
+        "game8-crates",
+        "nerds-jingyu"
+      ],
+      "confidence": "corroborated",
+      "rewardHints": [
+        {
+          "type": "set",
+          "name": "Type 50 Yinglung"
+        }
+      ],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "27627af48b14093bf8711adbf8815970",
+        "39adc3d6ba1f74f8281e2d8aef8955f9",
+        "857e77d3ed4ba130e3acb7475a5d76fa",
+        "fe2076c45d4fe7142bcf58d40275cfb9"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "wuling-city-1",
+      "areaId": "wuling-city",
+      "landmark": "Cliff north of Chenshan Way",
+      "sourceIds": [
+        "game8-crates",
+        "nerds-city"
+      ],
+      "confidence": "corroborated",
+      "rewardHints": [
+        {
+          "type": "set",
+          "name": "Hot Work"
+        }
+      ],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "096049b0bd385d64491983dd3593cf15",
+        "0a291959655ca3b5d25517410d583e3b",
+        "2dfce2783e1fa8696a2d82f91b77d1b6",
+        "654cd8f307c479b47303d2a3f5277fb5",
+        "79bea8b251f305432237e0297a478381",
+        "79c0bd516185e9880234039b6f489804",
+        "d788bdef0dfcb1c549afcd1fa77a31ec",
+        "dd92ecdac62660ed110d73ab81916a15"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "wuling-city-2",
+      "areaId": "wuling-city",
+      "landmark": "Building east of Bureau of Swordmancers",
+      "sourceIds": [
+        "game8-crates",
+        "nerds-city"
+      ],
+      "confidence": "corroborated",
+      "rewardHints": [
+        {
+          "type": "set",
+          "name": "Frontiers"
+        }
+      ],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "096049b0bd385d64491983dd3593cf15",
+        "0a291959655ca3b5d25517410d583e3b",
+        "2dfce2783e1fa8696a2d82f91b77d1b6",
+        "654cd8f307c479b47303d2a3f5277fb5",
+        "79bea8b251f305432237e0297a478381",
+        "79c0bd516185e9880234039b6f489804",
+        "d788bdef0dfcb1c549afcd1fa77a31ec",
+        "dd92ecdac62660ed110d73ab81916a15"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "wuling-city-3",
+      "areaId": "wuling-city",
+      "landmark": "Roof east of Residential Area square",
+      "sourceIds": [
+        "game8-crates",
+        "nerds-city",
+        "nerds-landmark-detail"
+      ],
+      "confidence": "corroborated",
+      "rewardHints": [
+        {
+          "type": "set",
+          "name": "Frontiers"
+        },
+        {
+          "type": "set",
+          "name": "MI Security"
+        }
+      ],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "096049b0bd385d64491983dd3593cf15",
+        "0a291959655ca3b5d25517410d583e3b",
+        "2dfce2783e1fa8696a2d82f91b77d1b6",
+        "654cd8f307c479b47303d2a3f5277fb5",
+        "79bea8b251f305432237e0297a478381",
+        "79c0bd516185e9880234039b6f489804",
+        "d788bdef0dfcb1c549afcd1fa77a31ec",
+        "dd92ecdac62660ed110d73ab81916a15"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "wuling-city-4",
+      "areaId": "wuling-city",
+      "landmark": "Monitoring Center entrance",
+      "sourceIds": [
+        "game8-crates",
+        "nerds-city"
+      ],
+      "confidence": "corroborated",
+      "rewardHints": [
+        {
+          "type": "set",
+          "name": "MI Security"
+        }
+      ],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "096049b0bd385d64491983dd3593cf15",
+        "0a291959655ca3b5d25517410d583e3b",
+        "2dfce2783e1fa8696a2d82f91b77d1b6",
+        "654cd8f307c479b47303d2a3f5277fb5",
+        "79bea8b251f305432237e0297a478381",
+        "79c0bd516185e9880234039b6f489804",
+        "d788bdef0dfcb1c549afcd1fa77a31ec",
+        "dd92ecdac62660ed110d73ab81916a15"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "wuling-city-5",
+      "areaId": "wuling-city",
+      "landmark": "Riverbank Grotto",
+      "sourceIds": [
+        "game8-crates",
+        "nerds-city"
+      ],
+      "confidence": "corroborated",
+      "rewardHints": [
+        {
+          "type": "set",
+          "name": "Bonekrusha"
+        }
+      ],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "096049b0bd385d64491983dd3593cf15",
+        "0a291959655ca3b5d25517410d583e3b",
+        "2dfce2783e1fa8696a2d82f91b77d1b6",
+        "654cd8f307c479b47303d2a3f5277fb5",
+        "79bea8b251f305432237e0297a478381",
+        "79c0bd516185e9880234039b6f489804",
+        "d788bdef0dfcb1c549afcd1fa77a31ec",
+        "dd92ecdac62660ed110d73ab81916a15"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "wuling-city-6",
+      "areaId": "wuling-city",
+      "landmark": "Northwest of Field Logistics Depot, by TP",
+      "sourceIds": [
+        "game8-crates",
+        "nerds-city"
+      ],
+      "confidence": "corroborated",
+      "rewardHints": [
+        {
+          "type": "set",
+          "name": "Bonekrusha"
+        },
+        {
+          "type": "set",
+          "name": "Pulser Labs"
+        }
+      ],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "096049b0bd385d64491983dd3593cf15",
+        "0a291959655ca3b5d25517410d583e3b",
+        "2dfce2783e1fa8696a2d82f91b77d1b6",
+        "654cd8f307c479b47303d2a3f5277fb5",
+        "79bea8b251f305432237e0297a478381",
+        "79c0bd516185e9880234039b6f489804",
+        "d788bdef0dfcb1c549afcd1fa77a31ec",
+        "dd92ecdac62660ed110d73ab81916a15"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "wuling-city-7",
+      "areaId": "wuling-city",
+      "landmark": "Upper level, Institute of Materials Science",
+      "sourceIds": [
+        "game8-crates",
+        "nerds-city"
+      ],
+      "confidence": "corroborated",
+      "rewardHints": [
+        {
+          "type": "set",
+          "name": "LYNX"
+        }
+      ],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "096049b0bd385d64491983dd3593cf15",
+        "0a291959655ca3b5d25517410d583e3b",
+        "2dfce2783e1fa8696a2d82f91b77d1b6",
+        "654cd8f307c479b47303d2a3f5277fb5",
+        "79bea8b251f305432237e0297a478381",
+        "79c0bd516185e9880234039b6f489804",
+        "d788bdef0dfcb1c549afcd1fa77a31ec",
+        "dd92ecdac62660ed110d73ab81916a15"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "wuling-city-8",
+      "areaId": "wuling-city",
+      "landmark": "Roof east of Citizen Square, jump pads",
+      "sourceIds": [
+        "game8-crates",
+        "nerds-city"
+      ],
+      "confidence": "corroborated",
+      "rewardHints": [
+        {
+          "type": "set",
+          "name": "Æthertech"
+        },
+        {
+          "type": "piece",
+          "name": "LYNX Aegis Injector"
+        }
+      ],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "096049b0bd385d64491983dd3593cf15",
+        "0a291959655ca3b5d25517410d583e3b",
+        "2dfce2783e1fa8696a2d82f91b77d1b6",
+        "654cd8f307c479b47303d2a3f5277fb5",
+        "79bea8b251f305432237e0297a478381",
+        "79c0bd516185e9880234039b6f489804",
+        "d788bdef0dfcb1c549afcd1fa77a31ec",
+        "dd92ecdac62660ed110d73ab81916a15"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "qingbo-stockade-1",
+      "areaId": "qingbo-stockade",
+      "landmark": "Main Fort, beside Delta Bot",
+      "sourceIds": [
+        "game8-crates"
+      ],
+      "confidence": "single-source",
+      "rewardHints": [
+        {
+          "type": "piece",
+          "name": "Type 50 Yinglung Heavy Armor"
+        },
+        {
+          "type": "piece",
+          "name": "Frontiers Fiber Gloves"
+        }
+      ],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "2bccd47dda9f40e17d8579190ac9f979",
+        "93a872a2579655ccb3d5378fa963bf20",
+        "9e21f89bc2a80da0f06419720a9c32c7"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "qingbo-stockade-2",
+      "areaId": "qingbo-stockade",
+      "landmark": "Watchtower west of Cuprium Ore Mining Spot",
+      "sourceIds": [
+        "game8-crates"
+      ],
+      "confidence": "single-source",
+      "rewardHints": [
+        {
+          "type": "set",
+          "name": "Bonekrusha"
+        },
+        {
+          "type": "piece",
+          "name": "Frontiers Protection Suit"
+        }
+      ],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "2bccd47dda9f40e17d8579190ac9f979",
+        "93a872a2579655ccb3d5378fa963bf20",
+        "9e21f89bc2a80da0f06419720a9c32c7"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "qingbo-stockade-3",
+      "areaId": "qingbo-stockade",
+      "landmark": "South of Bladewoods, near Blight Obstruction",
+      "sourceIds": [
+        "game8-crates"
+      ],
+      "confidence": "single-source",
+      "rewardHints": [
+        {
+          "type": "set",
+          "name": "MI Security T1"
+        },
+        {
+          "type": "piece",
+          "name": "Frontiers Accessories"
+        }
+      ],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "2bccd47dda9f40e17d8579190ac9f979",
+        "93a872a2579655ccb3d5378fa963bf20",
+        "9e21f89bc2a80da0f06419720a9c32c7"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "marker-stone-1",
+      "areaId": "marker-stone",
+      "landmark": "Watchtower Reservoir Station B1, first template crate",
+      "sourceIds": [
+        "talos-gear",
+        "factory-tutorial"
+      ],
+      "confidence": "single-source",
+      "rewardHints": [],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "62017fbf3e6856ed0de17c2803a565ba",
+        "a76be875c12c06f8fd620f7c359d505d",
+        "a7a55f952a39daf5fa7e542ac6eab1c2"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "marker-stone-2",
+      "areaId": "marker-stone",
+      "landmark": "Watchtower Reservoir Station B1, second template crate",
+      "sourceIds": [
+        "talos-gear",
+        "factory-tutorial"
+      ],
+      "confidence": "single-source",
+      "rewardHints": [],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "62017fbf3e6856ed0de17c2803a565ba",
+        "a76be875c12c06f8fd620f7c359d505d",
+        "a7a55f952a39daf5fa7e542ac6eab1c2"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "marker-stone-3",
+      "areaId": "marker-stone",
+      "landmark": "Beside entrance to Marker Stone Interiors",
+      "sourceIds": [
+        "talos-gear",
+        "factory-tutorial"
+      ],
+      "confidence": "single-source",
+      "rewardHints": [],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "62017fbf3e6856ed0de17c2803a565ba",
+        "a76be875c12c06f8fd620f7c359d505d",
+        "a7a55f952a39daf5fa7e542ac6eab1c2"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "marker-stone-interiors-1",
+      "areaId": "marker-stone-interiors",
+      "landmark": "One crate shown in official interiors map",
+      "sourceIds": [
+        "official-map"
+      ],
+      "confidence": "official-area-only",
+      "rewardHints": [],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "b8f2182d58513929bc373d51b6c519a1"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "sword-vault-dale-1",
+      "areaId": "sword-vault-dale",
+      "landmark": "South Gorge Rampart",
+      "sourceIds": [
+        "talos-gear",
+        "youtube-sword"
+      ],
+      "confidence": "single-source",
+      "rewardHints": [],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "0970cb9c864ec8a161b1a312e04ae8bd",
+        "7fb9ce4bb7c9d32a1fb1c57782e14ffe"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "sword-vault-dale-2",
+      "areaId": "sword-vault-dale",
+      "landmark": "North Gorge Crag",
+      "sourceIds": [
+        "talos-gear",
+        "youtube-sword"
+      ],
+      "confidence": "single-source",
+      "rewardHints": [],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "0970cb9c864ec8a161b1a312e04ae8bd",
+        "7fb9ce4bb7c9d32a1fb1c57782e14ffe"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "yinglung-pass-1",
+      "areaId": "yinglung-pass",
+      "landmark": "Pass-Side Canal",
+      "sourceIds": [
+        "talos-gear",
+        "youtube-yinglung"
+      ],
+      "confidence": "single-source",
+      "rewardHints": [],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "7455bb131b7f96de15bf99bbeabc1798",
+        "ca83493608d6dae940dd53ca95c64acd"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "yinglung-pass-2",
+      "areaId": "yinglung-pass",
+      "landmark": "Stonepond Cliff",
+      "sourceIds": [
+        "talos-gear",
+        "youtube-yinglung"
+      ],
+      "confidence": "single-source",
+      "rewardHints": [],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "7455bb131b7f96de15bf99bbeabc1798",
+        "ca83493608d6dae940dd53ca95c64acd"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "snowy-forest-1",
+      "areaId": "snowy-forest",
+      "landmark": "Hoarfrost Woods",
+      "sourceIds": [
+        "talos-gear",
+        "youtube-snowy"
+      ],
+      "confidence": "single-source",
+      "rewardHints": [],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "47d25a35fad0f8e7c349920950c6315d",
+        "a6d379724963c925080d77ca7a715881"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "snowy-forest-2",
+      "areaId": "snowy-forest",
+      "landmark": "Snowpriestess's Cabin",
+      "sourceIds": [
+        "talos-gear",
+        "youtube-snowy"
+      ],
+      "confidence": "single-source",
+      "rewardHints": [],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "47d25a35fad0f8e7c349920950c6315d",
+        "a6d379724963c925080d77ca7a715881"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "sis-painting-1",
+      "areaId": "sis-painting",
+      "landmark": "Exact landmark still unverified (official marker A)",
+      "sourceIds": [
+        "official-map",
+        "official-patch-1_6"
+      ],
+      "confidence": "official-area-only",
+      "rewardHints": [],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "5391ac4d69dadd1a0ff7f9497f2af1b4",
+        "b75f14863a309a0ddb0c364f91be5008"
+      ],
+      "gearIdsVerified": false
+    },
+    {
+      "claimId": "sis-painting-2",
+      "areaId": "sis-painting",
+      "landmark": "Exact landmark still unverified (official marker B)",
+      "sourceIds": [
+        "official-map",
+        "official-patch-1_6"
+      ],
+      "confidence": "official-area-only",
+      "rewardHints": [],
+      "exactMarkerId": null,
+      "possibleMarkerIds": [
+        "5391ac4d69dadd1a0ff7f9497f2af1b4",
+        "b75f14863a309a0ddb0c364f91be5008"
+      ],
+      "gearIdsVerified": false
+    }
+  ],
+  "gearHints": [
+    {
+      "gearId": "206",
+      "gearName": "Basic Armor",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "unknown",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "208",
+      "gearName": "Basic PPE",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "unknown",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "211",
+      "gearName": "Basic Gauntlets",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "unknown",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "213",
+      "gearName": "Basic Gloves",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "unknown",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "216",
+      "gearName": "Miner Armor",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "218",
+      "gearName": "Miner Overalls",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "219",
+      "gearName": "Miner Gauntlets",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "220",
+      "gearName": "Miner Gloves",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "221",
+      "gearName": "Emergency Comm",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "222",
+      "gearName": "Emergency Compression Core",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "223",
+      "gearName": "Prototype Heavy Armor",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "224",
+      "gearName": "Prototype Heavy Armor T1",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "225",
+      "gearName": "Miner Vest",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "226",
+      "gearName": "Miner Cleansuit",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "227",
+      "gearName": "Miner Wrists",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "228",
+      "gearName": "Miner Fists",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "229",
+      "gearName": "AIC Heavy Armor",
+      "setName": "AIC Heavy",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "230",
+      "gearName": "AIC Gauntlets",
+      "setName": "AIC Heavy",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "231",
+      "gearName": "AIC Heavy Plate",
+      "setName": "AIC Heavy",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "232",
+      "gearName": "AIC Alloy Plate",
+      "setName": "AIC Heavy",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "233",
+      "gearName": "AIC Light Armor",
+      "setName": "AIC Light",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "234",
+      "gearName": "AIC Tactical Gloves",
+      "setName": "AIC Light",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "235",
+      "gearName": "AIC Light Plate",
+      "setName": "AIC Light",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "236",
+      "gearName": "AIC Ceramic Plate",
+      "setName": "AIC Light",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "237",
+      "gearName": "Miner Gauntlets T1",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "238",
+      "gearName": "Miner Gloves T1",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "239",
+      "gearName": "Miner Turbine",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "240",
+      "gearName": "Miner Drive Wheel",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "241",
+      "gearName": "Miner Compression Core",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "242",
+      "gearName": "Miner Comm",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "243",
+      "gearName": "Armored MSGR Jacket",
+      "setName": "Armored MSGR",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "244",
+      "gearName": "Armored MSGR Gloves",
+      "setName": "Armored MSGR",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "245",
+      "gearName": "Armored MSGR Flashlight",
+      "setName": "Armored MSGR",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "246",
+      "gearName": "Armored MSGR Gyro",
+      "setName": "Armored MSGR",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "247",
+      "gearName": "Roving MSGR Jacket",
+      "setName": "Roving MSGR",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "248",
+      "gearName": "Roving MSGR Fists",
+      "setName": "Roving MSGR",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "249",
+      "gearName": "Roving MSGR Flashlight",
+      "setName": "Roving MSGR",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "250",
+      "gearName": "MI Security Push Knife T1",
+      "setName": "MI Security",
+      "officialAcquisitionKind": "regional-stock-redistribution",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "251",
+      "gearName": "Roving MSGR Gyro",
+      "setName": "Roving MSGR",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "252",
+      "gearName": "MI Security Push Knife",
+      "setName": "MI Security",
+      "officialAcquisitionKind": "regional-stock-redistribution",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "253",
+      "gearName": "Miner Armor T1",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "254",
+      "gearName": "MI Security Toolkit",
+      "setName": "MI Security",
+      "officialAcquisitionKind": "regional-stock-redistribution",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "255",
+      "gearName": "Miner Overalls T1",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "256",
+      "gearName": "Mordvolt Insulation Vest",
+      "setName": "Mordvolt Insulation",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "257",
+      "gearName": "MI Security Scope",
+      "setName": "MI Security",
+      "officialAcquisitionKind": "regional-stock-redistribution",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "258",
+      "gearName": "Miner Gloves T2",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "259",
+      "gearName": "Mordvolt Insulation Gloves",
+      "setName": "Mordvolt Insulation",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "260",
+      "gearName": "Miner Fists T1",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "261",
+      "gearName": "MI Security Armband",
+      "setName": "MI Security",
+      "officialAcquisitionKind": "regional-stock-redistribution",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "262",
+      "gearName": "Mordvolt Insulation Wrench",
+      "setName": "Mordvolt Insulation",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "263",
+      "gearName": "Miner Turbine T1",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "264",
+      "gearName": "MI Security Hands PPE T1",
+      "setName": "MI Security",
+      "officialAcquisitionKind": "regional-stock-redistribution",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "265",
+      "gearName": "Miner Drive Wheel T1",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "266",
+      "gearName": "Mordvolt Insulation Wrench T1",
+      "setName": "Mordvolt Insulation",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "267",
+      "gearName": "MI Security Hands PPE",
+      "setName": "MI Security",
+      "officialAcquisitionKind": "regional-stock-redistribution",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "268",
+      "gearName": "Miner Compression Core T1",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "269",
+      "gearName": "Mordvolt Insulation Battery",
+      "setName": "Mordvolt Insulation",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "270",
+      "gearName": "Miner Comm T1",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "271",
+      "gearName": "MI Security Gloves",
+      "setName": "MI Security",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-3",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "MI Security",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city",
+            "nerds-landmark-detail"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-4",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "MI Security",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "272",
+      "gearName": "Aburrey Heavy Armor",
+      "setName": "Aburrey's Legacy",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "273",
+      "gearName": "MI Security Overalls T2",
+      "setName": "MI Security",
+      "officialAcquisitionKind": "regional-stock-redistribution",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "274",
+      "gearName": "Mordvolt Resistant Vest",
+      "setName": "Mordvolt Resistant",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "275",
+      "gearName": "Aburrey Heavy Armor T1",
+      "setName": "Aburrey's Legacy",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "276",
+      "gearName": "Aburrey Light Armor",
+      "setName": "Aburrey's Legacy",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "277",
+      "gearName": "MI Security Overalls T1",
+      "setName": "MI Security",
+      "officialAcquisitionKind": "template-crate",
+      "status": "ambiguous-community-candidates",
+      "candidateAreas": [
+        "wuling-city",
+        "qingbo-stockade"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-3",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "MI Security",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city",
+            "nerds-landmark-detail"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-4",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "MI Security",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "qingbo-stockade-3",
+          "areaId": "qingbo-stockade",
+          "matchKind": "set-family",
+          "rewardHint": "MI Security T1",
+          "sourceIds": [
+            "game8-crates"
+          ],
+          "confidence": "single-source",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "278",
+      "gearName": "Mordvolt Resistant Gloves",
+      "setName": "Mordvolt Resistant",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "279",
+      "gearName": "Aburrey Light Armor T1",
+      "setName": "Aburrey's Legacy",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "280",
+      "gearName": "MI Security Overalls",
+      "setName": "MI Security",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-3",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "MI Security",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city",
+            "nerds-landmark-detail"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-4",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "MI Security",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "281",
+      "gearName": "Mordvolt Resistant Wrench",
+      "setName": "Mordvolt Resistant",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "282",
+      "gearName": "Aburrey Gauntlets",
+      "setName": "Aburrey's Legacy",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "283",
+      "gearName": "MI Security Armor",
+      "setName": "MI Security",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-3",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "MI Security",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city",
+            "nerds-landmark-detail"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-4",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "MI Security",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "284",
+      "gearName": "Mordvolt Resistant Battery",
+      "setName": "Mordvolt Resistant",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "285",
+      "gearName": "Aburrey Auditory Chip",
+      "setName": "Aburrey's Legacy",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "286",
+      "gearName": "Hot Work Power Cartridge",
+      "setName": "Hot Work",
+      "officialAcquisitionKind": "regional-stock-redistribution",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "287",
+      "gearName": "Aburrey UV Lamp",
+      "setName": "Aburrey's Legacy",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "288",
+      "gearName": "Hot Work Pyrometer",
+      "setName": "Hot Work",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-1",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Hot Work",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "289",
+      "gearName": "Aburrey Auditory Chip T1",
+      "setName": "Aburrey's Legacy",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "290",
+      "gearName": "Hot Work Power Bank",
+      "setName": "Hot Work",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-1",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Hot Work",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "291",
+      "gearName": "Aburrey Flashlight",
+      "setName": "Aburrey's Legacy",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "292",
+      "gearName": "Hot Work Gauntlets T1",
+      "setName": "Hot Work",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-1",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Hot Work",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "293",
+      "gearName": "Aburrey Sensor Chip",
+      "setName": "Aburrey's Legacy",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "294",
+      "gearName": "Hot Work Gauntlets",
+      "setName": "Hot Work",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-1",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Hot Work",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "295",
+      "gearName": "Aburrey Sensor Chip T1",
+      "setName": "Aburrey's Legacy",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "296",
+      "gearName": "Hot Work Exoskeleton",
+      "setName": "Hot Work",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-1",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Hot Work",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "297",
+      "gearName": "Catastrophe Heavy Armor",
+      "setName": "Catastrophe",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "298",
+      "gearName": "Frontiers Extra O2 Tube",
+      "setName": "Frontiers",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-2",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-3",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city",
+            "nerds-landmark-detail"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "299",
+      "gearName": "Catastrophe Heavy Armor T1",
+      "setName": "Catastrophe",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "300",
+      "gearName": "Frontiers Comm T1",
+      "setName": "Frontiers",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-2",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-3",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city",
+            "nerds-landmark-detail"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "301",
+      "gearName": "Catastrophe Gloves",
+      "setName": "Catastrophe",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "302",
+      "gearName": "Frontiers Comm",
+      "setName": "Frontiers",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-2",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-3",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city",
+            "nerds-landmark-detail"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "303",
+      "gearName": "Catastrophe Gauze Cartridge",
+      "setName": "Catastrophe",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "304",
+      "gearName": "Frontiers Blight RES Gloves",
+      "setName": "Frontiers",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-2",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-3",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city",
+            "nerds-landmark-detail"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "305",
+      "gearName": "Catastrophe Gauze Cartridge T1",
+      "setName": "Catastrophe",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "306",
+      "gearName": "Frontiers Armor T3",
+      "setName": "Frontiers",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-2",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-3",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city",
+            "nerds-landmark-detail"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "307",
+      "gearName": "Catastrophe Filter",
+      "setName": "Catastrophe",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "308",
+      "gearName": "Frontiers Armor T2",
+      "setName": "Frontiers",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-2",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-3",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city",
+            "nerds-landmark-detail"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "309",
+      "gearName": "Armored MSGR Jacket T1",
+      "setName": "Armored MSGR",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "310",
+      "gearName": "Frontiers Armor T1",
+      "setName": "Frontiers",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-2",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-3",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city",
+            "nerds-landmark-detail"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "311",
+      "gearName": "Armored MSGR Gloves T2",
+      "setName": "Armored MSGR",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "312",
+      "gearName": "Frontiers Armor",
+      "setName": "Frontiers",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-2",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-3",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city",
+            "nerds-landmark-detail"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "313",
+      "gearName": "Armored MSGR Gloves T1",
+      "setName": "Armored MSGR",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "314",
+      "gearName": "Armored MSGR Flashlight T1",
+      "setName": "Armored MSGR",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "315",
+      "gearName": "Armored MSGR Gyro T1",
+      "setName": "Armored MSGR",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "316",
+      "gearName": "Roving MSGR Jacket T1",
+      "setName": "Roving MSGR",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "317",
+      "gearName": "Roving MSGR Fists T1",
+      "setName": "Roving MSGR",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "318",
+      "gearName": "Roving MSGR Flashlight T2",
+      "setName": "Roving MSGR",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "319",
+      "gearName": "Roving MSGR Flashlight T1",
+      "setName": "Roving MSGR",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "320",
+      "gearName": "Roving MSGR Gyro T1",
+      "setName": "Roving MSGR",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "321",
+      "gearName": "Mordvolt Insulation Vest T2",
+      "setName": "Mordvolt Insulation",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "322",
+      "gearName": "Mordvolt Insulation Vest T1",
+      "setName": "Mordvolt Insulation",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "323",
+      "gearName": "Mordvolt Insulation Gloves T1",
+      "setName": "Mordvolt Insulation",
+      "officialAcquisitionKind": "unknown",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "324",
+      "gearName": "Mordvolt Insulation Wrench T2",
+      "setName": "Mordvolt Insulation",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "325",
+      "gearName": "Hanging River O2 Tube",
+      "setName": "Tide Surge",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-3",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Tide Surge",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "326",
+      "gearName": "Turbid Cutting Torch",
+      "setName": "Tide Surge",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-3",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Tide Surge",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "327",
+      "gearName": "Mordvolt Insulation Battery T1",
+      "setName": "Mordvolt Insulation",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "328",
+      "gearName": "Eternal Xiranite Armor",
+      "setName": "Eternal Xiranite",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-2",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Eternal Xiranite",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "329",
+      "gearName": "Mordvolt Resistant Vest T1",
+      "setName": "Mordvolt Resistant",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "330",
+      "gearName": "Eternal Xiranite Gloves",
+      "setName": "Eternal Xiranite",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-2",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Eternal Xiranite",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "331",
+      "gearName": "Mordvolt Resistant Gloves T1",
+      "setName": "Mordvolt Resistant",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "332",
+      "gearName": "Eternal Xiranite Gloves T1",
+      "setName": "Eternal Xiranite",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-2",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Eternal Xiranite",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "333",
+      "gearName": "Mordvolt Resistant Wrench T1",
+      "setName": "Mordvolt Resistant",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "334",
+      "gearName": "Eternal Xiranite Power Core",
+      "setName": "Eternal Xiranite",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-2",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Eternal Xiranite",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "335",
+      "gearName": "Mordvolt Resistant Battery T1",
+      "setName": "Mordvolt Resistant",
+      "officialAcquisitionKind": "authority-level-reward",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "336",
+      "gearName": "Eternal Xiranite Power Core T1",
+      "setName": "Eternal Xiranite",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-2",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Eternal Xiranite",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "337",
+      "gearName": "Eternal Xiranite Auxiliary Arm",
+      "setName": "Eternal Xiranite",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-2",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Eternal Xiranite",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "338",
+      "gearName": "Pulser Labs Calibrator",
+      "setName": "Pulser Labs",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-6",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Pulser Labs",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "339",
+      "gearName": "Tide Surge Gauntlets",
+      "setName": "Tide Surge",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-3",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Tide Surge",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "340",
+      "gearName": "Tide Fall Light Armor",
+      "setName": "Tide Surge",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-3",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Tide Surge",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "341",
+      "gearName": "Pulser Labs Gloves",
+      "setName": "Pulser Labs",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-6",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Pulser Labs",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "342",
+      "gearName": "Type 50 Yinglung Knife T1",
+      "setName": "Type 50 Yinglung",
+      "officialAcquisitionKind": "regional-stock-redistribution",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "343",
+      "gearName": "Type 50 Yinglung Knife",
+      "setName": "Type 50 Yinglung",
+      "officialAcquisitionKind": "regional-stock-redistribution",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "344",
+      "gearName": "Type 50 Yinglung Radar",
+      "setName": "Type 50 Yinglung",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-4",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Type 50 Yinglung",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "345",
+      "gearName": "Type 50 Yinglung Gloves T1",
+      "setName": "Type 50 Yinglung",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-4",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Type 50 Yinglung",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "347",
+      "gearName": "Type 50 Yinglung Light Armor",
+      "setName": "Type 50 Yinglung",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-4",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Type 50 Yinglung",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "348",
+      "gearName": "Redeemer Seal T1",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "regional-stock-redistribution",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "349",
+      "gearName": "Redeemer Seal",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "regional-stock-redistribution",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "350",
+      "gearName": "Redeemer Tag T1",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "regional-stock-redistribution",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "351",
+      "gearName": "Redeemer Tag",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "regional-stock-redistribution",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "352",
+      "gearName": "Type 50 Yinglung Heavy Armor",
+      "setName": "Type 50 Yinglung",
+      "officialAcquisitionKind": "template-crate",
+      "status": "ambiguous-community-candidates",
+      "candidateAreas": [
+        "jingyu-valley",
+        "qingbo-stockade"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-4",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Type 50 Yinglung",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "qingbo-stockade-1",
+          "areaId": "qingbo-stockade",
+          "matchKind": "named-piece",
+          "rewardHint": "Type 50 Yinglung Heavy Armor",
+          "sourceIds": [
+            "game8-crates"
+          ],
+          "confidence": "single-source",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "353",
+      "gearName": "Pulser Labs Disruptor Suit",
+      "setName": "Pulser Labs",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-6",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Pulser Labs",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "354",
+      "gearName": "Bonekrusha Figurine T1",
+      "setName": "Bonekrusha",
+      "officialAcquisitionKind": "regional-stock-redistribution",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "355",
+      "gearName": "Swordmancer Heavy Armor",
+      "setName": "Swordmancer",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-1",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Swordmancer",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "356",
+      "gearName": "Swordmancer TAC Gloves",
+      "setName": "Swordmancer",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-1",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Swordmancer",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "357",
+      "gearName": "Swordmancer TAC Gauntlets",
+      "setName": "Swordmancer",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-1",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Swordmancer",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "358",
+      "gearName": "Swordmancer Flint",
+      "setName": "Swordmancer",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-1",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Swordmancer",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "359",
+      "gearName": "LYNX Heavy Armor",
+      "setName": "LYNX",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-7",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "LYNX",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "360",
+      "gearName": "LYNX Cuirass",
+      "setName": "LYNX",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-7",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "LYNX",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "361",
+      "gearName": "LYNX Gloves",
+      "setName": "LYNX",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-7",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "LYNX",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "362",
+      "gearName": "LYNX Gauntlets",
+      "setName": "LYNX",
+      "officialAcquisitionKind": "template-crate",
+      "status": "ambiguous-community-candidates",
+      "candidateAreas": [
+        "jingyu-valley",
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-1",
+          "areaId": "jingyu-valley",
+          "matchKind": "named-piece",
+          "rewardHint": "LYNX Gauntlets",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-7",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "LYNX",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "363",
+      "gearName": "LYNX Connector",
+      "setName": "LYNX",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-7",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "LYNX",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "364",
+      "gearName": "LYNX Connector T1",
+      "setName": "LYNX",
+      "officialAcquisitionKind": "regional-stock-redistribution",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "365",
+      "gearName": "LYNX Slab",
+      "setName": "LYNX",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-7",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "LYNX",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "366",
+      "gearName": "LYNX Aegis Injector",
+      "setName": "LYNX",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-7",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "LYNX",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-8",
+          "areaId": "wuling-city",
+          "matchKind": "named-piece",
+          "rewardHint": "LYNX Aegis Injector",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "367",
+      "gearName": "Æthertech Plating",
+      "setName": "Æthertech",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-8",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Æthertech",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "368",
+      "gearName": "Æthertech Gloves",
+      "setName": "Æthertech",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-8",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Æthertech",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "369",
+      "gearName": "Æthertech Analysis Band",
+      "setName": "Æthertech",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-8",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Æthertech",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "370",
+      "gearName": "Æthertech Stabilizer",
+      "setName": "Æthertech",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-8",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Æthertech",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "371",
+      "gearName": "Bonekrusha Heavy Armor",
+      "setName": "Bonekrusha",
+      "officialAcquisitionKind": "template-crate",
+      "status": "ambiguous-community-candidates",
+      "candidateAreas": [
+        "wuling-city",
+        "qingbo-stockade"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-5",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-6",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "qingbo-stockade-2",
+          "areaId": "qingbo-stockade",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates"
+          ],
+          "confidence": "single-source",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "372",
+      "gearName": "Bonekrusha Heavy Armor T1",
+      "setName": "Bonekrusha",
+      "officialAcquisitionKind": "template-crate",
+      "status": "ambiguous-community-candidates",
+      "candidateAreas": [
+        "wuling-city",
+        "qingbo-stockade"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-5",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-6",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "qingbo-stockade-2",
+          "areaId": "qingbo-stockade",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates"
+          ],
+          "confidence": "single-source",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "373",
+      "gearName": "Bonekrusha Poncho",
+      "setName": "Bonekrusha",
+      "officialAcquisitionKind": "template-crate",
+      "status": "ambiguous-community-candidates",
+      "candidateAreas": [
+        "wuling-city",
+        "qingbo-stockade"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-5",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-6",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "qingbo-stockade-2",
+          "areaId": "qingbo-stockade",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates"
+          ],
+          "confidence": "single-source",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "374",
+      "gearName": "Bonekrusha Poncho T1",
+      "setName": "Bonekrusha",
+      "officialAcquisitionKind": "template-crate",
+      "status": "ambiguous-community-candidates",
+      "candidateAreas": [
+        "wuling-city",
+        "qingbo-stockade"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-5",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-6",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "qingbo-stockade-2",
+          "areaId": "qingbo-stockade",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates"
+          ],
+          "confidence": "single-source",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "375",
+      "gearName": "Bonekrusha Mask",
+      "setName": "Bonekrusha",
+      "officialAcquisitionKind": "template-crate",
+      "status": "ambiguous-community-candidates",
+      "candidateAreas": [
+        "wuling-city",
+        "qingbo-stockade"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-5",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-6",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "qingbo-stockade-2",
+          "areaId": "qingbo-stockade",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates"
+          ],
+          "confidence": "single-source",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "376",
+      "gearName": "Bonekrusha Mask T1",
+      "setName": "Bonekrusha",
+      "officialAcquisitionKind": "template-crate",
+      "status": "ambiguous-community-candidates",
+      "candidateAreas": [
+        "wuling-city",
+        "qingbo-stockade"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-5",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-6",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "qingbo-stockade-2",
+          "areaId": "qingbo-stockade",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates"
+          ],
+          "confidence": "single-source",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "377",
+      "gearName": "Bonekrusha Figurine",
+      "setName": "Bonekrusha",
+      "officialAcquisitionKind": "template-crate",
+      "status": "ambiguous-community-candidates",
+      "candidateAreas": [
+        "wuling-city",
+        "qingbo-stockade"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-5",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-6",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "qingbo-stockade-2",
+          "areaId": "qingbo-stockade",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates"
+          ],
+          "confidence": "single-source",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "411",
+      "gearName": "Type 50 Yinglung Gloves",
+      "setName": "Type 50 Yinglung",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-4",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Type 50 Yinglung",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "767",
+      "gearName": "Type 50 Yinglung Radar T1",
+      "setName": "Type 50 Yinglung",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-4",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Type 50 Yinglung",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "768",
+      "gearName": "Type 50 Yinglung Radar T2",
+      "setName": "Type 50 Yinglung",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-4",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Type 50 Yinglung",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "769",
+      "gearName": "Type 50 Yinglung Heavy Armor T1",
+      "setName": "Type 50 Yinglung",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-4",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Type 50 Yinglung",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "770",
+      "gearName": "Type 50 Yinglung Heavy Armor T2",
+      "setName": "Type 50 Yinglung",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-4",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Type 50 Yinglung",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "771",
+      "gearName": "MI Security Scope T1",
+      "setName": "MI Security",
+      "officialAcquisitionKind": "template-crate",
+      "status": "ambiguous-community-candidates",
+      "candidateAreas": [
+        "wuling-city",
+        "qingbo-stockade"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-3",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "MI Security",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city",
+            "nerds-landmark-detail"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-4",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "MI Security",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "qingbo-stockade-3",
+          "areaId": "qingbo-stockade",
+          "matchKind": "set-family",
+          "rewardHint": "MI Security T1",
+          "sourceIds": [
+            "game8-crates"
+          ],
+          "confidence": "single-source",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "772",
+      "gearName": "MI Security Gloves T1",
+      "setName": "MI Security",
+      "officialAcquisitionKind": "template-crate",
+      "status": "ambiguous-community-candidates",
+      "candidateAreas": [
+        "wuling-city",
+        "qingbo-stockade"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-3",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "MI Security",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city",
+            "nerds-landmark-detail"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-4",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "MI Security",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "qingbo-stockade-3",
+          "areaId": "qingbo-stockade",
+          "matchKind": "set-family",
+          "rewardHint": "MI Security T1",
+          "sourceIds": [
+            "game8-crates"
+          ],
+          "confidence": "single-source",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "773",
+      "gearName": "MI Security Armor T1",
+      "setName": "MI Security",
+      "officialAcquisitionKind": "template-crate",
+      "status": "ambiguous-community-candidates",
+      "candidateAreas": [
+        "wuling-city",
+        "qingbo-stockade"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-3",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "MI Security",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city",
+            "nerds-landmark-detail"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-4",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "MI Security",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "qingbo-stockade-3",
+          "areaId": "qingbo-stockade",
+          "matchKind": "set-family",
+          "rewardHint": "MI Security T1",
+          "sourceIds": [
+            "game8-crates"
+          ],
+          "confidence": "single-source",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "775",
+      "gearName": "Hot Work Gloves",
+      "setName": "Hot Work",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-1",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Hot Work",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "776",
+      "gearName": "Hot Work Exo-Rig",
+      "setName": "Hot Work",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-1",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Hot Work",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "777",
+      "gearName": "Frontiers O2 Tube",
+      "setName": "Frontiers",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-2",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-3",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city",
+            "nerds-landmark-detail"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "778",
+      "gearName": "Frontiers Protection Suit",
+      "setName": "Frontiers",
+      "officialAcquisitionKind": "template-crate",
+      "status": "ambiguous-community-candidates",
+      "candidateAreas": [
+        "wuling-city",
+        "qingbo-stockade"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-2",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-3",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city",
+            "nerds-landmark-detail"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "qingbo-stockade-2",
+          "areaId": "qingbo-stockade",
+          "matchKind": "named-piece",
+          "rewardHint": "Frontiers Protection Suit",
+          "sourceIds": [
+            "game8-crates"
+          ],
+          "confidence": "single-source",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "779",
+      "gearName": "Frontiers Analyzer",
+      "setName": "Frontiers",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-2",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-3",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city",
+            "nerds-landmark-detail"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "780",
+      "gearName": "Frontiers Fiber Gloves",
+      "setName": "Frontiers",
+      "officialAcquisitionKind": "template-crate",
+      "status": "ambiguous-community-candidates",
+      "candidateAreas": [
+        "wuling-city",
+        "qingbo-stockade"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-2",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-3",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city",
+            "nerds-landmark-detail"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "qingbo-stockade-1",
+          "areaId": "qingbo-stockade",
+          "matchKind": "named-piece",
+          "rewardHint": "Frontiers Fiber Gloves",
+          "sourceIds": [
+            "game8-crates"
+          ],
+          "confidence": "single-source",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "781",
+      "gearName": "Pulser Labs Invasion Core",
+      "setName": "Pulser Labs",
+      "officialAcquisitionKind": "regional-stock-redistribution",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "782",
+      "gearName": "Pulser Labs Probe",
+      "setName": "Pulser Labs",
+      "officialAcquisitionKind": "regional-stock-redistribution",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "783",
+      "gearName": "Bonekrusha Mask T2",
+      "setName": "Bonekrusha",
+      "officialAcquisitionKind": "template-crate",
+      "status": "ambiguous-community-candidates",
+      "candidateAreas": [
+        "wuling-city",
+        "qingbo-stockade"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-5",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-6",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "qingbo-stockade-2",
+          "areaId": "qingbo-stockade",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates"
+          ],
+          "confidence": "single-source",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "784",
+      "gearName": "Bonekrusha Wristband",
+      "setName": "Bonekrusha",
+      "officialAcquisitionKind": "template-crate",
+      "status": "ambiguous-community-candidates",
+      "candidateAreas": [
+        "wuling-city",
+        "qingbo-stockade"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-5",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-6",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "qingbo-stockade-2",
+          "areaId": "qingbo-stockade",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates"
+          ],
+          "confidence": "single-source",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "785",
+      "gearName": "Bonekrusha Wristband T1",
+      "setName": "Bonekrusha",
+      "officialAcquisitionKind": "template-crate",
+      "status": "ambiguous-community-candidates",
+      "candidateAreas": [
+        "wuling-city",
+        "qingbo-stockade"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-5",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-6",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "qingbo-stockade-2",
+          "areaId": "qingbo-stockade",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates"
+          ],
+          "confidence": "single-source",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "786",
+      "gearName": "Bonekrusha Heavy Armor T2",
+      "setName": "Bonekrusha",
+      "officialAcquisitionKind": "template-crate",
+      "status": "ambiguous-community-candidates",
+      "candidateAreas": [
+        "wuling-city",
+        "qingbo-stockade"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-5",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-6",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "qingbo-stockade-2",
+          "areaId": "qingbo-stockade",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates"
+          ],
+          "confidence": "single-source",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "787",
+      "gearName": "Æthertech Watch",
+      "setName": "Æthertech",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-8",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Æthertech",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "788",
+      "gearName": "Æthertech Stabilizer T1",
+      "setName": "Æthertech",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-8",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Æthertech",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "789",
+      "gearName": "Æthertech Light Gloves",
+      "setName": "Æthertech",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-8",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Æthertech",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "790",
+      "gearName": "LYNX Connector T2",
+      "setName": "LYNX",
+      "officialAcquisitionKind": "unknown",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "791",
+      "gearName": "Swordmancer Light Armor",
+      "setName": "Swordmancer",
+      "officialAcquisitionKind": "unknown",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "792",
+      "gearName": "Swordmancer Micro Filter",
+      "setName": "Swordmancer",
+      "officialAcquisitionKind": "unknown",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "793",
+      "gearName": "Swordmancer NAV Beacon",
+      "setName": "Swordmancer",
+      "officialAcquisitionKind": "regional-stock-redistribution",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "794",
+      "gearName": "Redeemer Hands",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "unknown",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "795",
+      "gearName": "Redeemer Gloves",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "unknown",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "796",
+      "gearName": "Redeemer Armor",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "unknown",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "797",
+      "gearName": "Redeemer Plates",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "unknown",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "869",
+      "gearName": "Frontiers Extra O2 Tube T1",
+      "setName": "Frontiers",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-2",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-3",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city",
+            "nerds-landmark-detail"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "870",
+      "gearName": "Frontiers Fiber Gloves T1",
+      "setName": "Frontiers",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-2",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-3",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Frontiers",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city",
+            "nerds-landmark-detail"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "871",
+      "gearName": "Bonekrusha Figurine T2",
+      "setName": "Bonekrusha",
+      "officialAcquisitionKind": "template-crate",
+      "status": "ambiguous-community-candidates",
+      "candidateAreas": [
+        "wuling-city",
+        "qingbo-stockade"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-5",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-6",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "qingbo-stockade-2",
+          "areaId": "qingbo-stockade",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates"
+          ],
+          "confidence": "single-source",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "872",
+      "gearName": "Bonekrusha Gloves",
+      "setName": "Bonekrusha",
+      "officialAcquisitionKind": "template-crate",
+      "status": "ambiguous-community-candidates",
+      "candidateAreas": [
+        "wuling-city",
+        "qingbo-stockade"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-5",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "wuling-city-6",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        },
+        {
+          "claimId": "qingbo-stockade-2",
+          "areaId": "qingbo-stockade",
+          "matchKind": "set-family",
+          "rewardHint": "Bonekrusha",
+          "sourceIds": [
+            "game8-crates"
+          ],
+          "confidence": "single-source",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "873",
+      "gearName": "Swordmancer Dagger",
+      "setName": "Swordmancer",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-1",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Swordmancer",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "874",
+      "gearName": "Swordmancer TAC Gauntlets T1",
+      "setName": "Swordmancer",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-1",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Swordmancer",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "875",
+      "gearName": "Swordmancer Heavy Armor T1",
+      "setName": "Swordmancer",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-1",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Swordmancer",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "876",
+      "gearName": "Qingbo Cask",
+      "setName": "Qingbo",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "877",
+      "gearName": "Qingbo Positioning Kit",
+      "setName": "Qingbo",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "878",
+      "gearName": "Qingbo Bamboo Cutter",
+      "setName": "Qingbo",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "879",
+      "gearName": "Qingbo Gloves",
+      "setName": "Qingbo",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "880",
+      "gearName": "Qingbo Gauntlets",
+      "setName": "Qingbo",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "881",
+      "gearName": "Qingbo Light Armor",
+      "setName": "Qingbo",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "882",
+      "gearName": "Qingbo Heavy Armor",
+      "setName": "Qingbo",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "883",
+      "gearName": "Xiranflow Baton",
+      "setName": "Xiranflow",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "884",
+      "gearName": "Xiranflow Gloves",
+      "setName": "Xiranflow",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "885",
+      "gearName": "Xiranflow Light Armor",
+      "setName": "Xiranflow",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1019",
+      "gearName": "Qingbo Positioning Kit T1",
+      "setName": "Qingbo",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1020",
+      "gearName": "Swordmancer Fiber Armor",
+      "setName": "Swordmancer",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-1",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Swordmancer",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1021",
+      "gearName": "Grizzled Edge Push Knife T1",
+      "setName": "Grizzled Edge",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1022",
+      "gearName": "Grizzled Edge Push Knife",
+      "setName": "Grizzled Edge",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1023",
+      "gearName": "Grizzled Edge Gauntlets T1",
+      "setName": "Grizzled Edge",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1024",
+      "gearName": "Grizzled Edge Gauntlets",
+      "setName": "Grizzled Edge",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1025",
+      "gearName": "Grizzled Edge Armor T1",
+      "setName": "Grizzled Edge",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1026",
+      "gearName": "Grizzled Edge Armor",
+      "setName": "Grizzled Edge",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1116",
+      "gearName": "AIC Fieldwork Armor",
+      "setName": "AIC Fieldwork",
+      "officialAcquisitionKind": "region-story-progress",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1117",
+      "gearName": "AIC Fieldwork Plate",
+      "setName": "AIC Fieldwork",
+      "officialAcquisitionKind": "region-story-progress",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1118",
+      "gearName": "AIC Fieldwork Vest",
+      "setName": "AIC Fieldwork",
+      "officialAcquisitionKind": "region-story-progress",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1119",
+      "gearName": "AIC Fieldwork Machete",
+      "setName": "AIC Fieldwork",
+      "officialAcquisitionKind": "region-story-progress",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1120",
+      "gearName": "AIC Fieldwork Ember",
+      "setName": "AIC Fieldwork",
+      "officialAcquisitionKind": "region-story-progress",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1121",
+      "gearName": "AIC Fieldwork Flashlight",
+      "setName": "AIC Fieldwork",
+      "officialAcquisitionKind": "region-story-progress",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1122",
+      "gearName": "AIC Fieldwork Gloves",
+      "setName": "AIC Fieldwork",
+      "officialAcquisitionKind": "region-story-progress",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1123",
+      "gearName": "AIC Fieldwork Hands",
+      "setName": "AIC Fieldwork",
+      "officialAcquisitionKind": "region-story-progress",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1124",
+      "gearName": "AIC Fieldwork Wraps",
+      "setName": "AIC Fieldwork",
+      "officialAcquisitionKind": "region-story-progress",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1125",
+      "gearName": "Rift Trekker Heavy Armor",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1126",
+      "gearName": "Rift Trekker Light Armor",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1127",
+      "gearName": "Rift Trekker Armor Slab",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1128",
+      "gearName": "Rift Trekker Gloves",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1129",
+      "gearName": "Rift Trekker Hands",
+      "setName": "Non-Set",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1130",
+      "gearName": "Hot Work Insulation Slab",
+      "setName": "Hot Work",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-1",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Hot Work",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1131",
+      "gearName": "Hot Work Hands PPE",
+      "setName": "Hot Work",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-1",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "Hot Work",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1132",
+      "gearName": "LYNX Cuirass T1",
+      "setName": "LYNX",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-7",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "LYNX",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1133",
+      "gearName": "LYNX Gauntlets T1",
+      "setName": "LYNX",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "wuling-city"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "wuling-city-7",
+          "areaId": "wuling-city",
+          "matchKind": "set-family",
+          "rewardHint": "LYNX",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-city"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1134",
+      "gearName": "Eternal Xiranite Light Armor",
+      "setName": "Eternal Xiranite",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-2",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Eternal Xiranite",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1135",
+      "gearName": "Eternal Xiranite Light Armor T1",
+      "setName": "Eternal Xiranite",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-2",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Eternal Xiranite",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1136",
+      "gearName": "Eternal Xiranite Bracing Slab",
+      "setName": "Eternal Xiranite",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-2",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Eternal Xiranite",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1137",
+      "gearName": "Eternal Xiranite Wraps",
+      "setName": "Eternal Xiranite",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-2",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Eternal Xiranite",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1138",
+      "gearName": "Eternal Xiranite Hands",
+      "setName": "Eternal Xiranite",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-2",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Eternal Xiranite",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1232",
+      "gearName": "Deepsink Gloves",
+      "setName": "Tide Surge",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-3",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Tide Surge",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1233",
+      "gearName": "Wave Swell Heavy Armor",
+      "setName": "Tide Surge",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-3",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Tide Surge",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1234",
+      "gearName": "Turbid Cutting Torch T1",
+      "setName": "Tide Surge",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-3",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Tide Surge",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1235",
+      "gearName": "Tide Fall Light Armor T1",
+      "setName": "Tide Surge",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-3",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Tide Surge",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1236",
+      "gearName": "Eternal Xiranite Bracing Slab T1",
+      "setName": "Eternal Xiranite",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-2",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Eternal Xiranite",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1237",
+      "gearName": "Eternal Xiranite Heavy Slab",
+      "setName": "Eternal Xiranite",
+      "officialAcquisitionKind": "template-crate",
+      "status": "community-area-candidate",
+      "candidateAreas": [
+        "jingyu-valley"
+      ],
+      "candidateLinks": [
+        {
+          "claimId": "jingyu-valley-2",
+          "areaId": "jingyu-valley",
+          "matchKind": "set-family",
+          "rewardHint": "Eternal Xiranite",
+          "sourceIds": [
+            "game8-crates",
+            "nerds-jingyu"
+          ],
+          "confidence": "corroborated",
+          "exactMarkerId": null,
+          "verified": false
+        }
+      ],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1238",
+      "gearName": "Deep Rampart Gauntlets",
+      "setName": "Deep Rampart",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1239",
+      "gearName": "Deep Rampart Armor",
+      "setName": "Deep Rampart",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1240",
+      "gearName": "Deep Rampart Comms",
+      "setName": "Deep Rampart",
+      "officialAcquisitionKind": "template-crate",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1241",
+      "gearName": "AIC Fieldwork Power Bank",
+      "setName": "AIC Fieldwork",
+      "officialAcquisitionKind": "region-story-progress",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1242",
+      "gearName": "AIC Fieldwork Assault Push Knife",
+      "setName": "AIC Fieldwork",
+      "officialAcquisitionKind": "region-story-progress",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1243",
+      "gearName": "AIC Fieldwork Assault Gloves",
+      "setName": "AIC Fieldwork",
+      "officialAcquisitionKind": "region-story-progress",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1244",
+      "gearName": "AIC Fieldwork Assault Armor",
+      "setName": "AIC Fieldwork",
+      "officialAcquisitionKind": "region-story-progress",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1245",
+      "gearName": "AIC Fieldwork Medic Gloves",
+      "setName": "AIC Fieldwork",
+      "officialAcquisitionKind": "region-story-progress",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    },
+    {
+      "gearId": "1246",
+      "gearName": "AIC Fieldwork Medic Armor",
+      "setName": "AIC Fieldwork",
+      "officialAcquisitionKind": "region-story-progress",
+      "status": "unverified",
+      "candidateAreas": [],
+      "candidateLinks": [],
+      "verifiedCrateMarkerId": null,
+      "manualReviewNeeded": true
+    }
+  ]
+}
