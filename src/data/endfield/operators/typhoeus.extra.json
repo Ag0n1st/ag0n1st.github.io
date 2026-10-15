@@ -593,6 +593,9 @@
     }
   ],
   "materials": {
+    "99": {
+      "name": "D96 Steel Sample 4"
+    },
     "100": {
       "name": "Elementary Combat Record"
     },
@@ -601,6 +604,9 @@
     },
     "102": {
       "name": "Advanced Combat Record"
+    },
+    "104": {
+      "name": "Quadrant Fitting Fluid"
     },
     "105": {
       "name": "Elementary Cognitive Carrier"
@@ -623,6 +629,9 @@
     "112": {
       "name": "Tachyon Screening Lattice"
     },
+    "114": {
+      "name": "Mark of Perseverance"
+    },
     "128": {
       "name": "Pink Bolete"
     },
@@ -632,11 +641,23 @@
     "137": {
       "name": "Ruby Bolete"
     },
+    "141": {
+      "name": "Kalkodendra"
+    },
+    "146": {
+      "name": "Vitrodendra"
+    },
+    "147": {
+      "name": "Chrysodendra"
+    },
     "642": {
       "name": "T-Creds"
     },
     "1048": {
       "name": "Talos Cap"
+    },
+    "1049": {
+      "name": "Crimson Spearleaf"
     }
   }
 }
