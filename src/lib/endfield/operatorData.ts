@@ -1,3 +1,26 @@
+export interface ImportedItemCost { id: string; count: number; }
+export interface ImportedOperatorExtras {
+  schemaVersion: number;
+  source: { provider: string; itemId: string; language: string; snapshot: string };
+  operator: string;
+  profile: Record<string,string>;
+  attributes: {
+    levels: string[];
+    metrics: { name: string; values: string[] }[];
+    levelCosts: { level: string; items: ImportedItemCost[] }[];
+    mainAttribute: string;
+    secondaryAttribute: string;
+  };
+  talents: {
+    id: string;
+    name: string;
+    category: "attribute" | "combat" | "ship" | "other";
+    levels: {name:string;effect:string;requirements:string[];cost:ImportedItemCost[]}[];
+  }[];
+  promotions: { name:string;effect:string;requirement:string;cost:ImportedItemCost[] }[];
+  potentials: { level:number;name:string;effect:string }[];
+  materials: Record<string,{name:string}>;
+}
 export interface ImportedSkill {
   slot: "basic" | "battle" | "combo" | "ultimate";
   name: string;
@@ -46,4 +69,29 @@ for (const imported of Object.values(modules)) {
 }
 export function getImportedOperator(slug: string): ImportedOperator | undefined {
   return operatorIndex.get(slug);
+}
+
+const extraModules = import.meta.glob("../../data/endfield/operators/*.extra.json", {
+  eager: true,
+  import: "default"
+}) as Record<string, ImportedOperatorExtras>;
+const extraIndex = new Map<string,ImportedOperatorExtras>();
+for(const extras of Object.values(extraModules)) {
+  if(extraIndex.has(extras.operator)) throw Error("Doppelte Operator-Ergänzung: "+extras.operator);
+  if(
+    extras.attributes.levels.length !== 6 ||
+    extras.attributes.metrics.some(metric=>metric.values.length!==6) ||
+    extras.talents.length!==5 ||
+    extras.promotions.length!==7 ||
+    extras.potentials.length!==5 ||
+    extras.potentials.some((potential,i)=>potential.level!==i+1)
+  ) throw Error("Unvollständige SKPORT-Operator-Ergänzung: "+extras.operator);
+  const official = operatorIndex.get(extras.operator);
+  if(official && official.operator.id!==extras.source.itemId) {
+    throw Error("Nicht übereinstimmende SKPORT-Item-ID für "+extras.operator);
+  }
+  extraIndex.set(extras.operator,extras);
+}
+export function getImportedOperatorExtras(slug: string): ImportedOperatorExtras | undefined {
+  return extraIndex.get(slug);
 }
