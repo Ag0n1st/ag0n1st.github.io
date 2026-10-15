@@ -10,7 +10,8 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+  actions: write
 
 jobs:
   probe:
@@ -56,6 +57,52 @@ jobs:
               materialCount:Object.keys(b.materials).length
             },null,2));
           '
+      - name: Verify normalized records before publishing
+        if: steps.normalize.outcome == 'success'
+        run: |
+          node --input-type=module -e '
+            import fs from "node:fs";
+            const a=JSON.parse(fs.readFileSync("local-data/generated/liino.json","utf8"));
+            const b=JSON.parse(fs.readFileSync("local-data/generated/liino.extra.json","utf8"));
+            if(a.operator.id!=="1041" || a.operator.slug!=="liino" || a.operator.name!=="Liino" ||
+              a.operator.rarity!==6 || a.skills.length!==4 ||
+              new Set(a.skills.map(s=>s.slot)).size!==4 ||
+              a.skills.some(s=>s.metrics.length<1 || s.metrics.some(metric=>metric.length!==13) || s.upgradeCosts.length!==12) ||
+              b.potentials.length!==5 || b.talents.length<3 || b.promotions.length<4 ||
+              b.source.itemId!=="1041" || b.operator!=="liino") {
+              throw new Error("Official Liino data failed prepublication checks");
+            }
+          '
+          mkdir -p src/data/endfield/operators
+          cp local-data/generated/liino.json src/data/endfield/operators/liino.json
+          cp local-data/generated/liino.extra.json src/data/endfield/operators/liino.extra.json
+      - name: Verify complete Astro build with Liino data
+        if: steps.normalize.outcome == 'success'
+        run: |
+          npm install
+          npm run test:endfield
+          npm run build
+      - name: Commit only validated public Liino data
+        if: steps.normalize.outcome == 'success'
+        id: commit
+        shell: bash
+        run: |
+          git add src/data/endfield/operators/liino.json src/data/endfield/operators/liino.extra.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Import verified official SKPORT Liino operator data"
+            git push origin HEAD:main
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Cache Liino artwork and publish
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run sync-endfield-assets.yml --ref main
       - name: Upload only sanitized public wiki responses
         if: always()
         uses: actions/upload-artifact@v4
