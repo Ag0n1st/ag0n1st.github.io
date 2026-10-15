@@ -43,7 +43,7 @@ jobs:
         if: github.event_name == 'push' || inputs.publish == true
         shell: bash
         run: |
-          git add -A public/images/endfield/items/ src/data/endfield/catalog/items.json
+          git add -A public/images/endfield/operators/icons/ public/images/endfield/weapons/ public/images/endfield/gear/ public/images/endfield/materials/ public/images/endfield/valuables/ src/data/endfield/catalog/items.json
           if git diff --cached --quiet; then
             echo 'No changed assets'
           else

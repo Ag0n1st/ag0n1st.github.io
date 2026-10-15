@@ -13,7 +13,7 @@ const items=new Map<string,EndfieldCatalogItem>();
 for(const row of officialItems.items){
   if(!/^\d+$/.test(row.id) || items.has(row.id))
     throw new Error("Invalid or duplicate SKPORT item ID: "+row.id);
-  if(row.iconPath && !/^\/images\/endfield\/(?:items\/\d+|operators\/[a-z0-9-]+\/cover)\.webp$/.test(row.iconPath))
+  if(row.iconPath && !/^\/images\/endfield\/(?:operators\/(?:icons\/\d+|[a-z0-9-]+\/cover)|(?:weapons|gear|materials|valuables)\/\d+)\.webp$/.test(row.iconPath))
     throw new Error("Unsafe SKPORT static item path: "+row.id);
   items.set(row.id,row);
 }

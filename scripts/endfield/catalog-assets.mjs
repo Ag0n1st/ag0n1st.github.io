@@ -11,7 +11,20 @@ import { readFile, writeFile, mkdir, stat, readdir } from "node:fs/promises";
 import { resolve, dirname } from "node:path";
 import { endfieldBudget } from "./check-budget.mjs";
 
-const ROOT=resolve("public/images/endfield/items");
+const ROOT=resolve("public/images/endfield");
+const CATALOG_FOLDERS=Object.freeze({
+  Operators:"operators/icons",
+  Weapons:"weapons",
+  Gear:"gear",
+  "Item Files":"materials",
+  "Valuables Stash":"valuables"
+});
+function destinationFor(item) {
+  const dir=CATALOG_FOLDERS[item.category];
+  if(!dir||!SAFE_ID.test(String(item.id)))throw Error("Unknown official asset category / ID");
+  const relative=dir+"/"+item.id+".webp";
+  return {file:resolve(ROOT,relative),url:"/images/endfield/"+relative};
+}
 const MANIFEST=resolve("src/data/endfield/catalog/items.json");
 const LABELS=["Operators","Weapons","Gear","Item Files","Valuables Stash"];
 const IMAGE_HOST="static.skport.com";
@@ -107,10 +120,10 @@ async function existingOperatorPortraits(){
 }
 async function obtainAsset(item){
   if(!item.coverUrl)return {type:"no-cover"};
-  const file=resolve(ROOT,item.id+".webp");
+  const {file,url}=destinationFor(item);
   try{
     const prev=await stat(file);
-    if(prev.size>0)return {type:"existing",bytes:prev.size,path:"/images/endfield/items/"+item.id+".webp"};
+    if(prev.size>0)return {type:"existing",bytes:prev.size,path:url};
   }catch(e){if(e.code!=="ENOENT")throw e;}
   const source=new URL(item.coverUrl);
   if(source.hostname!==IMAGE_HOST||source.protocol!=="https:")
@@ -135,7 +148,7 @@ async function obtainAsset(item){
   await mkdir(dirname(file),{recursive:true});
   await writeFile(file,encoded);
   return {type:"downloaded",bytes:encoded.length,rawBytes:raw.length,
-    path:"/images/endfield/items/"+item.id+".webp"};
+    path:url};
 }
 async function main(){
   const groups=await loadCatalogue();
