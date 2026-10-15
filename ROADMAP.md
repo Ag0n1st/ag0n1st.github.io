@@ -1,7 +1,7 @@
 # AG0N1ST.COM – PROJEKT-ROADMAP, ENTWICKLUNGSSTAND & KI-ÜBERGABE
 
 > **Zentrale Projektdokumentation / Single Point of Entry.**  
-> **Stand:** 15. Oktober 2026 (Europe/Berlin).  
+> **Stand:** 16. Oktober 2026 (Europe/Berlin).  
 > **Projekt:** Ag0n1st – deutschsprachiges Gaming-/Guide-Portal.  
 > **Repository:** https://github.com/Ag0n1st/ag0n1st.github.io  
 > **Produktionswebsite:** https://ag0n1st.com (eigene Domain), alternativ https://ag0n1st.github.io  
@@ -31,7 +31,7 @@
 | Wo liegen persönliche Guide-Texte? | `src/content/operator-guides/<slug>.md`; Vorlage `_template.md`. |
 | Wie heißt der zentrale UI-Bereich? | `src/components/operator/sections/OperatorEquipment.astro`; Browserinteraktionen in `src/components/operator/OperatorGuide.astro`. |
 | Welche Tests? | `npm run test:endfield`, `node scripts/endfield/check-budget.mjs`, `npm run build`. |
-| Was ist aktuell als Nächstes sinnvoll? | **Erste redaktionelle, vom Creator bestätigte Liino-Builds** und deren Funktionsprüfung im neuen Finder; danach Story-/Blaupausen-Feinheiten und weitere Operator-Guides. |
+| Was ist aktuell als Nächstes sinnvoll? | **Erste redaktionelle, vom Creator bestätigte Liino-Builds** und deren Funktionsprüfung im neuen Finder; danach Story-/Blaupausen-Feinheiten und weitere Operator-Guides. **Zusätzlich gilt das vollständige PDF-Konversationsaudit** in `docs/website-conversation-audit.md` für historische Designentscheidungen. |
 | Stand Authority? | Obergrenze **60**, inklusive HTML-Feld, gespeicherten Eingaben und Auswertelogik; bei künftiger Erhöhung zentral anpassen. |
 
 **Diese Datei ist kein Ersatz für die Dateien im Repository.** Wo der Code und die Roadmap abweichen, nicht stillschweigend „korrigieren“: Diskrepanz feststellen, Ursache prüfen, dem Nutzer erläutern, dann dokumentiert ändern.
@@ -77,7 +77,7 @@ Die Website ist die langfristige, auffindbare Wissensplattform rund um die Strea
 - Gleiche visuelle Grundsprache über alle Spiele hinweg; **spielspezifische Akzente** möglich.
 - Navigation: Logo/Wordmark links; Hauptlinks **Arknights: Endfield**, **Neverness to Everness**, **About Me**; Endfield-Zweitnavigation unter dem Hauptheader.
 - Responsive Desktop/Mobile, auf kleinen Displays keine abgeschnittenen Texte/Karten, lesbare Formularbeschriftungen, Tastaturbedienung und sinnvolle Fokuszustände.
-- Im Chat zur Websiteentwicklung **Text, Code und Links**, keine automatisch erstellten Bilder oder Assets. Neue Bilder nur auf ausdrücklichen Auftrag; bis dahin Platzhalter nutzen.
+- **Sämtliche weiteren Website-Entwicklungschats bleiben ausschließlich textbasiert.** Nur Text, Code und normale Links; keine automatisch erstellten Bilder, Diagramme, Rich-UI-Karten oder andere grafische Vorschauen im Chat. Neue Bilder nur bei späterem ausdrücklichen Auftrag; bis dahin Platzhalter nutzen. Diese Regel betrifft die **Chat-Ausgabe**, nicht die bestehenden Grafiken der Website selbst. Bekräftigt am 16.10.2026 nach vollständiger PDF-Auswertung.
 - Keine ungefragten neuen Logos/Texte/Branding-Elemente.
 - Spielerorientierte Begriffe: **Operatoren** (nicht mehr „Charaktere“ in der Endfield-Navigation); offizielle IDs als Schlüssel, nicht künstlich umbenannte Übersetzungs-IDs.
 - Echte Quellenbelege vor Annahmen. Wenn etwas unsicher ist, im Datensatz kenntlich machen.
@@ -745,7 +745,10 @@ Dies ist eine **priorisierte Roadmap**, kein bereits bezahlter Projektvertrag un
 - [x] Kategorien für WebP-Bilder.
 - [x] Stand 15.10.2026: Autoritätslevel bis max. **60** (UI + Validierung).
 - [x] Zentrale `ROADMAP.md` als Übergabe-/Verlaufsdatei.
+- [x] Historische **75-seitige Website-Konversation vollständig evaluiert** und dokumentierte Entscheidungen nach letzter Nutzerfestlegung priorisiert (16.10.2026; `docs/website-conversation-audit.md` auf Dokumentations-PR #14).
 - [ ] Laufende Überprüfung von Website-Header, Mobile-Layout, Tastaturnavigation, Formularen und Links.
+- [ ] Bei künftigen Website-Änderungen die **historischen Regressionsrisiken** beachten: Hamburger-Navigation, gleiche Hero-Card-Größen, mobiles einspaltiges Videogrid, echte Übereinstimmung von YouTube-Titel und Thumbnail, deutsch formatierte relative Zeit; Details mit PDF-Seiten in `docs/website-conversation-audit.md`.
+- [ ] Prüfen, ob die ursprünglich gewünschten **P1/P3/P5-Potenzial-Profilbilder** aus verifizierten Assets verfügbar sind und im aktuellen Guide-Modell abgebildet werden; nicht ungefragt Fantasiebilder erzeugen.
 - [ ] Unmerged Forschungs-PR #3 auf Obsoleszenz prüfen und ggf. schließen (nicht blind zusammenführen).
 - [ ] GitHub Pages / Canonical-Domain / SSL und `astro.config.mjs` konsistent prüfen, insbesondere `ag0n1st.com` vs. konfigurierte `ag0n1st.github.io`.
 - [ ] Asset- und Import-Actions kontrollieren, ob alte, einmalige Debug-Workflows später aufgeräumt werden müssen.
@@ -1117,6 +1120,15 @@ Warum dieser Schritt zuerst: Die technische Engine ist vorhanden, aber `liino.md
 
 **Kleiner technisch sinnvoller Parallelpunkt:** Die **Autoritätslevel-Grenze 60** bei künftigen Patchänderungen zentral in `src/lib/endfield/buildStoryProgress.mjs` nachführen, UI/LocalStorage-/Testgrenzen nicht isoliert ändern.
 
+### 14.2a Fortsetzung nach Repository-Prüfung (15.10.2026)
+
+- Der aktuelle `main`-Commit wurde als `3f0e7125812216d7425c701dc95b66ce0e98e2fd` geprüft: Autoritätslevel-Begrenzung und Roadmap sind integriert.
+- Der einzige offene ältere PR war **#3** (temporäre SKPORT-Katalog-Recherche); er ist **nicht gemergt** und fachlich durch spätere Katalog-Imports weitgehend überholt. Vor einer Schliessung sind seine etwaigen individuellen Erkenntnisse noch gegen den aktuellen Stand abzugleichen.
+- `src/content/operator-guides/liino.md` ist weiterhin `status: preview` und hat `equipment.builds: []`; bei Typhoeus ebenso keine Builds. Keine redaktionelle Build-Empfehlung wurde erfunden oder veröffentlicht.
+- `docs/operator-guide-workflow.md` wurde auf den tatsächlich vorhandenen Gear-Katalog und einen expliziten **Liino-Build-Abnahmeplan** aktualisiert (Branch `docs-liino-build-handoff-20261015`).
+- **Offener nächster Produktschritt:** Creator-Freigabe von vier konkreten offiziellen Gear-IDs und ihrer Rolle/Bewertung für mindestens einen Liino-Build, danach Eingabe in `liino.md`, echte UI-Abnahme und CI. Bis dahin bleiben P1 und der vollständige Browser-E2E-Test ausdrücklich offen.
+- **Branch-Prüfstand:** Reine Dokumentationskorrektur; keine Laufzeit-/Spieldaten-Änderung. CI und Merge-/Deploy-Status erst nach GitHub-Rückmeldung als erfolgreich bezeichnen.
+
 ### 14.3 Sofortleseliste für die nächste KI
 
 1. **`ROADMAP.md`** – dieses Dokument vollständig für Kontext und Projektprioritäten.
@@ -1125,9 +1137,22 @@ Warum dieser Schritt zuerst: Die technische Engine ist vorhanden, aber `liino.md
 4. **`docs/operator-guide-workflow.md`** – Guide-Template und redaktioneller Workflow.
 5. **`src/content/operator-guides/_template.md`** – tatsächliche YAML-Felder, nicht aus Erinnerung ableiten.
 6. **`src/content/operator-guides/liino.md`** – nächste redaktionelle Datei.
-7. **`src/lib/endfield/buildFinder.mjs`**, **`buildStoryProgress.mjs`**, **`gearBlueprintResearch.ts`** – Build-/Progressionsregeln.
-8. **`docs/endfield-blueprint-piece-audit.md`** und **`docs/endfield-story-progression.md`** – Fundort-/Story-Fachbelege und offene Konflikte.
-9. **GitHub Pull Requests/Actions auf `main`** – letzter tatsächlicher Code-/Deploy-Stand.
+7. **`docs/website-conversation-audit.md`** – vollständige, nach letzten Beschlüssen gewichtete Auswertung der 75-seitigen PDF-Vorgeschichte, inklusive verworfener Zwischenkonzepte, Designfeinheiten und konkreter Code-Abgleichpunkte.
+8. **`src/lib/endfield/buildFinder.mjs`**, **`buildStoryProgress.mjs`**, **`gearBlueprintResearch.ts`** – Build-/Progressionsregeln.
+9. **`docs/endfield-blueprint-piece-audit.md`** und **`docs/endfield-story-progression.md`** – Fundort-/Story-Fachbelege und offene Konflikte.
+10. **GitHub Pull Requests/Actions auf `main`** – letzter tatsächlicher Code-/Deploy-Stand.
+
+### 14.3a Vollständige historische Chat-Auswertung (16.10.2026)
+
+- **Ausgangsdokument:** vom Betreiber am 16.10.2026 bereitgestellte `Bisherige Website Konversation.pdf`, **75 Seiten, ~57.000 Wörter**. Seite für Seite ausgewertet, inhaltlich konsolidiert. **Original-PDF und Rohtext nicht in das öffentliche Repository kopiert**, da historische Terminal- und persönliche Umgebungsinformationen enthalten sind.
+- **Nachschlagedokument:** [`docs/website-conversation-audit.md`](docs/website-conversation-audit.md) – chronologische Seitenbereiche, verbindliche letzte Entscheidungen, Zwischenentwürfe, technische/inhaltliche Konflikte, konkrete zu prüfende Codeunterschiede.
+- **Erneut verbindlich bestätigt:** Dieser und alle folgenden Website-Chats **ausschließlich Text**, keine selbständig generierten Bilder, Diagramme oder Visualisierungen. Eine reale Website darf selbstverständlich weiterhin die vorhandenen WebP-/Icon-Assets anzeigen.
+- **Wichtigste Detailpräzisierungen:** Endfield-Operator-Übersicht mit Profil/Video 50:50, Stärken/Schwächen, kompakter Vier-Teile-Buildübersicht und 3×1–5-Ratings; vier aktive Skills mit `>`/`>=`; Waffen-BiS/BP/F2P; gear-/story-/fabrik-/besitzabhängige Builds; Potenzial-Avatare P1/P3/P5 als noch zu prüfender Wunsch; Meta-Teams **bewusst knapp**, weitere Inspirationsteams scrollbar; verschiedene Ausrüstungs-Builds per ID teilen; Gameplay primär Showcases/Trial statt Pflicht-Vollrotationen; Fazit ohne duplizierten Guide.
+- **Historische Architekturentscheidung:** Silex/GrapesJS/Supabase waren untersuchte, inzwischen für den aktuellen Stack **nicht ausgewählte** Optionen. Das MVP bleibt Astro + GitHub Pages + repository-eigene SKPORT-JSON/WebP + redaktionelle Markdown-Dateien, ohne Admin-Login/Laufzeitdatenbank.
+- **Technische Präzision:** Im aktuellen Schema referenziert ein Team über `buildId` den für den **Guide-Operator** gewählten Build. Der anfänglich überlegte Vollausrüstungsplan *jedes* weiteren Teammitglieds ist **nicht** als bereits implementierte oder verpflichtend sofort umzusetzende Funktion zu behaupten.
+- **Bereits im Code geprüft:** `OperatorTeams.astro` hat Meta-/weitere Teams und scrollbare Liste; `operatorGuideSchema.ts` hat vier Skills, vier Gear-IDs, `buildId`; `liino.md` ist weiterhin `preview` mit `equipment.builds: []`. **Keine redaktionellen Builds, Daten oder produktiven UI-Funktionen durch diesen Audit geändert.**
+- **Offene PRs bei Prüfung:** #3 veralteter Recherche-PR, #14 Dokumentations-/Liino-Handoff-PR. `main`-Snapshot: `3f0e712`. **Audit und ROADMAP-Erweiterung befinden sich zunächst auf dem existierenden Branch von PR #14**; nicht als bereits gemergt oder deployed behandeln.
+- **Akzeptanz:** Die nächste KI kann anhand Roadmap + Audit ohne frühere Chatinhalte die endgültigen Nutzerentscheidungen von historischen Ideen unterscheiden. Fachlicher Folgepunkt bleibt Phase P1, **Liinos echte Builds erst nach Creator-Freigabe oder ausdrücklich beauftragter, belegbarer Recherche**.
 
 ### 14.4 Checkliste zur Aktualisierung DIESER Datei
 
@@ -1154,6 +1179,7 @@ Nach **jedem** zukünftigen Task, unabhängig davon, ob ihn dieselbe oder eine a
 - Eigene Domain: https://ag0n1st.com
 
 **Fachdokumente im Repository:**
+- [Vollständiger PDF-Konversationsabgleich](docs/website-conversation-audit.md)
 - [Guide-Pflege](docs/operator-guide-workflow.md)
 - [Endfield-Importer/Asset-Handbuch](scripts/endfield/README.md)
 - [Offizielles Gebietsregister](docs/endfield-story-progression.md)
@@ -1188,6 +1214,7 @@ Nach **jedem** zukünftigen Task, unabhängig davon, ob ihn dieselbe oder eine a
 | 15.10.2026 | Community-Kistenforschung zuerst auf **einzelne Gear-IDs** präzisieren | Setnamen allein verursachen falsche oder mehrdeutige Gebietszuordnungen. |
 | 15.10.2026 | Autoritätslevel **maximal 60**, nicht 200 | Aktuell vom Nutzer bestätigte Spielobergrenze; Input/Validierung/Tests müssen übereinstimmen. |
 | 15.10.2026 | `ROADMAP.md` als zentrale, regelmäßig gepflegte KI-Übergabedokumentation | Neues Chatfenster/andere KI soll ohne Verlust alter Anforderungen und Beschlüsse fortsetzen können. |
+| 16.10.2026 | Alle Website-Chats **ausschließlich textbasiert**; 75-seitiges PDF-Archiv im eigenen [Konversationsaudit](docs/website-conversation-audit.md) ausgewertet | Höhere Genauigkeit bei historischer Entscheidungskette; spätere Beschlüsse gelten vor verworfenen Entwürfen, keine Bilder ohne gesonderte ausdrückliche Bitte; jeder Entwicklungsfortschritt inklusive PR/CI/Übergabe in ROADMAP fortschreiben. |
 
 **Ende der aktuellen Roadmap.**  
 **Fortsetzungspunkt:** Abschnitt 14 und die aktuell offenen/erledigten PRs prüfen, bevor neue Änderungen beginnen.
