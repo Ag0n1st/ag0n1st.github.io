@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 /**
  * SKPORT wiki snapshot -> inspectable, structured operator export.
- * Offline by design: accepts a saved PUBLIC wiki item/info JSON response.
- * Never uses cookies, player credentials or undocumented signing workarounds.
+ * Offline by design: accepts the response for a public item/info entry or
+ * a user-provided network capture. Only the PUBLIC item is selected and used;
+ * other requests including authentication responses are discarded.
  */
 import { readFile, mkdir, writeFile } from "node:fs/promises";
 import { resolve, dirname } from "node:path";
@@ -14,15 +15,58 @@ export const TYPHOEUS = {
   itemId: "1173",
   skillWidgetId: "1SuOqtCW",
   expectedTabs: [
-    { tabId: "gIuAIUyt", linkedId: "ENfCCHbD", name: "Wildlands Huntress" },
-    { tabId: "0ctR1S1J", linkedId: "fD8zxhWN", name: "Piercing Arrows of the Woods" },
-    { tabId: "CqJxefHj", linkedId: "1G405tY0", name: "Rampant Thorns" },
-    { tabId: "tVlf3UYx", linkedId: "mDY9OqqE", name: "Call of Ice Mountain" },
+    { descriptionId: "gIuAIUyt", contentId: "ENfCCHbD", name: "Wildlands Huntress", type: "Basic Attack" },
+    { descriptionId: "0ctR1S1J", contentId: "fD8zxhWN", name: "Piercing Arrows of the Woods", type: "Battle Skill" },
+    { descriptionId: "CqJxefHj", contentId: "1G405tY0", name: "Rampant Thorns", type: "Combo Skill" },
+    { descriptionId: "tVlf3UYx", contentId: "mDY9OqqE", name: "Call of Ice Mountain", type: "Ultimate" },
   ],
 };
 
 const isObject = value => value !== null && typeof value === "object" && !Array.isArray(value);
 const string = value => typeof value === "string" ? value : value == null ? "" : String(value);
+
+/**
+ * The supplied capture is a JSON array of several network responses. Extract
+ * ONLY the matching public wiki item; NEVER carry account/token responses into
+ * the output or its checksums.
+ */
+export function selectWikiItem(raw) {
+  let response = raw;
+  if (Array.isArray(raw)) {
+    const records = raw.filter(entry =>
+      typeof entry?.url === "string" &&
+      /\/web\/v1\/wiki\/item\/info(?:\?|$)/.test(entry.url) &&
+      new URL(entry.url).searchParams.get("id") === TYPHOEUS.itemId &&
+      entry.status === 200
+    );
+    if (records.length !== 1) throw new Error("Genau eine öffentliche SKPORT-item/info-Antwort für Typhoeus erwartet.");
+    response = records[0].response;
+  }
+  const item = response?.data?.item ?? response?.item ?? response;
+  if (!isObject(item) || !isObject(item.document) || string(item.itemId) !== TYPHOEUS.itemId) {
+    throw new Error("Typhoeus-Wiki-Eintrag 1173 mit document-Objekt nicht vorhanden.");
+  }
+  return item;
+}
+
+function wikiTag(item, typeId) {
+  const selected = item.brief?.subTypeList?.find(tag => string(tag.subTypeId) === typeId)?.value;
+  const group = item.subType?.filterTagTree?.find(node => string(node.id) === typeId);
+  const candidate = group?.children?.find(child => string(child.id) === string(selected));
+  return candidate ? { name: string(candidate.name), id: string(selected), code: string(candidate.value) } : null;
+}
+
+export function extractOperatorInfo(item) {
+  return {
+    id: string(item.itemId), slug: TYPHOEUS.operator, name: string(item.name),
+    language: string(item.lang), rarity: wikiTag(item, "10000"),
+    element: wikiTag(item, "10100"), class: wikiTag(item, "10200"),
+    weaponType: wikiTag(item, "10213"), faction: wikiTag(item, "10219"),
+    coverUrl: string(item.brief?.cover),
+    illustrationUrl: string(item.document?.extraInfo?.illustration),
+  };
+}
+
 
 function findMap(value, key) {
   const seen = new Set();
@@ -181,78 +225,129 @@ function tabIdOf(tab) {
 }
 
 export function inspectSkport(raw, sourceBytes = "") {
-  const documents = findMap(raw, "documentMap");
-  const widgets = findMap(raw, "widgetCommonMap");
+  let item;
+  try { item = selectWikiItem(raw); }
+  catch (e) {
+    return {
+      schemaVersion: 2, operator: TYPHOEUS.operator, status: "needs-review",
+      source: { provider: "skport-wiki", itemId: TYPHOEUS.itemId, sha256: null },
+      diagnostics: { issues: [e.message], skillTabCount: 0, documentCount: 0, widgetCount: 0 },
+      operatorInfo: null, skills: []
+    };
+  }
+  const container = item.document;
+  const documents = container.documentMap;
+  const widgets = container.widgetCommonMap;
   const issues = [];
-  if (!documents) issues.push("documentMap fehlt: SKPORT-Antwort oder Wrapper prüfen.");
-  if (!widgets) issues.push("widgetCommonMap fehlt: SKPORT-Antwort oder Wrapper prüfen.");
+  if (!isObject(documents)) issues.push("documentMap fehlt.");
+  if (!isObject(widgets)) issues.push("widgetCommonMap fehlt.");
   const skillWidget = widgets?.[TYPHOEUS.skillWidgetId];
   if (!skillWidget) issues.push("Skill-Widget " + TYPHOEUS.skillWidgetId + " fehlt.");
-  const tabsList = skillWidget?.tabList ?? skillWidget?.tabs ?? [];
+  const tabsList = skillWidget?.tabList ?? [];
   const tabDataMap = skillWidget?.tabDataMap ?? {};
   const listedIds = Array.isArray(tabsList) ? tabsList.map(tabIdOf).filter(Boolean) : [];
   const tabIds = [...new Set([...listedIds, ...Object.keys(tabDataMap)])];
   const availableKeys = new Set(Object.keys(documents ?? {}));
-  const usedDocs = new Map();
+  const allDocumentOwners = new Map();
   const skills = tabIds.map((tabId, i) => {
     const tab = tabDataMap[tabId] ?? {};
     const intro = tab.intro ?? {};
-    const expected = TYPHOEUS.expectedTabs.find(t => t.tabId === tabId);
-    const name = intro.name ?? (typeof tab.name === "string" ? tab.name : "");
-    const references = findDocumentRefs(tab.content ?? tab, availableKeys);
-    if (expected && availableKeys.has(expected.linkedId) && !references.includes(expected.linkedId)) {
-      // The second known ID is only a diagnostic hint, never force-attach it.
-      issues.push("Tab " + tabId + ": bekannte Referenz " + expected.linkedId + " liegt in documentMap, aber nicht in diesem Tab verknüpft.");
+    const name = string(intro.name ?? tab.name);
+    const type = string(intro.type?.value ?? intro.type?.key ?? intro.type);
+    const contentIds = findDocumentRefs(tab.content, availableKeys);
+    const descriptionIds = findDocumentRefs(intro.description, availableKeys);
+    const expected = TYPHOEUS.expectedTabs.find(skill => skill.name === name);
+    if (!expected) issues.push("Unbekannter Skillname an Tab " + tabId + ": " + name);
+    if (expected && (expected.contentId !== string(tab.content) || expected.descriptionId !== string(intro.description))) {
+      issues.push("Die gespeicherte Referenzzuordnung für " + name + " hat sich geändert.");
     }
-    if (!references.length) issues.push("Tab " + tabId + ": keine eindeutig zugeordneten Dokumente.");
-    for (const id of references) {
-      const owners = usedDocs.get(id) ?? [];
+    if (expected && type !== expected.type) {
+      issues.push("Skilltyp von " + name + " weicht ab: " + type);
+    }
+    if (contentIds.length !== 1) issues.push("Tab " + tabId + ": genau ein Leveltabellen-Dokument erwartet, gefunden " + contentIds.length);
+    if (descriptionIds.length !== 1) issues.push("Tab " + tabId + ": genau ein Beschreibungs-Dokument erwartet, gefunden " + descriptionIds.length);
+    for (const id of [...contentIds,...descriptionIds]) {
+      const owners = allDocumentOwners.get(id) ?? [];
       owners.push(tabId);
-      usedDocs.set(id, owners);
+      allDocumentOwners.set(id, owners);
     }
-    const extracted = references.map(id => extractDocument(id, documents[id]));
-    const tables = extracted.flatMap(doc => doc.sections.filter(s => s.kind === "table").map(s => ({
+
+    const levelDocuments = contentIds.map(id => extractDocument(id, documents[id]));
+    const descriptionDocuments = descriptionIds.map(id => extractDocument(id, documents[id]));
+    const tables = levelDocuments.flatMap(doc => doc.sections.filter(s => s.kind === "table").map(s => ({
       documentId: doc.documentId, blockId: s.blockId, ...s.table
     })));
-    if (tables.length === 0) issues.push("Tab " + tabId + ": keine auswertbare Tabelle.");
-    if (!name) issues.push("Tab " + tabId + ": Skillname fehlt in intro.name.");
+    if (tables.length !== 1) issues.push("Tab " + tabId + ": genau eine Skilllevel-Tabelle erwartet, gefunden " + tables.length);
+    const descriptionSections = descriptionDocuments.flatMap(d =>
+      d.sections.filter(s => s.kind === "text").map(section => ({
+        documentId: d.documentId, text: section.text, entries: section.entries
+      }))
+    );
+    if (!descriptionSections.length) issues.push("Tab " + tabId + ": Beschreibung ist leer.");
+
+    // This wiki entry uses a 13-column grid: metric name, ranks 1–9, mastery I–III.
+    // Retain the original grid AND expose a level-wise view for Astro.
+    const sourceTable = tables[0];
+    const headers = sourceTable?.rows[0]?.cells ?? [];
+    const levels = headers.slice(1);
+    if (sourceTable) {
+      if (sourceTable.rows.length < 2) issues.push("Leere Leveltabelle bei " + name);
+      if (headers.length !== 13 || levels.length !== 12 ||
+          !/^RANK 1$/i.test(levels[0]) ||
+          !/^Mastery III$/i.test(levels[11])) {
+        issues.push("Unerwartete Level-Spalten bei " + name + ": " + JSON.stringify(levels));
+      }
+      if (sourceTable.rows.some(row => row.cells.length !== headers.length)) {
+        issues.push("Unvollständige Tabellenzeilen bei " + name);
+      }
+    }
+    const metrics = sourceTable ? sourceTable.rows.slice(1).map(row => ({
+      name: row.cells[0], values: row.cells.slice(1),
+      entriesByLevel: row.entries.slice(1)
+    })) : [];
+    const levelValues = levels.map((rank, column) => ({
+      rank, stats: metrics.map(metric => ({
+        name: metric.name, value: metric.values[column],
+        entries: metric.entriesByLevel[column] ?? []
+      }))
+    }));
     return {
-      tabId, name: string(name), type: string(intro.type?.value ?? intro.type?.key ?? intro.type),
-      iconUrl: string(intro.imgUrl ?? intro.iconUrl),
-      animation: string(intro.animation ?? intro.animationUrl ?? tab.animation),
-      introduction: typeof intro.description === "string" ? intro.description : "",
-      descriptionSections: extracted.flatMap(d => d.sections.filter(s => s.kind === "text")
-        .map(section => ({ documentId: d.documentId, text: section.text, entries: section.entries }))),
-      documentIds: references, tables,
-      expectedName: expected?.name ?? null,
-      expectedTab: Boolean(expected)
+      tabId, name, type,
+      iconUrl: string(skillWidget?.tabList?.find(t => tabIdOf(t) === tabId)?.icon),
+      animationUrl: string(intro.imgUrl ?? intro.iconUrl),
+      descriptionIds, contentIds,
+      descriptionSections, description: descriptionSections.map(s => s.text).join("\n\n"),
+      tables, metrics, levels: levelValues
     };
   });
   if (skills.length !== 4) issues.push("Erwartet: 4 Skills; gefunden: " + skills.length + ".");
-  for (const [id, owners] of usedDocs.entries()) {
+  for (const expected of TYPHOEUS.expectedTabs) {
+    if (!skills.some(skill => skill.name === expected.name)) issues.push("Erwartete Fertigkeit fehlt: " + expected.name);
+  }
+  for (const [id, owners] of allDocumentOwners.entries()) {
     if (owners.length > 1) issues.push("Dokument " + id + " mehreren Skills zugeordnet: " + owners.join(", "));
   }
-  const knownIds = new Set(TYPHOEUS.expectedTabs.map(s => s.tabId));
-  for (const id of knownIds) if (!tabIds.includes(id)) issues.push("Bekannter Typhoeus-Skill-Tab fehlt: " + id);
-  for (const skill of skills) {
-    if (skill.expectedName && skill.name && skill.name.trim().toLowerCase() !== skill.expectedName.toLowerCase()) {
-      issues.push("Skillname bei " + skill.tabId + " abweichend: " + skill.name);
-    }
-  }
-  const sha256 = sourceBytes ? createHash("sha256").update(sourceBytes).digest("hex") : null;
+
+  // SHA-256 covers only the selected PUBLIC item object, not other capture
+  // records such as sign-in responses or personal account information.
+  const sha256 = createHash("sha256").update(JSON.stringify(item)).digest("hex");
   return {
-    schemaVersion: 1,
-    source: { provider: "skport-wiki", itemId: TYPHOEUS.itemId,
-      endpoint: "/web/v1/wiki/item/info?id=" + TYPHOEUS.itemId, sha256 },
+    schemaVersion: 2,
+    source: {
+      provider: "skport-wiki", itemId: TYPHOEUS.itemId,
+      endpoint: "/web/v1/wiki/item/info?id=" + TYPHOEUS.itemId,
+      capturedHash: sha256
+    },
     operator: TYPHOEUS.operator,
+    operatorInfo: extractOperatorInfo(item),
     status: issues.length ? "needs-review" : "validated-structure",
     diagnostics: {
       widgetCount: Object.keys(widgets ?? {}).length,
       documentCount: Object.keys(documents ?? {}).length,
       skillTabCount: tabIds.length,
-      issues,
+      issues
     },
-    skills,
+    skills
   };
 }
 
