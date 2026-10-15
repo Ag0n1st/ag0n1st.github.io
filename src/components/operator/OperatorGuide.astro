@@ -315,7 +315,14 @@ const potentialByLevel = new Map(guide.potentials.entries.map(p=>[p.level,p]));
                           <tbody>{gameData.ranks.map((rank,i)=><tr><td>{rank}</td>{official.metrics.map(metric=><td>{metric[i+1]}</td>)}</tr>)}</tbody>
                         </table>
                       </div>
-                      <p class="op-muted" style="font-size:11px;margin-top:10px">Die Materialkosten werden nach Zuordnung ihrer Item-IDs ergänzt.</p>
+                      {official.upgradeCosts?.length ? <>
+                        <h4 style="margin:17px 0 8px">Materialkosten der einzelnen Skillstufen</h4>
+                        <div class="op-table-wrap"><table class="op-table">
+                          <thead><tr><th>Skillstufe</th><th>Materialien</th></tr></thead>
+                          <tbody>{official.upgradeCosts.map(level=><tr><td>{level.rank}</td><td>{formatCost(level.items)}</td></tr>)}</tbody>
+                        </table></div>
+                        <p class="op-muted" style="font-size:11px;margin-top:10px">Quelle: SKPORT-Wiki. Einzelkosten je Stufe, keine aufsummierten Kosten.</p>
+                      </> : <p class="op-muted" style="font-size:11px;margin-top:10px">Materialkosten folgen nach Zuordnung ihrer Item-IDs.</p>}
                     </> : <p class="op-placeholder">[Skilllevel und Aufstiegsmaterialien folgen]</p>}
                   </div>
                 </details>
