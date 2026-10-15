@@ -20,8 +20,7 @@ folgt ausdrücklich **nicht**, dass gerade der Abschluss dieser Mission als
 Zugangsvoraussetzung zu Si's Painting oder einer bestimmten Blaupause gilt.
 
 Valley IV (im Projekt **Tal4**) ist ebenfalls offiziell als Region belegt.
-Konkrete Tal4-Untergebiete nehmen wir erst nach offiziell belegter Benennung
-auf. Die geografische Relevanz einzelner Ausrüstungsblaupausen ist separat zu prüfen.
+Die von GRYPHLINE verlinkte offizielle SKPORT-Karte bestätigt sechs Kartenebenen in Tal4 und dreizehn in Wuling. Die geografische Relevanz einzelner Ausrüstungsblaupausen ist separat zu prüfen.
 
 ## Bestätigte Wuling-Gebiete und Veröffentlichungsdaten
 
@@ -56,8 +55,7 @@ Die von GRYPHLINE ausdrücklich verlinkten offiziellen **SKPORT Map Tools**
 finden sich unter https://game.skport.com/map/endfield (vgl.
 https://endfield.gryphline.com/en-us/news/9562). Die Website liefert
 ohne Login eine Karte mit Gebieten und Positionsmarkierungen.
-**Ob die dortigen Markierungen die Gear-IDs oder enthaltenen Blaupausen
-eindeutig referenzieren, ist gesondert zu prüfen.**
+**Die Detailprüfung hat ergeben:** Die Karte enthält in Wuling 27 Gear-Template-Crate-Punkte, liefert für diese Marker aber keine einzelnen Gear-IDs und keine Inhaltsbeschreibungen. Die Kistenstandorte sind damit belegbar, ihre Inhalte noch nicht.
 
 ## Erwerb: Zugang, Belohnungsberechtigung und Besitz
 
@@ -126,10 +124,54 @@ Ein Nutzer kann später ein tatsächlich freigeschaltetes Gebiet ausdrücklich
 angeben. Das bestätigt aber noch **nicht** automatisch, dass sämtliche
 Blaupausen innerhalb des Gebiets eingesammelt wurden.
 
+
+## Offizieller SKPORT-Kartensnapshot: 19 Gebiete, 27 Gear Template Crates
+
+Die zugehörigen **unveränderten Quellenangaben** kommen direkt aus den anonym
+abrufbaren SKPORT Map Tools:
+
+- Offizieller Kartenbereich: https://game.skport.com/map/endfield
+- Öffentliche SKPORT-Map-Endpunkte: `map/tree`, `map/mark/list`,
+  `map/mark/info` innerhalb von `/web/v1/game/endfield/`.
+- `src/data/endfield/progression/story-areas.json`: **6 Tal4-Kartenebenen** und
+  **13 Wuling-Kartenebenen** mit offiziellen `officialMapLevelId`-Schlüsseln.
+- `src/data/endfield/progression/gear-template-crates.json`: 27 amtliche
+  Wuling-Markierungs-IDs, `areaId`, `officialMapLevelId`,
+  dreidimensionale `position` und explizit **leere** `containedGearIds`.
+- Importer: `scripts/endfield/import-official-gear-map.mjs`.
+
+| Offizielles Wuling-Gebiet | Gear-Template-Crate-Markierungen |
+| --- | ---: |
+| Jingyu Valley | 4 |
+| Wuling City | 8 |
+| Qingbo Stockade | 3 |
+| Marker Stone | 3 |
+| Marker Stone Interiors | 1 |
+| Sword Vault Dale | 2 |
+| Yinglung Pass | 2 |
+| Snowy Forest | 2 |
+| Si's Painting | 2 |
+| **Gesamt** | **27** |
+
+Die übrigen Wuling-Kartenebenen wie Test Area, Suiming, North Wuling
+Exclusion Zone und Main Pillar Office haben im aktuellen offiziellen
+Snapshot keine Gear-Template-Crate-Markierungen. Das ist kein endgültiger
+Nachweis, dass dort niemals Baupläne zu erhalten sind.
+
+**Wichtige Quellenbeschränkung:** Alle 27 markierten Kisten wurden zusätzlich
+über den öffentlichen Endpunkt `mark/info?mapId=map02&markId=<id>` geprüft.
+Die Detailantwort enthielt bei keiner Kiste eine Gear-Wiki-ID oder eine
+Inhaltsbeschreibung. Folglich sind **0 der 125 durch Gear Template Crate
+erhältlichen Gear-Einträge** derzeit einer **einzelnen offiziellen Kiste**
+zugeordnet. Wir dürfen diese beiden Zahlen nicht miteinander verwechseln.
+
+Auch ein bestätigter Kistenort beweist noch keine Freischaltung der
+betreffenden Storymission oder das tatsächliche Einsammeln durch den Spieler.
+Diese beiden Bedingungen bleiben separate Felder.
 ## Noch offene Recherche
 
-- Für Tal4 und Wuling: tatsächlich Blueprint-relevante Teilgebiete und
-  ihre überprüfbaren Freischaltquests ermitteln.
+- Für die 27 offiziellen Wuling-Kisten: die jeweils enthaltenen Gear-Vorlagen,
+  ihre Story-Zugangsvoraussetzungen und eine belegbare Gear-ID-Zuordnung ermitteln.
 - Für `sis-painting`: konkreter Gebietszugang und individuelle Fundorte
   neuer Gear-Blaupausen anhand offizieller, eindeutig zuordenbarer Daten prüfen.
 - Zusätzliche Fortschrittsmerkmale (Autoritätslevel, Warenumverteilung,
