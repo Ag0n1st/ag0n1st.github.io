@@ -1,0 +1,36 @@
+name: Extract exact Wiki Gear Template Crate item contents
+on:
+  push:
+    branches: [endfield-exact-gear-locations-20261015]
+    paths:
+      - scripts/endfield/import-wiki-crate-contents.mjs
+      - .github/workflows/import-wiki-crate-contents.yml
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: node scripts/endfield/import-wiki-crate-contents.mjs
+      - run: |
+          npm run test:endfield
+          node scripts/endfield/check-budget.mjs
+          npm run build
+      - name: Save explicit icon-linked Gear item lists only to candidate branch
+        shell: bash
+        run: |
+          git add src/data/endfield/progression/blueprint-wiki-crate-contents.json
+          if ! git diff --cached --quiet; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'Cache exact gear item lists for 24 community wiki blueprint crates'
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
