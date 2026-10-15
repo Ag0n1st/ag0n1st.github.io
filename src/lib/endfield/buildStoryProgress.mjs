@@ -92,13 +92,9 @@ const PRIORITY=[
 export function evaluateBuildStoryAccess(items,progress){
  if(!Array.isArray(items)||items.length!==4||
    items.some(x=>!x?.gearId || !/^\d+$/.test(String(x.gearId))))return {
-   status:"story-unverified",reason:"Keine vier eindeutigen offiziellen Gear-IDs hinterlegt",parts:[]};
- }
- const unique=new Set(items.map(x=>String(x.gearId)));
- if(unique.size>4)throw Error("Unreachable");
+     status:"story-unverified",reason:"Keine vier offiziellen Gear-IDs hinterlegt",parts:[]};
  if(progress==null || typeof progress!=="object")return {
-   status:"story-unverified",reason:"Story-/Gebietsfortschritt noch nicht angegeben",parts:[]};
- }
+     status:"story-unverified",reason:"Story-/Gebietsfortschritt noch nicht angegeben",parts:[]};
  const parts=items.map(item=>({gearId:item.gearId,
    ...evaluateGearStoryAccess(item,progress)}));
  for(const status of PRIORITY){
