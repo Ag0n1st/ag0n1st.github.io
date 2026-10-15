@@ -112,3 +112,15 @@
 .op-profile-card .op-chip-row{margin-top:8px}
 .op-team-slot{overflow-wrap:anywhere}
 .op-gear-part .op-mini-art{overflow-wrap:anywhere}
+
+/* Compact rank controls and readable twelve-rank skill grids */
+.op-skill-selector{display:flex;align-items:center;gap:12px;margin:14px 0 12px;flex-wrap:wrap}
+.op-skill-selector label{font-size:12px;font-weight:700;color:#dcd4e2}
+.op-skill-selector .op-select{width:175px;max-width:100%;margin:0}
+.op-skill-stats{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+.op-skill-matrix{min-width:600px}
+.op-skill-matrix td:first-child,.op-skill-matrix th:first-child{position:sticky;left:0;background:#252029;min-width:110px;z-index:1}
+.op-skill-matrix td,.op-skill-matrix th{white-space:normal;min-width:78px;line-height:1.55}
+.op-skill-matrix th{font-size:10px}
+.op-skill-matrix td{font-size:11px}
+@media(max-width:680px){.op-skill-matrix{min-width:580px}.op-skill-selector{justify-content:space-between}}
