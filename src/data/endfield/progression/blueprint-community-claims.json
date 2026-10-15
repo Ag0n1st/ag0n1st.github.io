@@ -967,5 +967,22 @@
       "kind": "geographic-entrance",
       "storyGateVerified": false
     }
-  ]
+  ],
+  "currentVersion": {
+    "version": "Sanctuary of Ink",
+    "releaseDate": "2026-10-15",
+    "officialSourceId": "official-patch-1_6",
+    "newAreaId": "sis-painting",
+    "officialMarkedCrates": 2,
+    "newlyExtendedGearSets": [
+      "Pulser Labs",
+      "Eternal Xiranite",
+      "Rift Trekker",
+      "Type 50 Yinglung",
+      "AIC Fieldwork"
+    ],
+    "newGearIdMappingStatus": "not-verified",
+    "newItemToSpecificCrateStatus": "not-verified",
+    "note": "The same named sets also contain pre-existing pieces acquired in OTHER areas or via Wuling region access. Do not assign all new gear pieces to the two Si's Painting crates just because they share a patch release."
+  }
 }
