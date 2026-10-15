@@ -239,7 +239,7 @@ export function importOperator(itemResponse,publicItems,{itemId,slug,snapshot}){
   // five-row potential grid. Locate the grid by explicit POTENTIAL markers.
   const mainPotentialGrids=potentialGrids.filter(grid=>
     grid.rows.length>=1 && grid.rows.every(row=>
-      row.cells.length>=3 && /\\bPOTENTIAL\\s*0?[1-5]\\b/i.test(clean(row.cells[1]))));
+      row.cells.length>=3 && /\bPOTENTIAL\s*0?[1-5]\b/i.test(clean(row.cells[1]))));
   assert(mainPotentialGrids.length===1,"Potenziale benötigt genau eine eindeutige Potential-Phases-Tabelle: "+potentialRef);
   const potentialTable=mainPotentialGrids[0];
   const potentials=potentialTable.rows.map((row,i)=>({
