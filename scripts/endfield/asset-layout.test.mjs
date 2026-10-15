@@ -69,3 +69,21 @@ test("operator art and all 8 skill WebPs use separate per-operator folders",()=>
    }
  }
 });
+
+test("no outdated catch-all image URLs remain in website and import code",()=>{
+  const oldUrl="/images/endfield/"+"items/";
+  const oldDir="public/images/endfield/"+"items/";
+  function scan(dir){
+    if(!existsSync(dir))return;
+    for(const node of readdirSync(dir,{withFileTypes:true})){
+      const path=join(dir,node.name);
+      if(node.isDirectory()){scan(path);continue;}
+      if(!node.isFile()||!/\.(astro|ts|mjs|js|css|html)$/.test(path)||
+        path.endsWith("asset-layout.test.mjs"))continue;
+      const source=readFileSync(path,"utf8");
+      assert.ok(!source.includes(oldUrl),"old image URL in "+path);
+      assert.ok(!source.includes(oldDir),"old image folder in "+path);
+    }
+  }
+  scan("src");scan("scripts/endfield");
+});
