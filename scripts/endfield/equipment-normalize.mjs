@@ -98,7 +98,7 @@ export function normalizeEquipment(item,expected,stamp,{sourcePanel="",catalog=[
   const complete=stats.some(t=>t.tables.length)&&artificing.some(t=>t.tables.length);
   const statsRow=stats.flatMap(t=>t.tables.flatMap(table=>table.rows))
     .find(row=>str(row.cells[0]).toLowerCase()==="level");
-  const level=Number(statsRow?.cells?.[1]);
+  const level=Number(statsRow?.cells?.[1] ?? (stats.flatMap(t=>t.tables).find(table=>str(table.columns?.[0]).toLowerCase()==="level")?.columns?.[1]));
   return {...common,kind:"gear",gearSlot:tag(item,"10243"),setName:tag(item,"10288"),
     level:Number.isFinite(level)&&level>0?level:null,status:complete?"verified":"incomplete",
     stats,artificing,setEffect:bonus,standardRecipe:standard,
