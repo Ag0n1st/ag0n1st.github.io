@@ -1,5 +1,6 @@
 ---
 import type { OperatorGuideModel } from "../../../lib/endfield/operatorGuideModel";
+import ItemIcon from "../../endfield/ItemIcon.astro";
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
@@ -54,7 +55,7 @@ const { guide, operatorName, preview, gameData, extraData, trTerm, skillImage, s
             </article>
             <article class="op-cardlet">
               <h3>Ausrüstung · {featuredBuild ? featuredBuild.title : "Meta-Set"}</h3>
-              {featuredBuild ? <div class="op-gear-parts">{featuredBuild.items.map(item=><div class="op-gear-part"><div class="op-mini-art">[Icon]</div><small>{item}</small></div>)}</div> : <p class="op-placeholder">[Noch kein Ausrüstungs-Build]</p>}
+              {featuredBuild ? <div class="op-gear-parts">{featuredBuild.items.map(item=><div class="op-gear-part"><div class="op-mini-art"><ItemIcon id={item} /></div><small>{item}</small></div>)}</div> : <p class="op-placeholder">[Noch kein Ausrüstungs-Build]</p>}
             </article>
             <article class="op-cardlet">
               <h3>Skill-Priorität</h3>

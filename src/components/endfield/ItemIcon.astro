@@ -1,0 +1,17 @@
+---
+import { getEndfieldItem } from "../../lib/endfield/itemCatalog";
+interface Props {
+  id: string | number;
+  label?: string;
+  size?: "small" | "normal";
+}
+const {id,label,size="normal"}=Astro.props;
+const item=getEndfieldItem(id);
+const name=label||item?.name||String(id);
+---
+{item?.iconPath ?
+  <img class:list={["op-catalog-icon",{"op-catalog-icon-sm":size==="small"}]}
+    src={item.iconPath} alt={name} title={name} loading="lazy" decoding="async"
+    width={size==="small"?30:48} height={size==="small"?30:48} /> :
+  <span class="op-catalog-icon-fallback" title={name}>{name}</span>
+}

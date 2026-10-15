@@ -1,5 +1,6 @@
 ---
 import type { OperatorGuideModel } from "../../../lib/endfield/operatorGuideModel";
+import ItemIcon from "../../endfield/ItemIcon.astro";
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
@@ -28,7 +29,7 @@ const { guide, missing, roleLabels, stageLabels, builds } = model;
             <div class="op-pills" aria-label="Build auswählen">{builds.map((b,i)=><button type="button" class="op-pill-button" data-build-button={b.id} aria-pressed={i===0?"true":"false"}>{b.title}</button>)}</div>
             {builds.map((b,i)=><div class="op-build-panel op-cardlet" data-build-panel={b.id} hidden={i!==0}>
               <div class="op-subtitle"><h3 style="margin:0">{b.title}</h3><span class="op-chip">{roleLabels[b.role]}</span></div>
-              <div class="op-gear-parts">{b.items.map(item=><div class="op-gear-part"><div class="op-mini-art">[Icon]</div><small>{item}</small></div>)}</div>
+              <div class="op-gear-parts">{b.items.map(item=><div class="op-gear-part"><div class="op-mini-art"><ItemIcon id={item} /></div><small>{item}</small></div>)}</div>
               {b.availableFromLevel && <p><strong>Ab Level:</strong> {b.availableFromLevel}</p>}
               {b.factoryUnlock && <p class="op-body-copy"><strong>Fabrik:</strong> {b.factoryUnlock}</p>}
               {b.teamContext && <p class="op-body-copy"><strong>Einsatzbereich:</strong> {b.teamContext}</p>}
