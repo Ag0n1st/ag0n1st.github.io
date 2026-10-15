@@ -520,3 +520,309 @@ Die folgenden sieben Komponentenstufen sind eine redaktionell definierte Reihenf
 Diese Unterscheidung ist implementiert in `src/lib/endfield/storyAreas.mjs`. Der Erwerbsweg ersetzt weder einen Story-Meilenstein noch den tatsächlichen Besitz der Vorlage. Insbesondere ist „Autoritätslevel erfüllt“ nicht gleich „Belohnung abgeholt“.
 
 ---
+
+## 8. STORY-, GEBIETS- UND BLAUPAUSENRECHERCHE
+
+### 8.1 Was die offiziellen SKPORT Map Tools nachweisen [FERTIG]
+
+- Der vom Publisher verlinkte SKPORT-Kartendienst lautet https://game.skport.com/map/endfield.
+- `src/data/endfield/progression/story-areas.json` führt **19 offiziell bezeichnete Kartenebenen**: **6 Tal4**, **13 Wuling**.
+- `src/data/endfield/progression/gear-template-crates.json` enthält **27 offizielle Gear-Template-Crate-Marker in Wuling**, jeweils mit Marker-ID, Gebiet, `officialMapLevelId` und 3D-Positionskoordinaten.
+- Die offiziellen Kistenmarker liefern in diesem Snapshot **keine eindeutige Liste konkreter enthaltenen Gear-IDs**. Keine fiktiven Marker-zu-Gear-Links eintragen.
+- Quellen-Nachweise, Patchnotizen und Unsicherheiten stehen in [`docs/endfield-story-progression.md`](docs/endfield-story-progression.md).
+- Der zugehörige Importer ist `scripts/endfield/import-official-gear-map.mjs`; aktuelle Marker-Anzahl niemals bei einem Versionswechsel einfach voraussetzen, sondern neu prüfen.
+
+### 8.2 Offizielle Gebietshierarchie [FERTIG als Daten, nicht als Quest-Automation]
+
+**Tal4 (Valley IV)** – 6 Ebenen:
+
+1. The Hub (`the-hub`)
+2. Valley Pass (`valley-pass`)
+3. Aburrey Quarry (`aburrey-quarry`)
+4. Originium Science Park (`originium-science-park`)
+5. Origin Lodespring (`origin-lodespring`)
+6. Power Plateau (`power-plateau`)
+
+**Wuling** – 13 Ebenen:
+
+1. Jingyu Valley (`jingyu-valley`)
+2. Wuling City (`wuling-city`)
+3. Qingbo Stockade (`qingbo-stockade`)
+4. Marker Stone (`marker-stone`)
+5. Marker Stone Interiors (`marker-stone-interiors`)
+6. Test Area (`test-area`)
+7. Sword Vault Dale (`sword-vault-dale`)
+8. Yinglung Pass (`yinglung-pass`)
+9. North Wuling Exclusion Zone (`north-wuling-exclusion-zone`)
+10. Snowy Forest (`snowy-forest`)
+11. Suiming (`suiming`)
+12. Si's Painting (`sis-painting`)
+13. Main Pillar Office (`main-pillar-office`)
+
+**Keine automatische Kapitel-Reihenfolge erfinden.** Jede Kartenebene kann durch Hauptmission, Nebenquest, frühen Eventzugang oder andere Voraussetzungen erreicht werden. Der aktuelle UI-Filter fragt daher **erreichte Region und die einzelnen tatsächlich freigeschalteten Gebiete** ab, statt „Kapitel VIII fertig“ gleich allen früheren Gebieten zu setzen.
+
+### 8.3 Die 27 Kisten nach Region
+
+| Wuling-Gebiet | Offizielle Gear-Template-Marker |
+| --- | ---: |
+| Jingyu Valley | 4 |
+| Wuling City | 8 |
+| Qingbo Stockade | 3 |
+| Marker Stone | 3 |
+| Marker Stone Interiors | 1 |
+| Sword Vault Dale | 2 |
+| Yinglung Pass | 2 |
+| Snowy Forest | 2 |
+| Si's Painting | 2 |
+| **Gesamt** | **27** |
+
+Es sind **keine** Gear-Template-Marker in einigen anderen Kartenebenen des Snapshots gelistet. Daraus nicht schließen, dort könne das Spiel generell keine Gear-Vorlagen vergeben.
+
+### 8.4 Von groben Sets zu konkreten Gear-IDs [FERTIG/RECHERCHE]
+
+Die erste Community-Recherche in PR #10 sammelte Fundorte und Setnamen: **100/125** offizielle Kistengear-IDs hatten eine **mögliche** Gebietszuordnung, davon **21 mehrdeutig**, **25 ohne ausreichende Hinweise**. Diese Zahlen sind **historischer Fallback**, nicht der aktuelle Präzisionsstand.
+
+PR #11 wertete die tatsächlich verlinkten Gear-Icons der Talos-Wiki-Kistentabelle aus und verglich die Einzelteilnamen mit der individuellen Endfield-Hub-Erwerbsortliste. **Aktueller genauer Datensatz:**
+
+- **24** von **27** offiziellen Wuling-Kisten besitzen eine identifizierte Community-Wiki-Einzelteilliste.
+- **113** Einzelteil-Kistenlinks führen auf **112 unterschiedliche offizielle SKPORT-Gear-IDs**.
+- Bei **3** Kisten-/Teil-Zeilen widerspricht der offizielle SKPORT-Erwerbsweg der Community-Kistenaussage.
+- **1** Einzelteil erscheint in der Wiki in **zwei verschiedenen Kisten**.
+- Von **125** offiziell als Kistengear klassifizierten Gear-IDs sind **92** auf eine recherchierte Kiste ohne festgestellten Quellenkonflikt eingrenzbar:
+  - **53** durch zwei Community-Quellen gestützt.
+  - **38** anhand einer konkreten Wiki-Einzelteilliste.
+  - **1** über die Endfield-Hub-Einzelteilliste.
+- **23** offizielle Kistengear-IDs besitzen einen offenen Quellenkonflikt.
+- **10** offizielle Kistengear-IDs sind einzelteilbezogen noch nicht zugeordnet.
+- Zusätzlich haben **25** andere Gear-Einträge eine Community-Erwerbsaussage, die einem anderen offiziellen SKPORT-Erwerbsweg widerspricht.
+
+**Die Zahlen beschreiben Evidenz und Konfliktstatus, nicht 92 bereits offiziell bestätigte Marker-zu-Gear-Verbindungen.** Die exakte Zuordnung der benannten Community-Kisten zu einzelnen SKPORT-Marker-IDs benötigt weiterhin überprüfte Koordinaten/Fotos/Videos/Ingame-Nachweise.
+
+### 8.5 Wichtigste Forschungsdateien
+
+| Datei | Zweck | Wie aktualisieren? |
+| --- | --- | --- |
+| `story-areas.json` | Regionen, Kartenebenen, Quellen, Story-Meilensteine, verifizierte Verknüpfungen | Neue Version/Map Tools prüfen und Register validieren. |
+| `gear-template-crates.json` | Offizielle Kistenmarker/Koordinaten | `import-official-gear-map.mjs`; Größen-/Gebietsänderung kontrollieren. |
+| `blueprint-community-claims.json` | Community-Quellen, Landmark-Namen, Kisten-/Setclaims, Quests/Wege | Quellen einzeln lesen, Änderungen mit Nachweis und Datum dokumentieren. |
+| `blueprint-research-index.json` | Historischer grober Set-Kandidatenindex | `build-blueprint-index.mjs` bei Bedarf; nicht als exakte Quelle präsentieren. |
+| `gear-piece-acquisition-sources.json` | Einzelteilweise Endfield-Hub-Orts-/Erwerbstexte | `import-gear-piece-sources.mjs`; Konflikte behalten. |
+| `blueprint-wiki-crate-contents.json` | 24 konkrete Kistenlisten mit Einzelteil-Links | `import-wiki-crate-contents.mjs`; Tabellenstruktur beim Patch neu prüfen. |
+| `blueprint-precise-gear-index.json` | Abgleich der offiziellen Gear-IDs gegen beide konkreten Quellen | `build-precise-blueprints.mjs` nach Quellenupdate. |
+| `blueprint-confirmations.json` | **Nur ausdrücklich persönlich belegte** Gear-ID + offizielle Marker-ID | Im Spiel/Video verifizieren und manuell ergänzen. |
+
+Lesedokumente:
+- [`docs/endfield-blueprint-piece-audit.md`](docs/endfield-blueprint-piece-audit.md): sämtliche 24 konkret erforschten Kisten, Inhalte, IDs, Konflikte.
+- [`docs/endfield-blueprint-research.md`](docs/endfield-blueprint-research.md): ältere, grobere Recherche und Quellen.
+- [`docs/endfield-story-progression.md`](docs/endfield-story-progression.md): SKPORT-Karte und Gebiets-/Storyannahmen.
+
+### 8.6 Ein verlässliches Marker-zu-Gear-Mapping eintragen
+
+1. Einzelteil anhand seiner **SKPORT-ID** und offiziellen Erwerbsart identifizieren.
+2. In `blueprint-precise-gear-index.json` Recherche-Kisten-ID, Gebiet, Landmark-Namen und Quellen öffnen.
+3. Passenden Marker aus `gear-template-crates.json` anhand **konkreter Koordinaten / nachvollziehbarer Karte** suchen.
+4. Den Fund und **das tatsächlich angezeigte Gear-Teil** im Spiel oder in einem eindeutig zuordenbaren Video/Screenshot bestätigen.
+5. `blueprint-confirmations.json` mit `gearId`, `markerId`, Datum, Nachweistyp, nachvollziehbarer Notiz und Prüfer aktualisieren.
+6. Validator/Tests starten; die geprüfte Verbindung darf in den bestätigten Datenpfad. Vorher als Community-Kandidat belassen.
+7. Dokumentation mit Quelle, Widerspruchsauflösung, betroffenen IDs und ggf. Patchversion aktualisieren.
+
+**Besonderes Risiko:** In neuen Versionen können **bestehende Setfamilien** neue Ausrüstungsteile erhalten. Die Setzugehörigkeit beweist nicht, dass das neue Teil in einer Kiste des aktuellen neuen Gebiets liegt.
+
+### 8.7 Version vom 15.10.2026 und offene Fragen
+
+- Für **Si's Painting** sind **2** offizielle Kistenmarker erfasst. Ihre individuellen Gear-Inhalte fehlen weiterhin in der konkreten Community-Tabelle.
+- Die Patchnotes führen neue Teile für die Setfamilien **Type 50 Yinglung**, **Pulser Labs**, **Eternal Xiranite**, **Rift Trekker** und **AIC Fieldwork** auf. Nicht pauschal alle neuen Teile denselben zwei Kisten zuordnen.
+- Weitere Gebiets- und Missionseingänge sind als Community-Hinweise vorhanden; **nicht automatisch** offizielle Unlock-Quests daraus machen.
+- Bei künftigen Patches: offizielle Daten → Community-Fundorte → Konfliktprüfung → Build-Finder-Regelprüfung → Redaktion freigeben.
+
+---
+
+## 9. BUILD-FINDER: FUNKTION, GRENZEN UND REGRESSIONSSZENARIEN
+
+### 9.1 Implementiert [FERTIG als Engine/UI, Guides inhaltlich noch leer]
+
+Der Browser-Build-Finder prüft **für einen vierteiligen redaktionellen Build**:
+
+1. Es existieren vier offizielle Gear-Einträge und ihre Standardrezepte sind gültig.
+2. Das gewählte **Operator-/Gear-Level** ist ausreichend.
+3. Die gewählte **höchste herstellbare Fabrikkomponente** entspricht dem höchsten benötigten Rezepttier.
+4. Der Spieler hat die **Storyregion Tal4/Wuling** selbst ausgewählt.
+5. Er kann **einzelne offiziell bezeichnete Gebiete** als tatsächlich zugänglich markieren.
+6. Für Gear-Erwerbsarten „Autoritätslevel“ oder „Wuling-Warenumverteilung“ sind **optionale Stufen** separat hinterlegt.
+7. Für **jedes der vier Gear-Teile** kann der Spieler **tatsächlich erhaltene Blaupause** bestätigen.
+8. Nur wenn die geltenden Prüfbedingungen erfüllt sind und **alle vier Blaupausen ausdrücklich bestätigt** wurden, gilt der Build als vollständig „Passend“.
+
+**Grenzen und wichtige Semantik:**
+- **Gebiet besucht ≠ Blaupause eingesammelt.**
+- **Wuling erreicht ≠ alle Wuling-Nebenmissionen abgeschlossen.**
+- **Autoritätslevel/Umverteilungsstufe erfüllt ≠ Belohnung beansprucht.**
+- **`storyUnlock`-Freitext in Guide-YAML ≠ technisch bestätigte Freischaltung.**
+- Wenn ein Besucher eine Blaupause bereits besitzt, kann er sie als vorhanden markieren, obwohl ihre alte Herkunft nicht mehr bekannt ist. Das darf die technische Verfügbarkeit durch fehlenden Kartenbeleg nicht fälschlich verhindern.
+- **Widersprüchliche/ungeklärte Quellen** bleiben als solche markiert, solange der Besitz nicht bestätigt wurde.
+- Keine vollständig redaktionellen Builds in Liino/Typhoeus = momentan nur Framework-UI, **keine** ungefragt erfundenen „Best Builds“.
+
+### 9.2 Aktuelle Auswahlmöglichkeiten
+
+- Gear-/Operator-Level: `70, 60, 50, 36, 28, 20, 10`.
+- Fabrikkomponente: `Amethyst, Ferrium, Cryston, Xiranit, Cuprium, Hetonit, Pyrrolit`.
+- Storyregion: leer / Tal4 / Wuling.
+- Einzelne Gebietshäkchen: 6 + 13 offizielle Kartenebenen.
+- **Autoritätslevel: maximal 60** (`MAX_AUTHORITY_LEVEL`; User-Änderung 15.10.2026). Optionale Eingabe, leere Werte bleiben „nicht angegeben“.
+- Wuling-Warenumverteilung: Stufen 0–3 als aktuelle UI-Auswahl; eine spätere Spieländerung darf nicht ohne Quellenprüfung ergänzt werden.
+- Vier einzelne Blueprint-Häkchen pro Build; gleiche Gear-ID über verschiedene Guides im selben Browser konsistent speichern.
+- Anzeige aller Builds oder nur nachgewiesen verfügbarer Builds.
+- **Zurücksetzen** der lokalen Story-/Gebiets-/Blaupauseneingaben.
+- Die Fabrikauswahl startet bei jedem Seitenbesuch bewusst mit `Pyrrolit`, unabhängig von eventuell wiederhergestellten Browserformularwerten.
+
+### 9.3 Statusmeldungen und Verhalten
+
+| Code / UI | Wann? |
+| --- | --- |
+| `available` / „Passend“ | Level + Fabrik + alle vier Blaupausen bestätigt. |
+| `level-locked` | Gear-Level reicht nicht. |
+| `component-locked` | Offizielle Standardrezepte erfordern höhere Fabrikkomponente. |
+| `region-locked` | Benötigte Region nicht erreicht. |
+| `area-unconfirmed` | Konkretes Gebiet ist nicht als erreichbar markiert. |
+| `acquisition-locked` | Offizielle Autoritäts-/Umverteilungsanforderung höher als Eingabe. |
+| `blueprint-unconfirmed` | Gebiet/Erwerbsanforderung erreichbar, tatsächlicher Besitz fehlt. |
+| `story-unverified` | Storyauswahl fehlt, Fundort unsicher oder widersprüchlich. |
+| `unverified` | Daten, Rezept oder Vorschau ungeklärt; kein gültiger finaler Build. |
+
+Priorität/Grund für einen gesperrten vierteiligen Build wird clientseitig ausgewertet. Bei Codeänderungen prüfen, ob die **erste Begründung** für mehrere fehlende Komponenten weiterhin verständlich ist. Ein Status allein ist **keine** Creator-Qualitätsbewertung der Ausrüstung.
+
+### 9.4 Speicherung und Datenschutz
+
+Schlüssel: `ag0n1st:endfield:build-story-progress:v1` im Browser-`localStorage`.
+
+Gespeichert: Version, Region-ID, Gebiet-IDs, bestätigte Gear-/Blueprint-IDs, optional Autoritätslevel, optional Wuling-Warenumverteilungsstufe. Keine serverseitige Speicherung, kein Konto, keine personenbezogenen Trackingdaten für diesen Zweck.
+
+**Besonderheiten:**
+- Browser-/Gerätewechsel kann die Auswahl verlieren.
+- Gespeicherte, künftig ungültige Werte müssen beim Laden bereinigt/ignoriert werden. Insbesondere: alte **Autoritätslevel über 60** nicht weiter als gültigen Fortschritt verwenden.
+- Der Reset-Button entfernt die Fortschrittsauswahl.
+- Ein weiterer Spielpatch kann neue Region-/Gebiets-IDs oder Erwerbsarten bringen; die bisherige Auswahl darf keine unbemerkt neuen Gebiete automatisch setzen.
+
+### 9.5 Technische Pfade und Tests
+
+- Daten-/Berechnungsmodul `src/lib/endfield/buildFinder.mjs`: sieben Stufen, Rezeptprüfung, Level und vier Teile.
+- `src/lib/endfield/buildStoryProgress.mjs`: Erwerbsweg/Gebiets-/Authority-/Besitzprüfung.
+- UI `OperatorEquipment.astro`, Browsercode `OperatorGuide.astro`.
+- Tests `scripts/endfield/build-finder.test.mjs`, `build-story-progress.test.mjs`, `story-areas.test.mjs`, `precise-blueprints.test.mjs`.
+
+**Unverzichtbare Regressionen:**
+
+1. Ausreichendes Gear-Level allein gibt **keine** Verfügbarkeit.
+2. Geringere Fabrikkomponente sperrt höhere offizielle Rezepte.
+3. Regionen/Gebiete werden nicht aus Patchnummer/Storytext spekulativ freigeschaltet.
+4. Ein Gebiet ist betretbar, aber seine Kiste ist noch ungeöffnet → **nicht verfügbar**.
+5. Alle vier Blaupausen markiert → bei genug Level und Komponenten **verfügbar**, auch wenn eine frühere Fundortfrage ungeklärt ist.
+6. Dasselbe Item ist in zwei Guide-Builds enthalten → eine gespeicherte Besitzbestätigung gilt konsistent für beide.
+7. Widersprüchliche Wiki-/Hub-Orte bleiben erkennbar und werden nicht zu offiziellen Markerbeweisen.
+8. Autoritätslevel **60** ist gültig, **61**, **200**, negative, nicht ganze und alte gespeicherte Werte nicht.
+9. Bei Preview/unvollständigen offiziellen Items keine Freischaltung durch redaktionellen Hinweis.
+10. Mobil/Desktop, Formularbedienung, Speichern/Reload/Reset überprüfen.
+
+**Noch offen für Folgephase:** Echte durch Creator freigegebene Build-Daten einpflegen und vollständigen Browser-E2E-Test mit solchen realen Builds wiederholen.
+
+---
+
+## 10. GEPLANTE ENTWICKLUNGSPHASEN: REIHENFOLGE, UMFANG, ABNAHME
+
+Dies ist eine **priorisierte Roadmap**, kein bereits bezahlter Projektvertrag und keine Schätzung von Release-Daten. Arbeitsschritte dürfen bei neuen Nutzerentscheidungen neu priorisiert werden. Nach jeder Phase den Status dieser Tabelle aktualisieren. **Kein Feature ohne Nutzerentscheidung als „fertig“ ausgeben.**
+
+### Phase P0 – Stabilisierung, Datenvertrauen und Dokumentation
+
+**Status:** [TEILWEISE, laufend], höchste technische Grundpriorität.
+
+**Enthält:**
+
+- [x] Astro-/GitHub-Pages-Basis, PR-Tests, Deploy.
+- [x] Benutzerfreundliches Operator-Guide-Framework und Katalogdaten.
+- [x] Offizielle 100-MB-Budget-Kontrolle.
+- [x] Kategorien für WebP-Bilder.
+- [x] Stand 15.10.2026: Autoritätslevel bis max. **60** (UI + Validierung).
+- [x] Zentrale `ROADMAP.md` als Übergabe-/Verlaufsdatei.
+- [ ] Laufende Überprüfung von Website-Header, Mobile-Layout, Tastaturnavigation, Formularen und Links.
+- [ ] Unmerged Forschungs-PR #3 auf Obsoleszenz prüfen und ggf. schließen (nicht blind zusammenführen).
+- [ ] GitHub Pages / Canonical-Domain / SSL und `astro.config.mjs` konsistent prüfen, insbesondere `ag0n1st.com` vs. konfigurierte `ag0n1st.github.io`.
+- [ ] Asset- und Import-Actions kontrollieren, ob alte, einmalige Debug-Workflows später aufgeräumt werden müssen.
+- [ ] Bei späteren Patch-/Datenupdates Snapshots und Übersetzungen auf übereinstimmende Versionen prüfen.
+
+**Abnahme:** CI grün, kein Datenbudget-Überlauf, keine funktionale Regression, dokumentierte Quelle/Entscheidung, Pages deployed.
+
+### Phase P1 – Erste **echte** Operator-Ausrüstungsbuilds und End-to-End-Kontrolle
+
+**Status:** [GEPLANT]; **empfohlener nächster Entwicklungsschritt**.
+
+**Vorbedingung:** Der Creator liefert/prüft die tatsächlichen vierteiligen Gear-Empfehlungen für einen Operator (zuerst **Liino**), Rollen, Levelvarianten, Zweck der Sets und ggf. Hinweise zu seltenen Materialien.
+
+**Arbeitspakete:**
+
+1. Creator-/Guide-Video und vorhandene Notizen prüfen; nur tatsächlich bestätigte Empfehlungen übernehmen.
+2. Echte Gear-IDs aus dem SKPORT-Katalog ermitteln, vier Teile je Build. Slotverteilung gemäß offiziellem Datenmodell prüfen.
+3. Mindestens ein Build für sinnvollen Fortschrittsstand; weitere Early-/Mid-/Endgame-Varianten nur nach echter Bewertung.
+4. `liino.md`: `equipment.builds`, `role`, `evaluation`, `teamContext`, `availableFromLevel`, `craftingNotes`, `setBonusNotes`, `storyUnlock` als **Kommentar**.
+5. Automatische Berechnung der höchsten Fabrikkomponente aus den vier offiziellen Rezepten gegenprüfen.
+6. Jede Blaupause aus dem präzisen Fundortindex beurteilen; strittige Kandidaten nicht als „sicher“ darstellen.
+7. Browser mit realem Build testen: Standardstatus ungeklärt, Region/Gebiet allein unzureichend, nach vier Besitz-Häkchen passend, Reset korrekt.
+8. Übersicht-Card „Build auf einen Blick“ auf den finalen Build verlinken; keine Werte doppelt in YAML speichern.
+9. `status: preview` belassen, bis Stärken/Schwächen, Bewertungen und übrige Freigabekriterien vollständig sind.
+10. Tests, Screens auf Mobil/Desktop prüfen, PR und Merge/Deploy dokumentieren.
+
+**Abnahme:** Kein Beispiel-/Fantasy-Build, korrekte Gear-IDs/Rezepte, alle vier Häkchen greifen, Quellenhinweise nachvollziehbar, fertige Redaktion wird nicht von Importskripten überschrieben.
+
+### Phase P2 – Vollständiger Liino-Guide als veröffentlichbares Nachschlagewerk
+
+**Status:** [GEPLANT], abhängig von P1.
+
+- [ ] Operatorprofil sowie vorhandene Haupt-/Nebenattribute prüfen; unstrukturierte Traits nur bei glaubwürdiger Quelle.
+- [ ] Stärken und Schwächen nach eigener Analyse ausformulieren.
+- [ ] Schwierigkeit, Flexibilität, Zugänglichkeit (1–5) redaktionell festlegen.
+- [ ] Skill-Priorität mit vier Slots, `>`/`>=`, Ziel-Rängen und Begründung eintragen.
+- [ ] Mechaniken/Rotation/Anwendungsfälle anhand eigener Screens/Video und Wiki abgleichen.
+- [ ] Waffen-BiS/BP/F2P-Alternativen nur nach Vergleich; tatsächliche Effektbedingungen angeben.
+- [ ] Potenziale P1–P5 bewerten; ohne Vergleichstest keine Performance-Prozentwerte erfinden.
+- [ ] Meta- und alternative Teams inklusive Rollen und `buildId`-Zuordnung pflegen.
+- [ ] Eigenes YouTube-Guidevideo sinnvoll mit Zeitmarken/Abschnittslinks referenzieren.
+- [ ] Fazit, Pull-/Ressourcenberatung und geeignet/nicht geeignet ergänzen.
+- [ ] Sprachstil, SEO, Semantik, Mobile-/Desktop-A11y prüfen.
+- [ ] Sobald vollständig: `status: published` und echte Freigabe.
+
+**Abnahme:** Nutzer kann die gesamte Spielweise **ohne das Video vollständig anschauen zu müssen** verstehen, und alle Daten sind quellengerecht sowie von eigenen Empfehlungen unterscheidbar.
+
+### Phase P3 – Typhoeus-Guide, danach universelle Operator-Pipeline
+
+**Status:** [GEPLANT], teils parallel zu P2.
+
+- [ ] Bestehende Typhoeus-Rohdaten/DE-Locale auf aktuellen Patchstand prüfen.
+- [ ] Redaktionelle Texte aus tatsächlich vorhandenem langen Guide-Skript/Video übernehmen, statt neu zu erfinden.
+- [ ] Gear-/Waffen-/Teams-/Potenzial-Evaluation analog P1/P2.
+- [ ] Wiederverwendbarkeit der neun Abschnitte und der Build-Filter über beide Operatoren validieren.
+- [ ] Weitere Operatoren über den generischen SKPORT-Importer **pro realer Item-ID** importieren.
+- [ ] Abweichende Wiki-Widgets explizit testen und ggf. Parser anpassen.
+- [ ] Update-Prozess: neue Snapshot-Version, Text-Diff, übersetzungsbezogene Invalidierung, Bildbestand, vorher/nachher Tests.
+- [ ] Optional Ausbau von Operatoren-Übersicht um Suche, Element/Klasse/Rolle, Status und relevante Filter; erst nach klarer Priorisierung.
+- [ ] Einheitliche Review-Checkliste und Versionen-/Guide-Update-Markierung erstellen.
+
+**Abnahme:** Ein dritter Operator kann ohne Änderungen an der UI-Struktur durch geprüfte Rohdaten + neue Guide-Datei ergänzt werden.
+
+### Phase P4 – Offizielle Blaupausen-, Gebiets- und Story-Freischaltungen präzisieren
+
+**Status:** [RECHERCHE / GEPLANT], kann parallel zu P1–P3 laufen.
+
+- [x] 19 offizielle Kartenebenen und 27 Marker.
+- [x] 24 explizite Community-Kistenlisten und Gear-ID-Abgleich.
+- [x] Zwei getrennte Ebenen aus „Gebiet erreichbar“ und „Blaupause wirklich erhalten“.
+- [ ] **10** noch nicht einzelteilgenau lokalisierte offizielle Kistengear-IDs recherchieren.
+- [ ] **23** strittige Kistengear-IDs einzeln gegen Spiel-/Bildbeleg prüfen.
+- [ ] **25** Community-Aussagen mit anderem offiziellen Erwerbsweg prüfen.
+- [ ] Für die beiden **Si's-Painting**-Kisten die tatsächlichen Einzelteile/Versionserweiterungen recherchieren.
+- [ ] Logische Research-Kiste mit exakter offizieller Marker-ID und XYZ-Koordinaten abgleichen; erst nach Beleg in `blueprint-confirmations.json` eintragen.
+- [ ] Echte Storymissionen/Freischaltquests **pro Gebiet** mit offiziellen Belegen sammeln.
+- [ ] Region-Zugang, Gebiet-Eingang, Nebenquest, Autoritätsbelohnung, Shopstufe und Besitz weiterhin unabhängig behandeln.
+- [ ] Optional leicht verständliche grafische Story-Fortschrittsauswahl erst nach gesicherter Queststruktur.
+- [ ] Bei neuen Updates importer-/snapshotfähigen Wiederholungsprozess dokumentieren.
+
+**Abnahme:** Kein unbelegtes „dieser Gear-Blueprint ist garantiert in Kiste X“; einzelne sichere Marker-zu-Gear-Paare sind maschinell validiert und separat abrufbar; kein Rückschritt bei bestehender Build-Prüfung.
+
+---
