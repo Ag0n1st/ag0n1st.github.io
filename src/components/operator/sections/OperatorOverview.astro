@@ -1,0 +1,86 @@
+---
+import type { OperatorGuideModel } from "../../../lib/endfield/operatorGuideModel";
+
+interface Props { model: OperatorGuideModel }
+const { model } = Astro.props;
+const { guide, operatorName, preview, gameData, extraData, trTerm, skillImage, slotLabels, slotIcons, priority, priorityOrder, priorityComparisons, shownWeapons, featuredBuild, videoEmbed, ratingRows, getOperatorImageUrl } = model;
+---
+<section class="op-section" id="uebersicht" aria-label="Übersicht">
+        <div class="op-divided">
+          <h2>Operator-Profil</h2>
+          <div class="op-two">
+            <article class="op-cardlet op-profile-card">
+              <div class="op-profile-art">
+                {gameData?.operator.illustrationUrl
+                  ? <img src={getOperatorImageUrl(guide.operator,"illustration",gameData.operator.illustrationUrl)} loading="lazy" decoding="async" alt={"Offizielles Operator-Artwork: "+operatorName} />
+                  : <span>[Horizontales Operator-Artwork]</span>}
+              </div>
+              {gameData?.operator.illustrationUrl && <span class="op-media-credit">Artwork: SKPORT Wiki · Originalquelle</span>}
+              <h3>{operatorName}</h3>
+              <div class="op-chip-row">
+                <span class="op-chip is-pink">{gameData ? gameData.operator.rarity + "★" : "[Seltenheit]"}</span>
+                <span class="op-chip">{trTerm(gameData?.operator.class) || "[Klasse]"}</span>
+                <span class="op-chip">{trTerm(gameData?.operator.element) || "[Element]"}</span>
+                <span class="op-chip">{gameData?.operator.weaponType || "[Waffentyp]"}</span>
+              </div>
+              {preview && <><p>Traits</p><div class="op-chip-row"><span class="op-chip">[Offizielle Traits noch nicht importiert]</span></div></>}
+              <p>Attribute</p>
+              <div class="op-chip-row"><span class="op-chip">Haupt: {trTerm(extraData?.attributes.mainAttribute) || "[Attribut]"}</span><span class="op-chip">Sekundär: {trTerm(extraData?.attributes.secondaryAttribute) || "[Attribut]"}</span></div>
+            </article>
+            <article class="op-cardlet">
+              {videoEmbed ?
+                <iframe class="op-video-embed" loading="lazy" src={videoEmbed} title={guide.guideVideo.title || "Videoguide zu "+operatorName} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> :
+                <div class="op-video-placeholder"><div><span aria-hidden="true">▶</span><br />[YouTube-Videoguide]</div></div>
+              }
+              <div class="op-video-meta">
+                <strong>{guide.guideVideo.title || "[Video-Guide zu "+operatorName+"]"}</strong>
+                <p class="op-muted">Ag0n1st</p>
+              </div>
+              {guide.guideVideo.url && <p><a class="op-link" href={guide.guideVideo.url} target="_blank" rel="noopener noreferrer">Video auf YouTube / extern öffnen ↗</a></p>}
+            </article>
+          </div>
+          <div class="op-two" style="margin-top:14px">
+            <div class="op-cardlet"><h3>✓ Stärken</h3>{guide.overview.strengths.length ? guide.overview.strengths.map(s=><p class="op-body-copy">{s}</p>) : <p class="op-placeholder">[Stärken noch nicht eingetragen]</p>}</div>
+            <div class="op-cardlet"><h3>− Schwächen</h3>{guide.overview.weaknesses.length ? guide.overview.weaknesses.map(s=><p class="op-body-copy">{s}</p>) : <p class="op-placeholder">[Schwächen noch nicht eingetragen]</p>}</div>
+          </div>
+          {guide.overview.summary && <p class="op-body-copy">{guide.overview.summary}</p>}
+        </div>
+        <div class="op-divided">
+          <h2>Build auf einen Blick</h2>
+          <div class="op-two">
+            <article class="op-cardlet">
+              <h3>Waffen</h3>
+              <div class="op-mini-list">{shownWeapons.length ? shownWeapons.map(w=><div class="op-line"><div class="op-mini-art">[Icon]</div><div class="op-line-label"><span class="op-chip">{w.label}</span><strong>{w.name}</strong></div></div>) : <p class="op-placeholder">[Noch keine Waffenempfehlungen]</p>}</div>
+            </article>
+            <article class="op-cardlet">
+              <h3>Ausrüstung · {featuredBuild ? featuredBuild.title : "Meta-Set"}</h3>
+              {featuredBuild ? <div class="op-gear-parts">{featuredBuild.items.map(item=><div class="op-gear-part"><div class="op-mini-art">[Icon]</div><small>{item}</small></div>)}</div> : <p class="op-placeholder">[Noch kein Ausrüstungs-Build]</p>}
+            </article>
+            <article class="op-cardlet">
+              <h3>Skill-Priorität</h3>
+              {(priority || preview) ? <div class="op-skill-row">{priorityOrder.map((key,i)=><>
+                <div class="op-priority-skill"><div class="op-mini-art">{skillImage(key) ? <img class="op-skill-icon" src={skillImage(key)} loading="lazy" decoding="async" alt="" /> : slotIcons[key]}</div><small>{slotLabels[key]}</small><b>{priority?.targetLevels[key] || "–"}</b></div>
+                {i<3 && <span class="op-priority-symbol">{priorityComparisons[i]}</span>}
+              </>)}</div> : <p class="op-placeholder">[Skill-Priorität folgt]</p>}
+            </article>
+            <article class="op-cardlet">
+              <h3>Partners</h3>
+              {guide.overview.partners.length ?
+                <div class="op-gear-parts">{guide.overview.partners.map(name=><div class="op-gear-part"><div class="op-mini-art">[Op]</div><small>{name}</small></div>)}</div> :
+                <p class="op-placeholder">[Empfohlene Operatoren folgen]</p>
+              }
+            </article>
+          </div>
+        </div>
+        <div class="op-divided">
+          <h2>Einordnung</h2>
+          {ratingRows.map(([label,key,description])=>{
+            const score=guide.overview.ratings[key];
+            return <div class="op-rating">
+              <div class="op-rating-header"><span>{label}</span><span>{score === undefined ? "–" : score} / 5</span></div>
+              <div class="op-meter">{[1,2,3,4,5].map(n=><i class:list={{active:score!==undefined && n<=score}}></i>)}</div>
+              <p>{description}</p>
+            </div>;
+          })}
+        </div>
+      </section>

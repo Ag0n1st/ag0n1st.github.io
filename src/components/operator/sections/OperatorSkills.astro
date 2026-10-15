@@ -1,0 +1,95 @@
+---
+import type { OperatorGuideModel } from "../../../lib/endfield/operatorGuideModel";
+
+interface Props { model: OperatorGuideModel }
+const { model } = Astro.props;
+const { guide, preview, gameData, localized, trMetric, trReq, trTalent, combatTalents, shipTalents, attributeNodes, otherTalents, formatCost, importedBySlot, skillImage, defaultSkillRank, slotLabels, slotIcons, priority, priorityOrder, priorityComparisons } = model;
+---
+<section class="op-section" id="fertigkeiten">
+        <h2>Fertigkeiten</h2>
+        <div class="op-cardlet" style="margin-bottom:15px">
+          <h3>Skill-Priorität</h3>
+          {(priority || preview) ? <div class="op-skill-row">{priorityOrder.map((key,i)=><>
+            <div class="op-priority-skill"><div class="op-mini-art">{skillImage(key) ? <img class="op-skill-icon" src={skillImage(key)} loading="lazy" decoding="async" alt="" /> : slotIcons[key]}</div><small>{slotLabels[key]}</small><b>{priority?.targetLevels[key] || "–"}</b></div>
+            {i<3&&<span class="op-priority-symbol">{priorityComparisons[i]}</span>}
+          </>)}</div> : <p class="op-placeholder">[Skill-Priorität folgt]</p>}
+        </div>
+        <div class="op-divided">
+          <h3>Kampffertigkeiten</h3>
+          <div class="op-mini-list">
+            {(["basic","battle","combo","ultimate"] as const).map(key=>{
+              const official = importedBySlot.get(key);
+              return <article class="op-cardlet">
+                <div class="op-line">
+                  <div class="op-mini-art">{skillImage(key) ? <img class="op-skill-icon" src={skillImage(key)} loading="lazy" decoding="async" alt="" /> : slotIcons[key]}</div>
+                  <div class="op-line-label"><span class="op-chip">{slotLabels[key]}</span><strong>{official?.name || "[Offizieller Skillname]"}</strong></div>
+                </div>
+                {official && <p class="op-muted" style="font-size:11px;margin:9px 0">SKPORT Wiki · Datenstand {gameData?.source.snapshot} · Original: {gameData?.source.language.toUpperCase()}{localized ? " · Deutsche redaktionelle Übersetzung" : ""}</p>}
+                {(localized?.skills[key]?.description || official?.description) && <div class="op-skill-description op-body-copy">{localized?.skills[key]?.description || official?.description}</div>}
+                {localized && official?.description && <details class="op-details"><summary>Englische Originalbeschreibung anzeigen</summary><div class="op-details-body op-body-copy">{official.description}</div></details>}
+                {official && gameData ? <>
+                  <div class="op-skill-selector">
+                    <label for={"skill-rank-"+key}>Skillstufe</label>
+                    <select id={"skill-rank-"+key} class="op-select" data-skill-rank={key}>
+                      {gameData.ranks.map((rank,i)=><option value={i} selected={i===defaultSkillRank}>{rank}</option>)}
+                    </select>
+                  </div>
+                  <div class="op-info-grid op-skill-stats">
+                    {official.metrics.slice(0,4).map(metric=><div class="op-info-field">
+                      <small title={metric[0]}>{trMetric(metric[0])}</small>
+                      <strong data-skill-metric-value data-skill-values={JSON.stringify(metric.slice(1))}>{metric[defaultSkillRank+1]}</strong>
+                    </div>)}
+                  </div>
+                </> : <p class="op-placeholder">[Offizielle Fertigkeitswerte folgen]</p>}
+                <p class="op-body-copy"><strong>Bewertung</strong><br />{guide.skills.active[key] || "[Eigene Erklärung folgt]"}</p>
+                <details class="op-details"><summary>Alle Skill-Levelwerte anzeigen</summary>
+                  <div class="op-details-body">
+                    {official && gameData ? <>
+                      <div class="op-table-wrap">
+                        <table class="op-table op-skill-matrix">
+                          <thead><tr><th>Skillstufe</th>{official.metrics.map(metric=><th title={metric[0]}>{trMetric(metric[0])}</th>)}</tr></thead>
+                          <tbody>{gameData.ranks.map((rank,i)=><tr><td>{rank}</td>{official.metrics.map(metric=><td>{metric[i+1]}</td>)}</tr>)}</tbody>
+                        </table>
+                      </div>
+                      {official.upgradeCosts?.length ? <>
+                        <h4 style="margin:17px 0 8px">Materialkosten der einzelnen Skillstufen</h4>
+                        <div class="op-table-wrap"><table class="op-table">
+                          <thead><tr><th>Skillstufe</th><th>Materialien</th></tr></thead>
+                          <tbody>{official.upgradeCosts.map(level=><tr><td>{level.rank}</td><td>{formatCost(level.items)}</td></tr>)}</tbody>
+                        </table></div>
+                        <p class="op-muted" style="font-size:11px;margin-top:10px">Quelle: SKPORT-Wiki. Einzelkosten je Stufe, keine aufsummierten Kosten.</p>
+                      </> : <p class="op-muted" style="font-size:11px;margin-top:10px">Materialkosten folgen nach Zuordnung ihrer Item-IDs.</p>}
+                    </> : <p class="op-placeholder">[Skilllevel und Aufstiegsmaterialien folgen]</p>}
+                  </div>
+                </details>
+              </article>;
+            })}
+          </div>
+        </div>
+        {[
+          {talentCategory:"attribute",title:"Attribut-Talent",talentLevels:attributeNodes},
+          {talentCategory:"combat",title:"Combat Talents",talentLevels:combatTalents},
+          {talentCategory:"ship",title:"Schiffstalente",talentLevels:shipTalents},
+          {talentCategory:"other",title:"Weitere Talente (noch nicht kategorisiert)",talentLevels:otherTalents}
+        ].map(({talentCategory,title,talentLevels})=><div class="op-divided">
+          <h3>{title}</h3>
+          {talentLevels.length ? <div class="op-two">
+            {talentLevels.map(t=><article class="op-cardlet">
+                <div class="op-line"><div class="op-mini-art">[Icon]</div><strong>{localized?.talents[t.id]?.name || t.name}</strong></div>
+                <p class="op-muted" style="font-size:11px">{localized ? "SKPORT · deutsche Übersetzung" : "SKPORT Original · Englisch"}</p>
+                <p class="op-body-copy">{trTalent(t.id,t.levels.length-1,t.levels.at(-1)?.effect || "")}</p>
+                {(talentCategory === "combat" || talentCategory === "ship") && guide.skills[talentCategory === "combat" ? "combatTalents" : "shipTalents"].find(guideTalent => guideTalent.talentId === t.id)?.evaluation &&
+                <p class="op-body-copy"><strong>Bewertung:</strong> {guide.skills[talentCategory === "combat" ? "combatTalents" : "shipTalents"].find(guideTalent => guideTalent.talentId === t.id)?.evaluation}</p>}
+                <details class="op-details"><summary>Alle Talentstufen, Voraussetzungen & Materialien</summary>
+                  <div class="op-details-body op-table-wrap"><table class="op-table">
+                    <thead><tr><th>Stufe</th><th>Offizieller Effekt</th><th>Voraussetzungen</th><th>Materialien</th></tr></thead>
+                    <tbody>{t.levels.map((level,i)=><tr>
+                      <td>{level.name}</td><td class="op-body-copy">{trTalent(t.id,i,level.effect)}</td>
+                      <td>{level.requirements.map(trReq).join(" · ") || "–"}</td><td>{formatCost(level.cost)}</td>
+                    </tr>)}</tbody>
+                  </table></div>
+                </details>
+              </article>)}
+          </div> : <p class="op-placeholder">[Offizielle Talente folgen]</p>}
+        </div>)}
+      </section>

@@ -1,0 +1,51 @@
+---
+import type { OperatorGuideModel } from "../../../lib/endfield/operatorGuideModel";
+
+interface Props { model: OperatorGuideModel }
+const { model } = Astro.props;
+const { guide, gameData, extraData, trTerm, trMetric, trReq, trPromotion, formatCost } = model;
+---
+<section class="op-section" id="operator-kit">
+        <h2>Operator Kit</h2>
+        <div class="op-divided">
+          <h3>Operator-Profil & Spielweise</h3>
+          <div class="op-info-grid">{[
+              ["Klasse",trTerm(gameData?.operator.class)],["Element",trTerm(gameData?.operator.element)],
+              ["Fraktion",gameData?.operator.faction],["Hauptattribut",trTerm(extraData?.attributes.mainAttribute)],
+              ["Sekundärattribut",trTerm(extraData?.attributes.secondaryAttribute)],["Waffentyp",gameData?.operator.weaponType]
+            ].map(([label,value])=><div class="op-info-field"><small>{label}</small><strong>{value || "[Spieldaten folgen]"}</strong></div>)}</div>
+          <p class="op-muted op-body-copy">{guide.operatorKit.playstyle || "[Spielweise und Grundlagen folgen]"}</p>
+        </div>
+        <div class="op-divided">
+          <h3>Attributentwicklung</h3>
+          {extraData ? <>
+            <p class="op-section-intro">Originalwerte der englischen SKPORT-Wiki für die dort angegebenen Levelstufen. Dies sind keine Ausrüstungslevel.</p>
+            <div class="op-table-wrap"><table class="op-table op-progression-table">
+              <thead><tr><th>Attribut</th>{extraData.attributes.levels.map(level=><th>{level}</th>)}</tr></thead>
+              <tbody>{extraData.attributes.metrics.map(metric=><tr><th scope="row" title={metric.name}>{trMetric(metric.name.replace(/ \((Main|Secondary)\)/,""))}{metric.name.includes("(Main)") ? " ★" : metric.name.includes("(Secondary)") ? " ☆" : ""}</th>{metric.values.map(value=><td>{value}</td>)}</tr>)}</tbody>
+            </table></div>
+            <details class="op-details"><summary>Materialkosten nach Operator-Level</summary>
+              <div class="op-details-body op-table-wrap"><table class="op-table">
+                <thead><tr><th>Operator-Level</th><th>Materialien laut Wiki</th></tr></thead>
+                <tbody>{extraData.attributes.levelCosts.map(row=><tr><td>{row.level}</td><td>{formatCost(row.items)}</td></tr>)}</tbody>
+              </table></div>
+            </details>
+          </> : <p class="op-placeholder">[Attributwerte werden nach dem SKPORT-Import angezeigt]</p>}
+        </div>
+        <div class="op-divided">
+          <h3>Operator-Aufstieg & Freischaltungen</h3>
+          <p class="op-section-intro">Promotion und Outfitting sind unterschiedliche Freischaltungen. Die Levelangaben entsprechen den offiziellen Operator-Meilensteinen.</p>
+          <div class="op-table-wrap"><table class="op-table op-progression-table">
+            <thead><tr><th>Aufstieg</th><th>Freischaltung</th><th>Voraussetzung</th><th>Materialien</th></tr></thead>
+            <tbody>{extraData ? extraData.promotions.map(p=><tr>
+              <td><strong>{trPromotion(p.name)?.name ?? p.name}</strong></td><td>{trPromotion(p.name)?.effect ?? p.effect}</td><td>{trReq(p.requirement)}</td>
+              <td>{formatCost(p.cost)}</td>
+            </tr>) : [1,2,3,4,5].map(n=><tr><td>[Stufe {n}]</td><td>[Freischaltung]</td><td>[Level/Story]</td><td>[Materialien]</td></tr>)}</tbody>
+          </table></div>
+          {guide.operatorKit.progressionNotes && <p class="op-body-copy">{guide.operatorKit.progressionNotes}</p>}
+        </div>
+        <div class="op-divided">
+          <h3>Ressourcen & Verfügbarkeit</h3>
+          <div class="op-cardlet"><p class="op-body-copy">{guide.operatorKit.resourceNotes || "[Bezugsquellen und Freischaltbedingungen folgen]"}</p></div>
+        </div>
+      </section>

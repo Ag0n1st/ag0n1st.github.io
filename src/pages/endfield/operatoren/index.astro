@@ -17,7 +17,7 @@ const operators = entries.map(entry => ({
 })).sort((a,b) => a.name.localeCompare(b.name, "de"));
 
 ---
-<EndfieldPlaceholder title="Operatoren" kicker="ARKNIGHTS: ENDFIELD · OPERATOREN" active="characters" description="Operatoren und meine Charakter-Guides auf einen Blick.">
+<EndfieldPlaceholder title="Operatoren" kicker="ARKNIGHTS: ENDFIELD · OPERATOREN" active="operators" description="Operatoren und meine Charakter-Guides auf einen Blick.">
   <main class="op-page section-wrap">
     <span class="op-eyebrow">ARKNIGHTS: ENDFIELD / GUIDES</span>
     <h1 class="op-page-heading">Operatoren<span class="title-period">.</span></h1>
@@ -39,7 +39,7 @@ const operators = entries.map(entry => ({
               <span class="op-chip">{operator.game?.weaponType || "[Waffentyp]"}</span>
               {operator.preview && <span class="op-chip is-accent">Layout-Vorschau</span>}
             </div>
-            <div class="op-card-bottom"><span>Charakter-Guide ansehen</span><span aria-hidden="true">↗</span></div>
+            <div class="op-card-bottom"><span>Operator-Guide ansehen</span><span aria-hidden="true">↗</span></div>
           </div>
         </a>
       ))}

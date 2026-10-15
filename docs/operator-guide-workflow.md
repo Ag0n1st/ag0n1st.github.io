@@ -1,5 +1,12 @@
 # Operator-Guides selbst bearbeiten
 
+**Namenskonvention:** Im gesamten Endfield-Bereich heißen die Spielfiguren **Operatoren**. Die kanonischen URLs sind `/endfield/operatoren/` und `/endfield/operatoren/<slug>/`. Alte `/endfield/charaktere/`-Links bleiben nur als Weiterleitungen erhalten.
+
+**Komponentenstruktur:** Die zentrale `OperatorGuide.astro` setzt neun eigenständige Abschnittskomponenten aus `src/components/operator/sections/` zusammen. Der gemeinsame Aufbereitungs-Code befindet sich in `src/lib/endfield/operatorGuideModel.ts`. Änderungen an einzelnen Abschnitten benötigen daher keine Kopie der übrigen Guide-Vorlage.
+
+**Datenlücken:** Die offiziellen Traits sind im aktuellen SKPORT-Snapshot noch nicht als strukturierte Felder verfügbar und werden deshalb in fertigen Guides nicht durch erfundene Platzhalter ersetzt. Waffen- und Ausrüstungsdetails benötigen weiterhin eigene Importdaten (nächster Arbeitsschritt).
+
+
 Dieses Verzeichnis gehört zur redaktionellen Ebene der **Arknights: Endfield**-Guides.
 
 ## Status der Implementierung

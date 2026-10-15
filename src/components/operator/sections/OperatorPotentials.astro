@@ -1,0 +1,36 @@
+---
+import type { OperatorGuideModel } from "../../../lib/endfield/operatorGuideModel";
+
+interface Props { model: OperatorGuideModel }
+const { model } = Astro.props;
+const { guide, localized, trPotential, officialPotentials, missing, potentialByLevel } = model;
+---
+<section class="op-section" id="potenziale">
+        <h2>Potenziale</h2>
+        <div class="op-notice"><strong>Friendly Disclaimer:</strong> Potenziale sind nice to have, aber <strong>niemals ein Muss</strong>. Zusätzliche Kopien können teuer sein und sind in der Regel nicht nötig, um einen Operator sinnvoll zu spielen.</div>
+        <div class="op-divided" style="margin-top:20px">
+          <h3>Potenzialübersicht</h3>
+          <div class="op-pills" aria-label="Potenzial auswählen">{[1,2,3,4,5].map((n,i)=><button type="button" class="op-pill-button" data-potential-button={n} aria-pressed={i===0?"true":"false"}>P{n}</button>)}</div>
+          {[1,2,3,4,5].map((n,i)=>{
+            const p=potentialByLevel.get(n);
+            return <div class="op-weapon-panel op-cardlet" data-potential-panel={n} hidden={i!==0}>
+              <h3>P{n} – {officialPotentials.get(n)?.name || "[Offizieller Potenzialname]"}</h3>
+              <p class="op-body-copy">{trPotential(n, officialPotentials.get(n)?.effect || "[Offizieller Effekt aus Spieldaten]")}</p>
+              {officialPotentials.has(n) && <p class="op-muted" style="font-size:11px">SKPORT-Wirkung{localized ? " (deutsch übersetzt)" : " (EN)"}. Prozentangaben im Effekt sind keine Gesamt-DPS-Vergleiche.</p>}
+              {(n===1||n===3||n===5) && <div class="op-line"><div class="op-mini-art">[Bild]</div><strong>{officialPotentials.has(n) ? "Operator-Snapshot – Grafik folgt" : "Freischaltbares Profilbild"}</strong></div>}
+              <p class="op-body-copy"><strong>Bewertung:</strong> {p?.evaluation || missing}</p>
+              <div class="op-two">
+                <div class="op-info-field"><small>Gesamtgewinn vs. P0</small><strong>{p?.increaseOverP0Percent === undefined ? "–" : p.increaseOverP0Percent+" %"}</strong></div>
+                <div class="op-info-field"><small>Zusatzgewinn durch P{n}</small><strong>{p?.increaseOverPreviousPercent === undefined ? "–" : p.increaseOverPreviousPercent+" %"}</strong></div>
+              </div>
+              {p?.comparisonConditions && <p class="op-muted op-body-copy">Vergleichsbedingungen: {p.comparisonConditions}</p>}
+            </div>;
+          })}
+        </div>
+        <div class="op-divided"><h3>Potenzialvergleich</h3>
+          <div class="op-table-wrap"><table class="op-table"><thead><tr><th>Potenzial</th><th>Offizieller Effekt (EN)</th><th>Gemessener Gewinn vs. P0</th></tr></thead>
+            <tbody>{[1,2,3,4,5].map(n=><tr><td>P{n}</td><td class="op-body-copy">{trPotential(n, officialPotentials.get(n)?.effect || "[Folgt]")}</td><td>{potentialByLevel.get(n)?.increaseOverP0Percent === undefined ? "–" : potentialByLevel.get(n)?.increaseOverP0Percent+" %"}</td></tr>)}</tbody>
+          </table></div>
+        </div>
+        <div class="op-divided"><h3>Pull-Empfehlung</h3><p class="op-muted op-body-copy">{guide.potentials.pullAdvice || "[Empfohlener Stopp-Punkt und persönliche Einordnung folgen]"}</p></div>
+      </section>
