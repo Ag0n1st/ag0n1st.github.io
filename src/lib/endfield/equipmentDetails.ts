@@ -20,6 +20,7 @@ export interface OfficialGear extends OfficialBase {
  stats:DetailTab[];artificing:DetailTab[];setEffect:string|null;
  standardRecipe:{id:string;materials:{id:string;count:number}[];source:string}|null;
  recipeStatus:"verified"|"not-listed"|"needs-review";
+ artificingStatus?:"available"|"not-listed";
  acquisitionNotes?:string[]
 }
 export interface OfficialEquipmentSnapshot {

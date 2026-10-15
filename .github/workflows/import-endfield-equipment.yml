@@ -1,14 +1,13 @@
 name: Probe official SKPORT weapon and gear details
 
 on:
-  push:
-    branches: [endfield-official-weapon-gear-details-20261015]
-    paths:
-      - scripts/endfield/equipment-normalize.mjs
-      - scripts/endfield/equipment-normalize.test.mjs
-      - scripts/endfield/import-equipment.mjs
-      - .github/workflows/import-endfield-equipment.yml
   workflow_dispatch:
+    inputs:
+      publish:
+        description: 'Commit verified official snapshot to selected branch?'
+        required: true
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -55,7 +54,8 @@ jobs:
         run: |
           npm run test:endfield
           npm run build
-      - name: Commit only normalized public equipment values to feature branch
+      - name: Commit only normalized public equipment values to selected branch
+        if: inputs.publish == true
         shell: bash
         run: |
           git add src/data/endfield/catalog/equipment-details.json

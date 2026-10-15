@@ -35,6 +35,15 @@ test("gear stats and level use only the official table",()=>{
   assert.equal(gear.level,60);
   assert.equal(gear.standardRecipe.materials[0].count,3000);
 });
+test("official Stats remain valid when low-tier gear has no Artificing widget",()=>{
+  const d=docWith({Stats:"a"},{a:table(["Level","10"],[["Defense","+4"]])});
+  const gear=normalizeEquipment({itemId:"206",name:"Basic Armor",document:d},
+    {id:"206",name:"Basic Armor",category:"Gear",iconPath:"/images/endfield/items/206.webp"},
+    "2026-10-15");
+  assert.equal(gear.status,"verified");
+  assert.equal(gear.artificingStatus,"not-listed");
+  assert.equal(gear.level,10);
+});
 test("unknown or mismatched official IDs are rejected",()=>{
   assert.throws(()=>normalizeEquipment({itemId:"123",name:"test",document:{}},{id:"124",name:"test",category:"Weapons"},"2026-10-15"),/ID/);
 });

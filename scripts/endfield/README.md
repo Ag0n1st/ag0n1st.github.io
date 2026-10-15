@@ -76,6 +76,10 @@ Die ID-basierte Datenbank für **84 Waffen** und **258 Ausrüstungsteile** wird 
 - **Build-Finder:** bleibt ein separat zu entwickelndes Feature. Hersteller- und Fabrikfreischaltungen dürfen nicht allein aus einem Level oder Rezept erschlossen werden.
 - Die 100-MB-Endfield-Grenze wird vor Datencommits und beim GitHub-Pages-Build kontrolliert.
 
+### Veröffentlichungsprüfung für Ausrüstungsstufen
+
+Die offizielle SKPORT-Wiki enthält für alle 258 Gear-Einträge `Stats`, aber nur für 167 davon auch `Artificing`. Fehlende Veredelung ist auf frühen Gear-Stufen kein Beweis für fehlende Grundwerte: solche Datensätze gelten mit offiziellen Stats als **verified**, das fehlende Veredelungs-Widget wird als `artificingStatus: not-listed` ausgewiesen. Bei den vier neuen Waffen ohne Detail-Widgets lautet der Status weiterhin `incomplete`.
+
 ## Bilder lokal sichern (ohne GIF/Video)
 
 `scripts/endfield/sync-assets.mjs` kopiert ausschließlich die aus unseren JSON-Daten bekannten SKPORT-PNG-, JPEG- oder WebP-URLs für Cover, Illustration und Skill-Icons ins Repository. GIFs, Videos und zusätzliche unbekannte URLs werden ausgeschlossen.

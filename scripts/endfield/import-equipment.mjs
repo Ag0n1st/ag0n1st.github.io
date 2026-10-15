@@ -51,9 +51,16 @@ async function worker(){
           let panel="";
           if(expected.category==="Gear"){
             try {
-              await page.getByText("Each gear piece costs",{exact:true}).first().waitFor({timeout:1700});
-            }catch{/* some gear has no craft recipe */}
-            let body=await page.locator("body").innerText().catch(()=>"");
+              await page.waitForFunction(()=>{
+                const text=document.body?.innerText??"";
+                const st=text.indexOf("Each gear piece costs");
+                if(st<0)return false;
+                const lines=text.slice(st+"Each gear piece costs".length)
+                  .split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+                return lines.length>=2&&!lines[0].startsWith("*")&&/^\*\s*\d/.test(lines[1]);
+              },null,{timeout:6500});
+            }catch{/* some gear has no listed default recipe */}
+            const body=await page.locator("body").innerText().catch(()=>"");
             panel=extractRenderedGearSource(body);
           }
           record=normalizeEquipment(json.data.item,expected,new Date().toISOString().slice(0,10),
@@ -83,7 +90,9 @@ outputs.sort((a,b)=>Number(a.id)-Number(b.id));
 const results={schemaVersion:1,source:{provider:"SKPORT Wiki",snapshot:new Date().toISOString().slice(0,10),
   description:"Official public item/info widgets + rendered default gear Source"},
   coverage:{requested:all.length,parsed:outputs.length,verified:outputs.filter(x=>x.status==="verified").length,
-    incomplete:unverified.length,errors:errors.length,weaponCount:outputs.filter(x=>x.kind==="weapon").length,
+    incomplete:outputs.filter(x=>x.status!=="verified").length,
+    recipeNeedsReview:outputs.filter(x=>x.kind==="gear"&&x.recipeStatus==="needs-review").length,
+    errors:errors.length,weaponCount:outputs.filter(x=>x.kind==="weapon").length,
     gearCount:outputs.filter(x=>x.kind==="gear").length},
   weapons:outputs.filter(x=>x.kind==="weapon"),
   gear:outputs.filter(x=>x.kind==="gear"),
