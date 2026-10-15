@@ -610,6 +610,8 @@ PR #11 wertete die tatsächlich verlinkten Gear-Icons der Talos-Wiki-Kistentabel
 | `gear-piece-acquisition-sources.json` | Einzelteilweise Endfield-Hub-Orts-/Erwerbstexte | `import-gear-piece-sources.mjs`; Konflikte behalten. |
 | `blueprint-wiki-crate-contents.json` | 24 konkrete Kistenlisten mit Einzelteil-Links | `import-wiki-crate-contents.mjs`; Tabellenstruktur beim Patch neu prüfen. |
 | `blueprint-precise-gear-index.json` | Abgleich der offiziellen Gear-IDs gegen beide konkreten Quellen | `build-precise-blueprints.mjs` nach Quellenupdate. |
+
+**Exakter Dateipfad des aktuellen Einzelteil-Index:** `src/data/endfield/progression/blueprint-precise-gear-index.json`. Eine neue KI darf diesen Ergebnis-Index nicht mit `blueprint-research-index.json` (ältere Set-Ebene) verwechseln.
 | `blueprint-confirmations.json` | **Nur ausdrücklich persönlich belegte** Gear-ID + offizielle Marker-ID | Im Spiel/Video verifizieren und manuell ergänzen. |
 
 Lesedokumente:
