@@ -1,0 +1,44 @@
+name: Resolve community blueprint research against official SKPORT Gear IDs
+
+on:
+  push:
+    branches: [endfield-blueprint-research-20261015]
+    paths:
+      - src/lib/endfield/blueprintResearch.mjs
+      - scripts/endfield/build-blueprint-index.mjs
+      - .github/workflows/build-blueprint-research.yml
+
+permissions:
+  contents: write
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Cross-reference full 258 official Gear entries, without adding false verified links
+        run: node scripts/endfield/build-blueprint-index.mjs
+      - name: Run Endfield integrity tests, budget check and build
+        run: |
+          npm run test:endfield
+          node scripts/endfield/check-budget.mjs
+          npm run build
+      - name: Commit candidate index only to feature branch
+        shell: bash
+        run: |
+          git add src/data/endfield/progression/blueprint-research-index.json
+          if git diff --cached --quiet; then
+            echo 'No candidate index changes'
+          else
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'Cache community candidate blueprint associations against official Gear IDs'
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
