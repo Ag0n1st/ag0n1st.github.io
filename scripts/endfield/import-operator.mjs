@@ -233,17 +233,28 @@ export function importOperator(itemResponse,publicItems,{itemId,slug,snapshot}){
   const potentialWidget=widget(document,"Potential Phases");
   const potentialRef=potentialWidget.tabDataMap?.default?.content;
   assert(!!potentialRef,"Potenzial-Tabelle fehlt");
-  const potentialTable=oneTable(document,clean(potentialRef),"Potenziale");
+  const potentialGrids=sections(document,clean(potentialRef))
+    .filter(section=>section.kind==="table").map(section=>section.table);
+  // Some operator Wiki entries append a small profile/unlock table after the
+  // five-row potential grid. Locate the grid by explicit POTENTIAL markers.
+  const mainPotentialGrids=potentialGrids.filter(grid=>
+    grid.rows.length>=1 && grid.rows.every(row=>
+      row.cells.length>=3 && /\\bPOTENTIAL\\s*0?[1-5]\\b/i.test(clean(row.cells[1]))));
+  assert(mainPotentialGrids.length===1,"Potenziale benötigt genau eine eindeutige Potential-Phases-Tabelle: "+potentialRef);
+  const potentialTable=mainPotentialGrids[0];
   const potentials=potentialTable.rows.map((row,i)=>({
     level:i+1,name:clean(row.cells[1]).split("\n")[0],
     effect:clean(row.cells[2])
   }));
+  const potentialSupplementalTables=potentialGrids.filter(grid=>grid!==potentialTable).map(grid=>
+    grid.rows.map(row=>row.cells));
   assert(potentials.length>=1 && potentials.every(p=>p.name&&p.effect),
     "Potenzialnamen/Effekte fehlen");
   const materials=collectMaterials(main,attributes,talents,promotions,publicItems);
   const extras={
     schemaVersion:2,source:source(item,itemId,snapshot),operator:slug,
-    profile,attributes,talents,promotions,potentials,materials
+    profile,attributes,talents,promotions,potentials,materials,
+    ...(potentialSupplementalTables.length ? {potentialSupplementalTables} : {})
   };
   return {main,extras};
 }
