@@ -11,6 +11,7 @@ for(const id of ["1246","341","206"]){
  const url="https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=4&gameEntryId="+id;
  await page.goto(url,{waitUntil:"domcontentloaded",timeout:45000});
  try { await page.getByText("Each gear piece costs",{exact:true}).first().waitFor({timeout:5000}); } catch {}
+ await page.waitForTimeout(3800);
  const text=await page.locator("body").innerText();
  const section=extractRenderedGearSource(text);
  const lines=section.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
