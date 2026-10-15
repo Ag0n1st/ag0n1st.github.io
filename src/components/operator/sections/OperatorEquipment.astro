@@ -1,0 +1,51 @@
+---
+import type { OperatorGuideModel } from "../../../lib/endfield/operatorGuideModel";
+
+interface Props { model: OperatorGuideModel }
+const { model } = Astro.props;
+const { guide, missing, roleLabels, stageLabels, builds } = model;
+---
+<section class="op-section" id="ausruestung">
+        <h2>Ausrüstung</h2>
+        <div class="op-divided">
+          <h3>Build-Finder</h3>
+          <p class="op-section-intro">Aktuell ein Layout-Prototyp. Automatische Empfehlungen nach Story- und Fabrikfortschritt folgen mit den Spieldaten.</p>
+          <div class="op-two">
+            <label class="op-cardlet" style="font-size:12px">Operator- / Ausrüstungslevel
+              <select class="op-select" id="op-level"><option>70</option><option>60</option><option>50</option></select>
+            </label>
+            <label class="op-cardlet" style="font-size:12px">Fabrikfortschritt
+              <select class="op-select" id="op-factory"><option value="einstieg">Einstieg</option><option value="fortgeschritten" selected>Fortgeschritten</option><option value="maximal">Vollständig ausgebaut</option></select>
+            </label>
+          </div>
+          <div class="op-notice" style="margin-top:12px">Ausgewählt: <strong id="op-build-config">Lv. 70 · Fortgeschritten</strong>. Freischaltungen werden später aus den Spieldaten ermittelt.</div>
+          <div class="op-notice op-gear-disclaimer" style="margin-top:12px"><strong>Hinweis zur Ausrüstung:</strong> Achtet bei der Ausrüstung grundsätzlich darauf, Ausrüstungsteile zu nutzen, die das Haupt- und Sekundärattribut des jeweiligen Operators erhöhen. Das gilt besonders für Builds auf niedrigeren Leveln.</div>
+          {guide.equipment.generalNotes && <p class="op-body-copy">{guide.equipment.generalNotes}</p>}
+        </div>
+        <div class="op-divided">
+          <h3>Empfohlene Ausrüstung</h3>
+          {builds.length ? <>
+            <div class="op-pills" aria-label="Build auswählen">{builds.map((b,i)=><button type="button" class="op-pill-button" data-build-button={b.id} aria-pressed={i===0?"true":"false"}>{b.title}</button>)}</div>
+            {builds.map((b,i)=><div class="op-build-panel op-cardlet" data-build-panel={b.id} hidden={i!==0}>
+              <div class="op-subtitle"><h3 style="margin:0">{b.title}</h3><span class="op-chip">{roleLabels[b.role]}</span></div>
+              <div class="op-gear-parts">{b.items.map(item=><div class="op-gear-part"><div class="op-mini-art">[Icon]</div><small>{item}</small></div>)}</div>
+              {b.availableFromLevel && <p><strong>Ab Level:</strong> {b.availableFromLevel}</p>}
+              {b.factoryUnlock && <p class="op-body-copy"><strong>Fabrik:</strong> {b.factoryUnlock}</p>}
+              {b.teamContext && <p class="op-body-copy"><strong>Einsatzbereich:</strong> {b.teamContext}</p>}
+              {b.setBonusNotes && <p class="op-body-copy"><strong>Seteffekte:</strong> {b.setBonusNotes}</p>}
+              <p class="op-body-copy"><strong>Bewertung:</strong> {b.evaluation || missing}</p>
+              <details class="op-details"><summary>Werte, Herstellung & Freischaltungen</summary><div class="op-details-body">
+                <div class="op-table-wrap"><table class="op-table"><thead><tr><th>Ausrüstungsteil</th><th>Attribute</th><th>Materialien</th></tr></thead>
+                  <tbody>{b.items.map(item=><tr><td>{item}</td><td>[Werte]</td><td>[Materialien]</td></tr>)}</tbody>
+                </table></div>
+                {b.craftingNotes && <p class="op-body-copy">{b.craftingNotes}</p>}
+              </div></details>
+            </div>)}
+          </> : <p class="op-placeholder">[Noch keine Ausrüstungs-Builds]</p>}
+        </div>
+        <div class="op-divided"><h3>Ausrüstungsprogression</h3>
+          {guide.equipment.progression.length ?
+            <div class="op-mini-list">{guide.equipment.progression.map((p,i)=><div class="op-cardlet"><strong>{i+1}. {stageLabels[p.stage]}</strong><p class="op-body-copy">{p.note}</p></div>)}</div> :
+            <p class="op-placeholder">[Progressionsübersicht nach Story und Fabrik folgt]</p>}
+        </div>
+      </section>
