@@ -153,8 +153,19 @@ try {
           extraInfo:doc.extraInfo,
           packWidget:pack,
           packData:common,
-          packDocuments:targets.map(key=>({key,record:doc.documentMap?.[key]}))
-        }).slice(0,8500));
+          packDocuments:targets.map(key=>({key,record:doc.documentMap?.[key]})),
+          setBonusDescription:(()=>{
+            const id=String(common?.tabDataMap?.default?.intro?.description??"");
+            if(!id||!doc.documentMap?.[id])return {id,error:"Referenced description unavailable"};
+            try{
+              return {id,sections:extractDocument(id,doc.documentMap[id]).sections.map(section=>
+                section.kind==="table"
+                  ? {kind:"table",rows:section.table.rows.map(r=>r.cells).slice(0,10)}
+                  : {kind:section.kind,text:String(section.text??"").slice(0,1800)}
+              )};
+            }catch(err){return {id,error:String(err).slice(0,200)};}
+          })()
+        }).slice(0,13500));
       }
       if(type.type==="weapon" || type.type==="gear") {
         const detailWidgets=(doc.chapterGroup??[]).flatMap(g=>g.widgets??[]);
