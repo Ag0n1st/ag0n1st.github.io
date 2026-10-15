@@ -89,6 +89,23 @@ Die offizielle SKPORT-Wiki enthält für alle 258 Gear-Einträge `Stats`, aber n
 - Offizielle Blaupausen-Freischalttexte werden mitgeführt, aber nicht automatisch zu einer subjektiven Progressions- oder Build-Empfehlung verarbeitet.
 - Die einmaligen Diagnose-Workflows sind nach Prüfung entfernt worden. Die allgemeine Import-Action bleibt manuell ausführbar.
 
+## Build-Finder: geprüfte Level- und Fabrikverfügbarkeit
+
+Der Filter in `OperatorEquipment.astro` verwendet das **höchste offizielle Gear-Level** aus den vier Bestandteilen eines redaktionellen Builds und optional das höhere redaktionell angegebene `availableFromLevel`. Daraus wird **keine** Story- oder Fabrikfreischaltung abgeleitet.
+
+Für eine bestätigte Fabrik-Freischaltung müssen beide Felder im redaktionellen Guide stehen:
+
+```yaml
+factoryStage: fortgeschritten # einstieg | fortgeschritten | maximal
+factoryUnlock: "Konkreter, geprüfter Nachweis über Bauplan-/Story-/Fabrik-Freischaltung"
+```
+
+Die Kategorien Einstieg/Fortgeschritten/Maximal sind eine **redaktionelle Klassifikation**, keine SKPORT-Werte. Ohne gültige Daten für alle vier Ausrüstungsteile und ohne beide redaktionellen Freischaltungsfelder kennzeichnet die UI den Build als **Freischaltung ungeklärt** und zeigt ihn standardmäßig nicht als verfügbar an. Die gezeigten Namen/Stufen sind nur Schema-Beispiele, keine echten Empfehlungen.
+
+Ein zu niedriges Level oder ein niedrigerer Fabrikstand sperrt einen ansonsten geprüften Build. Bereits erfasste redaktionelle Builds können per Checkbox weiterhin zur Ansicht eingeblendet werden. Der Finder erstellt weder eigene Meta-Builds noch erfindet er fehlende Freischaltungen. Automatische Story-Logik kann folgen, sobald die offiziellen SKPORT-Daten eindeutige Meilensteine liefern.
+
+**Tests:** `scripts/endfield/build-finder.test.mjs` läuft über `npm run test:endfield`.
+
 ## Bilder lokal sichern (ohne GIF/Video)
 
 `scripts/endfield/sync-assets.mjs` kopiert ausschließlich die aus unseren JSON-Daten bekannten SKPORT-PNG-, JPEG- oder WebP-URLs für Cover, Illustration und Skill-Icons ins Repository. GIFs, Videos und zusätzliche unbekannte URLs werden ausgeschlossen.
