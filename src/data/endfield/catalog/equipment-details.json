@@ -8,8 +8,8 @@
   "coverage": {
     "requested": 342,
     "parsed": 342,
-    "verified": 247,
-    "incomplete": 95,
+    "verified": 338,
+    "incomplete": 4,
     "errors": 0,
     "weaponCount": 84,
     "gearCount": 258,
@@ -47804,7 +47804,7 @@
       "gearSlot": "Armor",
       "setName": "Non-Set",
       "level": 10,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -47854,7 +47854,8 @@
       "setEffect": "No Set Effects",
       "standardRecipe": null,
       "recipeStatus": "not-listed",
-      "acquisitionNotes": []
+      "acquisitionNotes": [],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "208",
@@ -47872,7 +47873,7 @@
       "gearSlot": "Armor",
       "setName": "Non-Set",
       "level": 10,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -47922,7 +47923,8 @@
       "setEffect": "No Set Effects",
       "standardRecipe": null,
       "recipeStatus": "needs-review",
-      "acquisitionNotes": []
+      "acquisitionNotes": [],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "211",
@@ -47940,7 +47942,7 @@
       "gearSlot": "Gloves",
       "setName": "Non-Set",
       "level": 10,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -47990,7 +47992,8 @@
       "setEffect": "No Set Effects",
       "standardRecipe": null,
       "recipeStatus": "needs-review",
-      "acquisitionNotes": []
+      "acquisitionNotes": [],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "213",
@@ -48008,7 +48011,7 @@
       "gearSlot": "Gloves",
       "setName": "Non-Set",
       "level": 10,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -48058,7 +48061,8 @@
       "setEffect": "No Set Effects",
       "standardRecipe": null,
       "recipeStatus": "needs-review",
-      "acquisitionNotes": []
+      "acquisitionNotes": [],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "216",
@@ -48076,7 +48080,7 @@
       "gearSlot": "Armor",
       "setName": "Non-Set",
       "level": 20,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -48141,7 +48145,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 6 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "218",
@@ -48159,7 +48164,7 @@
       "gearSlot": "Armor",
       "setName": "Non-Set",
       "level": 20,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -48224,7 +48229,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 5 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "219",
@@ -48242,7 +48248,7 @@
       "gearSlot": "Gloves",
       "setName": "Non-Set",
       "level": 20,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -48307,7 +48313,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 8 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "220",
@@ -48325,7 +48332,7 @@
       "gearSlot": "Gloves",
       "setName": "Non-Set",
       "level": 20,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -48390,7 +48397,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 7 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "221",
@@ -48408,7 +48416,7 @@
       "gearSlot": "Kit",
       "setName": "Non-Set",
       "level": 20,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -48459,7 +48467,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 9 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "222",
@@ -48477,7 +48486,7 @@
       "gearSlot": "Kit",
       "setName": "Non-Set",
       "level": 20,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -48528,7 +48537,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 9 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "223",
@@ -48546,7 +48556,7 @@
       "gearSlot": "Armor",
       "setName": "Non-Set",
       "level": 28,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -48611,7 +48621,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 12 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "224",
@@ -48629,7 +48640,7 @@
       "gearSlot": "Armor",
       "setName": "Non-Set",
       "level": 28,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -48694,7 +48705,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 13 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "225",
@@ -48712,7 +48724,7 @@
       "gearSlot": "Armor",
       "setName": "Non-Set",
       "level": 28,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -48777,7 +48789,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 13 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "226",
@@ -48795,7 +48808,7 @@
       "gearSlot": "Armor",
       "setName": "Non-Set",
       "level": 28,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -48860,7 +48873,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 13 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "227",
@@ -48878,7 +48892,7 @@
       "gearSlot": "Gloves",
       "setName": "Non-Set",
       "level": 28,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -48943,7 +48957,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 15 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "228",
@@ -48961,7 +48976,7 @@
       "gearSlot": "Gloves",
       "setName": "Non-Set",
       "level": 28,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -49026,7 +49041,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 15 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "229",
@@ -49044,7 +49060,7 @@
       "gearSlot": "Armor",
       "setName": "AIC Heavy",
       "level": 28,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -49109,7 +49125,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 12 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "230",
@@ -49127,7 +49144,7 @@
       "gearSlot": "Gloves",
       "setName": "AIC Heavy",
       "level": 28,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -49192,7 +49209,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 14 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "231",
@@ -49210,7 +49228,7 @@
       "gearSlot": "Kit",
       "setName": "AIC Heavy",
       "level": 28,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -49268,7 +49286,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 10 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "232",
@@ -49286,7 +49305,7 @@
       "gearSlot": "Kit",
       "setName": "AIC Heavy",
       "level": 28,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -49344,7 +49363,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 10 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "233",
@@ -49362,7 +49382,7 @@
       "gearSlot": "Armor",
       "setName": "AIC Light",
       "level": 28,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -49420,7 +49440,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 12 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "234",
@@ -49438,7 +49459,7 @@
       "gearSlot": "Gloves",
       "setName": "AIC Light",
       "level": 28,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -49503,7 +49524,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 14 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "235",
@@ -49521,7 +49543,7 @@
       "gearSlot": "Kit",
       "setName": "AIC Light",
       "level": 28,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -49579,7 +49601,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 11 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "236",
@@ -49597,7 +49620,7 @@
       "gearSlot": "Kit",
       "setName": "AIC Light",
       "level": 28,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -49655,7 +49678,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 11 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "237",
@@ -49673,7 +49697,7 @@
       "gearSlot": "Gloves",
       "setName": "Non-Set",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -49738,7 +49762,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 20 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "238",
@@ -49756,7 +49781,7 @@
       "gearSlot": "Gloves",
       "setName": "Non-Set",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -49821,7 +49846,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 20 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "239",
@@ -49839,7 +49865,7 @@
       "gearSlot": "Kit",
       "setName": "Non-Set",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -49897,7 +49923,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 24 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "240",
@@ -49915,7 +49942,7 @@
       "gearSlot": "Kit",
       "setName": "Non-Set",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -49973,7 +50000,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 24 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "241",
@@ -49991,7 +50019,7 @@
       "gearSlot": "Kit",
       "setName": "Non-Set",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -50049,7 +50077,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 25 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "242",
@@ -50067,7 +50096,7 @@
       "gearSlot": "Kit",
       "setName": "Non-Set",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -50125,7 +50154,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 25 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "243",
@@ -50143,7 +50173,7 @@
       "gearSlot": "Armor",
       "setName": "Armored MSGR",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -50208,7 +50238,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 16 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "244",
@@ -50226,7 +50257,7 @@
       "gearSlot": "Gloves",
       "setName": "Armored MSGR",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -50291,7 +50322,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 18 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "245",
@@ -50309,7 +50341,7 @@
       "gearSlot": "Kit",
       "setName": "Armored MSGR",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -50367,7 +50399,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 21 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "246",
@@ -50385,7 +50418,7 @@
       "gearSlot": "Kit",
       "setName": "Armored MSGR",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -50443,7 +50476,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 21 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "247",
@@ -50461,7 +50495,7 @@
       "gearSlot": "Armor",
       "setName": "Roving MSGR",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -50526,7 +50560,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 16 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "248",
@@ -50544,7 +50579,7 @@
       "gearSlot": "Gloves",
       "setName": "Roving MSGR",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -50609,7 +50644,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 18 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "249",
@@ -50627,7 +50663,7 @@
       "gearSlot": "Kit",
       "setName": "Roving MSGR",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -50685,7 +50721,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 21 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "250",
@@ -50827,7 +50864,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Wuling Stock Redistribution Level 2"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "251",
@@ -50845,7 +50883,7 @@
       "gearSlot": "Kit",
       "setName": "Roving MSGR",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -50903,7 +50941,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 21 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "252",
@@ -51045,7 +51084,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Wuling Stock Redistribution Level 1"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "253",
@@ -51063,7 +51103,7 @@
       "gearSlot": "Armor",
       "setName": "Non-Set",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -51128,7 +51168,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 31 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "254",
@@ -51270,7 +51311,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Wuling Stock Redistribution Level 2"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "255",
@@ -51288,7 +51330,7 @@
       "gearSlot": "Armor",
       "setName": "Non-Set",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -51353,7 +51395,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 31 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "256",
@@ -51371,7 +51414,7 @@
       "gearSlot": "Armor",
       "setName": "Mordvolt Insulation",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -51436,7 +51479,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 17 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "257",
@@ -51578,7 +51622,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Wuling Stock Redistribution Level 1"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "258",
@@ -51596,7 +51641,7 @@
       "gearSlot": "Gloves",
       "setName": "Non-Set",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -51661,7 +51706,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 33 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "259",
@@ -51679,7 +51725,7 @@
       "gearSlot": "Gloves",
       "setName": "Mordvolt Insulation",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -51744,7 +51790,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 19 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "260",
@@ -51762,7 +51809,7 @@
       "gearSlot": "Gloves",
       "setName": "Non-Set",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -51827,7 +51874,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 33 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "261",
@@ -51969,7 +52017,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Wuling Stock Redistribution Level 2"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "262",
@@ -51987,7 +52036,7 @@
       "gearSlot": "Kit",
       "setName": "Mordvolt Insulation",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -52045,7 +52094,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 22 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "263",
@@ -52063,7 +52113,7 @@
       "gearSlot": "Kit",
       "setName": "Non-Set",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -52121,7 +52171,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 39 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "264",
@@ -52263,7 +52314,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Wuling Stock Redistribution Level 1"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "265",
@@ -52281,7 +52333,7 @@
       "gearSlot": "Kit",
       "setName": "Non-Set",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -52339,7 +52391,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 39 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "266",
@@ -52357,7 +52410,7 @@
       "gearSlot": "Kit",
       "setName": "Mordvolt Insulation",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -52415,7 +52468,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 22 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "267",
@@ -52557,7 +52611,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Wuling Stock Redistribution Level 1"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "268",
@@ -52575,7 +52630,7 @@
       "gearSlot": "Kit",
       "setName": "Non-Set",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -52633,7 +52688,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 39 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "269",
@@ -52651,7 +52707,7 @@
       "gearSlot": "Kit",
       "setName": "Mordvolt Insulation",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -52709,7 +52765,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 22 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "270",
@@ -52727,7 +52784,7 @@
       "gearSlot": "Kit",
       "setName": "Non-Set",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -52785,7 +52842,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 39 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "271",
@@ -52927,7 +52985,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "272",
@@ -52945,7 +53004,7 @@
       "gearSlot": "Armor",
       "setName": "Aburrey's Legacy",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -53010,7 +53069,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 28 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "273",
@@ -53152,7 +53212,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Wuling Stock Redistribution Level 2"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "274",
@@ -53170,7 +53231,7 @@
       "gearSlot": "Armor",
       "setName": "Mordvolt Resistant",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -53235,7 +53296,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 17 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "275",
@@ -53253,7 +53315,7 @@
       "gearSlot": "Armor",
       "setName": "Aburrey's Legacy",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -53318,7 +53380,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 28 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "276",
@@ -53336,7 +53399,7 @@
       "gearSlot": "Armor",
       "setName": "Aburrey's Legacy",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -53401,7 +53464,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 28 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "277",
@@ -53543,7 +53607,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "278",
@@ -53561,7 +53626,7 @@
       "gearSlot": "Gloves",
       "setName": "Mordvolt Resistant",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -53626,7 +53691,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 19 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "279",
@@ -53644,7 +53710,7 @@
       "gearSlot": "Armor",
       "setName": "Aburrey's Legacy",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -53709,7 +53775,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 28 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "280",
@@ -53851,7 +53918,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "281",
@@ -53869,7 +53937,7 @@
       "gearSlot": "Kit",
       "setName": "Mordvolt Resistant",
       "level": 70,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -53927,7 +53995,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 23 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "282",
@@ -53945,7 +54014,7 @@
       "gearSlot": "Gloves",
       "setName": "Aburrey's Legacy",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -54010,7 +54079,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 31 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "283",
@@ -54152,7 +54222,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "284",
@@ -54170,7 +54241,7 @@
       "gearSlot": "Kit",
       "setName": "Mordvolt Resistant",
       "level": 36,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -54228,7 +54299,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 23 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "285",
@@ -54246,7 +54318,7 @@
       "gearSlot": "Kit",
       "setName": "Aburrey's Legacy",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -54311,7 +54383,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 34 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "286",
@@ -54453,7 +54526,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Wuling Stock Redistribution Level 1"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "287",
@@ -54471,7 +54545,7 @@
       "gearSlot": "Kit",
       "setName": "Aburrey's Legacy",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -54536,7 +54610,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 34 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "288",
@@ -54661,7 +54736,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "289",
@@ -54679,7 +54755,7 @@
       "gearSlot": "Kit",
       "setName": "Aburrey's Legacy",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -54744,7 +54820,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 28 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "290",
@@ -54886,7 +54963,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "291",
@@ -54904,7 +54982,7 @@
       "gearSlot": "Kit",
       "setName": "Aburrey's Legacy",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -54969,7 +55047,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 34 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "292",
@@ -55111,7 +55190,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "293",
@@ -55129,7 +55209,7 @@
       "gearSlot": "Kit",
       "setName": "Aburrey's Legacy",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -55194,7 +55274,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 35 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "294",
@@ -55336,7 +55417,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "295",
@@ -55354,7 +55436,7 @@
       "gearSlot": "Kit",
       "setName": "Aburrey's Legacy",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -55419,7 +55501,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 35 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "296",
@@ -55561,7 +55644,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "297",
@@ -55579,7 +55663,7 @@
       "gearSlot": "Armor",
       "setName": "Catastrophe",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -55644,7 +55728,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 29 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "298",
@@ -55786,7 +55871,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "299",
@@ -55804,7 +55890,7 @@
       "gearSlot": "Armor",
       "setName": "Catastrophe",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -55869,7 +55955,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 29 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "300",
@@ -56011,7 +56098,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "301",
@@ -56029,7 +56117,7 @@
       "gearSlot": "Gloves",
       "setName": "Catastrophe",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -56094,7 +56182,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 32 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "302",
@@ -56236,7 +56325,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "303",
@@ -56254,7 +56344,7 @@
       "gearSlot": "Kit",
       "setName": "Catastrophe",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -56319,7 +56409,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 36 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "304",
@@ -56461,7 +56552,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "305",
@@ -56479,7 +56571,7 @@
       "gearSlot": "Kit",
       "setName": "Catastrophe",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -56544,7 +56636,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 36 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "306",
@@ -56686,7 +56779,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "307",
@@ -56704,7 +56798,7 @@
       "gearSlot": "Kit",
       "setName": "Catastrophe",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -56769,7 +56863,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 36 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "308",
@@ -56911,7 +57006,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "309",
@@ -56929,7 +57025,7 @@
       "gearSlot": "Armor",
       "setName": "Armored MSGR",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -56994,7 +57090,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 29 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "310",
@@ -57136,7 +57233,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "311",
@@ -57154,7 +57252,7 @@
       "gearSlot": "Gloves",
       "setName": "Armored MSGR",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -57219,7 +57317,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 32 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "312",
@@ -57361,7 +57460,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "313",
@@ -57379,7 +57479,7 @@
       "gearSlot": "Gloves",
       "setName": "Armored MSGR",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -57444,7 +57544,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 32 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "314",
@@ -57462,7 +57563,7 @@
       "gearSlot": "Kit",
       "setName": "Armored MSGR",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -57527,7 +57628,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 35 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "315",
@@ -57545,7 +57647,7 @@
       "gearSlot": "Kit",
       "setName": "Armored MSGR",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -57610,7 +57712,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 35 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "316",
@@ -57628,7 +57731,7 @@
       "gearSlot": "Armor",
       "setName": "Roving MSGR",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -57693,7 +57796,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 29 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "317",
@@ -57711,7 +57815,7 @@
       "gearSlot": "Gloves",
       "setName": "Roving MSGR",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -57776,7 +57880,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 32 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "318",
@@ -57794,7 +57899,7 @@
       "gearSlot": "Kit",
       "setName": "Roving MSGR",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -57859,7 +57964,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 37 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "319",
@@ -57877,7 +57983,7 @@
       "gearSlot": "Kit",
       "setName": "Roving MSGR",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -57942,7 +58048,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 37 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "320",
@@ -57960,7 +58067,7 @@
       "gearSlot": "Kit",
       "setName": "Roving MSGR",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -58025,7 +58132,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 37 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "321",
@@ -58043,7 +58151,7 @@
       "gearSlot": "Armor",
       "setName": "Mordvolt Insulation",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -58108,7 +58216,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 30 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "322",
@@ -58126,7 +58235,7 @@
       "gearSlot": "Armor",
       "setName": "Mordvolt Insulation",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -58191,7 +58300,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 30 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "323",
@@ -58209,7 +58319,7 @@
       "gearSlot": "Gloves",
       "setName": "Mordvolt Insulation",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -58272,7 +58382,8 @@
         "source": "SKPORT Wiki / Source"
       },
       "recipeStatus": "verified",
-      "acquisitionNotes": []
+      "acquisitionNotes": [],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "324",
@@ -58290,7 +58401,7 @@
       "gearSlot": "Kit",
       "setName": "Mordvolt Insulation",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -58355,7 +58466,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 38 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "325",
@@ -58497,7 +58609,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "326",
@@ -58639,7 +58752,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "327",
@@ -58657,7 +58771,7 @@
       "gearSlot": "Kit",
       "setName": "Mordvolt Insulation",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -58715,7 +58829,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 38 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "328",
@@ -58857,7 +58972,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "329",
@@ -58875,7 +58991,7 @@
       "gearSlot": "Armor",
       "setName": "Mordvolt Resistant",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -58940,7 +59056,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 30 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "330",
@@ -59082,7 +59199,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "331",
@@ -59100,7 +59218,7 @@
       "gearSlot": "Gloves",
       "setName": "Mordvolt Resistant",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -59165,7 +59283,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 33 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "332",
@@ -59307,7 +59426,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "333",
@@ -59325,7 +59445,7 @@
       "gearSlot": "Kit",
       "setName": "Mordvolt Resistant",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -59390,7 +59510,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 38 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "334",
@@ -59532,7 +59653,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "335",
@@ -59550,7 +59672,7 @@
       "gearSlot": "Kit",
       "setName": "Mordvolt Resistant",
       "level": 50,
-      "status": "incomplete",
+      "status": "verified",
       "stats": [
         {
           "tab": "default",
@@ -59615,7 +59737,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Authority Level 38 Reward"
-      ]
+      ],
+      "artificingStatus": "not-listed"
     },
     {
       "id": "336",
@@ -59757,7 +59880,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "337",
@@ -59899,7 +60023,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "338",
@@ -60034,7 +60159,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "339",
@@ -60176,7 +60302,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "340",
@@ -60318,7 +60445,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "341",
@@ -60460,7 +60588,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "342",
@@ -60602,7 +60731,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Wuling Stock Redistribution Level 2"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "343",
@@ -60744,7 +60874,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Wuling Stock Redistribution Level 2"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "344",
@@ -60886,7 +61017,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "345",
@@ -61028,7 +61160,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "347",
@@ -61170,7 +61303,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "348",
@@ -61305,7 +61439,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Wuling Stock Redistribution Level 1"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "349",
@@ -61440,7 +61575,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Wuling Stock Redistribution Level 1"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "350",
@@ -61575,7 +61711,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Wuling Stock Redistribution Level 1"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "351",
@@ -61710,7 +61847,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Wuling Stock Redistribution Level 1"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "352",
@@ -61852,7 +61990,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "353",
@@ -61994,7 +62133,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "354",
@@ -62136,7 +62276,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Wuling Stock Redistribution Level 1"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "355",
@@ -62278,7 +62419,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "356",
@@ -62420,7 +62562,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "357",
@@ -62562,7 +62705,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "358",
@@ -62704,7 +62848,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "359",
@@ -62846,7 +62991,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "360",
@@ -62988,7 +63134,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "361",
@@ -63130,7 +63277,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "362",
@@ -63272,7 +63420,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "363",
@@ -63414,7 +63563,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "364",
@@ -63556,7 +63706,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Wuling Stock Redistribution Level 1"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "365",
@@ -63698,7 +63849,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "366",
@@ -63823,7 +63975,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "367",
@@ -63965,7 +64118,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "368",
@@ -64107,7 +64261,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "369",
@@ -64249,7 +64404,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "370",
@@ -64391,7 +64547,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "371",
@@ -64533,7 +64690,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "372",
@@ -64675,7 +64833,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "373",
@@ -64817,7 +64976,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "374",
@@ -64959,7 +65119,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "375",
@@ -65101,7 +65262,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "376",
@@ -65243,7 +65405,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "377",
@@ -65385,7 +65548,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "411",
@@ -65527,7 +65691,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "767",
@@ -65669,7 +65834,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "768",
@@ -65811,7 +65977,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "769",
@@ -65953,7 +66120,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "770",
@@ -66095,7 +66263,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "771",
@@ -66237,7 +66406,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "772",
@@ -66379,7 +66549,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "773",
@@ -66521,7 +66692,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "775",
@@ -66663,7 +66835,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "776",
@@ -66805,7 +66978,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "777",
@@ -66940,7 +67114,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "778",
@@ -67082,7 +67257,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "779",
@@ -67217,7 +67393,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "780",
@@ -67359,7 +67536,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "781",
@@ -67494,7 +67672,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Wuling Stock Redistribution Level 3"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "782",
@@ -67636,7 +67815,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Wuling Stock Redistribution Level 3"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "783",
@@ -67778,7 +67958,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "784",
@@ -67920,7 +68101,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "785",
@@ -68062,7 +68244,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "786",
@@ -68204,7 +68387,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "787",
@@ -68346,7 +68530,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "788",
@@ -68488,7 +68673,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "789",
@@ -68630,7 +68816,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "790",
@@ -68763,7 +68950,8 @@
         "source": "SKPORT Wiki / Source"
       },
       "recipeStatus": "verified",
-      "acquisitionNotes": []
+      "acquisitionNotes": [],
+      "artificingStatus": "available"
     },
     {
       "id": "791",
@@ -68903,7 +69091,8 @@
         "source": "SKPORT Wiki / Source"
       },
       "recipeStatus": "verified",
-      "acquisitionNotes": []
+      "acquisitionNotes": [],
+      "artificingStatus": "available"
     },
     {
       "id": "792",
@@ -69043,7 +69232,8 @@
         "source": "SKPORT Wiki / Source"
       },
       "recipeStatus": "verified",
-      "acquisitionNotes": []
+      "acquisitionNotes": [],
+      "artificingStatus": "available"
     },
     {
       "id": "793",
@@ -69178,7 +69368,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Wuling Stock Redistribution Level 3"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "794",
@@ -69311,7 +69502,8 @@
         "source": "SKPORT Wiki / Source"
       },
       "recipeStatus": "verified",
-      "acquisitionNotes": []
+      "acquisitionNotes": [],
+      "artificingStatus": "available"
     },
     {
       "id": "795",
@@ -69444,7 +69636,8 @@
         "source": "SKPORT Wiki / Source"
       },
       "recipeStatus": "verified",
-      "acquisitionNotes": []
+      "acquisitionNotes": [],
+      "artificingStatus": "available"
     },
     {
       "id": "796",
@@ -69577,7 +69770,8 @@
         "source": "SKPORT Wiki / Source"
       },
       "recipeStatus": "verified",
-      "acquisitionNotes": []
+      "acquisitionNotes": [],
+      "artificingStatus": "available"
     },
     {
       "id": "797",
@@ -69710,7 +69904,8 @@
         "source": "SKPORT Wiki / Source"
       },
       "recipeStatus": "verified",
-      "acquisitionNotes": []
+      "acquisitionNotes": [],
+      "artificingStatus": "available"
     },
     {
       "id": "869",
@@ -69852,7 +70047,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "870",
@@ -69994,7 +70190,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "871",
@@ -70136,7 +70333,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "872",
@@ -70278,7 +70476,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "873",
@@ -70420,7 +70619,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "874",
@@ -70562,7 +70762,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "875",
@@ -70704,7 +70905,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "876",
@@ -70846,7 +71048,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "877",
@@ -70988,7 +71191,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "878",
@@ -71130,7 +71334,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "879",
@@ -71272,7 +71477,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "880",
@@ -71414,7 +71620,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "881",
@@ -71556,7 +71763,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "882",
@@ -71698,7 +71906,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "883",
@@ -71840,7 +72049,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "884",
@@ -71982,7 +72192,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "885",
@@ -72124,7 +72335,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1019",
@@ -72266,7 +72478,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1020",
@@ -72408,7 +72621,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1021",
@@ -72550,7 +72764,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1022",
@@ -72692,7 +72907,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1023",
@@ -72834,7 +73050,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1024",
@@ -72976,7 +73193,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1025",
@@ -73118,7 +73336,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1026",
@@ -73260,7 +73479,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1116",
@@ -73402,7 +73622,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Game progress reaches the [Wuling] region"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1117",
@@ -73544,7 +73765,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Game progress reaches the [Wuling] region"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1118",
@@ -73686,7 +73908,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Game progress reaches the [Wuling] region"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1119",
@@ -73828,7 +74051,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Game progress reaches the [Wuling] region"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1120",
@@ -73970,7 +74194,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Game progress reaches the [Wuling] region"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1121",
@@ -74112,7 +74337,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Game progress reaches the [Wuling] region"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1122",
@@ -74254,7 +74480,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Game progress reaches the [Wuling] region"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1123",
@@ -74396,7 +74623,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Game progress reaches the [Wuling] region"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1124",
@@ -74538,7 +74766,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Game progress reaches the [Wuling] region"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1125",
@@ -74673,7 +74902,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1126",
@@ -74808,7 +75038,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1127",
@@ -74943,7 +75174,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1128",
@@ -75078,7 +75310,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1129",
@@ -75213,7 +75446,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1130",
@@ -75355,7 +75589,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1131",
@@ -75497,7 +75732,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1132",
@@ -75639,7 +75875,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1133",
@@ -75781,7 +76018,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1134",
@@ -75916,7 +76154,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1135",
@@ -76058,7 +76297,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1136",
@@ -76193,7 +76433,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1137",
@@ -76335,7 +76576,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1138",
@@ -76477,7 +76719,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1232",
@@ -76619,7 +76862,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1233",
@@ -76761,7 +77005,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1234",
@@ -76903,7 +77148,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1235",
@@ -77045,7 +77291,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1236",
@@ -77187,7 +77434,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1237",
@@ -77329,7 +77577,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1238",
@@ -77471,7 +77720,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1239",
@@ -77613,7 +77863,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1240",
@@ -77755,7 +78006,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1241",
@@ -77898,7 +78150,8 @@
       "acquisitionNotes": [
         "[Dreamscape of Wind and Snow] Version Update",
         "Game progress reaches the [Wuling] region"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1242",
@@ -78041,7 +78294,8 @@
       "acquisitionNotes": [
         "[Dreamscape of Wind and Snow] Version Update",
         "Game progress reaches the [Wuling] region"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1243",
@@ -78184,7 +78438,8 @@
       "acquisitionNotes": [
         "[Dreamscape of Wind and Snow] Version Update",
         "Game progress reaches the [Wuling] region"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1244",
@@ -78327,7 +78582,8 @@
       "acquisitionNotes": [
         "[Dreamscape of Wind and Snow] Version Update",
         "Game progress reaches the [Wuling] region"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1245",
@@ -78470,7 +78726,8 @@
       "acquisitionNotes": [
         "[Dreamscape of Wind and Snow] Version Update",
         "Game progress reaches the [Wuling] region"
-      ]
+      ],
+      "artificingStatus": "available"
     },
     {
       "id": "1246",
@@ -78613,499 +78870,45 @@
       "acquisitionNotes": [
         "[Dreamscape of Wind and Snow] Version Update",
         "Game progress reaches the [Wuling] region"
-      ]
+      ],
+      "artificingStatus": "available"
     }
   ],
   "review": [
     {
       "id": "1280",
       "name": "Jade Vessel",
-      "reason": "incomplete-weapon-wiki"
+      "reason": "wiki-detail-unavailable"
     },
     {
       "id": "1281",
       "name": "Long Heritage",
-      "reason": "incomplete-weapon-wiki"
+      "reason": "wiki-detail-unavailable"
     },
     {
       "id": "1282",
       "name": "Complexed Industry",
-      "reason": "incomplete-weapon-wiki"
+      "reason": "wiki-detail-unavailable"
     },
     {
       "id": "1283",
       "name": "Lunar Calling",
-      "reason": "incomplete-weapon-wiki"
-    },
-    {
-      "id": "206",
-      "name": "Basic Armor",
-      "reason": "incomplete-gear-wiki"
+      "reason": "wiki-detail-unavailable"
     },
     {
       "id": "208",
       "name": "Basic PPE",
-      "reason": "incomplete-gear-wiki"
+      "reason": "official-recipe-needs-review"
     },
     {
       "id": "211",
       "name": "Basic Gauntlets",
-      "reason": "incomplete-gear-wiki"
+      "reason": "official-recipe-needs-review"
     },
     {
       "id": "213",
       "name": "Basic Gloves",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "216",
-      "name": "Miner Armor",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "218",
-      "name": "Miner Overalls",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "219",
-      "name": "Miner Gauntlets",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "220",
-      "name": "Miner Gloves",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "221",
-      "name": "Emergency Comm",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "222",
-      "name": "Emergency Compression Core",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "223",
-      "name": "Prototype Heavy Armor",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "224",
-      "name": "Prototype Heavy Armor T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "225",
-      "name": "Miner Vest",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "226",
-      "name": "Miner Cleansuit",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "227",
-      "name": "Miner Wrists",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "228",
-      "name": "Miner Fists",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "229",
-      "name": "AIC Heavy Armor",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "230",
-      "name": "AIC Gauntlets",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "231",
-      "name": "AIC Heavy Plate",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "232",
-      "name": "AIC Alloy Plate",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "233",
-      "name": "AIC Light Armor",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "234",
-      "name": "AIC Tactical Gloves",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "235",
-      "name": "AIC Light Plate",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "236",
-      "name": "AIC Ceramic Plate",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "237",
-      "name": "Miner Gauntlets T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "238",
-      "name": "Miner Gloves T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "239",
-      "name": "Miner Turbine",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "240",
-      "name": "Miner Drive Wheel",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "241",
-      "name": "Miner Compression Core",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "242",
-      "name": "Miner Comm",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "243",
-      "name": "Armored MSGR Jacket",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "244",
-      "name": "Armored MSGR Gloves",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "245",
-      "name": "Armored MSGR Flashlight",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "246",
-      "name": "Armored MSGR Gyro",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "247",
-      "name": "Roving MSGR Jacket",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "248",
-      "name": "Roving MSGR Fists",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "249",
-      "name": "Roving MSGR Flashlight",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "251",
-      "name": "Roving MSGR Gyro",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "253",
-      "name": "Miner Armor T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "255",
-      "name": "Miner Overalls T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "256",
-      "name": "Mordvolt Insulation Vest",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "258",
-      "name": "Miner Gloves T2",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "259",
-      "name": "Mordvolt Insulation Gloves",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "260",
-      "name": "Miner Fists T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "262",
-      "name": "Mordvolt Insulation Wrench",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "263",
-      "name": "Miner Turbine T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "265",
-      "name": "Miner Drive Wheel T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "266",
-      "name": "Mordvolt Insulation Wrench T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "268",
-      "name": "Miner Compression Core T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "269",
-      "name": "Mordvolt Insulation Battery",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "270",
-      "name": "Miner Comm T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "272",
-      "name": "Aburrey Heavy Armor",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "274",
-      "name": "Mordvolt Resistant Vest",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "275",
-      "name": "Aburrey Heavy Armor T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "276",
-      "name": "Aburrey Light Armor",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "278",
-      "name": "Mordvolt Resistant Gloves",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "279",
-      "name": "Aburrey Light Armor T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "281",
-      "name": "Mordvolt Resistant Wrench",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "282",
-      "name": "Aburrey Gauntlets",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "284",
-      "name": "Mordvolt Resistant Battery",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "285",
-      "name": "Aburrey Auditory Chip",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "287",
-      "name": "Aburrey UV Lamp",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "289",
-      "name": "Aburrey Auditory Chip T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "291",
-      "name": "Aburrey Flashlight",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "293",
-      "name": "Aburrey Sensor Chip",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "295",
-      "name": "Aburrey Sensor Chip T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "297",
-      "name": "Catastrophe Heavy Armor",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "299",
-      "name": "Catastrophe Heavy Armor T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "301",
-      "name": "Catastrophe Gloves",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "303",
-      "name": "Catastrophe Gauze Cartridge",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "305",
-      "name": "Catastrophe Gauze Cartridge T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "307",
-      "name": "Catastrophe Filter",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "309",
-      "name": "Armored MSGR Jacket T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "311",
-      "name": "Armored MSGR Gloves T2",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "313",
-      "name": "Armored MSGR Gloves T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "314",
-      "name": "Armored MSGR Flashlight T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "315",
-      "name": "Armored MSGR Gyro T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "316",
-      "name": "Roving MSGR Jacket T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "317",
-      "name": "Roving MSGR Fists T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "318",
-      "name": "Roving MSGR Flashlight T2",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "319",
-      "name": "Roving MSGR Flashlight T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "320",
-      "name": "Roving MSGR Gyro T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "321",
-      "name": "Mordvolt Insulation Vest T2",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "322",
-      "name": "Mordvolt Insulation Vest T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "323",
-      "name": "Mordvolt Insulation Gloves T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "324",
-      "name": "Mordvolt Insulation Wrench T2",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "327",
-      "name": "Mordvolt Insulation Battery T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "329",
-      "name": "Mordvolt Resistant Vest T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "331",
-      "name": "Mordvolt Resistant Gloves T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "333",
-      "name": "Mordvolt Resistant Wrench T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "335",
-      "name": "Mordvolt Resistant Battery T1",
-      "reason": "incomplete-gear-wiki"
-    },
-    {
-      "id": "211",
-      "name": "Basic Gauntlets",
-      "reason": "recipe-materials-not-resolved"
-    },
-    {
-      "id": "208",
-      "name": "Basic PPE",
-      "reason": "recipe-materials-not-resolved"
-    },
-    {
-      "id": "213",
-      "name": "Basic Gloves",
-      "reason": "recipe-materials-not-resolved"
+      "reason": "official-recipe-needs-review"
     }
   ],
   "failures": []
