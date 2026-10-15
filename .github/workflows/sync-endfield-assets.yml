@@ -27,11 +27,15 @@ jobs:
           node-version: 22
       - name: Download public static SKPORT assets
         run: npm run assets:endfield
+      - name: Install one-time image optimizer
+        run: npm install --no-save --package-lock=false sharp
+      - name: Compress large static images to WebP
+        run: node scripts/endfield/optimize-assets.mjs
       - name: Commit only static image assets
         id: commit
         shell: bash
         run: |
-          git add public/images/endfield/operators/
+          git add -A public/images/endfield/operators/
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No new assets."
