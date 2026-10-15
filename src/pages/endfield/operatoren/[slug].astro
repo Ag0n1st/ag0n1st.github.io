@@ -1,0 +1,37 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import EndfieldPlaceholder from "../../../layouts/EndfieldPlaceholder.astro";
+import OperatorGuide from "../../../components/operator/OperatorGuide.astro";
+import "../../../styles/operator-guides.css";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("operator-guides");
+  // Typhoeus remains public as an explicitly marked prototype.
+  // All other drafts are excluded from the generated site.
+  return entries
+    .filter(entry => entry.data.status === "published" || entry.data.operator === "typhoeus")
+    .map(entry => {
+      if (entry.id !== entry.data.operator) {
+        throw new Error('Operator-Guide-Datei "' + entry.id + '.md" muss denselben Slug wie "operator: ' + entry.data.operator + '" besitzen.');
+      }
+      return { params: { slug: entry.data.operator }, props: { entry } };
+    });
+}
+
+interface Props { entry: CollectionEntry<"operator-guides">; }
+const { entry } = Astro.props;
+const guide = entry.data;
+const operatorName = guide.displayName ?? guide.operator.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+const { Content } = await render(entry);
+const isPreview = guide.status === "draft";
+---
+<EndfieldPlaceholder
+  title={operatorName + " Guide"}
+  kicker="ARKNIGHTS: ENDFIELD · OPERATOREN"
+  active="characters"
+  description={guide.overview.summary || operatorName + " – Guide, Skills, Waffen, Builds und Teams."}
+>
+  <OperatorGuide guide={guide} operatorName={operatorName} preview={isPreview}>
+    <Content />
+  </OperatorGuide>
+</EndfieldPlaceholder>
