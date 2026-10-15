@@ -31,7 +31,7 @@ test("living project roadmap is discoverable, substantial and handoff-ready",()=
  for(const heading of sections)
    assert.ok(roadmap.includes("## "+heading),"Roadmap missing heading "+heading);
  assert.ok(roadmap.includes("equipment.builds: []"),"State of editorial builds must be explicit");
- assert.ok(roadmap.includes("Autoritätslevel **maximal 60**"));
+ assert.ok(roadmap.includes("MAX_AUTHORITY_LEVEL") && roadmap.includes("maximal 60"));
  assert.ok(roadmap.includes("Nächste Aufgabe"));
 });
 test("file-level handoff lists refer to existing core project files",()=>{
