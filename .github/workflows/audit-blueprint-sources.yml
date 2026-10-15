@@ -1,0 +1,19 @@
+name: Audit official gear blueprint location hints
+on:
+  push:
+    branches: [endfield-story-area-registry-20261015]
+    paths:
+      - scripts/endfield/audit-blueprint-sources.mjs
+      - .github/workflows/audit-blueprint-sources.yml
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Evaluate all local official gear acquisition notes
+        run: node scripts/endfield/audit-blueprint-sources.mjs
