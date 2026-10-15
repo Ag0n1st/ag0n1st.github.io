@@ -113,4 +113,4 @@ So entsteht später der gewünschte Ablauf: Datei kopieren → bearbeiten → Gi
 - `localStorage`-Persistenz, Browser-Reload und Zurücksetzen auf Liino **und** Typhoeus prüfen.
 - Community-Kistenorte mit unklarer/widersprüchlicher Beleglage als `unverified` beziehungsweise `disputed` belassen. Unbestätigte Vorschläge nicht als offizielle Empfehlungen veröffentlichen.
 
-Für Architektur, genaue Quellenhierarchie und den nächsten Projektstand immer auch die zentrale [`ROADMAP.md`](../../ROADMAP.md) lesen.
+Für Architektur, genaue Quellenhierarchie und den nächsten Projektstand immer auch die zentrale [`ROADMAP.md`](../ROADMAP.md) lesen.
