@@ -1,0 +1,642 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "provider": "SKPORT Wiki",
+    "itemId": "1173",
+    "language": "en",
+    "snapshot": "2026-10-12",
+    "itemListEndpoint": "/web/v1/wiki/item/list"
+  },
+  "operator": "typhoeus",
+  "profile": {
+    "Codename": "Typhoeus",
+    "Gender": "Female",
+    "Faction": "Rhodes Island",
+    "Birthday": "January 13",
+    "Element": "Nature",
+    "Race": "Sarkaz",
+    "Chinese CV": "皛四白",
+    "English CV": "Hanna Johansson",
+    "Japanese CV": "大空直美",
+    "Korean CV": "채림"
+  },
+  "attributes": {
+    "levels": [
+      "LV.1",
+      "LV.20",
+      "LV.40",
+      "LV.60",
+      "LV.80",
+      "LV.90"
+    ],
+    "metrics": [
+      {
+        "name": "Strength",
+        "values": [
+          "9",
+          "28",
+          "48",
+          "68",
+          "88",
+          "97"
+        ]
+      },
+      {
+        "name": "Agility (Main)",
+        "values": [
+          "21",
+          "54",
+          "88",
+          "123",
+          "157",
+          "174"
+        ]
+      },
+      {
+        "name": "Intellect",
+        "values": [
+          "10",
+          "29",
+          "49",
+          "69",
+          "89",
+          "99"
+        ]
+      },
+      {
+        "name": "Will (Secondary)",
+        "values": [
+          "14",
+          "37",
+          "60",
+          "84",
+          "107",
+          "119"
+        ]
+      },
+      {
+        "name": "Base ATK",
+        "values": [
+          "30",
+          "90",
+          "153",
+          "217",
+          "280",
+          "312"
+        ]
+      },
+      {
+        "name": "Base HP",
+        "values": [
+          "500",
+          "1566",
+          "2689",
+          "3811",
+          "4934",
+          "5495"
+        ]
+      }
+    ],
+    "levelCosts": [
+      {
+        "level": "LV.1",
+        "items": []
+      },
+      {
+        "level": "LV.20",
+        "items": [
+          {
+            "id": "100",
+            "count": 5
+          },
+          {
+            "id": "101",
+            "count": 2
+          },
+          {
+            "id": "102",
+            "count": 2
+          },
+          {
+            "id": "642",
+            "count": 820
+          }
+        ]
+      },
+      {
+        "level": "LV.40",
+        "items": [
+          {
+            "id": "100",
+            "count": 3
+          },
+          {
+            "id": "101",
+            "count": 8
+          },
+          {
+            "id": "102",
+            "count": 24
+          },
+          {
+            "id": "642",
+            "count": 12540
+          }
+        ]
+      },
+      {
+        "level": "LV.60",
+        "items": [
+          {
+            "id": "100",
+            "count": 4
+          },
+          {
+            "id": "101",
+            "count": 5
+          },
+          {
+            "id": "102",
+            "count": 47
+          },
+          {
+            "id": "642",
+            "count": 23900
+          }
+        ]
+      },
+      {
+        "level": "LV.80",
+        "items": [
+          {
+            "id": "105",
+            "count": 6
+          },
+          {
+            "id": "106",
+            "count": 46
+          },
+          {
+            "id": "642",
+            "count": 109180
+          }
+        ]
+      },
+      {
+        "level": "LV.90",
+        "items": [
+          {
+            "id": "106",
+            "count": 58
+          },
+          {
+            "id": "642",
+            "count": 238980
+          }
+        ]
+      }
+    ],
+    "mainAttribute": "Agility",
+    "secondaryAttribute": "Will"
+  },
+  "talents": [
+    {
+      "id": "skirmisher",
+      "name": "Skirmisher",
+      "category": "attribute",
+      "levels": [
+        {
+          "name": "Skirmisher 1",
+          "effect": "Operator Agility +10",
+          "requirements": [
+            "20% trust with the Operator",
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 5
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "name": "Skirmisher 2",
+          "effect": "Operator Agility +15",
+          "requirements": [
+            "50% trust with the Operator",
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 10
+            },
+            {
+              "id": "642",
+              "count": 1800
+            }
+          ]
+        },
+        {
+          "name": "Skirmisher 3",
+          "effect": "Operator Agility +15",
+          "requirements": [
+            "100% trust with the Operator",
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 10
+            },
+            {
+              "id": "642",
+              "count": 6000
+            }
+          ]
+        },
+        {
+          "name": "Skirmisher 4",
+          "effect": "Operator Agility +20",
+          "requirements": [
+            "100% trust with the Operator",
+            "Promote to E4 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 20
+            },
+            {
+              "id": "642",
+              "count": 12000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prey-checklist",
+      "name": "Prey Checklist",
+      "category": "combat",
+      "levels": [
+        {
+          "name": "Prey Checklist 1",
+          "effect": "Whenever a Nature Burst is triggered on an enemy, Typhoeus gains 1 Sign. DMG dealt by attacks empowered by consuming Hunting Arrows is increased to 1.2 times the original.\nWhen entering battle, Typhoeus immediately gains 1 Sign(s).\nTyphoeus can have up to 4 Hunting Arrows and 8 Signs.\nIf Nature Burst is simultaneously triggered on multiple enemies, this only counts as one instance of Nature Burst when tallying the Signs gained by Typhoeus.",
+          "requirements": [],
+          "cost": []
+        },
+        {
+          "name": "Prey Checklist 2",
+          "effect": "Whenever a Nature Burst is triggered on an enemy, Typhoeus gains 1 Sign. DMG dealt by attacks empowered by consuming Hunting Arrows is increased to 1.4 times the original.\nWhen entering battle, Typhoeus immediately gains 2 Sign(s).\nTyphoeus can have up to 4 Hunting Arrows and 8 Signs.\nIf Nature Burst is simultaneously triggered on multiple enemies, this only counts as one instance of Nature Burst when tallying the Signs gained by Typhoeus.",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 2400
+            }
+          ]
+        },
+        {
+          "name": "Prey Checklist 3",
+          "effect": "Whenever a Nature Burst is triggered on an enemy, Typhoeus gains 1 Sign. DMG dealt by attacks empowered by consuming Hunting Arrows is increased to 1.6 times the original.\nWhen entering battle, Typhoeus immediately gains 4 Sign(s).\nTyphoeus can have up to 4 Hunting Arrows and 8 Signs.\nIf Nature Burst is simultaneously triggered on multiple enemies, this only counts as one instance of Nature Burst when tallying the Signs gained by Typhoeus.",
+          "requirements": [
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 18
+            },
+            {
+              "id": "642",
+              "count": 16000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "huntress-s-focus",
+      "name": "Huntress's Focus",
+      "category": "combat",
+      "levels": [
+        {
+          "name": "Huntress's Focus 1",
+          "effect": "When Hovering, Typhoeus activates a Protective Barrier that reduces her DMG Taken by 15% and makes her harder to interrupt while it is active. The Protective Barrier is shattered when Typhoeus takes DMG, and cannot be activated again for 30s afterwards.",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 48
+            },
+            {
+              "id": "642",
+              "count": 10800
+            }
+          ]
+        },
+        {
+          "name": "Huntress's Focus 2",
+          "effect": "When Hovering, Typhoeus activates a Protective Barrier that reduces her DMG Taken by 30% and makes her harder to interrupt while it is active. The Protective Barrier is shattered when Typhoeus takes DMG, and cannot be activated again for 18s afterwards.",
+          "requirements": [
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 18
+            },
+            {
+              "id": "642",
+              "count": 16000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lithic-murmurs",
+      "name": "Lithic Murmurs",
+      "category": "ship",
+      "levels": [
+        {
+          "name": "Lithic Murmurs β",
+          "effect": "Assign to Growth Chamber to grant rare mineral growth rate +20%",
+          "requirements": [
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 1600
+            }
+          ]
+        },
+        {
+          "name": "Lithic Murmurs γ",
+          "effect": "Assign to Growth Chamber to grant rare mineral growth rate +30%",
+          "requirements": [
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 8000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "life-in-the-spores",
+      "name": "Life in the Spores",
+      "category": "ship",
+      "levels": [
+        {
+          "name": "Life in the Spores β",
+          "effect": "Assign to Growth Chamber to grant fungal matter growth rate +20%",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 3000
+            }
+          ]
+        },
+        {
+          "name": "Life in the Spores γ",
+          "effect": "Assign to Growth Chamber to grant fungal matter growth rate +30%",
+          "requirements": [
+            "Promote to E4 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 20
+            },
+            {
+              "id": "642",
+              "count": 20000
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "promotions": [
+    {
+      "name": "Promotion I",
+      "effect": "Activate this to raise operator level cap to 40",
+      "requirement": "Operator Lv.20",
+      "cost": [
+        {
+          "id": "107",
+          "count": 8
+        },
+        {
+          "id": "128",
+          "count": 3
+        },
+        {
+          "id": "642",
+          "count": 1600
+        }
+      ]
+    },
+    {
+      "name": "Outfitting I",
+      "effect": "Activate this to let the operator equip blue quality gear",
+      "requirement": "Promote to E1 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 1600
+        }
+      ]
+    },
+    {
+      "name": "Promotion II",
+      "effect": "Activate this to raise operator level cap to 60",
+      "requirement": "Operator Lv.40",
+      "cost": [
+        {
+          "id": "107",
+          "count": 25
+        },
+        {
+          "id": "133",
+          "count": 5
+        },
+        {
+          "id": "642",
+          "count": 6500
+        }
+      ]
+    },
+    {
+      "name": "Outfitting II",
+      "effect": "Activate this to let the operator equip purple quality gear",
+      "requirement": "Promote to E2 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 6500
+        }
+      ]
+    },
+    {
+      "name": "Promotion III",
+      "effect": "Activate this to raise operator level cap to 80",
+      "requirement": "Operator Lv.60",
+      "cost": [
+        {
+          "id": "108",
+          "count": 24
+        },
+        {
+          "id": "137",
+          "count": 5
+        },
+        {
+          "id": "642",
+          "count": 18000
+        }
+      ]
+    },
+    {
+      "name": "Outfitting III",
+      "effect": "Activate this to let the operator equip gold quality gear",
+      "requirement": "Promote to E3 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 18000
+        }
+      ]
+    },
+    {
+      "name": "Promotion IV",
+      "effect": "Activate this to raise operator level cap to 90",
+      "requirement": "Operator Lv.80",
+      "cost": [
+        {
+          "id": "108",
+          "count": 36
+        },
+        {
+          "id": "112",
+          "count": 20
+        },
+        {
+          "id": "1048",
+          "count": 8
+        },
+        {
+          "id": "642",
+          "count": 100000
+        }
+      ]
+    }
+  ],
+  "potentials": [
+    {
+      "level": 1,
+      "name": "Samifjod Fletching",
+      "effect": "When Hovering, ATK +18% and ABATK DMG Dealt is increased to 1.2 times the original. \nTalent Huntress's Focus improved: Protective Barrier reactivation time -3s.\nUnlocks the Operator Snapshot \"Warmth of Winter Sun\""
+    },
+    {
+      "level": 2,
+      "name": "Huntress's Stride",
+      "effect": "Agility +20, Arts Intensity +16."
+    },
+    {
+      "level": 3,
+      "name": "Thorny Trap",
+      "effect": "Combo skill Rampant Thorns improved: Length of cooldown -2s. Enemies in the Barrage Array suffer Nature Burst DMG Taken +6%.\nUnlocks the Operator Snapshot \"Little Huntress\""
+    },
+    {
+      "level": 4,
+      "name": "No Escape",
+      "effect": "Ultimate Call of Ice Mountain improved: Ultimate Energy cost -15%."
+    },
+    {
+      "level": 5,
+      "name": "Fatal Shot",
+      "effect": "Ultimate Call of Ice Mountain improved: Gains Hunting Arrows +1. Ultimate DMG Dealt is increased to 1.2 times the original, while Nature Burst DMG Multiplier of Power Shot is increased to 1.1 times the original.\nUnlocks the Operator Snapshot \"Deep in the Icefield She Glances\"\nUnlocks the Profile Theme \"Deep in the Icefield She Glances\""
+    }
+  ],
+  "materials": {
+    "100": {
+      "name": "Elementary Combat Record"
+    },
+    "101": {
+      "name": "Intermediate Combat Record"
+    },
+    "102": {
+      "name": "Advanced Combat Record"
+    },
+    "105": {
+      "name": "Elementary Cognitive Carrier"
+    },
+    "106": {
+      "name": "Advanced Cognitive Carrier"
+    },
+    "107": {
+      "name": "Protodisk"
+    },
+    "108": {
+      "name": "Protoset"
+    },
+    "109": {
+      "name": "Protoprism"
+    },
+    "110": {
+      "name": "Protohedron"
+    },
+    "112": {
+      "name": "Tachyon Screening Lattice"
+    },
+    "128": {
+      "name": "Pink Bolete"
+    },
+    "133": {
+      "name": "Red Bolete"
+    },
+    "137": {
+      "name": "Ruby Bolete"
+    },
+    "642": {
+      "name": "T-Creds"
+    },
+    "1048": {
+      "name": "Talos Cap"
+    }
+  }
+}
