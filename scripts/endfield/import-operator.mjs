@@ -238,8 +238,8 @@ export function importOperator(itemResponse,publicItems,{itemId,slug,snapshot}){
   // Some operator Wiki entries append a small profile/unlock table after the
   // five-row potential grid. Locate the grid by explicit POTENTIAL markers.
   const mainPotentialGrids=potentialGrids.filter(grid=>
-    grid.rows.length>=1 && grid.rows.every(row=>
-      row.cells.length>=3 && /\bPOTENTIAL\s*0?[1-5]\b/i.test(clean(row.cells[1]))));
+    grid.rows.length===5 && grid.rows.every(row=>
+      row.cells.length>=3 && !!clean(row.cells[1]) && !!clean(row.cells[2])));
   assert(mainPotentialGrids.length===1,"Potenziale benötigt genau eine eindeutige Potential-Phases-Tabelle: "+potentialRef);
   const potentialTable=mainPotentialGrids[0];
   const potentials=potentialTable.rows.map((row,i)=>({
