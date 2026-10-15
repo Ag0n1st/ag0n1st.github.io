@@ -1,0 +1,49 @@
+name: Synchronize static Endfield assets
+
+on:
+  # First run when adding/updating this workflow, then only on demand.
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/sync-endfield-assets.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  cache_assets:
+    if: github.repository == 'Ag0n1st/ag0n1st.github.io'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Download public static SKPORT assets
+        run: npm run assets:endfield
+      - name: Commit only static image assets
+        id: commit
+        shell: bash
+        run: |
+          git add public/images/endfield/operators/
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No new assets."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Cache public Endfield operator icons and static artwork"
+            git push origin HEAD:main
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Publish website with cached images
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main
