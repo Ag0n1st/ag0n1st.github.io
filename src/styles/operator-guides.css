@@ -124,3 +124,17 @@
 .op-skill-matrix th{font-size:10px}
 .op-skill-matrix td{font-size:11px}
 @media(max-width:680px){.op-skill-matrix{min-width:580px}.op-skill-selector{justify-content:space-between}}
+
+
+/* Public SKPORT art is loaded as a progressive enhancement; placeholder remains for operators without assets. */
+.op-profile-art{overflow:hidden;position:relative;min-height:220px}
+.op-profile-art img{width:100%;height:100%;max-height:370px;object-fit:contain;object-position:center bottom;display:block;filter:drop-shadow(0 12px 22px rgba(0,0,0,.4))}
+.op-media-credit{font-size:10px;color:var(--muted);display:block;margin:6px 0 2px}
+.op-card-cover{display:block;object-fit:contain;object-position:center bottom;max-width:100%;width:100%;height:100%;max-height:300px;padding:6px 12px 0}
+.op-skill-icon{width:100%;height:100%;object-fit:contain;display:block}
+.op-skill-description{line-height:1.8!important;white-space:pre-line;font-size:12px!important;padding:12px 14px;margin:12px 0!important;border-radius:9px;background:rgba(255,255,255,.025);border:1px solid #36313c}
+.op-locale-note{margin:5px 0 16px;max-width:920px}
+.op-progression-table{min-width:620px}
+.op-progression-table th:first-child,.op-progression-table td:first-child{position:sticky;left:0;z-index:1;background:#211d28;min-width:110px}
+.op-progression-table tbody th{font-weight:600;font-size:11px;padding:11px;text-align:left}
+.op-progression-table td{white-space:pre-line}
