@@ -131,6 +131,14 @@ try {
         const source=(doc.chapterGroup??[]).flatMap(g=>g.widgets??[]).find(w=>/source/i.test(w.title));
         const src=source&&doc.widgetCommonMap?.[source.id];
         const text=await page.locator("body").innerText().catch(()=>"");
+        const materialEls=await Promise.all(["Xiranite Component","Wuling Stock Bill","Gear Assembly"].map(async term=>{
+          try{
+            const loc=page.getByText(term,{exact:false}).first();
+            if(!await loc.count())return {term,found:false};
+            return loc.evaluate(el=>({term,found:true,html:el.parentElement?.parentElement?.outerHTML.slice(0,2300)}));
+          }catch(error){return {term,error:String(error).slice(0,150)};}
+        }));
+        console.log("CRAFTING_DOM",JSON.stringify({gear:item.name,id,materialEls}).slice(0,7800));
         console.log("RECIPE_DIAGNOSTIC",JSON.stringify({
           id,item:item.name,
           brief:item.brief,
@@ -139,6 +147,12 @@ try {
           matchedDocuments:matched.slice(0,18),
           sourceIntro:src?.tabDataMap?.default?.intro,
           sourceDetails:src?.tableList,
+          sourceWidget:src,
+          networkEndpoints:observed.slice(-15),
+          visibleSourceBlock:(()=>{
+            const i=text.indexOf("//Source");
+            return i>=0?text.slice(i,i+1350):"Source heading missing";
+          })(),
           pageMentions:(text.match(/.{0,90}(?:craft|recipe|stock bill|component|manufactur|source|assembly).{0,150}/gi)??[]).slice(0,12)
         }).slice(0,12000));
       }
