@@ -72,7 +72,7 @@ Die ID-basierte Datenbank für **84 Waffen** und **258 Ausrüstungsteile** wird 
 - `src/data/endfield/catalog/equipment-details.json` speichert die validierten Ergebnisse nach dem importierenden GitHub-Actions-Lauf. Die Website lädt nur diese Datei, niemals die Live-API.
 - `src/lib/endfield/equipmentDetails.ts` und die Waffen-/Ausrüstungsabschnitte der Operator-Vorlage verknüpfen die Daten mit redaktionellen Empfehlungen.
 - Die Schreibweise `weaponId` und `equipment.builds[].items` in den Guide-Templates akzeptiert die **offizielle numerische Item-ID als String** oder den aus dem englischen SKPORT-Namen abgeleiteten Slug. Beispiel: `"1046"` oder `"bedazzling-night-debut"`. Ein numerischer Eintrag ist eindeutiger und empfohlen.
-- `standardRecipe` bleibt bei **offiziellen Standard-Herstellungskosten**, nicht alternativen Verfahren aus anderen Wikis. Bei nicht zuverlässig erkennbaren Rezepten wird `recipeStatus: needs-review` gesetzt.
+- `standardRecipe` bleibt bei **offiziellen Standard-Herstellungskosten**, nicht alternativen Verfahren aus anderen Wikis. Bei der ersten Wiki-Darstellung erscheinen Mengen oft **vor** den Materialnamen. `fill-standard-recipes.mjs` wartet deshalb auf die vollständigen, namentlich aufgelösten Zutaten und speichert außerdem die wörtlich angegebenen Blaupausen-Freischaltungen (`acquisitionNotes`). Bei nicht zuverlässig erkennbaren Rezepten wird `recipeStatus: needs-review` gesetzt.
 - **Build-Finder:** bleibt ein separat zu entwickelndes Feature. Hersteller- und Fabrikfreischaltungen dürfen nicht allein aus einem Level oder Rezept erschlossen werden.
 - Die 100-MB-Endfield-Grenze wird vor Datencommits und beim GitHub-Pages-Build kontrolliert.
 

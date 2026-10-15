@@ -50,6 +50,7 @@ const officialBuilds=builds.map(build=>({...build,parts:build.items.map(referenc
     <div class="op-muted">Level {part.detail.level??"?"} · {part.detail.gearSlot??"Ausrüstung"}</div>
     {(part.detail.stats[0]?.tables[0]?.rows??[]).map(row=><div>{row.cells[0]}: {row.cells[1]}</div>)}
     {part.detail.setEffect&&<details class="op-details"><summary>{part.detail.setName} – Setbonus</summary><p class="op-body-copy">{part.detail.setEffect}</p></details>}
+    {part.detail.acquisitionNotes?.length>0&&<p class="op-body-copy"><strong>Offizielle Blaupausen-Freischaltung:</strong> {part.detail.acquisitionNotes.join(" · ")}</p>}
     {part.detail.artificing.length>0&&<details class="op-details"><summary>Veredelungswerte</summary>
       {part.detail.artificing.flatMap(tab=>tab.tables).map(table=><table class="op-table">
         <thead><tr>{table.columns.map(value=><th>{value}</th>)}</tr></thead>

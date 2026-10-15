@@ -1,0 +1,54 @@
+name: Enrich official SKPORT standard recipes
+
+on:
+  push:
+    branches: [endfield-official-weapon-gear-details-20261015]
+    paths:
+      - scripts/endfield/fill-standard-recipes.mjs
+      - .github/workflows/fill-endfield-recipes.yml
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install browser dependencies
+        run: |
+          npm ci
+          npm install --no-save --package-lock=false playwright-core
+      - name: Extract only standard craft recipes and official blueprint notes
+        run: node scripts/endfield/fill-standard-recipes.mjs
+      - name: Validate official default recipes, budget and Astro build
+        run: |
+          node --input-type=module -e '
+            import fs from "node:fs";
+            const d=JSON.parse(fs.readFileSync("src/data/endfield/catalog/equipment-details.json","utf8"));
+            if(d.coverage.standardRecipesVerified<150 || d.gear.length!==258 ||
+               d.gear.some(x=>x.standardRecipe?.materials?.some(m=>!/^[0-9]+$/.test(m.id)||m.count<=0))) {
+              throw Error("Official recipe coverage insufficient or costs invalid");
+            }
+          '
+          node scripts/endfield/check-budget.mjs
+          npm run test:endfield
+          npm run build
+      - name: Commit verified public recipe data only
+        shell: bash
+        run: |
+          git add src/data/endfield/catalog/equipment-details.json
+          if git diff --cached --quiet; then
+            echo 'No recipe updates'
+          else
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'Add official SKPORT standard gear crafting materials and blueprint unlock notes'
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi

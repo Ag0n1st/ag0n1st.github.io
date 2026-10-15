@@ -64,6 +64,18 @@ export function standardRecipe(sourcePanel,catalog){
   if(materials.length<2)return null;
   return {id:"official-standard",materials,source:"SKPORT Wiki / Source"};
 }
+/** Only literal publicly displayed blueprint acquisition notes; no inferred unlocks. */
+export function officialBlueprintAcquisition(sourcePanel){
+  const lines=String(sourcePanel??"").split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+  const index=lines.findIndex(x=>x==="Gear Template Acquisition Method:");
+  if(index<0)return [];
+  const out=[];
+  for(const value of lines.slice(index+1, index+9)){
+    if(value.startsWith("//")||value.startsWith("Gear Artificing")||value.startsWith("Entry Contributors"))break;
+    if(value.length<=240)out.push(value);
+  }
+  return out;
+}
 export function extractRenderedGearSource(body){
   if(typeof body!=="string")return "";
   const start=body.indexOf("//Source");

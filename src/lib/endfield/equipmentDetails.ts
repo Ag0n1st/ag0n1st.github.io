@@ -19,7 +19,8 @@ export interface OfficialGear extends OfficialBase {
  kind:"gear";category:"Gear";gearSlot:string|null;setName:string|null;level:number|null;
  stats:DetailTab[];artificing:DetailTab[];setEffect:string|null;
  standardRecipe:{id:string;materials:{id:string;count:number}[];source:string}|null;
- recipeStatus:"verified"|"not-listed"|"needs-review"
+ recipeStatus:"verified"|"not-listed"|"needs-review";
+ acquisitionNotes?:string[]
 }
 export interface OfficialEquipmentSnapshot {
  schemaVersion:number;source:{provider:string;snapshot:string};
