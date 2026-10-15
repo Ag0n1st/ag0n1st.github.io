@@ -1,3 +1,4 @@
+import {createGearAccessRequirement,evaluateBuildStoryAccess} from "./buildStoryProgress.mjs";
 /**
  * Shared Endfield factory-component progression for the Build-Finder and
  * future equipment/factory tools. Grade order/levels are editorial requirements;
@@ -42,7 +43,7 @@ export function componentRequirementForRecipe(recipe){
  * Derive a four-piece build's minimum level and factory-component tier from
  * official SKPORT gear entries, not manually invented stages.
  */
-export function getBuildRequirements(details,{availableFromLevel,storyUnlock,preview=false}={}){
+export function getBuildRequirements(details,{availableFromLevel,storyUnlock,locations=[],preview=false}={}){
   const records=Array.isArray(details)?details:[];
   const levels=records.map(record=>record?.level);
   const components=records.map(record=>record?.recipeStatus==="verified"
@@ -56,8 +57,10 @@ export function getBuildRequirements(details,{availableFromLevel,storyUnlock,pre
     ?Math.max(-1,...components.map(id=>id==="starter"?-1:FACTORY_STAGES.indexOf(id))):null;
   const requiredComponent=allPartsVerified
     ?maxIndex===-1?"starter":FACTORY_STAGES[maxIndex]:null;
+  // Freeform editorial commentary NEVER proves a facility, area or a blueprint.
+  const gearAccess=records.map((record,i)=>createGearAccessRequirement(record,locations[i]));
   return {partCount:records.length,allPartsVerified,requiredLevel,requiredComponent,
-    hasStoryEvidence:typeof storyUnlock==="string"&&storyUnlock.trim().length>0,
+    gearAccess,hasStoryEvidence:typeof storyUnlock==="string"&&storyUnlock.trim().length>0,
     preview:Boolean(preview)};
 }
 /**
@@ -78,7 +81,5 @@ export function evaluateBuildAvailability(req,selected){
   if(req.requiredComponent!=="starter" &&
       FACTORY_STAGES.indexOf(selected.factoryComponent)<FACTORY_STAGES.indexOf(req.requiredComponent))
     return {status:"component-locked",reason:"Benötigt "+FACTORY_LABELS[req.requiredComponent]};
-  if(req.hasStoryEvidence!==true)
-    return {status:"story-unverified",reason:"Story-/Blaupausen-Freischaltung noch nicht redaktionell geprüft"};
-  return {status:"available",reason:"Level und Komponenten verfügbar; Story-Freischaltung dokumentiert"};
+  return evaluateBuildStoryAccess(req.gearAccess,selected.storyProgress);
 }
