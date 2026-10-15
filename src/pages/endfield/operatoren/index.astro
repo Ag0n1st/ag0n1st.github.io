@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { getImportedOperator } from "../../../lib/endfield/operatorData";
+import { getOperatorImageUrl } from "../../../lib/endfield/operatorAssets";
 import EndfieldPlaceholder from "../../../layouts/EndfieldPlaceholder.astro";
 import "../../../styles/operator-guides.css";
 
@@ -27,7 +28,7 @@ const operators = entries.map(entry => ({
         <a class="op-card" href={`/endfield/operatoren/${operator.slug}/`} aria-label={`Guide für ${operator.name} öffnen`}>
           <div class="op-card-art">
             {operator.game?.coverUrl
-              ? <img class="op-card-cover" src={operator.game.coverUrl} loading="lazy" decoding="async" alt={"Offizielles SKPORT-Porträt: "+operator.name}/>
+              ? <img class="op-card-cover" src={getOperatorImageUrl(operator.slug,"cover",operator.game.coverUrl)} loading="lazy" decoding="async" alt={"Offizielles SKPORT-Porträt: "+operator.name}/>
               : <span class="op-image-placeholder">[Operator-Grafik]<br />{operator.name}</span>}
           </div>
           <div class="op-card-info">
