@@ -28,6 +28,8 @@ jobs:
           node-version: 22
       - name: Install dependencies
         run: npm install
+      - name: Check Endfield import parser
+        run: npm run test:endfield
       - name: Build
         run: npm run build
       - name: Upload Pages artifact
