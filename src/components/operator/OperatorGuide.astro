@@ -184,6 +184,8 @@ const { guide, operatorName, preview, localized } = model;
       document.querySelectorAll<HTMLElement>("[data-build-panel]").forEach(panel=>panel.hidden=true);
     }
   }
+  // Start on the highest crafting grade, even when the browser restores form state.
+  if(factory)factory.value=DEFAULT_FACTORY_COMPONENT;
   level?.addEventListener("change",updateConfig);
   factory?.addEventListener("change",updateConfig);
   showAllBuilds?.addEventListener("change",updateConfig);
