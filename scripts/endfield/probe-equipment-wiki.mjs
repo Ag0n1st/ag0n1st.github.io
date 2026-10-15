@@ -143,6 +143,39 @@ try {
           tabs:tabs.slice(0,10)
         };
       });
+
+      if(type.type==="gear") {
+        const pack=(doc.chapterGroup??[]).flatMap(g=>g.widgets??[]).find(w=>/gear pack/i.test(w.title));
+        const common=pack&&doc.widgetCommonMap?.[pack.id];
+        const targets=Object.values(common?.tabDataMap??{}).map(tab=>String(tab?.content??"")).filter(Boolean);
+        console.log("GEAR_SET_DIAGNOSTIC",JSON.stringify({
+          item:item.name,id,
+          extraInfo:doc.extraInfo,
+          packWidget:pack,
+          packData:common,
+          packDocuments:targets.map(key=>({key,record:doc.documentMap?.[key]}))
+        }).slice(0,8500));
+      }
+      if(type.type==="weapon" || type.type==="gear") {
+        const detailWidgets=(doc.chapterGroup??[]).flatMap(g=>g.widgets??[]);
+        for(const w of detailWidgets) {
+          if(!/stats|skill details|potential phases|gear pack|artificing|tuning|source/i.test(w.title))continue;
+          const common=doc.widgetCommonMap?.[w.id];
+          const selected=Object.entries(common?.tabDataMap??{}).slice(0,2);
+          for(const [tabId,v] of selected){
+            const key=String(v?.content??"");
+            let sections=[];
+            if(key&&doc.documentMap?.[key]) {
+              try {sections=extractDocument(key,doc.documentMap[key]).sections.map(section=>
+                section.kind==="table"
+                  ? {kind:"table",rows:section.table.rows.map(row=>row.cells.slice(0,9)).slice(0,14)}
+                  : {kind:section.kind,text:String(section.text??"").slice(0,700)}
+              );} catch(err){sections=[{error:String(err).slice(0,150)}]}
+            }
+            console.log("WIDGET_ROWS",JSON.stringify({type:type.type,id,title:w.title,tabId,tabIntro:v?.intro,sections}).slice(0,6500));
+          }
+        }
+      }
       console.log("OFFICIAL_DETAIL",JSON.stringify({
         category:type.type,id,name:item.name,lang:item.lang,
         itemKeys:Object.keys(item),documentKeys:Object.keys(doc),briefKeys:Object.keys(item.brief??{}),
