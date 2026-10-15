@@ -135,7 +135,7 @@ try {
           try{
             const loc=page.getByText(term,{exact:false}).first();
             if(!await loc.count())return {term,found:false};
-            return loc.evaluate(el=>({term,found:true,html:el.parentElement?.parentElement?.outerHTML.slice(0,2300)}));
+            return loc.evaluate((el,term)=>({term,found:true,html:el.parentElement?.parentElement?.outerHTML.slice(0,2300)}),term);
           }catch(error){return {term,error:String(error).slice(0,150)};}
         }));
         console.log("CRAFTING_DOM",JSON.stringify({gear:item.name,id,materialEls}).slice(0,7800));
