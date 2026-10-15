@@ -1,78 +1,58 @@
-# Endfield: SKPORT-Importer (Typhoeus)
+# SKPORT-Importer: Typhoeus
 
-**Stand:** Erste lauffähige, lokal ausführbare Import- und Prüfstrecke. Noch **kein** vollständig mit einer echten SKPORT-Antwort geprüfter Import. Der öffentliche Typhoeus-Guide verwendet weiterhin ausschließlich gekennzeichnete Platzhalter, bis die Daten validiert sind.
+## Status (15.10.2026)
 
-## Ziel
+Der Importer wurde an der **echten öffentlichen Wiki-Antwort** aus einer SKPORT-Netzwerkaufzeichnung für Typhoeus (`itemId=1173`) ausgerichtet. Die beigefügten 22 aufgezeichneten Requests enthielten auch Account-/Authentifizierungsantworten, weshalb wir **niemals den kompletten Netzwerk-Mitschnitt ins öffentliche GitHub-Repository übernehmen dürfen**.
 
-Offizielle SKPORT-Wiki-Daten einmalig/längerfristig in eigene, versionierbare JSON-Dateien überführen. Die Website wird bei jeder Veröffentlichung aus diesen **lokalen Daten** erzeugt und hängt nicht bei jedem Build oder Seitenaufruf von SKPORT ab. Eigene Bewertungen, Teamempfehlungen und Builds bleiben unabhängig unter `src/content/operator-guides/`.
+Es konnten in der Originalantwort nachgewiesen werden:
 
-## Bekannter Ausgangspunkt
+| Skilltyp | Skillname | Beschreibung | Werte je Rang |
+|---|---|---|---|
+| Basic Attack | Wildlands Huntress | eigenes Dokument | 12 Spalten |
+| Battle Skill | Piercing Arrows of the Woods | eigenes Dokument | 12 Spalten |
+| Combo Skill | Rampant Thorns | eigenes Dokument | 12 Spalten |
+| Ultimate | Call of Ice Mountain | eigenes Dokument | 12 Spalten |
 
-- SKPORT-Wiki-Endpoint: `/web/v1/wiki/item/info?id=1173` (Typhoeus).
-- Die inoffizielle API-Dokumentation nennt `zonai.skport.com` und weist für `/web/v1/wiki/*` auf V2-signierte Requests hin.
-- Unser bisheriger, in einer älteren Unterhaltung erstellter PowerShell-Exporter ist **nicht** im GitHub-Repository vorhanden.
-- Aus der bisherigen Untersuchung sind diese Zuordnungen bekannt; sie müssen mit einem aktuellen Originalexport bestätigt werden:
+Die Rangfolge ist **RANK 1 bis RANK 9**, danach **Mastery I bis Mastery III**. Die einzelnen Fertigkeiten enthalten sieben bis acht Zahlen-/Kostenzeilen; die Kosten bestehen aus Itemreferenzen (`entry.id` plus `entry.count`).
 
-| Skillname | Tab-ID | Bekannte zweite ID |
-|---|---|---|
-| Wildlands Huntress | `gIuAIUyt` | `ENfCCHbD` |
-| Piercing Arrows of the Woods | `0ctR1S1J` | `fD8zxhWN` |
-| Rampant Thorns | `CqJxefHj` | `1G405tY0` |
-| Call of Ice Mountain | `tVlf3UYx` | `mDY9OqqE` |
+Die offizielle Wiki-Antwort liegt im Feld `response.data.item`. Der relevante Datenbaum ist `item.document` mit `documentMap`, `widgetCommonMap` und `extraInfo`. Das Skill-Widget `1SuOqtCW` enthält `tabList` (vier dynamische, zeitbasierte Tab-IDs) und `tabDataMap`. **Wichtig:** Die früher angenommenen Kennungen `gIuAIUyt`, `0ctR1S1J`, `CqJxefHj`, `tVlf3UYx` sind **Beschreibungs-Dokument-IDs und KEINE Tab-IDs**. Das Leveltabellen-Dokument steht unabhängig davon direkt in `tabDataMap[tabId].content`.
 
-- Skill-Widget `1SuOqtCW` enthält `tabList` und `tabDataMap`, dessen Tab-Objekte u.a. `intro.name/type/imgUrl/description` und `content` besitzen.
-- `documentMap` enthält Dokumente mit `blockIds` / `blockMap`; Tabellen enthalten `rowIds`, `columnIds`, `cellMap`, ihre Zellen verweisen mittels `childIds` auf Textblöcke. Inline-Elemente können Materialreferenzen (`entry.id/count`) tragen.
+Die Verarbeitung ist offline und schreibt ausschließlich Felder aus dem **öffentlichen Wiki-Datensatz**, nicht aus danebenliegenden Login-/User-Responses.
 
-**Noch offen:** Der frühere Export zeigte vier Skills und offenbar zwölf Tabellenspalten bei etwa 7–8 Datenzeilen. Der entscheidende Fehler war die Zuordnung der Dokumente bzw. Tabellen zu den jeweiligen Fertigkeiten. Ohne originale Exportdatei behaupten wir nicht, dass dieser Fehler bereits im echten Datenmaterial behoben ist.
+## Lokale Verwendung
 
-## So führst du eine Prüfung aus
+Den kompletten Nutzer-Mitschnitt nur lokal außerhalb des Repositorys ablegen:
 
-1. Eine **originale JSON-Antwort für den öffentlichen Wiki-Eintrag** (nicht die bereits reduzierte `typhoeus-skill-tables.json`) lokal in `local-data/skport/typhoeus-info.json` ablegen. `local-data/` ist bewusst in `.gitignore` ausgeschlossen.
-2. Keine Cookies, Auth-Tokens, Kontodaten oder persönlich identifizierende Daten in GitHub hochladen. Der Importer fragt selbst keine privaten/endpunktgeschützten APIs ab.
-3. Im Repository ausführen:
+```text
+local-data/skport/skport-relevant.json
+```
+
+Der Ordner `local-data/` ist bewusst in `.gitignore` ausgeschlossen. Das Script sucht aus dem Mitschnitt genau die öffentliche Antwort `/web/v1/wiki/item/info?id=1173` heraus. Alternativ akzeptiert es direkt die einzelne `response` oder `response.data.item` als JSON.
 
 ```bash
 npm run test:endfield
+
 node scripts/endfield/skport-extract.mjs \
-  --input local-data/skport/typhoeus-info.json \
-  --report local-data/skport/typhoeus-report.json
-```
-
-4. Den Report prüfen: vier Tabs, eindeutige Quelldokumente pro Skill, mindestens eine Tabelle je Skill und lesbare Spalten/Zeilen. Die tatsächlichen Werte dann anhand der offiziellen Wiki-Oberfläche gegenprüfen.
-
-**Erst bei erfolgreicher struktureller Prüfung:**
-
-```bash
-node scripts/endfield/skport-extract.mjs \
-  --input local-data/skport/typhoeus-info.json \
-  --report local-data/skport/typhoeus-report.json \
+  --input local-data/skport/skport-relevant.json \
+  --report local-data/skport/typhoeus-inspection.json \
   --out src/data/endfield/imports/typhoeus.skport.json
 ```
 
-Wenn Zuordnungen fehlen oder Dokumente mehrdeutig sind, verweigert `--out` das Schreiben (Exit-Code 2). `--report` schreibt trotzdem die Diagnose in den lokalen Ordner.
+Bei Problemen mit Struktur, Skillnamen, Tabellen, Dokumentzuordnung oder Rangspalten wird `--out` verhindert. Mit `--report` kann die Fehlerdiagnose auch dann untersucht werden.
 
-Ein `validated-structure`-Ergebnis garantiert nur, dass die **Struktur** plausibel ist, nicht dass jedes Skill-Level und jeder Multiplikator bereits inhaltlich geprüft wurde. Die Quelle, der SHA-256-Fingerprint und Original-Dokument-IDs bleiben im Export erhalten.
+**Der Status `validated-structure` bedeutet eine geprüfte Tabellenstruktur, aber nicht, dass die offizielle Quelle unveränderlich oder jeder Spielwert fachlich mit dem Live-Spiel verglichen wurde.** In der Quelle steht `lang: en`; eine deutsche Übersetzung muss separat erfolgen. URLs zu Animationen sind Metadaten und werden nicht als GIF-Dateien ins Repository gespeichert.
 
-## Was der Exporter bereits macht
+## Hinweise zu Daten und Sicherheit
 
-- Entpackt `data`-Wrapper und sucht `documentMap` sowie `widgetCommonMap`.
-- Ordnet Skills ausschließlich über `tabList` und **tatsächlich im jeweiligen Tab referenzierte** Quelldokument-IDs zu. Zweite, bisher bekannte IDs dienen nur der Diagnose, nicht zum automatischen Hinzuerfinden von Beziehungen.
-- Liest zusammengehörige Textblöcke und einfache Tabellen aus `blockMap`, `rowIds`, `columnIds` und `cellMap`.
-- Erhält Inline-Itemverweise als `[item:ID xAnzahl]` und zusätzlich als strukturierte Referenzen.
-- Meldet fehlende Skillnamen, fehlende Dokumente, Tabellen ohne Daten und mehrfach zugeordnete Dokumente.
-- Schreibt einen **Import-Kandidaten** nur bei korrekter Struktur.
+- Die vollständige Aufzeichnung darf wegen möglicher Kontodaten **nicht** veröffentlicht werden.
+- Im Export wird nur `response.data.item` verwendet; andere Requests werden vollständig ignoriert.
+- Der Quellfingerabdruck wird ausschließlich aus dem öffentlichen Wiki-Eintrag berechnet.
+- Eigene Guidebewertungen verbleiben unter `src/content/operator-guides/` und werden nicht überschrieben.
+- Itemreferenzen sind IDs: Materialnamen/Icons sind erst nach separater Item-Zuordnung bekannt.
+- Die kompakte Operatorstruktur enthält Seltenheit, Element, Klasse, Waffentyp, Fraktion sowie Cover-/Illustrations-URLs.
 
-Die Tests unter `scripts/endfield/skport-extract.test.mjs` arbeiten mit **synthetischen Testdaten**. Sie belegen die Parserlogik, nicht die Kompatibilität zu einem aktuellen echten API-Datensatz.
+## Nächster Schritt
 
-## Schritte danach
+Den bereinigten Import in die Astro-Darstellung integrieren: Operatorprofil, vier Fertigkeiten einschließlich dynamischer 12-Rang-Tabelle und Materialreferenzen. Anschließend Talent-/Potenzial-/Aufstieg-Widgets ebenfalls prüfen. Vor dem produktiven Veröffentlichen müssen Sprache, Asset-Nutzung und Wertabgleich geklärt sein.
 
-1. Original-Export des SKPORT-Eintrags 1173 gegen den Inspector laufen lassen und konkrete Feldabweichungen beheben.
-2. Vier Skillnamen, Beschreibungen, Animations- und Tabellenwerte gegen die offizielle Typhoeus-Seite vergleichen; die bisherige fehlerhafte Abschnittserkennung vollständig entfernen.
-3. Normierte, geprüfte Operator-, Fertigkeiten- und Talentdateien mit stabilen IDs und deutscher Lokalisierung erstellen.
-4. Bilder und Icons mit nachvollziehbaren Quellen nach Nutzungsrechten gesondert einbinden.
-5. Astro-Guide-Komponenten auf die importierten Spieldaten verweisen lassen. **Keine** automatischen Überschreibungen der Markdown-Guide-Texte.
-6. Erst danach einen optionalen automatischen Import per GitHub Actions erwägen. Er darf bei Quellfehlern niemals bereits verifizierte Dateien löschen.
-
-Referenzen:
-- Offizielle Wiki: https://wiki.skport.com/endfield
-- Inoffizielle API-Dokumentation: https://github.com/AixLnyt/skport-api-docs
+Der CI-Test vor jedem Website-Deploy prüft den Parser mit reproduzierbaren Fixtures – **nicht** automatisch den aktuellen SKPORT-Server.
