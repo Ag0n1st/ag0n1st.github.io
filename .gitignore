@@ -11,3 +11,5 @@ dist/
 
 # Keep example environment files
 !.env.example
+# Unverified raw SKPORT responses, diagnostic exports and any request credentials
+local-data/
