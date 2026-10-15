@@ -36,7 +36,7 @@ async function worker(){
           .split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
         return lines.length>=2 && !lines[0].startsWith("*") &&
           !lines[0].startsWith("//") && /^\*\s*\d/.test(lines[1]);
-      },{timeout:6500});
+      },null,{timeout:6500});
     } catch {/* Some official pages have no default recipe. */ }
     const text=await page.locator("body").innerText();
     const panel=extractRenderedGearSource(text);
