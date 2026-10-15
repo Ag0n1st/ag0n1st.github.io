@@ -1,0 +1,678 @@
+{
+  "schemaVersion": 2,
+  "source": {
+    "provider": "SKPORT Wiki",
+    "itemId": "1041",
+    "language": "en",
+    "snapshot": "2026-10-15"
+  },
+  "operator": "liino",
+  "profile": {
+    "Codename": "Liino",
+    "Gender": "Female",
+    "Faction": "Talos-II General Chamber of Commerce (TGCC)",
+    "Birthday": "July 27",
+    "Element": "Electric",
+    "Race": "Sarkaz",
+    "Chinese CV": "多多poi",
+    "English CV": "Maddie Matsumoto",
+    "Japanese CV": "佐々木李子",
+    "Korean CV": "김진아"
+  },
+  "attributes": {
+    "levels": [
+      "LV.1",
+      "LV.20",
+      "LV.40",
+      "LV.60",
+      "LV.80",
+      "LV.90"
+    ],
+    "metrics": [
+      {
+        "name": "Strength",
+        "values": [
+          "9",
+          "26",
+          "44",
+          "62",
+          "80",
+          "89"
+        ]
+      },
+      {
+        "name": "Agility (Secondary)",
+        "values": [
+          "14",
+          "37",
+          "61",
+          "85",
+          "109",
+          "121"
+        ]
+      },
+      {
+        "name": "Intellect",
+        "values": [
+          "9",
+          "26",
+          "45",
+          "64",
+          "82",
+          "91"
+        ]
+      },
+      {
+        "name": "Will (Main)",
+        "values": [
+          "21",
+          "55",
+          "90",
+          "125",
+          "160",
+          "177"
+        ]
+      },
+      {
+        "name": "Base ATK",
+        "values": [
+          "30",
+          "90",
+          "152",
+          "215",
+          "277",
+          "309"
+        ]
+      },
+      {
+        "name": "Base HP",
+        "values": [
+          "500",
+          "1566",
+          "2689",
+          "3811",
+          "4934",
+          "5495"
+        ]
+      }
+    ],
+    "levelCosts": [
+      {
+        "level": "LV.1",
+        "items": []
+      },
+      {
+        "level": "LV.20",
+        "items": [
+          {
+            "id": "100",
+            "count": 5
+          },
+          {
+            "id": "101",
+            "count": 2
+          },
+          {
+            "id": "102",
+            "count": 2
+          },
+          {
+            "id": "642",
+            "count": 820
+          }
+        ]
+      },
+      {
+        "level": "LV.40",
+        "items": [
+          {
+            "id": "100",
+            "count": 3
+          },
+          {
+            "id": "101",
+            "count": 8
+          },
+          {
+            "id": "102",
+            "count": 24
+          },
+          {
+            "id": "642",
+            "count": 12540
+          }
+        ]
+      },
+      {
+        "level": "LV.60",
+        "items": [
+          {
+            "id": "100",
+            "count": 4
+          },
+          {
+            "id": "101",
+            "count": 5
+          },
+          {
+            "id": "102",
+            "count": 47
+          },
+          {
+            "id": "642",
+            "count": 23900
+          }
+        ]
+      },
+      {
+        "level": "LV.80",
+        "items": [
+          {
+            "id": "105",
+            "count": 6
+          },
+          {
+            "id": "106",
+            "count": 46
+          },
+          {
+            "id": "642",
+            "count": 109180
+          }
+        ]
+      },
+      {
+        "level": "LV.90",
+        "items": [
+          {
+            "id": "106",
+            "count": 58
+          },
+          {
+            "id": "642",
+            "count": 238980
+          }
+        ]
+      }
+    ],
+    "mainAttribute": "Will",
+    "secondaryAttribute": "Agility"
+  },
+  "talents": [
+    {
+      "id": "stalwart",
+      "name": "Stalwart",
+      "category": "attribute",
+      "levels": [
+        {
+          "name": "Stalwart 1",
+          "effect": "Operator Will +10",
+          "requirements": [
+            "20% trust with the Operator",
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 5
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "name": "Stalwart 2",
+          "effect": "Operator Will +15",
+          "requirements": [
+            "50% trust with the Operator",
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 10
+            },
+            {
+              "id": "642",
+              "count": 1800
+            }
+          ]
+        },
+        {
+          "name": "Stalwart 3",
+          "effect": "Operator Will +15",
+          "requirements": [
+            "100% trust with the Operator",
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 10
+            },
+            {
+              "id": "642",
+              "count": 6000
+            }
+          ]
+        },
+        {
+          "name": "Stalwart 4",
+          "effect": "Operator Will +20",
+          "requirements": [
+            "100% trust with the Operator",
+            "Promote to E4 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 20
+            },
+            {
+              "id": "642",
+              "count": 12000
+            }
+          ]
+        }
+      ],
+      "supplementalTables": [
+        [
+          [
+            "Trust",
+            "Raise your operators' trust to unlock more skills and profile data. Operators with higher trust also interact with you differently aboard Dijiang.\nYou can raise operator trust with gifts or by assigning them to the Dijiang Control Nexus."
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "idol-zone",
+      "name": "Idol Zone",
+      "category": "combat",
+      "levels": [
+        {
+          "name": "Idol Zone 1",
+          "effect": "During Vocalist Stance or Cosmovoice Stance, operators within the area of effect (AOE) gain Treatment Received Bonus +10% and DMG Taken -10%. These effects persist for 3s after leaving the AOE.",
+          "requirements": [
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 2400
+            }
+          ]
+        },
+        {
+          "name": "Idol Zone 2",
+          "effect": "During Vocalist Stance or Cosmovoice Stance, operators within the area of effect (AOE) gain Treatment Received Bonus +20% and DMG Taken -20%. These effects persist for 3s after leaving the AOE.",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 40
+            },
+            {
+              "id": "642",
+              "count": 8600
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "starry-boost-of-1st-magnitude",
+      "name": "Starry Boost of 1st Magnitude",
+      "category": "combat",
+      "levels": [
+        {
+          "name": "Starry Boost of 1st Magnitude 1",
+          "effect": "For 30s after casting Liino's combo skill Delightful Harmonics, casting a battle skill of an Electric or Nature operator returns 5 SP. This effect cannot stack and ends after triggering.",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 48
+            },
+            {
+              "id": "642",
+              "count": 10000
+            }
+          ]
+        },
+        {
+          "name": "Starry Boost of 1st Magnitude 2",
+          "effect": "For 30s after casting Liino's combo skill Delightful Harmonics, casting a battle skill of an Electric or Nature operator returns 10 SP. This effect cannot stack and ends after triggering.",
+          "requirements": [
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 28
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "idol-passion",
+      "name": "Idol Passion",
+      "category": "ship",
+      "levels": [
+        {
+          "name": "Idol Passion β",
+          "effect": "Assign to Reception Room to slow Mood Drop of all operators in it by 14%",
+          "requirements": [
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 1600
+            }
+          ]
+        },
+        {
+          "name": "Idol Passion γ",
+          "effect": "Assign to Reception Room to slow Mood Drop of all operators in it by 18%",
+          "requirements": [
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 8000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stage-vibe-that-lingers",
+      "name": "Stage Vibe That Lingers",
+      "category": "ship",
+      "levels": [
+        {
+          "name": "Stage Vibe That Lingers β",
+          "effect": "Assign to Control Nexus to grant all operators' Mood Regen +12%",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 3000
+            }
+          ]
+        },
+        {
+          "name": "Stage Vibe That Lingers γ",
+          "effect": "Assign to Control Nexus to grant all operators' Mood Regen +16%",
+          "requirements": [
+            "Promote to E4 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 20
+            },
+            {
+              "id": "642",
+              "count": 20000
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "promotions": [
+    {
+      "name": "Promotion I",
+      "effect": "Activate this to raise operator level cap to 40",
+      "requirement": "Operator Lv.20",
+      "cost": [
+        {
+          "id": "107",
+          "count": 8
+        },
+        {
+          "id": "128",
+          "count": 3
+        },
+        {
+          "id": "642",
+          "count": 1600
+        }
+      ]
+    },
+    {
+      "name": "Outfitting I",
+      "effect": "Activate this to let the operator equip blue quality gear",
+      "requirement": "Promote to E1 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 1600
+        }
+      ]
+    },
+    {
+      "name": "Promotion II",
+      "effect": "Activate this to raise operator level cap to 60",
+      "requirement": "Operator Lv.40",
+      "cost": [
+        {
+          "id": "107",
+          "count": 25
+        },
+        {
+          "id": "133",
+          "count": 5
+        },
+        {
+          "id": "642",
+          "count": 6500
+        }
+      ]
+    },
+    {
+      "name": "Outfitting II",
+      "effect": "Activate this to let the operator equip purple quality gear",
+      "requirement": "Promote to E2 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 6500
+        }
+      ]
+    },
+    {
+      "name": "Promotion III",
+      "effect": "Activate this to raise operator level cap to 80",
+      "requirement": "Operator Lv.60",
+      "cost": [
+        {
+          "id": "108",
+          "count": 24
+        },
+        {
+          "id": "137",
+          "count": 5
+        },
+        {
+          "id": "642",
+          "count": 18000
+        }
+      ]
+    },
+    {
+      "name": "Outfitting III",
+      "effect": "Activate this to let the operator equip gold quality gear",
+      "requirement": "Promote to E3 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 18000
+        }
+      ]
+    },
+    {
+      "name": "Promotion IV",
+      "effect": "Activate this to raise operator level cap to 90",
+      "requirement": "Operator Lv.80",
+      "cost": [
+        {
+          "id": "108",
+          "count": 36
+        },
+        {
+          "id": "104",
+          "count": 20
+        },
+        {
+          "id": "1048",
+          "count": 8
+        },
+        {
+          "id": "642",
+          "count": 100000
+        }
+      ]
+    }
+  ],
+  "potentials": [
+    {
+      "level": 1,
+      "name": "Flawless Stage Work",
+      "effect": "After entering battle without her Vocalist Stance active, the first casting of the battle skill Dazzling Focus returns 25 additional SP.\r\nEffects of ATK Boost granted by Vocalist Stance and Cosmovoice Stance are increased by +6%."
+    },
+    {
+      "level": 2,
+      "name": "Committed Rehearsals",
+      "effect": "Will +20, Treatment Efficiency +10%."
+    },
+    {
+      "level": 3,
+      "name": "Longing for the Horizon",
+      "effect": "Combo skill Delightful Harmonics improved: Length of cooldown -1s. DMG Multiplier and HP Treatment are increased to 1.4 times the original."
+    },
+    {
+      "level": 4,
+      "name": "Meteoric Rhythm",
+      "effect": "Ultimate Dawnstar Concerto improved: Ultimate Energy cost -15%."
+    },
+    {
+      "level": 5,
+      "name": "Heart-Whipping Q&A",
+      "effect": "Amp effect of Dawnstar Concerto is increased to 1.2 times the original.\r\nDMG Multipliers of battle skill Dazzling Focus and ultimate Dawnstar Concerto are increased to 1.2 times the original."
+    }
+  ],
+  "materials": {
+    "99": {
+      "name": "D96 Steel Sample 4"
+    },
+    "100": {
+      "name": "Elementary Combat Record"
+    },
+    "101": {
+      "name": "Intermediate Combat Record"
+    },
+    "102": {
+      "name": "Advanced Combat Record"
+    },
+    "104": {
+      "name": "Quadrant Fitting Fluid"
+    },
+    "105": {
+      "name": "Elementary Cognitive Carrier"
+    },
+    "106": {
+      "name": "Advanced Cognitive Carrier"
+    },
+    "107": {
+      "name": "Protodisk"
+    },
+    "108": {
+      "name": "Protoset"
+    },
+    "109": {
+      "name": "Protoprism"
+    },
+    "110": {
+      "name": "Protohedron"
+    },
+    "111": {
+      "name": "Metadiastima Photoemission Tube"
+    },
+    "114": {
+      "name": "Mark of Perseverance"
+    },
+    "128": {
+      "name": "Pink Bolete"
+    },
+    "131": {
+      "name": "Blighted Jadeleaf"
+    },
+    "133": {
+      "name": "Red Bolete"
+    },
+    "137": {
+      "name": "Ruby Bolete"
+    },
+    "141": {
+      "name": "Kalkodendra"
+    },
+    "146": {
+      "name": "Vitrodendra"
+    },
+    "147": {
+      "name": "Chrysodendra"
+    },
+    "642": {
+      "name": "T-Creds"
+    },
+    "1048": {
+      "name": "Talos Cap"
+    }
+  },
+  "potentialSupplementalTables": [
+    [
+      [
+        "Operator Snapshot",
+        "",
+        ""
+      ],
+      [
+        "Show Time\nIllustrator: 수줍\nThis is the day when she defines the meaning of \"bedazzling\", \"perfection\", and \"brilliance that nobody can ever forget\".",
+        "Where the Morning Star Gazes\nIllustrator: 油锅なべる\nEven a \"star\" like herself strives to reach for that stretch of shimmering cosmos lying high above.",
+        "Heart-Whipping Practice\nIllustrator: pako\n\"Hush now. Now's the time to give everyone a moment for beautiful dreams.\""
+      ]
+    ]
+  ]
+}
