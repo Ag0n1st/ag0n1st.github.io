@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
-import {createGearAccessRequirement,evaluateGearStoryAccess,evaluateBuildStoryAccess}
+import {createGearAccessRequirement,evaluateGearStoryAccess,evaluateBuildStoryAccess, MAX_AUTHORITY_LEVEL, validAuthorityLevel}
  from "../../src/lib/endfield/buildStoryProgress.mjs";
 import {getBuildRequirements,evaluateBuildAvailability} from "../../src/lib/endfield/buildFinder.mjs";
 const data=JSON.parse(readFileSync("src/data/endfield/catalog/equipment-details.json","utf8")).gear;
@@ -93,4 +93,17 @@ test("all 258 SKPORT records yield reproducible provenance-aware access requirem
      assert.ok(p.areaIds.every(id=>registry.areas.some(a=>a.id===id)));
    }
  }
+});
+
+test("authority level is strictly capped to current in-game maximum 60",()=>{
+ assert.equal(MAX_AUTHORITY_LEVEL,60);
+ assert.equal(validAuthorityLevel(0),true);
+ assert.equal(validAuthorityLevel(60),true);
+ for(const value of [-1,60.1,61,200,NaN,null,undefined,"60"])
+   assert.equal(validAuthorityLevel(value),false,"Invalid Authority value "+String(value));
+ const gear=data.find(x=>x.acquisitionNotes?.includes("Authority Level 60 Reward")) ??
+  data.find(x=>x.acquisitionNotes?.some(v=>/^Authority Level \\d+ Reward$/.test(v)));
+ const requirement=createGearAccessRequirement(gear,null);
+ assert.equal(evaluateGearStoryAccess(requirement,progress("wuling",[],[],200)).status,"story-unverified");
+ assert.equal(evaluateGearStoryAccess(requirement,progress("wuling",[],[],60)).status,"blueprint-unconfirmed");
 });
