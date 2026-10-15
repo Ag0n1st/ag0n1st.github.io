@@ -1,0 +1,22 @@
+name: Probe public Gear Wiki template crate table
+on:
+  push:
+    branches: [endfield-blueprint-research-20261015]
+    paths:
+      - scripts/endfield/probe-community-gear-table.mjs
+      - .github/workflows/probe-community-gear-table.yml
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: |
+          npm ci
+          npm install --no-save --package-lock=false playwright-core
+      - run: node scripts/endfield/probe-community-gear-table.mjs
