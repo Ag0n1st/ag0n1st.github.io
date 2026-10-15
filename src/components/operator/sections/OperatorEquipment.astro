@@ -95,18 +95,34 @@ const officialBuilds=builds.map(build=>{
     {(part.detail.stats[0]?.tables[0]?.rows??[]).map(row=><div>{row.cells[0]}: {row.cells[1]}</div>)}
     {part.detail.setEffect&&<details class="op-details"><summary>{part.detail.setName} – Setbonus</summary><p class="op-body-copy">{part.detail.setEffect}</p></details>}
     {part.detail.acquisitionNotes?.length>0&&<p class="op-body-copy"><strong>Offizielle Blaupausen-Erwerbsart:</strong> {part.detail.acquisitionNotes.join(" · ")}</p>}
-    {part.blueprint?.kind==="template-crate" && <details class="op-details">
-      <summary>Blaupausen-Fundort · {part.blueprint.status==="owner-confirmed" ? "persönlich geprüft" : "Community-Recherche"}</summary>
+    {part.blueprint && (part.blueprint.kind==="template-crate" || part.blueprint.precision==="disputed") && <details class="op-details">
+      <summary>Blaupausen-Fundort · {
+        part.blueprint.precision==="verified"?"persönlich geprüft":
+        part.blueprint.precision==="specific-item"?"einzelnes Rüstungsteil (Community)":
+        part.blueprint.precision==="disputed"?"Quellen widersprechen sich":
+        "Set-Hinweis (Community)"
+      }</summary>
       <div class="op-details-body">
-        {part.blueprint.areas.length>0 ? <>
-          <p class="op-body-copy"><strong>{part.blueprint.status==="owner-confirmed" ? "Geprüfte Gebiete" : "Mögliche Fundgebiete"}:</strong> {part.blueprint.areas.map(x=>x.name).join(", ")}</p>
-          {part.blueprint.status!=="owner-confirmed"&&<p class="op-muted">Vorläufig: Der Hinweis kann das Set betreffen, nicht zwingend dieses einzelne Ausrüstungsteil. Die genaue SKPORT-Kiste und der Besitz der Blaupause sind noch nicht bestätigt.</p>}
-          {part.blueprint.claims.map(x=><p class="op-body-copy">Fundorthinweis: {x.landmark}</p>)}
-          {part.blueprint.sources.length>0 && <p class="op-body-copy">
-            <strong>Quellen:</strong>{" "}
-            {part.blueprint.sources.map((x,i)=><span>{i>0?" · ":""}<a href={x.url} target="_blank" rel="noopener noreferrer">{x.title}</a></span>)}
-          </p>}
-        </> : <p class="op-muted">Kein belastbar zugeordneter Kistenfundort vorhanden. Persönliche Prüfung erforderlich.</p>}
+        {part.blueprint.areas.length>0 && <p class="op-body-copy">
+          <strong>{part.blueprint.precision==="verified"?"Bestätigtes Gebiet":
+            part.blueprint.precision==="specific-item"?"Recherchiertes Fundgebiet":
+            "In den Quellen genannte Gebiete"}:</strong>{" "}
+          {part.blueprint.areas.map(x=>x.name).join(", ")}
+        </p>}
+        {part.blueprint.precision==="disputed" &&
+          <p class="op-muted"><strong>Quellenkonflikt:</strong> Die Community-Quellen oder die offizielle SKPORT-Erwerbsart weichen voneinander ab. Bitte beide Originalquellen prüfen; keine der Kisten ist für dieses Teil als endgültig bestätigt markiert.</p>}
+        {part.blueprint.precision==="specific-item" &&
+          <p class="op-muted">Die Fundortangabe bezieht sich ausdrücklich auf dieses Rüstungsteil, nicht lediglich auf sein Set. Die genaue SKPORT-Marker-ID und ob du die Blaupause bereits besitzt, sind noch nicht bestätigt.</p>}
+        {part.blueprint.precision==="set-family" &&
+          <p class="op-muted">Nur Set-Hinweis: Die Fundorte sind noch nicht den konkreten Rüstungsteilen zugeordnet.</p>}
+        <p class="op-muted">{part.blueprint.note}</p>
+        {part.blueprint.claims.map(x=><p class="op-body-copy">Quelle / Kiste: {x.landmark}</p>)}
+        {part.blueprint.sources.length>0 && <p class="op-body-copy">
+          <strong>Quellen:</strong>{" "}
+          {part.blueprint.sources.map((x,i)=><span>{i>0?" · ":""}<a href={x.url} target="_blank" rel="noopener noreferrer">{x.title}</a></span>)}
+        </p>}
+        {part.blueprint.areas.length===0 && part.blueprint.sources.length===0 &&
+          <p class="op-muted">Noch kein belastbarer Fundort; persönliche Überprüfung erforderlich.</p>}
       </div>
     </details>}
     {part.detail.artificing.length>0&&<details class="op-details"><summary>Veredelungswerte</summary>

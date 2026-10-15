@@ -277,6 +277,46 @@ Alle vorläufigen Hinweise werden auf der Website als Community-Recherche
 gekennzeichnet. **Kein unbestätigter Fundort entsperrt automatisch einen Build.**
 Bei neuen Einträgen `node scripts/endfield/build-blueprint-index.mjs`
 ausführen, danach `npm run test:endfield` und `npm run build`.
+## Konkrete Kisteninhalte pro Ausrüstungsteil (15.10.2026)
+
+Die frühere datenbankweite **Set-Näherung** aus dem 27-Kisten-Fundortindex
+wurde durch eine zweite, genauere Ebene ergänzt:
+
+- `src/data/endfield/progression/blueprint-wiki-crate-contents.json`:
+  **24 Kisten**, **113 einzelne Wiki-Gear-Icon-Links**, **112 Gear-IDs**;
+  davon drei Erwerbsartkonflikte und ein doppelter Name auf zwei Kisten.
+- `src/data/endfield/progression/gear-piece-acquisition-sources.json`:
+  exakter Name und Erwerbsort von **258 offiziellen Gear-IDs** aus der
+  261-zeiligen Community-Datenbank Endfield Hub. 69 Einzelteil-Fundorte
+  stimmen direkt mit dem offiziellen Kistenerwerb überein; widersprüchliche
+  Erwerbsarten bleiben gesondert erhalten.
+- `src/data/endfield/progression/blueprint-precise-gear-index.json`:
+  **92 von 125 offiziellen Kisten-Gear-Teilen** haben jetzt eine konkrete
+  vorläufige Kiste ohne Quellenkonflikt (53 mit Bestätigung durch beide
+  Community-Quellen, 38 aus der Wiki-Einzelteilliste, 1 aus Endfield Hub).
+  **23** sind umstritten, **10** ohne Einzelfundort. Die old Set-Hints
+  bleiben nur letzte Orientierung, nie konkrete Freischaltungsnachweise.
+- `docs/endfield-blueprint-piece-audit.md`: vollständige Einzelteilliste
+  für alle 24 recherchierten Kisten, SKPORT-IDs, offene Teile und Konflikte.
+- `src/lib/endfield/preciseBlueprints.mjs` vereinigt beide Quellen
+  deterministisch; `gearBlueprintResearch.ts` bietet auf der Website
+  Einzelteil-Fundorte mit eigener Quellenkennzeichnung und Konkurrenzangaben an.
+
+**Nicht automatisch freischalten:** Selbst zwei übereinstimmende Community-Quellen
+bestätigen nicht den tatsächlichen Besitz der Vorlage und noch keine
+konkrete **offizielle** Marker-ID. Die offizielle SKPORT-Erwerbsart
+wird bei Datenkonflikten nicht ersetzt.
+
+**Aktualisierung (lokal, manuell):**
+`node scripts/endfield/import-gear-piece-sources.mjs`,
+`node scripts/endfield/import-wiki-crate-contents.mjs` und
+`node scripts/endfield/build-precise-blueprints.mjs` ausführen.
+Danach `npm run test:endfield`, `node scripts/endfield/check-budget.mjs`
+und `npm run build`. Die 3 Import-Skripte laden ausschließlich textuelle
+Metadaten; **keine** Bilder, GIFs oder Videos.
+
+V1.6: Die zwei Si's-Painting-Kisten haben im bisherigen Wiki-Einzelteilindex
+noch keine benannten Inhalte; keine neuen Gegenstände werden geraten.
 ## Technischer Aufbau
 
 `scripts/endfield/skport-extract.mjs` erkennt das Skill-Widget. Die früher verwechselten IDs `gIuAIUyt`, `0ctR1S1J`, `CqJxefHj`, `tVlf3UYx` sind **Beschreibungsdokumente** und nicht Tab-IDs. Jeder Skill besitzt eine getrennte Tabellen-Dokumentreferenz.
