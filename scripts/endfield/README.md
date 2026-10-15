@@ -50,6 +50,19 @@ Die zwei erzeugten Dateien werden anschließend lokal mit `npm run build` geprü
 
 **Tests:** `npm run test:endfield`. Die generischen Tests nutzen zusätzlich synthetische Fehlerfälle. Darüber hinaus wurde die vollständige Extraktion **mit dem echten Liino-Wiki-Eintrag** bestätigt.
 
+
+## Offizieller SKPORT-Grafikkatalog und Speicherbudget
+
+- **Quelle ausschließlich:** öffentliche offizielle SKPORT-Endfield-Wiki, keine sekundären Datenbanken.
+- **Kategorien (Snapshot 2026-10-15):** Operatoren 35, Waffen 84, Ausrüstung (Gear) 258, Item Files 340, Valuables Stash 223; insgesamt **940** offizielle Item-IDs.
+- **Dateiformat:** statische **WebP**-Icons, ein Bild pro offizieller Item-ID in `public/images/endfield/items/<id>.webp`. Bereits vorhandene Operator-Cover von Typhoeus und Liino werden ohne zweite Kopie referenziert.
+- **Manifest:** `src/data/endfield/catalog/items.json` (Item-ID, Name, Kategorie, lokaler Bildpfad, Quelle).
+- **Wiederverwendung:** `src/lib/endfield/itemCatalog.ts`, `src/components/endfield/ItemIcon.astro` und `MaterialCosts.astro`. Aufstiegs-, Level-, Skill- und Talentmaterialien zeigen WebP-Icons mit Mengenangabe und barrierefreiem Materialnamen. Fehlende Bilder fallen auf Text zurück.
+- **Größenmessung:** 938 neue Originalbilder (161.381.687 Byte) wurden auf **14.941.296 Byte** WebP reduziert. Einschließlich der vorhandenen Operatorbilder, JSON-Daten und derzeitigen Endfield-Code-Dateien: **17.124.917 Byte** bei der ersten Importmessung.
+- **Endfield-Grenze:** **100.000.000 Byte** (dezimal 100 MB). `node scripts/endfield/check-budget.mjs` kontrolliert sie vor Asset-Commits, Pull-Request-Builds und Deployments. Der Wert zählt den aktuellen Dateibestand, nicht sämtliche alten Git-Objekte; dank vorhandene-Bilder-überspringen vermeidet die Synchronisierung unnötige neue Versionen.
+- **Manueller Workflow:** `.github/workflows/import-endfield-catalog-assets.yml` synchronisiert nur öffentliche Katalog-Cover, keine kompletten Galerie-Grafiken oder GIFs/Videos. Bereits gespeicherte WebP-Dateien werden standardmäßig nicht erneut geladen.
+- **Redaktionelle Daten:** Material-IDs und Spielwerte bleiben in offiziellen Snapshot-Dateien, subjektive Builds und Bewertungen in den Markdown-Guides.
+
 ## Bilder lokal sichern (ohne GIF/Video)
 
 `scripts/endfield/sync-assets.mjs` kopiert ausschließlich die aus unseren JSON-Daten bekannten SKPORT-PNG-, JPEG- oder WebP-URLs für Cover, Illustration und Skill-Icons ins Repository. GIFs, Videos und zusätzliche unbekannte URLs werden ausgeschlossen.

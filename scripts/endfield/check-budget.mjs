@@ -14,6 +14,8 @@ const folders = [
   "src/content/operator-guides",
   "src/pages/endfield",
   "src/components/operator",
+  "src/components/endfield",
+  "src/lib/endfield",
   "scripts/endfield",
 ];
 const files = ["src/styles/operator-guides.css","src/components/EndfieldNav.astro"];

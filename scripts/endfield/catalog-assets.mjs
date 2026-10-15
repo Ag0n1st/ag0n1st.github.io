@@ -163,7 +163,7 @@ async function main(){
       try{
         const value=await obtainAsset(item);
         item.iconPath=value.path??null;
-        item.cacheStatus=value.type;
+        item.cacheStatus=value.type==="no-cover"?"no-cover":"cached";
         if(value.type==="downloaded"){rawBytes+=value.rawBytes;optimizedNewBytes+=value.bytes;}
         if(value.type==="existing")cached++;
         if(value.type==="no-cover")skipped++;
@@ -192,7 +192,7 @@ async function main(){
   if(final.remainingBytes<0)throw Error("Endfield budget exceeded by manifest.");
   console.log("ASSET_SUMMARY",JSON.stringify({
     uniqueItems:items.length,categoryEntries:groups.reduce((n,g)=>n+g.items.length,0),
-    cachedExisting:cached,downloaded:items.filter(x=>x.cacheStatus==="downloaded").length,
+    cachedExisting:cached,downloaded:items.length-cached-skipped-errors.length,
     noCover:skipped,errors:errors.slice(0,30),errorCount:errors.length,
     rawDownloadedBytes:rawBytes,optimizedNewBytes,savingsBytes:rawBytes-optimizedNewBytes,
     budget:final
