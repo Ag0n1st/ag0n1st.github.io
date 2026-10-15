@@ -11,7 +11,7 @@ export async function getStaticPaths() {
   return entries
     .filter(entry => entry.data.status === "published" || entry.data.operator === "typhoeus")
     .map(entry => {
-      if (entry.id !== entry.data.operator) {
+      if (entry.id.replace(/\.md$/i, "") !== entry.data.operator) {
         throw new Error('Operator-Guide-Datei "' + entry.id + '.md" muss denselben Slug wie "operator: ' + entry.data.operator + '" besitzen.');
       }
       return { params: { slug: entry.data.operator }, props: { entry } };
