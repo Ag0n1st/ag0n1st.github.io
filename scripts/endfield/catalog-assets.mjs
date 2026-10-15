@@ -62,13 +62,14 @@ async function loadCatalogue(){
           captures.push({query:Object.fromEntries(u.searchParams),catalog:json.data.catalog});
       }catch{/* only public whitelisted data; skip unrelated network responses */}
     });
+    await visit(page,"https://wiki.skport.com/endfield");
     await visit(page,"https://wiki.skport.com/endfield/catalog?typeMainId=1&typeSubId=1");
     const mainGroup=()=>captures.flatMap(c=>c.catalog).find(g=>
       String(g.id)==="1"&&(g.typeSub??[]).some(x=>x.name==="Operators"&&x.name));
     const groups=mainGroup()?.typeSub??[];
     const ids=new Map(groups.map(group=>[group.name,String(group.id)]));
     for(const label of LABELS)
-      if(!ids.get(label)||!SAFE_ID.test(ids.get(label)))throw Error("Official category not found: "+label);
+      if(!ids.get(label)||!SAFE_ID.test(ids.get(label)))throw Error("Official category not found: "+label+" (available: "+[...ids.keys()].join(", ")+")");
     const results=[];
     for(const label of LABELS){
       const subId=ids.get(label);
