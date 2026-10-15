@@ -76,10 +76,10 @@ equipment:
   #   title: "Standard-Build"
   #   role: main-dps # main-dps | support | hybrid | sub-dps | control | other
   #   items: ["1246", "1245", "1244", "1243"] # Beispiel-IDs, KEINE Build-Empfehlung. EXAKT 4
-  #   availableFromLevel: 70 # redaktionelle Mindeststufe; offizielles Ausrüstungslevel wird zusätzlich geprüft
-  #   factoryStage: fortgeschritten # einstieg | fortgeschritten | maximal, NUR nach Prüfung eintragen!
-  #   factoryUnlock: "Konkreter Beleg für Blaupausen-/Story-/Fabrikfreischaltung"
-  #   # Ohne factoryStage und factoryUnlock wird kein Build als verfügbar ausgewiesen.
+  #   availableFromLevel: 70 # optional: 10/20/28/36/50/60/70, offizielles Gear-Level wird zusätzlich geprüft
+  #   # Höchste benötigte Komponente (Amethyst → Pyrrolit) wird automatisch aus vier SKPORT-Standardrezepten ermittelt.
+  #   storyUnlock: "Redaktionell überprüfte Story-/Facility-/Blaupausen-Freischaltung mit Beleg"
+  #   # Ohne geprüfte Story-Freischaltung zeigt der Finder den Build nicht als verfügbar.
   #   teamContext: "Für Teams mit diesem Operator als Main DPS"
   #   evaluation: |
   #     Bewertung der Ausrüstung und ihrer Synergien.

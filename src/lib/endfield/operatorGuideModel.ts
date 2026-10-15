@@ -87,9 +87,9 @@ const demoWeapons = [
 const shownWeapons = weapons.length ? weapons : preview ? demoWeapons : [];
 
 const demoBuilds = [
-  {id:"demo-main",title:"[Build A – Main DPS]",role:"main-dps",items:["[Teil 1]","[Teil 2]","[Teil 3]","[Teil 4]"],evaluation:"",teamContext:"",factoryUnlock:"",craftingNotes:"",setBonusNotes:"",availableFromLevel:undefined,factoryStage:undefined},
-  {id:"demo-support",title:"[Build B – Support]",role:"support",items:["[Teil 1]","[Teil 2]","[Teil 3]","[Teil 4]"],evaluation:"",teamContext:"",factoryUnlock:"",craftingNotes:"",setBonusNotes:"",availableFromLevel:undefined,factoryStage:undefined},
-  {id:"demo-hybrid",title:"[Build C – Hybrid]",role:"hybrid",items:["[Teil 1]","[Teil 2]","[Teil 3]","[Teil 4]"],evaluation:"",teamContext:"",factoryUnlock:"",craftingNotes:"",setBonusNotes:"",availableFromLevel:undefined,factoryStage:undefined}
+  {id:"demo-main",title:"[Build A – Main DPS]",role:"main-dps",items:["[Teil 1]","[Teil 2]","[Teil 3]","[Teil 4]"],evaluation:"",teamContext:"",storyUnlock:"",craftingNotes:"",setBonusNotes:"",availableFromLevel:undefined},
+  {id:"demo-support",title:"[Build B – Support]",role:"support",items:["[Teil 1]","[Teil 2]","[Teil 3]","[Teil 4]"],evaluation:"",teamContext:"",storyUnlock:"",craftingNotes:"",setBonusNotes:"",availableFromLevel:undefined},
+  {id:"demo-hybrid",title:"[Build C – Hybrid]",role:"hybrid",items:["[Teil 1]","[Teil 2]","[Teil 3]","[Teil 4]"],evaluation:"",teamContext:"",storyUnlock:"",craftingNotes:"",setBonusNotes:"",availableFromLevel:undefined}
 ];
 const builds = guide.equipment.builds.length ? guide.equipment.builds : preview ? demoBuilds : [];
 const featuredBuild = builds.find(b => b.id === guide.overview.featuredBuildId) ?? builds[0];

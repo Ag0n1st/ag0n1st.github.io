@@ -46,7 +46,7 @@ const { guide, operatorName, preview, localized } = model;
   </div>
 </main>
 <script>
-  import { evaluateBuildAvailability } from "../../lib/endfield/buildFinder.mjs";
+  import { evaluateBuildAvailability, FACTORY_COMPONENT_STAGES, DEFAULT_FACTORY_COMPONENT } from "../../lib/endfield/buildFinder.mjs";
   // A single rank selector controls all displayed headline values in its skill.
   document.querySelectorAll<HTMLSelectElement>("[data-skill-rank]").forEach(select => {
     select.addEventListener("change", () => {
@@ -138,18 +138,28 @@ const { guide, operatorName, preview, localized } = model;
   const buildResult=document.querySelector<HTMLElement>("#op-build-results");
   const buildEmpty=document.querySelector<HTMLElement>("#op-build-empty");
   const buildButtons=Array.from(document.querySelectorAll<HTMLButtonElement>("[data-build-button]"));
+  const factoryIcon=document.querySelector<HTMLImageElement>("#op-factory-icon");
   const statusText:Record<string,string>={
     available:"Passend", "level-locked":"Level zu niedrig",
-    "factory-locked":"Fabrikstand zu niedrig", unverified:"Freischaltung ungeklärt"
+    "component-locked":"Komponente fehlt", "story-unverified":"Story ungeklärt",
+    unverified:"Rezept/Daten ungeklärt"
   };
   function updateConfig(){
     if(!level||!factory)return;
-    if(config)config.textContent="Lv. "+level.value+" · "+(factory.selectedOptions[0]?.textContent||"");
+    const component=FACTORY_COMPONENT_STAGES.find(stage=>stage.id===factory.value)
+      ??FACTORY_COMPONENT_STAGES.find(stage=>stage.id===DEFAULT_FACTORY_COMPONENT);
+    if(config)config.textContent="Lv. "+level.value+" · "+(component?.label||"")+
+      " · "+(component?.phase||"");
+    if(factoryIcon && component){
+      factoryIcon.src="/images/endfield/items/"+component.itemId+".webp";
+      factoryIcon.alt=component.label;
+      factoryIcon.title=component.label;
+    }
     const statuses=buildButtons.map(button=>{
       let requirement=null;
       try{requirement=JSON.parse(button.dataset.buildRequirements||"null");}catch{}
       const result=evaluateBuildAvailability(requirement,{
-        level:Number(level.value),factoryStage:factory.value
+        level:Number(level.value),factoryComponent:factory.value
       });
       button.dataset.availability=result.status;
       button.title=result.reason;
@@ -159,10 +169,10 @@ const { guide, operatorName, preview, localized } = model;
       return result.status;
     });
     const available=statuses.filter(s=>s==="available").length;
-    const unverified=statuses.filter(s=>s==="unverified").length;
+    const unverified=statuses.filter(s=>s==="unverified"||s==="story-unverified").length;
     const locked=statuses.length-available-unverified;
     if(buildResult)buildResult.textContent=statuses.length
-      ? available+" passend · "+locked+" noch gesperrt · "+unverified+" nicht geprüft"
+      ? available+" passend · "+locked+" wegen Level/Komponente gesperrt · "+unverified+" nicht geprüft"
       : "Noch keine redaktionellen Ausrüstungs-Builds hinterlegt.";
     const visible=buildButtons.filter(button=>!button.hidden);
     if(buildEmpty)buildEmpty.hidden=visible.length>0;
@@ -174,6 +184,8 @@ const { guide, operatorName, preview, localized } = model;
       document.querySelectorAll<HTMLElement>("[data-build-panel]").forEach(panel=>panel.hidden=true);
     }
   }
+  // Start on the highest crafting grade, even when the browser restores form state.
+  if(factory)factory.value=DEFAULT_FACTORY_COMPONENT;
   level?.addEventListener("change",updateConfig);
   factory?.addEventListener("change",updateConfig);
   showAllBuilds?.addEventListener("change",updateConfig);

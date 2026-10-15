@@ -89,22 +89,73 @@ Die offizielle SKPORT-Wiki enthält für alle 258 Gear-Einträge `Stats`, aber n
 - Offizielle Blaupausen-Freischalttexte werden mitgeführt, aber nicht automatisch zu einer subjektiven Progressions- oder Build-Empfehlung verarbeitet.
 - Die einmaligen Diagnose-Workflows sind nach Prüfung entfernt worden. Die allgemeine Import-Action bleibt manuell ausführbar.
 
-## Build-Finder: geprüfte Level- und Fabrikverfügbarkeit
+## Build-Finder: sieben Komponentenstufen statt pauschaler Fabrikfortschritt
 
-Der Filter in `OperatorEquipment.astro` verwendet das **höchste offizielle Gear-Level** aus den vier Bestandteilen eines redaktionellen Builds und optional das höhere redaktionell angegebene `availableFromLevel`. Daraus wird **keine** Story- oder Fabrikfreischaltung abgeleitet.
+Der Build-Finder und künftig weitere Endfield-Frameworks beziehen ihre gemeinsame
+Progressionsdefinition aus `src/lib/endfield/buildFinder.mjs`. Diese Klassifikation
+wurde redaktionell anhand der Komponenten festgelegt. **Offizielle SKPORT-IDs**,
+**WebP-Bilder** und **Standard-Herstellungsrezepte** stammen aus unserer lokalen
+Wiki-Datenbank. Es werden keine anderen Wikis benötigt.
 
-Für eine bestätigte Fabrik-Freischaltung müssen beide Felder im redaktionellen Guide stehen:
+| Tier | Komponentenname auf der Website | Offizielle Item-ID | Gear-Level | Spielphase |
+| --- | --- | --- | --- | --- |
+| 1 | Amethyst-Komponente | 525 | 20/28 | Early-Game |
+| 2 | Ferrium-Komponente | 526 | 36 | Early-Game |
+| 3 | Cryston-Komponente | 527 | 50 | Early-Game |
+| 4 | Xiranit-Komponente | 528 | 60/70 | Mid-Game |
+| 5 | Cuprium-Komponente | 747 | 70 | Mid-Game |
+| 6 | Hetonit-Komponente | 844 | 70 | End-Game |
+| 7 | Pyrrolit-Komponente | 1067 | 70 | End-Game |
+
+**Standardwert im Build-Finder ist immer Pyrrolit**, die letzte verfügbare
+Komponentenstufe. Das Ausrüstungslevel ist separat auf Level 70 vorausgewählt.
+Alle sieben Einträge sind auswählbar und nach Early-/Mid-/End-Game gruppiert.
+
+### Automatische Einstufung eines Builds
+
+1. Die vier ID-basierten Ausrüstungsteile des **redaktionellen Builds** werden
+   anhand der offiziellen lokalen Detaildaten geladen.
+2. Der Finder prüft für jedes Teil ausschließlich das dokumentierte
+   **Standard-Herstellungsrezept**. Er ermittelt daraus die höchste Komponentenstufe.
+   Stock Bills sind **keine** Komponentenstufe.
+3. Unabhängig davon gilt das höchste offizielle Gear-Level der vier Teile oder
+   ein noch höheres redaktionelles `availableFromLevel`.
+4. Die vier Level-10-Basic-Gear-Teile bestehen ausschließlich aus Origocrust
+   und Wood; sie zählen als **Vorstufe vor Amethyst**, ohne einen achten Eintrag
+   in der Fabrikauswahl hinzuzufügen.
+5. Falls ein Material unbekannt, ein Rezept nicht vollständig oder ein
+   Ausrüstungsteil nicht validiert ist, lautet der Status `unverified`.
+6. **Story- und Facility-Freischaltungen sind getrennte Voraussetzungen.**
+   Komponentenstufe und Ausrüstungslevel beweisen keine Story-Freigabe.
+   Dafür dokumentiert der Guide-Autor optional den konkreten Nachweis:
 
 ```yaml
-factoryStage: fortgeschritten # einstieg | fortgeschritten | maximal
-factoryUnlock: "Konkreter, geprüfter Nachweis über Bauplan-/Story-/Fabrik-Freischaltung"
+equipment:
+  builds:
+    # Für reale Builds die IDs erst nach eigener Empfehlung eintragen.
+    - id: beispiel
+      title: "Nur ein Schema-Beispiel"
+      role: support
+      items: ["1246", "1245", "1244", "1243"]
+      availableFromLevel: 70
+      storyUnlock: "Belegte Story-/Blaupausen-/Facility-Voraussetzung"
 ```
 
-Die Kategorien Einstieg/Fortgeschritten/Maximal sind eine **redaktionelle Klassifikation**, keine SKPORT-Werte. Ohne gültige Daten für alle vier Ausrüstungsteile und ohne beide redaktionellen Freischaltungsfelder kennzeichnet die UI den Build als **Freischaltung ungeklärt** und zeigt ihn standardmäßig nicht als verfügbar an. Die gezeigten Namen/Stufen sind nur Schema-Beispiele, keine echten Empfehlungen.
+**Wichtig:** Das obige YAML ist ausschließlich ein Syntaxbeispiel. Es stellt
+keine getestete Build-Empfehlung und keine verifizierte Freischaltung dar.
+Ohne `storyUnlock` bleibt die Story-Verfügbarkeit ausdrücklich **ungeklärt**.
+Sobald Level und Komponenten erfüllt sind, wird ein Build deshalb noch nicht
+automatisch als verfügbar bezeichnet.
 
-Ein zu niedriges Level oder ein niedrigerer Fabrikstand sperrt einen ansonsten geprüften Build. Bereits erfasste redaktionelle Builds können per Checkbox weiterhin zur Ansicht eingeblendet werden. Der Finder erstellt weder eigene Meta-Builds noch erfindet er fehlende Freischaltungen. Automatische Story-Logik kann folgen, sobald die offiziellen SKPORT-Daten eindeutige Meilensteine liefern.
+Je nach Auswahl weist die UI „Passend“, „Level zu niedrig“, „Komponente fehlt“,
+„Story ungeklärt“ oder „Rezept/Daten ungeklärt“ aus. Gesperrte und ungeprüfte
+redaktionelle Builds können durch den expliziten Schalter eingeblendet werden.
+Persönliche Builds und Team-Empfehlungen werden weiterhin ausschließlich in
+`src/content/operator-guides/<slug>.md` gepflegt.
 
-**Tests:** `scripts/endfield/build-finder.test.mjs` läuft über `npm run test:endfield`.
+**Tests:** `scripts/endfield/build-finder.test.mjs` prüft alle sieben
+Komponenten-IDs, die 258 offiziellen Standardrezepte, gemischte vierteilige
+Builds, die Level-10-Ausnahme sowie ungeklärte Story-Voraussetzungen.
 
 ## Bilder lokal sichern (ohne GIF/Video)
 

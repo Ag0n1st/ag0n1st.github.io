@@ -4,7 +4,7 @@ import ItemIcon from "../../endfield/ItemIcon.astro";
 import MaterialCosts from "../../endfield/MaterialCosts.astro";
 import {resolveOfficialItem} from "../../../lib/endfield/itemCatalog";
 import {getOfficialGear} from "../../../lib/endfield/equipmentDetails";
-import {FACTORY_LABELS} from "../../../lib/endfield/buildFinder.mjs";
+import {FACTORY_COMPONENT_STAGES, DEFAULT_FACTORY_COMPONENT, FACTORY_LABELS, getBuildRequirements} from "../../../lib/endfield/buildFinder.mjs";
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
@@ -14,43 +14,51 @@ const officialBuilds=builds.map(build=>{
    const catalog=resolveOfficialItem(reference,"Gear");
    return {reference,catalog,detail:catalog?getOfficialGear(catalog.id):undefined};
  });
- const allPartsVerified=parts.length===4 && parts.every(part=>
-   part.detail?.status==="verified" && Number.isSafeInteger(part.detail.level) && (part.detail.level??0)>0
- );
- // Never infer factory unlocks from level, region or the existence of a recipe.
- const requiredLevel=allPartsVerified
-   ? Math.max(build.availableFromLevel??0,...parts.map(part=>part.detail?.level??0))
-   : null;
- return {...build,parts,requirements:{
-   partCount:parts.length,requiredLevel,allPartsVerified,
-   factoryStage:build.factoryStage??null,
-   hasFactoryEvidence:Boolean(build.factoryUnlock?.trim()),
+ const requirements=getBuildRequirements(parts.map(part=>part.detail),{
+   availableFromLevel:build.availableFromLevel,
+   storyUnlock:build.storyUnlock,
    preview
- }};
+ });
+ return {...build,parts,requirements};
 });
 ---
 <section class="op-section" id="ausruestung">
         <h2>Ausrüstung</h2>
         <div class="op-divided">
           <h3>Build-Finder</h3>
-          <p class="op-section-intro">Filtert vorhandene Guide-Builds nach dem offiziellen Level aller vier Ausrüstungsteile und einer separat geprüften Freischaltung. Noch nicht belegte Builds werden nicht als verfügbar angezeigt.</p>
+          <p class="op-section-intro">Filtert deine Ausrüstungs-Builds nach Level und der höchsten Komponente aus den offiziellen SKPORT-Herstellungsrezepten. Story- und Blaupausen-Freischaltungen werden getrennt geprüft.</p>
           <div class="op-two">
             <label class="op-cardlet" style="font-size:12px">Operator- / Ausrüstungslevel
-              <select class="op-select" id="op-level"><option>70</option><option>60</option><option>50</option></select>
+              <select class="op-select" id="op-level">
+                {[70,60,50,36,28,20,10].map(value=><option value={value} selected={value===70}>Level {value}</option>)}
+              </select>
             </label>
-            <label class="op-cardlet" style="font-size:12px">Fabrikfortschritt (redaktionell geprüft)
-              <select class="op-select" id="op-factory"><option value="einstieg">Einstieg</option><option value="fortgeschritten" selected>Fortgeschritten</option><option value="maximal">Vollständig ausgebaut</option></select>
+            <label class="op-cardlet" style="font-size:12px">Fabrikfortschritt · höchste herstellbare Komponente
+              <span class="op-factory-select-row">
+                <img id="op-factory-icon" src={`/images/endfield/items/${FACTORY_COMPONENT_STAGES.at(-1)?.itemId}.webp`} alt="" width="34" height="34" loading="lazy" />
+                <select class="op-select" id="op-factory">
+                  {["Early-Game","Mid-Game","End-Game"].map(phase=>
+                    <optgroup label={phase}>
+                      {FACTORY_COMPONENT_STAGES.filter(stage=>stage.phase===phase).map(stage=>
+                        <option value={stage.id} selected={stage.id===DEFAULT_FACTORY_COMPONENT}>
+                          {stage.label} · Level {stage.levels.join("/")}
+                        </option>
+                      )}
+                    </optgroup>
+                  )}
+                </select>
+              </span>
             </label>
           </div>
           <div class="op-notice" style="margin-top:12px">
-            Ausgewählt: <strong id="op-build-config">Lv. 70 · Fortgeschritten</strong>
+            Ausgewählt: <strong id="op-build-config">Lv. 70 · Pyrrolit-Komponente · End-Game</strong>
             <p class="op-build-progress-status" id="op-build-results" role="status" aria-live="polite">Prüfe vorhandene Guide-Builds …</p>
             <label class="op-build-show-all">
               <input id="op-build-show-all" type="checkbox" checked={preview} />
               Auch noch gesperrte oder ungeprüfte Builds anzeigen
             </label>
           </div>
-          <p class="op-muted">Die drei Fabrikstufen sind eine redaktionelle Einordnung, keine offiziellen SKPORT-Meilensteine. Eine Freischaltung gilt nur dann als geprüft, wenn sie im jeweiligen Build ausdrücklich dokumentiert ist.</p>
+          <p class="op-muted">Die Komponentenreihenfolge ist unsere Progressionsabstufung. Die benötigte Stufe je Build ergibt sich aus den offiziellen Standardrezepten. Eine Komponente allein bestätigt nicht, dass die erforderliche Story, Facility oder Blaupause bereits freigeschaltet ist.</p>
           <div class="op-notice op-gear-disclaimer" style="margin-top:12px"><strong>Hinweis zur Ausrüstung:</strong> Achtet bei der Ausrüstung grundsätzlich darauf, Ausrüstungsteile zu nutzen, die das Haupt- und Sekundärattribut des jeweiligen Operators erhöhen. Das gilt besonders für Builds auf niedrigeren Leveln.</div>
           {guide.equipment.generalNotes && <p class="op-body-copy">{guide.equipment.generalNotes}</p>}
         </div>
@@ -63,8 +71,17 @@ const officialBuilds=builds.map(build=>{
               <div class="op-subtitle"><h3 style="margin:0">{b.title}</h3><span class="op-chip">{roleLabels[b.role]}</span></div>
               <div class="op-gear-parts">{b.parts.map(part=><div class="op-gear-part"><div class="op-mini-art"><ItemIcon id={part.catalog?.id??part.reference} /></div><small>{part.catalog?.name??part.reference}</small></div>)}</div>
               {b.availableFromLevel && <p><strong>Ab Level:</strong> {b.availableFromLevel}</p>}
-              {b.factoryUnlock && <p class="op-body-copy"><strong>Dokumentierte Freischaltung:</strong> {b.factoryUnlock}</p>}
-              {b.factoryStage && <p class="op-body-copy"><strong>Redaktionelle Fabrikstufe:</strong> {FACTORY_LABELS[b.factoryStage]}</p>}
+              <p class="op-body-copy">
+                <strong>Benötigte Komponente:</strong>{" "}
+                {b.requirements.requiredComponent==="starter" ? "Grundmaterialien (vor Amethyst)" :
+                  b.requirements.requiredComponent ? <>
+                    <img class="op-factory-inline-icon" src={`/images/endfield/items/${FACTORY_COMPONENT_STAGES.find(stage=>stage.id===b.requirements.requiredComponent)?.itemId}.webp`} alt="" width="26" height="26" loading="lazy" />
+                    {FACTORY_LABELS[b.requirements.requiredComponent]}
+                  </> : "Herstellungsrezept noch nicht zugeordnet"}
+              </p>
+              {b.storyUnlock
+                ? <p class="op-body-copy"><strong>Story-/Blaupausen-Freischaltung:</strong> {b.storyUnlock}</p>
+                : <p class="op-muted">Story-/Blaupausen-Freischaltung noch nicht redaktionell geprüft.</p>}
               {b.teamContext && <p class="op-body-copy"><strong>Einsatzbereich:</strong> {b.teamContext}</p>}
               {b.setBonusNotes && <p class="op-body-copy"><strong>Seteffekte:</strong> {b.setBonusNotes}</p>}
               <p class="op-body-copy"><strong>Bewertung:</strong> {b.evaluation || missing}</p>
