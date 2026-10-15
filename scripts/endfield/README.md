@@ -10,6 +10,17 @@
 
 Der gesamte Seitenaufruf funktioniert ohne Datenbank oder SKPORT-API-Verbindung. Bei vorhandenen lokalen Grafiken wird auch kein SKPORT-CDN benötigt.
 
+## Bestätigter Import zweier echter SKPORT-Operatoren
+
+- **Typhoeus**, offizieller Wiki-Eintrag `1173`, auf Basis des öffentlichen Exports vom 12.10.2026.
+- **Liino**, offizieller Wiki-Eintrag `1041`, auf Basis der anonymen Browser-Abfrage vom 15.10.2026: **6★ Electric Supporter, Polearm, TGCC**, vier Skills mit je zwölf Rang-/Meisterschaftsstufen, fünf Talentknoten, sieben Promotions-/Outfittings, fünf Potenziale und 22 Materialnamen.
+- Bei Liino besitzen der Attribut-Talentknoten und die Potenziale **zusätzliche Metadatentabellen**. `import-operator.mjs` identifiziert deshalb die eigentlichen Tabellen anhand ihrer Struktur und bewahrt weitere Tabellen gesondert auf, statt sie mit Skill-/Potenzialwerten zu vermischen.
+- Die Liino-Grafiken wurden wie bei Typhoeus in WebP komprimiert und im Repository gespeichert. Alle angezeigten Datenseiten werden aus lokalen Dateien generiert.
+- **Liino-Guide-Vorschau:** `src/content/operator-guides/liino.md` mit `status: preview`. Die eigenen Wertungen, Teams und Builds sind bewusst noch nicht ausgefüllt.
+- **Deutsche Übersetzungen:** `src/data/endfield/locales/de/liino.json`. Die englischen offiziellen Texte bleiben in der Rohdatendatei zur Gegenprüfung erhalten.
+
+Ein öffentliches, **anonymes** Abrufen einzelner Operatoren wurde mit `scripts/endfield/probe-liino-wiki.mjs` und dem GitHub-Workflow `probe-liino-wiki.yml` erfolgreich getestet. Dies ist noch kein vollständig automatisierter Sammelimport für sämtliche Operatoren. Für weitere Operatoren müssen ihre offiziellen IDs ermittelt und die Extraktion überprüft werden.
+
 ## Neuer allgemeiner Operator-Importer
 
 `scripts/endfield/import-operator.mjs` benötigt keine fest eincodierte Operator-ID, keine vorab bekannte Tab-ID und keinen Typhoeus-Namen. Er sucht die Kapitel anhand ihrer Widget-Titel (Combat Skills, Basic Information, Level Up, Talent Nodes, Elite, Potential Phases) und prüft jede referenzierte Dokument-/Tabellen-ID.
@@ -35,9 +46,9 @@ node scripts/endfield/import-operator.mjs \
 
 **`1234` ist lediglich eine Beispiel-ID!** Die tatsächliche öffentliche Item-ID muss vorher aus der Wiki ermittelt werden. Der Import bricht bei unpassender ID, fehlenden Skilltypen, Level-/Materialreferenzen oder unbekannten Tabellenschemata ab, statt Werte zu erfinden. Bei Operatoren mit einer anderen Wiki-Struktur muss der Parser gegebenenfalls erweitert werden.
 
-Die zwei erzeugten Dateien werden anschließend lokal mit `npm run build` geprüft und in GitHub eingecheckt. Erst dann sind ihre Spieldaten im Astro-Build verfügbar. Eine automatische Anmeldung oder ein neues API-Konto ist nicht vorgesehen. **Das direkte automatische Abrufen der öffentlichen SKPORT-Daten ohne vorab gespeicherte JSON-Antwort ist noch nicht implementiert.**
+Die zwei erzeugten Dateien werden anschließend lokal mit `npm run build` geprüft und in GitHub eingecheckt. Erst dann sind ihre Spieldaten im Astro-Build verfügbar. Eine automatische Anmeldung oder ein neues API-Konto ist nicht vorgesehen. Der öffentliche Browser-Abruf wurde für Liino getestet; ein generischer, selbstständig sämtliche Operatoren aktualisierender Abruf fehlt noch.
 
-**Tests:** `npm run test:endfield`. Die generischen Tests nutzen einen zweiten synthetischen Operator mit ganz anderer ID und dynamischen Tab-IDs. Das beweist die fehlende Typhoeus-Festverdrahtung, noch nicht die Kompatibilität mit einem zweiten echten SKPORT-Operator.
+**Tests:** `npm run test:endfield`. Die generischen Tests nutzen zusätzlich synthetische Fehlerfälle. Darüber hinaus wurde die vollständige Extraktion **mit dem echten Liino-Wiki-Eintrag** bestätigt.
 
 ## Bilder lokal sichern (ohne GIF/Video)
 
@@ -53,13 +64,13 @@ Alternativ: <https://github.com/Ag0n1st/ag0n1st.github.io/actions/workflows/sync
 
 Bereits gespeicherte Assets werden standardmäßig nicht überschrieben. Die Website bevorzugt lokale Kopien; andernfalls bleiben die in den importierten Daten hinterlegten SKPORT-CDN-URLs als Übergangslösung bestehen.
 
-Für Typhoeus sind **Cover, Illustration und vier Skill-Icons** bereits erfolgreich als WebP gesichert. Die sechs Dateien benötigen zusammen rund **0,74 MB statt zuvor 4,70 MB**. GIFs, Videos und Animationen werden nicht importiert.
+Für **Typhoeus und Liino** sind jeweils Cover, Illustration und vier Skill-Icons als WebP im Repository gesichert. Die sechs Typhoeus-Dateien benötigen zusammen rund **0,74 MB statt zuvor 4,70 MB**. GIFs, Videos und Animationen werden nicht importiert.
 
 **Bildrechte:** Die Rechte an offiziellen Spielgrafiken liegen weiterhin bei den jeweiligen Rechteinhabern. Die Wiki ist als Quelle gekennzeichnet; das gilt nicht als eigene Nutzungsrechtsfreigabe.
 
 ## Weiterhin wichtig
 
-- Deutsch ist bei Typhoeus eine **redaktionelle Übersetzung** der englischen SKPORT-Daten; kein offizielles deutsches Skript.
+- Deutsch ist bei **Typhoeus und Liino** eine **redaktionelle Übersetzung** der englischen SKPORT-Daten; kein offiziell bestätigtes deutsches Skript.
 - SKPORT-Werte werden nicht mit deiner eigenen Skill-Priorität oder deinen Builds vermischt.
 - Nach einem Import braucht es einen neuen GitHub-Build, um aktualisierte Webseiten zu veröffentlichen.
 - Fehlt die API, bleiben die letzte geprüfte JSON-Version und die bereits generierte Website nutzbar.
