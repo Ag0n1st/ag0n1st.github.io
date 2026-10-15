@@ -194,6 +194,116 @@
         "vertical-route"
       ],
       "limitations": "No item-ID association."
+    },
+    {
+      "id": "talos-city-route",
+      "tier": "community",
+      "title": "Endfield Talos Wiki: Wuling City",
+      "url": "https://endfield.wiki.gg/wiki/Wuling_City",
+      "accessed": "2026-10-15",
+      "supports": [
+        "entry-route-or-event-requirement"
+      ],
+      "limitations": "Entering from another area is geographic, NOT proof of a mandatory story quest gate."
+    },
+    {
+      "id": "talos-qingbo-route",
+      "tier": "community",
+      "title": "Endfield Talos Wiki: Qingbo Stockade",
+      "url": "https://endfield.wiki.gg/wiki/Qingbo_Stockade_%28location%29",
+      "accessed": "2026-10-15",
+      "supports": [
+        "entry-route-or-event-requirement"
+      ],
+      "limitations": "Entering from another area is geographic, NOT proof of a mandatory story quest gate."
+    },
+    {
+      "id": "talos-marker-route",
+      "tier": "community",
+      "title": "Endfield Talos Wiki: Marker Stone",
+      "url": "https://endfield.wiki.gg/wiki/Marker_Stone",
+      "accessed": "2026-10-15",
+      "supports": [
+        "entry-route-or-event-requirement"
+      ],
+      "limitations": "Entering from another area is geographic, NOT proof of a mandatory story quest gate."
+    },
+    {
+      "id": "talos-marker-interiors-route",
+      "tier": "community",
+      "title": "Endfield Talos Wiki: Marker Stone Interiors",
+      "url": "https://endfield.wiki.gg/wiki/Marker_Stone_Interiors",
+      "accessed": "2026-10-15",
+      "supports": [
+        "entry-route-or-event-requirement"
+      ],
+      "limitations": "Entering from another area is geographic, NOT proof of a mandatory story quest gate."
+    },
+    {
+      "id": "talos-sword-route",
+      "tier": "community",
+      "title": "Endfield Talos Wiki: Sword Vault Dale",
+      "url": "https://endfield.wiki.gg/wiki/Sword_Vault_Dale",
+      "accessed": "2026-10-15",
+      "supports": [
+        "entry-route-or-event-requirement"
+      ],
+      "limitations": "Entering from another area is geographic, NOT proof of a mandatory story quest gate."
+    },
+    {
+      "id": "talos-yinglung-route",
+      "tier": "community",
+      "title": "Endfield Talos Wiki: Yinglung Pass",
+      "url": "https://endfield.wiki.gg/wiki/Yinglung_Pass",
+      "accessed": "2026-10-15",
+      "supports": [
+        "entry-route-or-event-requirement"
+      ],
+      "limitations": "Entering from another area is geographic, NOT proof of a mandatory story quest gate."
+    },
+    {
+      "id": "talos-exclusion-route",
+      "tier": "community",
+      "title": "Endfield Talos Wiki: North Wuling Exclusion Zone",
+      "url": "https://endfield.wiki.gg/wiki/North_Wuling_Exclusion_Zone",
+      "accessed": "2026-10-15",
+      "supports": [
+        "entry-route-or-event-requirement"
+      ],
+      "limitations": "Entering from another area is geographic, NOT proof of a mandatory story quest gate."
+    },
+    {
+      "id": "talos-snowy-route",
+      "tier": "community",
+      "title": "Endfield Talos Wiki: Snowy Forest",
+      "url": "https://endfield.wiki.gg/wiki/Snowy_Forest",
+      "accessed": "2026-10-15",
+      "supports": [
+        "entry-route-or-event-requirement"
+      ],
+      "limitations": "Entering from another area is geographic, NOT proof of a mandatory story quest gate."
+    },
+    {
+      "id": "talos-painting-route",
+      "tier": "community",
+      "title": "Endfield Talos Wiki: Si's Painting",
+      "url": "https://endfield.wiki.gg/wiki/Si%27s_Painting",
+      "accessed": "2026-10-15",
+      "supports": [
+        "entry-route-or-event-requirement"
+      ],
+      "limitations": "Entering from another area is geographic, NOT proof of a mandatory story quest gate."
+    },
+    {
+      "id": "talos-inky-event",
+      "tier": "community",
+      "title": "Endfield Talos Wiki: All the Inky Hues",
+      "url": "https://endfield.wiki.gg/wiki/All_the_Inky_Hues",
+      "accessed": "2026-10-15",
+      "supports": [
+        "entry-route-or-event-requirement"
+      ],
+      "limitations": "Entering from another area is geographic, NOT proof of a mandatory story quest gate."
     }
   ],
   "claims": [
@@ -726,6 +836,136 @@
       ],
       "confidence": "game-data-mirror",
       "validation": "component-not-story"
+    },
+    {
+      "areaId": "snowy-forest",
+      "unlockClaim": "Optional area can be accessed through Typhoeus narrative event A Winter Dream Fogged Deep in the Woods",
+      "sourceIds": [
+        "talos-snowy-route"
+      ],
+      "confidence": "community-wiki",
+      "validation": "not-verified-in-official"
+    },
+    {
+      "areaId": "sis-painting",
+      "unlockClaim": "All the Inky Hues event requires reaching main mission Chapter II Process VIII: Enter the Painted World and objective Meet up with Si at the designated location; event participation requirement, NOT necessarily earliest region access",
+      "sourceIds": [
+        "talos-inky-event"
+      ],
+      "confidence": "community-wiki",
+      "validation": "event-gate-not-proven-area-unlock"
+    },
+    {
+      "areaId": "marker-stone",
+      "unlockClaim": "Major portion of Chapter II Process IV takes place in Marker Stone; does not prove exact first access",
+      "sourceIds": [
+        "talos-marker-route"
+      ],
+      "confidence": "community-wiki",
+      "validation": "story-location-not-area-unlock"
+    },
+    {
+      "areaId": "yinglung-pass",
+      "unlockClaim": "Wuling City has a geographic route to Yinglung Pass; Chapter II Process VII is associated with the area, but actual entry trigger is unverified",
+      "sourceIds": [
+        "talos-yinglung-route",
+        "talos-nexus"
+      ],
+      "confidence": "community-wiki",
+      "validation": "not-verified-in-official"
+    },
+    {
+      "areaId": "qingbo-stockade",
+      "unlockClaim": "Accessible via Wuling City; associated with Chapter II Process III. Access mission trigger not independently confirmed",
+      "sourceIds": [
+        "talos-qingbo-route",
+        "talos-nexus"
+      ],
+      "confidence": "community-wiki",
+      "validation": "not-verified-in-official"
+    }
+  ],
+  "areaEntranceHints": [
+    {
+      "areaId": "wuling-city",
+      "fromAreaId": "jingyu-valley",
+      "sourceIds": [
+        "talos-city-route"
+      ],
+      "kind": "geographic-entrance",
+      "storyGateVerified": false
+    },
+    {
+      "areaId": "qingbo-stockade",
+      "fromAreaId": "wuling-city",
+      "sourceIds": [
+        "talos-qingbo-route"
+      ],
+      "kind": "geographic-entrance",
+      "storyGateVerified": false
+    },
+    {
+      "areaId": "marker-stone",
+      "fromAreaId": "wuling-city",
+      "sourceIds": [
+        "talos-marker-route"
+      ],
+      "kind": "geographic-entrance",
+      "storyGateVerified": false
+    },
+    {
+      "areaId": "marker-stone-interiors",
+      "fromAreaId": "marker-stone",
+      "sourceIds": [
+        "talos-marker-interiors-route"
+      ],
+      "kind": "geographic-entrance",
+      "storyGateVerified": false
+    },
+    {
+      "areaId": "sword-vault-dale",
+      "fromAreaId": "qingbo-stockade",
+      "sourceIds": [
+        "talos-sword-route"
+      ],
+      "kind": "geographic-entrance",
+      "storyGateVerified": false
+    },
+    {
+      "areaId": "yinglung-pass",
+      "fromAreaId": "wuling-city",
+      "sourceIds": [
+        "talos-yinglung-route"
+      ],
+      "kind": "geographic-entrance",
+      "storyGateVerified": false
+    },
+    {
+      "areaId": "north-wuling-exclusion-zone",
+      "fromAreaId": "yinglung-pass",
+      "sourceIds": [
+        "talos-exclusion-route"
+      ],
+      "kind": "geographic-entrance",
+      "storyGateVerified": false
+    },
+    {
+      "areaId": "snowy-forest",
+      "fromAreaId": "yinglung-pass",
+      "sourceIds": [
+        "talos-snowy-route"
+      ],
+      "kind": "geographic-entrance",
+      "storyGateVerified": false
+    },
+    {
+      "areaId": "sis-painting",
+      "fromAreaId": "north-wuling-exclusion-zone",
+      "sourceIds": [
+        "talos-painting-route"
+      ],
+      "kind": "geographic-entrance",
+      "storyGateVerified": false
     }
   ]
 }
