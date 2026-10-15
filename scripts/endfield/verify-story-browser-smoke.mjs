@@ -15,6 +15,7 @@ try {
  await page.locator("#op-story-region").selectOption("wuling");
  await page.locator("#op-story-areas-panel summary").click();
  await page.locator('[data-story-area="wuling-city"]').check();
+ await page.locator(".op-story-extra summary").click();
  await page.locator("#op-authority-level").fill("12");
  await page.locator("#op-authority-level").dispatchEvent("change");
  const b=await page.goto(origin+"/endfield/operatoren/typhoeus/",{waitUntil:"domcontentloaded"});
