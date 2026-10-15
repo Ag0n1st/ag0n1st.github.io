@@ -7,6 +7,7 @@ import {getOfficialGear} from "../../../lib/endfield/equipmentDetails";
 import {getGearBlueprintResearch} from "../../../lib/endfield/gearBlueprintResearch";
 import storyAreaRegistry from "../../../data/endfield/progression/story-areas.json";
 import {FACTORY_COMPONENT_STAGES, DEFAULT_FACTORY_COMPONENT, FACTORY_LABELS, getBuildRequirements} from "../../../lib/endfield/buildFinder.mjs";
+import { MAX_AUTHORITY_LEVEL } from "../../../lib/endfield/buildStoryProgress.mjs";
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
@@ -87,8 +88,8 @@ const officialBuilds=builds.map(build=>{
             <details class="op-details op-story-extra">
               <summary>Weitere Fortschritte · Autoritätslevel und Wuling-Warenumverteilung</summary>
               <div class="op-two op-story-extra-fields">
-                <label>Autoritätslevel (max. 60)
-                  <input class="op-select" id="op-authority-level" type="number" min="0" max="60" step="1" placeholder="Nicht angegeben" inputmode="numeric" />
+                <label>Autoritätslevel (max. {MAX_AUTHORITY_LEVEL})
+                  <input class="op-select" id="op-authority-level" type="number" min="0" max={MAX_AUTHORITY_LEVEL} step="1" placeholder="Nicht angegeben" inputmode="numeric" />
                 </label>
                 <label>Wuling-Warenumverteilung
                   <select class="op-select" id="op-stock-level">
