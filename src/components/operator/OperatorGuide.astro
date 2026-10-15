@@ -19,6 +19,7 @@ const officialPotentials = new Map((extraData?.potentials ?? []).map(p => [p.lev
 const combatTalents = extraData?.talents.filter(t => t.category === "combat") ?? [];
 const shipTalents = extraData?.talents.filter(t => t.category === "ship") ?? [];
 const attributeNodes = extraData?.talents.filter(t => t.category === "attribute") ?? [];
+const otherTalents = extraData?.talents.filter(t => t.category === "other") ?? [];
 function formatCost(items: ImportedItemCost[]):string {
   if (!items?.length) return "–";
   return items.map(item => (localized?.materials[item.id] ?? extraData?.materials[item.id]?.name ?? "Item "+item.id) +
@@ -322,7 +323,8 @@ const potentialByLevel = new Map(guide.potentials.entries.map(p=>[p.level,p]));
         {[
           {talentCategory:"attribute",title:"Attribut-Talent",talentLevels:attributeNodes},
           {talentCategory:"combat",title:"Combat Talents",talentLevels:combatTalents},
-          {talentCategory:"ship",title:"Schiffstalente",talentLevels:shipTalents}
+          {talentCategory:"ship",title:"Schiffstalente",talentLevels:shipTalents},
+          {talentCategory:"other",title:"Weitere Talente (noch nicht kategorisiert)",talentLevels:otherTalents}
         ].map(({talentCategory,title,talentLevels})=><div class="op-divided">
           <h3>{title}</h3>
           {talentLevels.length ? <div class="op-two">
@@ -330,7 +332,7 @@ const potentialByLevel = new Map(guide.potentials.entries.map(p=>[p.level,p]));
                 <div class="op-line"><div class="op-mini-art">[Icon]</div><strong>{localized?.talents[t.id]?.name || t.name}</strong></div>
                 <p class="op-muted" style="font-size:11px">{localized ? "SKPORT · deutsche Übersetzung" : "SKPORT Original · Englisch"}</p>
                 <p class="op-body-copy">{trTalent(t.id,t.levels.length-1,t.levels.at(-1)?.effect || "")}</p>
-                {talentCategory !== "attribute" && guide.skills[talentCategory === "combat" ? "combatTalents" : "shipTalents"].find(guideTalent => guideTalent.talentId === t.id)?.evaluation &&
+                {(talentCategory === "combat" || talentCategory === "ship") && guide.skills[talentCategory === "combat" ? "combatTalents" : "shipTalents"].find(guideTalent => guideTalent.talentId === t.id)?.evaluation &&
                 <p class="op-body-copy"><strong>Bewertung:</strong> {guide.skills[talentCategory === "combat" ? "combatTalents" : "shipTalents"].find(guideTalent => guideTalent.talentId === t.id)?.evaluation}</p>}
                 <details class="op-details"><summary>Alle Talentstufen, Voraussetzungen & Materialien</summary>
                   <div class="op-details-body op-table-wrap"><table class="op-table">
