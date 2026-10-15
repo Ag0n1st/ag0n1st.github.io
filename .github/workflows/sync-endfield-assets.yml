@@ -31,6 +31,8 @@ jobs:
         run: npm install --no-save --package-lock=false sharp
       - name: Compress large static images to WebP
         run: node scripts/endfield/optimize-assets.mjs
+      - name: Enforce 100 MB Endfield project budget
+        run: node scripts/endfield/check-budget.mjs
       - name: Commit only static image assets
         id: commit
         shell: bash

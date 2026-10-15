@@ -1,9 +1,10 @@
 ---
 import type { OperatorGuideModel } from "../../../lib/endfield/operatorGuideModel";
+import MaterialCosts from "../../endfield/MaterialCosts.astro";
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
-const { guide, gameData, extraData, trTerm, trMetric, trReq, trPromotion, formatCost } = model;
+const { guide, gameData, extraData, trTerm, trMetric, trReq, trPromotion, localized } = model;
 ---
 <section class="op-section" id="operator-kit">
         <h2>Operator Kit</h2>
@@ -27,7 +28,7 @@ const { guide, gameData, extraData, trTerm, trMetric, trReq, trPromotion, format
             <details class="op-details"><summary>Materialkosten nach Operator-Level</summary>
               <div class="op-details-body op-table-wrap"><table class="op-table">
                 <thead><tr><th>Operator-Level</th><th>Materialien laut Wiki</th></tr></thead>
-                <tbody>{extraData.attributes.levelCosts.map(row=><tr><td>{row.level}</td><td>{formatCost(row.items)}</td></tr>)}</tbody>
+                <tbody>{extraData.attributes.levelCosts.map(row=><tr><td>{row.level}</td><td><MaterialCosts items={row.items} translatedNames={localized?.materials} fallbackNames={extraData.materials} /></td></tr>)}</tbody>
               </table></div>
             </details>
           </> : <p class="op-placeholder">[Attributwerte werden nach dem SKPORT-Import angezeigt]</p>}
@@ -39,7 +40,7 @@ const { guide, gameData, extraData, trTerm, trMetric, trReq, trPromotion, format
             <thead><tr><th>Aufstieg</th><th>Freischaltung</th><th>Voraussetzung</th><th>Materialien</th></tr></thead>
             <tbody>{extraData ? extraData.promotions.map(p=><tr>
               <td><strong>{trPromotion(p.name)?.name ?? p.name}</strong></td><td>{trPromotion(p.name)?.effect ?? p.effect}</td><td>{trReq(p.requirement)}</td>
-              <td>{formatCost(p.cost)}</td>
+              <td><MaterialCosts items={p.cost} translatedNames={localized?.materials} fallbackNames={extraData?.materials} /></td>
             </tr>) : [1,2,3,4,5].map(n=><tr><td>[Stufe {n}]</td><td>[Freischaltung]</td><td>[Level/Story]</td><td>[Materialien]</td></tr>)}</tbody>
           </table></div>
           {guide.operatorKit.progressionNotes && <p class="op-body-copy">{guide.operatorKit.progressionNotes}</p>}
