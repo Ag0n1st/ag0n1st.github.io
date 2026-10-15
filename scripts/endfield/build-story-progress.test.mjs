@@ -102,7 +102,7 @@ test("authority level is strictly capped to current in-game maximum 60",()=>{
  for(const value of [-1,60.1,61,200,NaN,null,undefined,"60"])
    assert.equal(validAuthorityLevel(value),false,"Invalid Authority value "+String(value));
  const gear=data.find(x=>x.acquisitionNotes?.includes("Authority Level 60 Reward")) ??
-  data.find(x=>x.acquisitionNotes?.some(v=>/^Authority Level \\d+ Reward$/.test(v)));
+  data.find(x=>x.acquisitionNotes?.some(v=>/^Authority Level [0-9]+ Reward$/.test(v)));
  const requirement=createGearAccessRequirement(gear,null);
  assert.equal(evaluateGearStoryAccess(requirement,progress("wuling",[],[],200)).status,"story-unverified");
  assert.equal(evaluateGearStoryAccess(requirement,progress("wuling",[],[],60)).status,"blueprint-unconfirmed");
