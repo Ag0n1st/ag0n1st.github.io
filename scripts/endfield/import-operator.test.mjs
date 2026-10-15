@@ -68,6 +68,19 @@ function makeFixture() {
       ["Talent","Effect","Prerequisite","Cost"],
       [title+" 1","An effect","E1",[["109",4]]]
     ],title);
+    if(i===0){
+      // The real Liino attribute talent contains a second one-row metadata table.
+      const document=documentMap[docId];
+      document.blockIds.push("metadata-table");
+      document.blockMap["meta-value"]=text("Bonus");
+      document.blockMap["metadata-table"]={kind:"table",table:{
+        rowIds:["meta-row"],columnIds:["a","b"],
+        cellMap:{
+          "meta-row_a":{childIds:["meta-value"]},
+          "meta-row_b":{text:{inlineElements:[{kind:"text",text:{text:"Additional attribute metadata"}}]}}
+        }
+      }};
+    }
   }
   register("Talent Nodes",{tabList:talentList,tabDataMap:talentMap});
   const eliteList=[],eliteMap={};
@@ -122,6 +135,7 @@ test("parses entirely different operator ID and dynamic widget/tab IDs",()=>{
   assert.deepEqual(extras.attributes.levels,["LV.1","LV.20","LV.40","LV.60","LV.80","LV.90"]);
   assert.equal(extras.attributes.mainAttribute,"Agility");
   assert.equal(extras.talents.length,5);
+  assert.deepEqual(extras.talents[0].supplementalTables[0][0],["Bonus","Additional attribute metadata"]);
   assert.equal(extras.promotions.length,7);
   assert.equal(extras.potentials.length,5);
   assert.equal(extras.materials["109"].name,"Protoprism");
