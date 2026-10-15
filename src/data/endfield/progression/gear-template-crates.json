@@ -1,0 +1,396 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "provider": "SKPORT Map Tools",
+    "url": "https://game.skport.com/map/endfield",
+    "endpoint": "/web/v1/game/endfield/map/mark/list",
+    "mapId": "map02",
+    "language": "en",
+    "snapshot": "2026-10-15"
+  },
+  "template": {
+    "id": "fc5fdd8cc5b2b77f9a1fdf1c94d5f738",
+    "name": "Gear Template Crate"
+  },
+  "markers": [
+    {
+      "markerId": "096049b0bd385d64491983dd3593cf15",
+      "areaId": "wuling-city",
+      "officialMapLevelId": "map02_lv002",
+      "position": {
+        "x": -1428.889,
+        "y": 332.9,
+        "z": -477.933
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "0970cb9c864ec8a161b1a312e04ae8bd",
+      "areaId": "sword-vault-dale",
+      "officialMapLevelId": "map02_lv006",
+      "position": {
+        "x": 63.47,
+        "y": 269.13968,
+        "z": -1856.97
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "0a291959655ca3b5d25517410d583e3b",
+      "areaId": "wuling-city",
+      "officialMapLevelId": "map02_lv002",
+      "position": {
+        "x": -711.36,
+        "y": 275.54105,
+        "z": -485.59
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "27627af48b14093bf8711adbf8815970",
+      "areaId": "jingyu-valley",
+      "officialMapLevelId": "map02_lv001",
+      "position": {
+        "x": -991.935,
+        "y": 226.69695,
+        "z": -1687.911
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "2bccd47dda9f40e17d8579190ac9f979",
+      "areaId": "qingbo-stockade",
+      "officialMapLevelId": "map02_lv003",
+      "position": {
+        "x": -217.89,
+        "y": 324.3272,
+        "z": -1341.92
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "2dfce2783e1fa8696a2d82f91b77d1b6",
+      "areaId": "wuling-city",
+      "officialMapLevelId": "map02_lv002",
+      "position": {
+        "x": -874.51,
+        "y": 249.23837,
+        "z": -172.98
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "39adc3d6ba1f74f8281e2d8aef8955f9",
+      "areaId": "jingyu-valley",
+      "officialMapLevelId": "map02_lv001",
+      "position": {
+        "x": -920.857,
+        "y": 260.8138,
+        "z": -965.468
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "47d25a35fad0f8e7c349920950c6315d",
+      "areaId": "snowy-forest",
+      "officialMapLevelId": "map02_lv009",
+      "position": {
+        "x": -68.07,
+        "y": 173.97343,
+        "z": 427.85
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "5391ac4d69dadd1a0ff7f9497f2af1b4",
+      "areaId": "sis-painting",
+      "officialMapLevelId": "map02_lv010",
+      "position": {
+        "x": 1089.6003,
+        "y": 341.4521,
+        "z": 984.95215
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "62017fbf3e6856ed0de17c2803a565ba",
+      "areaId": "marker-stone",
+      "officialMapLevelId": "map02_lv004",
+      "position": {
+        "x": -1361.06,
+        "y": 268.38727,
+        "z": -993.27
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "654cd8f307c479b47303d2a3f5277fb5",
+      "areaId": "wuling-city",
+      "officialMapLevelId": "map02_lv002",
+      "position": {
+        "x": -880.77,
+        "y": 278.34198,
+        "z": -678.31
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "7455bb131b7f96de15bf99bbeabc1798",
+      "areaId": "yinglung-pass",
+      "officialMapLevelId": "map02_lv007",
+      "position": {
+        "x": -564,
+        "y": 247.3544,
+        "z": 508.67712
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "79bea8b251f305432237e0297a478381",
+      "areaId": "wuling-city",
+      "officialMapLevelId": "map02_lv002",
+      "position": {
+        "x": -1188.53,
+        "y": 303.2448,
+        "z": -229.3
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "79c0bd516185e9880234039b6f489804",
+      "areaId": "wuling-city",
+      "officialMapLevelId": "map02_lv002",
+      "position": {
+        "x": -1299.55,
+        "y": 293.35,
+        "z": 24.15
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "7fb9ce4bb7c9d32a1fb1c57782e14ffe",
+      "areaId": "sword-vault-dale",
+      "officialMapLevelId": "map02_lv006",
+      "position": {
+        "x": 231.31,
+        "y": 154.89531,
+        "z": -1726.34
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "857e77d3ed4ba130e3acb7475a5d76fa",
+      "areaId": "jingyu-valley",
+      "officialMapLevelId": "map02_lv001",
+      "position": {
+        "x": -929.28,
+        "y": 226.8101,
+        "z": -1489.05
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "93a872a2579655ccb3d5378fa963bf20",
+      "areaId": "qingbo-stockade",
+      "officialMapLevelId": "map02_lv003",
+      "position": {
+        "x": -377.713,
+        "y": 271.20685,
+        "z": -1500.699
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "9e21f89bc2a80da0f06419720a9c32c7",
+      "areaId": "qingbo-stockade",
+      "officialMapLevelId": "map02_lv003",
+      "position": {
+        "x": -521.457,
+        "y": 269.13754,
+        "z": -1426.622
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "a6d379724963c925080d77ca7a715881",
+      "areaId": "snowy-forest",
+      "officialMapLevelId": "map02_lv009",
+      "position": {
+        "x": -29.07,
+        "y": 201.628,
+        "z": 416.86
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "a76be875c12c06f8fd620f7c359d505d",
+      "areaId": "marker-stone",
+      "officialMapLevelId": "map02_lv004",
+      "position": {
+        "x": -1709.9376,
+        "y": 283.45,
+        "z": -1202.05
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "a7a55f952a39daf5fa7e542ac6eab1c2",
+      "areaId": "marker-stone",
+      "officialMapLevelId": "map02_lv004",
+      "position": {
+        "x": -1358.4753,
+        "y": 275.5701,
+        "z": -1038.05
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "b75f14863a309a0ddb0c364f91be5008",
+      "areaId": "sis-painting",
+      "officialMapLevelId": "map02_lv010",
+      "position": {
+        "x": 1018.48035,
+        "y": 367.26608,
+        "z": 1133.1921
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "b8f2182d58513929bc373d51b6c519a1",
+      "areaId": "marker-stone-interiors",
+      "officialMapLevelId": "indie_dg007",
+      "position": {
+        "x": -49.7,
+        "y": 171.65424,
+        "z": 27.98127
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "ca83493608d6dae940dd53ca95c64acd",
+      "areaId": "yinglung-pass",
+      "officialMapLevelId": "map02_lv007",
+      "position": {
+        "x": -846.6,
+        "y": 260.1338,
+        "z": 565.66
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "d788bdef0dfcb1c549afcd1fa77a31ec",
+      "areaId": "wuling-city",
+      "officialMapLevelId": "map02_lv002",
+      "position": {
+        "x": -1270.802,
+        "y": 329.48575,
+        "z": -448.864
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "dd92ecdac62660ed110d73ab81916a15",
+      "areaId": "wuling-city",
+      "officialMapLevelId": "map02_lv002",
+      "position": {
+        "x": -1351.64,
+        "y": 314.72,
+        "z": -198.92418
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    },
+    {
+      "markerId": "fe2076c45d4fe7142bcf58d40275cfb9",
+      "areaId": "jingyu-valley",
+      "officialMapLevelId": "map02_lv001",
+      "position": {
+        "x": -791.7,
+        "y": 233.52701,
+        "z": -1245.09
+      },
+      "officialWikiItemId": null,
+      "publicDescription": null,
+      "containedGearIds": [],
+      "contentsVerification": "not-verified"
+    }
+  ],
+  "caution": "Exact crate positions and map levels are official; gear recipes contained inside them and their mission unlock requirements are not yet verified."
+}
