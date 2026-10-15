@@ -4,7 +4,7 @@
 # Alle echten Spielwerte kommen später aus dem separaten Endfield-Datenimport.
 operator: typhoeus
 displayName: Typhoeus
-status: draft
+status: preview
 
 overview:
   summary: ""
@@ -39,4 +39,4 @@ conclusion:
   skipIf: []
 ---
 
-<!-- Typhoeus wird trotz status: draft als einzige Layout-Vorschau veröffentlicht. Andere Entwürfe bleiben verborgen. -->
+<!-- Layout-Vorschau: Der Guide ist noch nicht redaktionell fertiggestellt. -->
