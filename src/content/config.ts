@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content";
+import { operatorGuideSchema } from "./operatorGuideSchema";
 
 const posts = defineCollection({
   type: "content",
@@ -13,4 +14,11 @@ const posts = defineCollection({
   }),
 });
 
-export const collections = { posts };
+// New operator-guide files are editorial Markdown entries. A leading underscore
+// (_template.md) is ignored by Astro and can be copied for each new operator.
+const operatorGuides = defineCollection({
+  type: "content",
+  schema: operatorGuideSchema,
+});
+
+export const collections = { posts, "operator-guides": operatorGuides };
