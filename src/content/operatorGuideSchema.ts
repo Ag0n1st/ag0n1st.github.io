@@ -87,7 +87,7 @@ export const operatorGuideSchema = z.object({
   operator: identifier,
   // Anzeigename, bis die offiziellen Operator-Metadaten importiert werden.
   displayName: z.string().trim().min(1).max(120).optional(),
-  status: z.enum(["draft", "published"]).default("draft"),
+  status: z.enum(["draft", "preview", "published"]).default("draft"),
   updatedAt: z.coerce.date().optional(),
   guideVideo: z.object({
     title: text.optional(),
