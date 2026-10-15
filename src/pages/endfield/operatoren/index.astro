@@ -25,7 +25,11 @@ const operators = entries.map(entry => ({
     <div class="op-grid" aria-label="Operatoren">
       {operators.map((operator) => (
         <a class="op-card" href={`/endfield/operatoren/${operator.slug}/`} aria-label={`Guide für ${operator.name} öffnen`}>
-          <div class="op-card-art"><span class="op-image-placeholder">[Operator-Grafik]<br />{operator.name}</span></div>
+          <div class="op-card-art">
+            {operator.game?.coverUrl
+              ? <img class="op-card-cover" src={operator.game.coverUrl} loading="lazy" decoding="async" alt={"Offizielles SKPORT-Porträt: "+operator.name}/>
+              : <span class="op-image-placeholder">[Operator-Grafik]<br />{operator.name}</span>}
+          </div>
           <div class="op-card-info">
             <h2>{operator.name}</h2>
             <div class="op-chip-row">
