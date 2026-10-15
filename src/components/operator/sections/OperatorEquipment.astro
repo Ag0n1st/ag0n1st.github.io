@@ -4,41 +4,67 @@ import ItemIcon from "../../endfield/ItemIcon.astro";
 import MaterialCosts from "../../endfield/MaterialCosts.astro";
 import {resolveOfficialItem} from "../../../lib/endfield/itemCatalog";
 import {getOfficialGear} from "../../../lib/endfield/equipmentDetails";
+import {FACTORY_LABELS} from "../../../lib/endfield/buildFinder.mjs";
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
-const { guide, missing, roleLabels, stageLabels, builds } = model;
-const officialBuilds=builds.map(build=>({...build,parts:build.items.map(reference=>{
- const catalog=resolveOfficialItem(reference,"Gear");
- return {reference,catalog,detail:catalog?getOfficialGear(catalog.id):undefined};
-})}));
+const { guide, missing, roleLabels, stageLabels, builds, preview } = model;
+const officialBuilds=builds.map(build=>{
+ const parts=build.items.map(reference=>{
+   const catalog=resolveOfficialItem(reference,"Gear");
+   return {reference,catalog,detail:catalog?getOfficialGear(catalog.id):undefined};
+ });
+ const allPartsVerified=parts.length===4 && parts.every(part=>
+   part.detail?.status==="verified" && Number.isSafeInteger(part.detail.level) && (part.detail.level??0)>0
+ );
+ // Never infer factory unlocks from level, region or the existence of a recipe.
+ const requiredLevel=allPartsVerified
+   ? Math.max(build.availableFromLevel??0,...parts.map(part=>part.detail?.level??0))
+   : null;
+ return {...build,parts,requirements:{
+   partCount:parts.length,requiredLevel,allPartsVerified,
+   factoryStage:build.factoryStage??null,
+   hasFactoryEvidence:Boolean(build.factoryUnlock?.trim()),
+   preview
+ }};
+});
 ---
 <section class="op-section" id="ausruestung">
         <h2>Ausrüstung</h2>
         <div class="op-divided">
           <h3>Build-Finder</h3>
-          <p class="op-section-intro">Aktuell ein Layout-Prototyp. Automatische Empfehlungen nach Story- und Fabrikfortschritt folgen mit den Spieldaten.</p>
+          <p class="op-section-intro">Filtert vorhandene Guide-Builds nach dem offiziellen Level aller vier Ausrüstungsteile und einer separat geprüften Freischaltung. Noch nicht belegte Builds werden nicht als verfügbar angezeigt.</p>
           <div class="op-two">
             <label class="op-cardlet" style="font-size:12px">Operator- / Ausrüstungslevel
               <select class="op-select" id="op-level"><option>70</option><option>60</option><option>50</option></select>
             </label>
-            <label class="op-cardlet" style="font-size:12px">Fabrikfortschritt
+            <label class="op-cardlet" style="font-size:12px">Fabrikfortschritt (redaktionell geprüft)
               <select class="op-select" id="op-factory"><option value="einstieg">Einstieg</option><option value="fortgeschritten" selected>Fortgeschritten</option><option value="maximal">Vollständig ausgebaut</option></select>
             </label>
           </div>
-          <div class="op-notice" style="margin-top:12px">Ausgewählt: <strong id="op-build-config">Lv. 70 · Fortgeschritten</strong>. Freischaltungen werden später aus den Spieldaten ermittelt.</div>
+          <div class="op-notice" style="margin-top:12px">
+            Ausgewählt: <strong id="op-build-config">Lv. 70 · Fortgeschritten</strong>
+            <p class="op-build-progress-status" id="op-build-results" role="status" aria-live="polite">Prüfe vorhandene Guide-Builds …</p>
+            <label class="op-build-show-all">
+              <input id="op-build-show-all" type="checkbox" checked={preview} />
+              Auch noch gesperrte oder ungeprüfte Builds anzeigen
+            </label>
+          </div>
+          <p class="op-muted">Die drei Fabrikstufen sind eine redaktionelle Einordnung, keine offiziellen SKPORT-Meilensteine. Eine Freischaltung gilt nur dann als geprüft, wenn sie im jeweiligen Build ausdrücklich dokumentiert ist.</p>
           <div class="op-notice op-gear-disclaimer" style="margin-top:12px"><strong>Hinweis zur Ausrüstung:</strong> Achtet bei der Ausrüstung grundsätzlich darauf, Ausrüstungsteile zu nutzen, die das Haupt- und Sekundärattribut des jeweiligen Operators erhöhen. Das gilt besonders für Builds auf niedrigeren Leveln.</div>
           {guide.equipment.generalNotes && <p class="op-body-copy">{guide.equipment.generalNotes}</p>}
         </div>
         <div class="op-divided">
           <h3>Empfohlene Ausrüstung</h3>
           {officialBuilds.length ? <>
-            <div class="op-pills" aria-label="Build auswählen">{officialBuilds.map((b,i)=><button type="button" class="op-pill-button" data-build-button={b.id} aria-pressed={i===0?"true":"false"}>{b.title}</button>)}</div>
+            <p id="op-build-empty" class="op-notice" hidden>Für deinen Fortschritt ist noch kein geprüft verfügbarer Build eingetragen. Ändere die Auswahl oder aktiviere die Anzeige ungeprüfter Builds.</p>
+            <div class="op-pills" aria-label="Build auswählen">{officialBuilds.map((b,i)=><button type="button" class="op-pill-button" data-build-button={b.id} data-build-requirements={JSON.stringify(b.requirements)} aria-pressed={i===0?"true":"false"}>{b.title}<span class="op-build-button-status" data-build-status-label></span></button>)}</div>
             {officialBuilds.map((b,i)=><div class="op-build-panel op-cardlet" data-build-panel={b.id} hidden={i!==0}>
               <div class="op-subtitle"><h3 style="margin:0">{b.title}</h3><span class="op-chip">{roleLabels[b.role]}</span></div>
               <div class="op-gear-parts">{b.parts.map(part=><div class="op-gear-part"><div class="op-mini-art"><ItemIcon id={part.catalog?.id??part.reference} /></div><small>{part.catalog?.name??part.reference}</small></div>)}</div>
               {b.availableFromLevel && <p><strong>Ab Level:</strong> {b.availableFromLevel}</p>}
-              {b.factoryUnlock && <p class="op-body-copy"><strong>Fabrik:</strong> {b.factoryUnlock}</p>}
+              {b.factoryUnlock && <p class="op-body-copy"><strong>Dokumentierte Freischaltung:</strong> {b.factoryUnlock}</p>}
+              {b.factoryStage && <p class="op-body-copy"><strong>Redaktionelle Fabrikstufe:</strong> {FACTORY_LABELS[b.factoryStage]}</p>}
               {b.teamContext && <p class="op-body-copy"><strong>Einsatzbereich:</strong> {b.teamContext}</p>}
               {b.setBonusNotes && <p class="op-body-copy"><strong>Seteffekte:</strong> {b.setBonusNotes}</p>}
               <p class="op-body-copy"><strong>Bewertung:</strong> {b.evaluation || missing}</p>
