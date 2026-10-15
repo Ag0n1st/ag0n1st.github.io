@@ -60,7 +60,7 @@ skills:
 weapons:
   # Kategorien: bis, bp, f2p, alternative
   recommendations: []
-  # - weaponId: waffen-id
+  # - weaponId: "1046" # offizielle SKPORT-Item-ID oder Slug wie bedazzling-night-debut
   #   category: bis
   #   evaluation: |
   #     Wieso ist diese Waffe hier sinnvoll?
@@ -75,7 +75,7 @@ equipment:
   # - id: standard
   #   title: "Standard-Build"
   #   role: main-dps # main-dps | support | hybrid | sub-dps | control | other
-  #   items: [helm-id, brust-id, handschuhe-id, accessoire-id] # EXAKT 4
+  #   items: ["1246", "1245", "1244", "1243"] # Beispiel-IDs, KEINE Build-Empfehlung. EXAKT 4
   #   availableFromLevel: 70 # nur 50, 60 oder 70
   #   factoryUnlock: "Benötigter Fabrikfortschritt"
   #   teamContext: "Für Teams mit diesem Operator als Main DPS"
