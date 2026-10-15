@@ -28,7 +28,7 @@ jobs:
       - name: Store reconciled item-level evidence on feature branch
         shell: bash
         run: |
-          git add src/data/endfield/progression/blueprint-precise-gear-index.json
+          git add src/data/endfield/progression/blueprint-precise-gear-index.json docs/endfield-blueprint-piece-audit.md
           if ! git diff --cached --quiet; then
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
