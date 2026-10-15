@@ -27,7 +27,7 @@ const operators = entries.map(entry => ({
           <div class="op-card-info">
             <h2>{operator.name}</h2>
             <div class="op-chip-row">
-              <span class="op-chip is-pink">[Seltenheit]</span>
+              <span class="op-chip is-pink">{operator.slug === "typhoeus" ? "6★" : "[Seltenheit]"}</span>
               <span class="op-chip">[Klasse]</span>
               <span class="op-chip">[Element]</span>
               {operator.preview && <span class="op-chip is-accent">Layout-Vorschau</span>}
