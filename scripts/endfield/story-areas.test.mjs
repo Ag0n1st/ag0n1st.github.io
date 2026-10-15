@@ -2,13 +2,13 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 import {classifyOfficialGearAcquisition,validateStoryAreaRegistry,
-  evaluateAreaAccess,getVerifiedBlueprintArea} from "../../src/lib/endfield/storyAreas.mjs";
+  evaluateAreaAccess,getVerifiedBlueprintArea,evaluateGearAcquisition} from "../../src/lib/endfield/storyAreas.mjs";
 const registry=JSON.parse(readFileSync("src/data/endfield/progression/story-areas.json","utf8"));
 const gearData=JSON.parse(readFileSync("src/data/endfield/catalog/equipment-details.json","utf8"));
 test("verified official Tal4/Wuling register uses stable IDs, no invented area gates",()=>{
   assert.equal(validateStoryAreaRegistry(registry),true);
   assert.deepEqual(registry.regions.map(x=>x.id),["valley-iv","wuling"]);
-  assert.deepEqual(registry.areas.map(x=>x.id),["wuling-city","sis-painting"]);
+  assert.deepEqual(registry.areas.map(x=>x.id),["wuling-city","qingbo-stockade","marker-stone","test-area","sword-vault-dale","yinglung-pass","north-wuling-exclusion-zone","sis-painting"]);
   assert.equal(registry.blueprintAreaLinks.length,0);
   assert.equal(registry.storyMilestones.find(x=>x.id==="chapter-2-process-8").releaseState,"available-in-version");
 });
@@ -43,4 +43,31 @@ test("reject unverified gear-to-area claims and undocumented missions",()=>{
   const changed=structuredClone(registry);
   changed.areas[1].unlock.requiredMissionIds=["chapter-2-process-8"];
   assert.throws(()=>validateStoryAreaRegistry(changed),/Cannot claim/);
+});
+
+
+test("area publication order does not grant blueprint locations or mission unlocks",()=>{
+  assert.equal(registry.areas.length,8);
+  assert.ok(registry.areas.every(area=>area.unlock.status==="unverified"));
+  assert.ok(registry.areas.every(area=>area.blueprintGearIds.length===0));
+  assert.equal(registry.versionNotices[0].addedGearSetPieces.length,5);
+  assert.equal(registry.regionAccessNotes[0].requiresAcceptingMission,true);
+});
+test("different official acquisition paths distinguish eligible from actually acquired",()=>{
+ const find=kind=>gearData.gear.find(g=>classifyOfficialGearAcquisition(g).kind===kind);
+ const authority=find("authority-level-reward");
+ const minimum=classifyOfficialGearAcquisition(authority).authorityLevel;
+ assert.equal(evaluateGearAcquisition(authority,{authorityLevel:minimum-1}).status,"locked");
+ assert.equal(evaluateGearAcquisition(authority,{authorityLevel:minimum}).status,"eligible");
+ const shop=find("regional-stock-redistribution");
+ const shopMinimum=classifyOfficialGearAcquisition(shop).stockRedistributionLevel;
+ assert.equal(evaluateGearAcquisition(shop,{stockRedistributionLevels:{wuling:shopMinimum-1}}).status,"locked");
+ assert.equal(evaluateGearAcquisition(shop,{stockRedistributionLevels:{wuling:shopMinimum}}).status,"eligible");
+ const region=find("region-story-progress");
+ assert.equal(evaluateGearAcquisition(region,{unlockedRegionIds:["wuling"]}).status,"eligible");
+ assert.equal(evaluateGearAcquisition(region,{}).status,"unverified");
+ const crate=find("template-crate");
+ assert.equal(evaluateGearAcquisition(crate,{unlockedRegionIds:["wuling"]}).status,"unverified");
+ assert.equal(evaluateGearAcquisition(crate,{acquiredGearBlueprintIds:[crate.id]}).status,"acquired");
+ assert.equal(evaluateGearAcquisition(find("unknown"),{}).status,"unverified");
 });
