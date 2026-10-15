@@ -36,7 +36,10 @@ try{
  if(!map)throw Error("Wuling official map ID unavailable");
  const officialLevels=new Set(map.levels.map(l=>l.id));
  const rows=list.marks.filter(mark=>mark.templateId===templateId);
- if(rows.length!==27)throw Error("Gear Template Crate count changed; review official map before updating: "+rows.length);
+ const argIndex=process.argv.indexOf("--expected-count");
+ const expectedCount=argIndex>=0?Number(process.argv[argIndex+1]):27;
+ if(!Number.isSafeInteger(expectedCount)||expectedCount<1||rows.length!==expectedCount)
+   throw Error("Gear Template Crate count does not match reviewed expected_count: "+rows.length+" vs "+expectedCount);
  const sorted=rows.sort((a,b)=>String(a.id).localeCompare(String(b.id)));
  const result=[];
  for(const mark of sorted){
@@ -70,7 +73,7 @@ try{
  }
  const snapshot={schemaVersion:1,source:{provider:"SKPORT Map Tools",url:"https://game.skport.com/map/endfield",
    endpoint:"/web/v1/game/endfield/map/mark/list",mapId,
-   language:"en",snapshot:"2026-10-15"},
+   language:"en",snapshot:new Date().toISOString().slice(0,10)},
   template:{id:templateId,name:"Gear Template Crate"},markers:result,
   caution:"Exact crate positions and map levels are official; gear recipes contained inside them and their mission unlock requirements are not yet verified."};
  await mkdir(dirname(path),{recursive:true});

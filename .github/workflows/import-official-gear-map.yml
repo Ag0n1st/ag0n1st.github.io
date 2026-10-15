@@ -1,17 +1,20 @@
 name: Cache official SKPORT Gear Template Crate map markers
 
 on:
-  push:
-    branches: [endfield-story-area-registry-20261015]
-    paths:
-      - scripts/endfield/import-official-gear-map.mjs
-      - .github/workflows/import-official-gear-map.yml
+  workflow_dispatch:
+    inputs:
+      expected_count:
+        description: 'Expected number of public Wuling Gear Template Crates, verified before import'
+        required: true
+        default: '27'
+        type: string
 
 permissions:
   contents: write
 
 jobs:
   cache:
+    if: github.ref_name != 'main'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -26,7 +29,7 @@ jobs:
           npm ci
           npm install --no-save --package-lock=false playwright-core
       - name: Save only official Wuling gear crate locations
-        run: node scripts/endfield/import-official-gear-map.mjs
+        run: node scripts/endfield/import-official-gear-map.mjs --expected-count "${{ inputs.expected_count }}"
       - name: Validate every official map ID, budget and Astro build
         run: |
           npm run test:endfield
