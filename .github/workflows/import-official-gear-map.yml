@@ -1,0 +1,49 @@
+name: Cache official SKPORT Gear Template Crate map markers
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_count:
+        description: 'Expected number of public Wuling Gear Template Crates, verified before import'
+        required: true
+        default: '27'
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  cache:
+    if: github.ref_name != 'main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install anonymous browser dependencies
+        run: |
+          npm ci
+          npm install --no-save --package-lock=false playwright-core
+      - name: Save only official Wuling gear crate locations
+        run: node scripts/endfield/import-official-gear-map.mjs --expected-count "${{ inputs.expected_count }}"
+      - name: Validate every official map ID, budget and Astro build
+        run: |
+          npm run test:endfield
+          node scripts/endfield/check-budget.mjs
+          npm run build
+      - name: Commit sanitized public marker snapshot
+        shell: bash
+        run: |
+          git add src/data/endfield/progression/gear-template-crates.json
+          if git diff --cached --quiet; then
+            echo 'No crate marker change'
+          else
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'Cache 27 public official SKPORT Wuling gear crate markers'
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
