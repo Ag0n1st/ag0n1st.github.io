@@ -89,18 +89,125 @@
   ],
   "areas": [
     {
-      "id": "wuling-city",
-      "regionId": "wuling",
-      "name": "Wuling City",
-      "displayNameDe": "Wuling-Stadt",
+      "id": "the-hub",
+      "regionId": "valley-iv",
+      "name": "The Hub",
+      "displayNameDe": "The Hub",
       "sourceIds": [
-        "official-version-20261015"
+        "official-game-tools-20260922"
       ],
       "unlock": {
         "status": "unverified",
         "requiredMissionIds": []
       },
-      "blueprintGearIds": []
+      "blueprintGearIds": [],
+      "officialMapLevelId": "map01_lv001"
+    },
+    {
+      "id": "valley-pass",
+      "regionId": "valley-iv",
+      "name": "Valley Pass",
+      "displayNameDe": "Valley Pass",
+      "sourceIds": [
+        "official-game-tools-20260922"
+      ],
+      "unlock": {
+        "status": "unverified",
+        "requiredMissionIds": []
+      },
+      "blueprintGearIds": [],
+      "officialMapLevelId": "map01_lv002"
+    },
+    {
+      "id": "aburrey-quarry",
+      "regionId": "valley-iv",
+      "name": "Aburrey Quarry",
+      "displayNameDe": "Aburrey Quarry",
+      "sourceIds": [
+        "official-game-tools-20260922"
+      ],
+      "unlock": {
+        "status": "unverified",
+        "requiredMissionIds": []
+      },
+      "blueprintGearIds": [],
+      "officialMapLevelId": "map01_lv003"
+    },
+    {
+      "id": "originium-science-park",
+      "regionId": "valley-iv",
+      "name": "Originium Science Park",
+      "displayNameDe": "Originium Science Park",
+      "sourceIds": [
+        "official-game-tools-20260922"
+      ],
+      "unlock": {
+        "status": "unverified",
+        "requiredMissionIds": []
+      },
+      "blueprintGearIds": [],
+      "officialMapLevelId": "map01_lv005"
+    },
+    {
+      "id": "origin-lodespring",
+      "regionId": "valley-iv",
+      "name": "Origin Lodespring",
+      "displayNameDe": "Origin Lodespring",
+      "sourceIds": [
+        "official-game-tools-20260922"
+      ],
+      "unlock": {
+        "status": "unverified",
+        "requiredMissionIds": []
+      },
+      "blueprintGearIds": [],
+      "officialMapLevelId": "map01_lv006"
+    },
+    {
+      "id": "power-plateau",
+      "regionId": "valley-iv",
+      "name": "Power Plateau",
+      "displayNameDe": "Power Plateau",
+      "sourceIds": [
+        "official-game-tools-20260922"
+      ],
+      "unlock": {
+        "status": "unverified",
+        "requiredMissionIds": []
+      },
+      "blueprintGearIds": [],
+      "officialMapLevelId": "map01_lv007"
+    },
+    {
+      "id": "jingyu-valley",
+      "regionId": "wuling",
+      "name": "Jingyu Valley",
+      "displayNameDe": "Jingyu Valley",
+      "sourceIds": [
+        "official-game-tools-20260922"
+      ],
+      "unlock": {
+        "status": "unverified",
+        "requiredMissionIds": []
+      },
+      "blueprintGearIds": [],
+      "officialMapLevelId": "map02_lv001"
+    },
+    {
+      "id": "wuling-city",
+      "regionId": "wuling",
+      "name": "Wuling City",
+      "displayNameDe": "Wuling-Stadt",
+      "sourceIds": [
+        "official-version-20261015",
+        "official-game-tools-20260922"
+      ],
+      "unlock": {
+        "status": "unverified",
+        "requiredMissionIds": []
+      },
+      "blueprintGearIds": [],
+      "officialMapLevelId": "map02_lv002"
     },
     {
       "id": "qingbo-stockade",
@@ -109,13 +216,15 @@
       "displayNameDe": "Qingbo Stockade",
       "introduced": "2026-03-12",
       "sourceIds": [
-        "official-version-20260312"
+        "official-version-20260312",
+        "official-game-tools-20260922"
       ],
       "unlock": {
         "status": "unverified",
         "requiredMissionIds": []
       },
-      "blueprintGearIds": []
+      "blueprintGearIds": [],
+      "officialMapLevelId": "map02_lv003"
     },
     {
       "id": "marker-stone",
@@ -124,13 +233,30 @@
       "displayNameDe": "Marker Stone",
       "introduced": "2026-04-17",
       "sourceIds": [
-        "official-version-20260417"
+        "official-version-20260417",
+        "official-game-tools-20260922"
       ],
       "unlock": {
         "status": "unverified",
         "requiredMissionIds": []
       },
-      "blueprintGearIds": []
+      "blueprintGearIds": [],
+      "officialMapLevelId": "map02_lv004"
+    },
+    {
+      "id": "marker-stone-interiors",
+      "regionId": "wuling",
+      "name": "Marker Stone Interiors",
+      "displayNameDe": "Marker Stone Interiors",
+      "sourceIds": [
+        "official-game-tools-20260922"
+      ],
+      "unlock": {
+        "status": "unverified",
+        "requiredMissionIds": []
+      },
+      "blueprintGearIds": [],
+      "officialMapLevelId": "indie_dg007"
     },
     {
       "id": "test-area",
@@ -139,13 +265,15 @@
       "displayNameDe": "Test Area",
       "introduced": "2026-04-17",
       "sourceIds": [
-        "official-version-20260417"
+        "official-version-20260417",
+        "official-game-tools-20260922"
       ],
       "unlock": {
         "status": "unverified",
         "requiredMissionIds": []
       },
-      "blueprintGearIds": []
+      "blueprintGearIds": [],
+      "officialMapLevelId": "map02_lv005"
     },
     {
       "id": "sword-vault-dale",
@@ -154,13 +282,15 @@
       "displayNameDe": "Sword Vault Dale",
       "introduced": "2026-06-05",
       "sourceIds": [
-        "official-version-20260605"
+        "official-version-20260605",
+        "official-game-tools-20260922"
       ],
       "unlock": {
         "status": "unverified",
         "requiredMissionIds": []
       },
-      "blueprintGearIds": []
+      "blueprintGearIds": [],
+      "officialMapLevelId": "map02_lv006"
     },
     {
       "id": "yinglung-pass",
@@ -169,13 +299,15 @@
       "displayNameDe": "Yinglung Pass",
       "introduced": "2026-07-16",
       "sourceIds": [
-        "official-version-20260716"
+        "official-version-20260716",
+        "official-game-tools-20260922"
       ],
       "unlock": {
         "status": "unverified",
         "requiredMissionIds": []
       },
-      "blueprintGearIds": []
+      "blueprintGearIds": [],
+      "officialMapLevelId": "map02_lv007"
     },
     {
       "id": "north-wuling-exclusion-zone",
@@ -184,13 +316,45 @@
       "displayNameDe": "North Wuling Exclusion Zone",
       "introduced": "2026-07-16",
       "sourceIds": [
-        "official-version-20260716"
+        "official-version-20260716",
+        "official-game-tools-20260922"
       ],
       "unlock": {
         "status": "unverified",
         "requiredMissionIds": []
       },
-      "blueprintGearIds": []
+      "blueprintGearIds": [],
+      "officialMapLevelId": "map02_lv008"
+    },
+    {
+      "id": "snowy-forest",
+      "regionId": "wuling",
+      "name": "Snowy Forest",
+      "displayNameDe": "Snowy Forest",
+      "sourceIds": [
+        "official-game-tools-20260922"
+      ],
+      "unlock": {
+        "status": "unverified",
+        "requiredMissionIds": []
+      },
+      "blueprintGearIds": [],
+      "officialMapLevelId": "map02_lv009"
+    },
+    {
+      "id": "suiming",
+      "regionId": "wuling",
+      "name": "Suiming",
+      "displayNameDe": "Suiming",
+      "sourceIds": [
+        "official-game-tools-20260922"
+      ],
+      "unlock": {
+        "status": "unverified",
+        "requiredMissionIds": []
+      },
+      "blueprintGearIds": [],
+      "officialMapLevelId": "indie_dg016"
     },
     {
       "id": "sis-painting",
@@ -199,13 +363,30 @@
       "displayNameDe": "Si's Painting",
       "introduced": "2026-10-15",
       "sourceIds": [
-        "official-version-20261015"
+        "official-version-20261015",
+        "official-game-tools-20260922"
       ],
       "unlock": {
         "status": "unverified",
         "requiredMissionIds": []
       },
-      "blueprintGearIds": []
+      "blueprintGearIds": [],
+      "officialMapLevelId": "map02_lv010"
+    },
+    {
+      "id": "main-pillar-office",
+      "regionId": "wuling",
+      "name": "Main Pillar Office",
+      "displayNameDe": "Main Pillar Office",
+      "sourceIds": [
+        "official-game-tools-20260922"
+      ],
+      "unlock": {
+        "status": "unverified",
+        "requiredMissionIds": []
+      },
+      "blueprintGearIds": [],
+      "officialMapLevelId": "indie_dg005"
     }
   ],
   "storyMilestones": [
@@ -252,7 +433,7 @@
     }
   ],
   "blueprintAreaLinks": [],
-  "disclaimer": "Only publisher/SKPORT verified place names and release versions. Story area unlocks, individual blueprint pickup positions and ownership are separately unverified; version order never stands in for story progress.",
+  "disclaimer": "Official SKPORT map gives region/area names and 27 Gear Template Crate markers. Individual contained gear blueprints and story/mission gates are not inferred from map location, release chronology or SKPORT item acquisition method.",
   "versionNotices": [
     {
       "id": "sanctuary-of-ink",
@@ -277,5 +458,16 @@
       "verification": "official-early-access-offer",
       "requiresAcceptingMission": true
     }
-  ]
+  ],
+  "mapDataSource": {
+    "provider": "SKPORT Map Tools",
+    "url": "https://game.skport.com/map/endfield",
+    "publicEndpoints": [
+      "/web/v1/game/endfield/map/tree",
+      "/web/v1/game/endfield/map/mark/list",
+      "/web/v1/game/endfield/map/mark/info"
+    ],
+    "collectedOn": "2026-10-15",
+    "sourceId": "official-game-tools-20260922"
+  }
 }
