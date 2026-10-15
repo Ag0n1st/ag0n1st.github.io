@@ -220,3 +220,303 @@ Die folgende Tabelle ist die bisherige belegte PR-/Commit-Kette. Sie dient dazu,
 **Es sind aktuell keine redaktionellen Ausrüstungs-Builds in `liino.md` und `typhoeus.md` eingetragen** (`equipment.builds: []`). Deshalb lassen sich in der Live-Oberfläche noch keine echten vollständigen Buildvorschläge demonstrieren; die Filterlogik wurde mit Tests und einer temporären Browserprüfung validiert. Diesen Sachverhalt in neuen Chats nicht übersehen.
 
 ---
+
+## 5. ARCHITEKTUR: CODE-, DATEN- UND VERANTWORTUNGSSCHICHTEN
+
+### 5.1 Architekturgrundsatz: vier getrennte Datenebenen
+
+1. **Offizielle objektive Spieldaten**: SKPORT-Snapshots (IDs, Seltenheit, Element, Skills, Stats, Materialkosten, Standardrezepte, offizielle Erwerbsweg-Texte). **Dürfen** durch überprüfbare Imports neu erzeugt werden.
+2. **Community-Recherche und Quellenbelege**: mögliche konkrete Kistenstandorte, Inhaltslisten, individuell berichtete Fundorte und Story-Hinweise. **Müssen** Quellenqualität, Konflikte und Prüfstatus behalten; dürfen offizielle Daten nicht still überschreiben.
+3. **Redaktionelle Creator-Ebene**: eigene Empfehlungen, Einschätzungen, Skill-/Team-/Build-Prioritäten, Videolinks, Prozentvergleiche mit Vergleichsbedingungen. **Darf nicht** beim automatischen Spieldatenimport verändert werden.
+4. **Lokaler persönlicher Fortschritt des Besuchers**: Storyregion, freigeschaltete Gebiete, bestätigter Blaupausenbesitz und optionale Stufen im `localStorage`. **Darf nicht** als offizielle Tatsache über Spielmechaniken gespeichert/veröffentlicht werden.
+
+**Abhängigkeit:** Objektive Daten + redaktionelle Einträge + optionale Community-Fundortbelege → Astro-Seite; lokale Fortschrittsauswahl → clientseitige Filterentscheidung. Keine öffentliche, persistente Multiplayer-/Nutzer-Datenbank.
+
+### 5.2 Wichtigster Verzeichnisplan (tatsächlich vorhanden)
+
+~~~text
+/
+├── ROADMAP.md                              # diese Datei, zentrale Übergabe
+├── README.md                               # kurzer Setup-Einstieg
+├── astro.config.mjs                       # Astro-site/base
+├── package.json / package-lock.json
+├── .gitignore                              # local-data ausgeschlossen
+├── .github/workflows/
+│   ├── deploy.yml                         # main -> GitHub Pages
+│   ├── validate-astro.yml                 # PR-Tests
+│   ├── import-endfield-catalog-assets.yml # manueller Katalogbildimport
+│   ├── import-endfield-equipment.yml      # manueller Waffen-/Gearimport
+│   ├── import-official-gear-map.yml       # offizieller Kartensnapshot
+│   ├── probe-liino-wiki.yml               # vorhandene Probe-Action, prüfen vor Nutzung
+│   └── sync-endfield-assets.yml           # WebP-Synchronisierung
+├── docs/
+│   ├── operator-guide-workflow.md
+│   ├── endfield-story-progression.md
+│   ├── endfield-story-build-filter.md
+│   ├── endfield-blueprint-research.md
+│   └── endfield-blueprint-piece-audit.md
+├── src/
+│   ├── pages/
+│   │   ├── index.astro                    # Homepage
+│   │   ├── endfield.astro                 # Endfield-Übersicht
+│   │   ├── nte.astro                      # NTE-Platzhalter
+│   │   ├── about.astro                    # About-Platzhalter
+│   │   ├── posts/[slug].astro
+│   │   └── endfield/
+│   │       ├── operatoren/index.astro
+│   │       ├── operatoren/[slug].astro
+│   │       ├── charaktere/...             # alte Redirect-Routen
+│   │       ├── fabrik/index.astro
+│   │       ├── rekrutierung/index.astro
+│   │       ├── veredelung/index.astro
+│   │       ├── essenzen/index.astro
+│   │       ├── speedruns/index.astro
+│   │       ├── checkliste/index.astro
+│   │       └── countdown/index.astro
+│   ├── components/
+│   │   ├── EndfieldNav.astro
+│   │   ├── endfield/ItemIcon.astro
+│   │   ├── endfield/MaterialCosts.astro
+│   │   └── operator/
+│   │       ├── OperatorGuide.astro
+│   │       └── sections/
+│   │           ├── OperatorOverview.astro
+│   │           ├── OperatorKit.astro
+│   │           ├── OperatorSkills.astro
+│   │           ├── OperatorWeapons.astro
+│   │           ├── OperatorEquipment.astro
+│   │           ├── OperatorPotentials.astro
+│   │           ├── OperatorTeams.astro
+│   │           ├── OperatorGameplay.astro
+│   │           └── OperatorConclusion.astro
+│   ├── content/
+│   │   ├── config.ts
+│   │   ├── operatorGuideSchema.ts
+│   │   └── operator-guides/
+│   │       ├── _template.md
+│   │       ├── liino.md
+│   │       └── typhoeus.md
+│   ├── data/endfield/
+│   │   ├── catalog/items.json
+│   │   ├── catalog/equipment-details.json
+│   │   ├── operators/{liino,typhoeus}.json
+│   │   ├── operators/{liino,typhoeus}.extra.json
+│   │   ├── locales/de/{liino,typhoeus}.json
+│   │   └── progression/
+│   │       ├── story-areas.json
+│   │       ├── gear-template-crates.json
+│   │       ├── blueprint-community-claims.json
+│   │       ├── blueprint-research-index.json
+│   │       ├── blueprint-wiki-crate-contents.json
+│   │       ├── gear-piece-acquisition-sources.json
+│   │       ├── blueprint-precise-gear-index.json
+│   │       └── blueprint-confirmations.json
+│   ├── lib/endfield/
+│   │   ├── operatorData.ts / operatorLocale.ts
+│   │   ├── operatorAssets.ts / operatorGuideModel.ts
+│   │   ├── itemCatalog.ts / equipmentDetails.ts
+│   │   ├── blueprintResearch.mjs / preciseBlueprints.mjs
+│   │   ├── gearBlueprintResearch.ts / blueprintConfirmations.mjs
+│   │   ├── storyAreas.mjs
+│   │   ├── buildFinder.mjs
+│   │   └── buildStoryProgress.mjs
+│   └── styles/
+│       ├── global.css
+│       └── operator-guides.css
+├── public/images/endfield/
+│   ├── operators/                       # Operator-Cover und icons/
+│   ├── weapons/                         # Waffen-Icons
+│   ├── gear/                            # konkrete Ausrüstungsteil-Icons
+│   ├── materials/                       # Item Files / Materialien
+│   └── valuables/                       # Valuables Stash
+└── scripts/endfield/
+    ├── README.md                        # umfangreiches Importer-Handbuch
+    ├── import-operator.mjs
+    ├── import-equipment.mjs
+    ├── sync-assets.mjs
+    ├── catalog-assets.mjs
+    ├── equipment-normalize.mjs
+    ├── import-gear-piece-sources.mjs
+    ├── import-wiki-crate-contents.mjs
+    ├── build-blueprint-index.mjs
+    ├── build-precise-blueprints.mjs
+    ├── import-official-gear-map.mjs
+    ├── check-budget.mjs
+    └── *.test.mjs
+~~~
+
+Der Baum ist eine **Orientierung**, keine Garantie, dass jede Datei in allen künftigen Commits unverändert existiert. Vor Bearbeitung Dateipfad prüfen.
+
+### 5.3 Fachliche Modulverantwortlichkeiten
+
+| Datei / Modul | Verbindliche Aufgabe |
+| --- | --- |
+| `src/lib/endfield/operatorData.ts` | Lokale Operator-/Extra-JSON-Dateien entdecken, validieren, abrufen. |
+| `src/lib/endfield/operatorLocale.ts` | Deutschsprachige, snapshotgebundene Übersetzungen laden; veraltete Übersetzung nicht still auf neue Rohdaten anwenden. |
+| `src/lib/endfield/operatorGuideModel.ts` | Importierte Spielwerte und redaktionelles Markdown für neun Guide-Abschnitte aufbereiten. |
+| `src/lib/endfield/operatorAssets.ts` | Lokale Artworks/Icons und Fallbacks referenzieren. |
+| `src/lib/endfield/itemCatalog.ts` | Offizielle Item-ID/Slug/Name und passenden lokalen Bildpfad auflösen. |
+| `src/lib/endfield/equipmentDetails.ts` | Detaildatensätze für Waffen und Gear mit offiziellen Stats/Materialien bereitstellen. |
+| `src/lib/endfield/storyAreas.mjs` | Offizielle Erwerbswege, 19 Gebiete, Belegstatus, Gebietszugang/Eligibility; keine erfundenen Quests. |
+| `src/lib/endfield/blueprintResearch.mjs` | Historisch grobe Community-Kandidaten und Set-Vermutungen als Fallback. |
+| `src/lib/endfield/preciseBlueprints.mjs` | Konkrete Wiki-Kisteninhalte + zweite Einzelteilquelle gegen offizielle Gear-IDs abgleichen; Widersprüche protokollieren. |
+| `src/lib/endfield/gearBlueprintResearch.ts` | Für die UI belastbarste verfügbare Quellenebene bereitstellen (manuell bestätigt > konkretes Einzelteil > grobes Set). |
+| `src/lib/endfield/blueprintConfirmations.mjs` | Persönlich geprüfte exakte Gear-ID/Marker-ID-Verbindungen validieren. |
+| `src/lib/endfield/buildFinder.mjs` | Offizielle Standardrezept-Zutaten → höchste Fabrikkomponente; Level-/Vier-Teile-Check. |
+| `src/lib/endfield/buildStoryProgress.mjs` | Storyregion, Gebiet, Erwerbsart, Autoritätslevel, Warenumverteilung und tatsächlichen Vorlagenbesitz auswerten. |
+| `src/components/operator/OperatorGuide.astro` | Neun Guide-Abschnitte einbinden, Browser-Interaktionen, Inhaltsnavigation, lokale Nutzereingaben. |
+| `src/components/operator/sections/OperatorEquipment.astro` | Level-/Fabrik-/Gebiets-/Besitz-Auswahl, Build-Karten und individuelle Quelleninformationen anzeigen. |
+| `src/content/operatorGuideSchema.ts` | Redaktionelle YAML-Validierung, Feldregeln, Beziehungen zwischen Teams/Builds/Operatoren. |
+
+---
+
+## 6. OPERATOR-GUIDES: INHALT, TEMPLATE, IMPORT UND REDAKTION
+
+### 6.1 Status [TEILWEISE]
+
+- Die generische Route `/endfield/operatoren/[slug]/` und das Operatoren-Kartenraster sind implementiert.
+- Guides erscheinen aus der Astro-Collection: `draft` unsichtbar, `preview` öffentlich klar als Vorschau gekennzeichnet, `published` regulär veröffentlicht.
+- **Typhoeus** und **Liino** sind aktuell beide `preview` und haben noch keine selbst gepflegten Gear-Builds.
+- Objektive SKPORT-Snapshots sind für beide Operatoren vorhanden. Eigene Skillbewertungen, Pros/Cons, Gear-/Waffenranking, Pullberatung, Teams und Videos dürfen nicht dazuerfunden werden.
+- **Operator-IDs/Quellen:** Typhoeus SKPORT-Item-ID **1173**, Liino **1041**. Die generischen Dateien liegen in `src/data/endfield/operators/`.
+- Für Liino dokumentiert: 6★, Electric Supporter, Polearm, TGCC; Talent-/Promotion-/Potenzial-/Skillinformationen wurden in der Importerentwicklung gegen den echten Wiki-Export abgeglichen.
+- Die Darstellung ist auf **neun wiederverwendbare Komponenten** statt separater, kopierter Seiten aufgebaut.
+
+### 6.2 Das neunteilige Guide-Framework
+
+1. **Übersicht / Charakterprofil** – Desktop 50/50 zwischen Operator-Profil und Video, mobil oben Profil und darunter Video. Bild, Name, Seltenheit/Sterne, Klasse, Element, Waffentyp, ggf. Traits sowie Haupt-/Sekundärattribut; **Stärken / Schwächen** und kompakter **Build auf einen Blick** (Waffen-, Gear-, Skill-Icons und Prioritätszeichen). Einordnung über **Schwierigkeit, Flexibilität, Zugänglichkeit**, je 1–5. Keine redundante riesige Investitionsübersicht.
+2. **Operator Kit** – verständliche Kernmechaniken, Rolle, wichtige Talente, Spielweise, Ressourcen-/Fortschrittshinweise. Spieldaten aus Import, eigene Erklärungen aus Markdown.
+3. **Fertigkeiten** – Basic/Battle/Combo/Ultimate, Skillwerte über Ränge und Masteries, Materialkosten, interaktiver Rangwechsel; redaktionelle Priorität (vier Skills, drei Vergleichszeichen) nur nach Bewertung.
+4. **Waffen** – konkrete Empfehlungen über offizielle `weaponId`, Kategorien BiS/BP/F2P/Alternative, exakte Stats/Tuning/Potenziale, Begründungen. Prozentvergleiche nur mit tatsächlichem Testaufbau.
+5. **Ausrüstung** – **vier Gear-IDs pro Build**, Level-/Komponenten-/Story-/Gebiets-/Vorlagenprüfung, konkrete Stats, Seteffekte, Materialkosten, freie Anzahl situativer Builds, Progression und Quellen-/Freischaltinformationen.
+6. **Potenziale** – P1 bis P5, Effekte und Creator-Bewertung, ggf. belegbare Zuwächse gegenüber Vorgängerstufe und P0; konsistenter Hinweis zur eigenständigen Pullentscheidung.
+7. **Teams** – Teambauprinzip, Meta-Teams und weitere Varianten, jeweils vier **unterschiedliche** Operatoren einschließlich des besprochenen Operators; optional Link auf `equipment.builds[].id`.
+8. **Gameplay** – Showcases, Bosskämpfe/Speedruns, Rotationen/Tips, Videoeinbindung und optionale spezielle Deep-Dives.
+9. **Fazit** – Gesamtbewertung, Eignung für Spielertypen, empfehlenswert/bedingt/optional und Pull-/Ressourcenhinweise.
+
+**Designanforderungen:** Inhaltsverzeichnis beim Scrollen erreichbar und aktiver Abschnitt subtil hervorgehoben; mobile Lesbarkeit; große Bilddateien nicht unnötig vervielfältigen; Datenkarten mit kurzen klaren Labels; bei fehlenden Daten keine falschen Zahlen oder erfundenen Charakterdetails.
+
+### 6.3 Ein neues Guide-Dokument anlegen
+
+~~~text
+1. src/content/operator-guides/_template.md kopieren
+2. Nach <operator-slug>.md umbenennen
+3. operator: <operator-slug>, status: draft
+4. Objektive SKPORT-Operator-/Gear-IDs recherchieren und ggf. importieren
+5. Eigene Texte/Builds/Waffen/Teams in YAML eintragen
+6. npm run test:endfield / npm run build
+7. Preview (status: preview) oder echte Veröffentlichung (status: published)
+8. Pull Request -> CI -> Merge -> Deploy -> Browserprüfung
+9. ROADMAP.md: Status, konkrete Quellen, nächste Schritte aktualisieren
+~~~
+
+**Schemaregeln:** IDs Kleinbuchstaben/Zahlen/Bindestriche; genau vier Gear-IDs je Ausrüstungs-Build; genau vier unterschiedliche Teammitglieder inklusive Guide-Operator; Team-`buildId` muss auf existierenden Build zeigen; nur ein „featured“ Gameplay-Showcase; bei `published` Kurzbeschreibung und Fazit zwingend; Prozentvergleiche nur mit dokumentierten Bedingungen.
+
+**Editorielle Arbeitsdateien:** `liino.md` und `typhoeus.md` nicht als Import-Ausgaben behandeln. Die Markdown-Dateien sind die editierbaren Quelldokumente für persönliche Inhalte; importierte JSON-Dateien dagegen reproduzierbare Spielwerte.
+
+### 6.4 SKPORT-Operator-Importer [FERTIG für zwei bestätigte Beispiele / TEILWEISE generisch]
+
+- Fachliche Dokumentation: [`scripts/endfield/README.md`](scripts/endfield/README.md).
+- Generischer Parser: `scripts/endfield/import-operator.mjs`.
+- Rohdaten: **öffentliche** `/web/v1/wiki/item/info?id=...` und öffentlicher Itemindex `/web/v1/wiki/item/list`; bei notwendigen Netzwerkcapturen keine Credentials verwenden.
+- Benötigte lokale Eingaben nach `local-data/skport/` (nicht committen), inklusive Item-JSON und öffentlichem Items-Index.
+- Beispiel für eine noch zu prüfende Operator-ID:
+
+~~~bash
+node scripts/endfield/import-operator.mjs \
+  --input local-data/skport/new-operator.json \
+  --items local-data/skport/public-items-index.json \
+  --id 1234 \
+  --slug neuer-operator \
+  --snapshot 2026-10-15 \
+  --out-dir src/data/endfield/operators
+~~~
+
+**`1234` ist nur eine Platzhalter-ID, kein realer Operator.**
+
+- Der Parser identifiziert Widgets/Abschnitte und validiert verschachtelte Referenz-IDs, Fertigkeiten, Rangtabellen, Materialien, Talente, Promotions und Potenziale. Bei Schema-Abweichungen anhalten und Parser/Tests erweitern.
+- Liino hatte zusätzliche Metadaten neben den eigentlichen Skill-/Potenzialtabellen; diese nicht blind als Effektwerte interpretieren.
+- Die Extra-Dateien (`<slug>.extra.json`) enthalten u. a. Attribute, Talente, Promotions und Potenziale.
+- Separate deutsche Übersetzung unter `src/data/endfield/locales/de/`. **Snapshotbindung** schützt vor alten Übersetzungen nach einem Spielpatch.
+- **Noch nicht umgesetzt:** Vollständig autonomer, fehlerfrei für alle Operatoren laufender Massenimport samt deutscher Qualitätssicherung. Nicht behaupten, dass „alle Operatoren“ bereits im Katalog der detaillierten Guide-Seiten existieren.
+
+### 6.5 Operator-Guides: konkrete nächste Arbeiten
+
+| Schritt | Status | Definition of Done |
+| --- | --- | --- |
+| Offizielle Liino-/Typhoeus-JSON und Cover | [FERTIG] | Aktuelle lokale Daten validieren und auf Guide-Seiten laden. |
+| Liino-Guide redaktionell füllen | **[NÄCHSTER INHALTSSCHRITT]** | Erst echte freigegebene Builds, dann Bewertungen, Skill-Prio, Teamvorschläge, Videolink. |
+| Typhoeus-Guide vervollständigen | [GEPLANT] | Gleiches Framework, Video und Fortschrittsvarianten aus echten Creator-Inhalten. |
+| Build-Kurzüberblick in Sektion 1 befüllen | [TEILWEISE] | Nur aus tatsächlich angelegtem, referenziertem Build. |
+| Weitere Operatoren importieren | [GEPLANT] | Je Operator offizielle Item-ID, normalisierte Daten, lokale WebPs, DE-Locale, Guide-Datei. |
+| Guide-/Datenschema langfristig erweitern | [GEPLANT] | Nur bei belegter notwendiger Strukturabweichung; Rückwärtskompatibilität prüfen. |
+| Daten-Diff nach Versionen | [GEPLANT] | Offizielle Änderungen sichtbar, manuelle Empfehlungen nie überschreiben. |
+
+---
+
+## 7. OFFIZIELLER END­FIELD-KATALOG, BILDER UND HERSTELLUNG
+
+### 7.1 Offizielle Katalogbasis [FERTIG für Snapshot 15.10.2026]
+
+Die öffentliche offizielle **SKPORT-Wiki** ist der Primärbeleg für objektive Item-Informationen. Der ursprüngliche Item-Snapshot enthält:
+
+| Kategorie | Offizielle Einträge | Lokaler Ordner |
+| --- | ---: | --- |
+| Operatoren | **35** | `public/images/endfield/operators/icons/` und `operators/<slug>/` für zusätzliche Artworks |
+| Waffen | **84** | `public/images/endfield/weapons/` |
+| Ausrüstungsteile / Gear | **258** | `public/images/endfield/gear/` |
+| Item Files / Materialien | **340** | `public/images/endfield/materials/` |
+| Valuables Stash | **223** | `public/images/endfield/valuables/` |
+| **Gesamt** | **940** | Lokale WebP-Bibliothek |
+
+Die Bilddateien in `public/images/endfield/` sind mehr als 940, weil die Operator-Cover/Skills zusätzlich existieren. Unterscheidung zwischen **Katalog-Icons** und **extra Operator-Artworks** beibehalten.
+
+- Manifest: `src/data/endfield/catalog/items.json`. Offizielle numerische Item-ID als Dateiname `<id>.webp` und Datenbankschlüssel.
+- Bei Materialien etc. Symbole aus bestehender Katalogbibliothek verwenden statt kopieren; `ItemIcon.astro` und `MaterialCosts.astro`.
+- Die Bilder wurden aus größeren Originaldateien als WebP komprimiert; keine zweite PNG-/JPEG-Bibliothek nebenbei erzeugen.
+- Fehlerhafte/fehlende Dateien nicht auf ein fremdes Item umbiegen; wenn verfügbar, mit neutralem Text-Platzhalter und Fehlerhinweis arbeiten.
+- Die Trennung in `gear/`, `materials/`, `weapons/`, `valuables/` und `operators/` ist eine bewusste Entscheidung aus PR #8.
+
+### 7.2 Waffen und Gear-Details [FERTIG mit offenen Wiki-Lücken]
+
+`src/data/endfield/catalog/equipment-details.json` enthält **84 Waffen** und **258 Ausrüstungsteile** mit geprüften offizielle Metadaten.
+
+- **80 Waffen** besitzen die erwarteten Detail-Widgets; **4 neuere Waffen** (SKPORT-IDs 1280–1283) hatten beim Import keine vollständigen Details und bleiben bewusst `incomplete`.
+- **258/258 Gear** haben ein offizielles Stats-Widget und einen eindeutig zugeordneten **Standard-Herstellungsweg**.
+- Für **167/258 Gear** gibt es ein Artificing-/Veredelungswidget; bei anderen `not-listed`, ohne offizielle Grundwerte fälschlich als unvollständig zu markieren.
+- Import-/Normalisierungs-Skripte: `scripts/endfield/import-equipment.mjs` und `equipment-normalize.mjs`.
+- Offizielle SKPORT-`acquisitionNotes` beschreiben Erwerbswege, nicht automatisch eine individuelle Kartenposition.
+- Bei fehlenden Widgets/Schemata: `incomplete`/`needs-review` statt eigener statischer Zahlen.
+
+### 7.3 Ausrüstung darf nicht nur nach Rüstungs-Level sortiert werden
+
+Die folgenden sieben Komponentenstufen sind eine redaktionell definierte Reihenfolge, **unterlegt mit offiziellen Komponenten-Item-IDs und Standardrezepten**. Siehe `src/lib/endfield/buildFinder.mjs`.
+
+| Reihenfolge | Komponente | Item-ID | Typische Gear-Level im aktuellen Modell | Phase |
+| ---: | --- | ---: | --- | --- |
+| 1 | Amethyst | 525 | 20 / 28 | Early |
+| 2 | Ferrium | 526 | 36 | Early |
+| 3 | Cryston | 527 | 50 | Early |
+| 4 | Xiranit | 528 | 60 / 70 | Mid |
+| 5 | Cuprium | 747 | 70 | Mid |
+| 6 | Hetonit | 844 | 70 | End |
+| 7 | Pyrrolit | 1067 | 70 | End |
+
+**Wichtig:** Allein Level 70 erlaubt *nicht* den Schluss, Pyrrolit-Verarbeitung oder entsprechende Blaupausen seien freigeschaltet. Das benötigte Tier eines Builds wird aus der **höchsten Komponente der vier offiziellen Standardrezepte** berechnet. Komponenten darf der Nutzer separat wählen.
+
+**Default im Finder:** Spieler-Level **70** und Fabrikkomponente **Pyrrolit** (bewusst gewünscht). Das sind Eingabe-Defaults, **kein Beweis tatsächlicher Freischaltung**.
+
+### 7.4 Offizielle Erwerbsarten: 258 Gear-IDs
+
+| SKPORT-Erwerbsweg | Gear-Einträge |
+| --- | ---: |
+| `Gear Template Crate` | **125** |
+| `Authority Level ... Reward` | **86** |
+| `Wuling Stock Redistribution Level ...` | **20** |
+| `Game progress reaches the [Wuling] region` | **15** |
+| Nicht ausreichend bestimmbar | **12** |
+| **Gesamt** | **258** |
+
+Diese Unterscheidung ist implementiert in `src/lib/endfield/storyAreas.mjs`. Der Erwerbsweg ersetzt weder einen Story-Meilenstein noch den tatsächlichen Besitz der Vorlage. Insbesondere ist „Autoritätslevel erfüllt“ nicht gleich „Belohnung abgeholt“.
+
+---
