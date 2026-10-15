@@ -142,7 +142,7 @@ const potentialByLevel = new Map(guide.potentials.entries.map(p=>[p.level,p]));
               <p>Traits</p>
               <div class="op-chip-row"><span class="op-chip">[Trait 1]</span><span class="op-chip">[Trait 2]</span></div>
               <p>Attribute</p>
-              <div class="op-chip-row"><span class="op-chip">Haupt: [Attribut]</span><span class="op-chip">Sekundär: [Attribut]</span></div>
+              <div class="op-chip-row"><span class="op-chip">Haupt: {extraData?.attributes.mainAttribute || "[Attribut]"}</span><span class="op-chip">Sekundär: {extraData?.attributes.secondaryAttribute || "[Attribut]"}</span></div>
             </article>
             <article class="op-cardlet">
               {videoEmbed ?
