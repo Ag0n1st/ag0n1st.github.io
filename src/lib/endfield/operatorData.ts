@@ -26,6 +26,7 @@ export interface ImportedSkill {
   name: string;
   type: string;
   iconUrl?: string;
+  description?: string;
   // Metric name followed by the 12 values for ranks 1–9 and mastery I–III.
   metrics: string[][];
 }
