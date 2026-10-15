@@ -7,7 +7,7 @@
  * IMPORTANT: rename, never re-download, re-encode, or copy an image.
  * Running against an already-migrated checkout fails instead of touching it.
  */
-import {readFileSync,writeFileSync,renameSync,mkdirSync,existsSync,readdirSync,statSync} from "node:fs";
+import {readFileSync,writeFileSync,renameSync,mkdirSync,existsSync,readdirSync,statSync,rmdirSync} from "node:fs";
 import {dirname,join} from "node:path";
 import {createHash} from "node:crypto";
 
@@ -101,6 +101,7 @@ for(const [filename,proof] of beforeImages){
 const remaining=existsSync("public/images/endfield/items")
  ?readdirSync("public/images/endfield/items"):[]; 
 if(remaining.length)throw Error("Old items directory still contains image assets");
+if(existsSync("public/images/endfield/items"))rmdirSync("public/images/endfield/items");
 console.log("MIGRATION_RESULT",JSON.stringify({
  movedCatalogWebps:moved,reusedExistingOperatorCovers:reused,
  relocatedSkillWebps:skillCount,changedDetailImageReferences:updatedDetails,
