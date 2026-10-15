@@ -6,7 +6,7 @@
 > **Repository:** https://github.com/Ag0n1st/ag0n1st.github.io  
 > **Produktionswebsite:** https://ag0n1st.com (eigene Domain), alternativ https://ag0n1st.github.io  
 > **Hauptbranch:** `main`. Die zuletzt vor dieser Roadmap integrierte Funktion ist der Story-/Gebietsfilter aus **PR #12**, Merge-Commit `631980a`.  
-> **Zuletzt zusätzlich beauftragt:** Autoritätslevel maximal **60** und diese Übergabe-/Roadmap-Datei.  
+> **Diese Dokumentation und die Autoritätslevel-Grenze 60:** [Pull Request #13](https://github.com/Ag0n1st/ag0n1st.github.io/pull/13).  
 > **Wichtig:** Bei jeder folgenden Entwicklungsphase diese Datei und das tatsächliche Repository **gemeinsam** prüfen. GitHub-Code und erfolgreiche CI-Läufe sind der Nachweis für Implementierungen; die Roadmap ist die verbindliche Sammlung von Anforderungen, Entscheidungen, Aufgaben und Übergabehinweisen.
 
 ## 0. SOFORTSTART: NEUER CHAT / ANDERE KI
@@ -182,7 +182,7 @@ Die folgende Tabelle ist die bisherige belegte PR-/Commit-Kette. Sie dient dazu,
 | [#10](https://github.com/Ag0n1st/ag0n1st.github.io/pull/10) | Community-Kisten-/Set-Recherche, 100 grobe Kandidaten. | [FERTIG als historischer Fallback] |
 | [#11](https://github.com/Ag0n1st/ag0n1st.github.io/pull/11) | Konkrete Einzelteile aus Kisten-Iconlinks, Abgleich mit zweiter Datenbank und Konfliktberichten. | [FERTIG, merged] |
 | [#12](https://github.com/Ag0n1st/ag0n1st.github.io/pull/12) | Tatsächlicher Story-/Gebiets-/Blaupausen-Filter inklusive `localStorage`. | [FERTIG, merged] |
-| **Roadmap + Authority max. 60** | Zentrale KI-Übergabe, Dokumentationsprozess, strikte 60er-Grenze. | **Diese aktuelle Entwicklungsphase**; Commit-/PR-Nummer nach Merge im Übergabepunkt ergänzen. |
+| [#13](https://github.com/Ag0n1st/ag0n1st.github.io/pull/13) | Zentrale KI-Übergabe, Dokumentationsprozess, strikte Autoritätslevel-Grenze **60**. | Diese Roadmap-/Authority-Änderung; Merge/Deploy bei GitHub verifizieren. |
 
 ### 3.1 Frühe Produktentscheidungen, die erhalten bleiben sollen
 
