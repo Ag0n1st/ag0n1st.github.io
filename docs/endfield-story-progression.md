@@ -13,15 +13,67 @@ Stand: 15.10.2026. **Nur offiziell bestätigte Angaben** werden als Fakten über
 - Offizieller lokaler SKPORT-Snapshot für 258 Ausrüstungseinträge:
   `src/data/endfield/catalog/equipment-details.json` (`acquisitionNotes`).
 
-Die Patchnotes bestätigen die **Region Wuling**, das Gebiet **Wuling City** und das
-neu eingeführte Gebiet **Si's Painting**. Zudem nennen sie den neuen Hauptstoryinhalt
+Die offiziellen Patchnotes belegen mehrere Gebiete in **Wuling**, insbesondere
+**Wuling City** sowie das neu eingeführte **Si's Painting**. Zudem nennen sie den neuen Hauptstoryinhalt
 bis einschließlich **Chapter II Process VIII: Paint with Fresh Ink**. Daraus
 folgt ausdrücklich **nicht**, dass gerade der Abschluss dieser Mission als
 Zugangsvoraussetzung zu Si's Painting oder einer bestimmten Blaupause gilt.
 
 Valley IV (im Projekt **Tal4**) ist ebenfalls offiziell als Region belegt.
-Konkrete Untergebiete nehmen wir erst nach offiziell belegter Benennung und
-Blueprint-Relevanz in das Register auf.
+Konkrete Tal4-Untergebiete nehmen wir erst nach offiziell belegter Benennung
+auf. Die geografische Relevanz einzelner Ausrüstungsblaupausen ist separat zu prüfen.
+
+## Bestätigte Wuling-Gebiete und Veröffentlichungsdaten
+
+Die folgenden Namen sind jeweils durch offizielle GRYPHLINE-Patchnotes bestätigt.
+Die Veröffentlichung eines Gebiets ist **kein** Beweis dafür, dass es in
+dieser Reihenfolge durch die Hauptstory freigeschaltet wird oder dort bestimmte
+Blaupausen liegen.
+
+| Gebiet | In Patchnotes genannt | Offizielle Quelle |
+| --- | --- | --- |
+| Wuling City | Grundgebiet, Datum hier noch ungeklärt | GRYPHLINE 2026-03-12 |
+| Qingbo Stockade | 12.03.2026 | https://endfield.gryphline.com/en-us/news/8907 |
+| Marker Stone | 17.04.2026 | https://endfield.gryphline.com/en-us/news/0751 |
+| Test Area | 17.04.2026 | https://endfield.gryphline.com/en-us/news/0751 |
+| Sword Vault Dale | 05.06.2026 | https://endfield.gryphline.com/en-us/news/0758 |
+| Yinglung Pass | 16.07.2026 | https://endfield.gryphline.com/en-us/news/5200 |
+| North Wuling Exclusion Zone | 16.07.2026 | https://endfield.gryphline.com/en-us/news/5200 |
+| Si's Painting | 15.10.2026 | https://endfield.gryphline.com/en-us/news/9560 |
+
+Die offizielle Juli-Mitteilung dokumentiert zudem einen Weg zum **früheren
+Wuling-Zugang**: Nach der Hauptmission *Chapter I Process II: Remediation Progress*
+kann über das Event Center die Mission *Chapter II Process I: Arrival at Wuling*
+vorgezogen angenommen werden. Damit ist **nicht** bewiesen, dass der reine
+Abschluss von Kapitel I, Prozess II schon den Regionszugang bestätigt.
+
+Die Patchnotes vom 15.10.2026 nennen neue Teile für **Type 50 Yinglung,
+Pulser Labs, Eternal Xiranite, Rift Trekker und AIC Fieldwork**, jedoch
+keine Liste ihrer individuellen Blaupausenfundorte. Die Gear-IDs werden
+erst bei belegter Zuordnung eingetragen.
+
+Die von GRYPHLINE ausdrücklich verlinkten offiziellen **SKPORT Map Tools**
+finden sich unter https://game.skport.com/map/endfield (vgl.
+https://endfield.gryphline.com/en-us/news/9562). Die Website liefert
+ohne Login eine Karte mit Gebieten und Positionsmarkierungen.
+**Ob die dortigen Markierungen die Gear-IDs oder enthaltenen Blaupausen
+eindeutig referenzieren, ist gesondert zu prüfen.**
+
+## Erwerb: Zugang, Belohnungsberechtigung und Besitz
+
+Die Funktionen in `src/lib/endfield/storyAreas.mjs` kennen die Zustände
+`unverified`, `locked`, `eligible` und `acquired`.
+
+- **Authority Level Reward:** Bei erreichtem Level ist die Vorlage höchstens
+  *eligible*; ihre Abholung muss separat bestätigt werden.
+- **Wuling Stock Redistribution:** Eine ausreichende Stufe ist ebenfalls
+  keine Bestätigung des tatsächlichen Erwerbs.
+- **Wuling Region Story Progress:** Der ausdrücklich bestätigte Regionszugang
+  kann als *eligible* gelten. Daraus wird nicht auf eine konkrete Kiste geschlossen.
+- **Gear Template Crate:** Solange der einzelne Fundpunkt und der tatsächliche
+  Besitz ungeklärt sind, bleibt sie *unverified*.
+- **Explizit erhaltene Blaupausen:** Nur ein bestätigter Besitz wird als
+  *acquired* ausgewiesen.
 
 ## Bestandsaufnahme: Wie die offizielle Wiki Blaupausen beschreibt
 
