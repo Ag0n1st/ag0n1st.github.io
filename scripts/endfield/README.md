@@ -254,6 +254,23 @@ Die Testdateien `skport-extract.test.mjs` und `skport-extras.test.mjs` laufen vo
 - **Ausfall:** Wenn die Quelle nicht erreichbar ist, baut Astro mit den letzten im Repository gespeicherten Dateien weiter. Kein Supabase erforderlich.
 
 
+## Story- und Gebietsfilter (Build-Finder)
+
+Der Build-Finder prüft inzwischen **vier einzelne Blaupausen** pro Build
+zusätzlich zu Level und Fabrikkomponente. Die zentrale Auswahl nutzt
+Tal4/Wuling, 19 offizielle Einzelgebiete, optionale Autoritäts-/Warenumverteilungs-
+werte und eine lokale Checkbox für den tatsächlich vorhandenen
+Blaupausenbesitz je Gear-ID. Die Story-/Gebietseingaben bleiben im Browser
+und benötigen keinen Login. Die letzte Fabrikkomponente (Pyrrolit)
+ist beim Laden immer vorausgewählt.
+
+Bei vorhandenen, aber nicht eindeutig durch Quellen bestätigten Fundorten
+werden die Builds weiterhin als **ungeklärt** behandelt. Freier
+`storyUnlock`-Text erlaubt keine automatische Freischaltung.
+
+Ausführliche Entwickler- und Datenpflegehinweise:
+`docs/endfield-story-build-filter.md`.
+
 ## Blaupausen-Recherche (offizielle Kisten + Community-Fundorte, Oktober 2026)
 
 Nach der offiziellen Gebiets- und Markergrundlage wurde eine **eigenständige, klar
