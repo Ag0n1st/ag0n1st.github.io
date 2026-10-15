@@ -8,7 +8,7 @@ const gearData=JSON.parse(readFileSync("src/data/endfield/catalog/equipment-deta
 test("verified official Tal4/Wuling register uses stable IDs, no invented area gates",()=>{
   assert.equal(validateStoryAreaRegistry(registry),true);
   assert.deepEqual(registry.regions.map(x=>x.id),["valley-iv","wuling"]);
-  assert.deepEqual(registry.areas.map(x=>x.id),["wuling-city","qingbo-stockade","marker-stone","test-area","sword-vault-dale","yinglung-pass","north-wuling-exclusion-zone","sis-painting"]);
+  assert.deepEqual(registry.areas.filter(x=>x.regionId==="wuling").map(x=>x.id),["jingyu-valley","wuling-city","qingbo-stockade","marker-stone","marker-stone-interiors","test-area","sword-vault-dale","yinglung-pass","north-wuling-exclusion-zone","snowy-forest","suiming","sis-painting","main-pillar-office"]);
   assert.equal(registry.blueprintAreaLinks.length,0);
   assert.equal(registry.storyMilestones.find(x=>x.id==="chapter-2-process-8").releaseState,"available-in-version");
 });
@@ -47,9 +47,11 @@ test("reject unverified gear-to-area claims and undocumented missions",()=>{
 
 
 test("area publication order does not grant blueprint locations or mission unlocks",()=>{
-  assert.equal(registry.areas.length,8);
+  assert.equal(registry.areas.length,19);
   assert.ok(registry.areas.every(area=>area.unlock.status==="unverified"));
   assert.ok(registry.areas.every(area=>area.blueprintGearIds.length===0));
+  assert.equal(new Set(registry.areas.map(x=>x.officialMapLevelId)).size,19);
+  assert.equal(registry.areas.filter(x=>x.regionId==="valley-iv").length,6);
   assert.equal(registry.versionNotices[0].addedGearSetPieces.length,5);
   assert.equal(registry.regionAccessNotes[0].requiresAcceptingMission,true);
 });
