@@ -5,69 +5,88 @@ import {FACTORY_COMPONENT_STAGES,DEFAULT_FACTORY_COMPONENT,FACTORY_STAGES,
   componentRequirementForRecipe,getBuildRequirements,evaluateBuildAvailability
 } from "../../src/lib/endfield/buildFinder.mjs";
 const standard=id=>({materials:[{id:"602",count:8000},{id,count:50}]});
-const gear=(id,level=70)=>({status:"verified",level,recipeStatus:"verified",standardRecipe:standard(id)});
-const select=(factoryComponent="pyrrolite",level=70)=>({factoryComponent,level});
+const gear=(component,level=70,id=component)=>({
+ id:String(id),name:"Gear "+id,status:"verified",level,recipeStatus:"verified",
+ standardRecipe:standard(component),acquisitionNotes:["Gear Template Crate"]
+});
+const ownedProgress=(ids=[])=>({regionId:"wuling",unlockedAreaIds:[],
+ acquiredGearBlueprintIds:ids,authorityLevel:null,stockRedistributionLevel:null});
+const select=(factoryComponent="pyrrolite",level=70,storyProgress)=>({
+ factoryComponent,level,storyProgress
+});
+const prepare=(components,storyUnlock="Editorial hint")=>
+  getBuildRequirements(components.map(([id,lv])=>gear(id,lv)),{storyUnlock});
 
-test("the seven ordered components use official Wiki item IDs and user-defined level ranges",()=>{
-  assert.deepEqual(FACTORY_COMPONENT_STAGES.map(x=>x.itemId),["525","526","527","528","747","844","1067"]);
-  assert.deepEqual(FACTORY_COMPONENT_STAGES.map(x=>x.levels),[[20,28],[36],[50],[60,70],[70],[70],[70]]);
-  assert.deepEqual(FACTORY_COMPONENT_STAGES.map(x=>x.phase),
-    ["Early-Game","Early-Game","Early-Game","Mid-Game","Mid-Game","End-Game","End-Game"]);
-  assert.equal(DEFAULT_FACTORY_COMPONENT,"pyrrolite");
+test("seven factory components use official Wiki item IDs and user-defined level ranges",()=>{
+ assert.deepEqual(FACTORY_COMPONENT_STAGES.map(x=>x.itemId),["525","526","527","528","747","844","1067"]);
+ assert.deepEqual(FACTORY_COMPONENT_STAGES.map(x=>x.levels),[[20,28],[36],[50],[60,70],[70],[70],[70]]);
+ assert.deepEqual(FACTORY_COMPONENT_STAGES.map(x=>x.phase),
+   ["Early-Game","Early-Game","Early-Game","Mid-Game","Mid-Game","End-Game","End-Game"]);
+ assert.equal(DEFAULT_FACTORY_COMPONENT,"pyrrolite");
 });
-test("compute a build's highest official component and level across four pieces",()=>{
-  const req=getBuildRequirements([gear("525",20),gear("528",60),gear("747"),gear("1067")],
-    {storyUnlock:"Confirmed story prerequisite"});
-  assert.equal(req.requiredLevel,70);
-  assert.equal(req.requiredComponent,"pyrrolite");
-  assert.equal(evaluateBuildAvailability(req,select("hetonite")).status,"component-locked");
-  assert.equal(evaluateBuildAvailability(req,select()).status,"available");
-  assert.equal(evaluateBuildAvailability(req,select("pyrrolite",60)).status,"level-locked");
+test("four validated pieces require both correct gear level and factory component before story",()=>{
+ const req=prepare([["525",20],["528",60],["747",70],["1067",70]]);
+ const owned=ownedProgress(["525","528","747","1067"]);
+ assert.equal(req.requiredLevel,70);
+ assert.equal(req.requiredComponent,"pyrrolite");
+ assert.equal(req.gearAccess.length,4);
+ assert.equal(evaluateBuildAvailability(req,select("hetonite",70,owned)).status,"component-locked");
+ assert.equal(evaluateBuildAvailability(req,select("pyrrolite",60,owned)).status,"level-locked");
+ assert.equal(evaluateBuildAvailability(req,select("pyrrolite",70,owned)).status,"available");
 });
-test("Cuprium, Hetonite and Pyrrolite stay distinct even at the same gear level",()=>{
-  assert.deepEqual(["747","844","1067"].map(id=>getBuildRequirements(
-    Array.from({length:4},()=>gear(id)),{storyUnlock:"Checked"}
-  ).requiredComponent),["cuprium","hetonite","pyrrolite"]);
+test("Cuprium, Hetonite and Pyrrolite retain distinct levels of factory unlock",()=>{
+ assert.deepEqual(["747","844","1067"].map(id=>getBuildRequirements(
+  Array.from({length:4},(_,i)=>gear(id,70,String(i+400))),
+  {storyUnlock:"Prose alone is NOT proof"}
+ ).requiredComponent),["cuprium","hetonite","pyrrolite"]);
 });
-test("four official Basic Lv10 recipes fit below the first Amethyst level",()=>{
-  const basic={status:"verified",level:10,recipeStatus:"verified",
-    standardRecipe:{materials:[{id:"493",count:10},{id:"475",count:2}]}};
-  const req=getBuildRequirements(Array.from({length:4},()=>basic),{storyUnlock:"Checked"});
-  assert.equal(req.requiredComponent,"starter");
-  assert.equal(evaluateBuildAvailability(req,select("amethyst",20)).status,"available");
+test("basic official Lv10 recipes use only starter materials",()=>{
+ const basic={id:"206",name:"Basic Armor",status:"verified",level:10,recipeStatus:"verified",
+  standardRecipe:{materials:[{id:"493",count:10},{id:"475",count:2}]},
+  acquisitionNotes:[]};
+ const req=getBuildRequirements(Array.from({length:4},()=>basic));
+ assert.equal(req.requiredComponent,"starter");
+ assert.equal(evaluateBuildAvailability(req,select("amethyst",20,ownedProgress(["206"]))).status,"available");
 });
-test("unknown/missing recipes and story requirements never create an available build",()=>{
-  assert.equal(componentRequirementForRecipe({materials:[{id:"99999",count:2}]}),null);
-  assert.equal(componentRequirementForRecipe({materials:[{id:"528",count:0}]}),null);
-  assert.equal(componentRequirementForRecipe({materials:[{id:"602",count:50}]}),null);
-  assert.equal(componentRequirementForRecipe(null),null);
-  for(const parts of [
-    Array.from({length:3},()=>gear("528")),
-    [gear("528"),gear("528"),gear("528"),{...gear("528"),recipeStatus:"needs-review"}],
-    [gear("528"),gear("528"),gear("528"),{...gear("528"),status:"incomplete"}],
-    [gear("528"),gear("528"),gear("528"),{...gear("528"),level:null}]
-  ])assert.equal(evaluateBuildAvailability(
-    getBuildRequirements(parts,{storyUnlock:"Checked"}),select()
-  ).status,"unverified");
-  const noStory=getBuildRequirements(Array.from({length:4},()=>gear("528")));
-  assert.equal(evaluateBuildAvailability(noStory,select()).status,"story-unverified");
-  const preview=getBuildRequirements(Array.from({length:4},()=>gear("528")),
-    {storyUnlock:"Checked",preview:true});
-  assert.equal(evaluateBuildAvailability(preview,select()).status,"unverified");
-  assert.equal(evaluateBuildAvailability(getBuildRequirements(
-    Array.from({length:4},()=>gear("528")),{storyUnlock:"Checked"}
-  ),{level:70,factoryComponent:"maximal"}).status,"unverified");
+test("freeform story prose NEVER unlocks Gear or overrides missing story input",()=>{
+ const pieces=Array.from({length:4},(_,i)=>gear("528",70,String(i+100)));
+ const req=getBuildRequirements(pieces,{storyUnlock:"Already checked"});
+ assert.equal(req.hasStoryEvidence,true);
+ assert.equal(evaluateBuildAvailability(req,select()).status,"story-unverified");
+ assert.equal(evaluateBuildAvailability(req,select("pyrrolite",70,ownedProgress())).status,"story-unverified");
+ assert.equal(evaluateBuildAvailability(req,select("pyrrolite",70,
+   ownedProgress(["100","101","102","103"]))).status,"available");
 });
-test("all official 258 gear recipes map to an approved component or starter recipe",()=>{
-  const snapshot=JSON.parse(readFileSync("src/data/endfield/catalog/equipment-details.json","utf8"));
-  assert.equal(snapshot.gear.length,258);
-  const totals={starter:0};
-  for(const row of snapshot.gear){
-    const tier=componentRequirementForRecipe(row.standardRecipe);
-    assert.ok(tier,"Unmapped official recipe: "+row.id+" "+row.name);
-    assert.equal(row.recipeStatus,"verified");
-    totals[tier]=(totals[tier]||0)+1;
-  }
-  assert.equal(totals.starter,4);
-  for(const tier of FACTORY_STAGES)assert.ok(totals[tier]>0,"No recipe at component tier "+tier);
+test("incomplete details, unrecognized recipes and editor preview never unlock builds",()=>{
+ assert.equal(componentRequirementForRecipe({materials:[{id:"99999",count:2}]}),null);
+ assert.equal(componentRequirementForRecipe({materials:[{id:"528",count:0}]}),null);
+ assert.equal(componentRequirementForRecipe({materials:[{id:"602",count:50}]}),null);
+ assert.equal(componentRequirementForRecipe(null),null);
+ for(const parts of [
+  Array.from({length:3},()=>gear("528")),
+  [gear("528"),gear("528"),gear("528"),{...gear("528"),recipeStatus:"needs-review"}],
+  [gear("528"),gear("528"),gear("528"),{...gear("528"),status:"incomplete"}],
+  [gear("528"),gear("528"),gear("528"),{...gear("528"),level:null}]
+ ])assert.equal(evaluateBuildAvailability(
+   getBuildRequirements(parts,{storyUnlock:"Prose"}),select()
+ ).status,"unverified");
+ const preview=getBuildRequirements(Array.from({length:4},()=>gear("528")),
+   {storyUnlock:"Prose",preview:true});
+ assert.equal(evaluateBuildAvailability(preview,select()).status,"unverified");
+ assert.equal(evaluateBuildAvailability(getBuildRequirements(
+   Array.from({length:4},()=>gear("528"))),
+   {level:70,factoryComponent:"maximal",storyProgress:ownedProgress(["528"])}).status,"unverified");
+});
+test("all official 258 Gear standard recipes map to approved components",()=>{
+ const snapshot=JSON.parse(readFileSync("src/data/endfield/catalog/equipment-details.json","utf8"));
+ assert.equal(snapshot.gear.length,258);
+ const totals={starter:0};
+ for(const row of snapshot.gear){
+   const tier=componentRequirementForRecipe(row.standardRecipe);
+   assert.ok(tier,"Unmapped official recipe: "+row.id+" "+row.name);
+   assert.equal(row.recipeStatus,"verified");
+   totals[tier]=(totals[tier]||0)+1;
+ }
+ assert.equal(totals.starter,4);
+ for(const tier of FACTORY_STAGES)assert.ok(totals[tier]>0,"Missing component tier "+tier);
 });
