@@ -1,30 +1,62 @@
 ---
 import type { OperatorGuideModel } from "../../../lib/endfield/operatorGuideModel";
+import ItemIcon from "../../endfield/ItemIcon.astro";
+import {resolveOfficialItem} from "../../../lib/endfield/itemCatalog";
+import {getOfficialWeapon} from "../../../lib/endfield/equipmentDetails";
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
 const { guide, missing, weapons, shownWeapons } = model;
+const officialWeapons=shownWeapons.map(w=>{
+ const item=resolveOfficialItem(w.name,"Weapons");
+ return {...w,item,data:item?getOfficialWeapon(item.id):undefined};
+});
 ---
 <section class="op-section" id="waffen">
         <h2>Waffen</h2>
         <div class="op-divided">
           <h3>Waffenempfehlungen</h3>
-          {shownWeapons.length ? <div class="op-two">{shownWeapons.map(w=><article class="op-cardlet">
-            <div class="op-line"><div class="op-mini-art">[Icon]</div><div class="op-line-label"><span class="op-chip">{w.label}</span><strong>{w.name}</strong></div></div>
+          {officialWeapons.length ? <div class="op-two">{officialWeapons.map(w=><article class="op-cardlet">
+            <div class="op-line"><div class="op-mini-art">{w.item ? <ItemIcon id={w.item.id} /> : "[Icon]"}</div><div class="op-line-label"><span class="op-chip">{w.label}</span><strong>{w.item?.name??w.name}</strong></div></div>
             <p class="op-body-copy">{w.evaluation || "[Bewertung folgt]"}</p>
           </article>)}</div> : <p class="op-placeholder">[Noch keine Waffenempfehlungen]</p>}
           {guide.weapons.generalNotes && <p class="op-body-copy">{guide.weapons.generalNotes}</p>}
         </div>
         <div class="op-divided">
           <h3>Waffendetails</h3>
-          {shownWeapons.length ? <>
-            <div class="op-pills" aria-label="Waffe auswählen">{shownWeapons.map((w,i)=><button class="op-pill-button" type="button" data-weapon-button={w.id} aria-pressed={i===0?"true":"false"}>{w.label} {shownWeapons.filter(x=>x.label===w.label).length>1 ? "· "+w.name : ""}</button>)}</div>
-            {shownWeapons.map((w,i)=><div class="op-weapon-panel op-cardlet" data-weapon-panel={w.id} hidden={i!==0}>
-              <div class="op-line"><div class="op-mini-art">[Icon]</div><div class="op-line-label"><strong>{w.name}</strong><span class="op-muted">{w.label}</span></div></div>
-              <div class="op-info-grid" style="margin-top:13px">{["Basis-ATK","Hauptattribut","Sekundärattribut","Waffeneffekt"].map(label=><div class="op-info-field"><small>{label}</small><strong>[Spieldaten folgen]</strong></div>)}</div>
+          {officialWeapons.length ? <>
+            <div class="op-pills" aria-label="Waffe auswählen">{officialWeapons.map((w,i)=><button class="op-pill-button" type="button" data-weapon-button={w.id} aria-pressed={i===0?"true":"false"}>{w.label} {officialWeapons.filter(x=>x.label===w.label).length>1 ? "· "+(w.item?.name??w.name) : ""}</button>)}</div>
+            {officialWeapons.map((w,i)=><div class="op-weapon-panel op-cardlet" data-weapon-panel={w.id} hidden={i!==0}>
+              <div class="op-line"><div class="op-mini-art">{w.item ? <ItemIcon id={w.item.id} /> : "[Icon]"}</div><div class="op-line-label"><strong>{w.item?.name??w.name}</strong><span class="op-muted">{w.label}</span></div></div>
+              {w.data?.status==="verified" ?
+  <div class="op-table-wrap" style="margin-top:13px">
+    <table class="op-table"><thead><tr>{(w.data.attributes[0]?.tables[0]?.columns??[]).map(label=><th>{label}</th>)}</tr></thead>
+      <tbody>{(w.data.attributes[0]?.tables[0]?.rows??[]).map(row=><tr>{row.cells.map(value=><td>{value||"–"}</td>)}</tr>)}</tbody>
+    </table>
+  </div> :
+  <p class="op-muted">Offizielle Waffendetails für diesen Eintrag noch nicht vollständig verfügbar.</p>}
               {w.source && <p><strong>Bezugsquelle:</strong> {w.source}</p>}
               <p class="op-body-copy"><strong>Bewertung</strong><br />{w.evaluation || missing}</p>
-              <details class="op-details"><summary>Level, Veredelung & Upgrade-Materialien</summary><div class="op-details-body">[Werte, Veredelungsstufen und Materialkosten folgen]</div></details>
+              <details class="op-details"><summary>Offizielle Tuning-Stufen, Effekte und Potenziale</summary>
+  <div class="op-details-body">
+    {w.data?.status==="verified" ? <>
+      {[
+        {label:"Tuning",tabs:w.data.tuning},
+        {label:"Waffeneffekte nach Rang",tabs:w.data.details},
+        {label:"Potenziale",tabs:w.data.potentials}
+      ].map(group=><div class="op-divided"><h4>{group.label}</h4>
+        {group.tabs.map(tab=><div class="op-table-wrap">
+          {tab.introName&&<p class="op-muted">{tab.introName}</p>}
+          {tab.tables.map(table=><table class="op-table"><thead><tr>{table.columns.map(v=><th>{v}</th>)}</tr></thead>
+            <tbody>{table.rows.map(row=><tr>{row.cells.map(v=><td>{v||"–"}</td>)}</tr>)}</tbody>
+          </table>)}
+          {tab.texts.map(line=><p class="op-body-copy">{line}</p>)}
+        </div>)}
+      </div>)}
+      <p class="op-muted">Quelle: offizielle SKPORT-Wiki · Stand {w.data.source.snapshot}</p>
+    </> : <p class="op-muted">Noch keine validierten Detailwerte vorhanden.</p>}
+  </div>
+</details>
             </div>)}
           </> : <p class="op-placeholder">[Waffendetails werden nach dem Datenimport angezeigt]</p>}
         </div>
@@ -33,7 +65,7 @@ const { guide, missing, weapons, shownWeapons } = model;
           {weapons.some(w=>w.performancePercent!==undefined) ?
             <div class="op-table-wrap"><table class="op-table">
               <thead><tr><th>Waffe</th><th>Relative Leistung</th><th>Vergleichsbedingungen</th></tr></thead>
-              <tbody>{weapons.filter(w=>w.performancePercent!==undefined).map(w=><tr><td>{w.name}</td><td>{w.performancePercent} %</td><td>{w.comparisonConditions}</td></tr>)}</tbody>
+              <tbody>{weapons.filter(w=>w.performancePercent!==undefined).map(w=><tr><td>{resolveOfficialItem(w.name,"Weapons")?.name??w.name}</td><td>{w.performancePercent} %</td><td>{w.comparisonConditions}</td></tr>)}</tbody>
             </table></div> :
             <p class="op-placeholder">[Noch keine belastbaren Vergleichswerte]</p>}
         </div>

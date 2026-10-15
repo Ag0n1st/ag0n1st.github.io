@@ -63,6 +63,32 @@ Die zwei erzeugten Dateien werden anschließend lokal mit `npm run build` geprü
 - **Manueller Workflow:** `.github/workflows/import-endfield-catalog-assets.yml` synchronisiert nur öffentliche Katalog-Cover, keine kompletten Galerie-Grafiken oder GIFs/Videos. Bereits gespeicherte WebP-Dateien werden standardmäßig nicht erneut geladen.
 - **Redaktionelle Daten:** Material-IDs und Spielwerte bleiben in offiziellen Snapshot-Dateien, subjektive Builds und Bewertungen in den Markdown-Guides.
 
+## Offizielle Waffen- und Ausrüstungsdetaildaten
+
+Die ID-basierte Datenbank für **84 Waffen** und **258 Ausrüstungsteile** wird ausschließlich aus der offiziellen öffentlichen SKPORT-Wiki erzeugt. Der Katalog und die 940 lokalen WebP-Grafiken bilden den Schlüssel.
+
+- `scripts/endfield/equipment-normalize.mjs` validiert offizielle Wiki-Widgets (Attribute Preview, Tuning, Skill Details & Essence, Potential Phases, Stats, Artificing und Gear Pack). Keine Bewertungen oder Empfehlungen aus Drittquellen.
+- `scripts/endfield/import-equipment.mjs` liest öffentliche Wiki-Einträge anonym mit Chrome und erzeugt einen **lokalen, überprüfbaren Snapshot**. Das Script lässt Werte leer bzw. setzt `incomplete`, wenn offizielle Detail-Werte fehlen.
+- `src/data/endfield/catalog/equipment-details.json` speichert die validierten Ergebnisse nach dem importierenden GitHub-Actions-Lauf. Die Website lädt nur diese Datei, niemals die Live-API.
+- `src/lib/endfield/equipmentDetails.ts` und die Waffen-/Ausrüstungsabschnitte der Operator-Vorlage verknüpfen die Daten mit redaktionellen Empfehlungen.
+- Die Schreibweise `weaponId` und `equipment.builds[].items` in den Guide-Templates akzeptiert die **offizielle numerische Item-ID als String** oder den aus dem englischen SKPORT-Namen abgeleiteten Slug. Beispiel: `"1046"` oder `"bedazzling-night-debut"`. Ein numerischer Eintrag ist eindeutiger und empfohlen.
+- `standardRecipe` bleibt bei **offiziellen Standard-Herstellungskosten**, nicht alternativen Verfahren aus anderen Wikis. Bei der ersten Wiki-Darstellung erscheinen Mengen oft **vor** den Materialnamen. Der generische `import-equipment.mjs`-Workflow wartet deshalb auf die vollständig aufgelösten Zutaten und speichert außerdem die wörtlich angegebenen Blaupausen-Freischaltungen (`acquisitionNotes`). Bei nicht zuverlässig erkennbaren Rezepten wird `recipeStatus: needs-review` gesetzt.
+- **Build-Finder:** bleibt ein separat zu entwickelndes Feature. Hersteller- und Fabrikfreischaltungen dürfen nicht allein aus einem Level oder Rezept erschlossen werden.
+- Die 100-MB-Endfield-Grenze wird vor Datencommits und beim GitHub-Pages-Build kontrolliert.
+
+### Veröffentlichungsprüfung für Ausrüstungsstufen
+
+Die offizielle SKPORT-Wiki enthält für alle 258 Gear-Einträge `Stats`, aber nur für 167 davon auch `Artificing`. Fehlende Veredelung ist auf frühen Gear-Stufen kein Beweis für fehlende Grundwerte: solche Datensätze gelten mit offiziellen Stats als **verified**, das fehlende Veredelungs-Widget wird als `artificingStatus: not-listed` ausgewiesen. Bei den vier neuen Waffen ohne Detail-Widgets lautet der Status weiterhin `incomplete`.
+
+### Abschlussstand des offiziellen SKPORT-Imports vom 15.10.2026
+
+- **80 Waffen** besitzen vollständige Attribute-, Tuning-, Effekt- und Potenzial-Widgets.
+- **4 neuere Waffen** (Wiki-IDs 1280–1283) besitzen aktuell noch keine auslesbaren Detail-Widgets. Diese Werte bleiben leer und werden nicht erfunden.
+- **258 Ausrüstungsteile** haben offizielle Stats. Bei **167** ist zusätzlich Artificing dokumentiert; die übrigen 91 bleiben mit Stats gültig.
+- **258 von 258 Ausrüstungsteilen** haben ein eindeutig aus der offiziellen Website identifiziertes Standard-Herstellungsrezept. Für frühe Gear-Teile wurden die nachgeladenen Materialnamen gezielt kontrolliert.
+- Offizielle Blaupausen-Freischalttexte werden mitgeführt, aber nicht automatisch zu einer subjektiven Progressions- oder Build-Empfehlung verarbeitet.
+- Die einmaligen Diagnose-Workflows sind nach Prüfung entfernt worden. Die allgemeine Import-Action bleibt manuell ausführbar.
+
 ## Bilder lokal sichern (ohne GIF/Video)
 
 `scripts/endfield/sync-assets.mjs` kopiert ausschließlich die aus unseren JSON-Daten bekannten SKPORT-PNG-, JPEG- oder WebP-URLs für Cover, Illustration und Skill-Icons ins Repository. GIFs, Videos und zusätzliche unbekannte URLs werden ausgeschlossen.

@@ -26,3 +26,20 @@ export const endfieldCatalogMeta={
   categories:officialItems.categories,
   items:items.size
 };
+
+
+/** Accept official item IDs or slugified official English names in editable guide templates. */
+const normalizedId=name=>name.normalize("NFKD").replace(/[\u0300-\u036f]/g,"")
+  .toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const namedIndex=new Map<string,EndfieldCatalogItem>();
+for(const item of items.values()){
+  const slug=normalizedId(item.name);
+  const key=item.categories[0]+"::"+slug;
+  if(!namedIndex.has(key))namedIndex.set(key,item);
+  else namedIndex.delete(key); // ambiguous aliases are not auto-resolved
+}
+export function resolveOfficialItem(reference:string,category:"Weapons"|"Gear"):EndfieldCatalogItem|undefined{
+  const direct=items.get(reference);
+  if(direct?.categories.includes(category))return direct;
+  return namedIndex.get(category+"::"+normalizedId(reference));
+}

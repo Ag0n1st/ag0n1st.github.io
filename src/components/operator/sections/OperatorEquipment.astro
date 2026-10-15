@@ -1,10 +1,17 @@
 ---
 import type { OperatorGuideModel } from "../../../lib/endfield/operatorGuideModel";
 import ItemIcon from "../../endfield/ItemIcon.astro";
+import MaterialCosts from "../../endfield/MaterialCosts.astro";
+import {resolveOfficialItem} from "../../../lib/endfield/itemCatalog";
+import {getOfficialGear} from "../../../lib/endfield/equipmentDetails";
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
 const { guide, missing, roleLabels, stageLabels, builds } = model;
+const officialBuilds=builds.map(build=>({...build,parts:build.items.map(reference=>{
+ const catalog=resolveOfficialItem(reference,"Gear");
+ return {reference,catalog,detail:catalog?getOfficialGear(catalog.id):undefined};
+})}));
 ---
 <section class="op-section" id="ausruestung">
         <h2>Ausrüstung</h2>
@@ -25,11 +32,11 @@ const { guide, missing, roleLabels, stageLabels, builds } = model;
         </div>
         <div class="op-divided">
           <h3>Empfohlene Ausrüstung</h3>
-          {builds.length ? <>
-            <div class="op-pills" aria-label="Build auswählen">{builds.map((b,i)=><button type="button" class="op-pill-button" data-build-button={b.id} aria-pressed={i===0?"true":"false"}>{b.title}</button>)}</div>
-            {builds.map((b,i)=><div class="op-build-panel op-cardlet" data-build-panel={b.id} hidden={i!==0}>
+          {officialBuilds.length ? <>
+            <div class="op-pills" aria-label="Build auswählen">{officialBuilds.map((b,i)=><button type="button" class="op-pill-button" data-build-button={b.id} aria-pressed={i===0?"true":"false"}>{b.title}</button>)}</div>
+            {officialBuilds.map((b,i)=><div class="op-build-panel op-cardlet" data-build-panel={b.id} hidden={i!==0}>
               <div class="op-subtitle"><h3 style="margin:0">{b.title}</h3><span class="op-chip">{roleLabels[b.role]}</span></div>
-              <div class="op-gear-parts">{b.items.map(item=><div class="op-gear-part"><div class="op-mini-art"><ItemIcon id={item} /></div><small>{item}</small></div>)}</div>
+              <div class="op-gear-parts">{b.parts.map(part=><div class="op-gear-part"><div class="op-mini-art"><ItemIcon id={part.catalog?.id??part.reference} /></div><small>{part.catalog?.name??part.reference}</small></div>)}</div>
               {b.availableFromLevel && <p><strong>Ab Level:</strong> {b.availableFromLevel}</p>}
               {b.factoryUnlock && <p class="op-body-copy"><strong>Fabrik:</strong> {b.factoryUnlock}</p>}
               {b.teamContext && <p class="op-body-copy"><strong>Einsatzbereich:</strong> {b.teamContext}</p>}
@@ -37,7 +44,24 @@ const { guide, missing, roleLabels, stageLabels, builds } = model;
               <p class="op-body-copy"><strong>Bewertung:</strong> {b.evaluation || missing}</p>
               <details class="op-details"><summary>Werte, Herstellung & Freischaltungen</summary><div class="op-details-body">
                 <div class="op-table-wrap"><table class="op-table"><thead><tr><th>Ausrüstungsteil</th><th>Attribute</th><th>Materialien</th></tr></thead>
-                  <tbody>{b.items.map(item=><tr><td>{item}</td><td>[Werte]</td><td>[Materialien]</td></tr>)}</tbody>
+                  <tbody>{b.parts.map(part=><tr>
+  <td>{part.catalog?.name??part.reference}</td>
+  <td>{part.detail?.status==="verified" ? <>
+    <div class="op-muted">Level {part.detail.level??"?"} · {part.detail.gearSlot??"Ausrüstung"}</div>
+    {(part.detail.stats[0]?.tables[0]?.rows??[]).map(row=><div>{row.cells[0]}: {row.cells[1]}</div>)}
+    {part.detail.setEffect&&<details class="op-details"><summary>{part.detail.setName} – Setbonus</summary><p class="op-body-copy">{part.detail.setEffect}</p></details>}
+    {part.detail.acquisitionNotes?.length>0&&<p class="op-body-copy"><strong>Offizielle Blaupausen-Freischaltung:</strong> {part.detail.acquisitionNotes.join(" · ")}</p>}
+    {part.detail.artificing.length>0&&<details class="op-details"><summary>Veredelungswerte</summary>
+      {part.detail.artificing.flatMap(tab=>tab.tables).map(table=><table class="op-table">
+        <thead><tr>{table.columns.map(value=><th>{value}</th>)}</tr></thead>
+        <tbody>{table.rows.map(row=><tr>{row.cells.map(v=><td>{v}</td>)}</tr>)}</tbody></table>)}
+    </details>}
+  </> : <span class="op-muted">Offizielle Werte noch nicht vollständig verfügbar</span>}</td>
+  <td>{part.detail?.standardRecipe?.materials?.length ?
+    <MaterialCosts items={part.detail.standardRecipe.materials} /> :
+    <span class="op-muted">{part.detail?.recipeStatus==="needs-review"?"Rezept muss geprüft werden":"Standardrezept nicht dokumentiert"}</span>}
+  </td>
+</tr>)}</tbody>
                 </table></div>
                 {b.craftingNotes && <p class="op-body-copy">{b.craftingNotes}</p>}
               </div></details>
