@@ -1,10 +1,20 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import type { ImportedOperator } from "../../lib/endfield/operatorData";
+import type { ImportedOperator, ImportedOperatorExtras, ImportedItemCost } from "../../lib/endfield/operatorData";
 
 type GuideData = CollectionEntry<"operator-guides">["data"];
-interface Props { guide: GuideData; operatorName: string; preview?: boolean; gameData?: ImportedOperator; }
-const { guide, operatorName, preview = false, gameData } = Astro.props;
+interface Props { guide: GuideData; operatorName: string; preview?: boolean; gameData?: ImportedOperator; extraData?: ImportedOperatorExtras; }
+const { guide, operatorName, preview = false, gameData, extraData } = Astro.props;
+const officialPotentials = new Map((extraData?.potentials ?? []).map(p => [p.level,p]));
+const combatTalents = extraData?.talents.filter(t => t.category === "combat") ?? [];
+const shipTalents = extraData?.talents.filter(t => t.category === "ship") ?? [];
+const attributeNodes = extraData?.talents.filter(t => t.category === "attribute") ?? [];
+function formatCost(items: ImportedItemCost[]):string {
+  if (!items?.length) return "–";
+  return items.map(item => (extraData?.materials[item.id]?.name ?? "Item "+item.id) +
+    " × " + item.count.toLocaleString("de-DE")).join(" · ");
+}
+
 const gameSkills = gameData?.skills ?? [];
 const importedBySlot = new Map(gameSkills.map(skill => [skill.slot,skill]));
 const defaultSkillRank = 8; // Rank 9, never a guide skill-priority recommendation.
@@ -199,16 +209,36 @@ const potentialByLevel = new Map(guide.potentials.entries.map(p=>[p.level,p]));
           <h3>Operator-Profil & Spielweise</h3>
           <div class="op-info-grid">{[
               ["Klasse",gameData?.operator.class],["Element",gameData?.operator.element],
-              ["Fraktion",gameData?.operator.faction],["Hauptattribut",undefined],
-              ["Sekundärattribut",undefined],["Waffentyp",gameData?.operator.weaponType]
+              ["Fraktion",gameData?.operator.faction],["Hauptattribut",extraData?.attributes.mainAttribute],
+              ["Sekundärattribut",extraData?.attributes.secondaryAttribute],["Waffentyp",gameData?.operator.weaponType]
             ].map(([label,value])=><div class="op-info-field"><small>{label}</small><strong>{value || "[Spieldaten folgen]"}</strong></div>)}</div>
           <p class="op-muted op-body-copy">{guide.operatorKit.playstyle || "[Spielweise und Grundlagen folgen]"}</p>
         </div>
         <div class="op-divided">
-          <h3>Charakter-Level & Aufstieg</h3>
-          <div class="op-table-wrap"><table class="op-table">
-            <thead><tr><th>Aufstieg</th><th>Materialien</th><th>Freischaltung</th></tr></thead>
-            <tbody>{[1,2,3,4,5].map(n=><tr><td>[Stufe {n}]</td><td>[Materialien × Anzahl]</td><td>[Level / Story]</td></tr>)}</tbody>
+          <h3>Attributentwicklung</h3>
+          {extraData ? <>
+            <p class="op-section-intro">Originalwerte der englischen SKPORT-Wiki für die dort angegebenen Levelstufen. Dies sind keine Ausrüstungslevel.</p>
+            <div class="op-table-wrap"><table class="op-table op-progression-table">
+              <thead><tr><th>Attribut</th>{extraData.attributes.levels.map(level=><th>{level}</th>)}</tr></thead>
+              <tbody>{extraData.attributes.metrics.map(metric=><tr><th scope="row">{metric.name}</th>{metric.values.map(value=><td>{value}</td>)}</tr>)}</tbody>
+            </table></div>
+            <details class="op-details"><summary>Materialkosten nach Operator-Level</summary>
+              <div class="op-details-body op-table-wrap"><table class="op-table">
+                <thead><tr><th>Operator-Level</th><th>Materialien laut Wiki</th></tr></thead>
+                <tbody>{extraData.attributes.levelCosts.map(row=><tr><td>{row.level}</td><td>{formatCost(row.items)}</td></tr>)}</tbody>
+              </table></div>
+            </details>
+          </> : <p class="op-placeholder">[Attributwerte werden nach dem SKPORT-Import angezeigt]</p>}
+        </div>
+        <div class="op-divided">
+          <h3>Operator-Aufstieg & Freischaltungen</h3>
+          <p class="op-section-intro">Promotion und Outfitting sind unterschiedliche Freischaltungen. Die Levelangaben entsprechen den offiziellen Operator-Meilensteinen.</p>
+          <div class="op-table-wrap"><table class="op-table op-progression-table">
+            <thead><tr><th>Aufstieg</th><th>Freischaltung</th><th>Voraussetzung</th><th>Materialien</th></tr></thead>
+            <tbody>{extraData ? extraData.promotions.map(p=><tr>
+              <td><strong>{p.name}</strong></td><td>{p.effect}</td><td>{p.requirement}</td>
+              <td>{formatCost(p.cost)}</td>
+            </tr>) : [1,2,3,4,5].map(n=><tr><td>[Stufe {n}]</td><td>[Freischaltung]</td><td>[Level/Story]</td><td>[Materialien]</td></tr>)}</tbody>
           </table></div>
           {guide.operatorKit.progressionNotes && <p class="op-body-copy">{guide.operatorKit.progressionNotes}</p>}
         </div>
@@ -271,18 +301,31 @@ const potentialByLevel = new Map(guide.potentials.entries.map(p=>[p.level,p]));
             })}
           </div>
         </div>
-        <div class="op-divided"><h3>Combat Talents</h3>
-          {guide.skills.combatTalents.length ? <div class="op-two">{guide.skills.combatTalents.map(t=><article class="op-cardlet">
-            <div class="op-line"><div class="op-mini-art">[Icon]</div><strong>{t.talentId}</strong></div>
-            <p>[Offizieller Talenteffekt]</p><p class="op-body-copy"><strong>Bewertung:</strong> {t.evaluation}</p>
-          </article>)}</div> : <p class="op-placeholder">[Combat Talents aus Spieldaten / Bewertungen folgen]</p>}
-        </div>
-        <div class="op-divided"><h3>Schiffstalente</h3>
-          {guide.skills.shipTalents.length ? <div class="op-two">{guide.skills.shipTalents.map(t=><article class="op-cardlet">
-            <div class="op-line"><div class="op-mini-art">[Icon]</div><strong>{t.talentId}</strong></div>
-            <p>[Offizieller Talenteffekt]</p><p class="op-body-copy">{t.evaluation}</p>
-          </article>)}</div> : <p class="op-placeholder">[Schiffstalente folgen]</p>}
-        </div>
+        {[
+          {talentCategory:"attribute",title:"Attribut-Talent",talentLevels:attributeNodes},
+          {talentCategory:"combat",title:"Combat Talents",talentLevels:combatTalents},
+          {talentCategory:"ship",title:"Schiffstalente",talentLevels:shipTalents}
+        ].map(({talentCategory,title,talentLevels})=><div class="op-divided">
+          <h3>{title}</h3>
+          {talentLevels.length ? <div class="op-two">
+            {talentLevels.map(t=><article class="op-cardlet">
+                <div class="op-line"><div class="op-mini-art">[Icon]</div><strong>{t.name}</strong></div>
+                <p class="op-muted" style="font-size:11px">SKPORT Original · Englisch</p>
+                <p class="op-body-copy">{t.levels.at(-1)?.effect}</p>
+                {talentCategory !== "attribute" && guide.skills[talentCategory === "combat" ? "combatTalents" : "shipTalents"].find(guideTalent => guideTalent.talentId === t.id)?.evaluation &&
+                <p class="op-body-copy"><strong>Bewertung:</strong> {guide.skills[talentCategory === "combat" ? "combatTalents" : "shipTalents"].find(guideTalent => guideTalent.talentId === t.id)?.evaluation}</p>}
+                <details class="op-details"><summary>Alle Talentstufen, Voraussetzungen & Materialien</summary>
+                  <div class="op-details-body op-table-wrap"><table class="op-table">
+                    <thead><tr><th>Stufe</th><th>Offizieller Effekt</th><th>Voraussetzungen</th><th>Materialien</th></tr></thead>
+                    <tbody>{t.levels.map(level=><tr>
+                      <td>{level.name}</td><td class="op-body-copy">{level.effect}</td>
+                      <td>{level.requirements.join(" · ") || "–"}</td><td>{formatCost(level.cost)}</td>
+                    </tr>)}</tbody>
+                  </table></div>
+                </details>
+              </article>)}
+          </div> : <p class="op-placeholder">[Offizielle Talente folgen]</p>}
+        </div>)}
       </section>
 
       <!-- 4. Waffen -->
@@ -376,9 +419,10 @@ const potentialByLevel = new Map(guide.potentials.entries.map(p=>[p.level,p]));
           {[1,2,3,4,5].map((n,i)=>{
             const p=potentialByLevel.get(n);
             return <div class="op-weapon-panel op-cardlet" data-potential-panel={n} hidden={i!==0}>
-              <h3>P{n} – [Offizieller Potenzialname]</h3>
-              <p>[Offizieller Effekt aus Spieldaten]</p>
-              {(n===1||n===3||n===5) && <div class="op-line"><div class="op-mini-art">[Bild]</div><strong>Freischaltbares Profilbild</strong></div>}
+              <h3>P{n} – {officialPotentials.get(n)?.name || "[Offizieller Potenzialname]"}</h3>
+              <p class="op-body-copy">{officialPotentials.get(n)?.effect || "[Offizieller Effekt aus Spieldaten]"}</p>
+              {officialPotentials.has(n) && <p class="op-muted" style="font-size:11px">Offizieller SKPORT-Text (EN). Prozentangaben im Effekt sind keine Gesamt-DPS-Vergleiche.</p>}
+              {(n===1||n===3||n===5) && <div class="op-line"><div class="op-mini-art">[Bild]</div><strong>{officialPotentials.has(n) ? "Operator-Snapshot – Grafik folgt" : "Freischaltbares Profilbild"}</strong></div>}
               <p class="op-body-copy"><strong>Bewertung:</strong> {p?.evaluation || missing}</p>
               <div class="op-two">
                 <div class="op-info-field"><small>Gesamtgewinn vs. P0</small><strong>{p?.increaseOverP0Percent === undefined ? "–" : p.increaseOverP0Percent+" %"}</strong></div>
@@ -389,8 +433,8 @@ const potentialByLevel = new Map(guide.potentials.entries.map(p=>[p.level,p]));
           })}
         </div>
         <div class="op-divided"><h3>Potenzialvergleich</h3>
-          <div class="op-table-wrap"><table class="op-table"><thead><tr><th>Potenzial</th><th>Zusätzlicher Nutzen</th><th>Gesamtgewinn vs. P0</th></tr></thead>
-            <tbody>{[1,2,3,4,5].map(n=><tr><td>P{n}</td><td>{potentialByLevel.get(n)?.increaseOverPreviousPercent === undefined ? "–" : potentialByLevel.get(n)?.increaseOverPreviousPercent+" %"}</td><td>{potentialByLevel.get(n)?.increaseOverP0Percent === undefined ? "–" : potentialByLevel.get(n)?.increaseOverP0Percent+" %"}</td></tr>)}</tbody>
+          <div class="op-table-wrap"><table class="op-table"><thead><tr><th>Potenzial</th><th>Offizieller Effekt (EN)</th><th>Gemessener Gewinn vs. P0</th></tr></thead>
+            <tbody>{[1,2,3,4,5].map(n=><tr><td>P{n}</td><td class="op-body-copy">{officialPotentials.get(n)?.effect || "[Folgt]"}</td><td>{potentialByLevel.get(n)?.increaseOverP0Percent === undefined ? "–" : potentialByLevel.get(n)?.increaseOverP0Percent+" %"}</td></tr>)}</tbody>
           </table></div>
         </div>
         <div class="op-divided"><h3>Pull-Empfehlung</h3><p class="op-muted op-body-copy">{guide.potentials.pullAdvice || "[Empfohlener Stopp-Punkt und persönliche Einordnung folgen]"}</p></div>
