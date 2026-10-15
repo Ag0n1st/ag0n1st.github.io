@@ -6,7 +6,7 @@ Dieses Verzeichnis gehört zur redaktionellen Ebene der **Arknights: Endfield**-
 
 - Das Schema (`src/content/operatorGuideSchema.ts`) und die Astro Content Collection sind eingerichtet.
 - `src/content/operator-guides/_template.md` ist deine **kopierbare Vorlage**. Durch den führenden Unterstrich wird sie von der Collection ignoriert.
-- `src/content/operator-guides/typhoeus.md` ist ein **sichtbarer Layout-Prototyp** mit dem Status `draft`. Dies ist die einzige bewusst freigeschaltete Entwurfsseite.
+- `src/content/operator-guides/typhoeus.md` und `liino.md` sind derzeit **sichtbare Layout-Vorschauen** mit dem Status `preview`. Die persönlichen Guide-Bewertungen sind noch nicht vollständig eingetragen.
 - Die Webseite verwendet jetzt `src/pages/endfield/operatoren/[slug].astro` und die gemeinsame Komponente `src/components/operator/OperatorGuide.astro`. **Alle veröffentlichten Guides** werden anhand der Markdown-Dateien automatisch erzeugt. Noch nicht importierte offizielle Spieldaten sind als Platzhalter gekennzeichnet.
 
 ## Neuen Guide vorbereiten
@@ -17,7 +17,7 @@ Dieses Verzeichnis gehört zur redaktionellen Ebene der **Arknights: Endfield**-
 4. Texte und Referenzen eintragen. Anfangs `status: draft` beibehalten.
 5. `npm install` (einmalig) und `npm run build` ausführen. Astro prüft das YAML mithilfe unseres Schemas und zeigt ungültige Felder oder fehlende Pflichtfelder an.
 6. Datei über GitHub Desktop oder per Commit ins Repository übernehmen.
-7. Sobald der Guide inhaltlich bereit ist, `status: published` setzen und nach `main` pushen. Der nächste Build erstellt die Guide-Seite unter `/endfield/operatoren/<operator>/` und fügt die Card automatisch im Operatoren-Grid hinzu. `status: draft` hält andere Guides vollständig verborgen. **Typhoeus ist die einzige bewusst sichtbare Ausnahme.**
+7. Zur Veröffentlichung `status: published` setzen und nach `main` pushen. Der nächste Build erstellt die Guide-Seite unter `/endfield/operatoren/<operator>/` und fügt sie automatisch ins Operatoren-Grid ein. Die drei Statuswerte: **`draft`** (nicht sichtbar), **`preview`** (öffentlich sichtbare, deutlich gekennzeichnete Vorschau) und **`published`** (fertiger Guide). Für `published` verlangt das Schema eine Kurzbeschreibung und ein Fazit.
 
 ## Was muss ich selbst eingeben?
 
@@ -33,7 +33,7 @@ Die eigenen Bewertungen und Kommentare gehören in die Markdown-Datei:
 - **8. Gameplay:** Beliebig viele Showcases, optional Video-Link, Kurztext sowie Rotation/Tipps.
 - **9. Fazit:** Gesamtbewertung, Pull-Empfehlung und Entscheidungshilfen.
 
-Die offiziellen Operatorwerte, Skillbeschreibungen, Levelwerte, Waffenstats, Materialkosten, Seteffekte und Icons sollen später **ausschließlich aus den importierten Spieldaten** kommen. Sie werden nicht im Guide dupliziert.
+Offizielle Operatorwerte, Skillbeschreibungen, Levelwerte, Materialien und Icons werden bereits für Typhoeus und Liino aus den importierten Spieldaten geladen. Weitere Datenkategorien wie Waffenstats und Ausrüstungs-Seteffekte folgen. Sie werden nicht in den Guide-Textdateien dupliziert.
 
 ## IDs und Verknüpfungen
 
@@ -78,9 +78,9 @@ teams:
 
 ## Nächste technische Schritte
 
-1. Die automatisch importierten Spieldaten unter stabilen IDs strukturieren.
-2. Den universalisierten Operator-Guide bei Bedarf in kleinere Abschnittskomponenten aufteilen.
-3. Das Operatoren-Grid und Guide-Template um importierte Spieldaten sowie optimierte Bilder/Icons erweitern.
-4. Zusätzliche Validierung gegen IDs der importierten Spiele-Datensätze einrichten.
+1. Redaktionelle Liino-Bewertungen, Builds, Teams und Videoguide ergänzen, sobald sie vorliegen.
+2. Den generischen SKPORT-Importer nach den echten Typhoeus-/Liino-Tests auf weitere Operatoren erweitern.
+3. Bei Bedarf das universelle Operator-Template in kleinere Abschnittskomponenten zerlegen.
+4. Waffen-/Ausrüstungsdaten aus strukturierten offiziellen Datensätzen ergänzen und Guide-IDs dagegen validieren.
 
 So entsteht später der gewünschte Ablauf: Datei kopieren → bearbeiten → GitHub-Push → automatischer Build → neue Guide-Seite.
