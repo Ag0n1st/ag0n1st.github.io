@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { getImportedOperator } from "../../../lib/endfield/operatorData";
 import EndfieldPlaceholder from "../../../layouts/EndfieldPlaceholder.astro";
 import "../../../styles/operator-guides.css";
 
@@ -12,6 +13,7 @@ const operators = entries.map(entry => ({
   name: entry.data.displayName ?? entry.data.operator.split("-").map(part => part[0].toUpperCase() + part.slice(1)).join(" "),
   slug: entry.data.operator,
   preview: entry.data.status === "draft",
+  game: getImportedOperator(entry.data.operator)?.operator,
 })).sort((a,b) => a.name.localeCompare(b.name, "de"));
 
 ---
@@ -27,9 +29,10 @@ const operators = entries.map(entry => ({
           <div class="op-card-info">
             <h2>{operator.name}</h2>
             <div class="op-chip-row">
-              <span class="op-chip is-pink">{operator.slug === "typhoeus" ? "6★" : "[Seltenheit]"}</span>
-              <span class="op-chip">[Klasse]</span>
-              <span class="op-chip">[Element]</span>
+              <span class="op-chip is-pink">{operator.game ? operator.game.rarity + "★" : "[Seltenheit]"}</span>
+              <span class="op-chip">{operator.game?.class || "[Klasse]"}</span>
+              <span class="op-chip">{operator.game?.element || "[Element]"}</span>
+              <span class="op-chip">{operator.game?.weaponType || "[Waffentyp]"}</span>
               {operator.preview && <span class="op-chip is-accent">Layout-Vorschau</span>}
             </div>
             <div class="op-card-bottom"><span>Charakter-Guide ansehen</span><span aria-hidden="true">↗</span></div>
