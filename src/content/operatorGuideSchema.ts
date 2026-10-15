@@ -6,7 +6,7 @@ const identifier = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Bitte eine ID
 const text = z.string().trim().max(12000);
 const skillSlot = z.enum(["basic", "battle", "combo", "ultimate"]);
 const role = z.enum(["main-dps", "support", "hybrid", "sub-dps", "control", "other"]);
-const equipmentLevel = z.union([z.literal(50), z.literal(60), z.literal(70)]);
+const equipmentLevel = z.union([z.literal(10), z.literal(20), z.literal(28), z.literal(36), z.literal(50), z.literal(60), z.literal(70)]);
 const operatorParty = z.tuple([identifier, identifier, identifier, identifier]);
 const noDuplicateIds = (items: { id: string }[]) => new Set(items.map(item => item.id)).size === items.length;
 
@@ -46,10 +46,9 @@ const equipmentBuild = z.object({
   // Die vier Ausrüstungsplätze sind verbindlich.
   items: z.tuple([identifier, identifier, identifier, identifier]),
   availableFromLevel: equipmentLevel.optional(),
-  // Redaktionell geprüfter Fabrikfortschritt; SKPORT liefert keine einheitliche Stufen-Skala.
-  factoryStage: z.enum(["einstieg","fortgeschritten","maximal"]).optional(),
-  // Ohne dokumentierte Freischaltung bleibt der Build ungeprüft.
-  factoryUnlock: text.optional(),
+  // Die Komponentenstufe wird aus den offiziellen Standardrezepten ermittelt.
+  // Story-/Facility-/Blaupausenfreischaltungen werden getrennt geprüft.
+  storyUnlock: text.optional(),
   teamContext: text.optional(),
   evaluation: text.default(""),
   craftingNotes: text.optional(),
