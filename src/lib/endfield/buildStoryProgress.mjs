@@ -1,5 +1,11 @@
 import {classifyOfficialGearAcquisition} from "./storyAreas.mjs";
 
+/** Currently achievable Endfield Authority Level; update when the official cap changes. */
+export const MAX_AUTHORITY_LEVEL=60;
+export function validAuthorityLevel(value){
+ return Number.isSafeInteger(value) && value>=0 && value<=MAX_AUTHORITY_LEVEL;
+}
+
 /**
  * Shared (SSR + browser) typed access requirements for a single Gear item.
  * Community map/gear correlations must NEVER pretend to be official markers.
@@ -47,7 +53,7 @@ export function evaluateGearStoryAccess(item,progress={}){
  };
  if(item.kind==="authority-level-reward"){
    const level=progress.authorityLevel;
-   if(!Number.isSafeInteger(level)||level<0)return {
+   if(!validAuthorityLevel(level))return {
      status:"story-unverified",reason:name+": Autoritätslevel nicht angegeben"};
    if(level<item.authorityLevel)return {
      status:"acquisition-locked",reason:name+": benötigt Autoritätslevel "+item.authorityLevel};

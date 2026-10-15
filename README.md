@@ -1,5 +1,8 @@
 # Ag0n1st Website
 
+> **Projektstatus, vollständige Roadmap und KI-Übergabe:** [ROADMAP.md](ROADMAP.md).
+> Vor neuen Entwicklungsaufträgen diese Datei zuerst lesen und nach jedem Merge aktualisieren.
+
 Die persönliche Website von Ag0n1st — Guides, Streams und Tools rund um Gacha Games, auf Deutsch.
 
 ## Tech Stack

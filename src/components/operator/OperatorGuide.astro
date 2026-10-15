@@ -47,7 +47,7 @@ const { guide, operatorName, preview, localized } = model;
 </main>
 <script>
   import { evaluateBuildAvailability, FACTORY_COMPONENT_STAGES, DEFAULT_FACTORY_COMPONENT } from "../../lib/endfield/buildFinder.mjs";
-  import { STORY_BUILD_STATUSES } from "../../lib/endfield/buildStoryProgress.mjs";
+  import { STORY_BUILD_STATUSES, MAX_AUTHORITY_LEVEL, validAuthorityLevel } from "../../lib/endfield/buildStoryProgress.mjs";
   // A single rank selector controls all displayed headline values in its skill.
   document.querySelectorAll<HTMLSelectElement>("[data-skill-rank]").forEach(select => {
     select.addEventListener("change", () => {
@@ -170,7 +170,7 @@ const { guide, operatorName, preview, localized } = model;
       for(const id of owned)if(typeof id==="string"&&/^\d+$/.test(id)&&ownedBlueprintIds.size<500)
         ownedBlueprintIds.add(id);
       blueprintCheckboxes.forEach(x=>x.checked=ownedBlueprintIds.has(x.dataset.blueprintOwned||""));
-      if(authority && Number.isSafeInteger(saved.authorityLevel)&&saved.authorityLevel>=0&&saved.authorityLevel<=200)
+      if(authority && validAuthorityLevel(saved.authorityLevel))
         authority.value=String(saved.authorityLevel);
       if(stock && Array.from(stock.options).some(x=>x.value===String(saved.stockRedistributionLevel)))
         stock.value=String(saved.stockRedistributionLevel);
@@ -183,7 +183,7 @@ const { guide, operatorName, preview, localized } = model;
       regionId:region?.value||"",
       unlockedAreaIds:areaCheckboxes.filter(x=>x.checked).map(x=>x.value),
       acquiredGearBlueprintIds:[...ownedBlueprintIds],
-      authorityLevel:number!==""&&Number.isInteger(Number(number))?Number(number):null,
+      authorityLevel:number!==""&&validAuthorityLevel(Number(number))?Number(number):null,
       stockRedistributionLevel:stockValue!==""?Number(stockValue):null
     };
   }
@@ -257,7 +257,15 @@ const { guide, operatorName, preview, localized } = model;
   factory?.addEventListener("change",updateConfig);
   showAllBuilds?.addEventListener("change",updateConfig);
   region?.addEventListener("change",()=>{saveStoryProgress();updateConfig();});
-  authority?.addEventListener("change",()=>{saveStoryProgress();updateConfig();});
+  // HTML max is not sufficient: clamp manual input/pasted values as well.
+  authority?.addEventListener("change",()=>{
+    if(authority.value.trim()!==""){
+      const value=Number(authority.value);
+      authority.value=Number.isFinite(value)
+        ?String(Math.max(0,Math.min(MAX_AUTHORITY_LEVEL,Math.floor(value)))):"";
+    }
+    saveStoryProgress();updateConfig();
+  });
   stock?.addEventListener("change",()=>{saveStoryProgress();updateConfig();});
   areaCheckboxes.forEach(input=>input.addEventListener("change",()=>{
     saveStoryProgress();updateConfig();
