@@ -1,5 +1,17 @@
 # Endfield: Blaupausen-Fundortrecherche und überprüfbare Zuordnungen
 
+**Präzisionsupdate (15.10.2026):** Die ältere, nachfolgend dokumentierte
+Set-Zuordnung mit 100 Kandidaten dient nur noch als **Fallback**.
+Aus der Talos-Wiki-Kistentabelle wurden inzwischen 113 **explizite
+Einzelteil-Links** extrahiert und mit Endfield Hubs individuellen Fundorten
+abgeglichen. **92 der 125 offiziell als Kistengear geführten Teile**
+haben dadurch eine konkrete recherchierte Kiste ohne Quellenkonflikt,
+**23 sind widersprüchlich**, **10 noch offen**.
+Den aktuellen Einzelteil-für-Einzelteil-Nachweis mit SKPORT-IDs enthält
+[die präzise Kistenauswertung](endfield-blueprint-piece-audit.md).
+Keine Community-Fundortangabe belegt bereits eine offizielle Marker-ID
+oder die tatsächlich erworbene Blaupause.
+
 **Recherche-Snapshot:** 15.10.2026, Version **Sanctuary of Ink**.
 
 ## Quellen und Qualitätsstufen
