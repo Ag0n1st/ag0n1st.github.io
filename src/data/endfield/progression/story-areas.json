@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "snapshot": "2026-10-15",
+  "definitions": "Regions/areas and missions verified by official GRYPHLINE announcements. Unlock relations are not inferred from release versions or geographic membership.",
+  "sources": [
+    {
+      "id": "official-version-20261015",
+      "publisher": "GRYPHLINE",
+      "url": "https://endfield.gryphline.com/en-us/news/9560",
+      "date": "2026-10-15",
+      "type": "version-notes"
+    },
+    {
+      "id": "official-factory-dev-2026",
+      "publisher": "GRYPHLINE",
+      "url": "https://endfield.gryphline.com/en-us/news/7014",
+      "date": "2026-10-07",
+      "type": "dev-comm"
+    },
+    {
+      "id": "official-valley-wuling",
+      "publisher": "GRYPHLINE",
+      "url": "https://endfield.gryphline.com/en-us/news/1340",
+      "date": "2025-11-01",
+      "type": "dev-comm"
+    }
+  ],
+  "regions": [
+    {
+      "id": "valley-iv",
+      "name": "Valley IV",
+      "displayNameDe": "Tal4",
+      "sourceIds": [
+        "official-valley-wuling"
+      ],
+      "unlock": {
+        "status": "unverified",
+        "requiredMissionIds": []
+      }
+    },
+    {
+      "id": "wuling",
+      "name": "Wuling",
+      "displayNameDe": "Wuling",
+      "sourceIds": [
+        "official-version-20261015",
+        "official-valley-wuling"
+      ],
+      "unlock": {
+        "status": "unverified",
+        "requiredMissionIds": []
+      }
+    }
+  ],
+  "areas": [
+    {
+      "id": "wuling-city",
+      "regionId": "wuling",
+      "name": "Wuling City",
+      "displayNameDe": "Wuling-Stadt",
+      "sourceIds": [
+        "official-version-20261015"
+      ],
+      "unlock": {
+        "status": "unverified",
+        "requiredMissionIds": []
+      },
+      "blueprintGearIds": []
+    },
+    {
+      "id": "sis-painting",
+      "regionId": "wuling",
+      "name": "Si's Painting",
+      "displayNameDe": "Si's Painting",
+      "introduced": "2026-10-15",
+      "sourceIds": [
+        "official-version-20261015"
+      ],
+      "unlock": {
+        "status": "unverified",
+        "requiredMissionIds": []
+      },
+      "blueprintGearIds": []
+    }
+  ],
+  "storyMilestones": [
+    {
+      "id": "chapter-2-process-8",
+      "type": "main",
+      "name": "Chapter II Process VIII: Paint with Fresh Ink",
+      "sourceIds": [
+        "official-version-20261015"
+      ],
+      "releaseState": "available-in-version",
+      "unlockAreaIds": []
+    },
+    {
+      "id": "a-painting-open-for-business",
+      "type": "exploration",
+      "name": "A Painting Open for Business",
+      "sourceIds": [
+        "official-version-20261015",
+        "official-factory-dev-2026"
+      ],
+      "releaseState": "available-in-version",
+      "unlockAreaIds": []
+    }
+  ],
+  "blueprintAreaLinks": [],
+  "disclaimer": "The official update confirms new areas and new pieces for several gear sets, but does not identify the exact area/story prerequisites or item-to-blueprint positions. Unverified links remain absent."
+}
