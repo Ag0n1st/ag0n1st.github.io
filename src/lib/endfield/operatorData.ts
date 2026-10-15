@@ -80,11 +80,11 @@ const extraIndex = new Map<string,ImportedOperatorExtras>();
 for(const extras of Object.values(extraModules)) {
   if(extraIndex.has(extras.operator)) throw Error("Doppelte Operator-Ergänzung: "+extras.operator);
   if(
-    extras.attributes.levels.length !== 6 ||
-    extras.attributes.metrics.some(metric=>metric.values.length!==6) ||
-    extras.talents.length!==5 ||
-    extras.promotions.length!==7 ||
-    extras.potentials.length!==5 ||
+    extras.attributes.levels.length < 2 ||
+    extras.attributes.metrics.some(metric=>metric.values.length!==extras.attributes.levels.length) ||
+    extras.talents.length<1 ||
+    extras.promotions.length<1 ||
+    extras.potentials.length<1 ||
     extras.potentials.some((potential,i)=>potential.level!==i+1)
   ) throw Error("Unvollständige SKPORT-Operator-Ergänzung: "+extras.operator);
   const official = operatorIndex.get(extras.operator);
