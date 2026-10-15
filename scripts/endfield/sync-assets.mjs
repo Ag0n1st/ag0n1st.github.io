@@ -61,9 +61,10 @@ async function main(){
     for(const [stem,link] of targets){
       if(!link)continue;
       const {ext}=imageSource(link);
-      const target=join(targetRoot,slug,stem+ext);
+      const folder=stem.startsWith("skill-")?join(targetRoot,slug,"skills"):join(targetRoot,slug);
+      const target=join(folder,stem+ext);
       // Optimized WebP satisfies the same asset and must not trigger a new download.
-      const optimized=join(targetRoot,slug,stem+".webp");
+      const optimized=join(folder,stem+".webp");
       try {
         await stat(optimized);
         console.log("Optimiertes Asset vorhanden: "+optimized);

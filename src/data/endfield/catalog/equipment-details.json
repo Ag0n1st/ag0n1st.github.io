@@ -22,7 +22,7 @@
       "id": "37",
       "name": "Forgeborn Scathe",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/37.webp",
+      "iconPath": "/images/endfield/weapons/37.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "37",
@@ -623,7 +623,7 @@
       "id": "38",
       "name": "Tarr 11",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/38.webp",
+      "iconPath": "/images/endfield/weapons/38.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "38",
@@ -1152,7 +1152,7 @@
       "id": "39",
       "name": "Peco 5",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/39.webp",
+      "iconPath": "/images/endfield/weapons/39.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "39",
@@ -1681,7 +1681,7 @@
       "id": "40",
       "name": "Jiminy 12",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/40.webp",
+      "iconPath": "/images/endfield/weapons/40.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "40",
@@ -2210,7 +2210,7 @@
       "id": "41",
       "name": "Opero 77",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/41.webp",
+      "iconPath": "/images/endfield/weapons/41.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "41",
@@ -2739,7 +2739,7 @@
       "id": "42",
       "name": "Darhoff 7",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/42.webp",
+      "iconPath": "/images/endfield/weapons/42.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "42",
@@ -3268,7 +3268,7 @@
       "id": "43",
       "name": "Finchaser 3.0",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/43.webp",
+      "iconPath": "/images/endfield/weapons/43.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "43",
@@ -3869,7 +3869,7 @@
       "id": "44",
       "name": "Industry 0.1",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/44.webp",
+      "iconPath": "/images/endfield/weapons/44.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "44",
@@ -4470,7 +4470,7 @@
       "id": "45",
       "name": "Former Finery",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/45.webp",
+      "iconPath": "/images/endfield/weapons/45.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "45",
@@ -5055,7 +5055,7 @@
       "id": "46",
       "name": "Clannibal",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/46.webp",
+      "iconPath": "/images/endfield/weapons/46.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "46",
@@ -5656,7 +5656,7 @@
       "id": "47",
       "name": "Detonation Unit",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/47.webp",
+      "iconPath": "/images/endfield/weapons/47.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "47",
@@ -6257,7 +6257,7 @@
       "id": "48",
       "name": "White Night Nova",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/48.webp",
+      "iconPath": "/images/endfield/weapons/48.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "48",
@@ -6858,7 +6858,7 @@
       "id": "49",
       "name": "Dreams of the Starry Beach",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/49.webp",
+      "iconPath": "/images/endfield/weapons/49.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "49",
@@ -7443,7 +7443,7 @@
       "id": "50",
       "name": "Quencher",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/50.webp",
+      "iconPath": "/images/endfield/weapons/50.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "50",
@@ -8044,7 +8044,7 @@
       "id": "51",
       "name": "Aggeloslayer",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/51.webp",
+      "iconPath": "/images/endfield/weapons/51.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "51",
@@ -8645,7 +8645,7 @@
       "id": "52",
       "name": "Fluorescent Roc",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/52.webp",
+      "iconPath": "/images/endfield/weapons/52.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "52",
@@ -9246,7 +9246,7 @@
       "id": "53",
       "name": "Hypernova Auto",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/53.webp",
+      "iconPath": "/images/endfield/weapons/53.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "53",
@@ -9847,7 +9847,7 @@
       "id": "54",
       "name": "Prominent Edge",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/54.webp",
+      "iconPath": "/images/endfield/weapons/54.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "54",
@@ -10448,7 +10448,7 @@
       "id": "55",
       "name": "Pathfinder's Beacon",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/55.webp",
+      "iconPath": "/images/endfield/weapons/55.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "55",
@@ -11049,7 +11049,7 @@
       "id": "56",
       "name": "Howling Guard",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/56.webp",
+      "iconPath": "/images/endfield/weapons/56.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "56",
@@ -11650,7 +11650,7 @@
       "id": "57",
       "name": "Long Road",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/57.webp",
+      "iconPath": "/images/endfield/weapons/57.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "57",
@@ -12251,7 +12251,7 @@
       "id": "58",
       "name": "Wave Tide",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/58.webp",
+      "iconPath": "/images/endfield/weapons/58.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "58",
@@ -12852,7 +12852,7 @@
       "id": "59",
       "name": "Opus: The Living",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/59.webp",
+      "iconPath": "/images/endfield/weapons/59.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "59",
@@ -13453,7 +13453,7 @@
       "id": "60",
       "name": "Seeker of Dark Lung",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/60.webp",
+      "iconPath": "/images/endfield/weapons/60.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "60",
@@ -14054,7 +14054,7 @@
       "id": "61",
       "name": "Grand Vision",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/61.webp",
+      "iconPath": "/images/endfield/weapons/61.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "61",
@@ -14655,7 +14655,7 @@
       "id": "62",
       "name": "Never Rest",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/62.webp",
+      "iconPath": "/images/endfield/weapons/62.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "62",
@@ -15256,7 +15256,7 @@
       "id": "63",
       "name": "Oblivion",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/63.webp",
+      "iconPath": "/images/endfield/weapons/63.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "63",
@@ -15857,7 +15857,7 @@
       "id": "64",
       "name": "Chivalric Virtues",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/64.webp",
+      "iconPath": "/images/endfield/weapons/64.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "64",
@@ -16458,7 +16458,7 @@
       "id": "65",
       "name": "Opus: Etch Figure",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/65.webp",
+      "iconPath": "/images/endfield/weapons/65.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "65",
@@ -17059,7 +17059,7 @@
       "id": "66",
       "name": "Thunderberge",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/66.webp",
+      "iconPath": "/images/endfield/weapons/66.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "66",
@@ -17660,7 +17660,7 @@
       "id": "67",
       "name": "Navigator",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/67.webp",
+      "iconPath": "/images/endfield/weapons/67.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "67",
@@ -18261,7 +18261,7 @@
       "id": "68",
       "name": "Mountain Bearer",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/68.webp",
+      "iconPath": "/images/endfield/weapons/68.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "68",
@@ -18862,7 +18862,7 @@
       "id": "69",
       "name": "Umbral Torch",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/69.webp",
+      "iconPath": "/images/endfield/weapons/69.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "69",
@@ -19463,7 +19463,7 @@
       "id": "70",
       "name": "Khravengger",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/70.webp",
+      "iconPath": "/images/endfield/weapons/70.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "70",
@@ -20064,7 +20064,7 @@
       "id": "71",
       "name": "Rapid Ascent",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/71.webp",
+      "iconPath": "/images/endfield/weapons/71.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "71",
@@ -20665,7 +20665,7 @@
       "id": "72",
       "name": "Eminent Repute",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/72.webp",
+      "iconPath": "/images/endfield/weapons/72.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "72",
@@ -21266,7 +21266,7 @@
       "id": "73",
       "name": "Exemplar",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/73.webp",
+      "iconPath": "/images/endfield/weapons/73.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "73",
@@ -21867,7 +21867,7 @@
       "id": "74",
       "name": "Sundered Prince",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/74.webp",
+      "iconPath": "/images/endfield/weapons/74.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "74",
@@ -22468,7 +22468,7 @@
       "id": "75",
       "name": "JET",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/75.webp",
+      "iconPath": "/images/endfield/weapons/75.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "75",
@@ -23069,7 +23069,7 @@
       "id": "76",
       "name": "Wedge",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/76.webp",
+      "iconPath": "/images/endfield/weapons/76.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "76",
@@ -23670,7 +23670,7 @@
       "id": "77",
       "name": "Valiant",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/77.webp",
+      "iconPath": "/images/endfield/weapons/77.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "77",
@@ -24271,7 +24271,7 @@
       "id": "78",
       "name": "Thermite Cutter",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/78.webp",
+      "iconPath": "/images/endfield/weapons/78.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "78",
@@ -24872,7 +24872,7 @@
       "id": "79",
       "name": "Delivery Guaranteed",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/79.webp",
+      "iconPath": "/images/endfield/weapons/79.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "79",
@@ -25473,7 +25473,7 @@
       "id": "80",
       "name": "Artzy Tyrannical",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/80.webp",
+      "iconPath": "/images/endfield/weapons/80.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "80",
@@ -26074,7 +26074,7 @@
       "id": "81",
       "name": "OBJ Edge of Lightness",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/81.webp",
+      "iconPath": "/images/endfield/weapons/81.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "81",
@@ -26675,7 +26675,7 @@
       "id": "82",
       "name": "Finishing Call",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/82.webp",
+      "iconPath": "/images/endfield/weapons/82.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "82",
@@ -27276,7 +27276,7 @@
       "id": "83",
       "name": "Aspirant",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/83.webp",
+      "iconPath": "/images/endfield/weapons/83.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "83",
@@ -27877,7 +27877,7 @@
       "id": "84",
       "name": "Ancient Canal",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/84.webp",
+      "iconPath": "/images/endfield/weapons/84.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "84",
@@ -28478,7 +28478,7 @@
       "id": "85",
       "name": "Sundering Steel",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/85.webp",
+      "iconPath": "/images/endfield/weapons/85.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "85",
@@ -29079,7 +29079,7 @@
       "id": "86",
       "name": "OBJ Heavy Burden",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/86.webp",
+      "iconPath": "/images/endfield/weapons/86.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "86",
@@ -29680,7 +29680,7 @@
       "id": "87",
       "name": "OBJ Velocitous",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/87.webp",
+      "iconPath": "/images/endfield/weapons/87.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "87",
@@ -30281,7 +30281,7 @@
       "id": "88",
       "name": "Fortmaker",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/88.webp",
+      "iconPath": "/images/endfield/weapons/88.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "88",
@@ -30882,7 +30882,7 @@
       "id": "89",
       "name": "Rational Farewell",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/89.webp",
+      "iconPath": "/images/endfield/weapons/89.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "89",
@@ -31483,7 +31483,7 @@
       "id": "90",
       "name": "Wild Wanderer",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/90.webp",
+      "iconPath": "/images/endfield/weapons/90.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "90",
@@ -32084,7 +32084,7 @@
       "id": "91",
       "name": "OBJ Razorhorn",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/91.webp",
+      "iconPath": "/images/endfield/weapons/91.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "91",
@@ -32685,7 +32685,7 @@
       "id": "92",
       "name": "Twelve Questions",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/92.webp",
+      "iconPath": "/images/endfield/weapons/92.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "92",
@@ -33286,7 +33286,7 @@
       "id": "93",
       "name": "Chimeric Justice",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/93.webp",
+      "iconPath": "/images/endfield/weapons/93.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "93",
@@ -33887,7 +33887,7 @@
       "id": "94",
       "name": "Stanza of Memorials",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/94.webp",
+      "iconPath": "/images/endfield/weapons/94.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "94",
@@ -34488,7 +34488,7 @@
       "id": "95",
       "name": "OBJ Arts Identifier",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/95.webp",
+      "iconPath": "/images/endfield/weapons/95.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "95",
@@ -35089,7 +35089,7 @@
       "id": "96",
       "name": "Monaihe",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/96.webp",
+      "iconPath": "/images/endfield/weapons/96.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "96",
@@ -35690,7 +35690,7 @@
       "id": "97",
       "name": "Cohesive Traction",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/97.webp",
+      "iconPath": "/images/endfield/weapons/97.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "97",
@@ -36291,7 +36291,7 @@
       "id": "98",
       "name": "Freedom to Proselytize",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/98.webp",
+      "iconPath": "/images/endfield/weapons/98.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "98",
@@ -36892,7 +36892,7 @@
       "id": "346",
       "name": "Glorious Memory",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/346.webp",
+      "iconPath": "/images/endfield/weapons/346.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "346",
@@ -37493,7 +37493,7 @@
       "id": "732",
       "name": "Brigand's Calling",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/732.webp",
+      "iconPath": "/images/endfield/weapons/732.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "732",
@@ -38094,7 +38094,7 @@
       "id": "733",
       "name": "Lupine Scarlet",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/733.webp",
+      "iconPath": "/images/endfield/weapons/733.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "733",
@@ -38695,7 +38695,7 @@
       "id": "734",
       "name": "Home Longing",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/734.webp",
+      "iconPath": "/images/endfield/weapons/734.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "734",
@@ -39296,7 +39296,7 @@
       "id": "839",
       "name": "Lone Barge",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/839.webp",
+      "iconPath": "/images/endfield/weapons/839.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "839",
@@ -39897,7 +39897,7 @@
       "id": "840",
       "name": "Flickers in the Mist",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/840.webp",
+      "iconPath": "/images/endfield/weapons/840.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "840",
@@ -40498,7 +40498,7 @@
       "id": "999",
       "name": "Beacon of Duty",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/999.webp",
+      "iconPath": "/images/endfield/weapons/999.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "999",
@@ -41099,7 +41099,7 @@
       "id": "1000",
       "name": "Phantom Pain",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/1000.webp",
+      "iconPath": "/images/endfield/weapons/1000.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1000",
@@ -41700,7 +41700,7 @@
       "id": "1001",
       "name": "Amaranthine Tassel",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/1001.webp",
+      "iconPath": "/images/endfield/weapons/1001.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1001",
@@ -42301,7 +42301,7 @@
       "id": "1032",
       "name": "Blessing of Lustrous Carmine",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/1032.webp",
+      "iconPath": "/images/endfield/weapons/1032.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1032",
@@ -42902,7 +42902,7 @@
       "id": "1042",
       "name": "Farsight",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/1042.webp",
+      "iconPath": "/images/endfield/weapons/1042.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1042",
@@ -43503,7 +43503,7 @@
       "id": "1043",
       "name": "Junction Point",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/1043.webp",
+      "iconPath": "/images/endfield/weapons/1043.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1043",
@@ -44104,7 +44104,7 @@
       "id": "1044",
       "name": "Golden Age",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/1044.webp",
+      "iconPath": "/images/endfield/weapons/1044.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1044",
@@ -44705,7 +44705,7 @@
       "id": "1045",
       "name": "Type 42: Solemn Phalanx",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/1045.webp",
+      "iconPath": "/images/endfield/weapons/1045.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1045",
@@ -45306,7 +45306,7 @@
       "id": "1046",
       "name": "Bedazzling Night Debut",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/1046.webp",
+      "iconPath": "/images/endfield/weapons/1046.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1046",
@@ -45907,7 +45907,7 @@
       "id": "1175",
       "name": "Umbra of Frigid Eventide",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/1175.webp",
+      "iconPath": "/images/endfield/weapons/1175.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1175",
@@ -46508,7 +46508,7 @@
       "id": "1176",
       "name": "Dessert Moment",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/1176.webp",
+      "iconPath": "/images/endfield/weapons/1176.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1176",
@@ -47109,7 +47109,7 @@
       "id": "1177",
       "name": "Suffering's End",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/1177.webp",
+      "iconPath": "/images/endfield/weapons/1177.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1177",
@@ -47710,7 +47710,7 @@
       "id": "1280",
       "name": "Jade Vessel",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/1280.webp",
+      "iconPath": "/images/endfield/weapons/1280.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1280",
@@ -47730,7 +47730,7 @@
       "id": "1281",
       "name": "Long Heritage",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/1281.webp",
+      "iconPath": "/images/endfield/weapons/1281.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1281",
@@ -47750,7 +47750,7 @@
       "id": "1282",
       "name": "Complexed Industry",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/1282.webp",
+      "iconPath": "/images/endfield/weapons/1282.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1282",
@@ -47770,7 +47770,7 @@
       "id": "1283",
       "name": "Lunar Calling",
       "category": "Weapons",
-      "iconPath": "/images/endfield/items/1283.webp",
+      "iconPath": "/images/endfield/weapons/1283.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1283",
@@ -47792,7 +47792,7 @@
       "id": "206",
       "name": "Basic Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/206.webp",
+      "iconPath": "/images/endfield/gear/206.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "206",
@@ -47874,7 +47874,7 @@
       "id": "208",
       "name": "Basic PPE",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/208.webp",
+      "iconPath": "/images/endfield/gear/208.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "208",
@@ -47956,7 +47956,7 @@
       "id": "211",
       "name": "Basic Gauntlets",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/211.webp",
+      "iconPath": "/images/endfield/gear/211.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "211",
@@ -48038,7 +48038,7 @@
       "id": "213",
       "name": "Basic Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/213.webp",
+      "iconPath": "/images/endfield/gear/213.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "213",
@@ -48120,7 +48120,7 @@
       "id": "216",
       "name": "Miner Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/216.webp",
+      "iconPath": "/images/endfield/gear/216.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "216",
@@ -48204,7 +48204,7 @@
       "id": "218",
       "name": "Miner Overalls",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/218.webp",
+      "iconPath": "/images/endfield/gear/218.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "218",
@@ -48288,7 +48288,7 @@
       "id": "219",
       "name": "Miner Gauntlets",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/219.webp",
+      "iconPath": "/images/endfield/gear/219.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "219",
@@ -48372,7 +48372,7 @@
       "id": "220",
       "name": "Miner Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/220.webp",
+      "iconPath": "/images/endfield/gear/220.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "220",
@@ -48456,7 +48456,7 @@
       "id": "221",
       "name": "Emergency Comm",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/221.webp",
+      "iconPath": "/images/endfield/gear/221.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "221",
@@ -48526,7 +48526,7 @@
       "id": "222",
       "name": "Emergency Compression Core",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/222.webp",
+      "iconPath": "/images/endfield/gear/222.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "222",
@@ -48596,7 +48596,7 @@
       "id": "223",
       "name": "Prototype Heavy Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/223.webp",
+      "iconPath": "/images/endfield/gear/223.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "223",
@@ -48680,7 +48680,7 @@
       "id": "224",
       "name": "Prototype Heavy Armor T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/224.webp",
+      "iconPath": "/images/endfield/gear/224.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "224",
@@ -48764,7 +48764,7 @@
       "id": "225",
       "name": "Miner Vest",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/225.webp",
+      "iconPath": "/images/endfield/gear/225.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "225",
@@ -48848,7 +48848,7 @@
       "id": "226",
       "name": "Miner Cleansuit",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/226.webp",
+      "iconPath": "/images/endfield/gear/226.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "226",
@@ -48932,7 +48932,7 @@
       "id": "227",
       "name": "Miner Wrists",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/227.webp",
+      "iconPath": "/images/endfield/gear/227.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "227",
@@ -49016,7 +49016,7 @@
       "id": "228",
       "name": "Miner Fists",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/228.webp",
+      "iconPath": "/images/endfield/gear/228.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "228",
@@ -49100,7 +49100,7 @@
       "id": "229",
       "name": "AIC Heavy Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/229.webp",
+      "iconPath": "/images/endfield/gear/229.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "229",
@@ -49184,7 +49184,7 @@
       "id": "230",
       "name": "AIC Gauntlets",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/230.webp",
+      "iconPath": "/images/endfield/gear/230.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "230",
@@ -49268,7 +49268,7 @@
       "id": "231",
       "name": "AIC Heavy Plate",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/231.webp",
+      "iconPath": "/images/endfield/gear/231.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "231",
@@ -49345,7 +49345,7 @@
       "id": "232",
       "name": "AIC Alloy Plate",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/232.webp",
+      "iconPath": "/images/endfield/gear/232.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "232",
@@ -49422,7 +49422,7 @@
       "id": "233",
       "name": "AIC Light Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/233.webp",
+      "iconPath": "/images/endfield/gear/233.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "233",
@@ -49499,7 +49499,7 @@
       "id": "234",
       "name": "AIC Tactical Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/234.webp",
+      "iconPath": "/images/endfield/gear/234.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "234",
@@ -49583,7 +49583,7 @@
       "id": "235",
       "name": "AIC Light Plate",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/235.webp",
+      "iconPath": "/images/endfield/gear/235.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "235",
@@ -49660,7 +49660,7 @@
       "id": "236",
       "name": "AIC Ceramic Plate",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/236.webp",
+      "iconPath": "/images/endfield/gear/236.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "236",
@@ -49737,7 +49737,7 @@
       "id": "237",
       "name": "Miner Gauntlets T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/237.webp",
+      "iconPath": "/images/endfield/gear/237.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "237",
@@ -49821,7 +49821,7 @@
       "id": "238",
       "name": "Miner Gloves T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/238.webp",
+      "iconPath": "/images/endfield/gear/238.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "238",
@@ -49905,7 +49905,7 @@
       "id": "239",
       "name": "Miner Turbine",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/239.webp",
+      "iconPath": "/images/endfield/gear/239.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "239",
@@ -49982,7 +49982,7 @@
       "id": "240",
       "name": "Miner Drive Wheel",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/240.webp",
+      "iconPath": "/images/endfield/gear/240.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "240",
@@ -50059,7 +50059,7 @@
       "id": "241",
       "name": "Miner Compression Core",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/241.webp",
+      "iconPath": "/images/endfield/gear/241.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "241",
@@ -50136,7 +50136,7 @@
       "id": "242",
       "name": "Miner Comm",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/242.webp",
+      "iconPath": "/images/endfield/gear/242.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "242",
@@ -50213,7 +50213,7 @@
       "id": "243",
       "name": "Armored MSGR Jacket",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/243.webp",
+      "iconPath": "/images/endfield/gear/243.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "243",
@@ -50297,7 +50297,7 @@
       "id": "244",
       "name": "Armored MSGR Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/244.webp",
+      "iconPath": "/images/endfield/gear/244.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "244",
@@ -50381,7 +50381,7 @@
       "id": "245",
       "name": "Armored MSGR Flashlight",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/245.webp",
+      "iconPath": "/images/endfield/gear/245.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "245",
@@ -50458,7 +50458,7 @@
       "id": "246",
       "name": "Armored MSGR Gyro",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/246.webp",
+      "iconPath": "/images/endfield/gear/246.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "246",
@@ -50535,7 +50535,7 @@
       "id": "247",
       "name": "Roving MSGR Jacket",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/247.webp",
+      "iconPath": "/images/endfield/gear/247.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "247",
@@ -50619,7 +50619,7 @@
       "id": "248",
       "name": "Roving MSGR Fists",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/248.webp",
+      "iconPath": "/images/endfield/gear/248.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "248",
@@ -50703,7 +50703,7 @@
       "id": "249",
       "name": "Roving MSGR Flashlight",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/249.webp",
+      "iconPath": "/images/endfield/gear/249.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "249",
@@ -50780,7 +50780,7 @@
       "id": "250",
       "name": "MI Security Push Knife T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/250.webp",
+      "iconPath": "/images/endfield/gear/250.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "250",
@@ -50923,7 +50923,7 @@
       "id": "251",
       "name": "Roving MSGR Gyro",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/251.webp",
+      "iconPath": "/images/endfield/gear/251.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "251",
@@ -51000,7 +51000,7 @@
       "id": "252",
       "name": "MI Security Push Knife",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/252.webp",
+      "iconPath": "/images/endfield/gear/252.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "252",
@@ -51143,7 +51143,7 @@
       "id": "253",
       "name": "Miner Armor T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/253.webp",
+      "iconPath": "/images/endfield/gear/253.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "253",
@@ -51227,7 +51227,7 @@
       "id": "254",
       "name": "MI Security Toolkit",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/254.webp",
+      "iconPath": "/images/endfield/gear/254.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "254",
@@ -51370,7 +51370,7 @@
       "id": "255",
       "name": "Miner Overalls T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/255.webp",
+      "iconPath": "/images/endfield/gear/255.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "255",
@@ -51454,7 +51454,7 @@
       "id": "256",
       "name": "Mordvolt Insulation Vest",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/256.webp",
+      "iconPath": "/images/endfield/gear/256.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "256",
@@ -51538,7 +51538,7 @@
       "id": "257",
       "name": "MI Security Scope",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/257.webp",
+      "iconPath": "/images/endfield/gear/257.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "257",
@@ -51681,7 +51681,7 @@
       "id": "258",
       "name": "Miner Gloves T2",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/258.webp",
+      "iconPath": "/images/endfield/gear/258.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "258",
@@ -51765,7 +51765,7 @@
       "id": "259",
       "name": "Mordvolt Insulation Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/259.webp",
+      "iconPath": "/images/endfield/gear/259.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "259",
@@ -51849,7 +51849,7 @@
       "id": "260",
       "name": "Miner Fists T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/260.webp",
+      "iconPath": "/images/endfield/gear/260.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "260",
@@ -51933,7 +51933,7 @@
       "id": "261",
       "name": "MI Security Armband",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/261.webp",
+      "iconPath": "/images/endfield/gear/261.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "261",
@@ -52076,7 +52076,7 @@
       "id": "262",
       "name": "Mordvolt Insulation Wrench",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/262.webp",
+      "iconPath": "/images/endfield/gear/262.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "262",
@@ -52153,7 +52153,7 @@
       "id": "263",
       "name": "Miner Turbine T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/263.webp",
+      "iconPath": "/images/endfield/gear/263.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "263",
@@ -52230,7 +52230,7 @@
       "id": "264",
       "name": "MI Security Hands PPE T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/264.webp",
+      "iconPath": "/images/endfield/gear/264.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "264",
@@ -52373,7 +52373,7 @@
       "id": "265",
       "name": "Miner Drive Wheel T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/265.webp",
+      "iconPath": "/images/endfield/gear/265.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "265",
@@ -52450,7 +52450,7 @@
       "id": "266",
       "name": "Mordvolt Insulation Wrench T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/266.webp",
+      "iconPath": "/images/endfield/gear/266.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "266",
@@ -52527,7 +52527,7 @@
       "id": "267",
       "name": "MI Security Hands PPE",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/267.webp",
+      "iconPath": "/images/endfield/gear/267.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "267",
@@ -52670,7 +52670,7 @@
       "id": "268",
       "name": "Miner Compression Core T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/268.webp",
+      "iconPath": "/images/endfield/gear/268.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "268",
@@ -52747,7 +52747,7 @@
       "id": "269",
       "name": "Mordvolt Insulation Battery",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/269.webp",
+      "iconPath": "/images/endfield/gear/269.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "269",
@@ -52824,7 +52824,7 @@
       "id": "270",
       "name": "Miner Comm T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/270.webp",
+      "iconPath": "/images/endfield/gear/270.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "270",
@@ -52901,7 +52901,7 @@
       "id": "271",
       "name": "MI Security Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/271.webp",
+      "iconPath": "/images/endfield/gear/271.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "271",
@@ -53044,7 +53044,7 @@
       "id": "272",
       "name": "Aburrey Heavy Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/272.webp",
+      "iconPath": "/images/endfield/gear/272.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "272",
@@ -53128,7 +53128,7 @@
       "id": "273",
       "name": "MI Security Overalls T2",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/273.webp",
+      "iconPath": "/images/endfield/gear/273.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "273",
@@ -53271,7 +53271,7 @@
       "id": "274",
       "name": "Mordvolt Resistant Vest",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/274.webp",
+      "iconPath": "/images/endfield/gear/274.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "274",
@@ -53355,7 +53355,7 @@
       "id": "275",
       "name": "Aburrey Heavy Armor T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/275.webp",
+      "iconPath": "/images/endfield/gear/275.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "275",
@@ -53439,7 +53439,7 @@
       "id": "276",
       "name": "Aburrey Light Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/276.webp",
+      "iconPath": "/images/endfield/gear/276.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "276",
@@ -53523,7 +53523,7 @@
       "id": "277",
       "name": "MI Security Overalls T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/277.webp",
+      "iconPath": "/images/endfield/gear/277.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "277",
@@ -53666,7 +53666,7 @@
       "id": "278",
       "name": "Mordvolt Resistant Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/278.webp",
+      "iconPath": "/images/endfield/gear/278.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "278",
@@ -53750,7 +53750,7 @@
       "id": "279",
       "name": "Aburrey Light Armor T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/279.webp",
+      "iconPath": "/images/endfield/gear/279.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "279",
@@ -53834,7 +53834,7 @@
       "id": "280",
       "name": "MI Security Overalls",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/280.webp",
+      "iconPath": "/images/endfield/gear/280.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "280",
@@ -53977,7 +53977,7 @@
       "id": "281",
       "name": "Mordvolt Resistant Wrench",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/281.webp",
+      "iconPath": "/images/endfield/gear/281.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "281",
@@ -54054,7 +54054,7 @@
       "id": "282",
       "name": "Aburrey Gauntlets",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/282.webp",
+      "iconPath": "/images/endfield/gear/282.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "282",
@@ -54138,7 +54138,7 @@
       "id": "283",
       "name": "MI Security Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/283.webp",
+      "iconPath": "/images/endfield/gear/283.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "283",
@@ -54281,7 +54281,7 @@
       "id": "284",
       "name": "Mordvolt Resistant Battery",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/284.webp",
+      "iconPath": "/images/endfield/gear/284.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "284",
@@ -54358,7 +54358,7 @@
       "id": "285",
       "name": "Aburrey Auditory Chip",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/285.webp",
+      "iconPath": "/images/endfield/gear/285.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "285",
@@ -54442,7 +54442,7 @@
       "id": "286",
       "name": "Hot Work Power Cartridge",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/286.webp",
+      "iconPath": "/images/endfield/gear/286.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "286",
@@ -54585,7 +54585,7 @@
       "id": "287",
       "name": "Aburrey UV Lamp",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/287.webp",
+      "iconPath": "/images/endfield/gear/287.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "287",
@@ -54669,7 +54669,7 @@
       "id": "288",
       "name": "Hot Work Pyrometer",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/288.webp",
+      "iconPath": "/images/endfield/gear/288.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "288",
@@ -54795,7 +54795,7 @@
       "id": "289",
       "name": "Aburrey Auditory Chip T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/289.webp",
+      "iconPath": "/images/endfield/gear/289.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "289",
@@ -54879,7 +54879,7 @@
       "id": "290",
       "name": "Hot Work Power Bank",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/290.webp",
+      "iconPath": "/images/endfield/gear/290.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "290",
@@ -55022,7 +55022,7 @@
       "id": "291",
       "name": "Aburrey Flashlight",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/291.webp",
+      "iconPath": "/images/endfield/gear/291.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "291",
@@ -55106,7 +55106,7 @@
       "id": "292",
       "name": "Hot Work Gauntlets T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/292.webp",
+      "iconPath": "/images/endfield/gear/292.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "292",
@@ -55249,7 +55249,7 @@
       "id": "293",
       "name": "Aburrey Sensor Chip",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/293.webp",
+      "iconPath": "/images/endfield/gear/293.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "293",
@@ -55333,7 +55333,7 @@
       "id": "294",
       "name": "Hot Work Gauntlets",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/294.webp",
+      "iconPath": "/images/endfield/gear/294.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "294",
@@ -55476,7 +55476,7 @@
       "id": "295",
       "name": "Aburrey Sensor Chip T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/295.webp",
+      "iconPath": "/images/endfield/gear/295.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "295",
@@ -55560,7 +55560,7 @@
       "id": "296",
       "name": "Hot Work Exoskeleton",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/296.webp",
+      "iconPath": "/images/endfield/gear/296.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "296",
@@ -55703,7 +55703,7 @@
       "id": "297",
       "name": "Catastrophe Heavy Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/297.webp",
+      "iconPath": "/images/endfield/gear/297.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "297",
@@ -55787,7 +55787,7 @@
       "id": "298",
       "name": "Frontiers Extra O2 Tube",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/298.webp",
+      "iconPath": "/images/endfield/gear/298.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "298",
@@ -55930,7 +55930,7 @@
       "id": "299",
       "name": "Catastrophe Heavy Armor T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/299.webp",
+      "iconPath": "/images/endfield/gear/299.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "299",
@@ -56014,7 +56014,7 @@
       "id": "300",
       "name": "Frontiers Comm T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/300.webp",
+      "iconPath": "/images/endfield/gear/300.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "300",
@@ -56157,7 +56157,7 @@
       "id": "301",
       "name": "Catastrophe Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/301.webp",
+      "iconPath": "/images/endfield/gear/301.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "301",
@@ -56241,7 +56241,7 @@
       "id": "302",
       "name": "Frontiers Comm",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/302.webp",
+      "iconPath": "/images/endfield/gear/302.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "302",
@@ -56384,7 +56384,7 @@
       "id": "303",
       "name": "Catastrophe Gauze Cartridge",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/303.webp",
+      "iconPath": "/images/endfield/gear/303.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "303",
@@ -56468,7 +56468,7 @@
       "id": "304",
       "name": "Frontiers Blight RES Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/304.webp",
+      "iconPath": "/images/endfield/gear/304.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "304",
@@ -56611,7 +56611,7 @@
       "id": "305",
       "name": "Catastrophe Gauze Cartridge T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/305.webp",
+      "iconPath": "/images/endfield/gear/305.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "305",
@@ -56695,7 +56695,7 @@
       "id": "306",
       "name": "Frontiers Armor T3",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/306.webp",
+      "iconPath": "/images/endfield/gear/306.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "306",
@@ -56838,7 +56838,7 @@
       "id": "307",
       "name": "Catastrophe Filter",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/307.webp",
+      "iconPath": "/images/endfield/gear/307.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "307",
@@ -56922,7 +56922,7 @@
       "id": "308",
       "name": "Frontiers Armor T2",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/308.webp",
+      "iconPath": "/images/endfield/gear/308.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "308",
@@ -57065,7 +57065,7 @@
       "id": "309",
       "name": "Armored MSGR Jacket T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/309.webp",
+      "iconPath": "/images/endfield/gear/309.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "309",
@@ -57149,7 +57149,7 @@
       "id": "310",
       "name": "Frontiers Armor T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/310.webp",
+      "iconPath": "/images/endfield/gear/310.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "310",
@@ -57292,7 +57292,7 @@
       "id": "311",
       "name": "Armored MSGR Gloves T2",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/311.webp",
+      "iconPath": "/images/endfield/gear/311.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "311",
@@ -57376,7 +57376,7 @@
       "id": "312",
       "name": "Frontiers Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/312.webp",
+      "iconPath": "/images/endfield/gear/312.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "312",
@@ -57519,7 +57519,7 @@
       "id": "313",
       "name": "Armored MSGR Gloves T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/313.webp",
+      "iconPath": "/images/endfield/gear/313.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "313",
@@ -57603,7 +57603,7 @@
       "id": "314",
       "name": "Armored MSGR Flashlight T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/314.webp",
+      "iconPath": "/images/endfield/gear/314.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "314",
@@ -57687,7 +57687,7 @@
       "id": "315",
       "name": "Armored MSGR Gyro T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/315.webp",
+      "iconPath": "/images/endfield/gear/315.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "315",
@@ -57771,7 +57771,7 @@
       "id": "316",
       "name": "Roving MSGR Jacket T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/316.webp",
+      "iconPath": "/images/endfield/gear/316.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "316",
@@ -57855,7 +57855,7 @@
       "id": "317",
       "name": "Roving MSGR Fists T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/317.webp",
+      "iconPath": "/images/endfield/gear/317.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "317",
@@ -57939,7 +57939,7 @@
       "id": "318",
       "name": "Roving MSGR Flashlight T2",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/318.webp",
+      "iconPath": "/images/endfield/gear/318.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "318",
@@ -58023,7 +58023,7 @@
       "id": "319",
       "name": "Roving MSGR Flashlight T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/319.webp",
+      "iconPath": "/images/endfield/gear/319.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "319",
@@ -58107,7 +58107,7 @@
       "id": "320",
       "name": "Roving MSGR Gyro T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/320.webp",
+      "iconPath": "/images/endfield/gear/320.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "320",
@@ -58191,7 +58191,7 @@
       "id": "321",
       "name": "Mordvolt Insulation Vest T2",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/321.webp",
+      "iconPath": "/images/endfield/gear/321.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "321",
@@ -58275,7 +58275,7 @@
       "id": "322",
       "name": "Mordvolt Insulation Vest T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/322.webp",
+      "iconPath": "/images/endfield/gear/322.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "322",
@@ -58359,7 +58359,7 @@
       "id": "323",
       "name": "Mordvolt Insulation Gloves T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/323.webp",
+      "iconPath": "/images/endfield/gear/323.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "323",
@@ -58441,7 +58441,7 @@
       "id": "324",
       "name": "Mordvolt Insulation Wrench T2",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/324.webp",
+      "iconPath": "/images/endfield/gear/324.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "324",
@@ -58525,7 +58525,7 @@
       "id": "325",
       "name": "Hanging River O2 Tube",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/325.webp",
+      "iconPath": "/images/endfield/gear/325.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "325",
@@ -58668,7 +58668,7 @@
       "id": "326",
       "name": "Turbid Cutting Torch",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/326.webp",
+      "iconPath": "/images/endfield/gear/326.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "326",
@@ -58811,7 +58811,7 @@
       "id": "327",
       "name": "Mordvolt Insulation Battery T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/327.webp",
+      "iconPath": "/images/endfield/gear/327.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "327",
@@ -58888,7 +58888,7 @@
       "id": "328",
       "name": "Eternal Xiranite Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/328.webp",
+      "iconPath": "/images/endfield/gear/328.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "328",
@@ -59031,7 +59031,7 @@
       "id": "329",
       "name": "Mordvolt Resistant Vest T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/329.webp",
+      "iconPath": "/images/endfield/gear/329.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "329",
@@ -59115,7 +59115,7 @@
       "id": "330",
       "name": "Eternal Xiranite Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/330.webp",
+      "iconPath": "/images/endfield/gear/330.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "330",
@@ -59258,7 +59258,7 @@
       "id": "331",
       "name": "Mordvolt Resistant Gloves T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/331.webp",
+      "iconPath": "/images/endfield/gear/331.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "331",
@@ -59342,7 +59342,7 @@
       "id": "332",
       "name": "Eternal Xiranite Gloves T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/332.webp",
+      "iconPath": "/images/endfield/gear/332.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "332",
@@ -59485,7 +59485,7 @@
       "id": "333",
       "name": "Mordvolt Resistant Wrench T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/333.webp",
+      "iconPath": "/images/endfield/gear/333.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "333",
@@ -59569,7 +59569,7 @@
       "id": "334",
       "name": "Eternal Xiranite Power Core",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/334.webp",
+      "iconPath": "/images/endfield/gear/334.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "334",
@@ -59712,7 +59712,7 @@
       "id": "335",
       "name": "Mordvolt Resistant Battery T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/335.webp",
+      "iconPath": "/images/endfield/gear/335.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "335",
@@ -59796,7 +59796,7 @@
       "id": "336",
       "name": "Eternal Xiranite Power Core T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/336.webp",
+      "iconPath": "/images/endfield/gear/336.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "336",
@@ -59939,7 +59939,7 @@
       "id": "337",
       "name": "Eternal Xiranite Auxiliary Arm",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/337.webp",
+      "iconPath": "/images/endfield/gear/337.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "337",
@@ -60082,7 +60082,7 @@
       "id": "338",
       "name": "Pulser Labs Calibrator",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/338.webp",
+      "iconPath": "/images/endfield/gear/338.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "338",
@@ -60218,7 +60218,7 @@
       "id": "339",
       "name": "Tide Surge Gauntlets",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/339.webp",
+      "iconPath": "/images/endfield/gear/339.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "339",
@@ -60361,7 +60361,7 @@
       "id": "340",
       "name": "Tide Fall Light Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/340.webp",
+      "iconPath": "/images/endfield/gear/340.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "340",
@@ -60504,7 +60504,7 @@
       "id": "341",
       "name": "Pulser Labs Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/341.webp",
+      "iconPath": "/images/endfield/gear/341.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "341",
@@ -60647,7 +60647,7 @@
       "id": "342",
       "name": "Type 50 Yinglung Knife T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/342.webp",
+      "iconPath": "/images/endfield/gear/342.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "342",
@@ -60790,7 +60790,7 @@
       "id": "343",
       "name": "Type 50 Yinglung Knife",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/343.webp",
+      "iconPath": "/images/endfield/gear/343.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "343",
@@ -60933,7 +60933,7 @@
       "id": "344",
       "name": "Type 50 Yinglung Radar",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/344.webp",
+      "iconPath": "/images/endfield/gear/344.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "344",
@@ -61076,7 +61076,7 @@
       "id": "345",
       "name": "Type 50 Yinglung Gloves T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/345.webp",
+      "iconPath": "/images/endfield/gear/345.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "345",
@@ -61219,7 +61219,7 @@
       "id": "347",
       "name": "Type 50 Yinglung Light Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/347.webp",
+      "iconPath": "/images/endfield/gear/347.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "347",
@@ -61362,7 +61362,7 @@
       "id": "348",
       "name": "Redeemer Seal T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/348.webp",
+      "iconPath": "/images/endfield/gear/348.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "348",
@@ -61498,7 +61498,7 @@
       "id": "349",
       "name": "Redeemer Seal",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/349.webp",
+      "iconPath": "/images/endfield/gear/349.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "349",
@@ -61634,7 +61634,7 @@
       "id": "350",
       "name": "Redeemer Tag T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/350.webp",
+      "iconPath": "/images/endfield/gear/350.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "350",
@@ -61770,7 +61770,7 @@
       "id": "351",
       "name": "Redeemer Tag",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/351.webp",
+      "iconPath": "/images/endfield/gear/351.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "351",
@@ -61906,7 +61906,7 @@
       "id": "352",
       "name": "Type 50 Yinglung Heavy Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/352.webp",
+      "iconPath": "/images/endfield/gear/352.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "352",
@@ -62049,7 +62049,7 @@
       "id": "353",
       "name": "Pulser Labs Disruptor Suit",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/353.webp",
+      "iconPath": "/images/endfield/gear/353.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "353",
@@ -62192,7 +62192,7 @@
       "id": "354",
       "name": "Bonekrusha Figurine T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/354.webp",
+      "iconPath": "/images/endfield/gear/354.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "354",
@@ -62335,7 +62335,7 @@
       "id": "355",
       "name": "Swordmancer Heavy Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/355.webp",
+      "iconPath": "/images/endfield/gear/355.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "355",
@@ -62478,7 +62478,7 @@
       "id": "356",
       "name": "Swordmancer TAC Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/356.webp",
+      "iconPath": "/images/endfield/gear/356.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "356",
@@ -62621,7 +62621,7 @@
       "id": "357",
       "name": "Swordmancer TAC Gauntlets",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/357.webp",
+      "iconPath": "/images/endfield/gear/357.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "357",
@@ -62764,7 +62764,7 @@
       "id": "358",
       "name": "Swordmancer Flint",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/358.webp",
+      "iconPath": "/images/endfield/gear/358.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "358",
@@ -62907,7 +62907,7 @@
       "id": "359",
       "name": "LYNX Heavy Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/359.webp",
+      "iconPath": "/images/endfield/gear/359.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "359",
@@ -63050,7 +63050,7 @@
       "id": "360",
       "name": "LYNX Cuirass",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/360.webp",
+      "iconPath": "/images/endfield/gear/360.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "360",
@@ -63193,7 +63193,7 @@
       "id": "361",
       "name": "LYNX Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/361.webp",
+      "iconPath": "/images/endfield/gear/361.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "361",
@@ -63336,7 +63336,7 @@
       "id": "362",
       "name": "LYNX Gauntlets",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/362.webp",
+      "iconPath": "/images/endfield/gear/362.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "362",
@@ -63479,7 +63479,7 @@
       "id": "363",
       "name": "LYNX Connector",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/363.webp",
+      "iconPath": "/images/endfield/gear/363.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "363",
@@ -63622,7 +63622,7 @@
       "id": "364",
       "name": "LYNX Connector T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/364.webp",
+      "iconPath": "/images/endfield/gear/364.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "364",
@@ -63765,7 +63765,7 @@
       "id": "365",
       "name": "LYNX Slab",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/365.webp",
+      "iconPath": "/images/endfield/gear/365.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "365",
@@ -63908,7 +63908,7 @@
       "id": "366",
       "name": "LYNX Aegis Injector",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/366.webp",
+      "iconPath": "/images/endfield/gear/366.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "366",
@@ -64034,7 +64034,7 @@
       "id": "367",
       "name": "Æthertech Plating",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/367.webp",
+      "iconPath": "/images/endfield/gear/367.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "367",
@@ -64177,7 +64177,7 @@
       "id": "368",
       "name": "Æthertech Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/368.webp",
+      "iconPath": "/images/endfield/gear/368.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "368",
@@ -64320,7 +64320,7 @@
       "id": "369",
       "name": "Æthertech Analysis Band",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/369.webp",
+      "iconPath": "/images/endfield/gear/369.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "369",
@@ -64463,7 +64463,7 @@
       "id": "370",
       "name": "Æthertech Stabilizer",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/370.webp",
+      "iconPath": "/images/endfield/gear/370.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "370",
@@ -64606,7 +64606,7 @@
       "id": "371",
       "name": "Bonekrusha Heavy Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/371.webp",
+      "iconPath": "/images/endfield/gear/371.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "371",
@@ -64749,7 +64749,7 @@
       "id": "372",
       "name": "Bonekrusha Heavy Armor T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/372.webp",
+      "iconPath": "/images/endfield/gear/372.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "372",
@@ -64892,7 +64892,7 @@
       "id": "373",
       "name": "Bonekrusha Poncho",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/373.webp",
+      "iconPath": "/images/endfield/gear/373.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "373",
@@ -65035,7 +65035,7 @@
       "id": "374",
       "name": "Bonekrusha Poncho T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/374.webp",
+      "iconPath": "/images/endfield/gear/374.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "374",
@@ -65178,7 +65178,7 @@
       "id": "375",
       "name": "Bonekrusha Mask",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/375.webp",
+      "iconPath": "/images/endfield/gear/375.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "375",
@@ -65321,7 +65321,7 @@
       "id": "376",
       "name": "Bonekrusha Mask T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/376.webp",
+      "iconPath": "/images/endfield/gear/376.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "376",
@@ -65464,7 +65464,7 @@
       "id": "377",
       "name": "Bonekrusha Figurine",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/377.webp",
+      "iconPath": "/images/endfield/gear/377.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "377",
@@ -65607,7 +65607,7 @@
       "id": "411",
       "name": "Type 50 Yinglung Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/411.webp",
+      "iconPath": "/images/endfield/gear/411.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "411",
@@ -65750,7 +65750,7 @@
       "id": "767",
       "name": "Type 50 Yinglung Radar T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/767.webp",
+      "iconPath": "/images/endfield/gear/767.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "767",
@@ -65893,7 +65893,7 @@
       "id": "768",
       "name": "Type 50 Yinglung Radar T2",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/768.webp",
+      "iconPath": "/images/endfield/gear/768.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "768",
@@ -66036,7 +66036,7 @@
       "id": "769",
       "name": "Type 50 Yinglung Heavy Armor T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/769.webp",
+      "iconPath": "/images/endfield/gear/769.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "769",
@@ -66179,7 +66179,7 @@
       "id": "770",
       "name": "Type 50 Yinglung Heavy Armor T2",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/770.webp",
+      "iconPath": "/images/endfield/gear/770.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "770",
@@ -66322,7 +66322,7 @@
       "id": "771",
       "name": "MI Security Scope T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/771.webp",
+      "iconPath": "/images/endfield/gear/771.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "771",
@@ -66465,7 +66465,7 @@
       "id": "772",
       "name": "MI Security Gloves T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/772.webp",
+      "iconPath": "/images/endfield/gear/772.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "772",
@@ -66608,7 +66608,7 @@
       "id": "773",
       "name": "MI Security Armor T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/773.webp",
+      "iconPath": "/images/endfield/gear/773.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "773",
@@ -66751,7 +66751,7 @@
       "id": "775",
       "name": "Hot Work Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/775.webp",
+      "iconPath": "/images/endfield/gear/775.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "775",
@@ -66894,7 +66894,7 @@
       "id": "776",
       "name": "Hot Work Exo-Rig",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/776.webp",
+      "iconPath": "/images/endfield/gear/776.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "776",
@@ -67037,7 +67037,7 @@
       "id": "777",
       "name": "Frontiers O2 Tube",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/777.webp",
+      "iconPath": "/images/endfield/gear/777.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "777",
@@ -67173,7 +67173,7 @@
       "id": "778",
       "name": "Frontiers Protection Suit",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/778.webp",
+      "iconPath": "/images/endfield/gear/778.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "778",
@@ -67316,7 +67316,7 @@
       "id": "779",
       "name": "Frontiers Analyzer",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/779.webp",
+      "iconPath": "/images/endfield/gear/779.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "779",
@@ -67452,7 +67452,7 @@
       "id": "780",
       "name": "Frontiers Fiber Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/780.webp",
+      "iconPath": "/images/endfield/gear/780.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "780",
@@ -67595,7 +67595,7 @@
       "id": "781",
       "name": "Pulser Labs Invasion Core",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/781.webp",
+      "iconPath": "/images/endfield/gear/781.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "781",
@@ -67731,7 +67731,7 @@
       "id": "782",
       "name": "Pulser Labs Probe",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/782.webp",
+      "iconPath": "/images/endfield/gear/782.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "782",
@@ -67874,7 +67874,7 @@
       "id": "783",
       "name": "Bonekrusha Mask T2",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/783.webp",
+      "iconPath": "/images/endfield/gear/783.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "783",
@@ -68017,7 +68017,7 @@
       "id": "784",
       "name": "Bonekrusha Wristband",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/784.webp",
+      "iconPath": "/images/endfield/gear/784.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "784",
@@ -68160,7 +68160,7 @@
       "id": "785",
       "name": "Bonekrusha Wristband T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/785.webp",
+      "iconPath": "/images/endfield/gear/785.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "785",
@@ -68303,7 +68303,7 @@
       "id": "786",
       "name": "Bonekrusha Heavy Armor T2",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/786.webp",
+      "iconPath": "/images/endfield/gear/786.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "786",
@@ -68446,7 +68446,7 @@
       "id": "787",
       "name": "Æthertech Watch",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/787.webp",
+      "iconPath": "/images/endfield/gear/787.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "787",
@@ -68589,7 +68589,7 @@
       "id": "788",
       "name": "Æthertech Stabilizer T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/788.webp",
+      "iconPath": "/images/endfield/gear/788.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "788",
@@ -68732,7 +68732,7 @@
       "id": "789",
       "name": "Æthertech Light Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/789.webp",
+      "iconPath": "/images/endfield/gear/789.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "789",
@@ -68875,7 +68875,7 @@
       "id": "790",
       "name": "LYNX Connector T2",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/790.webp",
+      "iconPath": "/images/endfield/gear/790.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "790",
@@ -69009,7 +69009,7 @@
       "id": "791",
       "name": "Swordmancer Light Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/791.webp",
+      "iconPath": "/images/endfield/gear/791.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "791",
@@ -69150,7 +69150,7 @@
       "id": "792",
       "name": "Swordmancer Micro Filter",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/792.webp",
+      "iconPath": "/images/endfield/gear/792.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "792",
@@ -69291,7 +69291,7 @@
       "id": "793",
       "name": "Swordmancer NAV Beacon",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/793.webp",
+      "iconPath": "/images/endfield/gear/793.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "793",
@@ -69427,7 +69427,7 @@
       "id": "794",
       "name": "Redeemer Hands",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/794.webp",
+      "iconPath": "/images/endfield/gear/794.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "794",
@@ -69561,7 +69561,7 @@
       "id": "795",
       "name": "Redeemer Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/795.webp",
+      "iconPath": "/images/endfield/gear/795.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "795",
@@ -69695,7 +69695,7 @@
       "id": "796",
       "name": "Redeemer Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/796.webp",
+      "iconPath": "/images/endfield/gear/796.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "796",
@@ -69829,7 +69829,7 @@
       "id": "797",
       "name": "Redeemer Plates",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/797.webp",
+      "iconPath": "/images/endfield/gear/797.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "797",
@@ -69963,7 +69963,7 @@
       "id": "869",
       "name": "Frontiers Extra O2 Tube T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/869.webp",
+      "iconPath": "/images/endfield/gear/869.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "869",
@@ -70106,7 +70106,7 @@
       "id": "870",
       "name": "Frontiers Fiber Gloves T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/870.webp",
+      "iconPath": "/images/endfield/gear/870.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "870",
@@ -70249,7 +70249,7 @@
       "id": "871",
       "name": "Bonekrusha Figurine T2",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/871.webp",
+      "iconPath": "/images/endfield/gear/871.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "871",
@@ -70392,7 +70392,7 @@
       "id": "872",
       "name": "Bonekrusha Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/872.webp",
+      "iconPath": "/images/endfield/gear/872.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "872",
@@ -70535,7 +70535,7 @@
       "id": "873",
       "name": "Swordmancer Dagger",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/873.webp",
+      "iconPath": "/images/endfield/gear/873.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "873",
@@ -70678,7 +70678,7 @@
       "id": "874",
       "name": "Swordmancer TAC Gauntlets T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/874.webp",
+      "iconPath": "/images/endfield/gear/874.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "874",
@@ -70821,7 +70821,7 @@
       "id": "875",
       "name": "Swordmancer Heavy Armor T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/875.webp",
+      "iconPath": "/images/endfield/gear/875.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "875",
@@ -70964,7 +70964,7 @@
       "id": "876",
       "name": "Qingbo Cask",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/876.webp",
+      "iconPath": "/images/endfield/gear/876.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "876",
@@ -71107,7 +71107,7 @@
       "id": "877",
       "name": "Qingbo Positioning Kit",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/877.webp",
+      "iconPath": "/images/endfield/gear/877.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "877",
@@ -71250,7 +71250,7 @@
       "id": "878",
       "name": "Qingbo Bamboo Cutter",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/878.webp",
+      "iconPath": "/images/endfield/gear/878.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "878",
@@ -71393,7 +71393,7 @@
       "id": "879",
       "name": "Qingbo Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/879.webp",
+      "iconPath": "/images/endfield/gear/879.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "879",
@@ -71536,7 +71536,7 @@
       "id": "880",
       "name": "Qingbo Gauntlets",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/880.webp",
+      "iconPath": "/images/endfield/gear/880.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "880",
@@ -71679,7 +71679,7 @@
       "id": "881",
       "name": "Qingbo Light Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/881.webp",
+      "iconPath": "/images/endfield/gear/881.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "881",
@@ -71822,7 +71822,7 @@
       "id": "882",
       "name": "Qingbo Heavy Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/882.webp",
+      "iconPath": "/images/endfield/gear/882.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "882",
@@ -71965,7 +71965,7 @@
       "id": "883",
       "name": "Xiranflow Baton",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/883.webp",
+      "iconPath": "/images/endfield/gear/883.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "883",
@@ -72108,7 +72108,7 @@
       "id": "884",
       "name": "Xiranflow Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/884.webp",
+      "iconPath": "/images/endfield/gear/884.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "884",
@@ -72251,7 +72251,7 @@
       "id": "885",
       "name": "Xiranflow Light Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/885.webp",
+      "iconPath": "/images/endfield/gear/885.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "885",
@@ -72394,7 +72394,7 @@
       "id": "1019",
       "name": "Qingbo Positioning Kit T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1019.webp",
+      "iconPath": "/images/endfield/gear/1019.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1019",
@@ -72537,7 +72537,7 @@
       "id": "1020",
       "name": "Swordmancer Fiber Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1020.webp",
+      "iconPath": "/images/endfield/gear/1020.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1020",
@@ -72680,7 +72680,7 @@
       "id": "1021",
       "name": "Grizzled Edge Push Knife T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1021.webp",
+      "iconPath": "/images/endfield/gear/1021.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1021",
@@ -72823,7 +72823,7 @@
       "id": "1022",
       "name": "Grizzled Edge Push Knife",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1022.webp",
+      "iconPath": "/images/endfield/gear/1022.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1022",
@@ -72966,7 +72966,7 @@
       "id": "1023",
       "name": "Grizzled Edge Gauntlets T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1023.webp",
+      "iconPath": "/images/endfield/gear/1023.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1023",
@@ -73109,7 +73109,7 @@
       "id": "1024",
       "name": "Grizzled Edge Gauntlets",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1024.webp",
+      "iconPath": "/images/endfield/gear/1024.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1024",
@@ -73252,7 +73252,7 @@
       "id": "1025",
       "name": "Grizzled Edge Armor T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1025.webp",
+      "iconPath": "/images/endfield/gear/1025.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1025",
@@ -73395,7 +73395,7 @@
       "id": "1026",
       "name": "Grizzled Edge Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1026.webp",
+      "iconPath": "/images/endfield/gear/1026.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1026",
@@ -73538,7 +73538,7 @@
       "id": "1116",
       "name": "AIC Fieldwork Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1116.webp",
+      "iconPath": "/images/endfield/gear/1116.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1116",
@@ -73681,7 +73681,7 @@
       "id": "1117",
       "name": "AIC Fieldwork Plate",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1117.webp",
+      "iconPath": "/images/endfield/gear/1117.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1117",
@@ -73824,7 +73824,7 @@
       "id": "1118",
       "name": "AIC Fieldwork Vest",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1118.webp",
+      "iconPath": "/images/endfield/gear/1118.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1118",
@@ -73967,7 +73967,7 @@
       "id": "1119",
       "name": "AIC Fieldwork Machete",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1119.webp",
+      "iconPath": "/images/endfield/gear/1119.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1119",
@@ -74110,7 +74110,7 @@
       "id": "1120",
       "name": "AIC Fieldwork Ember",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1120.webp",
+      "iconPath": "/images/endfield/gear/1120.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1120",
@@ -74253,7 +74253,7 @@
       "id": "1121",
       "name": "AIC Fieldwork Flashlight",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1121.webp",
+      "iconPath": "/images/endfield/gear/1121.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1121",
@@ -74396,7 +74396,7 @@
       "id": "1122",
       "name": "AIC Fieldwork Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1122.webp",
+      "iconPath": "/images/endfield/gear/1122.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1122",
@@ -74539,7 +74539,7 @@
       "id": "1123",
       "name": "AIC Fieldwork Hands",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1123.webp",
+      "iconPath": "/images/endfield/gear/1123.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1123",
@@ -74682,7 +74682,7 @@
       "id": "1124",
       "name": "AIC Fieldwork Wraps",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1124.webp",
+      "iconPath": "/images/endfield/gear/1124.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1124",
@@ -74825,7 +74825,7 @@
       "id": "1125",
       "name": "Rift Trekker Heavy Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1125.webp",
+      "iconPath": "/images/endfield/gear/1125.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1125",
@@ -74961,7 +74961,7 @@
       "id": "1126",
       "name": "Rift Trekker Light Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1126.webp",
+      "iconPath": "/images/endfield/gear/1126.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1126",
@@ -75097,7 +75097,7 @@
       "id": "1127",
       "name": "Rift Trekker Armor Slab",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1127.webp",
+      "iconPath": "/images/endfield/gear/1127.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1127",
@@ -75233,7 +75233,7 @@
       "id": "1128",
       "name": "Rift Trekker Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1128.webp",
+      "iconPath": "/images/endfield/gear/1128.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1128",
@@ -75369,7 +75369,7 @@
       "id": "1129",
       "name": "Rift Trekker Hands",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1129.webp",
+      "iconPath": "/images/endfield/gear/1129.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1129",
@@ -75505,7 +75505,7 @@
       "id": "1130",
       "name": "Hot Work Insulation Slab",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1130.webp",
+      "iconPath": "/images/endfield/gear/1130.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1130",
@@ -75648,7 +75648,7 @@
       "id": "1131",
       "name": "Hot Work Hands PPE",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1131.webp",
+      "iconPath": "/images/endfield/gear/1131.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1131",
@@ -75791,7 +75791,7 @@
       "id": "1132",
       "name": "LYNX Cuirass T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1132.webp",
+      "iconPath": "/images/endfield/gear/1132.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1132",
@@ -75934,7 +75934,7 @@
       "id": "1133",
       "name": "LYNX Gauntlets T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1133.webp",
+      "iconPath": "/images/endfield/gear/1133.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1133",
@@ -76077,7 +76077,7 @@
       "id": "1134",
       "name": "Eternal Xiranite Light Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1134.webp",
+      "iconPath": "/images/endfield/gear/1134.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1134",
@@ -76213,7 +76213,7 @@
       "id": "1135",
       "name": "Eternal Xiranite Light Armor T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1135.webp",
+      "iconPath": "/images/endfield/gear/1135.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1135",
@@ -76356,7 +76356,7 @@
       "id": "1136",
       "name": "Eternal Xiranite Bracing Slab",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1136.webp",
+      "iconPath": "/images/endfield/gear/1136.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1136",
@@ -76492,7 +76492,7 @@
       "id": "1137",
       "name": "Eternal Xiranite Wraps",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1137.webp",
+      "iconPath": "/images/endfield/gear/1137.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1137",
@@ -76635,7 +76635,7 @@
       "id": "1138",
       "name": "Eternal Xiranite Hands",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1138.webp",
+      "iconPath": "/images/endfield/gear/1138.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1138",
@@ -76778,7 +76778,7 @@
       "id": "1232",
       "name": "Deepsink Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1232.webp",
+      "iconPath": "/images/endfield/gear/1232.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1232",
@@ -76921,7 +76921,7 @@
       "id": "1233",
       "name": "Wave Swell Heavy Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1233.webp",
+      "iconPath": "/images/endfield/gear/1233.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1233",
@@ -77064,7 +77064,7 @@
       "id": "1234",
       "name": "Turbid Cutting Torch T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1234.webp",
+      "iconPath": "/images/endfield/gear/1234.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1234",
@@ -77207,7 +77207,7 @@
       "id": "1235",
       "name": "Tide Fall Light Armor T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1235.webp",
+      "iconPath": "/images/endfield/gear/1235.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1235",
@@ -77350,7 +77350,7 @@
       "id": "1236",
       "name": "Eternal Xiranite Bracing Slab T1",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1236.webp",
+      "iconPath": "/images/endfield/gear/1236.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1236",
@@ -77493,7 +77493,7 @@
       "id": "1237",
       "name": "Eternal Xiranite Heavy Slab",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1237.webp",
+      "iconPath": "/images/endfield/gear/1237.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1237",
@@ -77636,7 +77636,7 @@
       "id": "1238",
       "name": "Deep Rampart Gauntlets",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1238.webp",
+      "iconPath": "/images/endfield/gear/1238.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1238",
@@ -77779,7 +77779,7 @@
       "id": "1239",
       "name": "Deep Rampart Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1239.webp",
+      "iconPath": "/images/endfield/gear/1239.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1239",
@@ -77922,7 +77922,7 @@
       "id": "1240",
       "name": "Deep Rampart Comms",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1240.webp",
+      "iconPath": "/images/endfield/gear/1240.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1240",
@@ -78065,7 +78065,7 @@
       "id": "1241",
       "name": "AIC Fieldwork Power Bank",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1241.webp",
+      "iconPath": "/images/endfield/gear/1241.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1241",
@@ -78209,7 +78209,7 @@
       "id": "1242",
       "name": "AIC Fieldwork Assault Push Knife",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1242.webp",
+      "iconPath": "/images/endfield/gear/1242.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1242",
@@ -78353,7 +78353,7 @@
       "id": "1243",
       "name": "AIC Fieldwork Assault Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1243.webp",
+      "iconPath": "/images/endfield/gear/1243.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1243",
@@ -78497,7 +78497,7 @@
       "id": "1244",
       "name": "AIC Fieldwork Assault Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1244.webp",
+      "iconPath": "/images/endfield/gear/1244.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1244",
@@ -78641,7 +78641,7 @@
       "id": "1245",
       "name": "AIC Fieldwork Medic Gloves",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1245.webp",
+      "iconPath": "/images/endfield/gear/1245.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1245",
@@ -78785,7 +78785,7 @@
       "id": "1246",
       "name": "AIC Fieldwork Medic Armor",
       "category": "Gear",
-      "iconPath": "/images/endfield/items/1246.webp",
+      "iconPath": "/images/endfield/gear/1246.webp",
       "source": {
         "provider": "SKPORT Wiki",
         "itemId": "1246",

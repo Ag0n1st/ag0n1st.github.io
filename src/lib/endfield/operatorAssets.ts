@@ -9,7 +9,8 @@ export function getOperatorImageUrl(
   publicRemoteUrl?: string
 ): string | undefined {
   if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) return publicRemoteUrl;
-  const base="/images/endfield/operators/"+slug+"/"+asset;
+  const location=asset.startsWith("skill-")?"skills/"+asset:asset;
+  const base="/images/endfield/operators/"+slug+"/"+location;
   for(const ext of [".png",".webp",".jpg",".jpeg"]){
     if(existsSync(join(process.cwd(),"public",base.slice(1)+ext))){
       return base+ext;

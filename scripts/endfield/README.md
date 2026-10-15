@@ -55,7 +55,7 @@ Die zwei erzeugten Dateien werden anschließend lokal mit `npm run build` geprü
 
 - **Quelle ausschließlich:** öffentliche offizielle SKPORT-Endfield-Wiki, keine sekundären Datenbanken.
 - **Kategorien (Snapshot 2026-10-15):** Operatoren 35, Waffen 84, Ausrüstung (Gear) 258, Item Files 340, Valuables Stash 223; insgesamt **940** offizielle Item-IDs.
-- **Dateiformat:** statische **WebP**-Icons, ein Bild pro offizieller Item-ID in `public/images/endfield/items/<id>.webp`. Bereits vorhandene Operator-Cover von Typhoeus und Liino werden ohne zweite Kopie referenziert.
+- **Dateiformat:** Statische **WebP**-Icons nach offiziellen Kategorien: `operators/icons/`, `weapons/`, `gear/`, `materials/`, `valuables/`, jeweils unter `public/images/endfield/`. Bereits vorhandene Operator-Cover von Typhoeus und Liino werden ohne zweite Kopie referenziert.
 - **Manifest:** `src/data/endfield/catalog/items.json` (Item-ID, Name, Kategorie, lokaler Bildpfad, Quelle).
 - **Wiederverwendung:** `src/lib/endfield/itemCatalog.ts`, `src/components/endfield/ItemIcon.astro` und `MaterialCosts.astro`. Aufstiegs-, Level-, Skill- und Talentmaterialien zeigen WebP-Icons mit Mengenangabe und barrierefreiem Materialnamen. Fehlende Bilder fallen auf Text zurück.
 - **Größenmessung:** 938 neue Originalbilder (161.381.687 Byte) wurden auf **14.941.296 Byte** WebP reduziert. Einschließlich der vorhandenen Operatorbilder, JSON-Daten und derzeitigen Endfield-Code-Dateien: **17.124.917 Byte** bei der ersten Importmessung.
@@ -171,7 +171,7 @@ Alternativ: <https://github.com/Ag0n1st/ag0n1st.github.io/actions/workflows/sync
 
 Bereits gespeicherte Assets werden standardmäßig nicht überschrieben. Die Website bevorzugt lokale Kopien; andernfalls bleiben die in den importierten Daten hinterlegten SKPORT-CDN-URLs als Übergangslösung bestehen.
 
-Für **Typhoeus und Liino** sind jeweils Cover, Illustration und vier Skill-Icons als WebP im Repository gesichert. Die sechs Typhoeus-Dateien benötigen zusammen rund **0,74 MB statt zuvor 4,70 MB**. GIFs, Videos und Animationen werden nicht importiert.
+Für **Typhoeus und Liino** sind jeweils Cover, Illustration und vier Skill-Icons als WebP im Repository gesichert. Die Skill-Icons liegen jetzt unter `operators/<slug>/skills/`. Die sechs Typhoeus-Dateien benötigen zusammen rund **0,74 MB statt zuvor 4,70 MB**. GIFs, Videos und Animationen werden nicht importiert.
 
 **Bildrechte:** Die Rechte an offiziellen Spielgrafiken liegen weiterhin bei den jeweiligen Rechteinhabern. Die Wiki ist als Quelle gekennzeichnet; das gilt nicht als eigene Nutzungsrechtsfreigabe.
 
@@ -262,3 +262,26 @@ Die Testdateien `skport-extract.test.mjs` und `skport-extras.test.mjs` laufen vo
 `scripts/endfield/import-typhoeus.mjs` führt beide Schritte zusammen und erzeugt nach Validierung die beiden versionierten Operator-JSON-Dateien.
 
 Offizielle Quelle: https://wiki.skport.com/endfield
+
+### Endfield-Assetbibliothek: Kategorisiert, ohne neue Bilddateien
+
+Die frühere Catch-all-Struktur wurde am 15.10.2026 durch Verschieben unveränderter Original-WebPs aufgeteilt:
+
+```text
+public/images/endfield/
+├── operators/
+│   ├── icons/                         33 Katalog-Operatoren
+│   ├── liino/                         cover.webp, illustration.webp, skills/
+│   └── typhoeus/                      cover.webp, illustration.webp, skills/
+├── weapons/                           84 Katalog-WebPs
+├── gear/                              258 Katalog-WebPs
+├── materials/                         340 Item-Files-WebPs
+└── valuables/                         223 Valuables-Stash-WebPs
+```
+
+**Operator-Cover von Liino und Typhoeus werden weiterhin direkt wiederverwendet.**
+Die 940 offiziellen Item-IDs bleiben unverändert. `src/data/endfield/catalog/items.json` enthält ihre jeweiligen kanonischen `iconPath`-Werte. Alle 342 Waffen- und Ausrüstungs-Detaildatensätze referenzieren dieselben Pfade.
+
+**Speicher und Git:** 938 Katalog-WebPs und 8 Skill-WebPs wurden weder heruntergeladen noch konvertiert, sondern byte-identisch verschoben. Der Git-Blob-SHA-Vergleich gegen den ursprünglichen `main`-Stand ergab **0 Abweichungen**. Bei weiterhin **950 Bildern und 16.537.472 Bytes Bilddaten** entstehen in der Git-Historie nur die zusätzlichen Commit-/Tree-Metadaten, keine neuen unterschiedlichen Bildobjekte. Die 100-MB-Endfield-Grenze bleibt aktiv.
+
+**Zukünftige Importe:** `scripts/endfield/catalog-assets.mjs` speichert neue SKPORT-Cover direkt im jeweiligen Kategorieziel; `sync-assets.mjs` nutzt für Operator-Skills die Ordner `operators/<slug>/skills/`. `scripts/endfield/asset-layout.test.mjs` prüft über `npm run test:endfield` sämtliche Bildpfade und die gemeinsamen Waffen-/Ausrüstungsreferenzen.

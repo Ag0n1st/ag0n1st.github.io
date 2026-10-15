@@ -35,7 +35,7 @@ const officialBuilds=builds.map(build=>{
             </label>
             <label class="op-cardlet" style="font-size:12px">Fabrikfortschritt · höchste herstellbare Komponente
               <span class="op-factory-select-row">
-                <img id="op-factory-icon" src={`/images/endfield/items/${FACTORY_COMPONENT_STAGES.at(-1)?.itemId}.webp`} alt="" width="34" height="34" loading="lazy" />
+                <img id="op-factory-icon" src={`/images/endfield/materials/${FACTORY_COMPONENT_STAGES.at(-1)?.itemId}.webp`} alt="" width="34" height="34" loading="lazy" />
                 <select class="op-select" id="op-factory">
                   {["Early-Game","Mid-Game","End-Game"].map(phase=>
                     <optgroup label={phase}>
@@ -75,7 +75,7 @@ const officialBuilds=builds.map(build=>{
                 <strong>Benötigte Komponente:</strong>{" "}
                 {b.requirements.requiredComponent==="starter" ? "Grundmaterialien (vor Amethyst)" :
                   b.requirements.requiredComponent ? <>
-                    <img class="op-factory-inline-icon" src={`/images/endfield/items/${FACTORY_COMPONENT_STAGES.find(stage=>stage.id===b.requirements.requiredComponent)?.itemId}.webp`} alt="" width="26" height="26" loading="lazy" />
+                    <img class="op-factory-inline-icon" src={`/images/endfield/materials/${FACTORY_COMPONENT_STAGES.find(stage=>stage.id===b.requirements.requiredComponent)?.itemId}.webp`} alt="" width="26" height="26" loading="lazy" />
                     {FACTORY_LABELS[b.requirements.requiredComponent]}
                   </> : "Herstellungsrezept noch nicht zugeordnet"}
               </p>
