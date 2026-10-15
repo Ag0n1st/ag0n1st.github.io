@@ -27,6 +27,33 @@ jobs:
         id: inspect
         continue-on-error: true
         run: node scripts/endfield/probe-liino-wiki.mjs
+      - name: Validate Liino using the generic Endfield importer
+        id: normalize
+        continue-on-error: true
+        run: |
+          node scripts/endfield/import-operator.mjs \
+            --input local-data/skport/liino-public-snapshot.json \
+            --items local-data/skport/public-items-index.json \
+            --id 1041 --slug liino --snapshot 2026-10-15 \
+            --out-dir local-data/generated
+      - name: Summarize normalized Liino public data
+        if: steps.normalize.outcome == 'success'
+        run: |
+          node --input-type=module -e '
+            import fs from "node:fs";
+            const a=JSON.parse(fs.readFileSync("local-data/generated/liino.json","utf8"));
+            const b=JSON.parse(fs.readFileSync("local-data/generated/liino.extra.json","utf8"));
+            console.log(JSON.stringify({
+              operator:a.operator,skills:a.skills.map(x=>({
+                slot:x.slot,name:x.name,metrics:x.metrics.length,ranks:x.upgradeCosts.length
+              })),
+              attributeLevels:b.attributes.levels,
+              talents:b.talents.map(x=>({name:x.name,category:x.category,stages:x.levels.length})),
+              promotions:b.promotions.map(x=>x.name),
+              potentials:b.potentials.map(x=>x.name),
+              materialCount:Object.keys(b.materials).length
+            },null,2));
+          '
       - name: Upload only sanitized public wiki responses
         if: always()
         uses: actions/upload-artifact@v4
@@ -35,6 +62,8 @@ jobs:
           path: |
             local-data/skport/liino-public-snapshot.json
             local-data/skport/public-items-index.json
+            local-data/generated/liino.json
+            local-data/generated/liino.extra.json
           if-no-files-found: ignore
           retention-days: 2
       - name: Report unavailability
