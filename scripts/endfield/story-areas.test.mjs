@@ -73,3 +73,30 @@ test("different official acquisition paths distinguish eligible from actually ac
  assert.equal(evaluateGearAcquisition(crate,{acquiredGearBlueprintIds:[crate.id]}).status,"acquired");
  assert.equal(evaluateGearAcquisition(find("unknown"),{}).status,"unverified");
 });
+
+
+test("27 official Wuling Gear Template Crate markers have proven map positions but NO guessed item contents",()=>{
+  const crates=JSON.parse(readFileSync("src/data/endfield/progression/gear-template-crates.json","utf8"));
+  assert.equal(crates.source.provider,"SKPORT Map Tools");
+  assert.equal(crates.markers.length,27);
+  const ids=new Set(),perArea={};
+  for(const marker of crates.markers){
+    assert.match(marker.markerId,/^[0-9a-f]{32}$/);
+    assert.ok(!ids.has(marker.markerId),"Duplicate official crate marker");
+    ids.add(marker.markerId);
+    const area=registry.areas.find(a=>a.id===marker.areaId);
+    assert.ok(area,"Unknown official map area "+marker.areaId);
+    assert.equal(area.regionId,"wuling");
+    assert.equal(marker.officialMapLevelId,area.officialMapLevelId);
+    assert.ok(["x","y","z"].every(axis=>Number.isFinite(marker.position[axis])));
+    assert.deepEqual(marker.containedGearIds,[],"Do not infer gear IDs from generic map crates");
+    assert.equal(marker.contentsVerification,"not-verified");
+    perArea[marker.areaId]=(perArea[marker.areaId]??0)+1;
+  }
+  assert.deepEqual(perArea,{
+    "wuling-city":8,"sword-vault-dale":2,"jingyu-valley":4,
+    "qingbo-stockade":3,"snowy-forest":2,"sis-painting":2,
+    "marker-stone":3,"yinglung-pass":2,"marker-stone-interiors":1
+  });
+  assert.equal(registry.blueprintAreaLinks.length,0);
+});
