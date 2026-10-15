@@ -4,7 +4,7 @@
 # Der Operator-Slug muss zur Datei und später zum Import-Datensatz passen.
 operator: neuer-operator
 # displayName: "Angezeigter Operatorname" # optional bis Spieldaten-Import
-status: draft # erst nach dem Befüllen auf "published" ändern
+status: draft # draft = verborgen; preview = sichtbare Vorschau; published = fertiger Guide
 # updatedAt: 2026-10-15
 
 # 1. ÜBERSICHT
