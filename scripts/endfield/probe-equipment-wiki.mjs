@@ -118,6 +118,30 @@ try {
       if(!found.length) {console.log("NO_PUBLIC_ITEM_DETAIL",type.type,id,record.name);process.exitCode=4;continue;}
       const item=found.at(-1).data.item;
       const doc=item.document;
+      if(type.type==="gear") {
+        const allDocuments=Object.entries(doc.documentMap??{}).map(([key,data])=>{
+          try {
+            const extracted=extractDocument(key,data).sections;
+            return {key,
+              tables:extracted.filter(x=>x.kind==="table").map(x=>x.table.rows.map(r=>r.cells).slice(0,10)),
+              text:extracted.filter(x=>x.kind==="text").map(x=>x.text).join(" ").slice(0,1300)};
+          } catch(error){return {key,error:String(error).slice(0,130)};}
+        });
+        const matched=allDocuments.filter(d=>/component|stock bill|gear assembl|craft|recipe|production|gear template|parts|piece set effect|obtain/i.test(JSON.stringify(d)));
+        const source=(doc.chapterGroup??[]).flatMap(g=>g.widgets??[]).find(w=>/source/i.test(w.title));
+        const src=source&&doc.widgetCommonMap?.[source.id];
+        const text=await page.locator("body").innerText().catch(()=>"");
+        console.log("RECIPE_DIAGNOSTIC",JSON.stringify({
+          id,item:item.name,
+          brief:item.brief,
+          itemTypeKeys:Object.keys(item),
+          docCount:allDocuments.length,
+          matchedDocuments:matched.slice(0,18),
+          sourceIntro:src?.tabDataMap?.default?.intro,
+          sourceDetails:src?.tableList,
+          pageMentions:(text.match(/.{0,90}(?:craft|recipe|stock bill|component|manufactur|source|assembly).{0,150}/gi)??[]).slice(0,12)
+        }).slice(0,12000));
+      }
       const widgets=(doc.chapterGroup??[]).flatMap(g=>g.widgets??[]).map(w=>{
         const common=doc.widgetCommonMap?.[w.id];
         const tabs=Object.entries(common?.tabDataMap??{}).map(([key,value])=>{
