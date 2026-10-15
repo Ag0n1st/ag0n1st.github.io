@@ -13,9 +13,9 @@
     "errors": 0,
     "weaponCount": 84,
     "gearCount": 258,
-    "standardRecipesVerified": 254,
-    "recipeNeedsReview": 3,
-    "recipesNotListed": 1
+    "standardRecipesVerified": 258,
+    "recipeNeedsReview": 0,
+    "recipesNotListed": 0
   },
   "weapons": [
     {
@@ -47852,8 +47852,21 @@
       ],
       "artificing": [],
       "setEffect": "No Set Effects",
-      "standardRecipe": null,
-      "recipeStatus": "not-listed",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "493",
+            "count": 10
+          },
+          {
+            "id": "475",
+            "count": 2
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
       "acquisitionNotes": [],
       "artificingStatus": "not-listed"
     },
@@ -47921,8 +47934,21 @@
       ],
       "artificing": [],
       "setEffect": "No Set Effects",
-      "standardRecipe": null,
-      "recipeStatus": "needs-review",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "493",
+            "count": 10
+          },
+          {
+            "id": "475",
+            "count": 2
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
       "acquisitionNotes": [],
       "artificingStatus": "not-listed"
     },
@@ -47990,8 +48016,21 @@
       ],
       "artificing": [],
       "setEffect": "No Set Effects",
-      "standardRecipe": null,
-      "recipeStatus": "needs-review",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "493",
+            "count": 10
+          },
+          {
+            "id": "475",
+            "count": 2
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
       "acquisitionNotes": [],
       "artificingStatus": "not-listed"
     },
@@ -48059,8 +48098,21 @@
       ],
       "artificing": [],
       "setEffect": "No Set Effects",
-      "standardRecipe": null,
-      "recipeStatus": "needs-review",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "493",
+            "count": 10
+          },
+          {
+            "id": "475",
+            "count": 2
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
       "acquisitionNotes": [],
       "artificingStatus": "not-listed"
     },
@@ -78894,21 +78946,6 @@
       "id": "1283",
       "name": "Lunar Calling",
       "reason": "wiki-detail-unavailable"
-    },
-    {
-      "id": "208",
-      "name": "Basic PPE",
-      "reason": "official-recipe-needs-review"
-    },
-    {
-      "id": "211",
-      "name": "Basic Gauntlets",
-      "reason": "official-recipe-needs-review"
-    },
-    {
-      "id": "213",
-      "name": "Basic Gloves",
-      "reason": "official-recipe-needs-review"
     }
   ],
   "failures": []
