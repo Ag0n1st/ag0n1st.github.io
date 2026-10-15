@@ -5,6 +5,7 @@
  * Nothing is written to tracked files or to the published website.
  */
 import { chromium } from "playwright-core";
+import { extractDocument } from "./skport-extract.mjs";
 
 const allow = /^\/web\/v1\/wiki\/item\/(catalog|list|info)$/;
 const observed = [];
@@ -81,6 +82,74 @@ try {
         await page.waitForTimeout(3500);
         console.log("AFTER_CLICK",JSON.stringify({label,url:page.url()}));
       } catch(error) { console.log("CLICK_FAILURE",label,String(error).slice(0,150)); }
+    }
+  }
+
+  // Discover live item IDs from the official public catalogue, never guessed IDs.
+  const catalogue = captures.filter(x=>x.row.endpoint==="catalog");
+  const pick = subId => catalogue.flatMap(c => c.data.catalog??[])
+    .flatMap(g => g.typeSub??[]).find(group => String(group.id)===String(subId) && (group.items?.length??0)>0);
+  const requested=[
+    {type:"weapon",subId:"2",group:pick(2)},
+    {type:"gear",subId:"4",group:pick(4)}
+  ];
+  for(const type of requested) {
+    const items=type.group?.items??[];
+    console.log("CATEGORY_SUMMARY",JSON.stringify({
+      type:type.type,subId:type.subId,count:items.length,
+      filters:(type.group?.filterTagTree??[]).map(tag=>({label:tag.name,id:tag.id,values:(tag.children??[]).map(c=>c.name).slice(0,15)})),
+      names:items.slice(0,12).map(item=>({id:item.itemId,name:item.name}))
+    }));
+    if(!items.length) { console.log("NO_PUBLIC_ITEMS",type.type); process.exitCode=3; continue; }
+    const preferred=type.type==="weapon"
+      ? items.find(item=>item.name==="Bedazzling Night Debut") : null;
+    const unique = [...new Map([items[0],preferred,items[Math.floor(items.length/2)]]
+      .filter(Boolean).map(item=>[String(item.itemId),item])).values()].slice(0,3);
+    for(const record of unique) {
+      const id=String(record.itemId);
+      if(!/^\d+$/.test(id)) continue;
+      const url=new URL("https://wiki.skport.com/endfield/detail");
+      url.searchParams.set("mainTypeId","1");
+      url.searchParams.set("subTypeId",type.subId);
+      url.searchParams.set("gameEntryId",id);
+      await visit(url.toString(),type.type+"-"+id);
+      const found=captures.filter(x=>x.row.endpoint==="info" &&
+        String(x.data.item?.itemId)===id && x.data.item?.document);
+      if(!found.length) {console.log("NO_PUBLIC_ITEM_DETAIL",type.type,id,record.name);process.exitCode=4;continue;}
+      const item=found.at(-1).data.item;
+      const doc=item.document;
+      const widgets=(doc.chapterGroup??[]).flatMap(g=>g.widgets??[]).map(w=>{
+        const common=doc.widgetCommonMap?.[w.id];
+        const tabs=Object.entries(common?.tabDataMap??{}).map(([key,value])=>{
+          const ref=String(value?.content??"");
+          const data=doc.documentMap?.[ref];
+          let sections=[];
+          if(data) {
+            try {
+              sections=extractDocument(ref,data).sections.map(section=>
+                section.kind==="table"
+                  ? {kind:"table",rows:section.table.rows.length,cols:section.table.rows[0]?.cells.length,
+                     header:section.table.rows[0]?.cells.slice(0,7),
+                     example:section.table.rows[1]?.cells.slice(0,5)}
+                  : {kind:section.kind,text:String(section.text??"").slice(0,200)}
+              );
+            } catch(error) { sections=[{error:String(error).slice(0,160)}]; }
+          }
+          return {key,ref,sections};
+        });
+        return {
+          title:w.title,id:w.id,widgetKeys:common?Object.keys(common):[],
+          tableRows:(common?.tableList??[]).slice(0,7).map(row=>({label:row.label,value:String(row.value??"").slice(0,130)})),
+          tabs:tabs.slice(0,10)
+        };
+      });
+      console.log("OFFICIAL_DETAIL",JSON.stringify({
+        category:type.type,id,name:item.name,lang:item.lang,
+        itemKeys:Object.keys(item),documentKeys:Object.keys(doc),briefKeys:Object.keys(item.brief??{}),
+        subTypes:item.brief?.subTypeList??[],
+        filters:(item.subType?.filterTagTree??[]).map(t=>({id:t.id,name:t.name})),
+        widgetCount:widgets.length, widgets:widgets.slice(0,35)
+      }).slice(0,17000));
     }
   }
   console.log("PUBLIC_ENDPOINT_SUMMARY",JSON.stringify(observed.slice(0,45)));
