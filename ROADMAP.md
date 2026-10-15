@@ -826,3 +826,365 @@ Dies ist eine **priorisierte Roadmap**, kein bereits bezahlter Projektvertrag un
 **Abnahme:** Kein unbelegtes „dieser Gear-Blueprint ist garantiert in Kiste X“; einzelne sichere Marker-zu-Gear-Paare sind maschinell validiert und separat abrufbar; kein Rückschritt bei bestehender Build-Prüfung.
 
 ---
+
+### Phase P5 – Fabrikbereich: vollständige, progressionsfähige Guides für **Tal4 und Wuling**
+
+**Status:** [GEPLANT]; umfangreiches eigenständiges Teilprojekt.
+
+**Produktwunsch:** Spieler, auch ohne Fabrik-Affinität, sollen ihren **aktuellen Storyfortschritt** auswählen und **sofort verwendbare, nachbaubare Fabrik-Blueprints** bekommen; fortgeschrittene Nutzer sollen die Produktionslogik vollständig verstehen.
+
+**Bereits vereinbart:** Zwei große Guides/Videoreihen – **Tal4** und **Wuling** – mit passenden Website-Ressourcen. In der bisherigen Contentplanung **mit Wuling beginnen**. Nicht annehmen, dass auf der Website bereits die Fabrik-Simulationslogik existiert.
+
+**Arbeitspakete:**
+
+1. **Fachliche Grundlagen**: Fabriklevel, Forschungsstufen, Facilities, Fließband-/Fördersysteme, regionale Ressourcen, Nebenprodukte, Energie, Kapazitäts-/Output-Limits, Story-Freischaltungen und relevante Komponenten dokumentieren. Nur nach überprüfter Quelle.
+2. **Progressionsgraph**: Welche Systeme/Produktionslinien sind ab welchem echten Story-/Gebietszugang erreichbar? **Nicht** allein nach Gear-Level sortieren.
+3. **Tal4 vs. Wuling getrennt**: Ressourcen, Transportwege, Fabriklayouts und Freischaltungen pro Region getrennt modellieren.
+4. **Stufenmodell**: Früh/Mitte/Spät sinnvoll unterteilen, Produktionsziele und tatsächlich benötigte Mindestressourcen ausweisen. Die sieben Gear-Komponenten sind eine wichtige Verbraucher-Sicht, aber **kein Ersatz für echte Fabrikforschungs-/Facility-Gates**.
+5. **Blueprint-Bibliothek**: Downloadbare/Kopierbare Game-Blueprint-Codes oder überprüfbare Muster; klare Beschriftung, notwendige Gebäudefreischaltungen, Vorprodukte, Durchsatz, Eingänge/Ausgänge, Platzbedarf und Kompatibilitätsstufe.
+6. **Plug & Play**: Einsteiger wählen „Was kann ich bei meinem Fortschritt bauen?“; die Website zeigt einen passenden geprüften Bauplan und kurze Nachbauanleitung.
+7. **Erklärungsmodus**: Erfahrene Nutzer sehen Gründe, Materialflüsse, Produktionsengpässe, Erweiterungsschritte, Troubleshooting.
+8. **Versionierung**: Game-Version, Quelle, letzter Ingame-Test, evtl. Anpassungsbedarf nach Patches.
+9. **Videos**: Zwei umfangreiche Creator-Fabrikvideos als Ergänzung; Website bleibt auch ohne Video nachvollziehbar.
+10. **Technikentscheidung**: Zuerst statische JSON/Markdown-Blueprint-Datensätze. Einen interaktiven visuellen Editor/Simulator erst bauen, wenn tatsächliche Anforderungen und Aufwände geklärt sind.
+
+**Abnahme:** Mindestens ein tatsächlich im Spiel getesteter Wuling-Early-/Mid-/End-Schritt ist reproduzierbar und korrekt nach den realen Zugangsvoraussetzungen gefiltert; später Tal4 entsprechend. Keine „alles freigeschaltet“-Empfehlung für frühere Storyabschnitte.
+
+### Phase P6 – Endfield-System-Nachschlagewerke
+
+**Status:** [GEPLANT]. Getrennte, wiederverwendbare Seiten, keine unbelegte Zusammenfassung erfinden.
+
+**A. Rekrutierung** (`/endfield/rekrutierung/`)
+
+- [ ] Grundlagen, Operator-/Bannerarten, Ressourcen und Fristen korrekt beschreiben.
+- [ ] Garantien, Pity-/Wahrscheinlichkeitssystem nur nach offiziell belegten Mechaniken.
+- [ ] Pull-/Investitionsberatung deutlich als eigene Einordnung kennzeichnen.
+- [ ] Relevante eigene YouTube-Guides einbinden.
+- [ ] Änderungsstand je Spielversion dokumentieren.
+- **Abnahme:** Nutzer kann Unterschiede der Rekrutierungswege ohne Video nachvollziehen und findet Quellen für alle Zahlen.
+
+**B. Veredelung** (`/endfield/veredelung/`)
+
+- [ ] Voraussetzungen, Materialien, Modifikation/Tuning und Standardablauf definieren.
+- [ ] Offizielle Stats-/Artificing-Daten aus vorhandenen Gear-JSON nutzen; keine doppelte Pflege.
+- [ ] Anwendungsbeispiele und typische Anfängerfehler mit Screens/Videobelegen.
+- [ ] Optionale Item-/Kosten-/Wirkungs-Tabelle; Erweiterung um Tool erst bei überprüfter Berechnungsformel.
+- **Abnahme:** Werte und Grenzen kommen aus dem Katalog, Erklärungen aus eigener fachlicher Redaktion.
+
+**C. Essenzen** (`/endfield/essenzen/`)
+
+- [ ] Essenzarten, Waffen-/Ausrüstungszuordnungen und Erwerbswege aus zuverlässigen Quellen.
+- [ ] Filter nach Klasse/Attribut/Verwendung, sobald Datensatz vorhanden.
+- [ ] Symbolbibliothek wiederverwenden.
+- [ ] Quellen-/Versionsabgleich für jedes neue Release.
+- **Abnahme:** Suchbare und überprüfte Übersicht ohne neue, unnötige Datenbank.
+
+### Phase P7 – Community-nahe Endfield-Tools
+
+**Status:** [GEPLANT]. Alle aktuellen Routen sind vorhanden, die Fachfunktionen fehlen.
+
+**A. Speedrun-Archiv** (`/endfield/speedruns/`)
+
+- [ ] Datenmodell für **eigene** Runs: Boss, Version, Schwierigkeitsstufe, Operator-Team, P-Stufen, Buff-Food-Regeln, Laufzeit, Datum, Videolink, Notes.
+- [ ] Unterschiede der Regeln (z. B. P0/P5, Buff Food ja/nein) **explizit** speichern, damit Zeiten vergleichbar bleiben.
+- [ ] YouTube-Videos/Playlists verlinken; optional nach Boss und Regeln filtern.
+- [ ] Keine Community-Rangliste, keine Fremdrun-Einsendungen und kein Accountsystem.
+- **Abnahme:** Eine vom Creator bestätigte Run-Datendatei erzeugt automatisch eine übersichtliche Archivkarte mit prüfbarem Video.
+
+**B. Daily-/Weekly-Checkliste** (`/endfield/checkliste/`)
+
+- [ ] Tatsächlich existierende Aufgaben und Resetzyklen recherchieren, keine erdachten Aufgaben.
+- [ ] Eigene Checkboxen, optional Kategorien (daily/weekly/event) und lokale Speicherung.
+- [ ] Klare Zeitzonen-/Serverreset-Logik, keine unzuverlässigen „Mitternacht lokal“-Annahmen.
+- [ ] Bei Patches Aufgaben/Kategorien versionieren und gespeicherte Nutzerdaten behutsam migrieren.
+- [ ] Kein Login; Offline-/Fehlersituationen bedenken.
+- **Abnahme:** Checkboxen bleiben lokal bestehen und setzen sich nur zum wirklich richtigen Zeitpunkt zurück; E2E-Test über simulierten Tages-/Wochenwechsel.
+
+**C. Patch-Countdown** (`/endfield/countdown/`)
+
+- [ ] Nächsten offiziell bestätigten Patchtermin aus Quellen übernehmen; Zeitformat/Zeitzone/UTC dokumentieren.
+- [ ] Countdown clientseitig oder statisch + JS rendern; keine falschen Versprechen bei nicht offiziellem Termin.
+- [ ] Nach Ablauf verständliche Endmeldung und Aktualisierungsprozess.
+- [ ] Ggf. nächsten Banner-/Eventtimer als eigene, belegte Datenklasse.
+- **Abnahme:** Countdown stimmt über Zeitzonenwechsel und Sommer-/Winterzeit, und nennt klar die Quelle des Termins.
+
+### Phase P8 – Neverness to Everness (NTE) Portal
+
+**Status:** [GEPLANT; die Grundseite ist ein Platzhalter]. Nicht den Endfield-Skillbaum oder Endfield-Materialnamen ungeprüft kopieren.
+
+**Geplante Arbeit nach konkreter Priorisierung:**
+
+1. Produktseite vom Platzhalter zu echter Landing mit NTE-spezifischer Navigation.
+2. Sammlung eigener Guide-/Video-/Story-Inhalte und patchbezogener Updates.
+3. Operator-/Charakter-Systematik des jeweiligen Spiels recherchieren, **eigene** Stammdatenschemata festlegen.
+4. Wiederverwendbare allgemeine Astro-UI/Card-/Content-Bausteine nutzen, aber keine Endfield-spezifischen IDs/Fabrikkategorien übernehmen.
+5. Deutsche Begriffe und ggf. zweisprachige Ergänzung separat versionieren.
+6. Zukünftige NTE-Progressionstools nur bei belastbaren Eingabedaten.
+7. CI-, Asset-, Übersetzungs- und Publisher-Quellenstrategie analog dem erfolgreichen Endfield-Ansatz.
+
+**Abnahme:** Kein Schein-Guide mit erfundenen Spielwerten; mindestens eine echte recherchierte NTE-Inhaltskategorie ist nutzbar, bevor die Seite als fertig deklariert wird.
+
+### Phase P9 – Creator-Profil, Beiträge, SEO und Auffindbarkeit
+
+**Status:** [TEILWEISE/GEPLANT], nicht vorzeitig Hauptentwicklungsfokus von Endfield weglenken.
+
+**About Me / Kooperationen:**
+- [ ] Echte vom Nutzer freigegebene Creator-Bio, Streaming-Kanäle, Content-Schwerpunkte und Partnerprogramme.
+- [ ] Professionelle Kooperations-/Kontaktmöglichkeit, ohne private Adress-/Identitätsdaten offenzulegen.
+- [ ] Partnerlogos/-marken nur nach Berechtigung und eigener Freigabe.
+
+**Beiträge/News/Update-Logs:**
+- [ ] Vorhandene `posts`-Collection redaktionell sinnvoll nutzen; Posts zu Patches/Guides/Mechaniken nur nach relevanter Quellenlage.
+- [ ] Dateien als Markdown mit Frontmatter und Datum, verlinkt von Startseite/Spielen.
+- [ ] Interne Verlinkung Guide ↔ relevante Beiträge ↔ Videos; Duplikate vermeiden.
+
+**SEO / technische Qualität:**
+- [ ] Canonical-URLs auf die tatsächlich gewünschte Primärdomain abstimmen; `astro.config.mjs`/Pages/DNS prüfen.
+- [ ] Einzigartige Titel, Meta-Descriptions, strukturierte semantische Überschriften je Guide.
+- [ ] OpenGraph-/Social-Share-Metadaten sinnvoll nutzen; nur beauftragte Logos/Assets.
+- [ ] Sitemap/robots-Prüfung; keine erfundenen Indexierungs- oder Analytics-Erfolge behaupten.
+- [ ] Bildalttexte, WebP-Loading, kontrastreiche UI, Tastaturbedienung, Fokus-/ARIA-Status.
+- [ ] Nutzerfreundliche Fehler-/Leerseiten, `draft`/`preview` nicht versehentlich als fertige Empfehlungen bewerben.
+- [ ] **Datenschutz** bei späteren Statistik- oder Drittanbieter-Embeds berücksichtigen; bei Bedarf consent-/rechtliche Prüfung.
+
+### Phase P10 – Mehrsprachigkeit / Internationalisierung
+
+**Status:** [LANGFRISTIG GEPLANT]; Deutsch zuerst, keine ungefragte englische Vollkopie.
+
+- [ ] Einheitliche Locale-IDs und URL-Struktur festlegen.
+- [ ] Bereits getrennte Operator-Rohdaten (EN) und `locales/de/` als Ansatz behalten.
+- [ ] Navigation, Statische Texte, Datums-/Zahlformatierung, Einheiten, ggf. SEO-`hreflang` lokalisieren.
+- [ ] Redaktionelle Creator-Bewertungen pro Sprache **bewusst** pflegen; keine maschinelle Übersetzung als redaktionell freigegeben markieren.
+- [ ] Fremdsprachige Gamebegriffe gegen offizielle Quellen prüfen.
+- [ ] Version-/Snapshotbindung von Übersetzungen auch für NTE und spätere Spiele übernehmen.
+- **Abnahme:** Beide Sprachen sind in UI, Inhalt und Metadaten konsistent; defekte Übersetzungen fallen zuverlässig auf Basis-Sprache zurück, ohne Werte auszutauschen.
+
+### Phase P11 – Release-/Datenpflege-Automatisierung
+
+**Status:** [LANGFRISTIG GEPLANT / teilweise bestehende Scripts].
+
+1. Offizielle Patchnotes erfassen; Version, Datum, betroffene Kategorien und Quellen protokollieren.
+2. Öffentliche SKPORT-Snapshots **differenziell** aktualisieren, statt gesamte Bilder mehrfach einzubetten.
+3. Prüfung von neuen Operatoren, Items, Waffen, Gear, Gebieten und neuen Kartenmarkern.
+4. Deutsche Übersetzungen nur bei passenden Source-Snapshots als aktuell markieren.
+5. Konflikt-Dashboard/Bericht erzeugen: unaufgelöste neue Gear-ID, fehlendes Artificing, Community-Widerspruch, unbekannte Area-ID.
+6. Reviewer-Freigabe vor Änderung redaktioneller Bewertungen oder bestätigter Marker-Links.
+7. Verifizierte Changes in PR, Actions grün, Pages deploy, Live-Kontrolle.
+8. Später optional Termin-/Patch-Alerts; **nicht** einfach dauerhafte Hintergrundautomationen annehmen.
+9. Performance-/Link-/Accessibility-Monitoring ohne ungewünschte Trackingdienste.
+
+**Abnahme:** Ein neuer Spielpatch verursacht keinen stillen Bruch alter Guides; Datenherkunft und Patch-Diff sind nachvollziehbar.
+
+---
+
+## 11. VERBINDLICHER ARBEITSPROZESS PRO ENTWICKLUNGSSCHRITT
+
+### 11.1 Vor jeder Umsetzung
+
+1. **ROADMAP.md lesen**, nach „Aktueller Übergabepunkt“ suchen und echte Dateien öffnen.
+2. `main` sowie offene PRs/Workflow-Runs prüfen. Die Roadmap nennt einen **Snapshot**, GitHub liefert den aktuellen Stand.
+3. Aus der Nutzeranfrage die **genau begrenzte Aufgabe** formulieren. „Alle möglichen Features“ nicht ohne Nutzerfreigabe implementieren.
+4. Klassifizieren: objektive SKPORT-Daten, Community-Recherche, redaktionelle Bewertung, technische Anzeige oder Nutzerfortschritt?
+5. Bereits existierende Module und Tests finden, keine zweite parallele Datenquelle oder UI erfinden.
+6. Akzeptanzkriterien und Sicherheitsgrenzen definieren; bei unklarer fachlicher Entscheidung Rückfrage stellen.
+
+### 11.2 Während der Entwicklung
+
+1. Für substanziellere Arbeiten vom aktuellen `main` einen Feature-Branch erstellen.
+2. Kleinste wiederverwendbare Änderung statt großem Umbau; bestehende Architektur/IDs weiterverwenden.
+3. JSON-/Markdown-/YAML-Datenänderungen mit Quellennachweis, Datum, Gameversion und Status versehen.
+4. Bei Importdaten: Parser und Validierungsregeln anpassen; **keine** Bewertungstexte überschreiben.
+5. Beim UI: Mobile, Formularzustände, Leerdaten, Fehlerfälle, Tastaturbedienung beachten.
+6. Für jedes neue Status-/Fortschrittsfeld mindestens Tests für normal, Grenze, leer, ungültig, persistiert alt.
+7. **Nicht** ungesicherte Community-Daten in als „offiziell“ bezeichnete Felder kopieren.
+8. Wenn UI-Bilder nötig wären, zunächst bestehende WebP-Bibliothek und Nutzerwunsch prüfen.
+
+### 11.3 Test-/Review-/Merge-Gate
+
+~~~bash
+npm ci
+npm run test:endfield
+node scripts/endfield/check-budget.mjs
+npm run build
+npm run preview
+~~~
+
+Pflichtkontrollen nach Inhalt:
+- Neue Operator-Gear-IDs gegen offizielle `items.json`/`equipment-details.json` prüfen.
+- Neue JSON-Referenzen auf existierende Daten/Quellen/Marker testen.
+- Neue Story-/Blueprint-Regeln gegen **besitzt nicht / Gebiet nicht betreten / Gebiet betreten / Besitz bestätigt** testen.
+- Mobile UI und Browser-`localStorage` mindestens bei größeren Formularänderungen tatsächlich testen.
+- PR-Workflow `Validate Astro and operator guides` muss grün sein.
+- Bei Merge nach `main` auch `Deploy Astro site to GitHub Pages`-Build **und Deploy-Job** prüfen.
+- Nach Deployment betroffene URL in Produktion aufrufen, besonders wenn Navigation, Dateipfade, Assets oder Caching berührt sind.
+- **Keinen Merge-Erfolg mit erfolgreichem Live-Deploy gleichsetzen.**
+
+### 11.4 Abschluss und Übergabe nach jedem Arbeitsschritt
+
+Am Ende jedes Features:
+
+1. Roadmap-Status aktualisieren und nächste konkrete Aufgabe festlegen.
+2. Zu neuer/entfernter Datei: Pfad, Rolle, Ein-/Ausgabe, Ownership erklären.
+3. Quelle/Version, offene Unsicherheit, bewusste Nicht-Implementierung festhalten.
+4. PR-Link, Merge-Commit, Test-/Deploy-Status ergänzen.
+5. Den **„Aktueller Übergabepunkt“** so aktualisieren, dass ein Dritter ohne Chat verstehen kann, was zu tun ist.
+6. Bei geplanten weiteren Aufgaben nicht behaupten, sie liefen „im Hintergrund“; nach der tatsächlichen Umsetzung erneut dokumentieren.
+
+---
+
+## 12. RICHTIGER UMGANG MIT QUELLEN UND FACHLICHER SICHERHEIT
+
+### 12.1 Quellenhierarchie
+
+1. **Offizielle Ingame-/SKPORT-/Publisher-Daten** für Werte, Materialkosten, reguläre Erwerbsarten, offizielle Kartenmarker, patchbezogene Releases.
+2. **Mehrfach bestätigte Community-Quellen** für konkrete Gameplay-/Kisten-Fundortbeobachtungen; auch bei Übereinstimmung als Community kennzeichnen, solange kein offizieller eindeutiger Marker-Inhalts-Beleg vorliegt.
+3. **Einzelne Community-Quelle** für vorläufige Hinweise; Herkunft deutlich angeben.
+4. **Eigene Tests/Videos/Erfahrungen des Creators** für verifizierbare redaktionelle Strategien.
+5. **Vermutungen** nur in ausdrücklich als unbestätigt markierten Forschungsnotizen, niemals als freigeschaltete Spielvoraussetzung oder perfekte Ausrüstung.
+
+### 12.2 Felder, die nicht stillschweigend vermischt werden dürfen
+
+- `gearId` ≠ `setName` ≠ `claimId` ≠ `officialMarkerId`.
+- `areaId` (Gebiet) ≠ `regionId` (Region) ≠ `storyMilestoneId` (Mission).
+- `eligible` (Voraussetzungen erfüllt) ≠ `acquired` (Vorlage erhalten).
+- `componentRequirement` (Zutat im Standardrezept) ≠ tatsächliche Story-/Facility-Freischaltung einer Maschine.
+- Offizielle EN-`sourceSnapshot` ≠ manuell gepflegte deutsche Übersetzung eines früheren Standes.
+- Beispiel-/Guide-YAML ≠ vom Nutzer veröffentlichte Build-Empfehlung.
+
+### 12.3 Besonders wichtige ungelöste Forschungsfragen
+
+- Welcher **offizielle SKPORT-Marker** entspricht welcher benannten Community-Kiste?
+- Welche exakten Gear-IDs stecken in den **zwei Si's-Painting-Kisten**?
+- Wie lassen sich die **23 strittigen Kistengear-IDs** in Einzelbelegen entscheiden?
+- Welche **10 offiziellen Kistengear-IDs** können noch nicht individuell lokalisiert werden?
+- Welche konkreten Neben-/Hauptmissionen schalten **jedes einzelne** der 19 Gebiete tatsächlich frei? Wo sind alternative Eingänge möglich?
+- Welche aktuell als `unknown` erfassten **12 Ausrüstungserwerbswege** sind nach neuen Wiki-Daten überprüfbar?
+- Welche Artificing-/Waffen-Widgets der neuesten Version fehlen offiziell und benötigen spätere Daten-Nachlieferung?
+- Welche Benutzerfortschrittsfelder benötigen bei neuen Versionen ein Schema-Upgrade ohne Datenverlust?
+- Wie aktuell sind die offiziellen deutschen Übersetzungen und welche Begriffe bleiben bewusst im englischen Original?
+
+Bei Untersuchung **nur die belegten Fälle korrigieren**, nicht auf ganze Sets/Regionen hochrechnen.
+
+---
+
+## 13. RISIKEN, TECHNISCHE SCHULDEN UND VERBESSERUNGEN
+
+| Thema | Risiko | Handlung |
+| --- | --- | --- |
+| Alt-Dokumentationen | Ältere `scripts/endfield/README.md`-Absätze beschreiben teils inzwischen erledigte Arbeit noch als „zukünftig“. | Diese Roadmap + aktueller Code haben für **Status** Vorrang; Spezialdokumente bei Bearbeitung präzisieren. |
+| Einmalige Importer/Actions | Nicht mehr notwendige Probes oder Workflow-Duplizierung. | Vor Löschung auf aktuelle Abhängigkeiten und Quelle prüfen; nicht blind aufräumen. |
+| Drittquellen und Beweisniveau | 92 Einzelteil-Zuordnungen könnten als offiziell bestätigt missverstanden werden. | Immer `community`/`precise`/`conflict`/`verified` korrekt ausweisen; Besitz separat. |
+| Git-Historie | Große WebP-Verschiebungen vergrößern ggf. historische Git-Objekte trotz unverändertem Working Tree. | Größe der **gegenwärtigen Dateien** vs. Repository-Historie getrennt betrachten. |
+| API-/HTML-Quellenänderungen | SKPORT oder Community-Wiki ändern Feldnamen, Tabellen oder schützen Abfragen. | Importer abbrechen lassen, Schema-/Versionsdiff prüfen; keine stille Falschzuordnung. |
+| Persistierte lokale Eingaben | Überholte IDs oder Level können nach Patchwechsel ungültig werden. | Schema-Version, Wertevalidierung und bei Bedarf Migration; maximale Authority 60. |
+| Führende Projektdateien | Neue KIs lesen ggf. nur alte Chat-Zusammenfassungen. | `ROADMAP.md` zuerst und GitHub-Zustand direkt danach prüfen. |
+| Brand-/Copyrightrechte | Ungefragt generierte Game-Assets, Bilder oder Partnerlogos. | Bestehende freigegebene/geeignete Assets verwenden; neue nur nach Auftrag und Rechtsprüfung. |
+| Statische Daten versus „Live“ | Live-Twitch/YouTube/Countdown können browser-/API-bedingt scheitern. | Fallback und Source-Fehlerzustände testen, nicht Live-Verfügbarkeit zusichern. |
+| SEO-Domain | Astro `site` steht bisher auf `ag0n1st.github.io`, Custom-Domain ist `ag0n1st.com`. | Bei nächstem SEO-Zyklus Kanonisierung und Custom-Domain-Setup konsistent prüfen. |
+| Unvollständige Redaktion | Preview-Guides sehen strukturell vollständig aus, obwohl echte Empfehlungen fehlen. | Preview deutlich markieren, Freigabekriterien einhalten, nicht nach Anzahl Komponenten „fertig“ nennen. |
+| Fehlende E2E-Regression | Browserprüfung des Story-Filters wurde einmalig erledigt, permanente E2E-Suite besteht noch nicht. | Bei echten Builds zunächst Browser erneut prüfen, später schlanke reproduzierbare E2E-Checks erwägen. |
+| UX/Accessibility | Viele verschachtelte `details`, Tabellen und Checklisten auf Mobilgeräten. | Keyboard, Screenreader-Labels, Kontraste, kleine Viewports, Overflow und Fokus regelmäßig testen. |
+
+---
+
+## 14. AKTUELLER ÜBERGABEPUNKT: 15. OKTOBER 2026
+
+### 14.1 Letzter abgeschlossener Funktionsstand
+
+- [x] Astro-Landing und Endfield-Portal als Grundlage.
+- [x] Modulares neunteiliges Operator-Guide-Framework.
+- [x] Offizielle SKPORT-Operator-Daten für Liino/Typhoeus.
+- [x] 940 offizielle Item-Katalogeinträge mit kategorisierter lokaler WebP-Bibliothek.
+- [x] 84 Waffen- und 258 Gear-Datensätze, inkl. offizieller Standardrezepte.
+- [x] Sieben Komponentenstufen, Level-/Fabrik-Eignung.
+- [x] 19 offizielle Story-Kartenebenen und 27 Wuling-Kistenmarker.
+- [x] Community-Einzelteil-/Kistenforschung: 24 Kisten, 92 präzise konfliktfreie Gear-Kandidaten, 23 strittige, 10 offene.
+- [x] Storyregion, separate Gebiets-Checkboxen, optional Authority/Warenumverteilung, vier einzelne erhaltene Blaupausen.
+- [x] Browser-`localStorage` ohne Login mit Reset.
+- [x] **Authority-Feld auf 60 begrenzt** einschließlich Eingabe-/Speicher-/Auswertungsschutz.
+- [x] Diese übertragbare Markdown-Roadmap.
+
+### 14.2 Nächste Aufgabe – Stand der Entscheidung
+
+**Vorschlag, nicht automatisch schon beauftragt:** Im nächsten Arbeitsschritt mit **Liino** anfangen und **echte redaktionelle Ausrüstungs-Builds** eintragen. Anschließend die neue Build-Finder-Oberfläche mit realen vierteiligen Builds in Produktion prüfen.
+
+Warum dieser Schritt zuerst: Die technische Engine ist vorhanden, aber `liino.md` und `typhoeus.md` haben noch `equipment.builds: []`. Ohne freigegebene konkrete Builds wird die volle Benutzerfunktion auf der öffentlichen Guide-Seite noch nicht sichtbar.
+
+**Voraussetzung:** Nutzer liefert/prüft echte Empfehlungen oder beauftragt eine neue, nachvollziehbare Guide-/Meta-Recherche. Nicht eigenständig eine vierteilige „perfekte“ Build-Empfehlung erfinden.
+
+**Kleiner technisch sinnvoller Parallelpunkt:** Die **Autoritätslevel-Grenze 60** bei künftigen Patchänderungen zentral in `src/lib/endfield/buildStoryProgress.mjs` nachführen, UI/LocalStorage-/Testgrenzen nicht isoliert ändern.
+
+### 14.3 Sofortleseliste für die nächste KI
+
+1. **`ROADMAP.md`** – dieses Dokument vollständig für Kontext und Projektprioritäten.
+2. **`README.md`** – minimaler Installations-/Startprozess.
+3. **`scripts/endfield/README.md`** – SKPORT-Importer, Daten-/Bild-Budget, offizielle Datenstruktur.
+4. **`docs/operator-guide-workflow.md`** – Guide-Template und redaktioneller Workflow.
+5. **`src/content/operator-guides/_template.md`** – tatsächliche YAML-Felder, nicht aus Erinnerung ableiten.
+6. **`src/content/operator-guides/liino.md`** – nächste redaktionelle Datei.
+7. **`src/lib/endfield/buildFinder.mjs`**, **`buildStoryProgress.mjs`**, **`gearBlueprintResearch.ts`** – Build-/Progressionsregeln.
+8. **`docs/endfield-blueprint-piece-audit.md`** und **`docs/endfield-story-progression.md`** – Fundort-/Story-Fachbelege und offene Konflikte.
+9. **GitHub Pull Requests/Actions auf `main`** – letzter tatsächlicher Code-/Deploy-Stand.
+
+### 14.4 Checkliste zur Aktualisierung DIESER Datei
+
+Nach **jedem** zukünftigen Task, unabhängig davon, ob ihn dieselbe oder eine andere KI bearbeitet, prüfen:
+
+- [ ] Datum und Status im Titel-/Übergabeblock anpassen.
+- [ ] Erledigte Roadmap-Aufgaben abkreuzen und neue ggf. ergänzen.
+- [ ] Neue/entfernte Dateien in der Architektur aufführen.
+- [ ] PR-Link, getesteten Merge-Commit und zuletzt geprüften GitHub-Pages-Deploy dokumentieren.
+- [ ] Geänderte User-Entscheidungen explizit als neue Vorgabe festhalten (alte Entscheidung nicht wortlos streichen).
+- [ ] Neue Datenquellen, Versionsnummer, Konflikte und offene Verifikationsbedarfe aktualisieren.
+- [ ] Die **nächste, konkrete und kleinste sinnvolle Aufgabe** benennen.
+- [ ] Vor Merge die Datei gegen den tatsächlichen `main`-Code bzw. Branch-Diff gegenlesen.
+- [ ] Ein neuer Chat soll von der Roadmap aus arbeiten können, **ohne die vorherigen Chats zu besitzen**.
+
+---
+
+## 15. WICHTIGE LINKS UND QUELLVERWEISE
+
+**Repository & Auslieferung:**
+- GitHub: https://github.com/Ag0n1st/ag0n1st.github.io
+- GitHub Actions: https://github.com/Ag0n1st/ag0n1st.github.io/actions
+- GitHub Pages: https://ag0n1st.github.io
+- Eigene Domain: https://ag0n1st.com
+
+**Fachdokumente im Repository:**
+- [Guide-Pflege](docs/operator-guide-workflow.md)
+- [Endfield-Importer/Asset-Handbuch](scripts/endfield/README.md)
+- [Offizielles Gebietsregister](docs/endfield-story-progression.md)
+- [Aktuelle Filterlogik](docs/endfield-story-build-filter.md)
+- [Kisten-/Community-Recherche](docs/endfield-blueprint-research.md)
+- [Einzelteilgenauer Kisten-/Konfliktreport](docs/endfield-blueprint-piece-audit.md)
+
+**Quellen für zukünftige Aktualisierungen:**
+- Offizielle SKPORT-Wiki: https://wiki.skport.com/endfield
+- Offizielle SKPORT Map Tools: https://game.skport.com/map/endfield
+- Offizielle Publisher-Seite: https://endfield.gryphline.com/
+- Konkrete Community-Kistenlisten: https://endfield.wiki.gg/wiki/Gear
+- Individuelle Community-Ausrüstungsquellen: https://endfieldhub.org/database/gears
+- Einzelne weitere Quellen inklusive URLs stehen mit Nachweiskategorie in `blueprint-community-claims.json`.
+
+**Hinweis zur Beweiskraft:** Ein Link in diesem Kapitel garantiert keine Datenaktualität. Bei Versionen und neueren Spielinhalten immer Quellstand, Datum und konkrete Einzelteil-IDs erneut prüfen.
+
+---
+
+## 16. ENTSCHEIDUNGSLOG (FORTSCHREIBEN!)
+
+| Datum | Entscheidung | Begründung / Folgewirkung |
+| --- | --- | --- |
+| Oktober 2026 | Astro + GitHub Pages, primär `main`, statische Daten statt Login-CMS | Günstig, kontrollierbar, Textdateien unabhängig pflegbar. |
+| Oktober 2026 | Deutsch zuerst; Magenta/Cyan, Geist; keine automatischen Website-Bilder im Chat | Einheitliche CI und klare Autorisierung von Assets. |
+| Oktober 2026 | „Operatoren“ statt „Charaktere“ | Einheitliche Endfield-Begrifflichkeit und URLs. |
+| Oktober 2026 | Neun einzelne Guide-Abschnitte; Redaktion getrennt von SKPORT-Daten | Wiederverwendbarkeit und Schutz eigener Texte. |
+| 15.10.2026 | Offizielle Gear-Daten vollständig anhand STANDARD-Rezepten auswerten | Gleicher wissenschaftlich überprüfbarer Datenstand für jeden Build. |
+| 15.10.2026 | Sieben gestaffelte Herstellungs-Komponenten, Pyrrolit als Default | Level 70 allein ist für die Fabrik kein ausreichender Fortschrittsmaßstab. |
+| 15.10.2026 | 100-MB-Endfield-Budget, kategorisierte WebP-Verzeichnisse | GitHub-Pages-Tauglichkeit und nachvollziehbare Dateiorganisation. |
+| 15.10.2026 | Story-/Gebiets-/Blaupausenfortschritt getrennt speichern | Nebenmissionen, parallel zugängliche Gebiete und tatsächlicher Besitz sind verschiedene Dinge. |
+| 15.10.2026 | Community-Kistenforschung zuerst auf **einzelne Gear-IDs** präzisieren | Setnamen allein verursachen falsche oder mehrdeutige Gebietszuordnungen. |
+| 15.10.2026 | Autoritätslevel **maximal 60**, nicht 200 | Aktuell vom Nutzer bestätigte Spielobergrenze; Input/Validierung/Tests müssen übereinstimmen. |
+| 15.10.2026 | `ROADMAP.md` als zentrale, regelmäßig gepflegte KI-Übergabedokumentation | Neues Chatfenster/andere KI soll ohne Verlust alter Anforderungen und Beschlüsse fortsetzen können. |
+
+**Ende der aktuellen Roadmap.**  
+**Fortsetzungspunkt:** Abschnitt 14 und die aktuell offenen/erledigten PRs prüfen, bevor neue Änderungen beginnen.
