@@ -1,0 +1,731 @@
+{
+  "schemaVersion": 1,
+  "snapshot": "2026-10-15",
+  "status": "community-research-needs-personal-review",
+  "policy": {
+    "sourceOfTruth": "Official SKPORT map marker location and official gear IDs remain authoritative. Community articles may add text descriptions, landmark hints, and candidate set/piece unlocks.",
+    "noMarkerAssignmentWithoutCoordinates": true,
+    "noAutomaticAvailabilityFromResearchOnly": true,
+    "description": "These are independently reported nearby landmarks and rewards. They are NOT official marker-to-reward proofs; verify in game before promoting confidence."
+  },
+  "sources": [
+    {
+      "id": "official-map",
+      "tier": "official",
+      "title": "SKPORT Endfield Map Tools",
+      "url": "https://game.skport.com/map/endfield",
+      "accessed": "2026-10-15",
+      "supports": [
+        "map-area",
+        "marker-position"
+      ],
+      "limitations": "No gear IDs or contents in official marker detail."
+    },
+    {
+      "id": "official-wiki",
+      "tier": "official",
+      "title": "SKPORT Wiki official Gear acquisition and recipes",
+      "url": "https://wiki.skport.com/endfield",
+      "accessed": "2026-10-15",
+      "supports": [
+        "gear-id",
+        "acquisition-kind",
+        "craft-components"
+      ],
+      "limitations": "Gear Template Crate notes do not specify exact box location."
+    },
+    {
+      "id": "game8-crates",
+      "tier": "community",
+      "title": "Game8: Gear Template Crate Interactive Map and Locations",
+      "url": "https://game8.co/games/Arknights-Endfield/archives/577443",
+      "published": "2026-03-19",
+      "accessed": "2026-10-15",
+      "supports": [
+        "named-landmark",
+        "set-reward",
+        "named-piece"
+      ],
+      "limitations": "Updated March 2026, does not cover newest areas."
+    },
+    {
+      "id": "nerds-jingyu",
+      "tier": "community",
+      "title": "NerdsChalk: Jingyu Valley Gear Template Crates",
+      "url": "https://nerdschalk.com/arknights-endfield-jingyu-valley-template-crates-all-4-locations/",
+      "published": "2026-02-02",
+      "accessed": "2026-10-15",
+      "supports": [
+        "named-landmark",
+        "set-reward"
+      ],
+      "limitations": "Secondary source; no official marker ID mapping."
+    },
+    {
+      "id": "nerds-city",
+      "tier": "community",
+      "title": "NerdsChalk: Wuling City Gear Template Crates",
+      "url": "https://nerdschalk.com/all-wuling-city-gear-template-crate-locations-in-arknights-endfield/",
+      "published": "2026-02-02",
+      "accessed": "2026-10-15",
+      "supports": [
+        "named-landmark",
+        "set-reward"
+      ],
+      "limitations": "Secondary source; no official marker ID mapping."
+    },
+    {
+      "id": "talos-gear",
+      "tier": "community",
+      "title": "Endfield Talos Wiki: Gear Template Crate location table",
+      "url": "https://endfield.wiki.gg/wiki/Gear",
+      "accessed": "2026-10-15",
+      "supports": [
+        "named-landmark",
+        "component-gear-tier"
+      ],
+      "limitations": "Locations are named but gear names embedded as icons may not be text-extractable."
+    },
+    {
+      "id": "talos-sword",
+      "tier": "community",
+      "title": "Endfield Talos Wiki: Search for Sword Vault Dale",
+      "url": "https://endfield.wiki.gg/wiki/Search_for_Sword_Vault_Dale",
+      "accessed": "2026-10-15",
+      "supports": [
+        "area-quest-gate",
+        "crate-count"
+      ],
+      "limitations": "Event condition is not necessarily equivalent to permanent area unlock."
+    },
+    {
+      "id": "talos-nexus",
+      "tier": "community",
+      "title": "Endfield Talos Wiki: Nexus Files",
+      "url": "https://endfield.wiki.gg/wiki/Nexus_Files",
+      "accessed": "2026-10-15",
+      "supports": [
+        "quest-hint"
+      ],
+      "limitations": "Unlocking a lore entry with a quest is not proof of unlocking an area."
+    },
+    {
+      "id": "factory-tutorial",
+      "tier": "game-data-mirror",
+      "title": "END Wiki: Gear Templates Marker Stone Area tutorial",
+      "url": "https://endfield.games/en/tutorials/factory/?t=fac-port",
+      "accessed": "2026-10-15",
+      "supports": [
+        "marker-stone-hetonite"
+      ],
+      "limitations": "Mirror of tutorial, not a blueprint-to-crate table."
+    },
+    {
+      "id": "youtube-sword",
+      "tier": "community-video",
+      "title": "TheSams x Gaming: 2 Gear Template Crates in Sword Vault Dale",
+      "url": "https://www.youtube.com/watch?v=-qK4Kc-VsZk",
+      "published": "2026-06-05",
+      "accessed": "2026-10-15",
+      "supports": [
+        "named-landmark",
+        "crate-count"
+      ],
+      "limitations": "Video description does not identify resulting gear template IDs."
+    },
+    {
+      "id": "youtube-yinglung",
+      "tier": "community-video",
+      "title": "ON Game: Yinglung Pass 100% exploration",
+      "url": "https://www.youtube.com/watch?v=3dtz1X73hl8",
+      "published": "2026-07-18",
+      "accessed": "2026-10-15",
+      "supports": [
+        "crate-count"
+      ],
+      "limitations": "Video timestamps only; no gear item names."
+    },
+    {
+      "id": "youtube-snowy",
+      "tier": "community-video",
+      "title": "ON Game: Snowy Forest 100% exploration",
+      "url": "https://www.youtube.com/watch?v=1a5FMyhN7CA",
+      "published": "2026-09-02",
+      "accessed": "2026-10-15",
+      "supports": [
+        "crate-count"
+      ],
+      "limitations": "Video timestamps only; no gear item names."
+    },
+    {
+      "id": "official-patch-1_6",
+      "tier": "official",
+      "title": "GRYPHLINE: Sanctuary of Ink (Oct 15) update notes",
+      "url": "https://endfield.gryphline.com/en-us/news/9560",
+      "published": "2026-10-15",
+      "accessed": "2026-10-15",
+      "supports": [
+        "new-area",
+        "new-gear-set-pieces"
+      ],
+      "limitations": "Does not locate the updated gear pieces inside a particular box."
+    },
+    {
+      "id": "official-patch-1_3",
+      "tier": "official",
+      "title": "GRYPHLINE: Sword Vault Dale opening and updates",
+      "url": "https://endfield.gryphline.com/en-us/news/0758",
+      "published": "2026-06-05",
+      "accessed": "2026-10-15",
+      "supports": [
+        "new-area",
+        "side-quest"
+      ],
+      "limitations": "Quest details must be verified separately."
+    },
+    {
+      "id": "nerds-landmark-detail",
+      "tier": "community",
+      "title": "NerdsChalk: Residential Area crate navigation",
+      "url": "https://nerdschalk.com/residential-area-gear-template-crate-location-arknights-endfield/",
+      "published": "2026-01-30",
+      "accessed": "2026-10-15",
+      "supports": [
+        "vertical-route"
+      ],
+      "limitations": "No item-ID association."
+    }
+  ],
+  "claims": [
+    {
+      "id": "jingyu-valley-1",
+      "areaId": "jingyu-valley",
+      "landmark": "Passage northwest of Gloomvale",
+      "rewards": [
+        {
+          "type": "set",
+          "name": "Swordmancer"
+        },
+        {
+          "type": "piece",
+          "name": "LYNX Gauntlets"
+        }
+      ],
+      "sourceIds": [
+        "game8-crates",
+        "nerds-jingyu"
+      ],
+      "confidence": "corroborated",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID."
+    },
+    {
+      "id": "jingyu-valley-2",
+      "areaId": "jingyu-valley",
+      "landmark": "Dock at Stragglers Ford",
+      "rewards": [
+        {
+          "type": "set",
+          "name": "Eternal Xiranite"
+        }
+      ],
+      "sourceIds": [
+        "game8-crates",
+        "nerds-jingyu"
+      ],
+      "confidence": "corroborated",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID."
+    },
+    {
+      "id": "jingyu-valley-3",
+      "areaId": "jingyu-valley",
+      "landmark": "Cliff north of Sky King Flats",
+      "rewards": [
+        {
+          "type": "set",
+          "name": "Tide Surge"
+        },
+        {
+          "type": "piece",
+          "name": "Eternal Xiranite Aux Arm"
+        }
+      ],
+      "sourceIds": [
+        "game8-crates",
+        "nerds-jingyu"
+      ],
+      "confidence": "corroborated",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID."
+    },
+    {
+      "id": "jingyu-valley-4",
+      "areaId": "jingyu-valley",
+      "landmark": "North of Ecological Research Station, city approach",
+      "rewards": [
+        {
+          "type": "set",
+          "name": "Type 50 Yinglung"
+        }
+      ],
+      "sourceIds": [
+        "game8-crates",
+        "nerds-jingyu"
+      ],
+      "confidence": "corroborated",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID."
+    },
+    {
+      "id": "wuling-city-1",
+      "areaId": "wuling-city",
+      "landmark": "Cliff north of Chenshan Way",
+      "rewards": [
+        {
+          "type": "set",
+          "name": "Hot Work"
+        }
+      ],
+      "sourceIds": [
+        "game8-crates",
+        "nerds-city"
+      ],
+      "confidence": "corroborated",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID."
+    },
+    {
+      "id": "wuling-city-2",
+      "areaId": "wuling-city",
+      "landmark": "Building east of Bureau of Swordmancers",
+      "rewards": [
+        {
+          "type": "set",
+          "name": "Frontiers"
+        }
+      ],
+      "sourceIds": [
+        "game8-crates",
+        "nerds-city"
+      ],
+      "confidence": "corroborated",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID."
+    },
+    {
+      "id": "wuling-city-3",
+      "areaId": "wuling-city",
+      "landmark": "Roof east of Residential Area square",
+      "rewards": [
+        {
+          "type": "set",
+          "name": "Frontiers"
+        },
+        {
+          "type": "set",
+          "name": "MI Security"
+        }
+      ],
+      "sourceIds": [
+        "game8-crates",
+        "nerds-city",
+        "nerds-landmark-detail"
+      ],
+      "confidence": "corroborated",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID."
+    },
+    {
+      "id": "wuling-city-4",
+      "areaId": "wuling-city",
+      "landmark": "Monitoring Center entrance",
+      "rewards": [
+        {
+          "type": "set",
+          "name": "MI Security"
+        }
+      ],
+      "sourceIds": [
+        "game8-crates",
+        "nerds-city"
+      ],
+      "confidence": "corroborated",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID."
+    },
+    {
+      "id": "wuling-city-5",
+      "areaId": "wuling-city",
+      "landmark": "Riverbank Grotto",
+      "rewards": [
+        {
+          "type": "set",
+          "name": "Bonekrusha"
+        }
+      ],
+      "sourceIds": [
+        "game8-crates",
+        "nerds-city"
+      ],
+      "confidence": "corroborated",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID."
+    },
+    {
+      "id": "wuling-city-6",
+      "areaId": "wuling-city",
+      "landmark": "Northwest of Field Logistics Depot, by TP",
+      "rewards": [
+        {
+          "type": "set",
+          "name": "Bonekrusha"
+        },
+        {
+          "type": "set",
+          "name": "Pulser Labs"
+        }
+      ],
+      "sourceIds": [
+        "game8-crates",
+        "nerds-city"
+      ],
+      "confidence": "corroborated",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID."
+    },
+    {
+      "id": "wuling-city-7",
+      "areaId": "wuling-city",
+      "landmark": "Upper level, Institute of Materials Science",
+      "rewards": [
+        {
+          "type": "set",
+          "name": "LYNX"
+        }
+      ],
+      "sourceIds": [
+        "game8-crates",
+        "nerds-city"
+      ],
+      "confidence": "corroborated",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID."
+    },
+    {
+      "id": "wuling-city-8",
+      "areaId": "wuling-city",
+      "landmark": "Roof east of Citizen Square, jump pads",
+      "rewards": [
+        {
+          "type": "set",
+          "name": "Æthertech"
+        },
+        {
+          "type": "piece",
+          "name": "LYNX Aegis Injector"
+        }
+      ],
+      "sourceIds": [
+        "game8-crates",
+        "nerds-city"
+      ],
+      "confidence": "corroborated",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID."
+    },
+    {
+      "id": "qingbo-stockade-1",
+      "areaId": "qingbo-stockade",
+      "landmark": "Main Fort, beside Delta Bot",
+      "rewards": [
+        {
+          "type": "piece",
+          "name": "Type 50 Yinglung Heavy Armor"
+        },
+        {
+          "type": "piece",
+          "name": "Frontiers Fiber Gloves"
+        }
+      ],
+      "sourceIds": [
+        "game8-crates"
+      ],
+      "confidence": "single-source",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID."
+    },
+    {
+      "id": "qingbo-stockade-2",
+      "areaId": "qingbo-stockade",
+      "landmark": "Watchtower west of Cuprium Ore Mining Spot",
+      "rewards": [
+        {
+          "type": "set",
+          "name": "Bonekrusha"
+        },
+        {
+          "type": "piece",
+          "name": "Frontiers Protection Suit"
+        }
+      ],
+      "sourceIds": [
+        "game8-crates"
+      ],
+      "confidence": "single-source",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID."
+    },
+    {
+      "id": "qingbo-stockade-3",
+      "areaId": "qingbo-stockade",
+      "landmark": "South of Bladewoods, near Blight Obstruction",
+      "rewards": [
+        {
+          "type": "set",
+          "name": "MI Security T1"
+        },
+        {
+          "type": "piece",
+          "name": "Frontiers Accessories"
+        }
+      ],
+      "sourceIds": [
+        "game8-crates"
+      ],
+      "confidence": "single-source",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID."
+    },
+    {
+      "id": "marker-stone-1",
+      "areaId": "marker-stone",
+      "landmark": "Watchtower Reservoir Station B1, first template crate",
+      "rewards": [],
+      "sourceIds": [
+        "talos-gear",
+        "factory-tutorial"
+      ],
+      "confidence": "single-source",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID.",
+      "communityExactContents": "unknown"
+    },
+    {
+      "id": "marker-stone-2",
+      "areaId": "marker-stone",
+      "landmark": "Watchtower Reservoir Station B1, second template crate",
+      "rewards": [],
+      "sourceIds": [
+        "talos-gear",
+        "factory-tutorial"
+      ],
+      "confidence": "single-source",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID.",
+      "communityExactContents": "unknown"
+    },
+    {
+      "id": "marker-stone-3",
+      "areaId": "marker-stone",
+      "landmark": "Beside entrance to Marker Stone Interiors",
+      "rewards": [],
+      "sourceIds": [
+        "talos-gear",
+        "factory-tutorial"
+      ],
+      "confidence": "single-source",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID.",
+      "communityExactContents": "unknown"
+    },
+    {
+      "id": "marker-stone-interiors-1",
+      "areaId": "marker-stone-interiors",
+      "landmark": "One crate shown in official interiors map",
+      "rewards": [],
+      "sourceIds": [
+        "official-map"
+      ],
+      "confidence": "official-area-only",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID.",
+      "communityExactContents": "unknown"
+    },
+    {
+      "id": "sword-vault-dale-1",
+      "areaId": "sword-vault-dale",
+      "landmark": "South Gorge Rampart",
+      "rewards": [],
+      "sourceIds": [
+        "talos-gear",
+        "youtube-sword"
+      ],
+      "confidence": "single-source",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID.",
+      "communityExactContents": "unknown"
+    },
+    {
+      "id": "sword-vault-dale-2",
+      "areaId": "sword-vault-dale",
+      "landmark": "North Gorge Crag",
+      "rewards": [],
+      "sourceIds": [
+        "talos-gear",
+        "youtube-sword"
+      ],
+      "confidence": "single-source",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID.",
+      "communityExactContents": "unknown"
+    },
+    {
+      "id": "yinglung-pass-1",
+      "areaId": "yinglung-pass",
+      "landmark": "Pass-Side Canal",
+      "rewards": [],
+      "sourceIds": [
+        "talos-gear",
+        "youtube-yinglung"
+      ],
+      "confidence": "single-source",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID.",
+      "communityExactContents": "unknown"
+    },
+    {
+      "id": "yinglung-pass-2",
+      "areaId": "yinglung-pass",
+      "landmark": "Stonepond Cliff",
+      "rewards": [],
+      "sourceIds": [
+        "talos-gear",
+        "youtube-yinglung"
+      ],
+      "confidence": "single-source",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID.",
+      "communityExactContents": "unknown"
+    },
+    {
+      "id": "snowy-forest-1",
+      "areaId": "snowy-forest",
+      "landmark": "Hoarfrost Woods",
+      "rewards": [],
+      "sourceIds": [
+        "talos-gear",
+        "youtube-snowy"
+      ],
+      "confidence": "single-source",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID.",
+      "communityExactContents": "unknown"
+    },
+    {
+      "id": "snowy-forest-2",
+      "areaId": "snowy-forest",
+      "landmark": "Snowpriestess's Cabin",
+      "rewards": [],
+      "sourceIds": [
+        "talos-gear",
+        "youtube-snowy"
+      ],
+      "confidence": "single-source",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID.",
+      "communityExactContents": "unknown"
+    },
+    {
+      "id": "sis-painting-1",
+      "areaId": "sis-painting",
+      "landmark": "Exact landmark still unverified (official marker A)",
+      "rewards": [],
+      "sourceIds": [
+        "official-map",
+        "official-patch-1_6"
+      ],
+      "confidence": "official-area-only",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID."
+    },
+    {
+      "id": "sis-painting-2",
+      "areaId": "sis-painting",
+      "landmark": "Exact landmark still unverified (official marker B)",
+      "rewards": [],
+      "sourceIds": [
+        "official-map",
+        "official-patch-1_6"
+      ],
+      "confidence": "official-area-only",
+      "officialMarkerId": null,
+      "markerMatching": "not-verified",
+      "releaseNote": "Community describes a general Wuling area and a landmark; it does NOT uniquely identify an official coordinate/marker ID."
+    }
+  ],
+  "areaProgressHints": [
+    {
+      "areaId": "jingyu-valley",
+      "unlockClaim": "Main mission 'Lost in the Marsh' provides access",
+      "sourceIds": [
+        "nerds-jingyu"
+      ],
+      "confidence": "single-source",
+      "validation": "not-verified-in-official"
+    },
+    {
+      "areaId": "wuling-city",
+      "unlockClaim": "Main mission 'The Way of Water' leads into Wuling City",
+      "sourceIds": [
+        "nerds-city"
+      ],
+      "confidence": "single-source",
+      "validation": "not-verified-in-official"
+    },
+    {
+      "areaId": "sword-vault-dale",
+      "unlockClaim": "After main Chapter II Process III: Surging From a Withered Spring, unlock side mission Deep Vaulted Steel; mission proceeds to Sword Vault Dale",
+      "sourceIds": [
+        "talos-sword"
+      ],
+      "confidence": "community-wiki-correlated-to-official-version",
+      "validation": "requires-quest-verification"
+    },
+    {
+      "areaId": "marker-stone",
+      "unlockClaim": "Official in-game tutorial says gear templates in Marker Stone require Hetonite Components; not an area unlock condition",
+      "sourceIds": [
+        "factory-tutorial"
+      ],
+      "confidence": "game-data-mirror",
+      "validation": "component-not-story"
+    }
+  ]
+}
