@@ -1,8 +1,10 @@
 # Liino P2 – Entwurf für Spielweise, Fertigkeiten und Waffen (Creator-Freigabe erforderlich)
 
 **Stand:** 16.10.2026  
-**Status:** **[RECHERCHE / REDAKTIONELLER ENTWURF – NOCH NICHT VOM CREATOR FREIGEGEBEN]**  
+**Status:** **[TEILWEISE FREIGEGEBEN 16.10.2026: Skill-Priorität und zugehörige Erklärungen IN `liino.md` integriert; Waffen-/Potenzial-Prozentvergleich weiterhin offen]**  
 **Ziel:** Nach Abschluss der sechs bestätigten Gear-Builds und des gemeinsamen Build-Finder-Frameworks die nächsten offenen Abschnitte in `src/content/operator-guides/liino.md` mit **quellengestützten, ausführlichen deutschen Erklärungen** vorbereiten. **Kein** automatisches Veröffentlichen als Ag0n1st-Empfehlung. Die bestehende Guide-Datei bleibt hier absichtlich unverändert.
+
+> **Neuere verbindliche Entscheidungen (16.10.2026) haben Vorrang vor den ursprünglichen Forschungsvorschlägen unten:** Liinos Skill-Priorität wurde vom Creator zu **ULT M3 > BS M3 ≥ CS M3 > BATK 1** korrigiert und direkt in `liino.md` übernommen. Der frühere Vorschlag `ULT > Battle > Combo >= Basic` ist **überholt und darf NICHT wiederverwendet werden**. Für zukünftige berechnete Waffen-/Potenzial-Prozentwerte ist **Datafield** die feste bevorzugte Referenz, Quellenangabe ohne Link. Der ursprüngliche, weiter unten archivierte Waffenkatalog ist nur eine vorläufige qualitative Analyse und noch **nicht** anhand der Liino-Datafield-Prozenttabellen validiert. Die konkrete Datafield-Liino-Seite lieferte beim Abruf am 16.10.2026 nur „Loading data…“; daher bis zum erfolgreichen Abruf **keine Zahlen behaupten**. Details: `docs/operator-guide-workflow.md` („Verbindliche Quellenkonvention: Datafield“).
 
 ## 1. Quellenhierarchie und bekannte Grenzen
 
@@ -64,31 +66,31 @@
 
 **Offene redaktionelle Entscheidungen:** Die drei Ratings (Schwierigkeit, Flexibilität, Zugänglichkeit; je 1–5) **nicht** aus einer fremden Tierliste ableiten. Kein pauschales „Pflicht für jedes Team“; genaue Stärke vom jeweiligen Elektro-/Natur-Team abhängig.
 
-## 4. Vorgeschlagene Skill-Priorität
+## 4. FREIGEGEBENE Liino-Skill-Priorität – vom Creator, 16.10.2026
 
-**Vorläufig, noch nicht vom Creator bestätigt:**
+**ULT M3 > BS M3 ≥ CS M3 > BATK 1**. Bereits in `src/content/operator-guides/liino.md` eingetragen.
 
 ```yaml
 skills:
   priority:
     order: [ultimate, battle, combo, basic]
-    comparisons: [">", ">", ">="]
+    comparisons: [">", ">=", ">"]
     targetLevels:
       ultimate: "M3"
       battle: "M3"
-      combo: "9 / später M3"
-      basic: "nachrangig"
+      combo: "M3"
+      basic: "1"
 ```
 
-**Lesbar:** **Ultimate > Kampffertigkeit > Kombofertigkeit ≥ Basisangriff**. Diese Richtung entspricht der Mobalytics-Guide-Priorisierung. Das ist ein **Freigabevorschlag**, keine selbst simulierte optimale Ressourcenkurve.
+**Creatorbegründung und Gegenprüfung gegen SKPORT 15.10.2026:**
+- **ULT M3, höchste Priorität:** Erhebliche Willenskraft-skalierte Elektro-/Natur-Amp-Effekte. Auf M3 **0,04 % zusätzlicher Amp je Willenskraft**, im SKPORT-Datensatz **max. 60 % Amp aus Willenskraft** angegeben. Keine pauschale Aussage, dass jede Ausrüstung diesen Maximalwert erreicht.
+- **BS M3, zweite Priorität:** Sein Team-ANG-Bonus steigt laut offiziellen Metriken von **6 % auf 10 % (M3)**. Deshalb M3 anstreben.
+- **CS M3, gleichwertig/knapp dahinter:** Laut offizieller Cooldown-Zeile sinkt die CD von **10 s** auf **9 s ab Rank 9** und **8 s auf M3**. Dadurch sind Combo-Auslöser in der Rotation öfter sinnvoll nutzbar; jeder Einsatz bringt **20 Ultimate-Energie** (bei allen Skillrängen gleich). Liinos Kampftalent kann nach der Kombo bei der **nächsten Elektro-/Natur-Kampffertigkeit bis zu 10 FP/SP erstatten** – die FP stammen **indirekt aus dem Talent**, nicht direkt aus der Kombo. Dies unterstützt weitere Teamfertigkeiten. **BS und CS sind in der Praxis beide M3-Ziele**, ihre Reihenfolge kann je nach Team diskutiert werden.
+- **BATK 1:** Der Creator sieht in Liinos typischer Supportrolle **keinen sinnvollen zusätzlichen Nutzen des Basisangriffs**; auf Stufe 1 belassen.
 
-**Warum diese Reihenfolge?**
-- **Ultimate zuerst:** Dort steigt der **Willenskraft-abhängige Amp** mit dem Fertigkeitsrang und ist zentral für Liinos Supportrolle; dazu Heilung/Schaden. Die größte geplante Team-Wertschöpfung steckt im richtigen Ultimate-Fenster.
-- **Kampffertigkeit danach:** Öffnet die unterstützende Haltung und verbessert ANG-Buff und Behandlung; 25-SP-Kosten und 60-Sekunden-Haltungsdauer bleiben laut Snapshot konstant.
-- **Kombo danach:** Wertvoll für Heilung und Elektro-Schaden; **der Extra-Energiegewinn bleibt im SKPORT-Snapshot über alle Fertigkeitsränge konstant bei 20**. Deshalb bedeutet zusätzliches Kombo-Leveln **nicht** automatisch „mehr Ultimate-Energie pro Kombo“.
-- **Basisangriff nachrangig:** Für Liinos typischen Supporteinsatz hauptsächlich persönlicher Schaden; die offiziellen normalen Angriffs-Multiplikatoren steigen, liefern aber keine aus dem Kit belegte Verstärkung von Will-Amp oder Kombo-Energie.
+**Grenze bei Generalisierung:** Die Creator-Aussage über M3-Cooldownvorteile „bei jedem Operator“ wird für Liino **konkret belegt** (10→8 s); andere Operatoren später anhand **ihrer eigenen Skill-Daten** prüfen, nicht ohne Nachweis als universelle feste Zahl in die Website übernehmen.
 
-**Abnahmefrage:** Auf M3 beider Core-Skills `ultimate` und `battle` bestehen, oder zunächst das Ressourcenbudget strikter auf Ultimate konzentrieren? Zielränge sind **Empfehlungen**, keine aus der Wiki zwingend ableitbare Pflicht.
+**Neue Rechercheregel für P2:** Quantitative Waffen-/Potenzialzahlen müssen von Datafield stammen oder einen anders benannten reproduzierbaren Test nachweisen, jeweils mit `sourceNote: "Datafield"` (bei Datafield) und Vergleichsbedingungen. Kein Link auf der Website. Vorläufige Waffenreihenfolge aus älteren Quellen ist nur ein Arbeitsentwurf, bis die Liino-Berechnungen/Excel-Setups von Datafield explizit abgeglichen sind.
 
 ## 5. Waffen – offizieller Katalog und redaktioneller Vorschlag
 
