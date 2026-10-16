@@ -7,6 +7,7 @@ import { resolveOfficialItem } from "./itemCatalog";
 import { getOfficialGear } from "./equipmentDetails";
 import { getBuildRequirements } from "./buildFinder.mjs";
 import { metaAccessibilityFromRequirements } from "./metaAccessibility.mjs";
+import { getMetaPartnerIds } from "./metaPartners.mjs";
 
 // Shared presentation data for all nine guide sections.
 // Source values and editorial recommendations remain separate.
@@ -116,6 +117,20 @@ const teamRoles = [...new Set(extraTeams.map(team=>team.role))];
 const displayTeamMember = (slug:string):string =>
   getImportedOperator(slug)?.operator.name
   ?? slug.split("-").map(word=>word?word[0].toUpperCase()+word.slice(1):"").join(" ");
+const metaPartnerIds = getMetaPartnerIds(guide.teams.meta, guide.operator);
+const partnerIds = metaPartnerIds.length
+  ? metaPartnerIds
+  : guide.overview.partners.filter(slug=>slug!==guide.operator);
+const profilePartners = partnerIds.map(slug=>{
+  const official = getImportedOperator(slug);
+  const name = displayTeamMember(slug);
+  return {
+    slug,
+    name,
+    image: getOperatorImageUrl(slug,"cover",official?.operator.coverUrl),
+    initials: name.split(" ").map(part=>part[0]??"").join("").slice(0,2).toUpperCase()
+  };
+});
 
 const demoShowcases = [
   {id:"demo-trial",title:"[Operator-Probe]",type:"trial",url:undefined,description:"[Trial Run mit einer repräsentativen Rotation]",rotationAndTips:"",featured:true},
@@ -172,7 +187,7 @@ const ratingRows = [
 const potentialByLevel = new Map(guide.potentials.entries.map(p=>[p.level,p]));
 
   return {
-    guide, operatorName, preview, gameData, extraData, localized, trTerm, trMetric, trReq, trTalent, trPotential, trPromotion, officialPotentials, combatTalents, shipTalents, attributeNodes, otherTalents, formatCost, gameSkills, importedBySlot, skillImage, defaultSkillRank, missing, slotLabels, slotIcons, priority, priorityOrder, priorityComparisons, weaponLabels, roleLabels, stageLabels, showcaseTypeLabels, pullLabels, weapons, demoWeapons, shownWeapons, demoBuilds, builds, featuredBuild, demoTeams, metaTeams, extraTeams, teamRoles, displayTeamMember, demoShowcases, showcases, selectedShowcaseIndex, youtubeEmbed, videoEmbed, ratingRows, ratingValues, metaAccessibility, potentialByLevel, getOperatorImageUrl
+    guide, operatorName, preview, gameData, extraData, localized, trTerm, trMetric, trReq, trTalent, trPotential, trPromotion, officialPotentials, combatTalents, shipTalents, attributeNodes, otherTalents, formatCost, gameSkills, importedBySlot, skillImage, defaultSkillRank, missing, slotLabels, slotIcons, priority, priorityOrder, priorityComparisons, weaponLabels, roleLabels, stageLabels, showcaseTypeLabels, pullLabels, weapons, demoWeapons, shownWeapons, demoBuilds, builds, featuredBuild, demoTeams, metaTeams, extraTeams, teamRoles, displayTeamMember, profilePartners, demoShowcases, showcases, selectedShowcaseIndex, youtubeEmbed, videoEmbed, ratingRows, ratingValues, metaAccessibility, potentialByLevel, getOperatorImageUrl
   };
 }
 

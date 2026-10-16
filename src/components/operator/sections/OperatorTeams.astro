@@ -16,7 +16,7 @@ const { guide, roleLabels, metaTeams, extraTeams, teamRoles, displayTeamMember }
           <h3>Empfohlene Meta-Teams</h3>
 
           {metaTeams.length ? <div class="op-two">{metaTeams.map(team=><article class="op-cardlet">
-            <div class="op-subtitle"><h3 style="margin:0">{team.title}</h3><span class="op-chip is-accent">Meta</span><span class="op-chip">{roleLabels[team.role]}</span></div>
+            <div class="op-subtitle op-meta-team-heading"><h3 style="margin:0">{team.title}</h3><div class="op-meta-team-labels"><span class="op-chip is-accent">Meta</span><span class="op-chip">{roleLabels[team.role]}</span></div></div>
             <div class="op-team-operators">{team.members.map(member=><div class="op-team-slot">{displayTeamMember(member)}</div>)}</div>
             {(team.evaluation || team.note) && <p class="op-body-copy">{team.evaluation || team.note}</p>}
             {team.buildId && <p><a class="op-link" href="#ausruestung" data-select-build={team.buildId}>Empfohlene Ausrüstung ansehen ↗</a></p>}

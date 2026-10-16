@@ -7,6 +7,10 @@ displayName: Liino
 status: preview
 updatedAt: 2026-10-16
 
+guideVideo:
+  title: "Liino Guide"
+  url: "https://www.youtube.com/watch?v=F1sx8IuOIK4"
+
 overview:
   summary: >-
     Liino ist eine 6★-Electric-Supporterin mit Polearm. Ihre Fertigkeiten
@@ -93,8 +97,8 @@ weapons:
     - weaponId: "97"
       category: f2p
       evaluation: >-
-        Cohesive Traction ist die vom Creator eingeordnete F2P-Option.
-        Sie besitzt passende Willenskraftwerte, ihr Waffeneffekt ist
+        Cohesive Traction ist die F2P-Option. Sie besitzt passende
+        Willenskraftwerte, ihr Waffeneffekt ist
         jedoch eher auf eigene Elektro-/Kombofertigkeitsschäden
         als auf zusätzliche direkte Teamverstärkung ausgerichtet.
   comparisons:
@@ -139,10 +143,6 @@ weapons:
         - { weaponId: "1044", rank: 4, performancePercent: 89.5 }
         - { weaponId: "75", rank: 9, performancePercent: 89.0 }
         - { weaponId: "97", rank: 9, performancePercent: 81.3 }
-  generalNotes: >-
-    Die Einordnung der vier empfohlenen Waffen stammt vom Creator.
-    Ihre Kategorien bleiben unabhängig davon, welcher Waffenrang in
-    den Datafield-Berechnungen als Vergleich verwendet wurde.
 
 equipment:
   builds:
@@ -173,8 +173,8 @@ equipment:
       availableFromLevel: 70
       teamContext: "Ausgewogene Teamunterstützung mit Schwerpunkt auf Heilung, Stabilität und Willenskraft."
       evaluation: >-
-        Vom Creator als Balanced-Variante festgelegt: drei Teile LYNX und als
-        Off-Piece Eternal Xiranite Light Armor. Der LYNX-Setbonus verbessert
+        Die Balanced-Variante kombiniert drei LYNX-Teile mit Eternal
+        Xiranite Light Armor als Off-Piece. Der LYNX-Setbonus verbessert
         die Heilungsleistung und reduziert nach Behandlung den erlittenen Schaden
         des behandelten Teammitglieds. Zwei LYNX Slabs liefern zusätzliche
         Hauptattributwerte; der Ultimate-Energiegewinn ist geringer als bei
@@ -195,9 +195,9 @@ equipment:
         startet und innerhalb der vorgesehenen Rotation keine zweite Ultimate
         benötigt.
       evaluation: >-
-        Vom Creator für die Maximierung von Liinos Willenskraft gewählt, damit
-        ihre willenskraftabhängige Elektro-/Natur-Verstärkung der Ultimate möglichst
-        stark ausfällt. Rift Trekker Light Armor und Rift Trekker Hands liefern
+        Dieser Build maximiert Liinos Willenskraft und damit ihre
+        willenskraftabhängige Elektro-/Natur-Verstärkung durch die Ultimate.
+        Rift Trekker Light Armor und Rift Trekker Hands liefern
         hohe direkte Willenskraftwerte; die beiden LYNX Slabs ergänzen Hauptattribut.
         Auf Ultimate-Energiegewinn und einen 3er-Setbonus wird bewusst verzichtet.
         Außerhalb des beschriebenen Einsatzfalls nicht als universell beste
@@ -214,9 +214,9 @@ equipment:
       storyUnlock: "Die AIC-Fieldwork-Vorlagen werden laut offiziellen Angaben mit dem Wuling-Storyfortschritt verfügbar; der Besitz jedes Teils muss separat bestätigt werden."
       evaluation: >-
         Vier Teile AIC Fieldwork, darunter zweimal AIC Fieldwork Ember.
-        Gegenüber der Heiler-Variante wurde auf Wunsch des Creators das
-        AIC Fieldwork Power Bank gegen einen zweiten Ember getauscht, da
-        zusätzlicher Ultimate-Energiegewinn hier wichtiger als Heilungsbonus ist.
+        Statt eines AIC Fieldwork Power Banks wird ein zweiter Ember
+        eingesetzt: Zusätzlicher Ultimate-Energiegewinn ist hier
+        wichtiger als der Heilungsbonus.
         Beide Embers können aus derselben Vorlage hergestellt werden.
       setBonusNotes: >-
         3x AIC Fieldwork: +20 % eigener verursachter Schaden, 10 %
@@ -337,7 +337,6 @@ teams:
       title: "Arcane · Estella"
       role: support
       members: [arcane, estella, xaihi, liino]
-      note: "Weitere vom Creator empfohlene Arcane-Konstellation mit Liino als Support."
 
 gameplay:
   # Creator stellt Video-/Run-Einbindungen erst zu einem späteren Zeitpunkt bereit.

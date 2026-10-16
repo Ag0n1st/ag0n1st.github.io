@@ -298,3 +298,13 @@
 @media(prefers-reduced-motion:reduce){
  .op-guide-accordion-hint::after{transition:none}
 }
+
+/* Profile partners are sourced automatically from Meta teams, not hardcoded. */
+.op-partners-grid{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:13px}
+.op-partner-art{overflow:hidden;background:linear-gradient(135deg,#251c2e,#161c26);display:grid;place-items:center;color:var(--cyan);font-size:18px;font-weight:700}
+.op-partner-art img{width:100%;height:100%;object-fit:contain}
+.op-partners-note{font-size:10px!important;color:var(--muted);line-height:1.6;margin:12px 0 0!important}
+.op-meta-team-heading{gap:10px}
+.op-meta-team-heading h3{min-width:0;flex:1;overflow-wrap:anywhere}
+.op-meta-team-labels{display:inline-flex;justify-content:flex-end;align-items:center;flex:0 0 auto;gap:6px;margin-left:auto}
+@media(max-width:680px){.op-partners-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.op-meta-team-labels{gap:4px}}

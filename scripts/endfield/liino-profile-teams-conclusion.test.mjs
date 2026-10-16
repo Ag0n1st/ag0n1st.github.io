@@ -55,7 +55,7 @@ test("two showcased meta teams and three additional teams, all with Liino as sup
  assert.doesNotMatch(section,/role: main-dps|role: hybrid|roles: \[main-dps/);
  assert.match(model,/const displayTeamMember = \(slug:string\)/);
  assert.match(model,/getImportedOperator\(slug\)\?\.operator\.name/);
- assert.match(teamsView,/<span class="op-chip is-accent">Meta<\/span><span class="op-chip">\{roleLabels\[team\.role\]\}<\/span>/);
+ assert.match(teamsView,/<div class="op-meta-team-labels"><span class="op-chip is-accent">Meta<\/span><span class="op-chip">\{roleLabels\[team\.role\]\}<\/span><\/div>/);
  assert.equal((teamsView.match(/displayTeamMember\(member\)/g)||[]).length,2);
 });
 
