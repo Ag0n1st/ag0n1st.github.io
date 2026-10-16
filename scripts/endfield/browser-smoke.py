@@ -87,6 +87,26 @@ def smoke(page, base_url, width):
         verify(page.locator("#uebersicht .op-quick-stats").evaluate(
             "(el) => getComputedStyle(el).alignItems") == "start",
                label + ": gear and skill quick cards do not stretch")
+    comparison = page.locator('#waffen details[data-guide-disclosure="weapon-comparison"]')
+    comparison.evaluate("el => el.open = true")
+    scenarios = page.locator("#waffen .op-comparison-scenario")
+    verify(scenarios.count() == 2,
+           label + ": both Datafield character-profile weapon scenarios are shown")
+    verify("124,7 %" in scenarios.first.inner_text() and
+           "84,3 %" in scenarios.first.inner_text(),
+           label + ": actual Ardelia/Arcane/Liino ranking includes R9 and R4")
+    verify("123,3 %" in scenarios.nth(1).inner_text(),
+           label + ": No-Liino lower-ATK scenario stays separate")
+
+    pot_comparison = page.locator('#potenziale details[data-guide-disclosure="potential-comparison"]')
+    pot_comparison.evaluate("el => el.open = true")
+    verify(page.locator("#potenziale .op-potential-comparison-table tbody tr").count() == 5,
+           label + ": five potential ranks with source-specific comparisons")
+    potential_text = page.locator("#potenziale .op-potential-comparison-table").inner_text()
+    verify("8,8 %" in potential_text and "6,6 %" in potential_text and
+           "8,3 %" in potential_text and "0,0 %" in potential_text,
+           label + ": separate Datafield Ultimate-energy vs no-extra-energy P gains")
+
     for n in (1, 3, 5):
         page.locator('[data-potential-button="' + str(n) + '"]').click()
         img = page.locator('[data-potential-panel="' + str(n) +
@@ -228,6 +248,10 @@ def smoke_typhoeus(page, base_url, width):
            label + ": three endgame and three progression builds (36/50/60)")
     verify(page.locator("#teams .op-meta-team-heading").count() == 2,
            label + ": two Meta teams and their distinct operator roles")
+    ratings = page.locator("#uebersicht .op-rating").all()
+    verify(len(ratings) >= 2 and "1 / 5" in ratings[0].inner_text()
+           and "1 / 5" in ratings[1].inner_text(),
+           label + ": creator-defined 1/5 beginner friendliness and flexibility")
     verify(page.locator("#teams .op-team-gear").count() == 2,
            label + ": team-specific teammate gear notes are disclosed on demand")
     for team_gear in page.locator("#teams .op-team-gear").all():
@@ -240,6 +264,8 @@ def smoke_typhoeus(page, base_url, width):
         img.scroll_into_view_if_needed()
         page.wait_for_function(
             "(el) => el.complete && el.naturalWidth > 10", arg=img.element_handle())
+    verify(page.locator("#teams .op-team-gear img[alt*='Eternal Xiranite Bracing Slab']").count() == 4,
+           label + ": Arcane uses 2 Eternal Xiranite Bracing Slabs in each Meta team")
     verify(page.locator("#teams [data-team-role]").count() == 5,
            label + ": five alternative teams including Trial and Nefarith")
 
@@ -279,8 +305,12 @@ def smoke_typhoeus(page, base_url, width):
            label + ": potential images link to Typhoeus gallery, not Liino")
 
     showcase = page.locator("#gameplay [data-showcase-panel]")
-    verify(showcase.count() == 6,
-           label + ": all six actual gameplay videos/chapters plus quiz")
+    verify(showcase.count() == 5,
+           label + ": five real gameplay videos/chapters; quiz removed")
+    verify(page.locator('[data-showcase-panel="nefarith-p0"]').is_visible(),
+           label + ": Nefarith P0 No Food is the featured large showcase")
+    verify(page.locator('[data-showcase-panel="quiz-zeichen"]').count() == 0,
+           label + ": quiz entry no longer present")
     verify(page.locator("#gameplay .op-gameplay-pending-label").count() == 0,
            label + ": real gameplay section, no FUTURE placeholder")
     verify("start=974" in (page.locator(
@@ -289,8 +319,8 @@ def smoke_typhoeus(page, base_url, width):
     verify("start=1218" in (page.locator(
         '[data-showcase-panel="echos-zwei-gegner"] iframe').get_attribute("src") or ""),
            label + ": Echoes chapter start preserved in embedded video")
-    verify(page.locator("#gameplay .op-showcase-button .op-faux-thumb img").count() == 6,
-           label + ": all six showcase tiles use real local WebP thumbnails")
+    verify(page.locator("#gameplay .op-showcase-button .op-faux-thumb img").count() == 5,
+           label + ": all five showcase tiles use real local WebP thumbnails")
     thumb = page.locator("#gameplay .op-showcase-button .op-faux-thumb img").first
     thumb.scroll_into_view_if_needed()
     page.wait_for_function(
