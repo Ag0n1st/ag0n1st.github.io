@@ -1413,6 +1413,47 @@ Nach **jedem** zukünftigen Task, unabhängig davon, ob ihn dieselbe oder eine a
 
 ---
 
+
+### 14.3m Browser-Abnahme des Liino-Guide-Templates (16.10.2026; PR-/CI-Prüfung ausstehend)
+
+**Ausgangslage:** Die vollständig textuell extrahierte PDF „Bisherige Website Konversation(1).pdf“ umfasst 84 Seiten, 707.601 Zeichen; die jüngsten Entscheidungen (Eigenstimme, Meta-Partner, rechte Labels, YouTube-Guide) stimmen mit ROADMAP §14.3l und PR #27 überein. Original-PDF und Extrakte bleiben ausserhalb des öffentlichen Repositories. Verifizierter Ausgangs-HEAD auf main: 0617cb6a3a74cd41b98fccee8420d3dd5969ad64. PR #27 ist gemergt; historischer Recherche-Draft PR #3 ist der einzige offene PR.
+
+**Befund zur Build- und Repository-Grösse (GitHub-Git-Tree des genannten HEAD):**
+
+| Messgrösse | Gemessener Wert |
+| --- | ---: |
+| Alle aktuellen getrackten Dateien | 23.728.364 Byte, 1.089 Blob-Dateien |
+| Endfield-Dateigruppen gemäss check-budget.mjs | 20.443.931 Byte, 1.048 Dateien |
+| Selbst auferlegte Endfield-Grenze | 100.000.000 Byte |
+| Verbleibendes Endfield-Budget | 79.556.069 Byte (79,56 %) |
+| Grenze GitHub Pages laut Projektvorgabe | 1 GB; aktueller getrackter Arbeitsbaum liegt deutlich darunter |
+
+Die 100-MB-Zählung enthält die gleichen Verzeichnisse/Einzeldateien wie scripts/endfield/check-budget.mjs. Diese Werte betreffen den aktuellen *Git-Arbeitsbaum*, nicht die Git-Historie, node_modules oder die separat zu prüfende Grösse des ausgelieferten Astro-dist-/Pages-Artefakts.
+
+**Neue technische QA-Arbeit im Branch qa-liino-browser-smoke-20261016:**
+
+1. scripts/endfield/browser-smoke.py: Playwright-/Chromium-Browser-Smoketest für *wirklich gebaute* Astro-Seiten, lokal per HTTP ausgeliefert; 1.440 px Desktop und 390 px Mobil. Ausschliesslich Text-/Fehlermeldungsausgabe, keine Screenshots/Grafiken/Videos.
+2. .github/workflows/validate-astro.yml: bestehenden Node-Test, 100-MB-Gate und Astro-Build um tatsächliche Chromium-Prüfung ergänzen. Playwright/Browser werden nur im CI-Runner vorübergehend installiert (keine neuen Repo-Assets); Ubuntu 24.04 gegen anstehenden Wechsel von ubuntu-latest fixiert.
+**Zusätzliche verbindliche 1-GB-Pages-Grenze:** Neues Script scripts/check-pages-budget.mjs vermisst nach npm run build rekursiv alle Dateien unter dist/ (dezimal 1.000.000.000 Byte). Sowohl .github/workflows/validate-astro.yml als auch .github/workflows/deploy.yml prüfen dieses Limit nach dem Build und vor dem Pages-Artefakt-Upload. Eine belastbare absolute dist-Grösse ergibt erst der GitHub-CI-Log; sie ist **nicht** aus dem Git-Tree-Wert von 23.728.364 Byte ableitbar. Check zählt aktuelle dist-Dateien, nicht Git-Historie oder Infrastruktur-Overhead.
+
+3. E2E-Prüfpunkte: Liino- und Typhoeus-Route; kein horizontaler Seitenüberlauf; sechs eindeutige, automatisch ermittelte Meta-Partner; Liino-YouTube-Nocookie-URL ohne Autoplay; drei Meta-Builds und zwei Meta-Team-Labelgruppen; Build-Link öffnet/selektiert den Finder; Minimal-/Maximal-Vorauswahl, Blaupausen-Opt-in, Reload und Operator-Wechsel; Authority max. 60; Gameplay-TOC.
+4. **Keine Änderungen** an Waffen, Builds A–F, offiziellen SKPORT-Daten, Teams, Ratings, Datafield-Prozenten oder redaktionellen Guide-Texten.
+
+**CI-Verlauf / Debug:** PR #28, erster Validierungslauf #112: bestehende Endfield-Tests, 100-MB-Gate, Astro-Build sowie Python-/Chromium-Installation **erfolgreich**. Browser-Smoke zuerst **fehlgeschlagen**, da Playwrights `locator.wait_for()` standardmäßig Sichtbarkeit verlangt, während `#op-level` absichtlich im anfangs geschlossenen Build-Finder liegt. Dies ist eine *Testannahme*, kein nachgewiesener Fehler der Website. QA-Script auf `wait_for(state="attached")` an beiden Stellen korrigiert; Folge-CI noch abzuwarten. Änderungen am UI oder redaktionellen Guide sind hierfür nicht erforderlich.
+
+**Erfolgreiche technische QA-Abnahme:** [GitHub Actions #117](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/38866232225) auf dem Feature-Branch komplett **success**.
+109/109 Node-Endfield-Tests bestanden, Astro-Build erfolgreich, 100-MB-Endfield-Gate und neues 1-GB-Pages-dist-Gate bestanden.
+Echte Chromium-Browser-Smoke-QA bei **1.440 px und 390 px** erfolgreich: Liino/Typhoeus-Routen, Partner/Meta-Labels, Video-Embed-URL, Meta-Build-Links, Max/Min-Profile, lokale Speicherung/Re-Load/Operator-Wechsel, Autoritätslevel max. 60, Gameplay-TOC und keine horizontale Überbreite.
+Exakte CI-Messung: Endfield **20.451.384 Byte / 100.000.000 Byte**, Rest **79.548.616 Byte**, 1.049 Dateien. Gebautes Astro-dist für Pages **17.104.472 Byte / 1.000.000.000 Byte**, Rest **982.895.528 Byte**, 970 Dateien.
+Der vorherige Main-Git-Tree enthielt 20.443.931 Endfield-Bytes; die neue Browser-Datei erhöht das Endfield-Budget genau um 7.453 Byte. Git-Historie und Pages-Overhead gehören nicht zur Arbeitsbaum-/dist-Messung.
+**Grenzen:** externe YouTube-Wiedergabe und echtes produktives Pages-Deployment wurden nicht geprüft. Nach diesem Dokumentations-Commit finalen CI-Lauf erneut prüfen, dann PR #28 mergen und Deploy-Status nachtragen.
+
+**Prüfstatus bei Anlegen dieses Abschnitts:** Branch/Dateien vorbereitet; PR-Nummer, GitHub-CI-Resultat, Merge-Commit und Pages-Deploy **noch nicht bestätigt**. Erst nach tatsächlichem Durchlauf eintragen, Tests bei Fehlschlag korrigieren. CI im echten Browser des PR testet die lokale gebaute Version, nicht externe YouTube-Wiedergabe oder die Live-Domain. Die reale Video-Wiedergabe, mobil-spezifische manuelle Bewertung, die Liino-Kit-Redaktion und noch fehlende Gameplay-Einzelclips bleiben separate Abnahmepunkte.
+
+**Nächste Entscheidung:** QA-PR nach erfolgreichem Lauf freigeben/mergen, danach die offenen echten Inhaltsarbeiten am Liino-Guide auf Basis eigener Angaben/Freigaben priorisieren. Keine ungeprüften Meta- oder Prozentangaben hinzufügen. Für alle Folgechats gilt: nur Text, jede Änderung in der Roadmap, Endfield maximal 100 MB und Pages-Gesamtziel 1 GB.
+
+---
+
 ## 15. WICHTIGE LINKS UND QUELLVERWEISE
 
 **Repository & Auslieferung:**
@@ -1514,5 +1555,7 @@ Nach **jedem** zukünftigen Task, unabhängig davon, ob ihn dieselbe oder eine a
 
 | 16.10.2026 | **Liino Eigenstimme + automatische Meta-Partner + rechtsbündige Meta/Support-Chips + YouTube-Embed** durch [PR #27](https://github.com/Ag0n1st/ag0n1st.github.io/pull/27) in `main` | Erfolgreiche CI **#111**, Squash `a36f126ba24d2880b22e1eea8f9a209e52e118e3`. Sechs Meta-Partner: Zhuang Fangyi/Perlica/Arclight/Arcane/Tangtang/Xaihi; weitere Teamoptionen nur in Teams, mit Link-Fußnote. Keine öffentlich sichtbare Drittautor-Zuschreibung mehr in Liinos Empfehlungen. Hauptvideo `F1sx8IuOIK4` im Profil, Gameplay-Einzelclips weiter `pending`. Live-Browser-QA weiter offen. |
 
+| 16.10.2026 | Chromium-Browser-Smoke-QA für Liino/Typhoeus auf eigenem Branch begonnen | Statische Node-Tests prüfen nicht die echte Bedienung; neue CI-Validierung der responsiven Build-Finder-, Partner-, Video-Embed- und Inhaltsverzeichnis-Funktionen. Exakte Tree-Budgets: Endfield 20.443.931 Byte von 100 MB, gesamter aktueller Arbeitsbaum 23.728.364 Byte. PR/CI/Pages-Abnahme siehe §14.3m. |
+
 **Ende der aktuellen Roadmap.**  
-**Fortsetzungspunkt:** Neuester vollständiger GitHub-Stand auf `main` (16.10.2026): **PR #27**, CI **#111 komplett grün**, Squash **`a36f126ba24d2880b22e1eea8f9a209e52e118e3`**; Details ROADMAP **§14.3l** und `docs/operator-guide-workflow.md`. Verbindliche Schreibregel für **alle** neuen Guides: sichtbare redaktionelle Bewertungen direkt als Eigenstimme formulieren, **NIEMALS** „vom Creator empfohlen/eingeordnet“, „auf Wunsch des Creators“ etc.; interne Quell-/Prozessnotizen dürfen solche Kennzeichnungen weiterhin haben. Liino: F2P Cohesive, Balanced, Will-Fokus und L60-Ember entsprechend umformuliert, redundante Waffen-/Teamnotiz entfernt, **alle Fakten und IDs unverändert**. `Build auf einen Blick > Partners` errechnet bei jedem Guide **ALLE anderen Operatoren aus `teams.meta`**, eindeutig/dedupliziert, nie den Guide-Operator selbst. Liino **sechs** Namen: Zhuang Fangyi, Perlica, Arclight, Arcane, Tangtang, Xaihi. Weitere z. B. Snowshine, Estella stehen nur im Teamabschnitt; kleine Fußnote verlinkt `#teams`. Meta-Team-Labels jetzt direkt nebeneinander **rechtsbündig**, nur Meta farbig. Persönlicher YouTube-Guide `https://www.youtube.com/watch?v=F1sx8IuOIK4` als `guideVideo` eingebettet (bestehendes `youtube-nocookie`-Iframe, kein separater Datendienst); zusätzliche Gameplay-Showcases `pending: true`, Gesamtguide `status: preview`. Neue Hilfsdatei `src/lib/endfield/metaPartners.mjs`, Guide-Modell/UI/CSS/Template und Tests aktualisiert. **Noch separat OFFEN:** echter Pages-Deploy, YouTube-Einbettung/Autoplay in Browser (es wird nur lazy iframe ohne Autoplay gesetzt), Partner-Bilder/Umbrüche auf Mobil, Gameplay-Anker/TOC und Build-Finder-Max-/Min-LocalStorage-QA sowie Operator-Kit-Redaktion und separate Videoclips. GitHub-CI-Build ist keine reale Browser-QA.
+**Fortsetzungspunkt (16.10.2026):** Aktuell überprüfter main-HEAD 0617cb6a3a74cd41b98fccee8420d3dd5969ad64 (PR #27 integriert, CI #111 grün), einziger zuvor offener PR #3 (ältere SKPORT-Recherche). Der neue Browser-QA-Branch qa-liino-browser-smoke-20261016 ergänzt reale Chromium-Prüfungen auf Desktop/Mobil für Liino und Typhoeus; Code, Status und verbleibende Grenzen siehe §14.3m. Chromium-Browser-QA und 100-MB-/1-GB-Gates in CI #117 grün; nach Dokumentationsänderung abschliessenden PR-CI-Lauf erneut prüfen, danach Merge und echten Pages-Deploy verifizieren. Browser-QA ersetzt keine Freigabe neuer redaktioneller Texte oder echte YouTube-Playback-Verifikation. Folgende Arbeit: fehlender Liino-Kit-Text und separate Gameplay-Clips erst nach Creator-Input. Ohne zusätzliche Freigabe unverändert: Eigenstimme statt „vom Creator“, alle Meta-Partner automatisch, keine Datenfantasie, textbasierter Website-Chat, durchgängiges ROADMAP-Log, Endfield ≤100 MB, Pages ≤1 GB.

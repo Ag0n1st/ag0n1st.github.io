@@ -34,6 +34,8 @@ jobs:
         run: node scripts/endfield/check-budget.mjs
       - name: Build
         run: npm run build
+      - name: Enforce 1 GB deployable GitHub Pages site budget
+        run: node scripts/check-pages-budget.mjs
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
