@@ -128,11 +128,12 @@ const potential = z.object({
   // Auf der Website ausschließlich als Text, ohne verlinkte Quellenaktion.
   sourceNote: text.optional(),
   // Werte sind optional: Nicht jedes Potenzial lässt sich seriös quantifizieren.
+  // Datafield character-profile potential gains are relative to the
+  // immediately preceding potential, not cumulative against P0.
   increaseOverPreviousPercent: z.number().finite().optional(),
-  increaseOverP0Percent: z.number().finite().optional(),
   comparisonConditions: text.optional(),
 }).superRefine((potential, ctx) => {
-  if (potential.increaseOverPreviousPercent === undefined && potential.increaseOverP0Percent === undefined) return;
+  if (potential.increaseOverPreviousPercent === undefined) return;
   if (!potential.comparisonConditions?.trim()) {
     ctx.addIssue({
       code: z.ZodIssueCode.custom, path: ["comparisonConditions"],
@@ -196,7 +197,6 @@ export const operatorGuideSchema = z.object({
     comparisons: z.array(weaponComparisonScenario)
       .refine(noDuplicateIds, "Szenario-IDs müssen eindeutig sein.")
       .default([]),
-    disclaimer: text.default(""),
     generalNotes: text.default(""),
   }).default({}),
 
@@ -215,8 +215,6 @@ export const operatorGuideSchema = z.object({
     entries: z.array(potential)
       .refine(entries => new Set(entries.map(p => p.level)).size === entries.length, "Jedes Potenzial P1 bis P5 darf nur einmal vorkommen.")
       .default([]),
-    disclaimer: text.default(""),
-    pullAdvice: text.default(""),
   }).default({}),
 
   teams: z.object({
