@@ -1,0 +1,55 @@
+name: One-time live Datafield Typhoeus character profile audit
+on:
+  push:
+    branches: [refine-typhoeus-ratings-datafield-teams-20261016]
+    paths: [.github/workflows/audit-typhoeus-datafield.yml]
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install browser client
+        run: |
+          python -m pip install playwright==1.56.0
+          python -m playwright install --with-deps chromium
+      - name: Extract public character-profile text and named scenarios (read-only)
+        shell: bash
+        run: |
+          python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          import json
+          url="https://datafield.cc/characters/typhoeus"
+          with sync_playwright() as p:
+            browser=p.chromium.launch(headless=True,args=["--disable-dev-shm-usage"])
+            page=browser.new_page(viewport={"width":1500,"height":960},locale="en-US")
+            try:
+              response=page.goto(url,wait_until="domcontentloaded",timeout=60000)
+              print("HTTP",response.status if response else None,"url",page.url)
+              page.wait_for_timeout(9000)
+              try:page.get_by_text("Recommended Weapons",exact=False).first.wait_for(timeout=11000)
+              except Exception as e:print("WEAPONS_NOT_VISIBLE",str(e)[:150])
+              text=page.locator("body").inner_text(timeout=10000)
+              print("PROFILE_BODY_BEGIN")
+              print(text[:45000])
+              print("PROFILE_BODY_END")
+              print("BUTTONS",json.dumps(page.locator("button").all_text_contents()[:110],ensure_ascii=False))
+              print("LINKS",json.dumps(page.locator("a").evaluate_all("(nodes)=>nodes.filter(n=>/spreadsheet|sheet|source|calc/i.test(n.textContent)).slice(0,20).map(n=>({text:n.textContent,href:n.href}))"),ensure_ascii=False))
+              for selector in ["button"]:
+                btns=page.locator(selector)
+                for i in range(min(btns.count(),80)):
+                  b=btns.nth(i)
+                  title=b.inner_text()[:100] if b.is_visible() else ""
+                  if "Show" in title and "Weapon" in title:
+                    b.click()
+                    page.wait_for_timeout(450)
+                    print("AFTER_SHOW_WEAPONS",page.locator("body").inner_text()[:32000])
+                    break
+            except Exception as e:print("AUDIT_ERROR",type(e).__name__,str(e)[:900])
+            finally:browser.close()
+          PY
