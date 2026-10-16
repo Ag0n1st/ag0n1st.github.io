@@ -123,8 +123,11 @@ npm run dev
 npm run test:endfield
 node scripts/endfield/check-budget.mjs
 npm run build
+node scripts/check-pages-budget.mjs  # 1-GB-Website-Artefaktlimit (dist/)
 npm run preview
 ~~~
+
+Der Pull-Request-Workflow führt zusätzlich `scripts/endfield/browser-smoke.py` in echtem Chromium bei 1440/390 px aus (Python-Playwright im Runner temporär installiert). Deployment kontrolliert nach `npm run build` die Grösse des fertigen `dist/`-Ordners auf maximal **1.000.000.000 Byte**, unabhängig vom **100.000.000-Byte-Endfield-Arbeitsbaumlimit**.
 
 `npm run test:endfield` führt alle `scripts/endfield/*.test.mjs` per Node-Test-Runner aus. Änderungen an der Datenstruktur, an Importern, am Build-Finder und an der Quelle-zu-ID-Zuordnung benötigen Regressionstests.
 
@@ -136,6 +139,8 @@ npm run preview
 - Ein Datei-Umzug ohne Duplikation vergrößert den **aktuellen Arbeitsbaum** nicht wesentlich, kann aber zusätzliche Git-History-Objekte erzeugen. Alte Commits sind nicht in der 100-MB-Anzeige des Prüfscripts enthalten.
 - Snapshot vor dieser Roadmap: Bilddateien unter `public/images/endfield/` insgesamt **950 Dateien**, rund **16,54 MB** reine Bilder. Der zuletzt vor diesem Task geprüfte vollständige Endfield-Bereich lag bei etwa **20,29 MB/100 MB**; bei jedem Build die **neue exakte Messung** heranziehen.
 - Große Bilder weiterhin komprimieren und nicht unnötig erneut committen. Cache-/Import-Actions dürfen keine undokumentierten Massen-Downloads ins Repo schreiben.
+
+**Letzter geprüfter Built-Site-Snapshot aus CI #117/#118 (16.10.2026):** Endfield-Arbeitsbaum 20.451.384 Byte / 100.000.000 Byte (20,45 %); `dist/` 17.104.472 Byte / 1.000.000.000 Byte (1,71 %, 970 Dateien). Der gesamte *vor* PR #28 gemessene Git-Tree lag bei 23.728.364 Byte; dies ist keine dist-Messung. Ab PR #28 gibt es für beide Limits eigenständige CI-Gates.
 
 ### 2.4 Sicherheits-/Datenschutzgrundsätze
 
@@ -1448,6 +1453,11 @@ Exakte CI-Messung: Endfield **20.451.384 Byte / 100.000.000 Byte**, Rest **79.54
 Der vorherige Main-Git-Tree enthielt 20.443.931 Endfield-Bytes; die neue Browser-Datei erhöht das Endfield-Budget genau um 7.453 Byte. Git-Historie und Pages-Overhead gehören nicht zur Arbeitsbaum-/dist-Messung.
 **Grenzen:** externe YouTube-Wiedergabe und echtes produktives Pages-Deployment wurden nicht geprüft. Nach diesem Dokumentations-Commit finalen CI-Lauf erneut prüfen, dann PR #28 mergen und Deploy-Status nachtragen.
 
+**Abschluss und Merge:** [PR #28](https://github.com/Ag0n1st/ag0n1st.github.io/pull/28) nach **vollständig grüner CI #118** (GitHub Actions Run 38866443001) per Squash auf main gemergt:
+Commit **81501f580a95cc3a86354982e1049ca468a3bc85**. Die Chromium-Regressionstests laufen bei zukünftigen PRs; der 1-GB-dist-Budgetcheck zusätzlich beim regulären main-Pages-Deployment.
+Alle 109 Endfield-Unit-Tests und die beiden Budgetchecks erfolgreich. Desktop 1440 px / Mobile 390 px bestätigen die in §14.3m aufgelisteten Interaktionen.
+**Noch separat zu prüfen:** realer GitHub-Pages-Deploy dieses main-Commits, externe YouTube-Playback-Bedingungen sowie redaktionelle offene Operator-Kit-/Gameplay-Inhalte.
+
 **Prüfstatus bei Anlegen dieses Abschnitts:** Branch/Dateien vorbereitet; PR-Nummer, GitHub-CI-Resultat, Merge-Commit und Pages-Deploy **noch nicht bestätigt**. Erst nach tatsächlichem Durchlauf eintragen, Tests bei Fehlschlag korrigieren. CI im echten Browser des PR testet die lokale gebaute Version, nicht externe YouTube-Wiedergabe oder die Live-Domain. Die reale Video-Wiedergabe, mobil-spezifische manuelle Bewertung, die Liino-Kit-Redaktion und noch fehlende Gameplay-Einzelclips bleiben separate Abnahmepunkte.
 
 **Nächste Entscheidung:** QA-PR nach erfolgreichem Lauf freigeben/mergen, danach die offenen echten Inhaltsarbeiten am Liino-Guide auf Basis eigener Angaben/Freigaben priorisieren. Keine ungeprüften Meta- oder Prozentangaben hinzufügen. Für alle Folgechats gilt: nur Text, jede Änderung in der Roadmap, Endfield maximal 100 MB und Pages-Gesamtziel 1 GB.
@@ -1557,5 +1567,7 @@ Der vorherige Main-Git-Tree enthielt 20.443.931 Endfield-Bytes; die neue Browser
 
 | 16.10.2026 | Chromium-Browser-Smoke-QA für Liino/Typhoeus auf eigenem Branch begonnen | Statische Node-Tests prüfen nicht die echte Bedienung; neue CI-Validierung der responsiven Build-Finder-, Partner-, Video-Embed- und Inhaltsverzeichnis-Funktionen. Exakte Tree-Budgets: Endfield 20.443.931 Byte von 100 MB, gesamter aktueller Arbeitsbaum 23.728.364 Byte. PR/CI/Pages-Abnahme siehe §14.3m. |
 
+| 16.10.2026 | PR #28 – echte Chromium-Browser-QA und 1-GB-dist-Gate in main | CI #117 und nach Roadmap-Fortschreibung #118 grün: 109 Unit-Tests, Build, Endfield-100-MB-/Pages-1-GB-Prüfung, 1440/390-px-Chromium-Abnahme. Squash 81501f580a95cc3a86354982e1049ca468a3bc85. Externe Playback-/Live-Pages-Prüfung und Liino-Redaktion weiterhin getrennt offen. |
+
 **Ende der aktuellen Roadmap.**  
-**Fortsetzungspunkt (16.10.2026):** Aktuell überprüfter main-HEAD 0617cb6a3a74cd41b98fccee8420d3dd5969ad64 (PR #27 integriert, CI #111 grün), einziger zuvor offener PR #3 (ältere SKPORT-Recherche). Der neue Browser-QA-Branch qa-liino-browser-smoke-20261016 ergänzt reale Chromium-Prüfungen auf Desktop/Mobil für Liino und Typhoeus; Code, Status und verbleibende Grenzen siehe §14.3m. Chromium-Browser-QA und 100-MB-/1-GB-Gates in CI #117 grün; nach Dokumentationsänderung abschliessenden PR-CI-Lauf erneut prüfen, danach Merge und echten Pages-Deploy verifizieren. Browser-QA ersetzt keine Freigabe neuer redaktioneller Texte oder echte YouTube-Playback-Verifikation. Folgende Arbeit: fehlender Liino-Kit-Text und separate Gameplay-Clips erst nach Creator-Input. Ohne zusätzliche Freigabe unverändert: Eigenstimme statt „vom Creator“, alle Meta-Partner automatisch, keine Datenfantasie, textbasierter Website-Chat, durchgängiges ROADMAP-Log, Endfield ≤100 MB, Pages ≤1 GB.
+**Fortsetzungspunkt (16.10.2026, nach PR #28):** PR #28 mit Browser-QA und 1-GB-Pages-dist-Gate nach grüner CI #118 in main integriert (Squash 81501f580a95cc3a86354982e1049ca468a3bc85). 109 Endfield-Tests grün, Chromium bei 1440/390 px mit Liino/Typhoeus-Presets, Meta-Partnern, Build-Links, UI-Ankern und responsive Checks grün. Aktuelle CI-Budgetwerte: Endfield 20.451.384/100.000.000 Byte, Pages-dist 17.104.472/1.000.000.000 Byte. Noch zu prüfen: GitHub-Pages-Deployment des neuesten main-Commits und tatsächliche externe YouTube-Wiedergabe; der alte Forschungs-PR #3 bleibt ohne Merge offen. Nächste fachliche Aufgabe: Liino-Kit-Redaktion und separate Gameplay-Clips ausschliesslich mit Creator-Freigabe/echten Daten; niemals Meta-Builds/Werte erfinden. Jeder zukünftige Chat strikt textbasiert; jede weitere Änderung in ROADMAP nachführen, beide Budgetchecks beibehalten.
