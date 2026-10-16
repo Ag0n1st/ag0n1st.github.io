@@ -1,7 +1,7 @@
 # Liino – Operator-Kit: redaktioneller Freigabeentwurf
 
 **Stand:** 16.10.2026
-**Status:** ZUR REDAKTIONELLEN FREIGABE – **nicht im öffentlich sichtbaren Liino-Guide veröffentlicht**
+**Archivstatus (Stand 16.10.2026):** **TEILWEISE FREIGEGEBEN / TEILWEISE VERWORFEN.** Der Betreiber hat ausschließlich F1 (`operatorKit.playstyle`) unverändert zur Integration freigegeben. F2 (`progressionNotes`) wird **nicht** in den Guide übernommen, weil die offiziellen Aufstiegs-/Materialtabellen bereits ausreichen. F3 wurde als **gesamter UI-Punkt „Ressourcen & Verfügbarkeit“** und als Template-Feld `resourceNotes` verworfen; der nötige Ressourcen-/Bauplancheck besteht bereits im Ausrüstungs-Build-Finder. Der alte vollständige YAML-Entwurf unten bleibt **nur historische Prüfdokumentation**. Für weitere Guides ist ausschließlich `operatorKit.playstyle` gültig.
 **Ausgangspunkt:** main `eeb7915cf4f8e2b3d6108d692b7ef22487c521a5`; das bereits eingeführte Operator-Guide-Framework und die bestätigten Liino-Builds bleiben unangetastet.
 **Ziel:** Die noch leeren Felder `operatorKit.playstyle`, `operatorKit.progressionNotes` und `operatorKit.resourceNotes` für eine spätere, ausdrücklich bestätigte Übernahme vorbereiten. Vor Zustimmung **keine** Änderungen an `src/content/operator-guides/liino.md`.
 
