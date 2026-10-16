@@ -30,6 +30,13 @@
 .op-four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
 .op-cardlet{min-width:0;border:1px solid #36323d;border-radius:13px;background:#19171f;padding:16px}
 .op-cardlet h3{margin-top:0}
+/* Subtle, accessible global strengths/weaknesses treatment for all operator guides. */
+.op-strengths-card{border-color:rgba(90,191,136,.32);border-left:3px solid rgba(90,191,136,.78);background:linear-gradient(125deg,rgba(38,105,68,.12),#19171f 65%)}
+.op-strengths-card h3{color:#a4e8bc}
+.op-strengths-card .op-body-copy{color:#ddd9e0}
+.op-weaknesses-card{border-color:rgba(226,104,111,.32);border-left:3px solid rgba(226,104,111,.78);background:linear-gradient(125deg,rgba(119,48,59,.13),#19171f 65%)}
+.op-weaknesses-card h3{color:#ffb7b7}
+.op-weaknesses-card .op-body-copy{color:#ddd9e0}
 .op-cardlet p{margin:6px 0;font-size:12px;color:#bcb6c5}
 .op-video-placeholder{display:grid;place-items:center;aspect-ratio:16/9;border:1px dashed #53485a;border-radius:10px;color:var(--muted);background:radial-gradient(ellipse at top right,rgba(240,91,212,.15),transparent 60%),#11131b;font-size:12px;text-align:center}
 .op-video-placeholder span{font-size:30px;color:var(--pink)}
@@ -210,12 +217,13 @@
 @media(max-width:680px){.op-story-area-options{grid-template-columns:1fr}.op-story-areas>summary span{float:none;display:inline;margin-left:8px}}
 
 /* Shared quick-scan Meta Builds: cards reuse the verified finder part data. */
-.op-meta-build-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:stretch}
+.op-meta-build-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:stretch}
 .op-meta-build-card{display:flex;flex-direction:column;gap:12px;min-width:0}
 .op-meta-build-card .op-subtitle{align-items:flex-start}
 .op-meta-build-card h4{min-width:0;margin:0;font-size:14px;line-height:1.4;letter-spacing:-.025em;overflow-wrap:anywhere}
 .op-meta-build-card .op-chip{flex:0 0 auto}
 .op-meta-build-tags{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:5px;margin-left:auto}
+.op-meta-build-tags .op-chip.is-early{color:#f7d69a;border-color:rgba(231,184,110,.36);background:rgba(231,184,110,.085)}
 .op-meta-build-parts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
 .op-meta-build-part{min-width:0;text-align:center}
 .op-meta-build-part .op-mini-art{width:100%;height:auto;aspect-ratio:1;min-width:0;max-height:78px}
