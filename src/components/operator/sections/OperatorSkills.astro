@@ -4,16 +4,23 @@ import MaterialCosts from "../../endfield/MaterialCosts.astro";
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
-const { guide, preview, gameData, extraData, localized, trMetric, trReq, trTalent, combatTalents, shipTalents, attributeNodes, otherTalents, importedBySlot, skillImage, defaultSkillRank, slotLabels, slotIcons, priority, priorityOrder, priorityComparisons } = model;
+const { guide, preview, gameData, extraData, localized, trMetric, trReq, trTalent, combatTalents, shipTalents, attributeNodes, otherTalents, importedBySlot, skillImage, defaultSkillRank, slotLabels, slotIcons, priority, supportPriority, priorityOrder, priorityComparisons } = model;
+const prioritySets = [
+  {label:supportPriority?"DPS":"",priority,order:priorityOrder,comparisons:priorityComparisons},
+  ...(supportPriority ? [{label:"Support",priority:supportPriority,order:supportPriority.order,comparisons:supportPriority.comparisons}] : [])
+];
 ---
 <section class="op-section" id="fertigkeiten">
         <h2>Fertigkeiten</h2>
         <div class="op-cardlet" style="margin-bottom:15px">
           <h3>Skill-Priorität</h3>
-          {(priority || preview) ? <div class="op-skill-row">{priorityOrder.map((key,i)=><>
-            <div class="op-priority-skill"><div class="op-mini-art">{skillImage(key) ? <img class="op-skill-icon" src={skillImage(key)} loading="lazy" decoding="async" alt="" /> : slotIcons[key]}</div><small>{slotLabels[key]}</small><b>{priority?.targetLevels[key] || "–"}</b></div>
-            {i<3&&<span class="op-priority-symbol">{priorityComparisons[i]}</span>}
-          </>)}</div> : <p class="op-placeholder">[Skill-Priorität folgt]</p>}
+          {(priority || preview) ? <div class="op-priority-variants">{prioritySets.map(set=><div class="op-priority-variant">
+            {set.label && <h4 class="op-priority-role">{set.label}</h4>}
+            <div class="op-skill-row">{set.order.map((key,i)=><>
+              <div class="op-priority-skill"><div class="op-mini-art">{skillImage(key) ? <img class="op-skill-icon" src={skillImage(key)} loading="lazy" decoding="async" alt="" /> : slotIcons[key]}</div><small>{slotLabels[key]}</small><b>{set.priority?.targetLevels[key] || "–"}</b></div>
+              {i<3&&<span class="op-priority-symbol">{set.comparisons[i]}</span>}
+            </>)}</div>
+          </div>)}</div> : <p class="op-placeholder">[Skill-Priorität folgt]</p>
         </div>
         <details class="op-divided op-guide-accordion" data-guide-disclosure="skill-details">
           <summary class="op-guide-accordion-summary"><h3>Fertigkeiten & Talente</h3><span class="op-guide-accordion-hint">Fertigkeitsdetails anzeigen</span></summary>
