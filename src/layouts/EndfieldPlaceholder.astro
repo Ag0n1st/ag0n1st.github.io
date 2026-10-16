@@ -12,8 +12,9 @@ interface Props {
   active: string;
   lang?: "de"|"en";
   noindex?: boolean;
+  image?: string;
 }
-const { title, kicker, description, active, lang="de", noindex=false } = Astro.props;
+const { title, kicker, description, active, lang="de", noindex=false, image } = Astro.props;
 const isEn=lang==="en";
 const base=isEn?"/en":"";
 ---
@@ -24,7 +25,7 @@ const base=isEn?"/en":"";
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#09090d" />
     <link rel="icon" type="image/svg+xml" href="/images/ag0n1st-logo.svg" />
-    <SeoHead path={Astro.url.pathname} title={title} description={description} noindex={noindex} translated={!noindex} />
+    <SeoHead path={Astro.url.pathname} title={title} description={description} noindex={noindex} image={image} lang={lang} translated={!noindex} />
     <title>{title.includes(" | ")||title.includes("– Ag0n1st")?title:title+" — Arknights: Endfield | Ag0n1st"}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
