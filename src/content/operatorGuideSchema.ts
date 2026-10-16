@@ -14,8 +14,9 @@ const skillPriority = z.object({
   // Alle vier Fertigkeiten einmalig, von höchster zu niedrigster Priorität.
   order: z.array(skillSlot).length(4)
     .refine(slots => new Set(slots).size === 4, "Alle vier Fertigkeiten müssen genau einmal angegeben werden."),
-  // Drei Verknüpfungen zwischen den vier Einträgen: '>' oder '>='.
-  comparisons: z.array(z.enum([">", ">="])).length(3),
+  // Drei Verknüpfungen zwischen den vier Einträgen: '>', '>=' oder '='.
+  // Gleichrangige Prioritäten werden als '=' angezeigt, nicht als '>'.
+  comparisons: z.array(z.enum([">", ">=", "="])).length(3),
   // Frei formulierbare Level-Ziele, z.B. '9', 'M1', 'M3'.
   targetLevels: z.object({
     basic: text.optional(),
