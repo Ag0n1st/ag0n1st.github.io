@@ -26,12 +26,15 @@ const { guide, localized, trPotential, officialPotentials, potentialByLevel } = 
             </div>;
           })}
         </div>
-        <div class="op-divided"><h3>Potenzialvergleich</h3>
+        <details class="op-divided op-guide-accordion" data-guide-disclosure="potential-comparison">
+          <summary class="op-guide-accordion-summary"><h3>Potenzialvergleich</h3><span class="op-guide-accordion-hint">Vergleich anzeigen</span></summary>
+          <div class="op-guide-accordion-content">
           <div class="op-table-wrap"><table class="op-table"><thead><tr><th>Potenzial</th><th>Offizieller Effekt (EN)</th><th>Zusatzgewinn zur Vorstufe</th></tr></thead>
             <tbody>{[1,2,3,4,5].map(n=><tr><td>P{n}</td><td class="op-body-copy">{trPotential(n, officialPotentials.get(n)?.effect || "[Folgt]")}</td>
               <td>{potentialByLevel.get(n)?.increaseOverPreviousPercent === undefined ? "–" : potentialByLevel.get(n)!.increaseOverPreviousPercent!.toLocaleString("de-DE",{minimumFractionDigits:1,maximumFractionDigits:1})+" %"}</td></tr>)}</tbody>
           </table></div>
           {guide.potentials.entries.some(p=>p.sourceNote && p.increaseOverPreviousPercent!==undefined) &&
             <small class="op-data-source-note">Quelle: {[...new Set(guide.potentials.entries.filter(p=>p.increaseOverPreviousPercent!==undefined).map(p=>p.sourceNote).filter(Boolean))].join(", ")}</small>}
-        </div>
+          </div>
+        </details>
       </section>

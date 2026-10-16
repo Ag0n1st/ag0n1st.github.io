@@ -64,7 +64,18 @@ const { guide, operatorName, preview, localized } = model;
   const toc = document.querySelector<HTMLElement>(".op-guide-toc");
   const tocLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>(".op-guide-toc-links a[href^='#']"));
   const guideSections = tocLinks.map(link => document.getElementById(link.hash.slice(1))).filter((section): section is HTMLElement => Boolean(section));
+  // Short near-footer sections (e.g. Gameplay before Fazit) cannot always
+  // reach the fixed scroll-margin position: the browser clamps at page bottom.
+  // Preserve a *deliberately chosen* TOC anchor until the user scrolls again.
+  // Otherwise scroll-spy incorrectly re-selects Teams after clicking Gameplay.
   let scrollSpyPending = false;
+  let selectedByClick: string | null = null;
+  function setGuideLocation(id: string) {
+    tocLinks.forEach(link => {
+      if (link.hash === "#" + id) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    });
+  }
   function updateGuideLocation() {
     scrollSpyPending = false;
     if (!toc || !guideSections.length) return;
@@ -78,11 +89,20 @@ const { guide, operatorName, preview, localized } = model;
     if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 5) {
       currentId = guideSections[guideSections.length - 1].id;
     }
-    tocLinks.forEach(link => {
-      const active = link.hash === "#" + currentId;
-      if (active) link.setAttribute("aria-current", "location");
-      else link.removeAttribute("aria-current");
-    });
+    if (selectedByClick) {
+      const target = document.getElementById(selectedByClick);
+      const bounds = target?.getBoundingClientRect();
+      // A click-selected section that is visible remains selected, even when
+      // clamped by the end of the document.
+      if (bounds && bounds.bottom > threshold && bounds.top < window.innerHeight - 12) {
+        currentId = selectedByClick;
+      } else if (bounds && bounds.top < window.innerHeight && bounds.bottom > 0) {
+        currentId = selectedByClick;
+      } else {
+        selectedByClick = null;
+      }
+    }
+    setGuideLocation(currentId);
   }
   function scheduleGuideLocation() {
     if (scrollSpyPending) return;
@@ -92,9 +112,20 @@ const { guide, operatorName, preview, localized } = model;
   window.addEventListener("scroll", scheduleGuideLocation, { passive: true });
   window.addEventListener("resize", scheduleGuideLocation);
   window.addEventListener("load", scheduleGuideLocation);
-  tocLinks.forEach(link => link.addEventListener("click", () => {
-    tocLinks.forEach(item => item.removeAttribute("aria-current"));
-    link.setAttribute("aria-current", "location");
+  for (const eventName of ["wheel", "touchstart", "pointerdown", "keydown"]) {
+    window.addEventListener(eventName, () => { selectedByClick = null; }, { passive: true });
+  }
+  tocLinks.forEach(link => link.addEventListener("click", event => {
+    const id = link.hash.slice(1);
+    const destination = document.getElementById(id);
+    if (!destination) return;
+    event.preventDefault();
+    selectedByClick = id;
+    // Use the existing scroll-margin-top CSS to clear the sticky navigation.
+    destination.scrollIntoView({ behavior: "auto", block: "start" });
+    if (window.location.hash !== link.hash) window.history.pushState(null, "", link.hash);
+    setGuideLocation(id);
+    scheduleGuideLocation();
   }));
   scheduleGuideLocation();
 

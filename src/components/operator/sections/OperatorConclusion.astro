@@ -6,24 +6,20 @@ const { model } = Astro.props;
 const { guide, operatorName, pullLabels } = model;
 ---
 <section class="op-section" id="fazit">
-        <h2>Fazit</h2>
-        <div class="op-cardlet">
-          <div class="op-line"><div class="op-mini-art" aria-hidden="true">✓</div><div class="op-line-label"><strong>{operatorName}</strong><span class="op-muted">Gesamturteil</span></div></div>
-          {guide.conclusion.verdict ? <p class="op-body-copy">{guide.conclusion.verdict}</p> : <p class="op-placeholder">[Gesamturteil folgt]</p>}
+        <div class="op-conclusion-header">
+          <h2>Fazit</h2>
+          {guide.conclusion.recommendation==="recommended"
+            ? <span class="op-pull-recommendation-badge"><span aria-hidden="true">✓</span> Empfehlung</span>
+            : guide.conclusion.recommendation
+              ? <span class="op-chip is-accent">{pullLabels[guide.conclusion.recommendation]}</span>
+              : null}
         </div>
-        <div class="op-divided">
-          <div class="op-cardlet">
-            <div class="op-subtitle"><h3>Pull-Empfehlung</h3>
-              {guide.conclusion.recommendation==="recommended"
-                ? <span class="op-pull-recommendation-badge"><span aria-hidden="true">✓</span> Empfehlung</span>
-                : <span class="op-chip is-accent">{guide.conclusion.recommendation ? pullLabels[guide.conclusion.recommendation] : "[Empfehlung]"}</span>}
-            </div>
-            <p class="op-body-copy">{guide.conclusion.pullAdvice || "[Für wen lohnt sich ein Pull auf P0?]"}</p>
-          </div>
-          <div class="op-two" style="margin-top:13px">
-            <div class="op-cardlet"><h3>✓ Für wen lohnt es sich?</h3>{guide.conclusion.recommendedFor.length ? guide.conclusion.recommendedFor.map(s=><p class="op-body-copy">{s}</p>) : <p class="op-placeholder">[Empfehlungen folgen]</p>}</div>
-            <div class="op-cardlet"><h3>− Wer kann verzichten?</h3>{guide.conclusion.skipIf.length ? guide.conclusion.skipIf.map(s=><p class="op-body-copy">{s}</p>) : <p class="op-placeholder">[Einschätzung folgt]</p>}</div>
-          </div>
+        {(guide.conclusion.verdict || guide.conclusion.pullAdvice)
+          ? <p class="op-conclusion-lead">{guide.conclusion.verdict || guide.conclusion.pullAdvice}</p>
+          : <p class="op-placeholder">[Fazit folgt]</p>}
+        <div class="op-two op-conclusion-audiences">
+          <div class="op-cardlet"><h3>✓ Für wen lohnt es sich?</h3>{guide.conclusion.recommendedFor.length ? guide.conclusion.recommendedFor.map(s=><p class="op-body-copy">{s}</p>) : <p class="op-placeholder">[Empfehlungen folgen]</p>}</div>
+          <div class="op-cardlet"><h3>− Wer kann verzichten?</h3>{guide.conclusion.skipIf.length ? guide.conclusion.skipIf.map(s=><p class="op-body-copy">{s}</p>) : <p class="op-placeholder">[Einschätzung folgt]</p>}</div>
         </div>
         {guide.conclusion.closingNote && <div class="op-divided"><h3>Abschließende Einschätzung</h3><p class="op-muted op-body-copy">{guide.conclusion.closingNote}</p></div>}
         <slot />
