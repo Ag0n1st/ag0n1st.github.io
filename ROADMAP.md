@@ -758,7 +758,7 @@ Dies ist eine **priorisierte Roadmap**, kein bereits bezahlter Projektvertrag un
 
 ### Phase P1 – Erste **echte** Operator-Ausrüstungsbuilds und End-to-End-Kontrolle
 
-**Status:** [RECHERCHE / WARTET AUF FREIGABE, 16.10.2026]; sechs konkret geprüfte Vier-Teile-Kandidaten in [`docs/liino-build-proposals-20261016.md`](docs/liino-build-proposals-20261016.md), **nicht** in `liino.md` veröffentlicht. Technische Integrationsblocker B1–B3 vor P1-Abnahme lösen.
+**Status:** [CREATOR-BUILDS FREIGEGEBEN / IMPLEMENTIERT IM FEATURE-BRANCH, 16.10.2026 – TEST-/DEPLOY-ABNAHME OFFEN].** Exakt sechs bestätigte Liino-Builds (A: Ultimate, B: Balanced, C: Will, D: 60, E: 50, F: 36), vollständige Namens-/ID-Zuordnungen in [`docs/liino-approved-builds-20261016.md`](docs/liino-approved-builds-20261016.md). Der Guide bleibt **`preview`**, bis die restliche Redaktion P2 abschlossen ist. Die alten Vorschläge sind nur Forschungsarchiv.
 
 **Vorbedingung:** Der Creator liefert/prüft die tatsächlichen vierteiligen Gear-Empfehlungen für einen Operator (zuerst **Liino**), Rollen, Levelvarianten, Zweck der Sets und ggf. Hinweise zu seltenen Materialien.
 
@@ -1137,11 +1137,12 @@ Warum dieser Schritt zuerst: Die technische Engine ist vorhanden, aber `liino.md
 4. **`docs/operator-guide-workflow.md`** – Guide-Template und redaktioneller Workflow.
 5. **`src/content/operator-guides/_template.md`** – tatsächliche YAML-Felder, nicht aus Erinnerung ableiten.
 6. **`src/content/operator-guides/liino.md`** – nächste redaktionelle Datei.
-7. **`docs/liino-build-proposals-20261016.md`** – sechs quellenbasierte, **noch nicht genehmigte** Buildkandidaten und technische Integrationsblocker B1–B3.
-8. **`docs/website-conversation-audit.md`** – vollständige, nach letzten Beschlüssen gewichtete Auswertung der 75-seitigen PDF-Vorgeschichte, inklusive verworfener Zwischenkonzepte, Designfeinheiten und konkreter Code-Abgleichpunkte.
-9. **`src/lib/endfield/buildFinder.mjs`**, **`buildStoryProgress.mjs`**, **`gearBlueprintResearch.ts`** – Build-/Progressionsregeln.
-10. **`docs/endfield-blueprint-piece-audit.md`** und **`docs/endfield-story-progression.md`** – Fundort-/Story-Fachbelege und offene Konflikte.
-11. **GitHub Pull Requests/Actions auf `main`** – letzter tatsächlicher Code-/Deploy-Stand.
+7. **`docs/liino-approved-builds-20261016.md`** – aktuell verbindliche, vom Creator bestätigte Builds A–F, exakte Namen und IDs, Einsatzszenarien, Herstellungsstand, Implementierung und verbleibende Checks.
+8. **`docs/liino-build-proposals-20261016.md`** – historisches Forschungsarchiv, **nicht mehr die aktuelle Freigabe-Shortlist**.
+9. **`docs/website-conversation-audit.md`** – vollständige, nach letzten Beschlüssen gewichtete Auswertung der 75-seitigen PDF-Vorgeschichte, inklusive verworfener Zwischenkonzepte, Designfeinheiten und konkreter Code-Abgleichpunkte.
+10. **`src/lib/endfield/buildFinder.mjs`**, **`buildStoryProgress.mjs`**, **`gearBlueprintResearch.ts`** – Build-/Progressionsregeln.
+11. **`docs/endfield-blueprint-piece-audit.md`** und **`docs/endfield-story-progression.md`** – Fundort-/Story-Fachbelege und offene Konflikte.
+12. **GitHub Pull Requests/Actions auf `main`** – letzter tatsächlicher Code-/Deploy-Stand.
 
 ### 14.3a Vollständige historische Chat-Auswertung (16.10.2026)
 
@@ -1155,7 +1156,9 @@ Warum dieser Schritt zuerst: Die technische Engine ist vorhanden, aber `liino.md
 - **Prüf-/Integrationsstand (16.10.2026):** PDF-Audit und Guide-Handoff wurden über [PR #14](https://github.com/Ag0n1st/ag0n1st.github.io/pull/14) auf `main` übernommen; Merge-Commit **`9901a9b5b876056d874ac22477e7aa5e17e5bf7f`**. Der zugehörige PR-Workflow **„Validate Astro and operator guides“ #73** wurde mit **`success`** bestätigt. **GitHub-Pages-Deploy nach diesem Merge: nicht abschließend verifiziert** (nicht fälschlich als erfolgreich eintragen). **PR #3** war weiterhin der offene historische Recherche-PR. Der frühere `main`-Basis-Snapshot war `3f0e712`.
 - **Akzeptanz:** Die nächste KI kann anhand Roadmap + Audit ohne frühere Chatinhalte die endgültigen Nutzerentscheidungen von historischen Ideen unterscheiden. Fachlicher Folgepunkt bleibt Phase P1, **Liinos echte Builds erst nach Creator-Freigabe oder ausdrücklich beauftragter, belegbarer Recherche**.
 
-### 14.3b Liino-Build-Recherche zur Creator-Freigabe (16.10.2026)
+### 14.3b Historischer Forschungsstand vor der Creator-Freigabe (16.10.2026)
+
+> **Archivierter Zwischenstand:** Die nachfolgenden frühere P1-Forschungsaussagen (einschließlich „alle Builds unfreigegeben“ und offener Blocker B1–B3) gelten nur *vor* der Entscheidung des Creators. **Für den aktuellen Stand ausschließlich §14.3c und `docs/liino-approved-builds-20261016.md` lesen.**
 
 - **Der Nutzer hat die eigene, quellenbasierte Analyse von Liinos Builds ausdrücklich beauftragt, aber noch keine Veröffentlichung genehmigt.** Die ausführliche Recherche mit offiziellen IDs, Slots, Rezepten, Community-Fundortnachweisen, Teamkontext, Energieannahmen und Freigabefragen liegt in [`docs/liino-build-proposals-20261016.md`](docs/liino-build-proposals-20261016.md).
 - **6 konkrete Kandidaten** (je 1 Armor / 1 Gloves / 2 Kits beabsichtigt): L70-A Standard Eternal Xiranite (IDs **1134/1138/1236/365**); L70-B UGE-Alternative (**1134/1138/1236/1236**); L70-C LYNX-Sustain (**1134/1133/365/365**); L60-A AIC Fieldwork (**1117/1123/1120/1241**); L50-A Mordvolt + Aburrey (**279/331/335/335**); L36-A Mordvolt (**274/278/284/284**). Doppelte Kit-IDs bedeuten zwei gefertigte Exemplare, nicht zwei unterschiedliche Vorlagen.
@@ -1168,6 +1171,28 @@ Warum dieser Schritt zuerst: Die technische Engine ist vorhanden, aber `liino.md
 - **Folgeregel für UI/weitere Guides:** Nutzerlesbare Ausrüstungstitel samt offizieller Item-ID anzeigen, wo konkrete Gear-Sets/Baupläne/Builds zur Kontrolle oder Freigabe verglichen werden. Item-IDs als technische Referenzen beibehalten; Setbezeichnungen allein reichen nicht.
 - **GitHub-Nachtrag:** [PR #15](https://github.com/Ag0n1st/ag0n1st.github.io/pull/15) (nur Dokumentation / Research) nach erfolgreichem PR-Workflow **„Validate Astro and operator guides“ #74** (`success`) auf `main` per Squash-Merge übernommen, Commit **`4c0d78108db38809ff9c8925715335ee0e1aa5ed`**. **Pages-Deploy dieses Commits separat nicht verifiziert**; keine produktiven Liino-Builds veröffentlicht. Die spätere Bestätigung durch den Creator steht weiterhin aus.
 - **Nächster Auftrag:** Dem Nutzer die 6 geprüften Vorschläge mit Einsatzfall, offiziellen IDs, Voraussetzungen und Datenunsicherheit **zur Freigabe vorlegen**. Erst nach Rückmeldung B1–B3 technisch beheben und **nur die ausdrücklich freigegebenen** Builds in Liinos Markdown übernehmen. Danach volle Build-Finder-Tests, Browser und CI/Deploy; Roadmap fortschreiben.
+
+### 14.3c Creator-Freigabe: 6 Liino-Builds + technische Umsetzung (16.10.2026)
+
+**Verbindliche aktuelle redaktionelle Entscheidung:** Der Nutzer hat die sechs Builds *explizit* neu festgelegt. Maßgebliches Dokument: [`docs/liino-approved-builds-20261016.md`](docs/liino-approved-builds-20261016.md) mit sämtlichen **offiziellen Gear-Namen und IDs**, Einsatzkontext, Kosten, Datenvertrauen und Tests. Die ursprüngliche Vorschlagsdatei ist **ARCHIV** und darf nicht mehr als Freigabe-Liste behandelt werden.
+
+| Build / neues redaktionelles Ziel | Vier offizielle Gear-IDs in Reihenfolge Rüstung / Handschuhe / Kit / Kit | Freigabestand |
+| --- | --- | --- |
+| **A – Ultimate-Fokus** | `1134 / 1138 / 1236 / 365` | [VOM CREATOR FESTGELEGT]; früherer Name „Standard-Support“ entfällt |
+| **B – Balanced** | `1134 / 1133 / 365 / 365` | [VOM CREATOR FESTGELEGT]; 3 LYNX + 1 Eternal |
+| **C – Will-Fokus** | `1126 / 1129 / 365 / 365` | [VOM CREATOR FESTGELEGT]; **Rift Trekker Light Armor + Rift Trekker Hands + 2× LYNX Slab**. Situativ: Start **mit voller Ultimate** und **keine zweite Ultimate** vorgesehen; Willenskraft → Ultimate-Amp. 2 LYNX → **kein** LYNX-3er-Setbonus |
+| **D – Level 60** | `1117 / 1123 / 1120 / 1120` | [VOM CREATOR FESTGELEGT]; zweiter Ember **statt** Power Bank zugunsten von Ultimate Gain |
+| **E – Level 50** | `279 / 331 / 335 / 335` | [VOM CREATOR UNVERÄNDERT BESTÄTIGT] |
+| **F – Level 36** | `274 / 278 / 284 / 284` | [VOM CREATOR UNVERÄNDERT BESTÄTIGT] |
+
+**Umsetzung aktuell auf Branch `feature-liino-approved-builds-20261016`:**
+- `src/content/operator-guides/liino.md`: Sechs echte vierteilige YAML-Builds mit stabilen IDs `ultimate-fokus`, `balanced`, `will-fokus`, `level-60`, `level-50`, `level-36`, `overview.featuredBuildId: ultimate-fokus`, Progressionshinweisen und abgestimmter Bewertung. `status: preview` **bleibt**, weil andere Sektionen nicht fertig sind.
+- **B1 technisch gelöst auf dem Feature-Branch (mit Quelle):** ID **1138** ist laut Talos Wiki ([Einzelteil](https://endfield.wiki.gg/wiki/Eternal_Xiranite_Hands)), Prydwen und Endfield Hub **Gloves**. Ursprünglicher 2026-10-15-JSON-Import nennt fälschlich `Kit`. `src/lib/endfield/gearSlotCorrections.mjs` normalisiert **nur diesen Item-ID/Namen-Fall** am `equipmentDetails.ts`-Zugriff, ohne die riesige importierte Original-JSON automatisch zu überschreiben. Bei nächstem offiziellen Import Quelle erneut prüfen.
+- **B2 technisch gelöst auf dem Feature-Branch:** Nur generierte Demo-Builds ohne redaktionelle Einträge bleiben an `preview` gebunden; ein realer Gear-Build darf auch innerhalb des Gesamtguide-`preview` bei erfüllten Voraussetzungen als `available` erscheinen.
+- **B3 technisch gelöst auf dem Feature-Branch:** `buildFinder.mjs` prüft nun genau **1 Armor, 1 Gloves, 2 Kits** zusätzlich zu vier vorhandenen offiziellen IDs/Rezepten. Zwei gleiche Kits sind legitim; Besitz wird nach **einmaliger Blaupausen-ID** geprüft, die Herstellung benötigt zwei Exemplare.
+- Tests: `scripts/endfield/liino-builds.test.mjs` (Creator-IDs + offizielle Katalogwerte/Komponenten/Blaupausen) und erweiterte `build-finder.test.mjs` (Slots, doppelte Kits, Demo-Preview).
+- **Wichtige Grenze:** Die Client-UI belegt sich noch mit echtem Browser-/Mobile-Check. **Bis erfolgreicher CI/Merge/Pages-Nachprüfung nicht `P1 FERTIG` markieren.** Unveränderte Story-/Gebiets-/Besitztrennung, 60er-Autoritätslimit, `localStorage` ohne Login.
+- **Nächste Schritte:** (1) PR mit allen Änderungen erstellen, (2) PR-CI `Validate Astro and operator guides` grün verifizieren und bei Fehlern reparieren, (3) Merge nach `main` und Deploy-Status gesondert prüfen, (4) Browser-Gegenprüfung, (5) P2 Guide-Ausbau. Jede Teilprüfung in der Roadmap nachtragen.
 
 ### 14.4 Checkliste zur Aktualisierung DIESER Datei
 
@@ -1194,7 +1219,8 @@ Nach **jedem** zukünftigen Task, unabhängig davon, ob ihn dieselbe oder eine a
 - Eigene Domain: https://ag0n1st.com
 
 **Fachdokumente im Repository:**
-- [Liino-Build-Recherche (wartet auf Freigabe)](docs/liino-build-proposals-20261016.md)
+- [Liino – vom Creator festgelegte Builds](docs/liino-approved-builds-20261016.md)
+- [Liino – historische Build-Recherche (überholt)](docs/liino-build-proposals-20261016.md)
 - [Vollständiger PDF-Konversationsabgleich](docs/website-conversation-audit.md)
 - [Guide-Pflege](docs/operator-guide-workflow.md)
 - [Endfield-Importer/Asset-Handbuch](scripts/endfield/README.md)
@@ -1233,6 +1259,9 @@ Nach **jedem** zukünftigen Task, unabhängig davon, ob ihn dieselbe oder eine a
 | 16.10.2026 | Alle Website-Chats **ausschließlich textbasiert**; 75-seitiges PDF-Archiv im eigenen [Konversationsaudit](docs/website-conversation-audit.md) ausgewertet | Höhere Genauigkeit bei historischer Entscheidungskette; spätere Beschlüsse gelten vor verworfenen Entwürfen, keine Bilder ohne gesonderte ausdrückliche Bitte; jeder Entwicklungsfortschritt inklusive PR/CI/Übergabe in ROADMAP fortschreiben. |
 
 | 16.10.2026 | In jeder Build-/Ausrüstungsübersicht **offizielle Gear-Namen plus ID** gemeinsam aufführen | Creator kann eine Nummernfolge ohne Namen nicht sinnvoll bewerten. Liino-Freigabeübersicht in `docs/liino-build-proposals-20261016.md` entsprechend ergänzt; Guides weiterhin unverändert und nicht freigegeben. |
+
+| 16.10.2026 | **Liino-Builds A–F konkret vom Creator festgelegt und für die redaktionelle Ausrüstung freigegeben** | A Ultimate `1134/1138/1236/365`; B Balanced `1134/1133/365/365`; C Will `1126/1129/365/365` (volle Anfangs-ULT, keine zweite); D Lv. 60 `1117/1123/1120/1120` (doppelter Ember statt Heal); E/F unverändert. Namen/IDs und Kontexte: `docs/liino-approved-builds-20261016.md`. Weitere Guide-Abschnitte bleiben Preview. |
+| 16.10.2026 | Technische Build-Finder-Integration B1–B3 auf Feature-Branch umgesetzt, **QA/Deploy noch offen** | ID 1138 itemgenau als Gloves normalisiert; echte Builds innerhalb Preview zugelassen; 1/1/2-Slotprüfung, Unit-Tests und Blueprint-Doppelstückregeln. |
 
 **Ende der aktuellen Roadmap.**  
 **Fortsetzungspunkt:** Abschnitt 14 **und den PDF-Konversationsabgleich** lesen sowie aktuellen `main` und offene PRs prüfen. Nach jedem weiteren Task Prüfungen, Merge und verifizierten Deploy ergänzen.

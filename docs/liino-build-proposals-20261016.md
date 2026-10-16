@@ -1,4 +1,7 @@
-# Liino – Build-Recherche und Freigabevorlage (KEINE veröffentlichten Empfehlungen)
+# Liino – historische Build-Recherche (durch Creator-Entscheidung überholt)
+
+> **Archivstand / nicht mehr aktuell als Build-Freigabe (16.10.2026):** Der Betreiber hat anschließend alle sechs Builds **konkret angepasst und freigegeben**. Verbindliche Namen, vier IDs pro Build, Prioritäten und Einsatzbedingungen stehen nun in **[docs/liino-approved-builds-20261016.md](liino-approved-builds-20261016.md)** und `src/content/operator-guides/liino.md`. Die untenstehenden früheren Namen „Standard-Support“, „Ultimate-Fokus“, „LYNX-Sustain“ sowie der zusätzliche vierte Eternal-Xiranite-Build, die 60er Power Bank und die alte C-Kombination sind **historische Vorschläge, nicht mehr die aktuelle Auswahl**. Nur als Forschungs- und Quellenarchiv verwenden.
+
 
 **Stand:** 16.10.2026  
 **Status:** [RECHERCHE – ZUR CREATOR-FREIGABE]; **nicht** als offizielle Ag0n1st-Builds veröffentlichen.  

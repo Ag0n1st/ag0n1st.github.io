@@ -43,12 +43,19 @@ export function componentRequirementForRecipe(recipe){
  * Derive a four-piece build's minimum level and factory-component tier from
  * official SKPORT gear entries, not manually invented stages.
  */
+export function hasValidBuildSlots(records) {
+  if(!Array.isArray(records)||records.length!==4)return false;
+  const slots=records.map(record=>record?.gearSlot);
+  return slots.filter(slot=>slot==="Armor").length===1 &&
+    slots.filter(slot=>slot==="Gloves").length===1 &&
+    slots.filter(slot=>slot==="Kit").length===2;
+}
 export function getBuildRequirements(details,{availableFromLevel,storyUnlock,locations=[],preview=false}={}){
   const records=Array.isArray(details)?details:[];
   const levels=records.map(record=>record?.level);
   const components=records.map(record=>record?.recipeStatus==="verified"
     ?componentRequirementForRecipe(record.standardRecipe):null);
-  const allPartsVerified=records.length===4&&records.every((record,i)=>
+  const allPartsVerified=hasValidBuildSlots(records)&&records.every((record,i)=>
     record?.status==="verified" && Number.isSafeInteger(levels[i]) &&
     levels[i]>0 && components[i]!==null);
   const requiredLevel=allPartsVerified

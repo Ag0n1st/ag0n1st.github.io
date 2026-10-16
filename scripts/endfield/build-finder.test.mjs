@@ -2,20 +2,27 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 import {FACTORY_COMPONENT_STAGES,DEFAULT_FACTORY_COMPONENT,FACTORY_STAGES,
-  componentRequirementForRecipe,getBuildRequirements,evaluateBuildAvailability
+  componentRequirementForRecipe,getBuildRequirements,hasValidBuildSlots,evaluateBuildAvailability
 } from "../../src/lib/endfield/buildFinder.mjs";
 const standard=id=>({materials:[{id:"602",count:8000},{id,count:50}]});
 const gear=(component,level=70,id=component)=>({
  id:String(id),name:"Gear "+id,status:"verified",level,recipeStatus:"verified",
  standardRecipe:standard(component),acquisitionNotes:["Gear Template Crate"]
 });
+// Existing scenario fixtures test level/story/recipe gating, not equipment slots.
+// Give them one armor, one pair of gloves and two kits so the shared
+// production slot validation is exercised without weakening earlier tests.
+const mockedRequirements=(parts,options)=>getBuildRequirements(
+ parts.map((piece,i)=>({...piece,gearSlot:["Armor","Gloves","Kit","Kit"][i]??"Kit"})),
+ options
+);
 const ownedProgress=(ids=[])=>({regionId:"wuling",unlockedAreaIds:[],
  acquiredGearBlueprintIds:ids,authorityLevel:null,stockRedistributionLevel:null});
 const select=(factoryComponent="pyrrolite",level=70,storyProgress)=>({
  factoryComponent,level,storyProgress
 });
 const prepare=(components,storyUnlock="Editorial hint")=>
-  getBuildRequirements(components.map(([id,lv])=>gear(id,lv)),{storyUnlock});
+  mockedRequirements(components.map(([id,lv])=>gear(id,lv)),{storyUnlock});
 
 test("seven factory components use official Wiki item IDs and user-defined level ranges",()=>{
  assert.deepEqual(FACTORY_COMPONENT_STAGES.map(x=>x.itemId),["525","526","527","528","747","844","1067"]);
@@ -35,7 +42,7 @@ test("four validated pieces require both correct gear level and factory componen
  assert.equal(evaluateBuildAvailability(req,select("pyrrolite",70,owned)).status,"available");
 });
 test("Cuprium, Hetonite and Pyrrolite retain distinct levels of factory unlock",()=>{
- assert.deepEqual(["747","844","1067"].map(id=>getBuildRequirements(
+ assert.deepEqual(["747","844","1067"].map(id=>mockedRequirements(
   Array.from({length:4},(_,i)=>gear(id,70,String(i+400))),
   {storyUnlock:"Prose alone is NOT proof"}
  ).requiredComponent),["cuprium","hetonite","pyrrolite"]);
@@ -44,13 +51,13 @@ test("basic official Lv10 recipes use only starter materials",()=>{
  const basic={id:"206",name:"Basic Armor",status:"verified",level:10,recipeStatus:"verified",
   standardRecipe:{materials:[{id:"493",count:10},{id:"475",count:2}]},
   acquisitionNotes:[]};
- const req=getBuildRequirements(Array.from({length:4},()=>basic));
+ const req=mockedRequirements(Array.from({length:4},()=>basic));
  assert.equal(req.requiredComponent,"starter");
  assert.equal(evaluateBuildAvailability(req,select("amethyst",20,ownedProgress(["206"]))).status,"available");
 });
 test("freeform story prose NEVER unlocks Gear or overrides missing story input",()=>{
  const pieces=Array.from({length:4},(_,i)=>gear("528",70,String(i+100)));
- const req=getBuildRequirements(pieces,{storyUnlock:"Already checked"});
+ const req=mockedRequirements(pieces,{storyUnlock:"Already checked"});
  assert.equal(req.hasStoryEvidence,true);
  assert.equal(evaluateBuildAvailability(req,select()).status,"story-unverified");
  assert.equal(evaluateBuildAvailability(req,select("pyrrolite",70,ownedProgress())).status,"story-unverified");
@@ -68,12 +75,12 @@ test("incomplete details, unrecognized recipes and editor preview never unlock b
   [gear("528"),gear("528"),gear("528"),{...gear("528"),status:"incomplete"}],
   [gear("528"),gear("528"),gear("528"),{...gear("528"),level:null}]
  ])assert.equal(evaluateBuildAvailability(
-   getBuildRequirements(parts,{storyUnlock:"Prose"}),select()
+   mockedRequirements(parts,{storyUnlock:"Prose"}),select()
  ).status,"unverified");
- const preview=getBuildRequirements(Array.from({length:4},()=>gear("528")),
+ const preview=mockedRequirements(Array.from({length:4},()=>gear("528")),
    {storyUnlock:"Prose",preview:true});
  assert.equal(evaluateBuildAvailability(preview,select()).status,"unverified");
- assert.equal(evaluateBuildAvailability(getBuildRequirements(
+ assert.equal(evaluateBuildAvailability(mockedRequirements(
    Array.from({length:4},()=>gear("528"))),
    {level:70,factoryComponent:"maximal",storyProgress:ownedProgress(["528"])}).status,"unverified");
 });
@@ -89,4 +96,29 @@ test("all official 258 Gear standard recipes map to approved components",()=>{
  }
  assert.equal(totals.starter,4);
  for(const tier of FACTORY_STAGES)assert.ok(totals[tier]>0,"Missing component tier "+tier);
+});
+
+test("a four-piece build requires exactly one armor, gloves and two kits",()=>{
+ const set=["Armor","Gloves","Kit","Kit"].map((slot,i)=>({
+   ...gear("528",70,String(i+200)),gearSlot:slot
+ }));
+ assert.equal(hasValidBuildSlots(set),true);
+ assert.equal(hasValidBuildSlots([set[0],set[0],set[2],set[3]]),false);
+ assert.equal(hasValidBuildSlots([set[0],set[1],set[1],set[3]]),false);
+ assert.equal(hasValidBuildSlots([set[0],set[1],set[2]]),false);
+ assert.equal(getBuildRequirements([set[0],set[0],set[2],set[3]]).allPartsVerified,false);
+ assert.equal(getBuildRequirements(set).allPartsVerified,true);
+});
+
+test("two copies of the same kit are valid but only one owned blueprint is needed",()=>{
+ const rows=[
+  {...gear("528",70,"201"),gearSlot:"Armor"},
+  {...gear("528",70,"202"),gearSlot:"Gloves"},
+  {...gear("528",70,"203"),gearSlot:"Kit"},
+  {...gear("528",70,"203"),gearSlot:"Kit"}
+ ];
+ const req=getBuildRequirements(rows);
+ assert.equal(req.allPartsVerified,true);
+ assert.equal(evaluateBuildAvailability(req,select("xiranite",70,
+  ownedProgress(["201","202","203"]))).status,"available");
 });
