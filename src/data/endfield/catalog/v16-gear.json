@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 1,
+  "version": "1.6",
+  "source": {
+    "provider": "Endfield Talos Wiki – Sanctuary of Ink gear list",
+    "url": "https://endfield.wiki.gg/wiki/Sanctuary_of_Ink",
+    "snapshot": "2026-10-16",
+    "language": "en",
+    "verification": "community-item-identity-only",
+    "note": "All 18 v1.6 additions are source-listed. These slug IDs and any internal item_equip codes are NOT official numeric SKPORT IDs; recipes and blueprint unlocks are unverified."
+  },
+  "items": [
+    {
+      "id": "pulser-labs-light-armor",
+      "name": "Pulser Labs Light Armor",
+      "categories": [
+        "Gear"
+      ],
+      "gearSet": "Pulser Labs",
+      "slot": "Armor",
+      "iconPath": null,
+      "cacheStatus": "wiki-listed-image-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Pulser_Labs_Light_Armor",
+      "officialNumericId": null,
+      "identityStatus": "official-numeric-id-unverified"
+    },
+    {
+      "id": "pulser-labs-light-gauntlets",
+      "name": "Pulser Labs Light Gauntlets",
+      "categories": [
+        "Gear"
+      ],
+      "gearSet": "Pulser Labs",
+      "slot": "Gloves",
+      "iconPath": null,
+      "cacheStatus": "wiki-listed-image-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Pulser_Labs_Light_Gauntlets",
+      "officialNumericId": null,
+      "identityStatus": "official-numeric-id-unverified"
+    },
+    {
+      "id": "pulser-labs-armor-slab",
+      "name": "Pulser Labs Armor Slab",
+      "categories": [
+        "Gear"
+      ],
+      "gearSet": "Pulser Labs",
+      "slot": "Kit",
+      "iconPath": null,
+      "cacheStatus": "wiki-listed-image-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Pulser_Labs_Armor_Slab",
+      "officialNumericId": null,
+      "identityStatus": "official-numeric-id-unverified"
+    },
+    {
+      "id": "eternal-xiranite-mod-armor",
+      "name": "Eternal Xiranite MOD Armor",
+      "categories": [
+        "Gear"
+      ],
+      "gearSet": "Eternal Xiranite",
+      "slot": "Armor",
+      "iconPath": null,
+      "cacheStatus": "wiki-listed-image-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Eternal_Xiranite_MOD_Armor",
+      "officialNumericId": null,
+      "identityStatus": "official-numeric-id-unverified"
+    },
+    {
+      "id": "eternal-xiranite-overalls",
+      "name": "Eternal Xiranite Overalls",
+      "categories": [
+        "Gear"
+      ],
+      "gearSet": "Eternal Xiranite",
+      "slot": "Armor",
+      "iconPath": "/images/endfield/gear/releases/si/eternal-xiranite-overalls.webp",
+      "cacheStatus": "community-wiki-verified-numeric-id-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Eternal_Xiranite_Overalls",
+      "officialNumericId": null,
+      "identityStatus": "official-numeric-id-unverified"
+    },
+    {
+      "id": "eternal-xiranite-channeling-gloves",
+      "name": "Eternal Xiranite Channeling Gloves",
+      "categories": [
+        "Gear"
+      ],
+      "gearSet": "Eternal Xiranite",
+      "slot": "Gloves",
+      "iconPath": "/images/endfield/gear/releases/si/eternal-xiranite-channeling-gloves.webp",
+      "cacheStatus": "community-wiki-verified-numeric-id-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Eternal_Xiranite_Channeling_Gloves",
+      "officialNumericId": null,
+      "identityStatus": "official-numeric-id-unverified"
+    },
+    {
+      "id": "eternal-xiranite-rangefinder",
+      "name": "Eternal Xiranite Rangefinder",
+      "categories": [
+        "Gear"
+      ],
+      "gearSet": "Eternal Xiranite",
+      "slot": "Kit",
+      "iconPath": "/images/endfield/gear/releases/si/eternal-xiranite-rangefinder.webp",
+      "cacheStatus": "community-wiki-verified-numeric-id-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Eternal_Xiranite_Rangefinder",
+      "officialNumericId": null,
+      "identityStatus": "official-numeric-id-unverified"
+    },
+    {
+      "id": "rift-trekker-steel-armor",
+      "name": "Rift Trekker Steel Armor",
+      "categories": [
+        "Gear"
+      ],
+      "gearSet": "Rift Trekker",
+      "slot": "Armor",
+      "iconPath": null,
+      "cacheStatus": "wiki-listed-image-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Rift_Trekker_Steel_Armor",
+      "officialNumericId": null,
+      "identityStatus": "official-numeric-id-unverified"
+    },
+    {
+      "id": "rift-trekker-overalls",
+      "name": "Rift Trekker Overalls",
+      "categories": [
+        "Gear"
+      ],
+      "gearSet": "Rift Trekker",
+      "slot": "Armor",
+      "iconPath": null,
+      "cacheStatus": "wiki-listed-image-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Rift_Trekker_Overalls",
+      "officialNumericId": null,
+      "identityStatus": "official-numeric-id-unverified"
+    },
+    {
+      "id": "rift-trekker-wraps",
+      "name": "Rift Trekker Wraps",
+      "categories": [
+        "Gear"
+      ],
+      "gearSet": "Rift Trekker",
+      "slot": "Gloves",
+      "iconPath": null,
+      "cacheStatus": "wiki-listed-image-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Rift_Trekker_Wraps",
+      "officialNumericId": null,
+      "identityStatus": "official-numeric-id-unverified"
+    },
+    {
+      "id": "rift-trekker-gauntlets",
+      "name": "Rift Trekker Gauntlets",
+      "categories": [
+        "Gear"
+      ],
+      "gearSet": "Rift Trekker",
+      "slot": "Gloves",
+      "iconPath": null,
+      "cacheStatus": "wiki-listed-image-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Rift_Trekker_Gauntlets",
+      "officialNumericId": null,
+      "identityStatus": "official-numeric-id-unverified"
+    },
+    {
+      "id": "rift-trekker-silver-blade",
+      "name": "Rift Trekker Silver Blade",
+      "categories": [
+        "Gear"
+      ],
+      "gearSet": "Rift Trekker",
+      "slot": "Kit",
+      "iconPath": null,
+      "cacheStatus": "wiki-listed-image-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Rift_Trekker_Silver_Blade",
+      "officialNumericId": null,
+      "identityStatus": "official-numeric-id-unverified"
+    },
+    {
+      "id": "type-50-yinglung-soft-armor",
+      "name": "Type 50 Yinglung Soft Armor",
+      "categories": [
+        "Gear"
+      ],
+      "gearSet": "Type 50 Yinglung",
+      "slot": "Armor",
+      "iconPath": "/images/endfield/gear/releases/si/type-50-yinglung-soft-armor.webp",
+      "cacheStatus": "community-wiki-verified-numeric-id-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Type_50_Yinglung_Soft_Armor",
+      "officialNumericId": null,
+      "identityStatus": "official-numeric-id-unverified"
+    },
+    {
+      "id": "type-50-yinglung-gauntlets",
+      "name": "Type 50 Yinglung Gauntlets",
+      "categories": [
+        "Gear"
+      ],
+      "gearSet": "Type 50 Yinglung",
+      "slot": "Gloves",
+      "iconPath": null,
+      "cacheStatus": "wiki-listed-image-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Type_50_Yinglung_Gauntlets",
+      "officialNumericId": null,
+      "identityStatus": "official-numeric-id-unverified"
+    },
+    {
+      "id": "type-50-yinglung-beacon",
+      "name": "Type 50 Yinglung Beacon",
+      "categories": [
+        "Gear"
+      ],
+      "gearSet": "Type 50 Yinglung",
+      "slot": "Kit",
+      "iconPath": "/images/endfield/gear/releases/si/type-50-yinglung-beacon.webp",
+      "cacheStatus": "community-wiki-verified-numeric-id-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Type_50_Yinglung_Beacon",
+      "officialNumericId": null,
+      "identityStatus": "official-numeric-id-unverified"
+    },
+    {
+      "id": "aic-fieldwork-cqb-armor",
+      "name": "AIC Fieldwork CQB Armor",
+      "categories": [
+        "Gear"
+      ],
+      "gearSet": "AIC Fieldwork",
+      "slot": "Armor",
+      "iconPath": null,
+      "cacheStatus": "wiki-listed-image-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/AIC_Fieldwork_CQB_Armor",
+      "officialNumericId": null,
+      "identityStatus": "official-numeric-id-unverified"
+    },
+    {
+      "id": "aic-fieldwork-cqb-gloves",
+      "name": "AIC Fieldwork CQB Gloves",
+      "categories": [
+        "Gear"
+      ],
+      "gearSet": "AIC Fieldwork",
+      "slot": "Gloves",
+      "iconPath": null,
+      "cacheStatus": "wiki-listed-image-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/AIC_Fieldwork_CQB_Gloves",
+      "officialNumericId": null,
+      "identityStatus": "official-numeric-id-unverified"
+    },
+    {
+      "id": "aic-fieldwork-cqb-hacksaw",
+      "name": "AIC Fieldwork CQB Hacksaw",
+      "categories": [
+        "Gear"
+      ],
+      "gearSet": "AIC Fieldwork",
+      "slot": "Kit",
+      "iconPath": null,
+      "cacheStatus": "wiki-listed-image-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/AIC_Fieldwork_CQB_Hacksaw",
+      "officialNumericId": null,
+      "identityStatus": "official-numeric-id-unverified"
+    }
+  ]
+}
