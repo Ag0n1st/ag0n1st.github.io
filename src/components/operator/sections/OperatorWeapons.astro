@@ -35,7 +35,7 @@ const officialWeapons=shownWeapons.map(w=>{
     </table>
   </div> :
   <p class="op-muted">Offizielle Waffendetails für diesen Eintrag noch nicht vollständig verfügbar.</p>}
-              {w.source && <p><strong>Bezugsquelle:</strong> {w.source}</p>}
+              {w.source && <p><strong>Quelle der Einordnung:</strong> {w.source}</p>}
               <p class="op-body-copy"><strong>Bewertung</strong><br />{w.evaluation || missing}</p>
               <details class="op-details"><summary>Offizielle Tuning-Stufen, Effekte und Potenziale</summary>
   <div class="op-details-body">
@@ -61,12 +61,36 @@ const officialWeapons=shownWeapons.map(w=>{
           </> : <p class="op-placeholder">[Waffendetails werden nach dem Datenimport angezeigt]</p>}
         </div>
         <div class="op-divided"><h3>Waffenvergleich</h3>
-          <p class="op-section-intro">Nur auf Basis nachvollziehbarer Berechnungen und Vergleichsbedingungen.</p>
-          {weapons.some(w=>w.performancePercent!==undefined) ?
-            <div class="op-table-wrap"><table class="op-table">
-              <thead><tr><th>Waffe</th><th>Relative Leistung</th><th>Vergleichsbedingungen</th><th>Quelle</th></tr></thead>
-              <tbody>{weapons.filter(w=>w.performancePercent!==undefined).map(w=><tr><td>{resolveOfficialItem(w.name,"Weapons")?.name??w.name}</td><td>{w.performancePercent} %</td><td>{w.comparisonConditions}</td><td>{w.source || "–"}</td></tr>)}</tbody>
-            </table></div> :
-            <p class="op-placeholder">[Noch keine belastbaren Vergleichswerte]</p>}
+          <p class="op-section-intro">Relative Berechnungswerte aus der jeweiligen Datafield-Charakterseite. Jede Teamkonstellation verwendet ihre eigene 100-%-Referenz. Die Übersicht der empfohlenen Waffen oben ist unabhängig von den getesteten Rängen.</p>
+          {guide.weapons.comparisons.length>0 ?
+            <div class="op-comparison-scenarios">
+              {guide.weapons.comparisons.map(scenario=>
+                <article class="op-cardlet op-comparison-scenario">
+                  <h4>{scenario.title}</h4>
+                  <p class="op-muted">Referenz: {resolveOfficialItem(scenario.referenceWeaponId,"Weapons")?.name??scenario.referenceWeaponId} R{scenario.referenceRank} = 100,0 %</p>
+                  <div class="op-table-wrap"><table class="op-table">
+                    <thead><tr><th>Waffe</th><th>Rang</th><th>Relative Leistung</th></tr></thead>
+                    <tbody>{scenario.entries.map(entry=><tr>
+                      <td>{resolveOfficialItem(entry.weaponId,"Weapons")?.name??entry.weaponId}</td>
+                      <td>R{entry.rank}</td>
+                      <td>{entry.performancePercent.toLocaleString("de-DE",{minimumFractionDigits:1,maximumFractionDigits:1})} %</td>
+                    </tr>)}</tbody>
+                  </table></div>
+                  <p class="op-muted op-source-note">Quelle: {scenario.sourceNote} · Charakterprofil · Datenstand {scenario.snapshotDate??"nicht angegeben"}</p>
+                  <details class="op-details"><summary>Vergleichsbedingungen</summary>
+                    <div class="op-details-body"><p class="op-body-copy">{scenario.comparisonConditions}</p></div>
+                  </details>
+                </article>)}
+            </div> :
+            weapons.some(w=>w.performancePercent!==undefined) ?
+              <div class="op-table-wrap"><table class="op-table">
+                <thead><tr><th>Waffe</th><th>Relative Leistung</th><th>Vergleichsbedingungen</th><th>Quelle</th></tr></thead>
+                <tbody>{weapons.filter(w=>w.performancePercent!==undefined).map(w=><tr>
+                  <td>{resolveOfficialItem(w.name,"Weapons")?.name??w.name}</td>
+                  <td>{w.performancePercent} %</td><td>{w.comparisonConditions}</td><td>{w.source||"–"}</td>
+                </tr>)}</tbody>
+              </table></div> :
+              <p class="op-placeholder">[Noch keine belastbaren Vergleichswerte]</p>}
+          {guide.weapons.disclaimer && <div class="op-notice op-comparison-disclaimer"><strong>Hinweis zur Dateninterpretation:</strong> {guide.weapons.disclaimer}</div>}
         </div>
       </section>
