@@ -332,3 +332,9 @@
   .op-quick-weapon-card{padding:10px}
   .op-quick-weapon-card .op-mini-art{width:48px;height:48px;flex-basis:48px}
 }
+
+/* Optimized 16:9 local WebP Operator Snapshots (P1/P3/P5), optional by asset. */
+.op-potential-snapshot{margin:14px 0 16px;max-width:720px}
+.op-potential-snapshot img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;border-radius:10px;background:#15141b;border:1px solid #39313f}
+.op-potential-snapshot figcaption{margin-top:6px;color:var(--muted);font-size:10px;line-height:1.5}
+.op-potential-snapshot a{color:var(--cyan)}
