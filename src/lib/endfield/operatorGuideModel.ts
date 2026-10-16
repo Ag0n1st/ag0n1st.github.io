@@ -169,12 +169,15 @@ const verifiedMetaRequirements=realMetaBuilds.map(build=>({
 const metaAccessibility=metaAccessibilityFromRequirements(verifiedMetaRequirements);
 const ratingValues={
   ...guide.overview.ratings,
+  // Stored difficulty is still 1=easy, 5=hard; all visible bars are positive.
+  beginnerFriendliness: guide.overview.ratings.difficulty===undefined
+    ? undefined : 6-guide.overview.ratings.difficulty,
   accessibility:realMetaBuilds.length
     ?metaAccessibility?.score
     :guide.overview.ratings.accessibility,
 };
 const ratingRows = [
-  ["Spielschwierigkeit","difficulty","Wie anspruchsvoll sind die Mechaniken?"],
+  ["Einsteigerfreundlichkeit","beginnerFriendliness","Wie einfach lässt sich der Operator sicher spielen? Mehr Balken = leichter."],
   ["Flexibilität","flexibility","Wie leicht lässt sich der Operator in Teams einbauen?"],
   ["Zugänglichkeit","accessibility",metaAccessibility
     ? "Automatisch: frühester vollständig geprüfter Meta-Build ("+
