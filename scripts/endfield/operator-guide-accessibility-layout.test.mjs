@@ -123,7 +123,8 @@ test("Datafield sources appear ONLY as subtle per-scenario and table footnotes",
 test("no cumulative potential metric, no standalone pull subsection in schema or template",()=>{
  assert.match(schema,/increaseOverPreviousPercent: z\.number/);
  assert.doesNotMatch(schema,/increaseOverP0Percent/);
- assert.doesNotMatch(schema,/\n    pullAdvice: text\.default\(""),\n  \}\)\.default\(\{\}\),\n\n  teams:/);
+ const potentialsSchema=schema.slice(schema.indexOf("  potentials: z.object({"),schema.indexOf("  teams: z.object({"));
+ assert.doesNotMatch(potentialsSchema,/pullAdvice/);
  assert.doesNotMatch(template,/increaseOverP0Percent:\s*\d/);
  assert.match(template,/conclusion\.pullAdvice/);
  assert.match(schema,/conclusion: z\.object/);
