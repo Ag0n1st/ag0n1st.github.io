@@ -7,7 +7,7 @@
   "terminologyNote": "Deutsche redaktionelle Übersetzung der englischen SKPORT-Wiki. Originalnamen und ausgewählte Spielbegriffe bleiben zum Abgleich erhalten.",
   "operatorTerms": {
     "Agility": "Beweglichkeit",
-    "Will": "Willenskraft",
+    "Will": "Wille",
     "Strength": "Stärke",
     "Intellect": "Intelligenz",
     "Base ATK": "Basis-ANG",
@@ -35,7 +35,7 @@
     },
     "ultimate": {
       "name": "Dawnstar Concerto",
-      "description": "Liino heilt das gesamte Team (HP Treatment), wechselt gleichzeitig in ihre Kosmostimmenhaltung (Cosmovoice Stance) und erzeugt eine fortlaufende Bühnenshow aus Pyrotechnik, die Elektroschaden verursacht. Abschließend löst sie „Electrifying Extravaganza“ aus, das in einem großen Wirkungsbereich Elektroschaden verursacht und Gegner zwangsweise mit Elektrifizierung (Electrification) belegt.\n\nKOSMOSTIMMENHALTUNG:\n\nDiese Haltung ersetzt Liinos Sängerinnenhaltung. Während sie aktiv ist, erhalten alle Teammitglieder Elektro- und Naturverstärkung (Electric Amp/Nature Amp), deren Wirkung mit Liinos Willenskraft (Will) zunimmt, sowie einen ANG-Bonus.\n\nDie Beats von Liinos Lied verursachen Elektroschaden an Gegnern im Wirkungsbereich und gewähren befreundeten Operatoren dort kontinuierliche Heilung.\n\nBeim regulären Ende der Haltung erleiden Gegner das Dreifache des Schadens eines einzelnen Beats. Gleichzeitig erhält das gesamte Team die dreifache Heilung eines einzelnen Beats. Dieser Abschlusseffekt wird nicht ausgelöst, wenn die Haltung vorzeitig beendet wird.\n\nWährend der Kosmostimmenhaltung wird die Kampffertigkeit durch „End Stance“ ersetzt. Ihr Einsatz beendet die Haltung vorzeitig und verbraucht keine SP."
+      "description": "Liino heilt das gesamte Team (HP Treatment), wechselt gleichzeitig in ihre Kosmostimmenhaltung (Cosmovoice Stance) und erzeugt eine fortlaufende Bühnenshow aus Pyrotechnik, die Elektroschaden verursacht. Abschließend löst sie „Electrifying Extravaganza“ aus, das in einem großen Wirkungsbereich Elektroschaden verursacht und Gegner zwangsweise mit Elektrifizierung (Electrification) belegt.\n\nKOSMOSTIMMENHALTUNG:\n\nDiese Haltung ersetzt Liinos Sängerinnenhaltung. Während sie aktiv ist, erhalten alle Teammitglieder Elektro- und Naturverstärkung (Electric Amp/Nature Amp), deren Wirkung mit Liinos Wille (Will) zunimmt, sowie einen ANG-Bonus.\n\nDie Beats von Liinos Lied verursachen Elektroschaden an Gegnern im Wirkungsbereich und gewähren befreundeten Operatoren dort kontinuierliche Heilung.\n\nBeim regulären Ende der Haltung erleiden Gegner das Dreifache des Schadens eines einzelnen Beats. Gleichzeitig erhält das gesamte Team die dreifache Heilung eines einzelnen Beats. Dieser Abschlusseffekt wird nicht ausgelöst, wenn die Haltung vorzeitig beendet wird.\n\nWährend der Kosmostimmenhaltung wird die Kampffertigkeit durch „End Stance“ ersetzt. Ihr Einsatz beendet die Haltung vorzeitig und verbraucht keine SP."
     }
   },
   "metricLabels": {
@@ -76,8 +76,8 @@
     "DMG Multiplier": "Schadensmultiplikator",
     "Stage Pyrotechnics DMG Multiplier": "Bühnenpyrotechnik – Schadensmultiplikator",
     "Electrifying Extravaganza DMG Multiplier": "Electrifying Extravaganza – Schadensmultiplikator",
-    "Amp Increase per Will": "Verstärkungszuwachs pro Willenskraft",
-    "MAX Amp from Will": "Maximale Verstärkung durch Willenskraft",
+    "Amp Increase per Will": "Verstärkungszuwachs pro Wille",
+    "MAX Amp from Will": "Maximale Verstärkung durch Wille",
     "Base Treatment for 1st Treatment": "Basis-Heilung beim ersten Heileffekt",
     "DMG Multiplier per Beat": "Schadensmultiplikator pro Beat",
     "Base Treatment per Beat": "Basis-Heilung pro Beat",
@@ -91,7 +91,7 @@
     },
     "2": {
       "name": "Committed Rehearsals",
-      "effect": "Willenskraft (Will) +20 und Heilungseffizienz +10 %."
+      "effect": "Wille (Will) +20 und Heilungseffizienz +10 %."
     },
     "3": {
       "name": "Longing for the Horizon",
@@ -110,10 +110,10 @@
     "stalwart": {
       "name": "Stalwart",
       "levelEffects": [
-        "Willenskraft des Operators +10",
-        "Willenskraft des Operators +15",
-        "Willenskraft des Operators +15",
-        "Willenskraft des Operators +20"
+        "Wille des Operators +10",
+        "Wille des Operators +15",
+        "Wille des Operators +15",
+        "Wille des Operators +20"
       ]
     },
     "idol-zone": {
