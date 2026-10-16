@@ -317,30 +317,22 @@ teams:
   # Meta-Team-Zuordnung ausdrücklich durch den Creator vorgegeben.
   meta:
     - id: zhuang-meta
-      title: "Zhuang Fangyi · Meta-Team"
+      title: "Zhuang Fangyi"
       role: support
       members: [zhuang-fangyi, perlica, arclight, liino]
-      evaluation: >-
-        Vom Creator als Zhuang-Fangyi-Meta-Team festgelegt.
-        Liino übernimmt den Support-Slot.
     - id: arcane-meta
-      title: "Arcane · Meta-Team"
+      title: "Arcane"
       role: support
       members: [arcane, tangtang, xaihi, liino]
-      evaluation: >-
-        Vom Creator als Arcane-Meta-Team festgelegt.
-        Liino übernimmt den Support-Slot.
   more:
     - id: zhuang-arcane
       title: "Zhuang Fangyi · Arcane"
       role: support
       members: [zhuang-fangyi, perlica, arcane, liino]
-      note: "Weitere vom Creator empfohlene Zhuang-Fangyi-Konstellation mit Liino als Support."
     - id: arcane-snowshine
       title: "Arcane · Snowshine"
       role: support
       members: [arcane, snowshine, xaihi, liino]
-      note: "Weitere vom Creator empfohlene Arcane-Konstellation mit Liino als Support."
     - id: arcane-estella
       title: "Arcane · Estella"
       role: support
@@ -361,7 +353,7 @@ conclusion:
     Kampffertigkeit vielseitig einsetzbar.
   recommendation: recommended
   pullAdvice: >-
-    Empfehlung: Liino ist ein genereller Mehrwert für Accounts aller
+    Liino ist ein genereller Mehrwert für Accounts aller
     Fortschrittsstufen. Nach dem Aktivieren ihrer Kampffertigkeit
     unterstützt sie das Team weitgehend passiv: Man muss keine komplizierten
     Abfolgen ihrer weiteren Fertigkeiten einplanen, um bereits von der
