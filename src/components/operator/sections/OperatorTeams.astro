@@ -4,7 +4,7 @@ import TeamMemberGear from "./TeamMemberGear.astro";
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
-const { guide, roleLabels, metaTeams, extraTeams, teamRoles, displayTeamMember } = model;
+const { guide, roleLabels, metaTeams, extraTeams, teamRoles, displayTeamMember, teamMemberCard } = model;
 ---
 <section class="op-section" id="teams">
         <h2>Teams</h2>
@@ -17,8 +17,11 @@ const { guide, roleLabels, metaTeams, extraTeams, teamRoles, displayTeamMember }
           <h3>Empfohlene Meta-Teams</h3>
 
           {metaTeams.length ? <div class="op-two">{metaTeams.map(team=><article class="op-cardlet">
-            <div class="op-subtitle op-meta-team-heading"><h3 style="margin:0">{team.title}</h3><div class="op-meta-team-labels"><span class="op-chip is-accent">Meta</span><span class="op-chip">{roleLabels[team.role]}</span></div></div>
-            <div class="op-team-operators">{team.members.map(member=><div class="op-team-slot">{displayTeamMember(member)}</div>)}</div>
+            <div class="op-subtitle op-meta-team-heading"><h3 style="margin:0">{team.title}</h3><div class="op-meta-team-labels"><span class="op-chip is-accent">Meta</span><span class:list={{"op-chip":true,"is-pink":team.role==="main-dps"}}>{roleLabels[team.role]}</span></div></div>
+            <div class="op-team-operators">{team.members.map(member=>{
+              const art=teamMemberCard(member);
+              return <div class="op-team-slot"><span class="op-team-art">{art.image ? <img src={art.image} loading="lazy" decoding="async" alt="" /> : <span aria-hidden="true">{art.initials}</span>}</span><span class="op-team-name">{art.name}</span></div>;
+            })}</div>
             {(team.evaluation || team.note) && <p class="op-body-copy">{team.evaluation || team.note}</p>}
             <TeamMemberGear rows={team.memberGear??[]} displayTeamMember={displayTeamMember}/>
             {team.buildId && <p><a class="op-link" href="#ausruestung" data-select-build={team.buildId}>Empfohlene Ausrüstung ansehen ↗</a></p>}
@@ -34,7 +37,10 @@ const { guide, roleLabels, metaTeams, extraTeams, teamRoles, displayTeamMember }
             </div>}
             <div class="op-team-scroll" style="margin-top:12px">{extraTeams.map(team=><article class="op-cardlet op-compact-team" data-team-role={team.role}>
               <div class="op-subtitle"><strong style="font-size:13px">{team.title}</strong><span class="op-chip">{roleLabels[team.role]}</span></div>
-              <div class="op-team-operators">{team.members.map(member=><div class="op-team-slot">{displayTeamMember(member)}</div>)}</div>
+              <div class="op-team-operators">{team.members.map(member=>{
+              const art=teamMemberCard(member);
+              return <div class="op-team-slot"><span class="op-team-art">{art.image ? <img src={art.image} loading="lazy" decoding="async" alt="" /> : <span aria-hidden="true">{art.initials}</span>}</span><span class="op-team-name">{art.name}</span></div>;
+            })}</div>
               {(team.note || team.buildId) && <p class="op-body-copy">{team.note || ""} {team.buildId && <a class="op-link" href="#ausruestung" data-select-build={team.buildId}>Ausrüstung ↗</a>}</p>}
               <TeamMemberGear rows={team.memberGear??[]} displayTeamMember={displayTeamMember}/>
             </article>)}</div>
