@@ -24,8 +24,8 @@ const base=isEn?"/en":"";
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#09090d" />
     <link rel="icon" type="image/svg+xml" href="/images/ag0n1st-logo.svg" />
-    <SeoHead path={Astro.url.pathname} title={title+" | Ag0n1st"} description={description} noindex={noindex} />
-    <title>{title} — Arknights: Endfield | Ag0n1st</title>
+    <SeoHead path={Astro.url.pathname} title={title} description={description} noindex={noindex} translated={!noindex} />
+    <title>{title.includes(" | ")||title.includes("– Ag0n1st")?title:title+" — Arknights: Endfield | Ag0n1st"}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;700&display=swap" rel="stylesheet" />
