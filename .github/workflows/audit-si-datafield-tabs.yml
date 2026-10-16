@@ -33,7 +33,9 @@ jobs:
               except Exception:pass
               def section():
                 s=pg.locator("body").inner_text()
-                a=s.find("Potentials\n"),k=s.find("Recommended Weapons",a),t=s.find("Recommended Gear Sets",k)
+                a=s.find("Potentials\\n")
+                k=s.find("Recommended Weapons",a)
+                t=s.find("Recommended Gear Sets",k)
                 print("SI_DF_SCENARIO",s[a:t if t>k else a+12000][:16000])
               section()
               for target in ["Support Potentials","DPS Potentials","Support","Main DPS"]:
