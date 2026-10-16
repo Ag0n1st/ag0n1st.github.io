@@ -33,9 +33,33 @@ overview:
   # accessibility derives automatically from the validated Meta gear builds.
 
 operatorKit:
-  playstyle: ""
-  progressionNotes: ""
-  resourceNotes: ""
+  playstyle: >-
+    Liino unterstützt ihr Team über zwei aufeinander aufbauende Haltungen.
+    Mit ihrer Kampffertigkeit Dazzling Focus (25 FP) aktiviert sie für bis
+    zu 60 Sekunden die Vocalist Stance. Währenddessen erhält das gesamte
+    Team einen ANG-Bonus (auf M3 10 %); Operatoren in Reichweite werden
+    im Kampf regelmäßig geheilt. Befinden sich Gegner in der Nähe,
+    verursacht Liino außerdem in festen Abständen zusätzlichen
+    Elektroschaden. Wird während dieser Haltung eine Arts-Reaktion auf
+    einen Gegner aufgetragen oder verbraucht, kann Liino mit Delightful
+    Harmonics ihre Kombofertigkeit einsetzen: Sie heilt den aktuell
+    gesteuerten Operator, gewinnt 20 Ultimate-Energie und behält ihre
+    Vocalist Stance bei. Nach der Kombo kann über das Kampftalent
+    Starry Boost of 1st Magnitude die nächste Elektro- oder
+    Natur-Kampffertigkeit innerhalb von 30 Sekunden auf höchster
+    Talentstufe bis zu 10 FP zurückerhalten. Für 160 Ultimate-Energie
+    aktiviert Dawnstar Concerto für 15 Sekunden die stärkere Cosmovoice
+    Stance: Das Team erhält einen ANG-Bonus sowie Elektro- und
+    Naturverstärkung, die zusätzlich mit Liinos Willenskraft skaliert.
+    Gleichzeitig heilt Liino Verbündete im Wirkungsbereich und greift
+    Gegner mit Elektroschaden an. Das Ultimate erzwingt zudem
+    Elektrifizierung in einem großen Bereich. Setze dieses Zeitfenster
+    möglichst dann ein, wenn dein Team seinen entscheidenden Schaden
+    verursacht. Wichtig: Eine erneute Kampffertigkeit beendet die
+    aktive Haltung vorzeitig. Bei der Cosmovoice Stance entfällt
+    dadurch auch der reguläre Abschluss mit dreifachem Beat-Schaden
+    und dreifacher Beat-Heilung.
+
 
 skills:
   priority:
