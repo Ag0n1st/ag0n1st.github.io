@@ -250,3 +250,14 @@
 .op-progress-preset-button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
 .op-progress-preset-min{border-color:rgba(101,232,242,.38);background:rgba(101,232,242,.07);color:#b3f0f4}
 @media(max-width:680px){.op-progress-preset-actions{gap:8px}.op-progress-preset-button{flex-basis:100%;min-height:44px}}
+
+/* Scenario-specific character-profile comparisons. Never merge team baselines. */
+.op-comparison-scenarios{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.op-comparison-scenario{min-width:0}
+.op-comparison-scenario h4{margin:0 0 8px;font-size:15px;line-height:1.45}
+.op-comparison-scenario>.op-muted{margin:0 0 10px;font-size:11px}
+.op-comparison-scenario .op-table{font-size:12px}
+.op-comparison-scenario .op-details{margin-top:12px}
+.op-comparison-disclaimer{margin-top:13px;font-size:12px;line-height:1.65}
+.op-source-note{overflow-wrap:anywhere}
+@media(max-width:1040px){.op-comparison-scenarios{grid-template-columns:1fr}}
