@@ -33,6 +33,7 @@ const isPreview = guide.status === "preview";
   title={operatorName + " Guide"}
   kicker="ARKNIGHTS: ENDFIELD · OPERATOREN"
   active="operators"
+  noindex={isPreview}
   description={guide.overview.summary || operatorName + " – Guide, Skills, Waffen, Builds und Teams."}
 >
   <OperatorGuide guide={guide} operatorName={operatorName} gameData={gameData} extraData={extraData} localized={localized} preview={isPreview}>
