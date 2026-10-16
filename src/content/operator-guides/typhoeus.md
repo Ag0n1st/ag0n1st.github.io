@@ -791,7 +791,7 @@ gameplay:
         beiden Wellen.
     - id: nefarith-guide
       title: "Nefarith – kommentierte Rotation"
-      type boss
+      type: boss
       url: "https://www.youtube.com/watch?v=wNVJkGzkfMg&t=1338s"
       description: >-
         Vollständige Erklärung
@@ -835,7 +835,7 @@ gameplay:
         kritischen Treffern ab.
     - id: nefarith-p0
       title: "Nefarith – P0 No Food Speedrun"
-      type speedrun
+      type: speedrun
       url: "https://www.youtube.com/watch?v=Zw8B2F2nJP8"
       description: >-
         Eigenständiger 0:39-Run
@@ -852,7 +852,7 @@ gameplay:
         heranziehen.
     - id: rhodagn-p0
       title: "Rhodagn – P0 Showcase"
-      type boss
+      type: boss
       url: "https://www.youtube.com/watch?v=uixHyNlbwAQ"
       description: >-
         Separater Rhodagn-
@@ -868,7 +868,7 @@ gameplay:
         Bedingungen vergleichen.
     - id: quiz-zeichen
       title: "Quiz – wie viele Zeichen?"
-      type other
+      type: other
       url: "https://www.youtube.com/watch?v=wNVJkGzkfMg&t=1526s"
       description: >-
         Zum Verständnis des
