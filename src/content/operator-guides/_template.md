@@ -163,8 +163,13 @@ teams:
   #   #   - member: operator-b
   #   #     weaponId: "1175" # ID ist NUR EIN BEISPIEL, nicht generische Empfehlung
   #   #     weaponRank: 4 # optional und nur bei belegtem Rang
+  #   #     weaponAlternatives: ["1044"] # nur weitere belegte Waffen-IDs
   #   #     items: ["1239", "1238", "1240", "365"] # genau 4 echte Gear-IDs
   #   #     note: "Konkreter Teamkontext und die redaktionelle Begründung"
+  #   #     alternatives: # jede Bedingung als eigenes, zugeklapptes Vierer-Setup
+  #   #       - title: "Nur ohne Xiranit-Nutzer im Team"
+  #   #         items: ["1134", "1138", "337", "365"]
+  #   #         note: "Wann dieses alternative Set tatsächlich passt"
   #   evaluation: |
   #     Kurze Begründung der Synergien, ohne ausführliche Rotation.
   more: []
@@ -199,6 +204,6 @@ conclusion:
 
 ---
 
-<!-- Zusätzlicher Markdown-Text wird am Ende des Fazits gerendert.
+<!-- Zusätzlicher Markdown-Text wird vor den beiden finalen Zielgruppen-Cards im Fazit gerendert.
      Hauptinhalt und alle neun Guide-Abschnitte werden aus dem YAML-Block oben erzeugt. -->
 
