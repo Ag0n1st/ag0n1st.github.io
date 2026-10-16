@@ -151,3 +151,51 @@ test("other guides are not forced to invent meta recommendations",()=>{
  const model=readFileSync("src/lib/endfield/operatorGuideModel.ts","utf8");
  assert.match(model,/meta:false,metaSummary:""/);
 });
+
+test("creator-approved Liino skill priority uses the exact four level targets and comparisons",()=>{
+ const text=readFileSync("src/content/operator-guides/liino.md","utf8");
+ assert.match(text,/^  priority:\n    order: \[ultimate, battle, combo, basic\]\n    comparisons: \[">", ">=", ">"\]\n    targetLevels:\n      ultimate: "M3"\n      battle: "M3"\n      combo: "M3"\n      basic: "1"$/m);
+ assert.match(text,/^    battle: >-\n[\s\S]*?10 % ANG-Bonus/m);
+ assert.match(text,/^    combo: >-\n[\s\S]*?10 auf 8 Sekunden/m);
+ assert.match(text,/Die FP stammen aus dem Talent, nicht unmittelbar aus der Kombo selbst/);
+ assert.match(text,/^    basic: >-\n      Auf Stufe 1 belassen\./m);
+ assert.match(text,/^status: preview$/m,"Other P2 areas must remain in preview");
+});
+
+test("SKPORT Liino data supports the creator-approved battle and combo M3 reasoning",()=>{
+ const imported=JSON.parse(readFileSync("src/data/endfield/operators/liino.json","utf8"));
+ const battle=imported.skills.find(skill=>skill.slot==="battle");
+ const combo=imported.skills.find(skill=>skill.slot==="combo");
+ const ultimate=imported.skills.find(skill=>skill.slot==="ultimate");
+ const metric=(skill,name)=>skill.metrics.find(row=>row[0]===name);
+ assert.equal(metric(battle,"ATK Boost").at(-1),"10%");
+ assert.equal(metric(battle,"ATK Boost")[1],"6%");
+ assert.equal(metric(combo,"Cooldown")[1],"10s");
+ assert.equal(metric(combo,"Cooldown").at(-1),"8s");
+ assert.equal(metric(combo,"Ultimate Energy Gain")[1],"20");
+ assert.equal(metric(combo,"Ultimate Energy Gain").at(-1),"20");
+ assert.equal(metric(ultimate,"Amp Increase per Will").at(-1),"0.04%");
+ assert.equal(metric(ultimate,"MAX Amp from Will").at(-1),"60%");
+});
+
+test("percent comparison data schema requires a visible source and concrete conditions",()=>{
+ const schema=readFileSync("src/content/operatorGuideSchema.ts","utf8");
+ const tpl=readFileSync("src/content/operator-guides/_template.md","utf8");
+ const weaponUi=readFileSync("src/components/operator/sections/OperatorWeapons.astro","utf8");
+ const potentialUi=readFileSync("src/components/operator/sections/OperatorPotentials.astro","utf8");
+ const workflow=readFileSync("docs/operator-guide-workflow.md","utf8");
+ assert.match(schema,/Waffen-Prozentvergleiche benötigen eine benannte Quelle, z\. B\. Datafield/);
+ assert.match(schema,/Potenzial-Prozentvergleiche benötigen eine benannte Quelle, z\. B\. Datafield/);
+ assert.match(schema,/Potenzial-Prozentvergleiche benötigen ihre Vergleichsbedingungen/);
+ assert.match(weaponUi,/<th>Vergleichsbedingungen<\/th><th>Quelle<\/th>/);
+ assert.match(weaponUi,/\{w\.source \|\| "–"\}/);
+ assert.match(potentialUi,/<th>Gemessener Gewinn vs\. P0<\/th><th>Quelle<\/th>/);
+ assert.match(potentialUi,/Quelle: \{p\.sourceNote\}/);
+ assert.match(tpl,/sourceNote: "Datafield"/);
+ assert.match(workflow,/keinen Link zur Datenquelle anzeigen/);
+ assert.match(workflow,/\*\*Datafield\*\* für die bevorzugten/);
+ assert.match(workflow,/nicht automatisch.*kumulative Steigerung/);
+ // Nobody should invent Liino percentages when the dynamic page is unavailable.
+ assert.match(guide,/^weapons:\n  recommendations: \[\]$/m);
+ assert.match(guide,/^potentials:\n  entries: \[\]$/m);
+});

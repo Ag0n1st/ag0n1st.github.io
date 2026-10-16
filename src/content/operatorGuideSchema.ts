@@ -34,8 +34,12 @@ const weaponRecommendation = z.object({
   performancePercent: z.number().finite().optional(),
   comparisonConditions: text.optional(),
 }).superRefine((weapon, ctx) => {
-  if (weapon.performancePercent !== undefined && !weapon.comparisonConditions?.trim()) {
+  if (weapon.performancePercent === undefined) return;
+  if (!weapon.comparisonConditions?.trim()) {
     ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["comparisonConditions"], message: "Prozentvergleiche benötigen nachvollziehbare Vergleichsbedingungen." });
+  }
+  if (!weapon.sourceNote?.trim()) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["sourceNote"], message: "Waffen-Prozentvergleiche benötigen eine benannte Quelle, z. B. Datafield." });
   }
 });
 
@@ -92,10 +96,27 @@ const showcase = z.object({
 const potential = z.object({
   level: z.number().int().min(1).max(5),
   evaluation: text.default(""),
+  // Redaktionelle Angabe zur verwendeten Berechnungsquelle, z. B. "Datafield".
+  // Auf der Website ausschließlich als Text, ohne verlinkte Quellenaktion.
+  sourceNote: text.optional(),
   // Werte sind optional: Nicht jedes Potenzial lässt sich seriös quantifizieren.
   increaseOverPreviousPercent: z.number().finite().optional(),
   increaseOverP0Percent: z.number().finite().optional(),
   comparisonConditions: text.optional(),
+}).superRefine((potential, ctx) => {
+  if (potential.increaseOverPreviousPercent === undefined && potential.increaseOverP0Percent === undefined) return;
+  if (!potential.comparisonConditions?.trim()) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom, path: ["comparisonConditions"],
+      message: "Potenzial-Prozentvergleiche benötigen ihre Vergleichsbedingungen.",
+    });
+  }
+  if (!potential.sourceNote?.trim()) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom, path: ["sourceNote"],
+      message: "Potenzial-Prozentvergleiche benötigen eine benannte Quelle, z. B. Datafield.",
+    });
+  }
 });
 
 export const operatorGuideSchema = z.object({

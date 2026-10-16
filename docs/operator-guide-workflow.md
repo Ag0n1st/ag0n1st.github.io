@@ -122,6 +122,23 @@ Der Button **„Maximal-Vorauswahl wiederherstellen (Anpassungen löschen)“** 
 
 **Qualitätssicherung:** `scripts/endfield/build-finder-defaults.test.mjs` prüft Maximallevel/-Komponente/-Area/-Authority/-Redistribution, alle sechs Liino-Builds ohne Klicks sofort als passend, Einschränkungen durch Level/Fabrik/abgewählte Blaupause, das geschlossene HTML-`details`, Meta→Finder-Link, v2-Opt-out-Speicherung, Migration und Reset. Ergänzend sind **echte Browser-/Mobile-Tests** weiter nötig.
 
+## Verbindliche Quellenkonvention: Datafield (Creator-Beschluss 16.10.2026)
+
+**Regel für alle weiteren Operator-Guides:** Bei der Recherche zu Ausrüstungs-/Waffen-/Potenzial-Meta und insbesondere **berechneten relativen Waffen-Prozenten und Potenzial-DPS-Prozenten** dient **Datafield** als **bevorzugte Quelle**. Der Creator orientiert sich für seine eigenen Aussagen an deren laufend gepflegten Analysen und den zugehörigen Tabellen/Rotationen. Bei anderen redaktionellen Ausrüstungsempfehlungen behält der Creator die letzte Entscheidung; **Datafield-Gear-Setups dürfen niemals automatisch seine Gear-Auswahl ersetzen** (z. B. die bestätigten Liino-Builds A/B/C).
+
+**Quellenhierarchie:**
+1. **Offizielle SKPORT-Spieldaten** für tatsächliche Namen, unveränderliche Item-IDs, Skill-Metriken, Potenzialeffekte, standardmäßige Herstellungskosten und Quest-/Item-Daten. Diese Rohdaten werden nicht aus Datafield überschrieben.
+2. **Datafield** für die bevorzugten **quantitativen, simulations- bzw. rotationsabhängigen Vergleiche** sowie als wichtiges externes Hilfsmittel für Waffenshortlists und Teams. Daten aus den Original-Excel-Dateien und der konkreten Operatorseite hinsichtlich Rotation, Teamzusammensetzung, Level/Rang/Veredelung/Potenzial und relativer Baseline unterscheiden. Bei sich unterscheidenden Szenarien keine universelle Rangfolge aus nur einem Wert ableiten.
+3. **Creator** für Bewertungen, endgültige Reihenfolge, Gameplay, Ressourcenpriorität, situative Gear-Builds und freizugebende Guide-Texte. Andere Guides (Prydwen, Mobalytics usw.) allenfalls ergänzend bei Lücken/Abweichungen, nicht als stiller Ersatz für Datafield.
+
+**Darstellung bei Zahlen:** `sourceNote: "Datafield"` (**sichtbare reine Textangabe „Quelle: Datafield“ ohne anklickbaren Link**) und `comparisonConditions` (vollständiges Setup und jeweilige Baseline) verpflichtend, sobald ein Waffen-`performancePercent` bzw. Potenzial-`increaseOverPreviousPercent` oder `increaseOverP0Percent` befüllt ist. Die Schema-Validierung erzwingt die beiden Angaben. Die Waffen- und Potenzial-Vergleichstabellen zeigen eine eigene Quellenspalte als Text; bei den Potenzial-Detailkarten steht Quelle ebenfalls im Fließtext.
+
+**Semantik besonders bei Potenzialen:** Datafield listet **„Potentials (DPS Increase)“**. Daraus **nicht automatisch** eine kumulative Steigerung **gegenüber P0** ableiten; erst in der Kalkulation/Excel-Baseline klären, ob jeder Zahlenwert den zusätzlichen Gewinn der jeweiligen Stufe oder den Gesamtgewinn bis zu dieser Stufe bezeichnet. Unsere Felder **`increaseOverPreviousPercent`** und **`increaseOverP0Percent`** sind getrennt und dürfen nicht blind mit identischen Zahlen gefüllt werden. Ebenso bei Waffen: 100 % bezeichnet die von Datafield festgelegte Referenzwaffe und deren Rang unter den **konkreten Modellbedingungen**, nicht einen für alle Teams universell gültigen Wert. Unterschiedliche Spreadsheets/Teamsets als getrennte Szenarien behandeln.
+
+**Vermeidung falscher Präzision:** Wenn die Webseite nur „Loading data…“ liefert, eine Excel-Basisreferenz/Teamrotation fehlt oder Werte nicht eindeutig extrahierbar sind, Prozentfelder **leer lassen** und Quelle/Zugriffslimit dokumentieren – keinesfalls Werte aus Erinnerungen, Sekundärseiten oder vergangenen Patchdaten als Datafield-Ergebnis ausgeben. Datenfeld-URL für interne künftige Recherche als **nicht verlinkter** technischer Vermerk: `https://datafield.cc/characters/liino`. **Auf der öffentlichen Website keinen Link zur Datenquelle anzeigen**, nur den Namen `Datafield`. Bei Websiteupdates Datenstand/Snapshot des Vergleichs neu prüfen.
+
+**Unabhängige rote Linie:** Eine von Datafield empfohlene Skill-Priorität überschreibt **nie** die bereits vom Creator festgelegten Operator-Skill-Level oder von ihm bestätigten Builds. Beispiele für Liino siehe `src/content/operator-guides/liino.md` und Abschnitt §P2 der `ROADMAP.md`.
+
 ## Kompaktregeln für YAML
 
 - Einrückung mit **Leerzeichen**, nicht Tabulatoren.
