@@ -1,0 +1,36 @@
+---
+import ItemIcon from "../../endfield/ItemIcon.astro";
+import {resolveOfficialItem} from "../../../lib/endfield/itemCatalog";
+
+interface GearRow {
+  member:string;
+  items:[string,string,string,string];
+  note?:string;
+}
+interface Props {
+  rows:GearRow[];
+  displayTeamMember:(slug:string)=>string;
+}
+const {rows,displayTeamMember}=Astro.props;
+const resolved=rows.map(row=>({...row,parts:row.items.map(id=>({
+  id,official:resolveOfficialItem(id,"Gear")
+}))}));
+---
+{resolved.length>0 && <details class="op-details op-team-gear">
+  <summary>Beispielausrüstung der Teammitglieder · {resolved.length} Operatoren</summary>
+  <div class="op-details-body">
+    <p class="op-muted op-team-gear-caveat">Teamabhängige Ausrüstungsbeispiele, kein Nachweis über deinen Blaupausenbesitz. Ausrüstungswerte und Herstellungsbedingungen sind im Ausrüstungs-Build-Finder separat überprüfbar.</p>
+    <div class="op-team-gear-list">
+      {resolved.map(row=><div class="op-team-gear-entry">
+        <strong>{displayTeamMember(row.member)}</strong>
+        <div class="op-team-gear-parts">
+          {row.parts.map(part=><div class="op-team-gear-part">
+            <ItemIcon id={part.official?.id??part.id} size="small"/>
+            <small>{part.official?.name??part.id}</small>
+          </div>)}
+        </div>
+        {row.note && <p class="op-muted op-body-copy">{row.note}</p>}
+      </div>)}
+    </div>
+  </div>
+</details>}
