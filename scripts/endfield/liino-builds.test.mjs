@@ -100,7 +100,8 @@ test("real builds in an unfinished preview guide must not use demo preview mode"
 });
 
 test("only creator-selected Liino builds A, B and C are featured as Meta Builds",()=>{
-  const entries=[...guide.matchAll(/^    - id: ([a-z0-9-]+)\n([\s\S]*?)(?=^    - id:|^  progression:)/gm)];
+  const raw=guide.match(/^equipment:\n  builds:\n([\s\S]*?)(?=^  progression:)/m)?.[1]??"";
+  const entries=[...(raw+"  progression:\n").matchAll(/^    - id: ([a-z0-9-]+)\n([\s\S]*?)(?=^    - id:|^  progression:)/gm)];
   assert.equal(entries.length,6,"Each creator build must be recorded exactly once");
   const meta=entries.filter(([full,id,body])=>/^      meta: true$/m.test(body));
   assert.deepEqual(meta.map(match=>match[1]),["ultimate-fokus","balanced","will-fokus"]);
@@ -188,14 +189,16 @@ test("percent comparison data schema requires a visible source and concrete cond
  assert.match(schema,/Potenzial-Prozentvergleiche benötigen eine benannte Quelle, z\. B\. Datafield/);
  assert.match(schema,/Potenzial-Prozentvergleiche benötigen ihre Vergleichsbedingungen/);
  assert.match(weaponUi,/<th>Vergleichsbedingungen<\/th><th>Quelle<\/th>/);
- assert.match(weaponUi,/\{w\.source \|\| "–"\}/);
- assert.match(potentialUi,/<th>Gemessener Gewinn vs\. P0<\/th><th>Quelle<\/th>/);
+ assert.match(weaponUi,/\{w\.source\s*\|\|\s*"–"\}/);
+ assert.match(potentialUi,/<th>Zusatzgewinn zur Vorstufe<\/th><th>Gesamtgewinn vs\. P0<\/th><th>Quelle<\/th>/);
  assert.match(potentialUi,/Quelle: \{p\.sourceNote\}/);
  assert.match(tpl,/sourceNote: "Datafield"/);
  assert.match(workflow,/keinen Link zur Datenquelle anzeigen/);
  assert.match(workflow,/\*\*Datafield\*\* für die bevorzugten/);
  assert.match(workflow,/nicht automatisch.*kumulative Steigerung/);
- // Nobody should invent Liino percentages when the dynamic page is unavailable.
- assert.match(guide,/^weapons:\n  recommendations: \[\]$/m);
- assert.match(guide,/^potentials:\n  entries: \[\]$/m);
+ // Published Datafield-character-profile values carry conditions and disclaimers.
+ assert.match(guide,/^weapons:\n  recommendations:\n    - weaponId: "1046"$/m);
+ assert.match(guide,/^potentials:\n  entries:\n    - level: 1$/m);
+ assert.match(guide,/sourcePageType: character-profile/);
+ assert.match(guide,/^  disclaimer: >-$/m);
 });

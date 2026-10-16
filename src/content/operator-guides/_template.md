@@ -67,6 +67,21 @@ weapons:
   #   sourceNote: "Datafield" # Als Klartext anzeigen, KEIN Link
   #   performancePercent: 100  # Nur aus nachvollziehbarer Datafield-Berechnung oder eigenem Vergleich
   #   comparisonConditions: "Exakte Datafield-Baseline, Team/Rotation, Waffenrang und Potenziale ..."
+  # Mehrere Teamvergleiche NUR aus dem Datafield-CHARAKTERPROFIL (nicht Team-Hub).
+  # Die allgemeine Waffenempfehlung oben bleibt EIN Eintrag pro Waffe ohne Rang.
+  # comparisons:
+  #   - id: beispiel-team
+  #     title: "Beispiel-Team"
+  #     sourcePageType: character-profile
+  #     sourceNote: "Datafield" # als KLARTEXT anzeigen, ohne URL
+  #     snapshotDate: "2026-10-16"
+  #     referenceWeaponId: "1046"
+  #     referenceRank: 4
+  #     comparisonConditions: "Genaues Datafield-Team, Modell, Referenz und noch unbestätigte Annahmen"
+  #     entries:
+  #       - { weaponId: "1046", rank: 4, performancePercent: 100.0 }
+  #       - { weaponId: "1046", rank: 9, performancePercent: 112.1 }
+  # disclaimer: "Prozentwerte sind modellabhängig, nicht für jede Rotation garantiert."
   generalNotes: ""
 
 # 5. AUSRÜSTUNG
@@ -105,6 +120,11 @@ potentials:
   #   increaseOverP0Percent: 0        # optional; nur mit Belegen
   #   comparisonConditions: "Datafield-Modell, Team/Rotation, Ausrüstung, Potenziale, P0-/P(n-1)-Vergleich ..."
   #   sourceNote: "Datafield" # Pflicht sobald einer der Prozentwerte befüllt ist, nur Klartext (kein Link)
+  # Bei Potentials (DPS Increase) der Datafield-Charakterseite:
+  # nur increaseOverPreviousPercent verwenden, WENN die Quelle
+  # ausdrücklich einen Vergleich zur jeweiligen Vorstufe nennt.
+  # KEINE Prozentwerte ungeprüft als kumulative vs. P0 eintragen!
+  # disclaimer: "Datenstand, Modellannahmen, keine universelle Pull-Garantie"
   pullAdvice: "" # persönlicher Stopp-Punkt; allgemeiner Disclaimer erscheint automatisch
 
 # 7. TEAMS
