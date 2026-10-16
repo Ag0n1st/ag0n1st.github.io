@@ -62,6 +62,8 @@ test("Fazit has one lead, badge aligned to headline and two audience cards",()=>
   assert.match(s,/class="op-conclusion-header"/);
   assert.match(s,/class="op-pull-recommendation-badge"/);
   assert.match(s,/class="op-conclusion-lead"/);
+  assert.equal((s.match(/<p class="op-conclusion-lead">/g)||[]).length,1);
+  assert.doesNotMatch(s,/op-conclusion-detail/);
   assert.match(s,/class="op-two op-conclusion-audiences"/);
   assert.match(s,/Für wen lohnt es sich\?/);
   assert.match(s,/Wer kann verzichten\?/);
