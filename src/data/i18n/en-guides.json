@@ -1,24 +1,24 @@
 {
   "si": {
     "seoTitle": "Si Build Guide – Best Gear, Skills & Teams | Arknights: Endfield",
-    "seoDescription": "Si guide for Arknights: Endfield: Cryo and Heat Amp, Ink Soul mechanics, skill priorities, four gear setups and six featured teams.",
-    "intro": "Si is a 6★ Cryo Supporter wielding a Greatsword. Her flexible kit allows her to serve as a Combo Skill-focused main DPS, a secondary damage dealer, or a support for Cryo and Heat teams. Artful Intent stores damage taken by an enemy; Ink Soul lets your team hit a linked target, while her Ultimate grants Cryo Amp and Heat Amp to the entire team. Getting the most out of her depends on Team Position 01, precise timing and careful FP management.",
+    "seoDescription": "Si guide for Arknights: Endfield: Cryo and Heat Amp, Inksoul mechanics, skill priorities, four gear setups and six featured teams.",
+    "intro": "Si is a 6★ Cryo Supporter wielding a Greatsword. Her flexible kit allows her to serve as a Combo Skill-focused main DPS, a secondary damage dealer, or a support for Cryo and Heat teams. Artful Intent stores damage taken by an enemy; Inksoul lets your team hit a linked target, while her Ultimate grants Cryo Amp and Heat Amp to the entire team. Getting the most out of her depends on Team Position 01, precise timing and careful SP management.",
     "strengths": [
       "Strong personal Cryo Combo Skill damage, crowd control, damage storage, and team-wide Cryo/Heat Amp in one flexible kit.",
       "Fits numerous Cryo and Heat teams while also supporting her own main-DPS rotation.",
-      "Ink Soul transfers hits and effects to the original target, especially useful when enemies move frequently.",
+      "Inksoul transfers hits and effects to the original target, especially useful when enemies move frequently.",
       "Her talent reduces the Combo Skill cooldown of the operator in Team Position 01 after her Ultimate.",
       "Can apply Cryo Infliction or Heat Infliction depending on the element of the operator in Team Position 01."
     ],
     "weaknesses": [
-      "Optimizing the Battle Skill sequence, stored damage and Ink Soul timing takes practice.",
+      "Optimizing the Battle Skill sequence, stored damage and Inksoul timing takes practice.",
       "Her strongest new v1.6 gear becomes accessible only late in story progression.",
       "Many of her highest-ceiling team compositions rely on limited operators."
     ],
     "mechanics": [
       {
-        "title": "Artful Intent and Ink Soul",
-        "text": "Brushwork Realm applies Artful Intent, Immobilization and Cryo Infliction. If a Heat operator occupies Team Position 01, it applies Heat Infliction instead. Artful Intent records part of the damage the target takes and later releases stored damage. First Brushstroke (15 FP) extracts an Ink Soul: hits and effects on the soul are transferred to the original enemy. Last Brushstroke ends the setup early. Avoid consuming your stored-damage window before it has done its job."
+        "title": "Artful Intent and Inksoul",
+        "text": "Brushwork Realm applies Artful Intent, Immobilization and Cryo Infliction. If a Heat operator occupies Team Position 01, it applies Heat Infliction instead. Artful Intent records part of the damage the target takes and later releases stored damage. Initial Stroke (15 SP) extracts an Inksoul: hits and effects on the soul are transferred to the original enemy. Final Stroke ends the setup early. Avoid consuming your stored-damage window before it has done its job."
       },
       {
         "title": "Fully Envisioned – Combo Skill",
@@ -61,7 +61,7 @@
       "si-34": "Si is the main DPS. Build around her Combo Skill and the timing of allies' Battle Skills.",
       "si-35": "An alternate Si main-DPS composition with Gilberta, preserving the Combo Skill focus."
     },
-    "conclusion": "Si is an unusually flexible Cryo Supporter who can also deal substantial personal damage. Her defining strengths are damage storage, Ink Soul target control and team-wide Cryo/Heat Amp, not merely one large Combo Skill hit. Her basics are approachable; optimizing FP, reactions and team position demands more planning.",
+    "conclusion": "Si is an unusually flexible Cryo Supporter who can also deal substantial personal damage. Her defining strengths are damage storage, Inksoul target control and team-wide Cryo/Heat Amp, not merely one large Combo Skill hit. Her basics are approachable; optimizing SP, reactions and team position demands more planning.",
     "recommendedFor": [
       "Yvonne and Last Rite teams that benefit from additional Cryo Infliction and Cryo Amp.",
       "Laevatain teams using Heat Infliction through Team Position 01.",
@@ -83,8 +83,8 @@
   },
   "typhoeus": {
     "seoTitle": "Typhoeus Guide – Nature Burst, Weapons & Teams | Arknights: Endfield",
-    "seoDescription": "Typhoeus guide covering Nature Burst, Hunting Arrows, FP management, Deep Rampart gear, recommended teams and skill priority in Arknights: Endfield.",
-    "intro": "Typhoeus (Typhi) is a 6★ Nature Striker using an Arts Unit and playing as an active main DPS. Her strongest attacks are empowered aerial shots that trigger Nature Bursts. Nature Infliction stacks prepared by her teammates increase that damage and generate Signs for additional Hunting Arrows. She can hit two enemies at once, but her rotation, positioning and FP economy are demanding.",
+    "seoDescription": "Typhoeus guide covering Nature Burst, Hunting Arrows, SP management, Deep Rampart gear, recommended teams and skill priority in Arknights: Endfield.",
+    "intro": "Typhoeus (Typhi) is a 6★ Nature Striker using an Arts Unit and playing as an active main DPS. Her strongest attacks are empowered aerial shots that trigger Nature Bursts. Nature Infliction stacks prepared by her teammates increase that damage and generate Signs for additional Hunting Arrows. She can hit two enemies at once, but her rotation, positioning and SP economy are demanding.",
     "strengths": [
       "High Nature Burst damage through empowered aerial shots, especially when Nature Infliction stacks are prepared.",
       "Targets up to two enemies at once while Hovering.",
@@ -93,14 +93,14 @@
     ],
     "weaknesses": [
       "Very limited team flexibility: reliable Nature Infliction setup generally requires Arcane or Fluorite.",
-      "Her Battle Skill costs 100 FP and her Ultimate can require 200 energy; Final Strikes and FP timing matter.",
+      "Her Battle Skill costs 100 SP and her Ultimate can require 200 energy; Final Strikes and SP timing matter.",
       "Being interrupted while Hovering loses valuable empowered shots; the protective barrier can break.",
       "Her signature weapon has a substantial advantage over alternatives."
     ],
     "mechanics": [
       {
         "title": "Hunting Arrows, Signs and Hovering",
-        "text": "Piercing Arrows of the Woods costs 100 FP and launches Typhoeus into Hovering for up to five aerial attacks against as many as two targets. Hunting Arrows empower those shots into Nature Burst triggers. Consuming existing Nature Infliction stacks increases Burst damage, grants Signs and restores Ultimate energy. Build stacks with your team before spending the enhanced shots."
+        "text": "Piercing Arrows of the Woods costs 100 SP and launches Typhoeus into Hovering for up to five aerial attacks against as many as two targets. Hunting Arrows empower those shots into Nature Burst triggers. Consuming existing Nature Infliction stacks increases Burst damage, grants Signs and restores Ultimate energy. Build stacks with your team before spending the enhanced shots."
       },
       {
         "title": "Rampant Thorns – Combo Skill",
@@ -125,14 +125,14 @@
       }
     },
     "gearNote": "Gear availability in the detailed German Build-Finder depends on story progress and blueprint ownership; these are build recommendations, not ownership claims.",
-    "teamsIntro": "These featured teams reflect Typhoeus's reliance on dependable Nature Infliction application. Arcane or Fluorite generally takes a slot; adjust the remaining supports and FP plan to your roster.",
+    "teamsIntro": "These featured teams reflect Typhoeus's reliance on dependable Nature Infliction application. Arcane or Fluorite generally takes a slot; adjust the remaining supports and SP plan to your roster.",
     "teamNotes": {
       "arcane-ardelia-liino": "Arcane supplies Nature Infliction; Ardelia and Liino support the damage window and resource flow.",
       "arcane-perlica-liino": "A variant with Perlica and Liino, trading support interactions while retaining Arcane as the Nature source.",
       "arcane-xaihi-liino": "Xaihi joins the Arcane/Liino core for a distinct support balance.",
       "arcane-gilberta-liino": "Gilberta supports an alternative control and amplification setup alongside Arcane and Liino."
     },
-    "conclusion": "Typhoeus delivers impressive Nature Burst damage but has a narrower team fit than many other main DPS operators. She is most rewarding when you can provide consistent Nature Infliction, maintain FP and execute aerial sequences without interruption.",
+    "conclusion": "Typhoeus delivers impressive Nature Burst damage but has a narrower team fit than many other main DPS operators. She is most rewarding when you can provide consistent Nature Infliction, maintain SP and execute aerial sequences without interruption.",
     "recommendedFor": [
       "Players specifically seeking a Nature main DPS who can prepare Nature Infliction consistently.",
       "Rosters with Arcane or Fluorite and fitting supports such as Liino, Ardelia, Perlica or Xaihi.",
@@ -140,7 +140,7 @@
     ],
     "skipIf": [
       "You already have several invested main DPS operators and need supports more urgently.",
-      "You prefer an uncomplicated rotation without Hunting Arrow, Sign and FP management.",
+      "You prefer an uncomplicated rotation without Hunting Arrow, Sign and SP management.",
       "You cannot supply reliable Nature Infliction or appropriate buff windows."
     ],
     "faq": [
@@ -157,10 +157,10 @@
   "liino": {
     "seoTitle": "Liino Support Guide – Best Gear & Team Buffs | Arknights: Endfield",
     "seoDescription": "Early English preview of Liino's support builds, Electric/Nature Amp, signature weapon and team role in Arknights: Endfield.",
-    "intro": "Liino is a 6★ Electric Supporter wielding a Polearm. Her kit combines team healing, ATK bonuses, FP refunds and Electric/Nature amplification. Her gameplay revolves around two stances and setting up a strong Ultimate buff window for the rest of the squad.",
+    "intro": "Liino is a 6★ Electric Supporter wielding a Polearm. Her kit combines team healing, ATK bonuses, SP refunds and Electric/Nature amplification. Her gameplay revolves around two stances and setting up a strong Ultimate buff window for the rest of the squad.",
     "strengths": [
       "Strong amplification and team-wide utility.",
-      "FP recovery through her talent and Combo Skill interactions.",
+      "SP recovery through her talent and Combo Skill interactions.",
       "Versatile support across numerous team compositions.",
       "Straightforward gameplay without highly technical execution."
     ],
@@ -171,10 +171,10 @@
     "mechanics": [
       {
         "title": "Dazzling Focus and Vocalist Stance",
-        "text": "Dazzling Focus costs 25 FP and activates Vocalist Stance for up to 60 seconds. It grants an ATK bonus to the team and heals allies in range. When an Arts Reaction is applied or consumed, Delightful Harmonics can heal the controlled operator and grant 20 Ultimate energy."
+        "text": "Dazzling Focus costs 25 SP and activates Vocalist Stance for up to 60 seconds. It grants an ATK bonus to the team and heals allies in range. When an Arts Reaction is applied or consumed, Delightful Harmonics can heal the controlled operator and grant 20 Ultimate energy."
       },
       {
-        "title": "FP recovery and Cosmovoice Stance",
+        "title": "SP recovery and Cosmovoice Stance",
         "text": "After the Combo Skill, her talent can refund FP on a subsequent Electric or Nature Battle Skill. Dawnstar Concerto costs 160 Ultimate energy and activates Cosmovoice Stance for 15 seconds, providing healing, ATK and Electric/Nature Amp that scales with Will. Using another Battle Skill ends the current stance prematurely."
       }
     ],
@@ -196,12 +196,12 @@
       }
     },
     "gearNote": "This guide remains a preview. The more detailed German guide contains the current Build-Finder and exact progression setups.",
-    "teamsIntro": "Liino can support far more teams than the few highlighted examples. Consider her in Electric and Nature compositions first, while keeping an eye on who benefits from her FP refund and Ultimate buffs.",
+    "teamsIntro": "Liino can support far more teams than the few highlighted examples. Consider her in Electric and Nature compositions first, while keeping an eye on who benefits from her SP refund and Ultimate buffs.",
     "teamNotes": {
       "zhuang-meta": "A Zhuang Fangyi-focused team with Perlica and Arclight.",
       "arcane-meta": "An Arcane-focused composition with Tangtang and Xaihi."
     },
-    "conclusion": "Liino is a generally strong support for a broad range of accounts. Her healing, FP utility and Electric/Nature Amp make her particularly valuable when her Ultimate aligns with your team's main damage phase.",
+    "conclusion": "Liino is a generally strong support for a broad range of accounts. Her healing, SP utility and Electric/Nature Amp make her particularly valuable when her Ultimate aligns with your team's main damage phase.",
     "recommendedFor": [
       "Generally a strong option for almost every player.",
       "Especially helpful when prioritizing Electric or Nature teams.",
