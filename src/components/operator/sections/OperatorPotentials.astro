@@ -5,6 +5,8 @@ interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
 const { guide, gameData, localized, trPotential, officialPotentials, potentialByLevel, getOperatorImageUrl } = model;
 const wikiGalleryUrl="https://endfield.wiki.gg/wiki/"+encodeURIComponent(gameData?.operator.name??guide.displayName??guide.operator)+"/Gallery";
+const alternatePotentialModels=guide.potentials.comparisons??[];
+const percent=(value:number|undefined)=>value===undefined?"–":value.toLocaleString("de-DE",{minimumFractionDigits:1,maximumFractionDigits:1})+" %";
 ---
 <section class="op-section" id="potenziale">
         <h2>Potenziale</h2>
@@ -27,7 +29,7 @@ const wikiGalleryUrl="https://endfield.wiki.gg/wiki/"+encodeURIComponent(gameDat
               })()}
               {p?.evaluation && <p class="op-body-copy"><strong>Einordnung:</strong> {p.evaluation}</p>}
               <div class="op-info-field">
-                <small>Zusatzgewinn durch P{n} gegenüber P{n-1}</small>
+                <small>Zusatzgewinn durch P{n} gegenüber P{n-1}{alternatePotentialModels.length?" · mit Ultimate-Energiebedarf":""}</small>
                 <strong>{p?.increaseOverPreviousPercent === undefined ? "–" : p.increaseOverPreviousPercent.toLocaleString("de-DE",{minimumFractionDigits:1,maximumFractionDigits:1})+" %"}</strong>
               </div>
             </div>;
@@ -36,12 +38,21 @@ const wikiGalleryUrl="https://endfield.wiki.gg/wiki/"+encodeURIComponent(gameDat
         <details class="op-divided op-guide-accordion" data-guide-disclosure="potential-comparison">
           <summary class="op-guide-accordion-summary"><h3>Potenzialvergleich</h3><span class="op-guide-accordion-hint">Vergleich anzeigen</span></summary>
           <div class="op-guide-accordion-content">
-          <div class="op-table-wrap"><table class="op-table"><thead><tr><th>Potenzial</th><th>Offizieller Effekt (EN)</th><th>Zusatzgewinn zur Vorstufe</th></tr></thead>
-            <tbody>{[1,2,3,4,5].map(n=><tr><td>P{n}</td><td class="op-body-copy">{trPotential(n, officialPotentials.get(n)?.effect || "[Folgt]")}</td>
-              <td>{potentialByLevel.get(n)?.increaseOverPreviousPercent === undefined ? "–" : potentialByLevel.get(n)!.increaseOverPreviousPercent!.toLocaleString("de-DE",{minimumFractionDigits:1,maximumFractionDigits:1})+" %"}</td></tr>)}</tbody>
+          <div class="op-table-wrap"><table class="op-table op-potential-comparison-table">
+            <thead><tr><th scope="col">Potenzial</th><th scope="col">Offizieller Effekt</th>
+              <th scope="col">{alternatePotentialModels.length?"Mit Ultimate-Energiebedarf":"Zusatzgewinn zur Vorstufe"}</th>
+              {alternatePotentialModels.map(scenario=><th scope="col">{scenario.title}</th>)}
+            </tr></thead>
+            <tbody>{[1,2,3,4,5].map(n=><tr>
+              <th scope="row">P{n}</th>
+              <td class="op-body-copy">{trPotential(n, officialPotentials.get(n)?.effect || "[Folgt]")}</td>
+              <td>{percent(potentialByLevel.get(n)?.increaseOverPreviousPercent)}</td>
+              {alternatePotentialModels.map(scenario=><td>{percent(scenario.entries.find(entry=>entry.level===n)?.increaseOverPreviousPercent)}</td>)}
+            </tr>)}</tbody>
           </table></div>
           {guide.potentials.entries.some(p=>p.sourceNote && p.increaseOverPreviousPercent!==undefined) &&
-            <small class="op-data-source-note">Quelle: {[...new Set(guide.potentials.entries.filter(p=>p.increaseOverPreviousPercent!==undefined).map(p=>p.sourceNote).filter(Boolean))].join(", ")}</small>}
+            <small class="op-data-source-note">Quelle: {[...new Set(guide.potentials.entries.filter(p=>p.increaseOverPreviousPercent!==undefined).map(p=>p.sourceNote).filter(Boolean))].join(", ")} · Zuwachs je Potenzial zur unmittelbar vorherigen Stufe{alternatePotentialModels.length?" · erster Wert: mit Ultimate-Energiebedarf":""}.</small>}
+          {alternatePotentialModels.map(scenario=><small class="op-data-source-note">{scenario.title}: {scenario.sourceNote} ({scenario.snapshotDate??"ohne Stichtag"}). Ebenfalls Werte gegenüber der jeweiligen Vorstufe; kein addierter P0-Vergleich.</small>)}
           </div>
         </details>
       </section>

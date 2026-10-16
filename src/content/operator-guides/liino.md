@@ -50,7 +50,7 @@ operatorKit:
     Talentstufe bis zu 10 FP zurückerhalten. Für 160 Ultimate-Energie
     aktiviert Dawnstar Concerto für 15 Sekunden die stärkere Cosmovoice
     Stance: Das Team erhält einen ANG-Bonus sowie Elektro- und
-    Naturverstärkung, die zusätzlich mit Liinos Willenskraft skaliert.
+    Naturverstärkung, die zusätzlich mit Liinos Wille skaliert.
     Gleichzeitig heilt Liino Verbündete im Wirkungsbereich und greift
     Gegner mit Elektroschaden an. Das Ultimate erzwingt zudem
     Elektrifizierung in einem großen Bereich. Setze dieses Zeitfenster
@@ -90,11 +90,11 @@ skills:
       Die FP stammen aus dem Talent, nicht unmittelbar aus der Kombo selbst.
     ultimate: >-
       Höchste Priorität, M3. Liinos stärkster Teamnutzen ist die
-      Willenskraft-skalierende Elektro-/Natur-Verstärkung des Ultimate.
+      Wille-skalierende Elektro-/Natur-Verstärkung des Ultimate.
       Auf M3 erreicht der zusätzliche Amp laut offiziellen Skilldaten
-      0,04 % pro Willenskraftpunkt, mit einem ausgewiesenen Maximalbeitrag
-      von 60 % aus Willenskraft. Die tatsächlich erreichte Verstärkung
-      hängt vom Willenskraftwert ab.
+      0,04 % pro Willepunkt, mit einem ausgewiesenen Maximalbeitrag
+      von 60 % aus Wille. Die tatsächlich erreichte Verstärkung
+      hängt vom Willewert ab.
   combatTalents: []
   shipTalents: []
 
@@ -104,12 +104,12 @@ weapons:
       category: bis
       evaluation: >-
         Liinos Best-in-Slot-Stangenwaffe. Bedazzling Night Debut kombiniert
-        Willenskraft für ihren Ultimate-Amp mit einer zusätzlichen
+        Wille für ihren Ultimate-Amp mit einer zusätzlichen
         ANG-Verstärkung für von Liino behandelte Teammitglieder.
     - weaponId: "1044"
       category: bp
       evaluation: >-
-        Golden Age ist die Battle-Pass-Option. Sie liefert Willenskraft
+        Golden Age ist die Battle-Pass-Option. Sie liefert Wille
         sowie eine Arts-Schadensverstärkung durch Liinos heilende
         Kombofertigkeit. Ihre modellierte Leistung hängt vom Team ab.
     - weaponId: "75"
@@ -122,7 +122,7 @@ weapons:
       category: f2p
       evaluation: >-
         Cohesive Traction ist die F2P-Option. Sie besitzt passende
-        Willenskraftwerte, ihr Waffeneffekt ist
+        Willewerte, ihr Waffeneffekt ist
         jedoch eher auf eigene Elektro-/Kombofertigkeitsschäden
         als auf zusätzliche direkte Teamverstärkung ausgerichtet.
   comparisons:
@@ -179,7 +179,7 @@ equipment:
       availableFromLevel: 70
       teamContext: "Für Rotationen, in denen Liino ihre Ultimate zuverlässig aufbauen und zur Teamverstärkung einsetzen soll."
       evaluation: >-
-        Fokus auf Ultimate-Energiegewinn und Willenskraft mit drei Teilen Eternal Xiranite
+        Fokus auf Ultimate-Energiegewinn und Wille mit drei Teilen Eternal Xiranite
         und einer LYNX Slab. Der Eternal-Xiranite-Bonus verstärkt den Schaden der
         anderen Teammitglieder, sobald Liino über ihre Ultimate eine Verstärkung
         (Amp) gewährt. Die tatsächliche Energieverfügbarkeit hängt von der Anzahl
@@ -195,7 +195,7 @@ equipment:
       role: support
       items: ["1134", "1133", "365", "365"]
       availableFromLevel: 70
-      teamContext: "Ausgewogene Teamunterstützung mit Schwerpunkt auf Heilung, Stabilität und Willenskraft."
+      teamContext: "Ausgewogene Teamunterstützung mit Schwerpunkt auf Heilung, Stabilität und Wille."
       evaluation: >-
         Die Balanced-Variante kombiniert drei LYNX-Teile mit Eternal
         Xiranite Light Armor als Off-Piece. Der LYNX-Setbonus verbessert
@@ -209,7 +209,7 @@ equipment:
         nicht stapelbar). 1x Eternal Xiranite: kein Eternal-Xiranite-Setbonus.
     - id: will-fokus
       meta: true
-      metaSummary: "Maximiert Willenskraft für Liinos Ultimate-Amp; ideal mit bereits geladener Ultimate und ohne zweiten Ultimate-Einsatz."
+      metaSummary: "Maximiert Wille für Liinos Ultimate-Amp; ideal mit bereits geladener Ultimate und ohne zweiten Ultimate-Einsatz."
       title: "Build C – Will-Fokus"
       role: support
       items: ["1126", "1129", "365", "365"]
@@ -219,16 +219,16 @@ equipment:
         startet und innerhalb der vorgesehenen Rotation keine zweite Ultimate
         benötigt.
       evaluation: >-
-        Dieser Build maximiert Liinos Willenskraft und damit ihre
+        Dieser Build maximiert Liinos Wille und damit ihre
         willenskraftabhängige Elektro-/Natur-Verstärkung durch die Ultimate.
         Rift Trekker Light Armor und Rift Trekker Hands liefern
-        hohe direkte Willenskraftwerte; die beiden LYNX Slabs ergänzen Hauptattribut.
+        hohe direkte Willewerte; die beiden LYNX Slabs ergänzen Hauptattribut.
         Auf Ultimate-Energiegewinn und einen 3er-Setbonus wird bewusst verzichtet.
         Außerhalb des beschriebenen Einsatzfalls nicht als universell beste
         Rotation oder als zweiter-Ultimate-Build präsentieren.
       setBonusNotes: >-
         2x LYNX und zwei setfreie Rift-Trekker-Teile: kein 3er-Setbonus aktiv.
-        Die individuellen Willenskraft- und Hauptattributswerte stehen im Fokus.
+        Die individuellen Wille- und Hauptattributswerte stehen im Fokus.
     - id: level-60
       title: "Build D – Level 60"
       role: support
@@ -251,22 +251,22 @@ equipment:
       role: support
       items: ["279", "331", "335", "335"]
       availableFromLevel: 50
-      teamContext: "Cryston-Progression mit Willenskraft und Unterstützung."
+      teamContext: "Cryston-Progression mit Wille und Unterstützung."
       storyUnlock: "Die vier verwendeten Teile stammen aus Autoritätsbelohnungen (benötigte Belohnungsstufen 28, 33 und 38); die Vorlagen müssen tatsächlich abgeholt worden sein."
       evaluation: >-
         Eine Aburrey Light Armor T1 und drei Mordvolt-Resistant-Teile,
         darunter zweimal Mordvolt Resistant Battery T1. Der 3er-Bonus
-        erhöht Willenskraft; der zusätzliche Behandlungseffekt ist an
+        erhöht Wille; der zusätzliche Behandlungseffekt ist an
         weniger als 50 % eigene LP gebunden und nicht dauerhaft aktiv.
       setBonusNotes: >-
-        3x Mordvolt Resistant: +50 Willenskraft. Unter 50 % eigener LP:
+        3x Mordvolt Resistant: +50 Wille. Unter 50 % eigener LP:
         +30 % Behandlungseffekt. Kein Aburrey-Setbonus.
     - id: level-36
       title: "Build F – Level 36"
       role: support
       items: ["274", "278", "284", "284"]
       availableFromLevel: 36
-      teamContext: "Frühe Ferrium-Progression mit Willenskraft und Behandlung."
+      teamContext: "Frühe Ferrium-Progression mit Wille und Behandlung."
       storyUnlock: "Die verwendeten Vorlagen stammen aus Autoritätsbelohnungen (benötigte Belohnungsstufen 17, 19 und 23); die Vorlagen müssen tatsächlich abgeholt worden sein."
       evaluation: >-
         Mordvolt Resistant Vest und Gloves, dazu zwei Mordvolt Resistant
@@ -274,7 +274,7 @@ equipment:
         aber zwei gefertigte Exemplare. Der bedingte Heileffekt des Sets
         greift nur bei weniger als 50 % eigener LP.
       setBonusNotes: >-
-        3x Mordvolt Resistant: +50 Willenskraft. Unter 50 % eigener LP:
+        3x Mordvolt Resistant: +50 Wille. Unter 50 % eigener LP:
         +30 % Behandlungseffekt. Das vierte Set-Teil verdoppelt den Bonus nicht.
   progression:
     - stage: early

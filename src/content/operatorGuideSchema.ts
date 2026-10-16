@@ -14,8 +14,9 @@ const skillPriority = z.object({
   // Alle vier Fertigkeiten einmalig, von höchster zu niedrigster Priorität.
   order: z.array(skillSlot).length(4)
     .refine(slots => new Set(slots).size === 4, "Alle vier Fertigkeiten müssen genau einmal angegeben werden."),
-  // Drei Verknüpfungen zwischen den vier Einträgen: '>' oder '>='.
-  comparisons: z.array(z.enum([">", ">="])).length(3),
+  // Drei Verknüpfungen zwischen den vier Einträgen: '>', '>=' oder '='.
+  // Gleichrangige Prioritäten werden als '=' angezeigt, nicht als '>'.
+  comparisons: z.array(z.enum([">", ">=", "="])).length(3),
   // Frei formulierbare Level-Ziele, z.B. '9', 'M1', 'M3'.
   targetLevels: z.object({
     basic: text.optional(),
@@ -114,7 +115,26 @@ const team = z.object({
   memberGear: z.array(z.object({
     member: identifier,
     items: z.tuple([identifier,identifier,identifier,identifier]),
+    // Individual teammate weapons are separate from the four armor/gear slots.
+    weaponId: identifier.optional(),
+    weaponRank: z.number().int().min(1).max(9).optional(),
+    // The author's optional second/third weapon choices; never imply a rank.
+    weaponAlternatives: z.array(identifier).max(4).default([]),
+    // Distinct documented loadouts, depending on Xiranite teammates,
+    // Ultimate energy needs or stagger/Arts-intensity strategy.
+    alternatives: z.array(z.object({
+      title: z.string().trim().min(1).max(160),
+      items: z.tuple([identifier,identifier,identifier,identifier]),
+      note: text.optional(),
+    })).max(6).default([]),
     note: text.optional(),
+  }).superRefine((row,ctx)=>{
+    if(row.weaponRank!==undefined && !row.weaponId)
+      ctx.addIssue({code:z.ZodIssueCode.custom,path:["weaponId"],message:"Waffenrang benötigt eine belegte Waffen-ID."});
+    if(row.weaponAlternatives.some(w=>w===row.weaponId)||
+       new Set(row.weaponAlternatives).size!==row.weaponAlternatives.length)
+      ctx.addIssue({code:z.ZodIssueCode.custom,path:["weaponAlternatives"],
+        message:"Waffenempfehlungen dürfen nicht doppelt erscheinen."});
   })).default([]),
 }).superRefine((team,ctx)=>{
   const loaded=new Set<string>();
@@ -233,6 +253,20 @@ export const operatorGuideSchema = z.object({
     entries: z.array(potential)
       .refine(entries => new Set(entries.map(p => p.level)).size === entries.length, "Jedes Potenzial P1 bis P5 darf nur einmal vorkommen.")
       .default([]),
+    // Optional second Datafield profile model (e.g. no extra Ultimate energy).
+    // A named scenario contains per-step increments, never cumulative P0 gains.
+    comparisons: z.array(z.object({
+      id: identifier,
+      title: z.string().trim().min(1),
+      sourceNote: z.string().trim().min(1),
+      comparisonConditions: z.string().trim().min(1),
+      snapshotDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+      entries: z.array(z.object({
+        level: z.number().int().min(1).max(5),
+        increaseOverPreviousPercent: z.number().finite(),
+      })).length(5).refine(rows=>new Set(rows.map(r=>r.level)).size===5,
+        "Jedes Szenario benötigt genau P1 bis P5."),
+    })).refine(noDuplicateIds,"Potenzialszenarien müssen eindeutige IDs haben.").default([]),
   }).default({}),
 
   teams: z.object({

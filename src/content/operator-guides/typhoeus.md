@@ -26,15 +26,15 @@ overview:
     - "Hoher Natur-Explosionsschaden durch Energieschüsse – mit zuverlässigen Natur-Stacks besonders wirkungsvoll."
     - "Bis zu zwei Ziele gleichzeitig im Schwebeflug; stark in Kämpfen gegen mehrere Gegner."
     - "Kombofertigkeit und Ultimate können die fünf Luftangriffe zurücksetzen und den Schwebeflug verlängern."
-    - "Flexibles Teamgerüst mit Arcane oder Fluorite als Natur-Stack-Quelle und variablen Support-Slots."
+    - "Starke, gezielte Synergie mit Arcane oder Fluorite als zuverlässiger Natur-Stack-Quelle und wenigen passenden Support-Kombinationen."
   weaknesses:
-    - "Benötigt verlässliche Natur-Stacks aus dem Team, um Zeichen und ihre stärksten Power Shots optimal auszunutzen."
+    - "Sehr eingeschränkte Teamflexibilität: Verlässliche Natur-Stacks erfordern nach meiner Einordnung zwingend Arcane oder Fluorite; viele andere Team-Slots fallen dadurch weg."
     - "100 FP pro Battle Skill und bis zu 200 Ultimate-Energie; FP-Management und Final Strikes sind entscheidend."
     - "Unterbrechungen im Schwebeflug kosten wichtige Energieschüsse; die Schutzbarriere kann brechen und hat eine lange Reaktivierungszeit."
     - "Die Signature-Waffe liegt deutlich vor den Alternativen; für andere Waffen und unvollständige Teams sinkt ihr Potenzial."
   ratings:
-    difficulty: 4
-    flexibility: 3
+    difficulty: 5
+    flexibility: 1
   featuredBuildId: deep-rampart-lynx
   partners: []
 
@@ -94,12 +94,10 @@ operatorKit:
 skills:
   priority:
     order: [battle, combo, ultimate, basic]
-    comparisons: [">", ">", ">"]
+    comparisons: [">", ">", "="]
     targetLevels:
       battle: "M3"
       combo: "M3"
-      ultimate: "9"
-      basic: "1"
   active:
     basic: >-
       Der normale Basisangriff umfasst fünf Natur-Treffer.
@@ -216,6 +214,48 @@ weapons:
         wie bei der Signature-Waffe oder Suffering's
         End. Nur erwägen, wenn die beiden besseren
         Waffen nicht verfügbar sind.
+  comparisons:
+    - id: ardelia-arcane-liino
+      title: "Ardelia Arcane Liino Team"
+      sourcePageType: character-profile
+      sourceNote: "Datafield"
+      snapshotDate: "2026-10-16"
+      referenceWeaponId: "1175"
+      referenceRank: 4
+      comparisonConditions: >-
+        Datafield-Charakterprofil Typhoeus, Reiter "Ardelia Arcane Liino",
+        erfasst am 16.10.2026. 100 % entsprechen Umbra of Frigid
+        Eventide R4 in genau diesem Szenario. Rotation, Waffen-/Team-
+        Ränge, Potenziale und andere Modellparameter wurden nicht
+        unabhängig mit dem verlinkten Original-Spreadsheet abgeglichen.
+      entries:
+        - { weaponId: "1175", rank: 9, performancePercent: 124.7 }
+        - { weaponId: "1175", rank: 4, performancePercent: 100.0 }
+        - { weaponId: "1177", rank: 9, performancePercent: 84.3 }
+        - { weaponId: "47", rank: 9, performancePercent: 78.1 }
+        - { weaponId: "1177", rank: 4, performancePercent: 77.0 }
+        - { weaponId: "47", rank: 4, performancePercent: 72.2 }
+        - { weaponId: "65", rank: 9, performancePercent: 69.0 }
+        - { weaponId: "65", rank: 4, performancePercent: 66.3 }
+    - id: no-liino-less-atk
+      title: "Ohne Liino · weniger ANG-Buffs"
+      sourcePageType: character-profile
+      sourceNote: "Datafield"
+      snapshotDate: "2026-10-16"
+      referenceWeaponId: "1175"
+      referenceRank: 4
+      comparisonConditions: >-
+        Datafield-Charakterprofil Typhoeus, Reiter
+        "Non Liino Teams - LESS ATK -", erfasst am
+        16.10.2026. 100 % entsprechen Umbra of Frigid
+        Eventide R4 in genau diesem abweichenden Teammodell.
+        Nicht mit den Prozenten des Liino-Szenarios vermischen.
+      entries:
+        - { weaponId: "1175", rank: 9, performancePercent: 123.3 }
+        - { weaponId: "1175", rank: 4, performancePercent: 100.0 }
+        - { weaponId: "1177", rank: 9, performancePercent: 79.3 }
+        - { weaponId: "47", rank: 9, performancePercent: 77.5 }
+        - { weaponId: "1177", rank: 4, performancePercent: 73.7 }
   generalNotes: >-
     Für Typhi ist die richtige Waffe besonders
     relevant, weil ein großer Teil ihres Schadens
@@ -225,10 +265,11 @@ weapons:
     die vollständigen, lokal importierten Werte
     und Tuning-Materialkosten jeder Waffe stehen
     in den aufklappbaren Waffendetails.
-    Relative Datafield-Prozentwerte werden erst
-    eingetragen, wenn derselbe Charakterprofil-
-    Vergleich einschließlich Team, Waffenrang
-    und Referenz direkt belegt werden kann.
+    Die relativen Prozente im Waffenvergleich
+    stammen aus zwei separat geprüften Tabs
+    des Datafield-Charakterprofils; sie gelten nur
+    für deren Team- und Rotationsannahmen und
+    sind keine universellen DPS-Abstände.
 
 equipment:
   builds:
@@ -300,32 +341,39 @@ equipment:
         Blaupause; der Finder zählt Besitz
         und Herstellung entsprechend.
     - id: deep-rampart-ultimate
-      title: "Build C – Optionaler Ultimate-Energiegewinn"
+      title: "Build C – Mehr Ultimate-Energie mit LYNX Cuirass"
       role: main-dps
       meta: false
-      items: ["1239", "1238", "1240", "1236"]
+      items: ["1132", "1238", "1240", "1240"]
       availableFromLevel: 70
       teamContext: >-
-        Nur wenn die spezielle Rotation
-        tatsächlich zusätzlichen Ultimate-
-        Energiegewinn verlangt.
+        Spezielle Rotation mit erhöhtem Bedarf
+        an Ultimate-Energie. Nur einsetzen,
+        wenn sie ein wichtiges Ultimate-Fenster
+        tatsächlich früher ermöglicht.
       evaluation: >-
-        Mit Eternal Xiranite Bracing Slab T1
-        als Off-Piece kann auf Ultimate-
-        Energiegewinn gesetzt werden.
-        Die Kosten sind der Verzicht auf
-        einen Teil des direkten allgemeinen
-        Schadenspotenzials der LYNX Slab.
-        Die 200 Energie der Ultimate allein
-        machen diese Variante nicht
-        automatisch zur besten Option:
-        In zahlreichen eigenen Kämpfen
-        funktioniert bereits der Standard-
-        Build ohne solche Anpassungen.
+        Die bedingte Ultimate-Energie-Variante aus
+        meinem Mobalytics-Guide setzt auf LYNX
+        Cuirass T1, Deep Rampart Gauntlets
+        und zweimal Deep Rampart Comms.
+        Sie verzichtet bewusst auf das Deep-
+        Rampart-Armor-Teil des allgemeinen
+        Standard-Builds und ist keine pauschale
+        Empfehlung für jeden Kampf.
+        Maßgeblich ist, ob die konkrete
+        Rotation zusätzliche Ultimate-Energie
+        benötigt. Die Alternative nicht
+        allein wegen der 200 Energie
+        automatisch über den Standard stellen.
       setBonusNotes: >-
-        Drei Deep-Rampart-Teile aktivieren
-        den Setbonus, ein Eternal-Xiranite-
-        Teil keinen weiteren.
+        Zwei Deep Rampart Comms und Deep Rampart
+        Gauntlets aktivieren die drei Teile des
+        Sets. LYNX Cuirass T1 ist das Off-Piece.
+      craftingNotes: >-
+        Beide Comms müssen als zwei einzelne Teile
+        gefertigt werden. Bauplanbesitz,
+        Materialien und tatsächliche
+        Story-Verfügbarkeit getrennt prüfen.
     - id: level-60
       title: "Build D – Level 60 · AIC Fieldwork Assault"
       role: main-dps
@@ -473,6 +521,15 @@ potentials:
         ANG-Bonus auch Typhis
         Nature Bursts unterstützt.
         Trotzdem kein Muss.
+      increaseOverPreviousPercent: 8.8
+      comparisonConditions: >-
+        Datafield-Charakterprofil Typhoeus, Szenario
+        "Teams with energy needs", abgerufen 16.10.2026;
+        nur inkrementeller Gewinn gegenüber P0
+        (nicht kumulativ gegenüber P0).
+        Teamrotation und Spreadsheet-Modellparameter
+        wurden nicht unabhängig nachgerechnet.
+      sourceNote: "Datafield"
     - level: 2
       evaluation: >-
         Solider direkter Zuwachs
@@ -481,6 +538,15 @@ potentials:
         den Hauptschaden nützlich,
         aber weniger auffällig
         als P1 und P5.
+      increaseOverPreviousPercent: 4.5
+      comparisonConditions: >-
+        Datafield-Charakterprofil Typhoeus, Szenario
+        "Teams with energy needs", abgerufen 16.10.2026;
+        nur inkrementeller Gewinn gegenüber P1
+        (nicht kumulativ gegenüber P0).
+        Teamrotation und Spreadsheet-Modellparameter
+        wurden nicht unabhängig nachgerechnet.
+      sourceNote: "Datafield"
     - level: 3
       evaluation: >-
         Die Combo Skill kühlt
@@ -496,6 +562,15 @@ potentials:
         Cooldown in der
         konkreten Rotation
         überhaupt relevant wird.
+      increaseOverPreviousPercent: 0.8
+      comparisonConditions: >-
+        Datafield-Charakterprofil Typhoeus, Szenario
+        "Teams with energy needs", abgerufen 16.10.2026;
+        nur inkrementeller Gewinn gegenüber P2
+        (nicht kumulativ gegenüber P0).
+        Teamrotation und Spreadsheet-Modellparameter
+        wurden nicht unabhängig nachgerechnet.
+      sourceNote: "Datafield"
     - level: 4
       evaluation: >-
         Senkt die hohen 200
@@ -507,6 +582,15 @@ potentials:
         scheitern. Kein
         pauschal garantierter
         zweiter Ultimate-Einsatz.
+      increaseOverPreviousPercent: 8.3
+      comparisonConditions: >-
+        Datafield-Charakterprofil Typhoeus, Szenario
+        "Teams with energy needs", abgerufen 16.10.2026;
+        nur inkrementeller Gewinn gegenüber P3
+        (nicht kumulativ gegenüber P0).
+        Teamrotation und Spreadsheet-Modellparameter
+        wurden nicht unabhängig nachgerechnet.
+      sourceNote: "Datafield"
     - level: 5
       evaluation: >-
         Neben P1 der größte
@@ -523,16 +607,41 @@ potentials:
         Energieschuss-Loop.
         Zusätzliche Kopien
         bleiben optional.
+      increaseOverPreviousPercent: 6.5
+      comparisonConditions: >-
+        Datafield-Charakterprofil Typhoeus, Szenario
+        "Teams with energy needs", abgerufen 16.10.2026;
+        nur inkrementeller Gewinn gegenüber P4
+        (nicht kumulativ gegenüber P0).
+        Teamrotation und Spreadsheet-Modellparameter
+        wurden nicht unabhängig nachgerechnet.
+      sourceNote: "Datafield"
+  comparisons:
+    - id: no-extra-ultimate-energy
+      title: "Teams ohne zusätzlichen Ultimate-Energiebedarf"
+      sourceNote: "Datafield"
+      snapshotDate: "2026-10-16"
+      comparisonConditions: >-
+        Datafield-Charakterprofil Typhoeus, alternativer Reiter
+        "Teams without energy needs", Stand 16.10.2026.
+        Jede Angabe ist der Zuwachs zum unmittelbar vorherigen
+        Potenzial, keine kumulative P0-Steigerung.
+      entries:
+        - { level: 1, increaseOverPreviousPercent: 6.6 }
+        - { level: 2, increaseOverPreviousPercent: 4.3 }
+        - { level: 3, increaseOverPreviousPercent: 1.0 }
+        - { level: 4, increaseOverPreviousPercent: 0.0 }
+        - { level: 5, increaseOverPreviousPercent: 5.2 }
 
 teams:
   introduction: >-
     Typhi sollte immer mit mindestens einem Teammitglied
     gespielt werden, das zuverlässig Natur-Stacks
-    aufbauen kann. Arcane in der Willenskraft-Variante
+    aufbauen kann. Arcane in der Wille-Variante
     ist die stärkste und flexibelste Partnerin:
     Natur-Anhaftungen, Gruppierung und passende Buffs
     verbinden sich zu einer sinnvollen Burst-Rotation.
-    Im Willenskraft-Build sollte Arcane nach dem
+    Im Wille-Build sollte Arcane nach dem
     ursprünglichen Spielbeispiel mindestens 640 Wille
     erreichen, um ihre relevanten Buffs auszureizen.
     Fluorite ist die besonders gute Alternative,
@@ -571,27 +680,33 @@ teams:
         davon profitieren.
       memberGear:
         - member: arcane
-          items: ["1134", "1138", "1136", "1136"]
-          note: >-
-            Beispielausrüstung für die Support-Arcane
-            aus einem dokumentierten
-            Datafield-Teamkontext; Willenskraft-
-            Ziel und aktivierte Set-Boni
-            im eigenen Account prüfen.
+          weaponId: "1045"
+          weaponAlternatives: ["47", "1043"]
+          items: ["1134", "1137", "1136", "1136"]
+          note: "Wille-Form, mindestens 640 Wille. Type 42: Solemn Phalanx ist die Hauptempfehlung; Detonation Unit lässt sich durch wiederholte Natur-Kumulierungen auslösen. Das PDF bevorzugt für dieses Team ausdrücklich beide Bracing Slabs."
         - member: ardelia
+          weaponId: "49"
           items: ["881", "1131", "876", "876"]
-          note: >-
-            Qingbo-Fokus und ein Hot-Work-
-            Off-Piece. Unterstützt eine
-            Combo-/Debuff-Orientierung.
+          note: "Mit Arcane als Xiranit-Träger und Liino: Qingbo Light Armor, Hot Work Hands PPE und zweimal Qingbo Cask. Signature Dreams of the Starry Beach bevorzugen."
+          alternatives:
+            - title: "Nur ohne anderen Xiranit-Nutzer"
+              items: ["1134", "332", "337", "337"]
+              note: "Vier Teile für den Fall, dass kein anderer Operator den Xiranit-Bonus übernimmt."
+            - title: "Mit Xiranit-Nutzer, aber ohne Liino"
+              items: ["328", "775", "286", "286"]
+              note: "Hot-Work-Fokus in alternativen Teams ohne Liino."
         - member: liino
-          items: ["1132", "1133", "365", "1236"]
-          note: >-
-            LYNX-Heilungsvariante als
-            mögliches Team-Loadout.
-            Liinos eigener Guide zeigt
-            weitere spezialisierte
-            Support-Builds.
+          weaponId: "1046"
+          weaponAlternatives: ["1044"]
+          items: ["1134", "1138", "365", "365"]
+          note: "Mit Arcane als Xiranit-Nutzer und zusätzlichem Ultimate-Energiebedarf: Light Armor, Hands, zwei LYNX Slabs. Bedazzling Night Debut bevorzugen, Golden Age ist die Battle-Pass-Alternative."
+          alternatives:
+            - title: "Mit Xiranit-Nutzer, ohne zusätzlichen Ultimate-Energiebedarf"
+              items: ["1126", "1129", "365", "365"]
+              note: "Rift Trekker Light Armor und Hands plus zwei LYNX Slabs für möglichst viel Wille und Ultimate-Verstärkung."
+            - title: "Nur ohne anderen Xiranit-Nutzer"
+              items: ["1134", "1138", "337", "365"]
+              note: "Light Armor, Hands, Auxiliary Arm und LYNX Slab – nur wenn Arcane im Team tatsächlich kein Xiranit spielt."
     - id: arcane-perlica-liino
       title: "Arcane · Perlica · Liino"
       role: main-dps
@@ -612,33 +727,32 @@ teams:
         belasten.
       memberGear:
         - member: arcane
-          items: ["1126", "292", "286", "286"]
-          note: >-
-            Ein Beispiel mit Hot Work
-            als Natur-Buffer-
-            Unterstützung, wie in
-            einer öffentlichen
-            Datafield-Teamvariante
-            dokumentiert.
+          weaponId: "1045"
+          weaponAlternatives: ["47", "1043"]
+          items: ["1134", "1137", "1136", "1136"]
+          note: "Wille-Form, mindestens 640 Wille. Type 42: Solemn Phalanx ist die Hauptempfehlung; Detonation Unit lässt sich durch wiederholte Natur-Kumulierungen auslösen. Das PDF bevorzugt für dieses Team ausdrücklich beide Bracing Slabs."
         - member: perlica
-          items: ["353", "341", "338", "338"]
-          note: >-
-            Pulser Labs, zwei
-            Calibrators und
-            Fokus auf
-            unterstützende
-            Technik-Reaktionen.
+          weaponId: "94"
+          items: ["881", "775", "876", "876"]
+          note: "Stanza of Memorials für den größtmöglichen Typhoeus-Buff. Qingbo Light Armor, Hot Work Gloves und zwei Qingbo Casks für Combo-Abklingzeit und Elektrifikation."
+          alternatives:
+            - title: "Mehr eigener Schaden bei vollem Elektrifikation-Effekt"
+              items: ["353", "775", "338", "338"]
+              note: "Pulser Labs Disruptor Suit, Hot Work Gloves, zweimal Pulser Labs Calibrator."
         - member: liino
-          items: ["1134", "1138", "1236", "365"]
-          note: >-
-            Eternal-Xiranite-
-            Support-Variante
-            mit LYNX Slab.
-            Bauplanbesitz und
-            individuellen
-            Ultimate-Bedarf
-            separat prüfen.
+          weaponId: "1046"
+          weaponAlternatives: ["1044"]
+          items: ["1134", "1138", "365", "365"]
+          note: "Mit Arcane als Xiranit-Nutzer und zusätzlichem Ultimate-Energiebedarf: Light Armor, Hands, zwei LYNX Slabs. Bedazzling Night Debut bevorzugen, Golden Age ist die Battle-Pass-Alternative."
+          alternatives:
+            - title: "Mit Xiranit-Nutzer, ohne zusätzlichen Ultimate-Energiebedarf"
+              items: ["1126", "1129", "365", "365"]
+              note: "Rift Trekker Light Armor und Hands plus zwei LYNX Slabs für möglichst viel Wille und Ultimate-Verstärkung."
+            - title: "Nur ohne anderen Xiranit-Nutzer"
+              items: ["1134", "1138", "337", "365"]
+              note: "Light Armor, Hands, Auxiliary Arm und LYNX Slab – nur wenn Arcane im Team tatsächlich kein Xiranit spielt."
   more:
+
     - id: arcane-xaihi-liino
       title: "Arcane · Xaihi · Liino"
       role: main-dps
@@ -653,17 +767,67 @@ teams:
         Besonders stark mit
         einer präzise
         geplanten Rotation.
+      memberGear:
+        - member: arcane
+          weaponId: "1045"
+          weaponAlternatives: ["47", "1043"]
+          items: ["1134", "1137", "1136", "1136"]
+          note: "Wille-Form, mindestens 640 Wille. Type 42: Solemn Phalanx ist die Hauptempfehlung; Detonation Unit lässt sich durch wiederholte Natur-Kumulierungen auslösen. Das PDF bevorzugt für dieses Team ausdrücklich beide Bracing Slabs."
+        - member: liino
+          weaponId: "1046"
+          weaponAlternatives: ["1044"]
+          items: ["1134", "1138", "365", "365"]
+          note: "Mit Arcane als Xiranit-Nutzer und zusätzlichem Ultimate-Energiebedarf: Light Armor, Hands, zwei LYNX Slabs. Bedazzling Night Debut bevorzugen, Golden Age ist die Battle-Pass-Alternative."
+          alternatives:
+            - title: "Mit Xiranit-Nutzer, ohne zusätzlichen Ultimate-Energiebedarf"
+              items: ["1126", "1129", "365", "365"]
+              note: "Rift Trekker Light Armor und Hands plus zwei LYNX Slabs für möglichst viel Wille und Ultimate-Verstärkung."
+            - title: "Nur ohne anderen Xiranit-Nutzer"
+              items: ["1134", "1138", "337", "365"]
+              note: "Light Armor, Hands, Auxiliary Arm und LYNX Slab – nur wenn Arcane im Team tatsächlich kein Xiranit spielt."
     - id: arcane-gilberta-liino
       title: "Arcane · Gilberta · Liino"
       role: main-dps
       members: [typhoeus, arcane, gilberta, liino]
       buildId: deep-rampart-lynx
       note: >-
-        Alternative mit Gilberta
-        zum Gruppieren und
-        für zusätzliche Reaktionen,
-        die wiederum Liinos
-        Combo nutzbar machen.
+        Rhodagn-Nuke-Aufbau aus meinem Mobalytics-Guide: Zunächst Liinos Ultimate
+        (ANG + Natur-Verstärkung), dann Arcanes Battle Skill so verzögert treffen lassen,
+        dass Gilbertas Combo auf Elektrifikation ausgelöst werden kann. Arcanes Combo
+        zunächst nicht verwenden. Nach Typhis Final Strike folgen Typhis Ultimate,
+        Gilbertas Ultimate und anschließend abgestimmte Natur-Explosionen und
+        Jagdpfeile; Arcanes Combo dient dem notwendigen Taumel- und Zeichen-Timing.
+        Gilbertas Swordmancer-Taumelausrüstung ist dafür die dokumentierte Variante.
+      memberGear:
+        - member: arcane
+          weaponId: "1045"
+          weaponAlternatives: ["47", "1043"]
+          items: ["1134", "1137", "1136", "1136"]
+          note: "Wille-Form, mindestens 640 Wille. Type 42: Solemn Phalanx ist die Hauptempfehlung; Detonation Unit lässt sich durch wiederholte Natur-Kumulierungen auslösen. Das PDF bevorzugt für dieses Team ausdrücklich beide Bracing Slabs."
+        - member: gilberta
+          weaponId: "79"
+          weaponAlternatives: ["47"]
+          items: ["328", "874", "793", "793"]
+          note: "Taumel-Fokus aus meinem Rhodagn-Nuke-Showcase: Eternal Xiranite Armor, Swordmancer TAC Gauntlets T1 und zwei NAV Beacons. Delivery Guaranteed bevorzugen."
+          alternatives:
+            - title: "Technik-Intensität"
+              items: ["328", "775", "286", "286"]
+              note: "Hot Work Gloves und zwei Power Cartridges."
+            - title: "Nur ohne weiteren Xiranit-Nutzer"
+              items: ["328", "332", "337", "337"]
+              note: "Eternal Xiranite Armor, Gloves T1 und zweimal Auxiliary Arm."
+        - member: liino
+          weaponId: "1046"
+          weaponAlternatives: ["1044"]
+          items: ["1134", "1138", "365", "365"]
+          note: "Mit Arcane als Xiranit-Nutzer und zusätzlichem Ultimate-Energiebedarf: Light Armor, Hands, zwei LYNX Slabs. Bedazzling Night Debut bevorzugen, Golden Age ist die Battle-Pass-Alternative."
+          alternatives:
+            - title: "Mit Xiranit-Nutzer, ohne zusätzlichen Ultimate-Energiebedarf"
+              items: ["1126", "1129", "365", "365"]
+              note: "Rift Trekker Light Armor und Hands plus zwei LYNX Slabs für möglichst viel Wille und Ultimate-Verstärkung."
+            - title: "Nur ohne anderen Xiranit-Nutzer"
+              items: ["1134", "1138", "337", "365"]
+              note: "Light Armor, Hands, Auxiliary Arm und LYNX Slab – nur wenn Arcane im Team tatsächlich kein Xiranit spielt."
     - id: trial-nature-stacks
       title: "Arcane · Fluorite · Antal"
       role: main-dps
@@ -681,6 +845,12 @@ teams:
         vorbereiten. Im
         Demo-Run verwendete
         Antal Xiranit-Ausrüstung.
+      memberGear:
+        - member: arcane
+          weaponId: "1045"
+          weaponAlternatives: ["47", "1043"]
+          items: ["1134", "1137", "1136", "1136"]
+          note: "Wille-Form, mindestens 640 Wille. Type 42: Solemn Phalanx ist die Hauptempfehlung; Detonation Unit lässt sich durch wiederholte Natur-Kumulierungen auslösen. Das PDF bevorzugt für dieses Team ausdrücklich beide Bracing Slabs."
     - id: fluorite-gilberta-xaihi
       title: "Fluorite · Gilberta · Xaihi"
       role: main-dps
@@ -697,6 +867,19 @@ teams:
         Natur-Buffs bei.
         Die FP-Bilanz muss
         zu deiner Rotation passen.
+      memberGear:
+        - member: gilberta
+          weaponId: "79"
+          weaponAlternatives: ["47"]
+          items: ["328", "332", "337", "337"]
+          note: "Xiranit-Variante, falls sonst niemand dieses Set trägt; Delivery Guaranteed bevorzugen."
+          alternatives:
+            - title: "Taumel-Fokus (Rhodagn-Nuke)"
+              items: ["328", "874", "793", "793"]
+              note: "Taumelpunkte und Timing des Nuke-Fensters."
+            - title: "Technik-Intensität"
+              items: ["328", "775", "286", "286"]
+              note: "Hot Work Gloves und zwei Power Cartridges."
     - id: arcane-fluorite-purrchena
       title: "Arcane · Fluorite · Purrchena"
       role: main-dps
@@ -711,6 +894,79 @@ teams:
         ihren Schwebeflug
         möglichst vollständig
         ausspielen kann.
+      memberGear:
+        - member: arcane
+          weaponId: "1045"
+          weaponAlternatives: ["47", "1043"]
+          items: ["1134", "1137", "1136", "1136"]
+          note: "Wille-Form, mindestens 640 Wille. Type 42: Solemn Phalanx ist die Hauptempfehlung; Detonation Unit lässt sich durch wiederholte Natur-Kumulierungen auslösen. Das PDF bevorzugt für dieses Team ausdrücklich beide Bracing Slabs."
+    - id: arcane-ardelia-gilberta
+      title: "Arcane · Ardelia · Gilberta"
+      role: main-dps
+      members: [typhoeus, arcane, ardelia, gilberta]
+      buildId: deep-rampart-lynx
+      note: "Alternative aus meinem Mobalytics-Guide: Ardelias Korrosion aktiviert Gilbertas Combo, die zusätzliche Technik-Empfänglichkeit bringt. Ohne Liino entfällt ihr FP-Rückgewinn; die Rotation muss entsprechend geplant werden."
+      memberGear:
+        - member: arcane
+          weaponId: "1045"
+          weaponAlternatives: ["47", "1043"]
+          items: ["1134", "1137", "1136", "1136"]
+          note: "Wille-Form, mindestens 640 Wille. Type 42: Solemn Phalanx ist die Hauptempfehlung; Detonation Unit lässt sich durch wiederholte Natur-Kumulierungen auslösen. Das PDF bevorzugt für dieses Team ausdrücklich beide Bracing Slabs."
+        - member: ardelia
+          weaponId: "49"
+          items: ["328", "775", "286", "286"]
+          note: "Mit Arcane als Xiranit-Träger, aber ohne Liino: Eternal Xiranite Armor plus Hot Work für Technik-Intensität."
+          alternatives:
+            - title: "Nur ohne weiteren Xiranit-Nutzer"
+              items: ["1134", "332", "337", "337"]
+              note: "Eternal Xiranite Light Armor, Gloves T1 und zwei Auxiliary Arms; nur bei entsprechend anderem Teamaufbau."
+            - title: "Mit Xiranit-Nutzer und Liino"
+              items: ["881", "1131", "876", "876"]
+              note: "Qingbo/Hot Work in der Variante mit Liino."
+        - member: gilberta
+          weaponId: "79"
+          weaponAlternatives: ["47"]
+          items: ["328", "775", "286", "286"]
+          note: "Technik-Intensität im Team mit Arcane: Eternal Xiranite Armor, Hot Work Gloves, zwei Hot Work Power Cartridges."
+          alternatives:
+            - title: "Taumel-Fokus (Rhodagn-Nuke)"
+              items: ["328", "874", "793", "793"]
+              note: "Taumelpunkte und Timing des Nuke-Fensters."
+            - title: "Nur ohne weiteren Xiranit-Nutzer"
+              items: ["328", "332", "337", "337"]
+              note: "Eternal Xiranite Armor, Gloves T1 und zweimal Auxiliary Arm."
+    - id: arcane-perlica-gilberta
+      title: "Arcane · Perlica · Gilberta"
+      role: main-dps
+      members: [typhoeus, arcane, perlica, gilberta]
+      buildId: deep-rampart-lynx
+      note: "Alternative ohne Liino: Perlicas Elektrifikation triggert Gilbertas Combo. Arcane liefert Natur-Kumulierungen und den Wille-Buff. Ohne Liinos Combo den FP-Haushalt besonders genau beachten."
+      memberGear:
+        - member: arcane
+          weaponId: "1045"
+          weaponAlternatives: ["47", "1043"]
+          items: ["1134", "1137", "1136", "1136"]
+          note: "Wille-Form, mindestens 640 Wille. Type 42: Solemn Phalanx ist die Hauptempfehlung; Detonation Unit lässt sich durch wiederholte Natur-Kumulierungen auslösen. Das PDF bevorzugt für dieses Team ausdrücklich beide Bracing Slabs."
+        - member: perlica
+          weaponId: "94"
+          items: ["881", "775", "876", "876"]
+          note: "Stanza of Memorials für den größtmöglichen Typhoeus-Buff. Qingbo Light Armor, Hot Work Gloves und zwei Qingbo Casks für Combo-Abklingzeit und Elektrifikation."
+          alternatives:
+            - title: "Mehr eigener Schaden bei vollem Elektrifikation-Effekt"
+              items: ["353", "775", "338", "338"]
+              note: "Pulser Labs Disruptor Suit, Hot Work Gloves, zweimal Pulser Labs Calibrator."
+        - member: gilberta
+          weaponId: "79"
+          weaponAlternatives: ["47"]
+          items: ["328", "775", "286", "286"]
+          note: "Technik-Intensität im Team mit Arcane: Eternal Xiranite Armor, Hot Work Gloves, zwei Hot Work Power Cartridges."
+          alternatives:
+            - title: "Taumel-Fokus (Rhodagn-Nuke)"
+              items: ["328", "874", "793", "793"]
+              note: "Taumelpunkte und Timing des Nuke-Fensters."
+            - title: "Nur ohne weiteren Xiranit-Nutzer"
+              items: ["328", "332", "337", "337"]
+              note: "Eternal Xiranite Armor, Gloves T1 und zweimal Auxiliary Arm."
 
 gameplay:
   pending: false
@@ -718,7 +974,6 @@ gameplay:
     - id: trial-erlaeutert
       title: "Trial – Natur-Stacks und FP-Rotation"
       type: trial
-      featured: true
       url: "https://www.youtube.com/watch?v=wNVJkGzkfMg&t=974s"
       description: >-
         Kampfübungs-Team mit Typhi, Arcane,
@@ -836,6 +1091,7 @@ gameplay:
     - id: nefarith-p0
       title: "Nefarith – P0 No Food Speedrun"
       type: speedrun
+      featured: true
       url: "https://www.youtube.com/watch?v=Zw8B2F2nJP8"
       description: >-
         Eigenständiger 0:39-Run
@@ -866,42 +1122,6 @@ gameplay:
         Laufzeiten daher
         nicht ohne dieselben
         Bedingungen vergleichen.
-    - id: quiz-zeichen
-      title: "Quiz – wie viele Zeichen?"
-      type: other
-      url: "https://www.youtube.com/watch?v=wNVJkGzkfMg&t=1526s"
-      description: >-
-        Zum Verständnis des
-        Ressourcen-Loops:
-        Ein Gegner mit zwei
-        Natur-Stacks,
-        vier Jagdpfeile
-        und bereits einem
-        Zeichen – wie
-        viele Zeichen
-        stehen nach vier
-        Energieschüssen
-        und Final Strike
-        zur Verfügung?
-      rotationAndTips: >-
-        Lösung: acht Zeichen.
-        Die ersten zwei
-        Energieschüsse
-        verbrauchen je
-        einen Natur-Stack
-        und lösen zusätzlich
-        je eine Natur-Explosion
-        aus: zwei Zeichen
-        pro Schuss.
-        Schuss drei und vier
-        geben jeweils ein
-        Zeichen, der letzte
-        Luft-Final-Strike
-        ebenfalls eines.
-        Zusammen mit
-        dem Startzeichen
-        ergibt das acht.
-
 conclusion:
   verdict: >-
     Typhoeus ist eine starke,

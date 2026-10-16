@@ -84,5 +84,5 @@ test("Published editorial prose never refers to its author in the third person",
   assert.match(guide, /Cohesive Traction ist die F2P-Option/);
   assert.doesNotMatch(guide, /^  generalNotes: >-\n    Die Einordnung der vier empfohlenen Waffen stammt/m);
   assert.match(guide, /Die Balanced-Variante kombiniert drei LYNX-Teile/);
-  assert.match(guide, /Dieser Build maximiert Liinos Willenskraft/);
+  assert.match(guide, /Dieser Build maximiert Liinos Wille/);
 });
