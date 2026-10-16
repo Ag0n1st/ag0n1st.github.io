@@ -96,6 +96,26 @@ Dieser Auszug ist ein **strukturelles Beispiel** aus dem redaktionell bestätigt
 
 **Liino, Stand 16.10.2026:** A (**Ultimate-Fokus**), B (**Balanced**), C (**Will-Fokus**) sind Meta-Builds; D (60), E (50), F (36) sind Progressionsvarianten im Finder. Details: [`liino-approved-builds-20261016.md`](liino-approved-builds-20261016.md).
 
+## Build-Finder: eingeklappt und standardmäßig maximal freigeschaltet (16.10.2026)
+
+**Aktuelles verbindliches Layout für alle Operator-Guides:** Die kompakten **Meta Builds** stehen unmittelbar sichtbar oben. Der große Bereich **Build-Finder** einschließlich Filter, detaillierter Ausrüstung und Ausrüstungsprogression ist ein `<details>`-Bereich, der **bei jedem Seitenaufruf geschlossen** startet. Nutzer öffnen ihn über die native Schaltfläche **„Build-Finder – Ausführliche Builds, Filter und Herstellung anzeigen“**. Klicks auf **„Details im Build-Finder ansehen“** in einer Meta-Card sowie auf bestehende Team-Build-Links öffnen den Bereich automatisch und wählen die richtige Build-ID; sie müssen nicht erst von Hand aufklappen.
+
+**Neue Startauswahl für neue Besucher (Maximal-Voreinstellung):**
+- Spieler-/Gear-Level **70**, höchste Fabrikkomponente **Pyrrolit**, Region **Wuling**.
+- **Alle** momentan im Guide-Register verfügbaren Tal4-/Wuling-Gebiete standardmäßig ausgewählt (nicht nur Gebiete des gewählten Region-Tabs).
+- **Autoritätslevel 60** (geltendes Maximum) und **Wuling-Warenumverteilung Stufe 3**.
+- **Alle** im gerade geöffneten Guide tatsächlich angebotenen **und offiziellen** Gear-Blaupausen sind aktiviert; doppelte Item-IDs werden wie bisher gemeinsam geschaltet.
+- Die Voreinstellung ist **eine Annahme für die schnelle Build-Evaluation**, kein tatsächlicher Besitz-/Quest-/SKPORT-Kontozugriff. **Eine voreingestellte Blaupause ist kein verifiziertes Ingame-Inventar**; das muss in der UI ausdrücklich so erklärt werden.
+- Spieler mit weniger Fortschritt schränken Region, Einzelgebiete, Autorität, Redistribution, Gear-Level, höchste Fabrikkomponente und fehlende Blueprint-IDs selbst ein. Eine manuell angewählte Blaupause bleibt unabhängig von Region/Authority ein „als vorhanden markiertes“ Teil – wer auf einem neuen Account spielt, sollte auch die nicht besessenen Blueprints deaktivieren. Die alte Engine-Entscheidung „Gebiet ≠ Bauplanbesitz“ bleibt erhalten.
+
+**Persistenz:** Browser `localStorage`, **ohne Login und ohne serverseitige Speicherung**. Der aktuelle Datensatz `ag0n1st:endfield:build-story-progress:v2` speichert absichtlich die **abgewählten** Gebiet- und Gear-IDs (`lockedAreaIds`, `unselectedGearBlueprintIds`), außerdem explizite Region, Autorität, Warenumverteilung, Level und Fabrikkomponente. Dadurch sind neue IDs auf anderen Operatoren oder aus neuen Versionen zunächst **eingeschaltet**, explizite Abwahlen bleiben aber über alle Guides und Reloads erhalten. Frühere gültige `v1`-Browserauswahlen werden beim Öffnen gelesen und bei einer Änderung nach `v2` übertragen. Eine bereits individuell gespeicherte Auswahl hat Vorrang vor der neuen Maximal-Voreinstellung, auch wenn sie niedriger ist.
+
+Der Button **„Maximal-Vorauswahl wiederherstellen (Anpassungen löschen)“** löscht beide Speicherstände `v1/v2`, wählt maximale Einstellungen erneut und aktualisiert direkt das Ergebnis. Er löscht **keine** echten Spielkontodaten – solche Daten werden nie ausgelesen.
+
+**Fachlicher Unterschied zum früheren Verhalten:** Früher war beim ersten Besuch der Großteil der Story- und Blaupausenfelder **leer** und der Finder komplett **ausgeklappt**. Der Wechsel zur Maximal-Voreinstellung und dem geschlossenen Finder wurde nach tatsächlicher Designprüfung des Creators ausdrücklich entschieden. Die eigentliche unabhängige Story-/Blueprint-Prüflogik und alle sechs freigegebenen Liino-Builds bleiben technisch unverändert.
+
+**Qualitätssicherung:** `scripts/endfield/build-finder-defaults.test.mjs` prüft Maximallevel/-Komponente/-Area/-Authority/-Redistribution, alle sechs Liino-Builds ohne Klicks sofort als passend, Einschränkungen durch Level/Fabrik/abgewählte Blaupause, das geschlossene HTML-`details`, Meta→Finder-Link, v2-Opt-out-Speicherung, Migration und Reset. Ergänzend sind **echte Browser-/Mobile-Tests** weiter nötig.
+
 ## Kompaktregeln für YAML
 
 - Einrückung mit **Leerzeichen**, nicht Tabulatoren.
@@ -133,8 +153,8 @@ So entsteht später der gewünschte Ablauf: Datei kopieren → bearbeiten → Gi
 - Auf `/endfield/operatoren/liino/` mindestens einen realen vierteiligen Build anzeigen und jeden der vier Gear-IDs, Rezepte und Komponentenstufen kontrollieren.
 - Bei zu niedrigem Level `level-locked`; bei unzureichender Fabrikkomponente `component-locked` prüfen.
 - Region und einzelne Gebiete getrennt prüfen. Nur wirklich verfügbare Gebiete aktivieren; keine automatische Kapitel- oder Patchfreigabe annehmen.
-- Besitz-Checkboxen für alle vier Blaupausen einzeln prüfen: Ohne Bestätigung kein vollständiges `available`, mit bestätigten vier IDs und ausreichendem Fortschritt `available` (sofern das Build verifiziert ist).
-- `localStorage`-Persistenz, Browser-Reload und Zurücksetzen auf Liino **und** Typhoeus prüfen.
+- Browser-Maximal-Vorauswahl prüfen: Alle relevanten Blaupausen sind zunächst **als Annahme vorausgewählt**, keine tatsächliche Besitzbestätigung. Bei expliziter Abwahl einer benötigten Blueprint-ID darf der Build nicht als `available` erscheinen. Bestätigte/ausgewählte vier IDs, Level und Komponenten führen (bei verifiziertem Build) zu `available`; die UI muss transparent auf die Annahme hinweisen.
+- `localStorage`-Persistenz `v2` (Opt-outs + Level/Fabrik), Migration bestehender `v1`-Auswahlen, Browser-Reload und Reset auf **Maximal-Vorauswahl** bei Liino **und** Typhoeus prüfen. Finder muss geschlossen starten und durch Meta-/Teamlinks automatisch öffnen.
 - Community-Kistenorte mit unklarer/widersprüchlicher Beleglage als `unverified` beziehungsweise `disputed` belassen. Unbestätigte Vorschläge nicht als offizielle Empfehlungen veröffentlichen.
 
 Für Architektur, genaue Quellenhierarchie und den nächsten Projektstand immer auch die zentrale [`ROADMAP.md`](../ROADMAP.md) lesen.
