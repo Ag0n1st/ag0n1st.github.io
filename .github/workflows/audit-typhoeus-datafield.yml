@@ -40,16 +40,35 @@ jobs:
               print("PROFILE_BODY_END")
               print("BUTTONS",json.dumps(page.locator("button").all_text_contents()[:110],ensure_ascii=False))
               print("LINKS",json.dumps(page.locator("a").evaluate_all("(nodes)=>nodes.filter(n=>/spreadsheet|sheet|source|calc/i.test(n.textContent)).slice(0,20).map(n=>({text:n.textContent,href:n.href}))"),ensure_ascii=False))
-              for selector in ["button"]:
-                btns=page.locator(selector)
-                for i in range(min(btns.count(),80)):
-                  b=btns.nth(i)
-                  title=b.inner_text()[:100] if b.is_visible() else ""
-                  if "Show" in title and "Weapon" in title:
-                    b.click()
-                    page.wait_for_timeout(450)
-                    print("AFTER_SHOW_WEAPONS",page.locator("body").inner_text()[:32000])
-                    break
+              # Datafield opens its changelog modal on first visit.
+              try:page.locator(".modal-backdrop").get_by_role("button",name="×").first.click(timeout=1500)
+              except Exception:
+                try:page.get_by_role("button",name="×").first.click(timeout=1500)
+                except Exception:
+                  page.locator(".modal-backdrop").evaluate_all("(nodes)=>nodes.forEach(n=>n.remove())")
+              def snap(tag):
+                src=page.locator("body").inner_text()
+                i=src.find("Talent Priority")
+                j=src.find("Recommended Gear Sets")
+                print("DF_SNAPSHOT",tag,src[i:j if j>=0 else i+12000][:16000])
+              snap("default")
+              try:
+                b=page.get_by_role("button",name="Show 3 More Weapons")
+                b.click(timeout=4000)
+                snap("show_all_weapons")
+              except Exception as e:print("MORE_FAILURE",str(e)[:180])
+              for name in ["Non Liino Teams - LESS ATK -","Ardelia Arcane Liino"]:
+                try:
+                  page.get_by_role("button",name=name).click(timeout=3000)
+                  page.wait_for_timeout(650)
+                  snap("weapon_"+name)
+                except Exception as e:print("SCENARIO_FAILURE",name,str(e)[:180])
+              for name in ["Teams without energy needs","Teams with energy needs"]:
+                try:
+                  page.get_by_role("button",name=name).click(timeout=3000)
+                  page.wait_for_timeout(650)
+                  snap("potential_"+name)
+                except Exception as e:print("POTENTIAL_FAILURE",name,str(e)[:180])
             except Exception as e:print("AUDIT_ERROR",type(e).__name__,str(e)[:900])
             finally:browser.close()
           PY
