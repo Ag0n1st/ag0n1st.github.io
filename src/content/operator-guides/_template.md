@@ -64,9 +64,9 @@ weapons:
   #   category: bis
   #   evaluation: |
   #     Wieso ist diese Waffe hier sinnvoll?
-  #   sourceNote: ""
-  #   performancePercent: 100  # NUR bei tatsächlichem Test
-  #   comparisonConditions: "Lv. 90, Veredelung 1, festes Team ..."
+  #   sourceNote: "Datafield" # Als Klartext anzeigen, KEIN Link
+  #   performancePercent: 100  # Nur aus nachvollziehbarer Datafield-Berechnung oder eigenem Vergleich
+  #   comparisonConditions: "Exakte Datafield-Baseline, Team/Rotation, Waffenrang und Potenziale ..."
   generalNotes: ""
 
 # 5. AUSRÜSTUNG
@@ -103,7 +103,8 @@ potentials:
   #     Zusätzlicher Nutzen und praktische Einordnung.
   #   increaseOverPreviousPercent: 0 # optional; nur mit Belegen
   #   increaseOverP0Percent: 0        # optional; nur mit Belegen
-  #   comparisonConditions: "Annahmen, Team, Ausrüstung ..."
+  #   comparisonConditions: "Datafield-Modell, Team/Rotation, Ausrüstung, Potenziale, P0-/P(n-1)-Vergleich ..."
+  #   sourceNote: "Datafield" # Pflicht sobald einer der Prozentwerte befüllt ist, nur Klartext (kein Link)
   pullAdvice: "" # persönlicher Stopp-Punkt; allgemeiner Disclaimer erscheint automatisch
 
 # 7. TEAMS
