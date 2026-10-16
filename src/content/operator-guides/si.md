@@ -150,6 +150,18 @@ equipment:
       evaluation: "Das neue Eternal-Xiranite-Set ist eine Nischenalternative für Teams, in denen kein anderer Operator den relevanten Setbonus bereitstellt und die Buff-Rolle im Vordergrund steht. Das Type-50-Yinglung-Set wird in den meisten Situationen voraussichtlich mehr leisten; die Xiranit-Variante lohnt sich daher nur bei einem passenden Teamaufbau und klaren Buff-Vorteilen."
       setBonusNotes: "Der Xiranit-3er-Bonus kann in einem Team normalerweise nicht mehrfach sinnvoll gestapelt werden; zuerst die vorhandenen Support-Ausrüstungen prüfen."
       craftingNotes: "Neue 1.6-Xiranit-Items vorläufig mit Wiki-Namen und lokalem WebP. Offizielle Item-IDs/Blueprint-Erwerb separat nachtragen."
+    - id: "si-early-access"
+      title: "Type 50 Yinglung · Early Access"
+      role: "main-dps"
+      meta: true
+      metaTag: "early-access"
+      metaSummary: "Früher erreichbarer Type-50-Dreierbonus ohne die neuen v1.6-Teile: Redeemer Armor, ältere Yinglung Gloves und zweimal Yinglung Knife T1. Ideal als Übergang bis zum vollständigen 1.6-Set."
+      items: ["796", "411", "342", "342"]
+      availableFromLevel: 70
+      teamContext: "Level-70-Übergang, solange die neuen Type-50-Ausrüstungsteile aus Version 1.6 noch nicht freigeschaltet sind."
+      evaluation: "Redeemer Armor liefert viel Intellekt und Ultimate-Effizienz. Die älteren Type 50 Yinglung Gloves steuern Kombofertigkeitsschaden und etwas Intellekt bei, besitzen aber Beweglichkeit statt Stärke als Hauptattribut. Beide Type 50 Yinglung Knife T1 ergänzen Intellekt, Stärke und allgemeinen Fertigkeitsschaden. Mit insgesamt drei Type-50-Teilen bleibt der volle Yinglung's-Edge-Dreierbonus erhalten. Dieses Setup ist eine Übergangslösung und kein Ersatz für die besseren neuen v1.6-Teile."
+      setBonusNotes: "3× Type 50 Yinglung: ANG +15 %; Battle Skills aus dem Team erzeugen bis zu drei Yinglung's-Edge-Stapel für die nächste Kombofertigkeit. Redeemer Armor als Off-Piece mit Intellekt und Ultimate-Effizienz."
+      craftingNotes: "Alle vier Item-IDs sind im bestehenden offiziellen SKPORT-Katalog enthalten. Frühere Verfügbarkeit bedeutet nicht automatisch, dass alle benötigten Blaupausen bereits im eigenen Spielstand freigeschaltet sind."
     - id: "si-level60"
       title: "Level 60 · AIC Fieldwork"
       role: "main-dps"
@@ -185,7 +197,7 @@ equipment:
     - stage: "mid"
       note: "Level 50: mit Mordvolt Insulation und Aburrey Flashlight weiter ausbauen. Ab Level 60 ist AIC Fieldwork eine weitere Übergangslösung."
     - stage: "late"
-      note: "Level 70: Sobald das neue Gebiet und die entsprechenden Story-Freischaltungen erreicht sind, drei neue Type-50-Teile anstreben. Redeemer Seal für Balanced-Rotationen, LYNX Slab für maximalen eigenen Schaden."
+      note: "Level 70: Vor dem Freischalten der neuen v1.6-Ausrüstung ist Early Access mit Redeemer Armor und drei älteren Yinglung-Teilen ein vollständiger Übergangsbuild. Sobald das neue Gebiet und die entsprechenden Story-Freischaltungen erreicht sind, drei neue Type-50-Teile anstreben. Redeemer Seal für Balanced-Rotationen, LYNX Slab für maximalen eigenen Schaden."
     - stage: "endgame"
       note: "Das mit Version 1.6 neu erschienene Type-50-Yinglung-Set ist Sis Go-to-Set. Mit Redeemer Seal ist es ausgewogen, mit LYNX Slab auf maximalen eigenen Combo-Schaden ausgerichtet. Eternal Xiranite bleibt eine stark situationsabhängige Nischenalternative, wenn der Setbonus im Team noch fehlt."
   generalNotes: "Stand 16.10.2026: Die drei neuen Type-50-Teile und mehrere neue Xiranit-Teile sind in der aktuellen Talos-/Release-Wiki belegt, aber noch nicht eindeutig mit numerischen Item-IDs und Fertigungsrezepten im zuvor importierten SKPORT-Katalog verknüpft. Diese Builds sind echte redaktionelle Empfehlungen, keine als vollständig nachgewiesen bewerteten Blaupausen. Der Build-Finder gibt entsprechend Status „ungeprüft“ statt eine erfundene Freischaltung auszugeben."
