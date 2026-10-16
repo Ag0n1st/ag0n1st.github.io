@@ -22,8 +22,9 @@ const officialWeapons=shownWeapons.map(w=>{
           </article>)}</div> : <p class="op-placeholder">[Noch keine Waffenempfehlungen]</p>}
           {guide.weapons.generalNotes && <p class="op-body-copy">{guide.weapons.generalNotes}</p>}
         </div>
-        <div class="op-divided">
-          <h3>Waffendetails</h3>
+        <details class="op-divided op-guide-accordion" data-guide-disclosure="weapon-details">
+          <summary class="op-guide-accordion-summary"><h3>Waffendetails</h3><span class="op-guide-accordion-hint">Details anzeigen</span></summary>
+          <div class="op-guide-accordion-content">
           {officialWeapons.length ? <>
             <div class="op-pills" aria-label="Waffe auswählen">{officialWeapons.map((w,i)=><button class="op-pill-button" type="button" data-weapon-button={w.id} aria-pressed={i===0?"true":"false"}>{w.label} {officialWeapons.filter(x=>x.label===w.label).length>1 ? "· "+(w.item?.name??w.name) : ""}</button>)}</div>
             {officialWeapons.map((w,i)=><div class="op-weapon-panel op-cardlet" data-weapon-panel={w.id} hidden={i!==0}>
@@ -59,8 +60,11 @@ const officialWeapons=shownWeapons.map(w=>{
 </details>
             </div>)}
           </> : <p class="op-placeholder">[Waffendetails werden nach dem Datenimport angezeigt]</p>}
-        </div>
-        <div class="op-divided"><h3>Waffenvergleich</h3>
+          </div>
+        </details>
+        <details class="op-divided op-guide-accordion" data-guide-disclosure="weapon-comparison">
+          <summary class="op-guide-accordion-summary"><h3>Waffenvergleich</h3><span class="op-guide-accordion-hint">Vergleich anzeigen</span></summary>
+          <div class="op-guide-accordion-content">
           {guide.weapons.comparisons.length>0 ?
             <div class="op-comparison-scenarios">
               {guide.weapons.comparisons.map(scenario=>
@@ -87,5 +91,6 @@ const officialWeapons=shownWeapons.map(w=>{
                 </tr>)}</tbody>
               </table><small class="op-data-source-note">Quelle: {weapons.find(w=>w.source)?.source??"nicht angegeben"}</small></div> :
               <p class="op-placeholder">[Noch keine belastbaren Vergleichswerte]</p>}
-        </div>
+          </div>
+        </details>
       </section>
