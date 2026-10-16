@@ -84,11 +84,15 @@ def smoke(page, base_url, width):
             "(el) => getComputedStyle(el).alignItems") == "start",
                label + ": gear and skill quick cards do not stretch")
     for n in (1, 3, 5):
+        page.locator('[data-potential-button="' + str(n) + '"]').click()
         img = page.locator('[data-potential-panel="' + str(n) +
                            '"] .op-potential-snapshot img')
+        img.wait_for(state="visible")
         verify(img.count() == 1 and img.get_attribute("src").endswith(
             "/images/endfield/operators/liino/potentials/potential-" + str(n) + ".webp"),
                label + ": Liino P" + str(n) + " uses local WebP snapshot")
+        page.wait_for_function(
+            "(el) => el.complete && el.naturalWidth > 100", arg=img.element_handle())
         verify(img.evaluate("(el) => el.complete && el.naturalWidth > 100"),
                label + ": Liino P" + str(n) + " WebP loads in Chromium")
 
