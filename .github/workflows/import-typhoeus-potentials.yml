@@ -1,0 +1,32 @@
+name: One-time Typhoeus potential WebP import
+on:
+  push:
+    branches: [feature-typhoeus-complete-guide-20261016]
+    paths: [.github/workflows/import-typhoeus-potentials.yml]
+permissions:
+  contents: write
+jobs:
+  import_images:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install temporary optimizer
+        run: npm install --no-save --package-lock=false sharp
+      - name: Fetch actual wiki snapshot art and compress within 150 KB each
+        run: node scripts/endfield/import-typhoeus-potentials.mjs
+      - name: Check 100 MB Endfield budget
+        run: node scripts/endfield/check-budget.mjs
+      - name: Commit exactly three local WebPs to feature branch
+        shell: bash
+        run: |
+          git add public/images/endfield/operators/typhoeus/potentials/potential-{1,3,5}.webp
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Cache optimized Typhoeus potential artwork"
+          git push origin HEAD:feature-typhoeus-complete-guide-20261016
