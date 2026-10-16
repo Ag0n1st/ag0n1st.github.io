@@ -1,0 +1,17 @@
+---
+import {availableCounterpart,englishPath,germanPath} from "../../lib/i18n/site.mjs";
+interface Props { path:string; lang?:"de"|"en" }
+const {path,lang="de"}=Astro.props;
+const counterpart=availableCounterpart(path,lang);
+const de=lang==="de"?path:germanPath(path)??"/";
+const en=lang==="en"?path:englishPath(path)??"/en/";
+---
+<div class="language-switch" role="group" aria-label={lang==="de"?"Sprache wechseln":"Choose language"}>
+  {lang==="de"
+    ? <span class="language-active" aria-current="true" lang="de">DE</span>
+    : <a href={de} lang="de" hreflang="de" aria-label="Auf Deutsch ansehen" title="Deutsch">DE</a>}
+  <span class="language-divider" aria-hidden="true">/</span>
+  {lang==="en"
+    ? <span class="language-active" aria-current="true" lang="en">EN</span>
+    : <a href={counterpart??"/en/"} lang="en" hreflang="en" aria-label={counterpart?"View this page in English":"English homepage"} title={counterpart?"English version":"English homepage"}>EN</a>}
+</div>
