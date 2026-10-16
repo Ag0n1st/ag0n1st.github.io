@@ -1,6 +1,6 @@
 ---
-# Öffentliche Vorschau: Sechs Ausrüstungs-Builds wurden am 16.10.2026
-# vom Creator festgelegt. Andere redaktionelle Bereiche bleiben unfertig.
+# Öffentliche Vorschau: Sechs Ausrüstungs-Builds und die Skill-Priorität
+# wurden vom Creator festgelegt. Weitere redaktionelle Bereiche bleiben unfertig.
 # Eigene Texte und Builds beim Spieldatenimport niemals überschreiben.
 operator: liino
 displayName: Liino
@@ -22,7 +22,39 @@ operatorKit:
   resourceNotes: ""
 
 skills:
-  active: {}
+  priority:
+    order: [ultimate, battle, combo, basic]
+    comparisons: [">", ">=", ">"]
+    targetLevels:
+      ultimate: "M3"
+      battle: "M3"
+      combo: "M3"
+      basic: "1"
+  active:
+    basic: >-
+      Auf Stufe 1 belassen. Liino übernimmt hier die Rolle einer Supporterin;
+      zusätzliche Level im Basisangriff bringen ihrer Teamverstärkung,
+      FP-Rückerstattung und Ultimate-Rotation keinen wesentlichen Nutzen.
+    battle: >-
+      M3 ist das Ziel, denn die Kampffertigkeit gewährt damit 10 % ANG-Bonus
+      für das Team. Ihre Verstärkungswerte steigen mit den Skillstufen.
+      Zwischen dieser Fertigkeit und der Kombofertigkeit ist die
+      Investitionsreihenfolge flexibel, da beide auf M3 angestrebt werden.
+    combo: >-
+      Ebenfalls auf M3 bringen. Der Cooldown sinkt laut offiziellen
+      Fertigkeitsdaten von 10 auf 8 Sekunden. Je häufiger Liino ihre
+      Kombofertigkeit durch passende Arts-Reaktionen auslösen kann, desto
+      öfter erhält sie die konstanten 20 Ultimate-Energie und desto
+      häufiger kann ihr Kampftalent nach der Kombo eine folgende
+      Elektro- oder Natur-Kampffertigkeit mit bis zu 10 FP erstatten.
+      Die FP stammen aus dem Talent, nicht unmittelbar aus der Kombo selbst.
+    ultimate: >-
+      Höchste Priorität, M3. Liinos stärkster Teamnutzen ist die
+      Willenskraft-skalierende Elektro-/Natur-Verstärkung des Ultimate.
+      Auf M3 erreicht der zusätzliche Amp laut offiziellen Skilldaten
+      0,04 % pro Willenskraftpunkt, mit einem ausgewiesenen Maximalbeitrag
+      von 60 % aus Willenskraft. Die tatsächlich erreichte Verstärkung
+      hängt vom Willenskraftwert ab.
   combatTalents: []
   shipTalents: []
 
