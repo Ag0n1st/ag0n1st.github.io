@@ -20,7 +20,7 @@ const prioritySets = [
               <div class="op-priority-skill"><div class="op-mini-art">{skillImage(key) ? <img class="op-skill-icon" src={skillImage(key)} loading="lazy" decoding="async" alt="" /> : slotIcons[key]}</div><small>{slotLabels[key]}</small><b>{set.priority?.targetLevels[key] || "–"}</b></div>
               {i<3&&<span class="op-priority-symbol">{set.comparisons[i]}</span>}
             </>)}</div>
-          </div>)}</div> : <p class="op-placeholder">[Skill-Priorität folgt]</p>
+          </div>)}</div> : <p class="op-placeholder">[Skill-Priorität folgt]</p>}
         </div>
         <details class="op-divided op-guide-accordion" data-guide-disclosure="skill-details">
           <summary class="op-guide-accordion-summary"><h3>Fertigkeiten & Talente</h3><span class="op-guide-accordion-hint">Fertigkeitsdetails anzeigen</span></summary>
