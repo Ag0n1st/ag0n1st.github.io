@@ -156,7 +156,7 @@ function youtubeEmbed(url?:string):string|null {
     // Static section deep links start a user-invoked video at its actual chapter.
     // Never autoplay or inherit arbitrary URL parameters.
     const start=parsed.searchParams.get("start")??parsed.searchParams.get("t")??"";
-    const match=start.match(/^(\\d{1,5})s?$/);
+    const match=start.match(/^(\d{1,5})s?$/);
     const seconds=match?Number(match[1]):0;
     return "https://www.youtube-nocookie.com/embed/"+id
       +(seconds>0 && seconds<=86400?"?start="+seconds:"");
