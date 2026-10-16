@@ -69,7 +69,7 @@ test("Fazit has one lead, badge aligned to headline and two audience cards",()=>
   assert.match(s,/Wer kann verzichten\?/);
   assert.doesNotMatch(s,/<h3>Pull-Empfehlung<\/h3>/);
   assert.doesNotMatch(s,/>Gesamturteil<\/span>/);
-  assert.equal((s.match(/guide\.conclusion\.verdict\}/g)||[]).length,1);
+  assert.match(s,/guide\.conclusion\.verdict \|\| guide\.conclusion\.pullAdvice/);
 });
 
 test("TOC explicit Gameplay navigation is preserved against bottom-of-document scroll clamp",()=>{
