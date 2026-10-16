@@ -124,8 +124,12 @@ test("the shared equipment framework places responsive Meta Builds before the Fi
   assert.match(schema,/metaSummary: z\.string\(\)\.trim\(\)\.max\(280\)/);
   assert.match(schema,/Meta-Builds benötigen eine kurze Beschreibung/);
   assert.match(section,/const metaBuilds=officialBuilds\.filter\(build=>build\.meta===true\)/);
-  assert.ok(section.indexOf(">Meta Builds</h3>")<section.indexOf(">Build-Finder</h3>"),
-    "Meta overview must appear above the detailed finder");
+  assert.ok(section.indexOf(">Meta Builds</h3>")>=0 &&
+    section.indexOf(">Meta Builds</h3>") <
+    section.indexOf('<details class="op-divided op-build-finder-accordion" id="build-finder">'),
+    "Meta overview must appear above the closed detailed finder");
+  assert.match(section,/<summary class="op-build-finder-toggle">[\\s\\S]*?<strong>Build-Finder<\\/strong>/,
+    "Finder title must be the native disclosure summary");
   assert.match(section,/href="#build-finder" data-select-build=\{build\.id\}/,
     "Card CTA must select the corresponding real finder build");
   assert.match(section,/metaBuilds\.map\(build=>/);
