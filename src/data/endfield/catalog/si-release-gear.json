@@ -1,0 +1,75 @@
+{
+  "source": {
+    "provider": "Endfield Talos Wiki",
+    "snapshot": "2026-10-16",
+    "note": "Named 1.6 items unavailable from the numeric SKPORT item catalogue. Not verified blueprint records."
+  },
+  "items": [
+    {
+      "id": "type-50-yinglung-soft-armor",
+      "name": "Type 50 Yinglung Soft Armor",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/releases/si/type-50-yinglung-soft-armor.webp",
+      "cacheStatus": "community-wiki-verified-numeric-id-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Type_50_Yinglung_Soft_Armor"
+    },
+    {
+      "id": "type-50-yinglung-gauntlets",
+      "name": "Type 50 Yinglung Gauntlets",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": null,
+      "cacheStatus": "wiki-listed-image-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Type_50_Yinglung_Gauntlets"
+    },
+    {
+      "id": "type-50-yinglung-beacon",
+      "name": "Type 50 Yinglung Beacon",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/releases/si/type-50-yinglung-beacon.webp",
+      "cacheStatus": "community-wiki-verified-numeric-id-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Type_50_Yinglung_Beacon"
+    },
+    {
+      "id": "eternal-xiranite-overalls",
+      "name": "Eternal Xiranite Overalls",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/releases/si/eternal-xiranite-overalls.webp",
+      "cacheStatus": "community-wiki-verified-numeric-id-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Eternal_Xiranite_Overalls"
+    },
+    {
+      "id": "eternal-xiranite-channeling-gloves",
+      "name": "Eternal Xiranite Channeling Gloves",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/releases/si/eternal-xiranite-channeling-gloves.webp",
+      "cacheStatus": "community-wiki-verified-numeric-id-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Eternal_Xiranite_Channeling_Gloves"
+    },
+    {
+      "id": "eternal-xiranite-rangefinder",
+      "name": "Eternal Xiranite Rangefinder",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/releases/si/eternal-xiranite-rangefinder.webp",
+      "cacheStatus": "community-wiki-verified-numeric-id-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Eternal_Xiranite_Rangefinder"
+    }
+  ]
+}
