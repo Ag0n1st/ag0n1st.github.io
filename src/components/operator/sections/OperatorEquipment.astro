@@ -48,6 +48,7 @@ const metaBuilds=officialBuilds.filter(build=>build.meta===true);
                 </div>)}
               </div>
               <p class="op-meta-build-summary">{build.metaSummary}</p>
+              {build.parts.some(part=>!part.detail || part.detail.status!=="verified") && <p class="op-muted op-body-copy">Neue Ausrüstung: Gegenstände und Bilder vorläufig aus der aktuellen Wiki; SKPORT-Item-IDs, Rezepte und Verfügbarkeit noch nicht vollständig bestätigt.</p>}
               <a class="op-link op-meta-build-link" href="#build-finder" data-select-build={build.id}>Details im Build-Finder ansehen ↗</a>
             </article>)}
           </div>
@@ -169,7 +170,7 @@ const metaBuilds=officialBuilds.filter(build=>build.meta===true);
                 <legend>Blaupausen-Auswahl (bei Maximal-Vorauswahl alle aktiv)</legend>
                 {b.parts.map(part=><label class="op-blueprint-check">
                   <input type="checkbox" data-blueprint-owned={part.catalog?.id??part.reference}
-                    disabled={!part.catalog} />
+                    disabled={!part.catalog || !part.detail || part.detail.status!=="verified"} />
                   <span>{part.catalog?.name??part.reference}</span>
                 </label>)}
                 <p class="op-muted">Alle Vorlagen sind zum Vergleich anfangs vorausgewählt. Entferne Häkchen bei Blaupausen, die dir tatsächlich fehlen. Gleiche Gear-IDs werden über alle Builds und Operatoren gemeinsam ausgewertet.</p>

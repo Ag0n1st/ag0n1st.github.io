@@ -1,0 +1,38 @@
+name: One-time official Si SKPORT and WebP import
+on:
+  push:
+    branches: [feature-si-complete-guide-20261016]
+    paths: [.github/workflows/import-si-public-once.yml]
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Temporary browser and image optimizer
+        run: |
+          npm install --no-save --package-lock=false playwright sharp
+          npx playwright install --with-deps chromium
+      - name: Import only public Si item 1278 and bounded WebPs
+        run: node scripts/endfield/import-si-public.mjs
+      - name: Check Endfield 100 MB budget
+        run: node scripts/endfield/check-budget.mjs
+      - name: Commit source-derived records and images (no raw responses)
+        shell: bash
+        run: |
+          git add src/data/endfield/operators/si.json src/data/endfield/operators/si.extra.json
+          git add src/data/endfield/catalog/items.json
+          git add public/images/endfield/operators/si public/images/endfield/gear
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Import official Si operator snapshots and capped WebP assets"
+          git fetch origin feature-si-complete-guide-20261016
+          git rebase origin/feature-si-complete-guide-20261016
+          git push origin HEAD:feature-si-complete-guide-20261016

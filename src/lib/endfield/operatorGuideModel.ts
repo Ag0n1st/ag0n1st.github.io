@@ -3,7 +3,7 @@ import type { ImportedOperator, ImportedOperatorExtras, ImportedItemCost } from 
 import type { OperatorLocale } from "./operatorLocale";
 import { getOperatorImageUrl } from "./operatorAssets";
 import { getImportedOperator } from "./operatorData";
-import { resolveOfficialItem } from "./itemCatalog";
+import { resolveOfficialItem, findOperatorCatalogItem } from "./itemCatalog";
 import { getOfficialGear } from "./equipmentDetails";
 import { getBuildRequirements } from "./buildFinder.mjs";
 import { metaAccessibilityFromRequirements } from "./metaAccessibility.mjs";
@@ -127,7 +127,7 @@ const profilePartners = partnerIds.map(slug=>{
   return {
     slug,
     name,
-    image: getOperatorImageUrl(slug,"cover",official?.operator.coverUrl),
+    image: getOperatorImageUrl(slug,"cover",official?.operator.coverUrl) ?? findOperatorCatalogItem(slug)?.iconPath ?? undefined,
     initials: name.split(" ").map(part=>part[0]??"").join("").slice(0,2).toUpperCase()
   };
 });
