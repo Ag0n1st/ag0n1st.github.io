@@ -43,6 +43,11 @@ const equipmentBuild = z.object({
   id: identifier,
   title: z.string().trim().min(1),
   role: role,
+  // Redaktionelles Meta-Kennzeichen für die kompakte Card-Übersicht oberhalb
+  // des Build-Finders. Unmarkierte Builds erscheinen weiterhin nur im Finder.
+  meta: z.boolean().default(false),
+  // Kurzer, eigenständiger Card-Text; die ausführliche Bewertung bleibt im Finder.
+  metaSummary: z.string().trim().max(280).optional(),
   // Die vier Ausrüstungsplätze sind verbindlich.
   items: z.tuple([identifier, identifier, identifier, identifier]),
   availableFromLevel: equipmentLevel.optional(),
@@ -53,6 +58,14 @@ const equipmentBuild = z.object({
   evaluation: text.default(""),
   craftingNotes: text.optional(),
   setBonusNotes: text.optional(),
+}).superRefine((build, ctx) => {
+  if (build.meta && !build.metaSummary) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ["metaSummary"],
+      message: "Meta-Builds benötigen eine kurze Beschreibung für die Meta-Build-Card.",
+    });
+  }
 });
 
 const team = z.object({
