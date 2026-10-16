@@ -1,7 +1,7 @@
 # Datafield – reproduzierbarer Browser-DOM-Export und Liino-Probe
 
 **Datum:** 16.10.2026  
-**Technischer Status:** [ECHT GETESTET; VIA PR #22 AUF `main` GEMERGT, CI #95 GRÜN]. `scripts/endfield/datafield_rendered_export.py` konnte im GitHub-Actions-Chromium-Run **#87** auf `https://datafield.cc/characters/liino` nach vollständigem Laden **5 Potenziale und 7 Waffenvergleichswerte** aus dem gerenderten HTML-DOM lesen. JSON-Ausgabe lag als kurzlebiges Workflow-Artefakt `datafield-liino-rendered` vor. **Keine Veröffentlichung im Liino-Guide in diesem Untersuchungsschritt.**
+**Technischer Status:** [ECHT GETESTET; VIA PR #22 AUF `main` GEMERGT, CI #95 GRÜN]. `scripts/endfield/datafield_rendered_export.py` konnte im GitHub-Actions-Chromium-Run **#87** auf `https://datafield.cc/characters/liino` nach vollständigem Laden **5 Potenziale und 7 Waffenvergleichswerte** aus dem gerenderten HTML-DOM lesen. JSON-Ausgabe lag als kurzlebiges Workflow-Artefakt `datafield-liino-rendered` vor. **Im ursprünglichen Import-Recherche-Schritt noch keine Veröffentlichung; später auf ausdrückliche Creatorfreigabe über PR #23 als zwei getrennte Szenarien und fünf Vorstufen-Potenziale MIT DISCLAIMER in `liino.md` übernommen.**
 
 **GitHub-Nachweis:** [PR #22](https://github.com/Ag0n1st/ag0n1st.github.io/pull/22), Merge-Commit `c30057ae86c88be79d151c02ecfe059d2335dba4`. Chromium-Liveproben GitHub CI #87 und #91 bestätigten die Rohdaten; normaler Build-/Testlauf #95 erfolgreich. Manual-`workflow_dispatch`-UI selbst noch nicht getestet.
 
@@ -89,7 +89,8 @@ Der Exporter:
 - [x] Datafield-`Calculations`-Link im gerenderten DOM nachgewiesen.
 - [x] **Beide Team-Tabs** samt aktiver `char-tab.active`-Kennzeichnung und Waffenwerten maschinell getrennt erfasst (Run #91: 7 Zhuang-Varianten und 6 Arcane-Varianten).
 - [ ] Exaktes Team, Potential, Gear, Rotation und Waffenrang-Baseline aus Datafields Spreadsheet dokumentieren, insbesondere Unterschied zwischen Liino als Support und Team-DPS.
-- [x] Unterschiedliche Liino-Waffenprozente für zwei Datafield-Teams **belegt** (z. B. Golden Age R9 85,0 % vs. 91,6 %). Website-Datenmodell für ggf. getrennte Szenarien bei künftiger redaktioneller Umsetzung prüfen.
-- [ ] Erst danach die erlaubten Zahlen unter `weapons.recommendations[]`/`potentials.entries[]` in `liino.md` mit Klartextquelle und Vergleichsbedingungen integrieren. Getestete vierteilige Gear-Builds des Creators dabei **nicht überschreiben**.
+- [x] Unterschiedliche Liino-Waffenprozente für zwei Datafield-Teams **belegt** (z. B. Golden Age R9 85,0 % vs. 91,6 %) und über `weapons.comparisons[]` für alle Guides als getrennte Daten und UI-Szenarien umgesetzt (PR #23, CI #98).
+- [x] Auf ausdrückliche Creator-Freigabe **vor Abschluss der unabhängigen Sheet-Prüfung** Zahlen in `liino.md` integriert, aber mit **sichtbaren Modell-Disclaimern**. Zwei eigenständige `weapons.comparisons[]`-Szenarien statt Rängen in Empfehlungen; `potentials.entries[]` ausschließlich relativ zur Vorstufe. PR #23 / CI #98 grün; Gear A–F unverändert.
+- [ ] Exakte Excel-Modellannahmen weiter prüfen (trotz erlaubter Veröffentlichung unter Disclaimer), ebenso tatsächliche Live-Pages-Darstellung auf Desktop/Mobil.
 
 Dieser Stand ist die erste **erfolgreiche direkte Datafield-Liino-Extraktion** des Projekts und ersetzt ausdrücklich die ältere Notiz „Liino-Werte wären nicht auslesbar“. Ein Browser-Test und ein offizieller Quellen-Snapshot sind zwei verschiedene Abnahme-Ebenen.
