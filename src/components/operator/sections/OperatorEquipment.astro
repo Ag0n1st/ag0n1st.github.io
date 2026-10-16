@@ -27,10 +27,33 @@ const officialBuilds=builds.map(build=>{
  });
  return {...build,parts,requirements};
 });
+// All operators share this framework: only editorially flagged real builds
+// receive cards; unflagged progression builds remain in the detailed finder.
+const metaBuilds=officialBuilds.filter(build=>build.meta===true);
 ---
 <section class="op-section" id="ausruestung">
         <h2>Ausrüstung</h2>
-        <div class="op-divided">
+        {metaBuilds.length>0 && <div class="op-divided" aria-labelledby="op-meta-builds-title">
+          <h3 id="op-meta-builds-title">Meta Builds</h3>
+          <div class="op-meta-build-grid">
+            {metaBuilds.map(build=><article class="op-cardlet op-meta-build-card">
+              <div class="op-subtitle">
+                <h4>{build.title}</h4>
+                {build.availableFromLevel && <span class="op-chip">Level {build.availableFromLevel}</span>}
+              </div>
+              <div class="op-meta-build-parts" aria-label={`Ausrüstung: ${build.title}`}>
+                {build.parts.map(part=><div class="op-meta-build-part">
+                  <div class="op-mini-art"><ItemIcon id={part.catalog?.id??part.reference} /></div>
+                  <small>{part.catalog?.name??part.reference}</small>
+                </div>)}
+              </div>
+              <p class="op-meta-build-summary">{build.metaSummary}</p>
+              <a class="op-link op-meta-build-link" href="#build-finder" data-select-build={build.id}>Details im Build-Finder ansehen ↗</a>
+            </article>)}
+          </div>
+          <p class="op-muted op-meta-build-hint">Weitere Informationen zu Werten, Seteffekten, Herstellung und Freischaltungen sowie alle Progressions-Builds findest du im Build-Finder weiter unten.</p>
+        </div>}
+        <div class="op-divided" id="build-finder">
           <h3>Build-Finder</h3>
           <p class="op-section-intro">Wähle Level, höchste herstellbare Fabrikkomponente und die bereits freigeschalteten Gebiete. Der Finder prüft bei jedem Build alle vier Ausrüstungsteile einzeln – einschließlich des Blaupausenbesitzes.</p>
           <div class="op-two">
