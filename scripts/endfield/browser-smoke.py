@@ -64,8 +64,12 @@ def smoke(page, base_url, width):
            and "autoplay=1" not in video_src,
            label + ": correct privacy-enhanced guide embed, no autoplay")
 
-    verify(page.locator("#uebersicht .op-quick-weapon-grid .op-quick-weapon-card").count() == 4,
-           label + ": four separate overview weapon cards")
+    verify(page.locator("#uebersicht .op-quick-weapons-card").count() == 1,
+           label + ": one shared overview weapon card, matching Partners")
+    verify(page.locator("#uebersicht .op-quick-weapons-card .op-quick-weapon-item").count() == 4,
+           label + ": all four weapons stay inside the shared card")
+    verify(page.locator("#uebersicht .op-quick-weapons-card .op-quick-weapon-item.op-cardlet").count() == 0,
+           label + ": no redundant nested individual weapon card borders")
     verify(page.locator("#uebersicht .op-rating").first.locator(".op-rating-header").inner_text().startswith("Einsteigerfreundlichkeit"),
            label + ": positive ease rating replaces negative difficulty heading")
     verify(page.locator("#uebersicht .op-rating").first.locator(".op-meter i.active").count() == 5,
@@ -95,6 +99,36 @@ def smoke(page, base_url, width):
             "(el) => el.complete && el.naturalWidth > 100", arg=img.element_handle())
         verify(img.evaluate("(el) => el.complete && el.naturalWidth > 100"),
                label + ": Liino P" + str(n) + " WebP loads in Chromium")
+
+    weapon_section = page.locator('#waffen details[data-guide-disclosure="weapon-details"]')
+    weapon_section.evaluate("el => el.open = true")
+    buttons = page.locator('#waffen [data-weapon-button]')
+    verify(buttons.count() == 4, label + ": all four weapon detail tabs present")
+    for button in buttons.all():
+        weapon_id = button.get_attribute("data-weapon-button")
+        button.click()
+        panel = page.locator('[data-weapon-panel="' + weapon_id + '"]')
+        verify(not panel.is_hidden(),
+               label + ": selected weapon detail panel visible, " + weapon_id)
+        verify(panel.locator(".op-weapon-attributes-table tbody tr").count() == 3,
+               label + ": SKPORT weapon attributes rendered with aligned columns, " + weapon_id)
+        panel.locator(".op-weapon-detailed-stats").evaluate("el => el.open = true")
+        tuning = panel.locator(".op-weapon-tuning-table")
+        verify(tuning.locator("tbody tr").count() >= 5,
+               label + ": tuning stage table rendered compactly, " + weapon_id)
+        icons = panel.locator(".op-weapon-material-cell .op-resource img")
+        verify(icons.count() >= 3,
+               label + ": SKPORT tuning material costs use local item icons, " + weapon_id)
+        icon = icons.first
+        page.wait_for_function(
+            "(el) => el.complete && el.naturalWidth > 10", arg=icon.element_handle())
+        verify(icon.evaluate("(el) => el.complete && el.naturalWidth > 10"),
+               label + ": first SKPORT tuning material icon loads, " + weapon_id)
+        text = panel.inner_text()
+        verify("[item:" not in text and "[Icon]" not in text and
+               "[Bewertung folgt]" not in text,
+               label + ": no raw wiki material tokens or editorial placeholders, " + weapon_id)
+    check_overflow(page, label + " weapon tables")
 
     verify(page.locator(".op-meta-build-card").count() == 3,
            label + ": exactly three visible Meta equipment builds")
