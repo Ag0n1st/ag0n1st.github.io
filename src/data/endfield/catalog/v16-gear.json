@@ -7,7 +7,10 @@
     "snapshot": "2026-10-16",
     "language": "en",
     "verification": "community-item-identity-only",
-    "note": "All 18 v1.6 additions are source-listed. These slug IDs and any internal item_equip codes are NOT official numeric SKPORT IDs; recipes and blueprint unlocks are unverified."
+    "note": "All 18 v1.6 additions are source-listed. These slug IDs and any internal item_equip codes are NOT official numeric SKPORT IDs; recipes and blueprint unlocks are unverified. Candidate numeric attributes sourced from Endfield Hub remain provisional and must NOT be imported into verified equipment-details.json.",
+    "communityStatProvider": "Endfield Hub (unofficial)",
+    "communityStatUrl": "https://endfieldhub.org/database/gears",
+    "communityStatSnapshot": "2026-10-15"
   },
   "items": [
     {
@@ -23,7 +26,18 @@
       "coverUrl": null,
       "sourcePage": "https://endfield.wiki.gg/wiki/Pulser_Labs_Light_Armor",
       "officialNumericId": null,
-      "identityStatus": "official-numeric-id-unverified"
+      "identityStatus": "official-numeric-id-unverified",
+      "communityBaseStats": {
+        "def": 56,
+        "str": 58,
+        "agi": null,
+        "int": null,
+        "will": 87,
+        "effect": "Cryo and Electric DMG Dealt Bonus",
+        "effectPercent": 11.5,
+        "source": "https://endfieldhub.org/database/gears"
+      },
+      "communityStatStatus": "cross-referenced-external-v1.6-table-not-official"
     },
     {
       "id": "pulser-labs-light-gauntlets",
@@ -38,7 +52,18 @@
       "coverUrl": null,
       "sourcePage": "https://endfield.wiki.gg/wiki/Pulser_Labs_Light_Gauntlets",
       "officialNumericId": null,
-      "identityStatus": "official-numeric-id-unverified"
+      "identityStatus": "official-numeric-id-unverified",
+      "communityBaseStats": {
+        "def": 42,
+        "str": 43,
+        "agi": null,
+        "int": null,
+        "will": 65,
+        "effect": "Cryo and Electric DMG Dealt Bonus",
+        "effectPercent": 19.2,
+        "source": "https://endfieldhub.org/database/gears"
+      },
+      "communityStatStatus": "cross-referenced-external-v1.6-table-not-official"
     },
     {
       "id": "pulser-labs-armor-slab",
@@ -53,7 +78,18 @@
       "coverUrl": null,
       "sourcePage": "https://endfield.wiki.gg/wiki/Pulser_Labs_Armor_Slab",
       "officialNumericId": null,
-      "identityStatus": "official-numeric-id-unverified"
+      "identityStatus": "official-numeric-id-unverified",
+      "communityBaseStats": {
+        "def": 21,
+        "str": 21,
+        "agi": null,
+        "int": null,
+        "will": 32,
+        "effect": "Ultimate Gain Efficiency",
+        "effectPercent": 24.6,
+        "source": "https://endfieldhub.org/database/gears"
+      },
+      "communityStatStatus": "cross-referenced-external-v1.6-table-not-official"
     },
     {
       "id": "eternal-xiranite-mod-armor",
@@ -68,7 +104,18 @@
       "coverUrl": null,
       "sourcePage": "https://endfield.wiki.gg/wiki/Eternal_Xiranite_MOD_Armor",
       "officialNumericId": null,
-      "identityStatus": "official-numeric-id-unverified"
+      "identityStatus": "official-numeric-id-unverified",
+      "communityBaseStats": {
+        "def": 56,
+        "str": 58,
+        "agi": null,
+        "int": 87,
+        "will": null,
+        "effect": "Combo Skill DMG Bonus",
+        "effectPercent": 20.7,
+        "source": "https://endfieldhub.org/database/gears"
+      },
+      "communityStatStatus": "cross-referenced-external-v1.6-table-not-official"
     },
     {
       "id": "eternal-xiranite-overalls",
@@ -83,7 +130,18 @@
       "coverUrl": null,
       "sourcePage": "https://endfield.wiki.gg/wiki/Eternal_Xiranite_Overalls",
       "officialNumericId": null,
-      "identityStatus": "official-numeric-id-unverified"
+      "identityStatus": "official-numeric-id-unverified",
+      "communityBaseStats": {
+        "def": 56,
+        "str": 58,
+        "agi": null,
+        "int": 87,
+        "will": null,
+        "effect": "Ultimate Gain Efficiency",
+        "effectPercent": 12.3,
+        "source": "https://endfieldhub.org/database/gears"
+      },
+      "communityStatStatus": "cross-referenced-external-v1.6-table-not-official"
     },
     {
       "id": "eternal-xiranite-channeling-gloves",
@@ -98,7 +156,18 @@
       "coverUrl": null,
       "sourcePage": "https://endfield.wiki.gg/wiki/Eternal_Xiranite_Channeling_Gloves",
       "officialNumericId": null,
-      "identityStatus": "official-numeric-id-unverified"
+      "identityStatus": "official-numeric-id-unverified",
+      "communityBaseStats": {
+        "def": 42,
+        "str": 43,
+        "agi": null,
+        "int": 65,
+        "will": null,
+        "effect": "Combo Skill DMG Bonus",
+        "effectPercent": 34.5,
+        "source": "https://endfieldhub.org/database/gears"
+      },
+      "communityStatStatus": "cross-referenced-external-v1.6-table-not-official"
     },
     {
       "id": "eternal-xiranite-rangefinder",
@@ -113,7 +182,18 @@
       "coverUrl": null,
       "sourcePage": "https://endfield.wiki.gg/wiki/Eternal_Xiranite_Rangefinder",
       "officialNumericId": null,
-      "identityStatus": "official-numeric-id-unverified"
+      "identityStatus": "official-numeric-id-unverified",
+      "communityBaseStats": {
+        "def": 21,
+        "str": 21,
+        "agi": null,
+        "int": 32,
+        "will": null,
+        "effect": "Combo Skill DMG Bonus",
+        "effectPercent": 41.4,
+        "source": "https://endfieldhub.org/database/gears"
+      },
+      "communityStatStatus": "cross-referenced-external-v1.6-table-not-official"
     },
     {
       "id": "rift-trekker-steel-armor",
@@ -128,7 +208,18 @@
       "coverUrl": null,
       "sourcePage": "https://endfield.wiki.gg/wiki/Rift_Trekker_Steel_Armor",
       "officialNumericId": null,
-      "identityStatus": "official-numeric-id-unverified"
+      "identityStatus": "official-numeric-id-unverified",
+      "communityBaseStats": {
+        "def": 56,
+        "str": null,
+        "agi": 115,
+        "int": null,
+        "will": null,
+        "effect": "Combo Skill DMG Bonus",
+        "effectPercent": 21.6,
+        "source": "https://endfieldhub.org/database/gears"
+      },
+      "communityStatStatus": "cross-referenced-external-v1.6-table-not-official"
     },
     {
       "id": "rift-trekker-overalls",
@@ -143,7 +234,18 @@
       "coverUrl": null,
       "sourcePage": "https://endfield.wiki.gg/wiki/Rift_Trekker_Overalls",
       "officialNumericId": null,
-      "identityStatus": "official-numeric-id-unverified"
+      "identityStatus": "official-numeric-id-unverified",
+      "communityBaseStats": {
+        "def": 56,
+        "str": null,
+        "agi": null,
+        "int": 115,
+        "will": null,
+        "effect": "Heat and Nature DMG Dealt Bonus",
+        "effectPercent": 12,
+        "source": "https://endfieldhub.org/database/gears"
+      },
+      "communityStatStatus": "cross-referenced-external-v1.6-table-not-official"
     },
     {
       "id": "rift-trekker-wraps",
@@ -158,7 +260,18 @@
       "coverUrl": null,
       "sourcePage": "https://endfield.wiki.gg/wiki/Rift_Trekker_Wraps",
       "officialNumericId": null,
-      "identityStatus": "official-numeric-id-unverified"
+      "identityStatus": "official-numeric-id-unverified",
+      "communityBaseStats": {
+        "def": 42,
+        "str": null,
+        "agi": null,
+        "int": null,
+        "will": 86,
+        "effect": "Cryo and Electric DMG Dealt Bonus",
+        "effectPercent": 20,
+        "source": "https://endfieldhub.org/database/gears"
+      },
+      "communityStatStatus": "cross-referenced-external-v1.6-table-not-official"
     },
     {
       "id": "rift-trekker-gauntlets",
@@ -173,7 +286,18 @@
       "coverUrl": null,
       "sourcePage": "https://endfield.wiki.gg/wiki/Rift_Trekker_Gauntlets",
       "officialNumericId": null,
-      "identityStatus": "official-numeric-id-unverified"
+      "identityStatus": "official-numeric-id-unverified",
+      "communityBaseStats": {
+        "def": 42,
+        "str": 86,
+        "agi": null,
+        "int": null,
+        "will": null,
+        "effect": "Basic Attack DMG Bonus",
+        "effectPercent": 24,
+        "source": "https://endfieldhub.org/database/gears"
+      },
+      "communityStatStatus": "cross-referenced-external-v1.6-table-not-official"
     },
     {
       "id": "rift-trekker-silver-blade",
@@ -188,7 +312,18 @@
       "coverUrl": null,
       "sourcePage": "https://endfield.wiki.gg/wiki/Rift_Trekker_Silver_Blade",
       "officialNumericId": null,
-      "identityStatus": "official-numeric-id-unverified"
+      "identityStatus": "official-numeric-id-unverified",
+      "communityBaseStats": {
+        "def": 21,
+        "str": null,
+        "agi": 43,
+        "int": null,
+        "will": null,
+        "effect": "Ultimate Gain Efficiency",
+        "effectPercent": 25.7,
+        "source": "https://endfieldhub.org/database/gears"
+      },
+      "communityStatStatus": "cross-referenced-external-v1.6-table-not-official"
     },
     {
       "id": "type-50-yinglung-soft-armor",
@@ -203,7 +338,18 @@
       "coverUrl": null,
       "sourcePage": "https://endfield.wiki.gg/wiki/Type_50_Yinglung_Soft_Armor",
       "officialNumericId": null,
-      "identityStatus": "official-numeric-id-unverified"
+      "identityStatus": "official-numeric-id-unverified",
+      "communityBaseStats": {
+        "def": 56,
+        "str": 58,
+        "agi": null,
+        "int": 87,
+        "will": null,
+        "effect": "Combo Skill DMG Bonus",
+        "effectPercent": 20.7,
+        "source": "https://endfieldhub.org/database/gears"
+      },
+      "communityStatStatus": "cross-referenced-external-v1.6-table-not-official"
     },
     {
       "id": "type-50-yinglung-gauntlets",
@@ -218,7 +364,9 @@
       "coverUrl": null,
       "sourcePage": "https://endfield.wiki.gg/wiki/Type_50_Yinglung_Gauntlets",
       "officialNumericId": null,
-      "identityStatus": "official-numeric-id-unverified"
+      "identityStatus": "official-numeric-id-unverified",
+      "communityBaseStats": null,
+      "communityStatStatus": "source-table-omits-this-exact-name"
     },
     {
       "id": "type-50-yinglung-beacon",
@@ -233,7 +381,18 @@
       "coverUrl": null,
       "sourcePage": "https://endfield.wiki.gg/wiki/Type_50_Yinglung_Beacon",
       "officialNumericId": null,
-      "identityStatus": "official-numeric-id-unverified"
+      "identityStatus": "official-numeric-id-unverified",
+      "communityBaseStats": {
+        "def": 21,
+        "str": 21,
+        "agi": null,
+        "int": 32,
+        "will": null,
+        "effect": "Combo Skill DMG Bonus",
+        "effectPercent": 41.4,
+        "source": "https://endfieldhub.org/database/gears"
+      },
+      "communityStatStatus": "cross-referenced-external-v1.6-table-not-official"
     },
     {
       "id": "aic-fieldwork-cqb-armor",
@@ -248,7 +407,18 @@
       "coverUrl": null,
       "sourcePage": "https://endfield.wiki.gg/wiki/AIC_Fieldwork_CQB_Armor",
       "officialNumericId": null,
-      "identityStatus": "official-numeric-id-unverified"
+      "identityStatus": "official-numeric-id-unverified",
+      "communityBaseStats": {
+        "def": 48,
+        "str": null,
+        "agi": null,
+        "int": null,
+        "will": null,
+        "effect": "Physical DMG Bonus",
+        "effectPercent": 9.8,
+        "source": "https://endfieldhub.org/database/gears"
+      },
+      "communityStatStatus": "cross-referenced-external-v1.6-table-not-official"
     },
     {
       "id": "aic-fieldwork-cqb-gloves",
@@ -263,7 +433,18 @@
       "coverUrl": null,
       "sourcePage": "https://endfield.wiki.gg/wiki/AIC_Fieldwork_CQB_Gloves",
       "officialNumericId": null,
-      "identityStatus": "official-numeric-id-unverified"
+      "identityStatus": "official-numeric-id-unverified",
+      "communityBaseStats": {
+        "def": 36,
+        "str": null,
+        "agi": null,
+        "int": null,
+        "will": null,
+        "effect": "Physical DMG Bonus",
+        "effectPercent": 16.4,
+        "source": "https://endfieldhub.org/database/gears"
+      },
+      "communityStatStatus": "cross-referenced-external-v1.6-table-not-official"
     },
     {
       "id": "aic-fieldwork-cqb-hacksaw",
@@ -278,7 +459,18 @@
       "coverUrl": null,
       "sourcePage": "https://endfield.wiki.gg/wiki/AIC_Fieldwork_CQB_Hacksaw",
       "officialNumericId": null,
-      "identityStatus": "official-numeric-id-unverified"
+      "identityStatus": "official-numeric-id-unverified",
+      "communityBaseStats": {
+        "def": 18,
+        "str": null,
+        "agi": null,
+        "int": null,
+        "will": null,
+        "effect": "Physical DMG Bonus",
+        "effectPercent": 19.7,
+        "source": "https://endfieldhub.org/database/gears"
+      },
+      "communityStatStatus": "cross-referenced-external-v1.6-table-not-official"
     }
   ]
 }
