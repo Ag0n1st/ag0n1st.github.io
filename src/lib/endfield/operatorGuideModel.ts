@@ -128,7 +128,7 @@ const profilePartners = partnerIds.map(slug=>{
     slug,
     name,
     image: getOperatorImageUrl(slug,"cover",official?.operator.coverUrl),
-    initials: name.split(/\\s+/).map(part=>part[0]??"").join("").slice(0,2).toUpperCase()
+    initials: name.split(" ").map(part=>part[0]??"").join("").slice(0,2).toUpperCase()
   };
 });
 
