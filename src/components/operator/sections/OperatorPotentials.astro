@@ -29,9 +29,13 @@ const { guide, localized, trPotential, officialPotentials, missing, potentialByL
           })}
         </div>
         <div class="op-divided"><h3>Potenzialvergleich</h3>
-          <div class="op-table-wrap"><table class="op-table"><thead><tr><th>Potenzial</th><th>Offizieller Effekt (EN)</th><th>Gemessener Gewinn vs. P0</th><th>Quelle</th></tr></thead>
-            <tbody>{[1,2,3,4,5].map(n=><tr><td>P{n}</td><td class="op-body-copy">{trPotential(n, officialPotentials.get(n)?.effect || "[Folgt]")}</td><td>{potentialByLevel.get(n)?.increaseOverP0Percent === undefined ? "–" : potentialByLevel.get(n)?.increaseOverP0Percent+" %"}</td><td>{potentialByLevel.get(n)?.sourceNote || "–"}</td></tr>)}</tbody>
+          <div class="op-table-wrap"><table class="op-table"><thead><tr><th>Potenzial</th><th>Offizieller Effekt (EN)</th><th>Zusatzgewinn zur Vorstufe</th><th>Gesamtgewinn vs. P0</th><th>Quelle</th></tr></thead>
+            <tbody>{[1,2,3,4,5].map(n=><tr><td>P{n}</td><td class="op-body-copy">{trPotential(n, officialPotentials.get(n)?.effect || "[Folgt]")}</td>
+              <td>{potentialByLevel.get(n)?.increaseOverPreviousPercent === undefined ? "–" : potentialByLevel.get(n)!.increaseOverPreviousPercent!.toLocaleString("de-DE",{minimumFractionDigits:1,maximumFractionDigits:1})+" %"}</td>
+              <td>{potentialByLevel.get(n)?.increaseOverP0Percent === undefined ? "–" : potentialByLevel.get(n)!.increaseOverP0Percent!.toLocaleString("de-DE",{minimumFractionDigits:1,maximumFractionDigits:1})+" %"}</td>
+              <td>{potentialByLevel.get(n)?.sourceNote || "–"}</td></tr>)}</tbody>
           </table></div>
+          {guide.potentials.disclaimer && <div class="op-notice op-comparison-disclaimer"><strong>Hinweis zur Dateninterpretation:</strong> {guide.potentials.disclaimer}</div>}
         </div>
         <div class="op-divided"><h3>Pull-Empfehlung</h3><p class="op-muted op-body-copy">{guide.potentials.pullAdvice || "[Empfohlener Stopp-Punkt und persönliche Einordnung folgen]"}</p></div>
       </section>
