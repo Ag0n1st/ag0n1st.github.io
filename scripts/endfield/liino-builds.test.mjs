@@ -190,13 +190,15 @@ test("percent comparison data schema requires a visible source and concrete cond
  assert.match(schema,/Potenzial-Prozentvergleiche benötigen ihre Vergleichsbedingungen/);
  assert.match(weaponUi,/<th>Vergleichsbedingungen<\/th><th>Quelle<\/th>/);
  assert.match(weaponUi,/\{w\.source\s*\|\|\s*"–"\}/);
- assert.match(potentialUi,/<th>Gemessener Gewinn vs\. P0<\/th><th>Quelle<\/th>/);
+ assert.match(potentialUi,/<th>Zusatzgewinn zur Vorstufe<\/th><th>Gesamtgewinn vs\. P0<\/th><th>Quelle<\/th>/);
  assert.match(potentialUi,/Quelle: \{p\.sourceNote\}/);
  assert.match(tpl,/sourceNote: "Datafield"/);
  assert.match(workflow,/keinen Link zur Datenquelle anzeigen/);
  assert.match(workflow,/\*\*Datafield\*\* für die bevorzugten/);
  assert.match(workflow,/nicht automatisch.*kumulative Steigerung/);
- // Nobody should invent Liino percentages when the dynamic page is unavailable.
- assert.match(guide,/^weapons:\n  recommendations: \[\]$/m);
- assert.match(guide,/^potentials:\n  entries: \[\]$/m);
+ // Published Datafield-character-profile values carry conditions and disclaimers.
+ assert.match(guide,/^weapons:\n  recommendations:\n    - weaponId: "1046"$/m);
+ assert.match(guide,/^potentials:\n  entries:\n    - level: 1$/m);
+ assert.match(guide,/sourcePageType: character-profile/);
+ assert.match(guide,/^  disclaimer: >-$/m);
 });
