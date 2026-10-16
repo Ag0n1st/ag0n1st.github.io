@@ -1,0 +1,40 @@
+name: Export Datafield character (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: 'Datafield character slug, e.g. liino (one public page per run)'
+        required: true
+        default: 'liino'
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      DATAFIELD_SLUG: ${{ inputs.slug }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser for research (not part of Astro/Pages)
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install chromium
+      - name: Export one rendered Datafield character
+        run: |
+          python scripts/endfield/datafield_rendered_export.py "$DATAFIELD_SLUG" --output datafield-character-snapshot.json --timeout-ms 65000
+      - name: Upload JSON snapshot even if incomplete
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: datafield-character-snapshot
+          path: datafield-character-snapshot.json
+          if-no-files-found: ignore
+          retention-days: 7
