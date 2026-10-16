@@ -5,7 +5,7 @@ import { resolveOfficialItem } from "../../../lib/endfield/itemCatalog";
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
-const { guide, operatorName, preview, gameData, extraData, trTerm, skillImage, slotLabels, slotIcons, priority, priorityOrder, priorityComparisons, shownWeapons, featuredBuild, videoEmbed, ratingRows, ratingValues, getOperatorImageUrl } = model;
+const { guide, operatorName, preview, gameData, extraData, trTerm, skillImage, slotLabels, slotIcons, priority, priorityOrder, priorityComparisons, shownWeapons, featuredBuild, videoEmbed, profilePartners, ratingRows, ratingValues, getOperatorImageUrl } = model;
 const overviewWeapons=shownWeapons.map(w=>({
   ...w,official:resolveOfficialItem(w.name,"Weapons"),
 }));
@@ -80,9 +80,21 @@ const overviewGear=featuredBuild?.items.map(reference=>({
             </article>
             <article class="op-cardlet">
               <h3>Partners</h3>
-              {guide.overview.partners.length ?
-                <div class="op-gear-parts">{guide.overview.partners.map(name=><div class="op-gear-part"><div class="op-mini-art">[Op]</div><small>{name}</small></div>)}</div> :
-                <p class="op-placeholder">[Empfohlene Operatoren folgen]</p>
+              {profilePartners.length ?
+                <>
+                  <div class="op-gear-parts op-partners-grid">{profilePartners.map(partner=>
+                    <div class="op-gear-part">
+                      <div class="op-mini-art op-partner-art">
+                        {partner.image
+                          ? <img src={partner.image} loading="lazy" decoding="async" alt="" />
+                          : <span aria-hidden="true">{partner.initials}</span>}
+                      </div>
+                      <small>{partner.name}</small>
+                    </div>)}
+                  </div>
+                  <p class="op-partners-note">Weitere Partner und Teamkombinationen findest du unter <a class="op-link" href="#teams">Teams</a>.</p>
+                </> :
+                <p class="op-placeholder">[Meta-Teams und passende Partner folgen]</p>
               }
             </article>
           </div>
