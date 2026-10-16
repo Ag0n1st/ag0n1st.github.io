@@ -1434,6 +1434,8 @@ Die 100-MB-Zählung enthält die gleichen Verzeichnisse/Einzeldateien wie script
 
 1. scripts/endfield/browser-smoke.py: Playwright-/Chromium-Browser-Smoketest für *wirklich gebaute* Astro-Seiten, lokal per HTTP ausgeliefert; 1.440 px Desktop und 390 px Mobil. Ausschliesslich Text-/Fehlermeldungsausgabe, keine Screenshots/Grafiken/Videos.
 2. .github/workflows/validate-astro.yml: bestehenden Node-Test, 100-MB-Gate und Astro-Build um tatsächliche Chromium-Prüfung ergänzen. Playwright/Browser werden nur im CI-Runner vorübergehend installiert (keine neuen Repo-Assets); Ubuntu 24.04 gegen anstehenden Wechsel von ubuntu-latest fixiert.
+**Zusätzliche verbindliche 1-GB-Pages-Grenze:** Neues Script scripts/check-pages-budget.mjs vermisst nach npm run build rekursiv alle Dateien unter dist/ (dezimal 1.000.000.000 Byte). Sowohl .github/workflows/validate-astro.yml als auch .github/workflows/deploy.yml prüfen dieses Limit nach dem Build und vor dem Pages-Artefakt-Upload. Eine belastbare absolute dist-Grösse ergibt erst der GitHub-CI-Log; sie ist **nicht** aus dem Git-Tree-Wert von 23.728.364 Byte ableitbar. Check zählt aktuelle dist-Dateien, nicht Git-Historie oder Infrastruktur-Overhead.
+
 3. E2E-Prüfpunkte: Liino- und Typhoeus-Route; kein horizontaler Seitenüberlauf; sechs eindeutige, automatisch ermittelte Meta-Partner; Liino-YouTube-Nocookie-URL ohne Autoplay; drei Meta-Builds und zwei Meta-Team-Labelgruppen; Build-Link öffnet/selektiert den Finder; Minimal-/Maximal-Vorauswahl, Blaupausen-Opt-in, Reload und Operator-Wechsel; Authority max. 60; Gameplay-TOC.
 4. **Keine Änderungen** an Waffen, Builds A–F, offiziellen SKPORT-Daten, Teams, Ratings, Datafield-Prozenten oder redaktionellen Guide-Texten.
 
