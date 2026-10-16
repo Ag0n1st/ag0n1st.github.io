@@ -244,8 +244,10 @@ def smoke_typhoeus(page, base_url, width):
         img.scroll_into_view_if_needed()
         page.wait_for_function(
             "(el) => el.complete && el.naturalWidth > 10", arg=img.element_handle())
-    verify(page.locator("#teams .op-team-gear img[alt*='Eternal Xiranite Bracing Slab']").count() == 4,
-           label + ": Arcane uses 2 Eternal Xiranite Bracing Slabs in each Meta team")
+    for team_gear in page.locator("#teams .op-team-gear").all():
+        slabs = team_gear.locator("img[src$='/images/endfield/gear/1136.webp']")
+        verify(slabs.count() == 2,
+               label + ": Arcane uses 2 canonical SKPORT Bracing Slab 1136 in each Meta team")
     verify(page.locator("#teams [data-team-role]").count() == 5,
            label + ": five alternative teams including Trial and Nefarith")
 
