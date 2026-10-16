@@ -746,6 +746,8 @@ teams:
             - title: "Nur ohne anderen Xiranit-Nutzer"
               items: ["1134", "1138", "337", "365"]
               note: "Light Armor, Hands, Auxiliary Arm und LYNX Slab – nur wenn Arcane im Team tatsächlich kein Xiranit spielt."
+  more:
+
     - id: arcane-xaihi-liino
       title: "Arcane · Xaihi · Liino"
       role: main-dps
