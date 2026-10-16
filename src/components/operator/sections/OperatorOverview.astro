@@ -16,7 +16,7 @@ const overviewGear=featuredBuild?.items.map(reference=>({
 <section class="op-section" id="uebersicht" aria-label="Übersicht">
         <div class="op-divided">
           <h2>Operator-Profil</h2>
-          <div class="op-two">
+          <div class="op-two op-profile-grid">
             <article class="op-cardlet op-profile-card">
               <div class="op-profile-art">
                 {gameData?.operator.illustrationUrl
@@ -42,7 +42,7 @@ const overviewGear=featuredBuild?.items.map(reference=>({
               <p>Attribute</p>
               <div class="op-chip-row"><span class="op-chip">Haupt: {trTerm(extraData?.attributes.mainAttribute) || "[Attribut]"}</span><span class="op-chip">Sekundär: {trTerm(extraData?.attributes.secondaryAttribute) || "[Attribut]"}</span></div>
             </article>
-            <article class="op-cardlet">
+            <article class="op-cardlet op-video-card">
               {videoEmbed ?
                 <iframe class="op-video-embed" loading="lazy" src={videoEmbed} title={guide.guideVideo.title || "Videoguide zu "+operatorName} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> :
                 <div class="op-video-placeholder"><div><span aria-hidden="true">▶</span><br />[YouTube-Videoguide]</div></div>
@@ -62,23 +62,31 @@ const overviewGear=featuredBuild?.items.map(reference=>({
         </div>
         <div class="op-divided">
           <h2>Build auf einen Blick</h2>
-          <div class="op-two">
-            <article class="op-cardlet">
+          <div class="op-quick-overview">
+            <div class="op-quick-weapons">
               <h3>Waffen</h3>
-              <div class="op-mini-list">{overviewWeapons.length ? overviewWeapons.map(w=><div class="op-line"><div class="op-mini-art">{w.official ? <ItemIcon id={w.official.id}/> : "[Icon]"}</div><div class="op-line-label"><span class="op-chip">{w.label}</span><strong>{w.official?.name??w.name}</strong></div></div>) : <p class="op-placeholder">[Noch keine Waffenempfehlungen]</p>}</div>
-            </article>
-            <article class="op-cardlet">
-              <h3>Ausrüstung · {featuredBuild ? featuredBuild.title : "Meta-Set"}</h3>
-              {featuredBuild ? <div class="op-gear-parts">{overviewGear.map(part=><div class="op-gear-part"><div class="op-mini-art"><ItemIcon id={part.official?.id??part.reference} /></div><small>{part.official?.name??part.reference}</small></div>)}</div> : <p class="op-placeholder">[Noch kein Ausrüstungs-Build]</p>}
-            </article>
-            <article class="op-cardlet">
-              <h3>Skill-Priorität</h3>
-              {(priority || preview) ? <div class="op-skill-row">{priorityOrder.map((key,i)=><>
-                <div class="op-priority-skill"><div class="op-mini-art">{skillImage(key) ? <img class="op-skill-icon" src={skillImage(key)} loading="lazy" decoding="async" alt="" /> : slotIcons[key]}</div><small>{slotLabels[key]}</small><b>{priority?.targetLevels[key] || "–"}</b></div>
-                {i<3 && <span class="op-priority-symbol">{priorityComparisons[i]}</span>}
-              </>)}</div> : <p class="op-placeholder">[Skill-Priorität folgt]</p>}
-            </article>
-            <article class="op-cardlet">
+              {overviewWeapons.length ? <div class="op-quick-weapon-grid">{overviewWeapons.map(w=>
+                <article class="op-cardlet op-quick-weapon-card">
+                  <div class="op-mini-art">{w.official ? <ItemIcon id={w.official.id}/> : "[Icon]"}</div>
+                  <span class="op-chip">{w.label}</span>
+                  <strong>{w.official?.name??w.name}</strong>
+                </article>
+              )}</div> : <p class="op-placeholder">[Noch keine Waffenempfehlungen]</p>}
+            </div>
+            <div class="op-two op-quick-stats">
+              <article class="op-cardlet">
+                <h3>Ausrüstung · {featuredBuild ? featuredBuild.title : "Meta-Set"}</h3>
+                {featuredBuild ? <div class="op-gear-parts">{overviewGear.map(part=><div class="op-gear-part"><div class="op-mini-art"><ItemIcon id={part.official?.id??part.reference} /></div><small>{part.official?.name??part.reference}</small></div>)}</div> : <p class="op-placeholder">[Noch kein Ausrüstungs-Build]</p>}
+              </article>
+              <article class="op-cardlet">
+                <h3>Skill-Priorität</h3>
+                {(priority || preview) ? <div class="op-skill-row">{priorityOrder.map((key,i)=><>
+                  <div class="op-priority-skill"><div class="op-mini-art">{skillImage(key) ? <img class="op-skill-icon" src={skillImage(key)} loading="lazy" decoding="async" alt="" /> : slotIcons[key]}</div><small>{slotLabels[key]}</small><b>{priority?.targetLevels[key] || "–"}</b></div>
+                  {i<3 && <span class="op-priority-symbol">{priorityComparisons[i]}</span>}
+                </>)}</div> : <p class="op-placeholder">[Skill-Priorität folgt]</p>}
+              </article>
+            </div>
+            <article class="op-cardlet op-quick-partners-card">
               <h3>Partners</h3>
               {profilePartners.length ?
                 <>
