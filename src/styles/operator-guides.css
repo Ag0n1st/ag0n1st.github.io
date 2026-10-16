@@ -266,3 +266,35 @@
 .op-gameplay-pending-header{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
 .op-gameplay-pending-header h2{margin-top:0}
 .op-gameplay-pending-label{display:inline-block;border:1px solid rgba(240,91,212,.45);background:rgba(240,91,212,.11);color:var(--pink);padding:5px 10px;border-radius:7px;font-size:10px;font-weight:800;letter-spacing:.08em}
+
+/* Guide-first progressive disclosure: all secondary data closed by default. */
+.op-guide-accordion{min-width:0}
+.op-guide-accordion>.op-guide-accordion-summary{
+  display:flex;align-items:center;justify-content:space-between;gap:13px;
+  cursor:pointer;list-style:none;min-height:58px;
+  border:1px solid #454052;border-radius:12px;padding:13px 16px;
+  background:linear-gradient(110deg,rgba(240,91,212,.05),#1b1923 58%,rgba(101,232,242,.04));
+}
+.op-guide-accordion>.op-guide-accordion-summary::-webkit-details-marker{display:none}
+.op-guide-accordion>.op-guide-accordion-summary h3{margin:0;font-size:16px;line-height:1.35}
+.op-guide-accordion>.op-guide-accordion-summary:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.op-guide-accordion>.op-guide-accordion-summary:hover{border-color:rgba(101,232,242,.46)}
+.op-guide-accordion-hint{display:inline-flex;align-items:center;gap:9px;flex:0 0 auto;font-size:11px;font-weight:600;color:var(--muted)}
+.op-guide-accordion-hint::after{content:"⌄";display:inline-grid;place-items:center;width:28px;height:28px;font-size:20px;line-height:1;color:var(--cyan);border-radius:8px;background:#27232e;border:1px solid #3f3949;transition:transform .18s}
+.op-guide-accordion[open]>.op-guide-accordion-summary .op-guide-accordion-hint::after{transform:rotate(180deg)}
+.op-guide-accordion-content{padding-top:16px;min-width:0}
+.op-guide-accordion-content>.op-divided:first-child{margin-top:0;padding-top:0;border-top:0}
+.op-conclusion-header{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-bottom:8px}
+.op-conclusion-header h2{margin:0}
+.op-conclusion-lead{font-size:14px;line-height:1.75;color:#e5deeb;max-width:78ch;margin:12px 0}
+.op-conclusion-detail{margin:9px 0 0;max-width:78ch}
+.op-conclusion-audiences{margin-top:19px}
+@media(max-width:680px){
+ .op-guide-accordion>.op-guide-accordion-summary{padding:12px;gap:9px}
+ .op-guide-accordion>.op-guide-accordion-summary h3{font-size:14px}
+ .op-guide-accordion-hint{font-size:10px}
+ .op-conclusion-lead{font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){
+ .op-guide-accordion-hint::after{transition:none}
+}
