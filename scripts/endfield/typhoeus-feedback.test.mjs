@@ -46,6 +46,34 @@ test("team loadouts expose only explicitly sourced weapon IDs",()=>{
   assert.match(schema,/weaponRank: z\.number\(\)\.int\(\)\.min\(1\)\.max\(9\)\.optional\(\)/);
   assert.match(kit,/row\.weaponId &&/);
   assert.match(kit,/resolveOfficialItem\(row\.weaponId,"Weapons"\)/);
-  const armors=(guide.match(/items: \["1134", "1138", "1136", "1136"\]/g)||[]);
-  assert.equal(armors.length,2,"both Meta Arcane examples must use Eternal Xiranite x2 Bracing Slab");
+  const armors=(guide.match(/items: \["1134", "1137", "1136", "1136"\]/g)||[]);
+  assert.equal(armors.length,8,"all Arcane team configurations must use Wraps and 2 Bracing Slabs");
+  assert.match(schema,/weaponAlternatives: z\.array\(identifier\)/);
+  assert.match(schema,/alternatives: z\.array\(z\.object\(\{/);
+  assert.match(kit,/row\.otherWeapons/);
+  assert.match(kit,/row\.variants/);
+});
+
+test("Mobalytics author PDF gear recipes and weapons map only to official item IDs",()=>{
+  const items=JSON.parse(readFileSync("src/data/endfield/catalog/items.json","utf8")).items;
+  const gear=new Set(items.filter(x=>x.categories.includes("Gear")).map(x=>x.id));
+  const weapons=new Set(items.filter(x=>x.categories.includes("Weapons")).map(x=>x.id));
+  const allItems=[...guide.matchAll(/^\s+items: \[([^\]]+)\]/gm)];
+  assert.ok(allItems.length>=50, "Typhoeus and all sourced teammate/gear variants present");
+  for(const row of allItems){
+    const ids=[...row[1].matchAll(/"([^"]+)"/g)].map(x=>x[1]);
+    assert.equal(ids.length,4,"each loadout has exactly four valid gear slots");
+    for(const id of ids)assert.ok(gear.has(id),"unknown official Gear ID: "+id);
+  }
+  const usedWeapons=[...guide.matchAll(/^\s+weaponId: "([^"]+)"/gm)].map(x=>x[1]);
+  assert.ok(usedWeapons.length>=20,"the authored team gear provides weapons for documented teammates");
+  for(const id of usedWeapons)assert.ok(weapons.has(id),"unknown official weapon: "+id);
+  const alternatives=[...guide.matchAll(/^\s+weaponAlternatives: \[([^\]]+)\]/gm)];
+  for(const row of alternatives)
+    for(const m of row[1].matchAll(/"([^"]+)"/g))
+      assert.ok(weapons.has(m[1]),"unknown alternate weapon: "+m[1]);
+  assert.match(guide,/id: deep-rampart-ultimate[\s\S]*?items: \["1132", "1238", "1240", "1240"\]/);
+  assert.match(guide,/comparisons: \[">", ">", "="\]/);
+  assert.match(guide,/id: arcane-ardelia-gilberta/);
+  assert.match(guide,/id: arcane-perlica-gilberta/);
 });
