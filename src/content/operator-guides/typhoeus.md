@@ -216,6 +216,48 @@ weapons:
         wie bei der Signature-Waffe oder Suffering's
         End. Nur erwägen, wenn die beiden besseren
         Waffen nicht verfügbar sind.
+  comparisons:
+    - id: ardelia-arcane-liino
+      title: "Ardelia Arcane Liino Team"
+      sourcePageType: character-profile
+      sourceNote: "Datafield"
+      snapshotDate: "2026-10-16"
+      referenceWeaponId: "1175"
+      referenceRank: 4
+      comparisonConditions: >-
+        Datafield-Charakterprofil Typhoeus, Reiter "Ardelia Arcane Liino",
+        erfasst am 16.10.2026. 100 % entsprechen Umbra of Frigid
+        Eventide R4 in genau diesem Szenario. Rotation, Waffen-/Team-
+        Ränge, Potenziale und andere Modellparameter wurden nicht
+        unabhängig mit dem verlinkten Original-Spreadsheet abgeglichen.
+      entries:
+        - { weaponId: "1175", rank: 9, performancePercent: 124.7 }
+        - { weaponId: "1175", rank: 4, performancePercent: 100.0 }
+        - { weaponId: "1177", rank: 9, performancePercent: 84.3 }
+        - { weaponId: "47", rank: 9, performancePercent: 78.1 }
+        - { weaponId: "1177", rank: 4, performancePercent: 77.0 }
+        - { weaponId: "47", rank: 4, performancePercent: 72.2 }
+        - { weaponId: "65", rank: 9, performancePercent: 69.0 }
+        - { weaponId: "65", rank: 4, performancePercent: 66.3 }
+    - id: no-liino-less-atk
+      title: "Ohne Liino · weniger ANG-Buffs"
+      sourcePageType: character-profile
+      sourceNote: "Datafield"
+      snapshotDate: "2026-10-16"
+      referenceWeaponId: "1175"
+      referenceRank: 4
+      comparisonConditions: >-
+        Datafield-Charakterprofil Typhoeus, Reiter
+        "Non Liino Teams - LESS ATK -", erfasst am
+        16.10.2026. 100 % entsprechen Umbra of Frigid
+        Eventide R4 in genau diesem abweichenden Teammodell.
+        Nicht mit den Prozenten des Liino-Szenarios vermischen.
+      entries:
+        - { weaponId: "1175", rank: 9, performancePercent: 123.3 }
+        - { weaponId: "1175", rank: 4, performancePercent: 100.0 }
+        - { weaponId: "1177", rank: 9, performancePercent: 79.3 }
+        - { weaponId: "47", rank: 9, performancePercent: 77.5 }
+        - { weaponId: "1177", rank: 4, performancePercent: 73.7 }
   generalNotes: >-
     Für Typhi ist die richtige Waffe besonders
     relevant, weil ein großer Teil ihres Schadens
@@ -225,10 +267,11 @@ weapons:
     die vollständigen, lokal importierten Werte
     und Tuning-Materialkosten jeder Waffe stehen
     in den aufklappbaren Waffendetails.
-    Relative Datafield-Prozentwerte werden erst
-    eingetragen, wenn derselbe Charakterprofil-
-    Vergleich einschließlich Team, Waffenrang
-    und Referenz direkt belegt werden kann.
+    Die relativen Prozente im Waffenvergleich
+    stammen aus zwei separat geprüften Tabs
+    des Datafield-Charakterprofils; sie gelten nur
+    für deren Team- und Rotationsannahmen und
+    sind keine universellen DPS-Abstände.
 
 equipment:
   builds:
@@ -473,6 +516,15 @@ potentials:
         ANG-Bonus auch Typhis
         Nature Bursts unterstützt.
         Trotzdem kein Muss.
+      increaseOverPreviousPercent: 8.8
+      comparisonConditions: >-
+        Datafield-Charakterprofil Typhoeus, Szenario
+        "Teams with energy needs", abgerufen 16.10.2026;
+        nur inkrementeller Gewinn gegenüber P0
+        (nicht kumulativ gegenüber P0).
+        Teamrotation und Spreadsheet-Modellparameter
+        wurden nicht unabhängig nachgerechnet.
+      sourceNote: "Datafield"
     - level: 2
       evaluation: >-
         Solider direkter Zuwachs
@@ -481,6 +533,15 @@ potentials:
         den Hauptschaden nützlich,
         aber weniger auffällig
         als P1 und P5.
+      increaseOverPreviousPercent: 4.5
+      comparisonConditions: >-
+        Datafield-Charakterprofil Typhoeus, Szenario
+        "Teams with energy needs", abgerufen 16.10.2026;
+        nur inkrementeller Gewinn gegenüber P1
+        (nicht kumulativ gegenüber P0).
+        Teamrotation und Spreadsheet-Modellparameter
+        wurden nicht unabhängig nachgerechnet.
+      sourceNote: "Datafield"
     - level: 3
       evaluation: >-
         Die Combo Skill kühlt
@@ -496,6 +557,15 @@ potentials:
         Cooldown in der
         konkreten Rotation
         überhaupt relevant wird.
+      increaseOverPreviousPercent: 0.8
+      comparisonConditions: >-
+        Datafield-Charakterprofil Typhoeus, Szenario
+        "Teams with energy needs", abgerufen 16.10.2026;
+        nur inkrementeller Gewinn gegenüber P2
+        (nicht kumulativ gegenüber P0).
+        Teamrotation und Spreadsheet-Modellparameter
+        wurden nicht unabhängig nachgerechnet.
+      sourceNote: "Datafield"
     - level: 4
       evaluation: >-
         Senkt die hohen 200
@@ -507,6 +577,15 @@ potentials:
         scheitern. Kein
         pauschal garantierter
         zweiter Ultimate-Einsatz.
+      increaseOverPreviousPercent: 8.3
+      comparisonConditions: >-
+        Datafield-Charakterprofil Typhoeus, Szenario
+        "Teams with energy needs", abgerufen 16.10.2026;
+        nur inkrementeller Gewinn gegenüber P3
+        (nicht kumulativ gegenüber P0).
+        Teamrotation und Spreadsheet-Modellparameter
+        wurden nicht unabhängig nachgerechnet.
+      sourceNote: "Datafield"
     - level: 5
       evaluation: >-
         Neben P1 der größte
@@ -523,6 +602,31 @@ potentials:
         Energieschuss-Loop.
         Zusätzliche Kopien
         bleiben optional.
+      increaseOverPreviousPercent: 6.5
+      comparisonConditions: >-
+        Datafield-Charakterprofil Typhoeus, Szenario
+        "Teams with energy needs", abgerufen 16.10.2026;
+        nur inkrementeller Gewinn gegenüber P4
+        (nicht kumulativ gegenüber P0).
+        Teamrotation und Spreadsheet-Modellparameter
+        wurden nicht unabhängig nachgerechnet.
+      sourceNote: "Datafield"
+  comparisons:
+    - id: no-extra-ultimate-energy
+      title: "Teams ohne zusätzlichen Ultimate-Energiebedarf"
+      sourceNote: "Datafield"
+      snapshotDate: "2026-10-16"
+      comparisonConditions: >-
+        Datafield-Charakterprofil Typhoeus, alternativer Reiter
+        "Teams without energy needs", Stand 16.10.2026.
+        Jede Angabe ist der Zuwachs zum unmittelbar vorherigen
+        Potenzial, keine kumulative P0-Steigerung.
+      entries:
+        - { level: 1, increaseOverPreviousPercent: 6.6 }
+        - { level: 2, increaseOverPreviousPercent: 4.3 }
+        - { level: 3, increaseOverPreviousPercent: 1.0 }
+        - { level: 4, increaseOverPreviousPercent: 0.0 }
+        - { level: 5, increaseOverPreviousPercent: 5.2 }
 
 teams:
   introduction: >-
