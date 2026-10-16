@@ -31,7 +31,14 @@ const overviewGear=featuredBuild?.items.map(reference=>({
                 <span class="op-chip">{trTerm(gameData?.operator.element) || "[Element]"}</span>
                 <span class="op-chip">{gameData?.operator.weaponType || "[Waffentyp]"}</span>
               </div>
-              {preview && <><p>Traits</p><div class="op-chip-row"><span class="op-chip">[Offizielle Traits noch nicht importiert]</span></div></>}
+              {(guide.overview.traits.length>0 || preview) && <>
+                <p>Traits</p>
+                <div class="op-chip-row">
+                  {guide.overview.traits.length>0
+                    ? guide.overview.traits.map(trait=><span class="op-chip">{trait}</span>)
+                    : <span class="op-chip">[Traits noch nicht eingetragen]</span>}
+                </div>
+              </>}
               <p>Attribute</p>
               <div class="op-chip-row"><span class="op-chip">Haupt: {trTerm(extraData?.attributes.mainAttribute) || "[Attribut]"}</span><span class="op-chip">Sekundär: {trTerm(extraData?.attributes.secondaryAttribute) || "[Attribut]"}</span></div>
             </article>
