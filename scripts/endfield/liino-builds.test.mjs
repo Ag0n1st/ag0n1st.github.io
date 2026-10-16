@@ -42,7 +42,7 @@ test("creator-approved Liino guide keeps all six exact combinations, names and l
  assert.match(guide,/^status: preview$/m,"Unfinished other guide sections stay preview");
  assert.match(guide,/^  featuredBuildId: ultimate-fokus$/m);
  assert.match(guide,/keine zweite Ultimate/i);
- assert.match(guide,/zweiten Ember/);
+ assert.match(guide,/zweite(?:r|n)? Ember/);
 });
 
 test("all six builds have verified official parts, correct slot layout and recipe-derived components",()=>{
