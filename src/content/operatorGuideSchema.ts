@@ -277,8 +277,10 @@ export const operatorGuideSchema = z.object({
   }).default({}),
 
   gameplay: z.object({
-    // When videos are consciously deferred, suppress all fictional preview runs
-    // and show one subtle "Folgt" status in the Gameplay section.
+    // Written post-release rotation is independent of video availability.
+    // Real footage can follow without hiding the existing gameplay guide.
+    explanation: text.optional(),
+    // When videos are deferred, suppress all fictional preview runs.
     pending: z.boolean().default(false),
     showcases: z.array(showcase).default([]),
   }).default({}),
