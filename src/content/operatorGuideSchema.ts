@@ -34,8 +34,12 @@ const weaponRecommendation = z.object({
   performancePercent: z.number().finite().optional(),
   comparisonConditions: text.optional(),
 }).superRefine((weapon, ctx) => {
-  if (weapon.performancePercent !== undefined && !weapon.comparisonConditions?.trim()) {
+  if (weapon.performancePercent === undefined) return;
+  if (!weapon.comparisonConditions?.trim()) {
     ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["comparisonConditions"], message: "Prozentvergleiche benötigen nachvollziehbare Vergleichsbedingungen." });
+  }
+  if (!weapon.sourceNote?.trim()) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["sourceNote"], message: "Waffen-Prozentvergleiche benötigen eine benannte Quelle, z. B. Datafield." });
   }
 });
 
