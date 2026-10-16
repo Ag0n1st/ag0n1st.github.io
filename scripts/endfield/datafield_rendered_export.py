@@ -149,7 +149,10 @@ def run(slug: str, output: Path, headed: bool, timeout: int) -> int:
                 more = page.get_by_role("button", name=re.compile(r"Show\s+\d+\s+More\s+Weapons", re.I))
                 if more.count() == 0 or not more.first.is_visible():
                     break
-                more.first.click(timeout=5000)
+                # Datafield's global preloader can remain above the content and
+                # intercept pointer events. Dispatch the button's own click
+                # handler directly; this reveals exactly what a normal click does.
+                more.first.evaluate("(button) => button.click()")
                 page.wait_for_timeout(150)
             data = page.evaluate(SNAPSHOT_JS)
         except BrowserTimeout as exc:
