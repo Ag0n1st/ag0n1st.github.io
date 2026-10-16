@@ -76,7 +76,8 @@ test("conclusion gives a finalized recommendation and keeps skip criteria person
  const conclusion=guide.split("\nconclusion:\n")[1].split("\n---")[0];
  assert.match(conclusion,/recommendation: recommended/);
  assert.match(conclusion,/verdict: >-/);
- assert.match(conclusion,/pullAdvice: >-/);
+ assert.doesNotMatch(conclusion,/pullAdvice: >-/);
+ assert.match(conclusion,/grundsätzliche Pull-Empfehlung/);
  assert.match(conclusion,/Elektro- und Natur/);
  assert.match(conclusion,/ANG/);
  assert.match(conclusion,/passiv/);
