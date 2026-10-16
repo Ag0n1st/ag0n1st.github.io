@@ -176,8 +176,6 @@ export const operatorGuideSchema = z.object({
 
   operatorKit: z.object({
     playstyle: text.default(""),
-    progressionNotes: text.default(""),
-    resourceNotes: text.default(""),
   }).default({}),
 
   skills: z.object({

@@ -5,11 +5,12 @@ import { join } from "node:path";
 // fallback; all published HTML remains fully static and requires no database.
 export function getOperatorImageUrl(
   slug: string,
-  asset: "cover" | "illustration" | "skill-basic" | "skill-battle" | "skill-combo" | "skill-ultimate",
+  asset: "cover" | "illustration" | "skill-basic" | "skill-battle" | "skill-combo" | "skill-ultimate" | "potential-1" | "potential-3" | "potential-5",
   publicRemoteUrl?: string
 ): string | undefined {
   if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) return publicRemoteUrl;
-  const location=asset.startsWith("skill-")?"skills/"+asset:asset;
+  const location=asset.startsWith("skill-")?"skills/"+asset
+    :asset.startsWith("potential-")?"potentials/"+asset:asset;
   const base="/images/endfield/operators/"+slug+"/"+location;
   for(const ext of [".png",".webp",".jpg",".jpeg"]){
     if(existsSync(join(process.cwd(),"public",base.slice(1)+ext))){
