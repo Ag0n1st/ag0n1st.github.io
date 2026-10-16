@@ -179,7 +179,7 @@ test("SKPORT Liino data supports the creator-approved battle and combo M3 reason
  assert.equal(metric(ultimate,"MAX Amp from Will").at(-1),"60%");
 });
 
-test("percent comparison data schema requires a visible source and concrete conditions",()=>{
+test("percentage source attribution remains mandatory in schema, but public UI is unobtrusive",()=>{
  const schema=readFileSync("src/content/operatorGuideSchema.ts","utf8");
  const tpl=readFileSync("src/content/operator-guides/_template.md","utf8");
  const weaponUi=readFileSync("src/components/operator/sections/OperatorWeapons.astro","utf8");
@@ -188,17 +188,12 @@ test("percent comparison data schema requires a visible source and concrete cond
  assert.match(schema,/Waffen-Prozentvergleiche benötigen eine benannte Quelle, z\. B\. Datafield/);
  assert.match(schema,/Potenzial-Prozentvergleiche benötigen eine benannte Quelle, z\. B\. Datafield/);
  assert.match(schema,/Potenzial-Prozentvergleiche benötigen ihre Vergleichsbedingungen/);
- assert.match(weaponUi,/<th>Vergleichsbedingungen<\/th><th>Quelle<\/th>/);
- assert.match(weaponUi,/\{w\.source\s*\|\|\s*"–"\}/);
- assert.match(potentialUi,/<th>Zusatzgewinn zur Vorstufe<\/th><th>Gesamtgewinn vs\. P0<\/th><th>Quelle<\/th>/);
- assert.match(potentialUi,/Quelle: \{p\.sourceNote\}/);
+ assert.match(weaponUi,/<small class="op-data-source-note">Quelle: \{scenario\.sourceNote\}<\/small>/);
+ assert.match(potentialUi,/<small class="op-data-source-note">Quelle:/);
  assert.match(tpl,/sourceNote: "Datafield"/);
  assert.match(workflow,/keinen Link zur Datenquelle anzeigen/);
- assert.match(workflow,/\*\*Datafield\*\* für die bevorzugten/);
- assert.match(workflow,/nicht automatisch.*kumulative Steigerung/);
- // Published Datafield-character-profile values carry conditions and disclaimers.
  assert.match(guide,/^weapons:\n  recommendations:\n    - weaponId: "1046"$/m);
  assert.match(guide,/^potentials:\n  entries:\n    - level: 1$/m);
  assert.match(guide,/sourcePageType: character-profile/);
- assert.match(guide,/^  disclaimer: >-$/m);
+ assert.doesNotMatch(guide,/^  disclaimer:/m);
 });
