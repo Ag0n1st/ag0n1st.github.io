@@ -1,5 +1,8 @@
 ---
 import "../styles/global.css";
+import SeoHead from "../components/i18n/SeoHead.astro";
+import LanguageSwitch from "../components/i18n/LanguageSwitch.astro";
+import "../styles/i18n.css";
 import EndfieldNav from "../components/EndfieldNav.astro";
 ---
 <!doctype html>
@@ -9,6 +12,7 @@ import EndfieldNav from "../components/EndfieldNav.astro";
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#09090d" />
     <link rel="icon" type="image/svg+xml" href="/images/ag0n1st-logo.svg" />
+    <SeoHead path={Astro.url.pathname} title="Arknights: Endfield — Ag0n1st" description="Arknights: Endfield Guides von Ag0n1st – Charaktere, Skills, Builds, Speedruns und Tools." />
     <meta name="description" content="Arknights: Endfield Guides von Ag0n1st – Charaktere, System-Erklärungen, Speedruns, Checkliste und Patch-Countdown." />
     <title>Arknights: Endfield — Ag0n1st</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,6 +32,7 @@ import EndfieldNav from "../components/EndfieldNav.astro";
         <a href="/endfield/" aria-current="page">Arknights: Endfield</a>
         <a href="/nte/">Neverness to Everness</a>
         <a href="/about/">About Me</a>
+        <LanguageSwitch path={Astro.url.pathname} lang="de" />
       </nav>
 
       <a class="header-cta" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">
