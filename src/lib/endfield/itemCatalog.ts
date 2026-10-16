@@ -51,3 +51,11 @@ export function resolveOfficialItem(reference:string,category:"Weapons"|"Gear"):
   if(direct?.categories.includes(category))return direct;
   return namedIndex.get(category+"::"+normalizedId(reference));
 }
+
+/** Use already cached official operator portraits for Meta partner cards,
+ * even if the full operator guide has not yet been imported. */
+export function findOperatorCatalogItem(slug:string):EndfieldCatalogItem|undefined{
+  if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug))return undefined;
+  return [...items.values()].find(item=>
+    item.categories.includes("Operators") && normalizedId(item.name)===slug);
+}
