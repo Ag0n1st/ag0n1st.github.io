@@ -126,6 +126,21 @@ potentials:
   # nur increaseOverPreviousPercent verwenden, WENN die Quelle
   # ausdrücklich einen Vergleich zur jeweiligen Vorstufe nennt.
   # KEINE kumulativen vs.-P0-Prozente im Framework anzeigen!
+  # Bei zwei alternativen Datafield-Rechnungen (z. B. mit/ohne Ultimate-Energiebedarf):
+  # comparisons:
+  #   - id: ohne-extra-energie
+  #     title: "Teams ohne zusätzliche Ultimate-Energie"
+  #     sourceNote: "Datafield"
+  #     snapshotDate: "2026-10-16"
+  #     comparisonConditions: "Konkret benanntes, geprüfte Datafield-Tab/Team-Modell"
+  #     entries: [
+  #       { level: 1, increaseOverPreviousPercent: 0.0 },
+  #       { level: 2, increaseOverPreviousPercent: 0.0 },
+  #       { level: 3, increaseOverPreviousPercent: 0.0 },
+  #       { level: 4, increaseOverPreviousPercent: 0.0 },
+  #       { level: 5, increaseOverPreviousPercent: 0.0 }
+  #     ]
+  # OBIGE NULLEN SIND NUR SYNTAXBEISPIELE, KEINE Daten!
   # Eine einzige subtile Quellenfußnote unter der gesamten Potenzialvergleichstabelle.
   # Pull-Empfehlungen ausschließlich im Fazit: conclusion.pullAdvice.
 
@@ -143,6 +158,13 @@ teams:
   #   role: main-dps
   #   members: [neuer-operator, operator-b, operator-c, operator-d] # genau 4
   #   buildId: standard # verweist auf equipment.builds[].id
+  #   # Optional, nur exakt aus eigenem Guide/gesicherter Quelle geprüfte Teammate-Gear:
+  #   # memberGear:
+  #   #   - member: operator-b
+  #   #     weaponId: "1175" # ID ist NUR EIN BEISPIEL, nicht generische Empfehlung
+  #   #     weaponRank: 4 # optional und nur bei belegtem Rang
+  #   #     items: ["1239", "1238", "1240", "365"] # genau 4 echte Gear-IDs
+  #   #     note: "Konkreter Teamkontext und die redaktionelle Begründung"
   #   evaluation: |
   #     Kurze Begründung der Synergien, ohne ausführliche Rotation.
   more: []
