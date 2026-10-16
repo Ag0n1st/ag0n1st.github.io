@@ -81,6 +81,12 @@ weapons:
         - weaponId: "70"
           rank: 4
           performancePercent: 91
+        - weaponId: "1281"
+          rank: 9
+          performancePercent: 90.5
+        - weaponId: "1281"
+          rank: 4
+          performancePercent: 86.8
   generalNotes: "Die redaktionelle Favoritenliste Jadegefäß und Long Heritage stammt aus meinem Mobalytics-Pre-Guide; Khravengger ist eine unabhängige, seit dem Release erkennbare Alternative. Die offizielle Waffenmatrix und Materialkosten kommen aus SKPORT. Datafield-Prozente gelten nur für das benannte Main-DPS-Szenario. Eine zweite, noch nicht eindeutig überprüfte Support-Modellreihe wird nicht fälschlich mit dem ersten Modell vermischt."
 equipment:
   builds:
