@@ -23,7 +23,9 @@ overview:
     # Skala jeweils 1 bis 5. Weglassen, solange keine Bewertung vorliegt.
     # difficulty: 3 # gespeichert: 1 = leicht, 5 = schwer; UI zeigt Einsteigerfreundlichkeit = 6 - difficulty
     # flexibility: 4
-    # accessibility: automatisch aus den offiziellen Anforderungen der Meta-Builds; nicht eintragen
+    # accessibility: 1 # nur bei ausdrücklicher, vorläufiger redaktioneller Freigabe solange neue Meta-Teile noch ungeprüft sind
+  # accessibilityNote: "Warum der Score trotz fehlender offizieller neuer Rezepte vorläufig gilt."
+  # Bei vollständig validierten Meta-Builds wird der Score wieder automatisch ermittelt.
   # featuredBuildId: standard
   # Partners werden automatisch aus den Meta-Teams errechnet (ohne den Guide-Operator).
   # Einträge nur als Rückfall verwenden, solange keine Meta-Teams vorhanden sind.
@@ -46,7 +48,11 @@ skills:
   #     battle: "M3"
   #     combo: "9"
   #     ultimate: "M1"
-  # Dies ist nur ein STRUKTURBEISPIEL, KEINE tatsächliche Skill-Priorität.
+  # supportPriority: # Optional: eigenständige Priorität für Support-Rolle, gleiche Feldstruktur wie priority.
+  #   order: [battle, ultimate, combo, basic]
+  #   comparisons: [">", ">", ">"]
+  #   targetLevels: {basic: "Lv 1–9 (optional)", battle: "M3", combo: "M3", ultimate: "M3"}
+  # Dies sind nur STRUKTURBEISPIELE, KEINE tatsächlichen Skill-Prioritäten.
   active:
     basic: ""
     battle: ""
@@ -94,6 +100,7 @@ equipment:
   #   role: main-dps # main-dps | support | hybrid | sub-dps | control | other
   #   meta: true # optional; nur Meta-Builds werden oberhalb des Finders als kompakte Cards gezeigt
   #   metaSummary: "Kurze, aussagekräftige Empfehlung für den Meta-Build (max. 280 Zeichen)."
+  #   metaTag: balanced # optional: balanced (Cyan), max-dmg (Magenta), max-buffs (neutral)
   #   # metaSummary ist bei meta: true verpflichtend. Sonst fehlen lassen.
   #   # Detailtexte und alle nicht als Meta markierten Builds erscheinen weiterhin im Build-Finder.
   #   items: ["1246", "1245", "1244", "1243"] # Beispiel-IDs, KEINE Build-Empfehlung. EXAKT 4
