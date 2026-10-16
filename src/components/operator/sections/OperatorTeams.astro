@@ -3,7 +3,7 @@ import type { OperatorGuideModel } from "../../../lib/endfield/operatorGuideMode
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
-const { guide, missing, roleLabels, metaTeams, extraTeams, teamRoles } = model;
+const { guide, roleLabels, metaTeams, extraTeams, teamRoles, displayTeamMember } = model;
 ---
 <section class="op-section" id="teams">
         <h2>Teams</h2>
@@ -14,17 +14,17 @@ const { guide, missing, roleLabels, metaTeams, extraTeams, teamRoles } = model;
         </div>
         <div class="op-divided">
           <h3>Empfohlene Meta-Teams</h3>
-          <p class="op-section-intro">Ausgewählte Teams mit kurzer Bewertung, ohne Pflicht-Rotationen.</p>
+
           {metaTeams.length ? <div class="op-two">{metaTeams.map(team=><article class="op-cardlet">
-            <div class="op-subtitle"><h3 style="margin:0">{team.title}</h3><span class="op-chip">{roleLabels[team.role]}</span></div>
-            <div class="op-team-operators">{team.members.map(member=><div class="op-team-slot">{member}</div>)}</div>
-            <p class="op-body-copy"><strong>Bewertung:</strong> {team.evaluation || team.note || missing}</p>
+            <div class="op-subtitle"><h3 style="margin:0">{team.title}</h3><span class="op-chip is-accent">Meta · {roleLabels[team.role]}</span></div>
+            <div class="op-team-operators">{team.members.map(member=><div class="op-team-slot">{displayTeamMember(member)}</div>)}</div>
+            {(team.evaluation || team.note) && <p class="op-body-copy">{team.evaluation || team.note}</p>}
             {team.buildId && <p><a class="op-link" href="#ausruestung" data-select-build={team.buildId}>Empfohlene Ausrüstung ansehen ↗</a></p>}
           </article>)}</div> : <p class="op-placeholder">[Noch keine Meta-Teams]</p>}
         </div>
         <div class="op-divided">
           <h3>Weitere Teamoptionen</h3>
-          <p class="op-section-intro">Weitere Kombinationen zur Inspiration – beliebig erweiterbar.</p>
+
           {extraTeams.length ? <>
             {teamRoles.length > 1 && <div class="op-role-filter" aria-label="Teams nach Rolle filtern">
               <button type="button" class="op-pill-button" data-team-filter="all" aria-pressed="true">Alle</button>
@@ -32,7 +32,7 @@ const { guide, missing, roleLabels, metaTeams, extraTeams, teamRoles } = model;
             </div>}
             <div class="op-team-scroll" style="margin-top:12px">{extraTeams.map(team=><article class="op-cardlet op-compact-team" data-team-role={team.role}>
               <div class="op-subtitle"><strong style="font-size:13px">{team.title}</strong><span class="op-chip">{roleLabels[team.role]}</span></div>
-              <div class="op-team-operators">{team.members.map(member=><div class="op-team-slot">{member}</div>)}</div>
+              <div class="op-team-operators">{team.members.map(member=><div class="op-team-slot">{displayTeamMember(member)}</div>)}</div>
               {(team.note || team.buildId) && <p class="op-body-copy">{team.note || ""} {team.buildId && <a class="op-link" href="#ausruestung" data-select-build={team.buildId}>Ausrüstung ↗</a>}</p>}
             </article>)}</div>
           </> : <p class="op-placeholder">[Weitere Teamoptionen folgen]</p>}
