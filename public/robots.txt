@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ag0n1st.com/sitemap.xml
