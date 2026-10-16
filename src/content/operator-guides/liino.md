@@ -32,6 +32,8 @@ weapons:
 equipment:
   builds:
     - id: ultimate-fokus
+      meta: true
+      metaSummary: "Hoher Ultimate-Energiegewinn mit Eternal-Xiranite-Teamverstärkung für regelmäßige Ultimate-Rotationen."
       title: "Build A – Ultimate-Fokus"
       role: support
       items: ["1134", "1138", "1236", "365"]
@@ -48,6 +50,8 @@ equipment:
         Schwächungseffekts +16 % verursachter Schaden für andere Teammitglieder
         (15 Sek., nicht stapelbar). 1x LYNX: kein LYNX-Setbonus.
     - id: balanced
+      meta: true
+      metaSummary: "Ausgewogene Variante mit LYNX-Heilung und Schadensreduktion sowie zusätzlichen Hauptattributwerten."
       title: "Build B – Balanced"
       role: support
       items: ["1134", "1133", "365", "365"]
@@ -65,6 +69,8 @@ equipment:
         Schadensreduktion für 10 Sekunden (15 %, bei Überheilung 30 %;
         nicht stapelbar). 1x Eternal Xiranite: kein Eternal-Xiranite-Setbonus.
     - id: will-fokus
+      meta: true
+      metaSummary: "Maximiert Willenskraft für Liinos Ultimate-Amp; ideal mit bereits geladener Ultimate und ohne zweiten Ultimate-Einsatz."
       title: "Build C – Will-Fokus"
       role: support
       items: ["1126", "1129", "365", "365"]

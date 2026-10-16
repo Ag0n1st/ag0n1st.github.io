@@ -4,7 +4,7 @@
 
 **Komponentenstruktur:** Die zentrale `OperatorGuide.astro` setzt neun eigenständige Abschnittskomponenten aus `src/components/operator/sections/` zusammen. Der gemeinsame Aufbereitungs-Code befindet sich in `src/lib/endfield/operatorGuideModel.ts`. Änderungen an einzelnen Abschnitten benötigen daher keine Kopie der übrigen Guide-Vorlage.
 
-**Datenstand (15.10.2026):** Die offiziellen Traits sind im aktuellen SKPORT-Snapshot nicht vollständig strukturiert und dürfen nicht erfunden werden. Der Waffen- und Ausrüstungskatalog ist inzwischen importiert (84 Waffen, 258 Gear-Teile), einschließlich offizieller Standardrezepte. Die redaktionellen Empfehlungen in `liino.md` und `typhoeus.md` fehlen weiterhin.
+**Datenstand (15.10.2026):** Die offiziellen Traits sind im aktuellen SKPORT-Snapshot nicht vollständig strukturiert und dürfen nicht erfunden werden. Der Waffen- und Ausrüstungskatalog ist inzwischen importiert (84 Waffen, 258 Gear-Teile), einschließlich offizieller Standardrezepte. Liino enthält bereits sechs redaktionell bestätigte Ausrüstungs-Builds (A–F), während andere Guide-Bereiche noch `preview` sind; Typhoeus und weitere Operatoren erhalten Meta-Einstufungen ausschließlich durch redaktionelle Freigabe.
 
 
 Dieses Verzeichnis gehört zur redaktionellen Ebene der **Arknights: Endfield**-Guides.
@@ -34,7 +34,7 @@ Die eigenen Bewertungen und Kommentare gehören in die Markdown-Datei:
 - **2. Operator Kit:** Verständliche Spielweise sowie Hinweise zu Ressourcen und Fortschritt.
 - **3. Fertigkeiten:** Vier Slots in Prioritätsreihenfolge, drei Zeichen `>` oder `>=`, gewünschte Ziellevel sowie eigene Bewertungen.
 - **4. Waffen:** Empfohlene Waffen via `weaponId`, Kategorie (`bis`, `bp`, `f2p`, `alternative`) und Bewertung. Prozentwerte nur mit Vergleichsbedingungen.
-- **5. Ausrüstung:** Beliebig viele Builds, pro Build **genau vier** Items. Optional Freischaltungslevel 50/60/70, Fabrikfortschritt, Set-Bewertung und Progression.
+- **5. Ausrüstung:** Beliebig viele Builds, pro Build **genau vier** Items (1× Rüstung, 1× Handschuhe, 2× Kits). `meta: true` markiert einzelne Builds für die **Meta Builds**-Übersicht vor dem Finder; `metaSummary` ist dann als kurze Card-Beschreibung **erforderlich** (maximal 280 Zeichen). Andere Builds bleiben im Finder. Level-/Fabrik-/Gebiets-/Besitzprüfung und Detailbewertungen erfolgen ausschließlich dort.
 - **6. Potenziale:** P1 bis P5, Einschätzungen und optional belegbare Prozentvergleiche.
 - **7. Teams:** Einige ausführlichere Meta-Teams plus beliebig viele Inspirationen. Je Team **exakt vier unterschiedliche Operatoren, einschließlich des Guide-Operators**. `buildId` verweist auf `equipment.builds[].id`.
 - **8. Gameplay:** Beliebig viele Showcases, optional Video-Link, Kurztext sowie Rotation/Tipps.
@@ -72,6 +72,30 @@ teams:
 
 **Hinweis:** Die Werte in diesem Beispiel sind Platzhalter und keine korrekten Endfield-Gamedaten. Die referenzierten Ausrüstungs- und Operator-IDs müssen später im automatisch importierten Datensatz existieren. Das jetzt eingerichtete Schema prüft interne Guide-Verknüpfungen, noch nicht die Existenz in der künftigen Spieldatenbank.
 
+## Meta Builds im gemeinsamen Operator-Guide-Framework
+
+**Anordnung im Abschnitt Ausrüstung:** Bei mindestens einem `meta: true` erscheinen zuerst die **Meta Builds** als kompakte, auf Desktop mehrspaltige und auf Mobilgeräten einspaltige Cards. Jede Card enthält Titel, Level, vier Ausrüstungssymbole samt offiziellen Namen und eine kurze redaktionelle Beschreibung. Der Verweis **„Details im Build-Finder ansehen“** führt zum bereits vorhandenen Build-Finder und aktiviert genau den betreffenden Build. Unter den Cards steht ein Hinweis auf alle Details und weitere Progressionsvarianten.
+
+Die Cards werden **aus denselben `equipment.builds[]`-Datensätzen** wie der Finder erzeugt; kein zweiter Eintragsordner, keine separaten Gear-IDs, keine kopierte externe Item-Tabelle. Die bereits bestehenden `.op-divided`-Trennlinien teilen Meta Builds und Finder visuell. Wenn `meta: true` fehlt, ist der Meta-Bereich **vollständig verborgen** (keine Platzhalter für Operatoren ohne freigegebene Meta-Setups). `meta: false` ist der Standard.
+
+```yaml
+equipment:
+  builds:
+    - id: ultimate-fokus
+      title: "Build A – Ultimate-Fokus"
+      role: support
+      meta: true
+      metaSummary: "Viel Ultimate-Energiegewinn mit Eternal-Xiranite-Teamverstärkung."
+      items: ["1134", "1138", "1236", "365"]
+      availableFromLevel: 70
+      evaluation: >-
+        Detailbewertung erscheint im Build-Finder, nicht in der Meta-Card.
+```
+
+Dieser Auszug ist ein **strukturelles Beispiel** aus dem redaktionell bestätigten Liino-Build; bei anderen Operatoren müssen echte Ausrüstung und Meta-Status neu geprüft werden. Der `metaSummary`-Text bleibt kurz und kann unabhängig von der ausführlichen `evaluation` gepflegt werden. Meta-Markierung ist keine automatische Aussage, dass ein ungeprüfter Charakter-Build empfohlen wird.
+
+**Liino, Stand 16.10.2026:** A (**Ultimate-Fokus**), B (**Balanced**), C (**Will-Fokus**) sind Meta-Builds; D (60), E (50), F (36) sind Progressionsvarianten im Finder. Details: [`liino-approved-builds-20261016.md`](liino-approved-builds-20261016.md).
+
 ## Kompaktregeln für YAML
 
 - Einrückung mit **Leerzeichen**, nicht Tabulatoren.
@@ -85,16 +109,16 @@ teams:
 
 ## Nächste technische Schritte
 
-1. Redaktionelle Liino-Bewertungen, Builds, Teams und Videoguide ergänzen, sobald sie vorliegen.
-2. Liino-Builds nach offizieller Gear-ID gegen den importierten Katalog prüfen und erst nach Freigabe eintragen.
+1. Die sechs vorhandenen, vom Creator festgelegten Liino-Builds A–F erhalten; A/B/C als Meta darstellen. Noch offene Liino-Texte, Teams und Videoguide später redaktionell ergänzen.
+2. Bei künftigen Operatoren jede neue Build-ID, Gear-Slot-Aufteilung und Meta-Einstufung anhand der offiziellen Gear-Details und der Creator-Freigabe prüfen.
 3. Mit echten vierteiligen Builds den Browser-Finder (Level, Fabrikkomponente, Region, Gebiet und vier Blaupausen) testen.
 4. Den generischen SKPORT-Importer auf weitere Operatoren erweitern. Das Guide-Template ist bereits in neun Abschnittskomponenten aufgeteilt.
 
 So entsteht später der gewünschte Ablauf: Datei kopieren → bearbeiten → GitHub-Push → automatischer Build → neue Guide-Seite.
 
-## Übergabe für den ersten echten Liino-Build (15.10.2026)
+## Historischer Übergabepunkt für den ersten Liino-Build (15.10.2026) – inzwischen umgesetzt
 
-**Ausgangslage:** `src/content/operator-guides/liino.md` enthält noch `equipment.builds: []`. Für den Build-Finder existieren belastbare Tests der technischen Filter, aber noch kein von Ag0n1st bestätigter vierteiliger Liino-Build im öffentlichen Guide. `status: preview` bleibt erhalten, bis der gesamte Guide freigegeben wird.
+**Historischer Ausgangsstand am 15.10.2026 (heute überholt):** Damals enthielt `src/content/operator-guides/liino.md` noch `equipment.builds: []`. Seit PR #16 liegen sechs bestätigte Builds vor; die nachstehende Checkliste bleibt als allgemeine technische Abnahmehilfe erhalten. Für den Build-Finder existieren belastbare Tests der technischen Filter, aber noch kein von Ag0n1st bestätigter vierteiliger Liino-Build im öffentlichen Guide. `status: preview` bleibt erhalten, bis der gesamte Guide freigegeben wird.
 
 **Benötigte redaktionelle Angaben je Build:**
 

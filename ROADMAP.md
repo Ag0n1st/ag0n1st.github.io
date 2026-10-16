@@ -1198,6 +1198,23 @@ Warum dieser Schritt zuerst: Die technische Engine ist vorhanden, aber `liino.md
 - **Wichtige Grenze:** Die Client-UI belegt sich noch mit echtem Browser-/Mobile-Check. **Bis erfolgreicher CI/Merge/Pages-Nachprüfung nicht `P1 FERTIG` markieren.** Unveränderte Story-/Gebiets-/Besitztrennung, 60er-Autoritätslimit, `localStorage` ohne Login.
 - **Abgeschlossen:** PR #16, CI-Run #76 (Node-Tests, Budget, Astro-Build) und Squash-Merge auf `main` (`3ace991f`). **Offen:** tatsächlichen GitHub-Pages-Deploy dieses Commits verifizieren; anschließend Browser-Gegenprüfung mit realen Liino-Builds, Mobilansicht, `localStorage`/Reset, Level-/Fabrik-/Gebiets- und Blaupausenkombinationen sowie Typhoeus-Regression. Danach P2 Guide-Ausbau.
 
+### 14.3d Wiederverwendbare „Meta Builds“-Cards vor dem Build-Finder (16.10.2026)
+
+**Vom Nutzer ausdrücklich beauftragte Layout- und Architekturänderung:** Im Operator-Guideabschnitt **„Ausrüstung“** steht künftig **„Meta Builds“ vor „Build-Finder“**, mit dem vorhandenen `.op-divided`-Trennlinienmuster. Meta Builds dienen dem schnellen Überfliegen und Vergleichen; der Finder bleibt die zentrale Detailansicht für Statistiken, Setboni, Rezepte, Fortschritt und die tatsächliche Blaupausen-Besitzprüfung. Das gilt **operatorübergreifend** und erzeugt keine doppelte Meta-Datenhaltung.
+
+**Design und technische Umsetzung (Branch `feature-operator-meta-build-cards-20261016`):**
+1. `src/content/operatorGuideSchema.ts`: `equipment.builds[].meta: boolean` mit Default **`false`**; `metaSummary` als kurze Einzelbeschreibung (**max. 280 Zeichen**), beim `meta: true` redaktionell **Pflicht**. Damit können sich weitere Operatoren mit einem, mehreren oder gar keinen geprüften Meta-Builds problemlos selbst pflegen lassen.
+2. `src/content/operator-guides/liino.md`: Nur die **drei Level-70-Builds** A **`ultimate-fokus`**, B **`balanced`** und C **`will-fokus`** erhalten **`meta: true`** mit je eigener prägnanter, an der Creator-Entscheidung orientierter `metaSummary`. Die Progressions-Builds **D / E / F** sind bewusst **nicht Meta**, bleiben jedoch im Finder vollständig verfügbar. Die bereits freigegebenen Gear-IDs, langfristigen Beschreibungen, Slots, Stats und Anforderungen werden **nicht geändert**.
+3. `src/components/operator/sections/OperatorEquipment.astro`: Die vorhandene `officialBuilds`-Aufbereitung liefert **dieselben** offiziellen Gear-Namen, Icons und Item-IDs für Meta Cards und Finder. `officialBuilds.filter(build => build.meta===true)` rendert vor dem Finder eine kompakte Card je Meta-Build: Build-Titel, Level, 4 Gear-Icons mit **offiziellen Namen**, `metaSummary` und Link **„Details im Build-Finder ansehen“**. Unter den Cards: kleiner Hinweis, dass alle Werte, Rezepte, Freischaltungen und Progressions-Builds im Finder stehen. Die ganze Meta-Sektion wird bei **0** markierten echten Builds versteckt, um leere Typhoeus-/andere Guide-Übersichten nicht mit irrelevanten Platzhaltern zu füllen.
+4. **Verknüpfung:** Card-Link `href="#build-finder"` + `data-select-build={build.id}` nutzt **den bereits existierenden** gemeinsamen Client-Handler in `OperatorGuide.astro`; keine neue doppelte JS-Logik. Beim Klick wird derselbe reale Finder-Build ausgewählt; bei einem vorher verborgenen gesperrten Build wird dessen Anzeige aktiviert. Die eigentliche Bestands-/Freischaltlogik bleibt unberührt.
+5. `src/styles/operator-guides.css`: Card-Raster responsiv (**3 Spalten groß**, 2 mittel, **1 mobil**), lesbare Gear-Namen, kompakte Beschreibungen und Link-Tastaturfokus; `#build-finder` berücksichtigt den sticky Seitenheader als Scroll-Anker. Kein neuer Image-Asset-Import.
+6. `src/content/operator-guides/_template.md` und `docs/operator-guide-workflow.md`: Gemeinsame Selbstpflege-Anleitung für jeden weiteren Guide ohne Login; keine zweite Definition eines Builds. `src/lib/endfield/operatorGuideModel.ts`: Demo-Einträge bekommen `meta:false` und erzeugen keine Fake-Meta-Cards.
+7. `scripts/endfield/liino-builds.test.mjs`: Prüft **exakt A/B/C** als Meta, Kurztexte und ihre Länge, D/E/F als reine Progression sowie das allgemeine Schema, UI-Reihenfolge, Verlinkung, offizielle Item-Referenzen, mobile CSS und Nicht-Erzwingung von Meta-Daten auf Typhoeus.
+
+**Status bei Implementierung:** [BRANCH FERTIG / CI NOCH ZU PRÜFEN]. Keine Visualisierungen im Chat; normale Web-Assets auf der Website bleiben zulässig. **Nicht als gemergt oder live deployed behaupten, bevor PR-/Actions-Status dies beweist.** Bestehender P1-Restpunkt bleibt tatsächlicher Desktop-/Mobile-/Browser-Check mit Level-/Factory-/Blaupausen-Status, auch für die neuen Meta-Finder-Verweise.
+
+**Konkrete Abnahmekriterien:** Nach Sichtprüfung Liino-Sektion = „Meta Builds“ (A/B/C) → Trennlinie → „Build-Finder“ (A–F) → weitere bestehende Ausrüstungsabschnitte. Keine doppelten Build-Daten; Kartenübersicht ohne Detailtabellen, keine Meta-Pflicht für andere Operatoren, mobil untereinander, Card-Finder-Link selektiert die korrekte Build-ID. Vor Merge `npm run test:endfield`, `node scripts/endfield/check-budget.mjs`, `npm run build` durch GitHub Actions vollständig erfolgreich; anschließend PR-Merge, Deployment und offenen Browser-Check in der Roadmap nachtragen.
+
 ### 14.4 Checkliste zur Aktualisierung DIESER Datei
 
 Nach **jedem** zukünftigen Task, unabhängig davon, ob ihn dieselbe oder eine andere KI bearbeitet, prüfen:
@@ -1223,6 +1240,7 @@ Nach **jedem** zukünftigen Task, unabhängig davon, ob ihn dieselbe oder eine a
 - Eigene Domain: https://ag0n1st.com
 
 **Fachdokumente im Repository:**
+- [Meta Builds: Autorenanleitung, Datenmodell und Layout](docs/operator-guide-workflow.md#meta-builds-im-gemeinsamen-operator-guide-framework)
 - [Liino – vom Creator festgelegte Builds](docs/liino-approved-builds-20261016.md)
 - [Liino – historische Build-Recherche (überholt)](docs/liino-build-proposals-20261016.md)
 - [Vollständiger PDF-Konversationsabgleich](docs/website-conversation-audit.md)
@@ -1268,6 +1286,8 @@ Nach **jedem** zukünftigen Task, unabhängig davon, ob ihn dieselbe oder eine a
 | 16.10.2026 | Technische Build-Finder-Integration B1–B3 auf Feature-Branch umgesetzt, **QA/Deploy noch offen** | ID 1138 itemgenau als Gloves normalisiert; echte Builds innerhalb Preview zugelassen; 1/1/2-Slotprüfung, Unit-Tests und Blueprint-Doppelstückregeln. |
 
 | 16.10.2026 | Liino A–F über **PR #16** nach grünem CI #76 auf `main` gemergt | Commit `3ace991ff18781207fe8970c0fdfc62e8e52e682`; 66/66 Node-Tests grün nach Legacy-Fixture-Korrektur, Budget/Build erfolgreich; Pages-Deploy und Browser-Smoke-Tests getrennt offen. |
+
+| 16.10.2026 | **Meta Builds** als kompakte, redaktionell markierte Cards **vor dem Build-Finder** im gemeinsamen Operator-Guide-Framework | Build-Feld `meta` (Default `false`), `metaSummary` (Pflicht bei Meta, max. 280 Zeichen), dieselben offiziellen Item-IDs/Namen/Icons; Liino A/B/C Meta, D/E/F weiterhin ausschließlich im Finder; keine separate Datenhaltung. Implementierungs-/Abnahmestand §14.3d. |
 
 **Ende der aktuellen Roadmap.**  
 **Fortsetzungspunkt:** Abschnitt 14.3c, [`docs/liino-approved-builds-20261016.md`](docs/liino-approved-builds-20261016.md) und den PDF-Konversationsabgleich lesen; aktuellen `main`/PRs und den **Pages-Deploy von PR #16** prüfen. Danach vollständigen Liino-Build-Finder im Browser testen (inkl. Story/Fabrik/vier Blaupausen und Reset); erst dann P1 vollständig abschließen und P2 weiterführen.
