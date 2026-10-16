@@ -152,9 +152,31 @@ def run(slug: str, output: Path, headed: bool, timeout: int) -> int:
                 more.first.click(timeout=5000)
                 page.wait_for_timeout(150)
             data = page.evaluate(SNAPSHOT_JS)
-        except BrowserTimeout:
-            print("ERROR: Rendered Datafield data did not load before timeout; no values were inferred.", file=sys.stderr)
-            print("Last visible page text: " + page.locator("body").inner_text(timeout=3000)[:500], file=sys.stderr)
+        except BrowserTimeout as exc:
+            print("ERROR: Rendered Datafield data did not load; no values were inferred.", file=sys.stderr)
+            print("Browser diagnostic: " + str(exc)[:1400], file=sys.stderr)
+            try:
+                state=page.evaluate("""() => ({
+                  url:location.href, title:document.title,
+                  textLength:(document.body?.innerText||'').length,
+                  loadingText:(document.body?.innerText||'').includes('Loading data...'),
+                  potentialPresent:(document.body?.innerText||'').includes('Potentials (DPS Increase)'),
+                  weaponsPresent:(document.body?.innerText||'').includes('Recommended Weapons'),
+                  headings:[...document.querySelectorAll('h1,h2,h3,h4')].map(x=>x.textContent?.trim()).slice(0,40),
+                  bodyStart:(document.body?.innerText||'').slice(0,900),
+                  bodyEnd:(document.body?.innerText||'').slice(-3000)
+                })""")
+                print("Current rendered URL: " + state["url"], file=sys.stderr)
+                print("Headings: " + str(state["headings"]), file=sys.stderr)
+                output.parent.mkdir(parents=True, exist_ok=True)
+                output.write_text(json.dumps({
+                  "schemaVersion":1,"source":"Datafield",
+                  "status":"INCOMPLETE_DO_NOT_PUBLISH",
+                  "url":target,"diagnostic":state,
+                  "potentials":[],"weapons":[]
+                },ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+            except Exception as debug_exc:
+                print("Diagnostic extraction also failed: "+str(debug_exc)[:350],file=sys.stderr)
             return 2
         finally:
             browser.close()
