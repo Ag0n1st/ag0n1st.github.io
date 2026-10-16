@@ -161,6 +161,40 @@ def run(slug: str, output: Path, headed: bool, timeout: int) -> int:
                 more.first.evaluate("(button) => button.click()")
                 page.wait_for_timeout(150)
             data = page.evaluate(SNAPSHOT_JS)
+            tab_descriptions = data["weapons"].get("buttons", [])
+            active_tab = next((t["text"] for t in tab_descriptions
+                if "char-tab" in t.get("className", "") and
+                "active" in t.get("className", "").split()), "Default")
+            weapon_scenarios = [{
+                "scenario": active_tab,
+                "weapons": parse_weapons(data["weapons"]["lines"]),
+                "tokenCount": len(data["weapons"]["lines"])
+            }]
+            scenario_names = {active_tab}
+            for index in range(min(page.locator("#weapons button.char-tab").count(), 10)):
+                tab = page.locator("#weapons button.char-tab").nth(index)
+                name = tab.inner_text(timeout=3500).strip()
+                if not name or name in scenario_names:
+                    continue
+                tab.evaluate("(node) => node.click()")
+                page.wait_for_function(
+                    """(expected) => !![...document.querySelectorAll('#weapons button.char-tab.active')]
+                         .find(node => node.textContent.trim() === expected)""",
+                    arg=name, timeout=7000)
+                # Each scenario has its own collapsed weapon-list pagination.
+                for _ in range(12):
+                    more = page.locator("#weapons button.char-show-more")
+                    if more.count()==0 or not re.search(r"Show\\s+\\d+\\s+More\\s+Weapons", more.first.inner_text(), re.I):
+                        break
+                    more.first.evaluate("(node) => node.click()")
+                    page.wait_for_timeout(100)
+                current = page.evaluate(SNAPSHOT_JS)
+                weapon_scenarios.append({
+                    "scenario": name,
+                    "weapons": parse_weapons(current["weapons"]["lines"]),
+                    "tokenCount": len(current["weapons"]["lines"])
+                })
+                scenario_names.add(name)
         except BrowserTimeout as exc:
             print("ERROR: Rendered Datafield data did not load; no values were inferred.", file=sys.stderr)
             print("Browser diagnostic: " + str(exc)[:1400], file=sys.stderr)
@@ -203,6 +237,8 @@ def run(slug: str, output: Path, headed: bool, timeout: int) -> int:
         "sections": {"potentials": data["potentials"]["found"], "weapons": data["weapons"]["found"]},
         "potentials": potentials,
         "weapons": weapons,
+        "defaultWeaponScenario": active_tab,
+        "weaponScenarios": weapon_scenarios,
         "spreadsheetLinks": data["spreadsheetLinks"],
         "diagnostics": {
             "title": data["title"], "headings": data["headings"],
@@ -215,8 +251,10 @@ def run(slug: str, output: Path, headed: bool, timeout: int) -> int:
     }
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Exported: {output} | potentials={len(potentials)} | weapons={len(weapons)}", file=sys.stderr)
-    if len(potentials) < 5 or not weapons or not any(w["reportedPercent"] is not None for w in weapons):
+    print(f"Exported: {output} | potentials={len(potentials)} | weapon scenarios={len(weapon_scenarios)} | default weapons={len(weapons)}", file=sys.stderr)
+    if (len(potentials) < 5 or not weapons
+            or not any(w["reportedPercent"] is not None for w in weapons)
+            or any(not scenario["weapons"] for scenario in weapon_scenarios)):
         print("PARTIAL: Missing entries or percentages; examine diagnostics, do NOT publish.", file=sys.stderr)
         return 3
     print("Structured entries detected. Comparison assumptions STILL REQUIRE manual verification.", file=sys.stderr)
