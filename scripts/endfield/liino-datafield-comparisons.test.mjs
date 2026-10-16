@@ -23,7 +23,7 @@ const expected=[
 ];
 
 function namedScenarioBlocks(){
- const raw=weaponsYaml.match(/  comparisons:\n([\s\S]*?)(?=^  disclaimer:)/m)?.[1];
+ const raw=weaponsYaml.match(/  comparisons:\n([\s\S]*?)(?=^  generalNotes:)/m)?.[1];
  assert.ok(raw,"Comparisons need a separate scenario section");
  return raw.split("    - id: ").slice(1).map(s=>({
   id:s.split("\n",1)[0],
@@ -73,8 +73,8 @@ test("Liino weapon percentage tables mirror BOTH team tabs from the Datafield CH
  }
  assert.equal(actual[0].rows.find(r=>r[0]==="1044"&&r[1]===9)[2],85);
  assert.equal(actual[1].rows.find(r=>r[0]==="1044"&&r[1]===9)[2],91.6);
- assert.match(weaponsYaml,/aus dem\s+Datafield-Charakterprofil von Liino, nicht aus dem Team-Hub/);
- assert.match(weaponsYaml,/keine allgemeingültige Garantie/);
+ assert.match(weaponsYaml,/sourcePageType: character-profile/);
+ assert.doesNotMatch(weaponsYaml,/^  disclaimer:/m);
 });
 
 test("Liino five potential gains are incremental, NEVER mislabeled as gains versus P0",()=>{
@@ -85,32 +85,30 @@ test("Liino five potential gains are incremental, NEVER mislabeled as gains vers
   assert.equal(Number(entry.split("\n",1)[0]),i+1);
   assert.equal(Number(entry.match(/^      increaseOverPreviousPercent: ([\d.]+)$/m)?.[1]),expectedGains[i]);
   assert.match(entry,/^      sourceNote: "Datafield"$/m);
-  assert.match(entry,/nicht unabhängig abgeglichen|nicht\s+unabhängig mit dem Original-Spreadsheet abgeglichen/);
+  assert.match(entry,/Modellparameter nicht unabhängig abgeglichen|Original-Spreadsheet abgeglichen/);
   assert.doesNotMatch(entry,/^      increaseOverP0Percent:/m,
    "Datafield character page gives Pn vs P(n-1), not cumulative Pn vs P0");
  }
- assert.match(potentialsYaml,/NICHT um kumulative Werte gegenüber\s+P0/);
- assert.match(potentialsYaml,/nicht aus\s+dem Team-Hub/);
- assert.match(potentialsYaml,/keine Pull-Empfehlung oder Garantie/);
+ assert.doesNotMatch(potentialsYaml,/increaseOverP0Percent|^  disclaimer:|pullAdvice:/m);
 });
 
-test("shared guide framework renders two separate team tables with rank, baseline, source and disclaimer",()=>{
+test("shared framework keeps exact Datafield numbers but strips redundant visible UI text",()=>{
  assert.match(schema,/const weaponComparisonScenario = z\.object/);
  assert.match(schema,/sourcePageType: z\.literal\("character-profile"\)/);
  assert.match(schema,/performancePercent: z\.number\(\)\.finite\(\)\.nonnegative\(\)/);
- assert.match(schema,/referen(?:ceWeaponId|ceRank)/);
  assert.match(schema,/scenario\.referenceRank && item\.performancePercent===100/);
- assert.ok(schema.includes('disclaimer: text.default("")'));
  assert.match(weaponsUi,/guide\.weapons\.comparisons\.map\(scenario=>/);
  assert.match(weaponsUi,/scenario\.entries\.map\(entry=>/);
  assert.match(weaponsUi,/R\{entry\.rank\}/);
- assert.match(weaponsUi,/Quelle: \{scenario\.sourceNote\} · Charakterprofil/);
- assert.match(weaponsUi,/guide\.weapons\.disclaimer/);
- assert.match(weaponsUi,/Quelle der Einordnung/);
+ assert.match(weaponsUi,/<small class="op-data-source-note">Quelle: \{scenario\.sourceNote\}<\/small>/);
+ assert.doesNotMatch(weaponsUi,/Quelle der Einordnung/);
+ assert.doesNotMatch(weaponsUi,/Vergleichsbedingungen<\/summary>/);
+ assert.doesNotMatch(weaponsUi,/guide\.weapons\.disclaimer/);
  assert.match(potentialsUi,/Zusatzgewinn zur Vorstufe/);
  assert.match(potentialsUi,/increaseOverPreviousPercent/);
- assert.match(potentialsUi,/Gesamtgewinn vs\. P0/);
- assert.match(potentialsUi,/guide\.potentials\.disclaimer/);
+ assert.doesNotMatch(potentialsUi,/Gesamtgewinn vs\. P0/);
+ assert.doesNotMatch(potentialsUi,/guide\.potentials\.disclaimer/);
+ assert.doesNotMatch(potentialsUi,/Pull-Empfehlung/);
  assert.match(workflow,/sourcePageType: character-profile/);
- assert.match(workflow,/KEINE Prozentwerte ungeprüft als kumulative vs\. P0/);
+ assert.match(workflow,/KEINE kumulativen vs.-P0-Prozente im Framework anzeigen/);
 });

@@ -2,6 +2,10 @@ import type { CollectionEntry } from "astro:content";
 import type { ImportedOperator, ImportedOperatorExtras, ImportedItemCost } from "./operatorData";
 import type { OperatorLocale } from "./operatorLocale";
 import { getOperatorImageUrl } from "./operatorAssets";
+import { resolveOfficialItem } from "./itemCatalog";
+import { getOfficialGear } from "./equipmentDetails";
+import { getBuildRequirements } from "./buildFinder.mjs";
+import { metaAccessibilityFromRequirements } from "./metaAccessibility.mjs";
 
 // Shared presentation data for all nine guide sections.
 // Source values and editorial recommendations remain separate.
@@ -132,15 +136,38 @@ function youtubeEmbed(url?:string):string|null {
   }catch{return null;}
 }
 const videoEmbed=youtubeEmbed(guide.guideVideo.url);
+// The accessibility rating must follow only actual, editor-designated Meta Builds.
+// Legacy progression builds, hidden demo builds and unverified recipes do not count.
+const realMetaBuilds=guide.equipment.builds.filter(build=>build.meta===true);
+const verifiedMetaRequirements=realMetaBuilds.map(build=>({
+  id:build.id,meta:true,
+  requirements:getBuildRequirements(build.items.map(id=>{
+    const official=resolveOfficialItem(id,"Gear");
+    return official?getOfficialGear(official.id):undefined;
+  }),{availableFromLevel:build.availableFromLevel}),
+}));
+const metaAccessibility=metaAccessibilityFromRequirements(verifiedMetaRequirements);
+const ratingValues={
+  ...guide.overview.ratings,
+  accessibility:realMetaBuilds.length
+    ?metaAccessibility?.score
+    :guide.overview.ratings.accessibility,
+};
 const ratingRows = [
   ["Spielschwierigkeit","difficulty","Wie anspruchsvoll sind die Mechaniken?"],
   ["Flexibilität","flexibility","Wie leicht lässt sich der Operator in Teams einbauen?"],
-  ["Zugänglichkeit","accessibility","Wie einfach kommt man an die benötigten Ressourcen?"]
+  ["Zugänglichkeit","accessibility",metaAccessibility
+    ? "Automatisch: frühester vollständig geprüfter Meta-Build ("+
+      "Lv. "+metaAccessibility.requiredLevel+" / "+
+      metaAccessibility.phase+"). Blaupausenbesitz separat prüfen."
+    : realMetaBuilds.length
+      ? "Meta-Build-Anforderungen noch nicht vollständig verifiziert."
+      : "Keine verifizierten Meta-Builds für eine automatische Einordnung."]
 ] as const;
 const potentialByLevel = new Map(guide.potentials.entries.map(p=>[p.level,p]));
 
   return {
-    guide, operatorName, preview, gameData, extraData, localized, trTerm, trMetric, trReq, trTalent, trPotential, trPromotion, officialPotentials, combatTalents, shipTalents, attributeNodes, otherTalents, formatCost, gameSkills, importedBySlot, skillImage, defaultSkillRank, missing, slotLabels, slotIcons, priority, priorityOrder, priorityComparisons, weaponLabels, roleLabels, stageLabels, showcaseTypeLabels, pullLabels, weapons, demoWeapons, shownWeapons, demoBuilds, builds, featuredBuild, demoTeams, metaTeams, extraTeams, teamRoles, demoShowcases, showcases, selectedShowcaseIndex, youtubeEmbed, videoEmbed, ratingRows, potentialByLevel, getOperatorImageUrl
+    guide, operatorName, preview, gameData, extraData, localized, trTerm, trMetric, trReq, trTalent, trPotential, trPromotion, officialPotentials, combatTalents, shipTalents, attributeNodes, otherTalents, formatCost, gameSkills, importedBySlot, skillImage, defaultSkillRank, missing, slotLabels, slotIcons, priority, priorityOrder, priorityComparisons, weaponLabels, roleLabels, stageLabels, showcaseTypeLabels, pullLabels, weapons, demoWeapons, shownWeapons, demoBuilds, builds, featuredBuild, demoTeams, metaTeams, extraTeams, teamRoles, demoShowcases, showcases, selectedShowcaseIndex, youtubeEmbed, videoEmbed, ratingRows, ratingValues, metaAccessibility, potentialByLevel, getOperatorImageUrl
   };
 }
 
