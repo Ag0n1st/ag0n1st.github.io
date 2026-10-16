@@ -43,6 +43,34 @@ const weaponRecommendation = z.object({
   }
 });
 
+// Datafield character-profile calculations can have multiple independent
+// team tabs and distinct weapon ranks. Never collapse them into a single
+// recommendation or silently substitute values from Datafield Team Hub.
+const weaponComparisonScenario = z.object({
+  id: identifier,
+  title: z.string().trim().min(1),
+  sourcePageType: z.literal("character-profile"),
+  sourceNote: z.string().trim().min(1), // displayed as text, never a link
+  snapshotDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+  referenceWeaponId: identifier,
+  referenceRank: z.number().int().min(1).max(9),
+  comparisonConditions: z.string().trim().min(1),
+  entries: z.array(z.object({
+    weaponId: identifier,
+    rank: z.number().int().min(1).max(9),
+    performancePercent: z.number().finite().nonnegative(),
+  })).min(1),
+}).superRefine((scenario,ctx) => {
+  const keys = scenario.entries.map(item => item.weaponId + "::" + item.rank);
+  if (new Set(keys).size !== keys.length)
+    ctx.addIssue({code:z.ZodIssueCode.custom,path:["entries"],message:"Waffen und Ränge dürfen innerhalb eines Szenarios nicht doppelt vorkommen."});
+  if (!scenario.entries.some(item=>item.weaponId===scenario.referenceWeaponId
+       && item.rank===scenario.referenceRank && item.performancePercent===100))
+    ctx.addIssue({code:z.ZodIssueCode.custom,path:["entries"],message:"Jedes Szenario muss die angegebene Referenzwaffe mit 100 % enthalten."});
+  if (/https?:\/\/|www\./i.test(scenario.sourceNote))
+    ctx.addIssue({code:z.ZodIssueCode.custom,path:["sourceNote"],message:"Quellenangaben bitte als Klartext ohne URL hinterlegen."});
+});
+
 const equipmentBuild = z.object({
   id: identifier,
   title: z.string().trim().min(1),
@@ -164,6 +192,11 @@ export const operatorGuideSchema = z.object({
 
   weapons: z.object({
     recommendations: z.array(weaponRecommendation).default([]),
+    // Standalone, independent Datafield-character-profile team scenarios.
+    comparisons: z.array(weaponComparisonScenario)
+      .refine(noDuplicateIds, "Szenario-IDs müssen eindeutig sein.")
+      .default([]),
+    disclaimer: text.default(""),
     generalNotes: text.default(""),
   }).default({}),
 
@@ -182,6 +215,7 @@ export const operatorGuideSchema = z.object({
     entries: z.array(potential)
       .refine(entries => new Set(entries.map(p => p.level)).size === entries.length, "Jedes Potenzial P1 bis P5 darf nur einmal vorkommen.")
       .default([]),
+    disclaimer: text.default(""),
     pullAdvice: text.default(""),
   }).default({}),
 
