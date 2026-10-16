@@ -94,12 +94,10 @@ operatorKit:
 skills:
   priority:
     order: [battle, combo, ultimate, basic]
-    comparisons: [">", ">", ">"]
+    comparisons: [">", ">", "="]
     targetLevels:
       battle: "M3"
       combo: "M3"
-      ultimate: "9"
-      basic: "1"
   active:
     basic: >-
       Der normale Basisangriff umfasst fünf Natur-Treffer.
@@ -343,32 +341,39 @@ equipment:
         Blaupause; der Finder zählt Besitz
         und Herstellung entsprechend.
     - id: deep-rampart-ultimate
-      title: "Build C – Optionaler Ultimate-Energiegewinn"
+      title: "Build C – Mehr Ultimate-Energie mit LYNX Cuirass"
       role: main-dps
       meta: false
-      items: ["1239", "1238", "1240", "1236"]
+      items: ["1132", "1238", "1240", "1240"]
       availableFromLevel: 70
       teamContext: >-
-        Nur wenn die spezielle Rotation
-        tatsächlich zusätzlichen Ultimate-
-        Energiegewinn verlangt.
+        Spezielle Rotation mit erhöhtem Bedarf
+        an Ultimate-Energie. Nur einsetzen,
+        wenn sie ein wichtiges Ultimate-Fenster
+        tatsächlich früher ermöglicht.
       evaluation: >-
-        Mit Eternal Xiranite Bracing Slab T1
-        als Off-Piece kann auf Ultimate-
-        Energiegewinn gesetzt werden.
-        Die Kosten sind der Verzicht auf
-        einen Teil des direkten allgemeinen
-        Schadenspotenzials der LYNX Slab.
-        Die 200 Energie der Ultimate allein
-        machen diese Variante nicht
-        automatisch zur besten Option:
-        In zahlreichen eigenen Kämpfen
-        funktioniert bereits der Standard-
-        Build ohne solche Anpassungen.
+        Die bedingte Ultimate-Energie-Variante aus
+        meinem Mobalytics-Guide setzt auf LYNX
+        Cuirass T1, Deep Rampart Gauntlets
+        und zweimal Deep Rampart Comms.
+        Sie verzichtet bewusst auf das Deep-
+        Rampart-Armor-Teil des allgemeinen
+        Standard-Builds und ist keine pauschale
+        Empfehlung für jeden Kampf.
+        Maßgeblich ist, ob die konkrete
+        Rotation zusätzliche Ultimate-Energie
+        benötigt. Die Alternative nicht
+        allein wegen der 200 Energie
+        automatisch über den Standard stellen.
       setBonusNotes: >-
-        Drei Deep-Rampart-Teile aktivieren
-        den Setbonus, ein Eternal-Xiranite-
-        Teil keinen weiteren.
+        Zwei Deep Rampart Comms und Deep Rampart
+        Gauntlets aktivieren die drei Teile des
+        Sets. LYNX Cuirass T1 ist das Off-Piece.
+      craftingNotes: >-
+        Beide Comms müssen als zwei einzelne Teile
+        gefertigt werden. Bauplanbesitz,
+        Materialien und tatsächliche
+        Story-Verfügbarkeit getrennt prüfen.
     - id: level-60
       title: "Build D – Level 60 · AIC Fieldwork Assault"
       role: main-dps
