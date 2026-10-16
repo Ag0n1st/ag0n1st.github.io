@@ -57,7 +57,7 @@ test("Community v1.6 attributes remain separate from official SKPORT detail tabl
     for(const key of ["str","agi","int","will"])assert.ok(s[key]===null||Number.isFinite(s[key]));
     assert.equal(row.communityStatStatus,"cross-referenced-external-v1.6-table-not-official");
   }
-  assert.match(official.source.snapshot,/^20\\d{2}-\\d{2}-\\d{2}$/);
+  assert.match(official.source.snapshot,/^20\d{2}-\d{2}-\d{2}$/);
   assert.ok(Array.isArray(official.items)&&official.items.length>=940);
   const known=new Set(official.items.filter(x=>x.categories.includes("Gear")).map(x=>norm(x.name)));
   // Do not freeze the old 258-item catalogue forever: future official refreshes
