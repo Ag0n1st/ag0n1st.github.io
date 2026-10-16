@@ -1,0 +1,31 @@
+name: Inspect local official weapon detail table schema
+on:
+  push:
+    branches: [fix-operator-weapons-overview-details-20261016]
+    paths: [.github/workflows/probe-weapon-tables.yml]
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Print bounded, local-only official Liino weapon table overview
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const data=JSON.parse(fs.readFileSync("src/data/endfield/catalog/equipment-details.json","utf8"));
+          for(const id of ["1046","1044","75","97"]){
+            const w=data.weapons.find(w=>w.id===id);
+            if(!w){console.log("WEAPON_MISSING "+id);continue;}
+            console.log("WEAPON "+JSON.stringify({
+              id,name:w.name,status:w.status,
+              sections:Object.fromEntries(["attributes","tuning","details","potentials"].map(key=>[
+                key,(w[key]||[]).map(tab=>({tab:tab.tab,introName:tab.introName,tableCount:tab.tables?.length,
+                  tables:tab.tables?.map(t=>({columns:t.columns,rows:t.rows.length,
+                    sampleRows:t.rows.slice(0,4).map(r=>({cells:r.cells,costs:r.costs}))
+                  })),texts:tab.texts?.slice(0,2)}))
+              ]))
+            }));
+          }
+          NODE
