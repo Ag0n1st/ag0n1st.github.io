@@ -257,7 +257,5 @@
 .op-comparison-scenario h4{margin:0 0 8px;font-size:15px;line-height:1.45}
 .op-comparison-scenario>.op-muted{margin:0 0 10px;font-size:11px}
 .op-comparison-scenario .op-table{font-size:12px}
-.op-comparison-scenario .op-details{margin-top:12px}
-.op-comparison-disclaimer{margin-top:13px;font-size:12px;line-height:1.65}
-.op-source-note{overflow-wrap:anywhere}
+.op-data-source-note{display:block;margin-top:8px;font-size:10px;line-height:1.45;font-weight:400;color:var(--muted);opacity:.83;overflow-wrap:anywhere}
 @media(max-width:1040px){.op-comparison-scenarios{grid-template-columns:1fr}}
