@@ -1,12 +1,17 @@
 ---
 import {localizedUrl,alternateLinks} from "../../lib/i18n/site.mjs";
-interface Props { path:string; description?:string; title?:string; noindex?:boolean; translated?:boolean }
-const {path,description,title,noindex=false,translated=true}=Astro.props;
+interface Props { path:string; description?:string; title?:string; image?:string; lang?:"de"|"en"; noindex?:boolean; translated?:boolean }
+const {path,description,title,image,lang="de",noindex=false,translated=true}=Astro.props;
+const shareImage=image?.startsWith("/images/")?new URL(image,"https://ag0n1st.com").href:undefined;
 ---
 <link rel="canonical" href={localizedUrl(path)} />
 {translated && alternateLinks(path).map(row=><link rel="alternate" hreflang={row.lang} href={row.href}/>)}
 {title && <meta property="og:title" content={title} />}
 {description && <><meta name="description" content={description}/><meta property="og:description" content={description}/></>}
-<meta property="og:type" content="website" />
+<meta property="og:type" content={shareImage?"article":"website"} />
+<meta property="og:locale" content={lang==="en"?"en_US":"de_DE"} />
+{shareImage && <><meta property="og:image" content={shareImage} /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:image" content={shareImage} /></>}
+{title && <meta name="twitter:title" content={title} />}
+{description && <meta name="twitter:description" content={description} />}
 <meta property="og:url" content={localizedUrl(path)} />
 {noindex && <meta name="robots" content="noindex,follow" />}
