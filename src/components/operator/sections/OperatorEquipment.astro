@@ -138,8 +138,11 @@ const metaBuilds=officialBuilds.filter(build=>build.meta===true);
               Auch noch gesperrte oder ungeprüfte Builds anzeigen
             </label>
           </div>
-          <p class="op-muted">Standardprofil: Alle hier angebotenen Gear-Blaupausen und Freischaltungen werden als verfügbar <strong>angenommen</strong>, nicht als realer Besitz bestätigt. Komponenten und Rezepte stammen aus offiziellen Spieldaten, Fundortangaben aus gekennzeichneter Recherche. Änderungen werden nur in diesem Browser gespeichert, ohne Login.</p>
-          <button class="op-progress-reset" type="button" id="op-progress-reset">Maximal-Vorauswahl wiederherstellen (Anpassungen löschen)</button>
+          <p class="op-muted">Für neue Besucher gilt weiterhin die <strong>Maximal-Vorauswahl</strong>: Alle hier angebotenen Gear-Blaupausen und Freischaltungen werden zum Vergleich als verfügbar <strong>angenommen</strong>, nicht als realer Besitz bestätigt. Mit der Minimal-Vorauswahl kannst du stattdessen bei null anfangen und nur deinen eigenen Fortschritt auswählen. Deine Einstellungen bleiben ausschließlich in diesem Browser gespeichert.</p>
+          <div class="op-progress-preset-actions" role="group" aria-label="Fortschritts-Vorauswahl">
+            <button class="op-progress-reset op-progress-preset-button" type="button" id="op-progress-reset">Maximal-Vorauswahl wiederherstellen (Anpassungen löschen)</button>
+            <button class="op-progress-preset-button op-progress-preset-min" type="button" id="op-progress-min">Minimal-Vorauswahl einstellen (für neue Spieler)</button>
+          </div>
           <div class="op-notice op-gear-disclaimer" style="margin-top:12px"><strong>Hinweis zur Ausrüstung:</strong> Achtet bei der Ausrüstung grundsätzlich darauf, Ausrüstungsteile zu nutzen, die das Haupt- und Sekundärattribut des jeweiligen Operators erhöhen. Das gilt besonders für Builds auf niedrigeren Leveln.</div>
           {guide.equipment.generalNotes && <p class="op-body-copy">{guide.equipment.generalNotes}</p>}
           </div>
@@ -163,7 +166,7 @@ const metaBuilds=officialBuilds.filter(build=>build.meta===true);
               {b.storyUnlock && <p class="op-body-copy"><strong>Redaktioneller Story-Hinweis:</strong> {b.storyUnlock}</p>}
               <p class="op-body-copy" data-build-reason aria-live="polite">Story- und Blaupausenstatus wird geprüft …</p>
               <fieldset class="op-blueprint-checklist">
-                <legend>Blaupausen-Auswahl (standardmäßig alle aktiv)</legend>
+                <legend>Blaupausen-Auswahl (bei Maximal-Vorauswahl alle aktiv)</legend>
                 {b.parts.map(part=><label class="op-blueprint-check">
                   <input type="checkbox" data-blueprint-owned={part.catalog?.id??part.reference}
                     disabled={!part.catalog} />
