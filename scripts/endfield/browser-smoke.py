@@ -516,6 +516,10 @@ def smoke_i18n(page, base_url, width):
                label+": DE and EN alternates "+route)
         check_overflow(page,label+" "+route)
     page.goto(base_url+"/en/endfield/operators/si/")
+    verify(page.locator('meta[property="og:image"]').get_attribute("content")==
+           "https://ag0n1st.com/images/endfield/operators/si/cover.webp" and
+           page.locator('meta[name="twitter:card"]').get_attribute("content")=="summary_large_image",
+           label+": Si social preview uses existing local cover with English article metadata")
     verify("Brushwork Realm" in page.locator("#skills").inner_text() and
            "Fully Envisioned" in page.locator("#skills").inner_text() and
            page.locator("#skills .en-guide-skill").count()==4,
