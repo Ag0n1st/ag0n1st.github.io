@@ -347,18 +347,13 @@ gameplay:
 conclusion:
   verdict: >-
     Liino ist eine grundsätzliche Pull-Empfehlung und ein wertvoller
-    Support für nahezu jeden Account. Ihre Ultimate verstärkt insbesondere
-    Elektro- und Natur-Schaden. Aber auch außerhalb dieser Teams ist sie
-    durch den sehr lange anhaltenden allgemeinen ANG-Bonus ihrer
-    Kampffertigkeit vielseitig einsetzbar.
+    Support für nahezu jeden Account. Ihre Ultimate verstärkt vor allem
+    Elektro- und Natur-Teams; der sehr lange anhaltende, allgemeine
+    ANG-Bonus ihrer Kampffertigkeit macht sie aber auch für viele
+    andere Teamzusammenstellungen attraktiv. Nach dem Aktivieren ihrer
+    Kampffertigkeit unterstützt sie das Team bereits weitgehend passiv,
+    ohne dass komplexe Abstimmungen weiterer Fähigkeiten nötig sind.
   recommendation: recommended
-  pullAdvice: >-
-    Liino ist ein genereller Mehrwert für Accounts aller
-    Fortschrittsstufen. Nach dem Aktivieren ihrer Kampffertigkeit
-    unterstützt sie das Team weitgehend passiv: Man muss keine komplizierten
-    Abfolgen ihrer weiteren Fertigkeiten einplanen, um bereits von der
-    langen ANG-Verstärkung zu profitieren. Ihre Ultimate bietet
-    Elektro- und Natur-Teams zusätzlich besonders starke Effekte.
   recommendedFor:
     - "Grundsätzlich für jeden Spieler."
     - "Besonders für Spieler, die ihren Fokus auf Elektro- oder Natur-Teams setzen."
