@@ -1,0 +1,28 @@
+name: One-time Si 1.6 wiki gear images
+on:
+  push:
+    branches: [feature-si-complete-guide-20261016]
+    paths: [.github/workflows/import-si-wiki-gear-once.yml]
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save --package-lock=false sharp
+      - run: node scripts/endfield/import-si-wiki-gear.mjs
+      - run: node scripts/endfield/check-budget.mjs
+      - name: Commit verified community wiki static files
+        run: |
+          git add src/data/endfield/catalog/si-release-gear.json public/images/endfield/gear/releases/si
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Cache public Si release-era gear icons with source-tagged provisional IDs"
+          git fetch origin feature-si-complete-guide-20261016
+          git rebase origin/feature-si-complete-guide-20261016
+          git push origin HEAD:feature-si-complete-guide-20261016
