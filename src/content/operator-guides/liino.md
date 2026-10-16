@@ -59,7 +59,93 @@ skills:
   shipTalents: []
 
 weapons:
-  recommendations: []
+  recommendations:
+    - weaponId: "1046"
+      category: bis
+      evaluation: >-
+        Liinos Best-in-Slot-Stangenwaffe. Bedazzling Night Debut kombiniert
+        Willenskraft für ihren Ultimate-Amp mit einer zusätzlichen
+        ANG-Verstärkung für von Liino behandelte Teammitglieder.
+      sourceNote: "Datafield"
+    - weaponId: "1044"
+      category: bp
+      evaluation: >-
+        Golden Age ist die Battle-Pass-Option. Sie liefert Willenskraft
+        sowie eine Arts-Schadensverstärkung durch Liinos heilende
+        Kombofertigkeit. Ihre modellierte Leistung hängt vom Team ab.
+      sourceNote: "Datafield"
+    - weaponId: "75"
+      category: alternative
+      evaluation: >-
+        JET ist die alternative Stangenwaffe für Liino. Sie liefert
+        eigene Schadens- und Attributseffekte, statt den spezifischen
+        Team-ANG-Effekt ihrer BiS-Waffe zu ersetzen.
+      sourceNote: "Datafield"
+    - weaponId: "97"
+      category: f2p
+      evaluation: >-
+        Cohesive Traction ist die vom Creator eingeordnete F2P-Option.
+        Sie besitzt passende Willenskraftwerte, ihr Waffeneffekt ist
+        jedoch eher auf eigene Elektro-/Kombofertigkeitsschäden
+        als auf zusätzliche direkte Teamverstärkung ausgerichtet.
+      sourceNote: "Datafield"
+  comparisons:
+    - id: zhuang-perlica-arclight
+      title: "Zhuang Perlica Arclight Team"
+      sourcePageType: character-profile
+      sourceNote: "Datafield"
+      snapshotDate: 2026-10-16
+      referenceWeaponId: "1046"
+      referenceRank: 4
+      comparisonConditions: >-
+        Datafield-Charakterprofil Liino, Team-Szenario
+        Zhuang Perlica Arclight Team, erfasst am 16.10.2026.
+        100 % entsprechen Bedazzling Night Debut R4 im selben Szenario.
+        Teamrotation, Ausrüstung, Potenziale und weitere Modellparameter
+        wurden nicht unabhängig mit dem Berechnungssheet abgeglichen.
+      entries:
+        - { weaponId: "1046", rank: 9, performancePercent: 112.1 }
+        - { weaponId: "1046", rank: 4, performancePercent: 100.0 }
+        - { weaponId: "1044", rank: 9, performancePercent: 85.0 }
+        - { weaponId: "75", rank: 9, performancePercent: 84.7 }
+        - { weaponId: "75", rank: 4, performancePercent: 83.5 }
+        - { weaponId: "1044", rank: 4, performancePercent: 83.4 }
+        - { weaponId: "97", rank: 9, performancePercent: 81.3 }
+    - id: arcane-tt-xaihi
+      title: "Arcane TT Xaihi Team"
+      sourcePageType: character-profile
+      sourceNote: "Datafield"
+      snapshotDate: 2026-10-16
+      referenceWeaponId: "1046"
+      referenceRank: 4
+      comparisonConditions: >-
+        Datafield-Charakterprofil Liino, Team-Szenario
+        Arcane TT Xaihi Team, erfasst am 16.10.2026.
+        100 % entsprechen Bedazzling Night Debut R4 im selben Szenario.
+        Teamrotation, Ausrüstung, Potenziale und weitere Modellparameter
+        wurden nicht unabhängig mit dem Berechnungssheet abgeglichen.
+      entries:
+        - { weaponId: "1046", rank: 9, performancePercent: 110.3 }
+        - { weaponId: "1046", rank: 4, performancePercent: 100.0 }
+        - { weaponId: "1044", rank: 9, performancePercent: 91.6 }
+        - { weaponId: "1044", rank: 4, performancePercent: 89.5 }
+        - { weaponId: "75", rank: 9, performancePercent: 89.0 }
+        - { weaponId: "97", rank: 9, performancePercent: 81.3 }
+  disclaimer: >-
+    Die modellierten Waffen-Prozentwerte stammen ausschließlich aus dem
+    Datafield-Charakterprofil von Liino, nicht aus dem Team-Hub.
+    Jedes dort angebotene Team-Szenario hat seinen eigenen Vergleich;
+    die Werte sind nicht untereinander austauschbar. Die 100-%-Referenz
+    ist jeweils Bedazzling Night Debut R4. Waffenränge stehen nur in den
+    Vergleichen, nicht in den allgemeinen Empfehlungen. Die zugrunde
+    liegenden Teamrotationen, Ausrüstung und Potenzialannahmen wurden
+    nicht unabhängig mit dem Original-Spreadsheets abgeglichen.
+    Die Werte sind eine Orientierung für die angegebenen Modelle,
+    keine allgemeingültige Garantie für jeden Spielstand.
+  generalNotes: >-
+    Die Einordnung der vier empfohlenen Waffen stammt vom Creator.
+    Ihre Kategorien bleiben unabhängig davon, welcher Waffenrang in
+    den Datafield-Berechnungen als Vergleich verwendet wurde.
 
 equipment:
   builds:
@@ -185,7 +271,69 @@ equipment:
     Build-Finder unabhängig voneinander geprüft.
 
 potentials:
-  entries: []
+  entries:
+    - level: 1
+      evaluation: >-
+        Datafield meldet für P1 einen modellierten Mehrwert von 3,2 %
+        gegenüber P0. Eine persönliche Pull-Empfehlung folgt separat.
+      increaseOverPreviousPercent: 3.2
+      comparisonConditions: >-
+        Datafield-Charakterprofil Liino, Potentials (DPS Increase),
+        zusätzlicher berechneter Gewinn gegenüber P0 (vorherige Stufe
+        für P1). Detaillierte Team- und Rotationsannahmen nicht
+        unabhängig mit dem Original-Spreadsheet abgeglichen.
+      sourceNote: "Datafield"
+    - level: 2
+      evaluation: >-
+        Datafield meldet für P2 einen zusätzlichen modellierten Mehrwert
+        von 0,7 % gegenüber P1; nicht als Gesamtgewinn gegenüber P0 lesen.
+      increaseOverPreviousPercent: 0.7
+      comparisonConditions: >-
+        Datafield-Charakterprofil Liino, Potentials (DPS Increase);
+        zusätzlicher berechneter Gewinn gegenüber P1, nicht kumulativ
+        gegenüber P0. Modellparameter nicht unabhängig abgeglichen.
+      sourceNote: "Datafield"
+    - level: 3
+      evaluation: >-
+        Datafield meldet für P3 einen zusätzlichen modellierten Mehrwert
+        von 0,8 % gegenüber P2; keine eigenständige Pull-Empfehlung.
+      increaseOverPreviousPercent: 0.8
+      comparisonConditions: >-
+        Datafield-Charakterprofil Liino, Potentials (DPS Increase);
+        zusätzlicher berechneter Gewinn gegenüber P2, nicht kumulativ
+        gegenüber P0. Modellparameter nicht unabhängig abgeglichen.
+      sourceNote: "Datafield"
+    - level: 4
+      evaluation: >-
+        Datafield beziffert den zusätzlichen modellierten DPS-Gewinn für
+        P4 gegenüber P3 in diesem Berechnungsmodell mit 0,0 %.
+        Das ist keine universelle Aussage über sonstigen Nutzen.
+      increaseOverPreviousPercent: 0.0
+      comparisonConditions: >-
+        Datafield-Charakterprofil Liino, Potentials (DPS Increase);
+        zusätzlicher berechneter Gewinn gegenüber P3, nicht kumulativ
+        gegenüber P0. Modellparameter nicht unabhängig abgeglichen.
+      sourceNote: "Datafield"
+    - level: 5
+      evaluation: >-
+        Datafield meldet für P5 einen zusätzlichen modellierten Mehrwert
+        von 4,7 % gegenüber P4, nicht gegenüber P0.
+      increaseOverPreviousPercent: 4.7
+      comparisonConditions: >-
+        Datafield-Charakterprofil Liino, Potentials (DPS Increase);
+        zusätzlicher berechneter Gewinn gegenüber P4, nicht kumulativ
+        gegenüber P0. Modellparameter nicht unabhängig abgeglichen.
+      sourceNote: "Datafield"
+  disclaimer: >-
+    Alle hier angegebenen Potenzial-Prozentwerte stammen aus dem
+    Datafield-Charakterprofil von Liino (Stand 16.10.2026), nicht aus
+    dem Team-Hub. Jeder Prozentwert beschreibt laut Datafield den
+    zusätzlichen modellierten DPS-Gewinn gegenüber dem jeweils
+    vorherigen Potenzial (P1 gegenüber P0 bis P5 gegenüber P4).
+    Es handelt sich ausdrücklich NICHT um kumulative Werte gegenüber
+    P0. Die zugrunde liegenden Rotation-, Team- und
+    Ausrüstungsannahmen wurden nicht unabhängig überprüft; diese
+    Zahlen sind keine Pull-Empfehlung oder Garantie im eigenen Spiel.
 
 teams:
   meta: []
