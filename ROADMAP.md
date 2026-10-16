@@ -758,7 +758,7 @@ Dies ist eine **priorisierte Roadmap**, kein bereits bezahlter Projektvertrag un
 
 ### Phase P1 – Erste **echte** Operator-Ausrüstungsbuilds und End-to-End-Kontrolle
 
-**Status:** [GEPLANT]; **empfohlener nächster Entwicklungsschritt**.
+**Status:** [RECHERCHE / WARTET AUF FREIGABE, 16.10.2026]; sechs konkret geprüfte Vier-Teile-Kandidaten in [`docs/liino-build-proposals-20261016.md`](docs/liino-build-proposals-20261016.md), **nicht** in `liino.md` veröffentlicht. Technische Integrationsblocker B1–B3 vor P1-Abnahme lösen.
 
 **Vorbedingung:** Der Creator liefert/prüft die tatsächlichen vierteiligen Gear-Empfehlungen für einen Operator (zuerst **Liino**), Rollen, Levelvarianten, Zweck der Sets und ggf. Hinweise zu seltenen Materialien.
 
@@ -1137,10 +1137,11 @@ Warum dieser Schritt zuerst: Die technische Engine ist vorhanden, aber `liino.md
 4. **`docs/operator-guide-workflow.md`** – Guide-Template und redaktioneller Workflow.
 5. **`src/content/operator-guides/_template.md`** – tatsächliche YAML-Felder, nicht aus Erinnerung ableiten.
 6. **`src/content/operator-guides/liino.md`** – nächste redaktionelle Datei.
-7. **`docs/website-conversation-audit.md`** – vollständige, nach letzten Beschlüssen gewichtete Auswertung der 75-seitigen PDF-Vorgeschichte, inklusive verworfener Zwischenkonzepte, Designfeinheiten und konkreter Code-Abgleichpunkte.
-8. **`src/lib/endfield/buildFinder.mjs`**, **`buildStoryProgress.mjs`**, **`gearBlueprintResearch.ts`** – Build-/Progressionsregeln.
-9. **`docs/endfield-blueprint-piece-audit.md`** und **`docs/endfield-story-progression.md`** – Fundort-/Story-Fachbelege und offene Konflikte.
-10. **GitHub Pull Requests/Actions auf `main`** – letzter tatsächlicher Code-/Deploy-Stand.
+7. **`docs/liino-build-proposals-20261016.md`** – sechs quellenbasierte, **noch nicht genehmigte** Buildkandidaten und technische Integrationsblocker B1–B3.
+8. **`docs/website-conversation-audit.md`** – vollständige, nach letzten Beschlüssen gewichtete Auswertung der 75-seitigen PDF-Vorgeschichte, inklusive verworfener Zwischenkonzepte, Designfeinheiten und konkreter Code-Abgleichpunkte.
+9. **`src/lib/endfield/buildFinder.mjs`**, **`buildStoryProgress.mjs`**, **`gearBlueprintResearch.ts`** – Build-/Progressionsregeln.
+10. **`docs/endfield-blueprint-piece-audit.md`** und **`docs/endfield-story-progression.md`** – Fundort-/Story-Fachbelege und offene Konflikte.
+11. **GitHub Pull Requests/Actions auf `main`** – letzter tatsächlicher Code-/Deploy-Stand.
 
 ### 14.3a Vollständige historische Chat-Auswertung (16.10.2026)
 
@@ -1153,6 +1154,17 @@ Warum dieser Schritt zuerst: Die technische Engine ist vorhanden, aber `liino.md
 - **Bereits im Code geprüft:** `OperatorTeams.astro` hat Meta-/weitere Teams und scrollbare Liste; `operatorGuideSchema.ts` hat vier Skills, vier Gear-IDs, `buildId`; `liino.md` ist weiterhin `preview` mit `equipment.builds: []`. **Keine redaktionellen Builds, Daten oder produktiven UI-Funktionen durch diesen Audit geändert.**
 - **Prüf-/Integrationsstand (16.10.2026):** PDF-Audit und Guide-Handoff wurden über [PR #14](https://github.com/Ag0n1st/ag0n1st.github.io/pull/14) auf `main` übernommen; Merge-Commit **`9901a9b5b876056d874ac22477e7aa5e17e5bf7f`**. Der zugehörige PR-Workflow **„Validate Astro and operator guides“ #73** wurde mit **`success`** bestätigt. **GitHub-Pages-Deploy nach diesem Merge: nicht abschließend verifiziert** (nicht fälschlich als erfolgreich eintragen). **PR #3** war weiterhin der offene historische Recherche-PR. Der frühere `main`-Basis-Snapshot war `3f0e712`.
 - **Akzeptanz:** Die nächste KI kann anhand Roadmap + Audit ohne frühere Chatinhalte die endgültigen Nutzerentscheidungen von historischen Ideen unterscheiden. Fachlicher Folgepunkt bleibt Phase P1, **Liinos echte Builds erst nach Creator-Freigabe oder ausdrücklich beauftragter, belegbarer Recherche**.
+
+### 14.3b Liino-Build-Recherche zur Creator-Freigabe (16.10.2026)
+
+- **Der Nutzer hat die eigene, quellenbasierte Analyse von Liinos Builds ausdrücklich beauftragt, aber noch keine Veröffentlichung genehmigt.** Die ausführliche Recherche mit offiziellen IDs, Slots, Rezepten, Community-Fundortnachweisen, Teamkontext, Energieannahmen und Freigabefragen liegt in [`docs/liino-build-proposals-20261016.md`](docs/liino-build-proposals-20261016.md).
+- **6 konkrete Kandidaten** (je 1 Armor / 1 Gloves / 2 Kits beabsichtigt): L70-A Standard Eternal Xiranite (IDs **1134/1138/1236/365**); L70-B UGE-Alternative (**1134/1138/1236/1236**); L70-C LYNX-Sustain (**1134/1133/365/365**); L60-A AIC Fieldwork (**1117/1123/1120/1241**); L50-A Mordvolt + Aburrey (**279/331/335/335**); L36-A Mordvolt (**274/278/284/284**). Doppelte Kit-IDs bedeuten zwei gefertigte Exemplare, nicht zwei unterschiedliche Vorlagen.
+- **Belegabgrenzung:** Offizielle SKPORT-JSONs vom **15.10.2026** liefern objektive Werte und Rezepte; externe Build-Reviews (v. a. Prydwen und Mobalytics) liefern **Community-Empfehlungen**, nicht Creator-Freigaben. Die nichtoffiziellen Kistenzuordnungen bleiben explizit unsicher. Die Energieverfügbarkeit hängt von tatsächlicher Teamrotation/Combos ab.
+- **Befund B1 [OFFEN]:** Ausrüstung **ID 1138 (Eternal Xiranite Hands)** steht im lokalen importierten Datensatz als `gearSlot: "Kit"`, obwohl externe Einzelteil-Listen und die übrigen Werte **Gloves** nahelegen. Vor Veröffentlichung itemgenau gegen autoritative Quelle überprüfen und Import/Tests reparieren; nicht anhand des Namens pauschal korrigieren.
+- **Befund B2 [OFFEN]:** `OperatorEquipment.astro` leitet `preview` vom **ganzen Guide** an `getBuildRequirements` weiter; `evaluateBuildAvailability` blockiert dann selbst echte bestätigte Builds als `unverified`. Nach Creator-Freigabe Demo-Vorschau von validen Real-Builds unterscheiden, `status: preview` des unfertigen Gesamtguides beibehalten; Regressionstests ergänzen.
+- **Befund B3 [OFFEN]:** Vor Integration Slots **1/1/2** gegen den offiziellen Katalog validieren, ohne legitime Wiederholung in zwei Kit-Slots zu verbieten. Basis-Schema erzwingt bislang nur vier Item-Referenzen.
+- **Aktueller Freigabestatus:** Noch **keiner** der sechs Vorschläge redaktionell bestätigt; `src/content/operator-guides/liino.md` bleibt **`equipment.builds: []`** und **`status: preview`**. Phase P1 ist noch **nicht fertig**.
+- **Nächster Auftrag:** Dem Nutzer die 6 geprüften Vorschläge mit Einsatzfall, offiziellen IDs, Voraussetzungen und Datenunsicherheit **zur Freigabe vorlegen**. Erst nach Rückmeldung B1–B3 technisch beheben und **nur die ausdrücklich freigegebenen** Builds in Liinos Markdown übernehmen. Danach volle Build-Finder-Tests, Browser und CI/Deploy; Roadmap fortschreiben.
 
 ### 14.4 Checkliste zur Aktualisierung DIESER Datei
 
@@ -1179,6 +1191,7 @@ Nach **jedem** zukünftigen Task, unabhängig davon, ob ihn dieselbe oder eine a
 - Eigene Domain: https://ag0n1st.com
 
 **Fachdokumente im Repository:**
+- [Liino-Build-Recherche (wartet auf Freigabe)](docs/liino-build-proposals-20261016.md)
 - [Vollständiger PDF-Konversationsabgleich](docs/website-conversation-audit.md)
 - [Guide-Pflege](docs/operator-guide-workflow.md)
 - [Endfield-Importer/Asset-Handbuch](scripts/endfield/README.md)
