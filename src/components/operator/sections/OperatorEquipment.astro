@@ -39,7 +39,10 @@ const metaBuilds=officialBuilds.filter(build=>build.meta===true);
             {metaBuilds.map(build=><article class="op-cardlet op-meta-build-card">
               <div class="op-subtitle">
                 <h4>{build.title}</h4>
-                {build.availableFromLevel && <span class="op-chip">Level {build.availableFromLevel}</span>}
+                <div class="op-meta-build-tags">
+                  {build.metaTag && <span class:list={{"op-chip":true,"is-pink":build.metaTag==="max-dmg","is-accent":build.metaTag==="balanced"}}>{build.metaTag==="max-dmg"?"Max. DMG":build.metaTag==="max-buffs"?"Max. Buffs":"Balanced"}</span>}
+                  {build.availableFromLevel && <span class="op-chip">Level {build.availableFromLevel}</span>}
+                </div>
               </div>
               <div class="op-meta-build-parts" aria-label={`Ausrüstung: ${build.title}`}>
                 {build.parts.map(part=><div class="op-meta-build-part">
