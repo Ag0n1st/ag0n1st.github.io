@@ -135,7 +135,7 @@ equipment:
       items: ["type-50-yinglung-soft-armor", "eternal-xiranite-channeling-gloves", "type-50-yinglung-beacon", "type-50-yinglung-beacon"]
       availableFromLevel: 70
       teamContext: "Experimentelle Maximierung des eigenen Tinten-Lung-Schadens nach bekannten Release-Werten; nicht das voreingestellte eigene Meta-Setup."
-      evaluation: "Unabhängige frühe Berechnungen vergleichen den Combo-Bonus von zwei Type-50-Beacons mit einem Eternal-Xiranite-Channeling-Gloves-Off-Piece. Diese alternative Kombination ist vor allem für Main-DPS-Szenarien interessant, wenn alle drei Yinglung's Edge-Stapel vor der Combo verlässlich entstehen. Sie weicht ausdrücklich von meiner voreingestellten LYNX-Variante ab und ist keine nachträgliche Umschreibung des eigenen Pre-Guides."
+      evaluation: "Unabhängige frühe Berechnungen vergleichen den Combo-Bonus von zwei Type-50-Beacons mit einem Eternal-Xiranite-Channeling-Gloves-Off-Piece. Diese Kombination ist vor allem für Main-DPS-Szenarien interessant, wenn alle drei Yinglung's-Edge-Stapel vor der Combo verlässlich entstehen. Sie bleibt eine experimentelle Alternative zu den beiden Meta-Builds."
       setBonusNotes: "Soft Armor + zwei Beacons = drei Type-50-Teile. Channeling Gloves bleiben ein einzelnes Off-Piece."
       craftingNotes: "Neue Wiki-Gegenstände ohne offiziell numerisch bestätigte SKPORT-IDs; der Finder prüft die Existenz der Blaupausen nicht automatisch."
     - id: "si-support-xiranite"
