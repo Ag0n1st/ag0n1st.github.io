@@ -100,8 +100,7 @@ test("shared guide framework renders two separate team tables with rank, baselin
  assert.match(schema,/performancePercent: z\.number\(\)\.finite\(\)\.nonnegative\(\)/);
  assert.match(schema,/referen(?:ceWeaponId|ceRank)/);
  assert.match(schema,/scenario\.referenceRank && item\.performancePercent===100/);
- assert.match(schema,/disclaimer: text\.default\(""),
-    /disclaimer);
+ assert.ok(schema.includes('disclaimer: text.default("")'));
  assert.match(weaponsUi,/guide\.weapons\.comparisons\.map\(scenario=>/);
  assert.match(weaponsUi,/scenario\.entries\.map\(entry=>/);
  assert.match(weaponsUi,/R\{entry\.rank\}/);
