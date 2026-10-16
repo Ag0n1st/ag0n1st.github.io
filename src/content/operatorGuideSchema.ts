@@ -82,7 +82,7 @@ const equipmentBuild = z.object({
   // Kurzer, eigenständiger Card-Text; die ausführliche Bewertung bleibt im Finder.
   metaSummary: z.string().trim().max(280).optional(),
   // Optional short highlighted label in Meta Cards, e.g. a build's distinct role.
-  metaTag: z.enum(["balanced", "max-dmg", "max-buffs"]).optional(),
+  metaTag: z.enum(["balanced", "max-dmg", "max-buffs", "early-access"]).optional(),
   // Die vier Ausrüstungsplätze sind verbindlich.
   items: z.tuple([identifier, identifier, identifier, identifier]),
   availableFromLevel: equipmentLevel.optional(),
