@@ -26,9 +26,9 @@ overview:
     - "Hoher Natur-Explosionsschaden durch Energieschüsse – mit zuverlässigen Natur-Stacks besonders wirkungsvoll."
     - "Bis zu zwei Ziele gleichzeitig im Schwebeflug; stark in Kämpfen gegen mehrere Gegner."
     - "Kombofertigkeit und Ultimate können die fünf Luftangriffe zurücksetzen und den Schwebeflug verlängern."
-    - "Flexibles Teamgerüst mit Arcane oder Fluorite als Natur-Stack-Quelle und variablen Support-Slots."
+    - "Starke, gezielte Synergie mit Arcane oder Fluorite als zuverlässiger Natur-Stack-Quelle und wenigen passenden Support-Kombinationen."
   weaknesses:
-    - "Benötigt verlässliche Natur-Stacks aus dem Team, um Zeichen und ihre stärksten Power Shots optimal auszunutzen."
+    - "Sehr eingeschränkte Teamflexibilität: Verlässliche Natur-Stacks erfordern nach meiner Einordnung zwingend Arcane oder Fluorite; viele andere Team-Slots fallen dadurch weg."
     - "100 FP pro Battle Skill und bis zu 200 Ultimate-Energie; FP-Management und Final Strikes sind entscheidend."
     - "Unterbrechungen im Schwebeflug kosten wichtige Energieschüsse; die Schutzbarriere kann brechen und hat eine lange Reaktivierungszeit."
     - "Die Signature-Waffe liegt deutlich vor den Alternativen; für andere Waffen und unvollständige Teams sinkt ihr Potenzial."
