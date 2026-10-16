@@ -314,14 +314,15 @@
 .op-profile-grid{align-items:start}
 .op-video-card{align-self:start}
 
-/* Quick build: each weapon is an independent card; no tall empty siblings. */
+/* One shared weapon card, like Partners. Individual weapons are grid items,
+   not separately bordered cards. Compact on phones, wide on desktop. */
 .op-quick-overview{display:flex;flex-direction:column;gap:16px}
-.op-quick-weapons h3{margin:0 0 12px}
-.op-quick-weapon-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;align-items:start}
-.op-quick-weapon-card{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:12px;min-width:0}
-.op-quick-weapon-card .op-mini-art{width:58px;height:58px;flex:0 0 58px}
-.op-quick-weapon-card .op-chip{max-width:100%;justify-content:center}
-.op-quick-weapon-card strong{font-size:11px;line-height:1.5;overflow-wrap:anywhere}
+.op-quick-weapons-card h3{margin:0 0 12px}
+.op-quick-weapon-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:start}
+.op-quick-weapon-item{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;min-width:0;padding:3px 2px}
+.op-quick-weapon-item .op-mini-art{width:58px;height:58px;flex:0 0 58px}
+.op-quick-weapon-item .op-chip{max-width:100%;justify-content:center}
+.op-quick-weapon-item strong{font-size:11px;line-height:1.5;overflow-wrap:anywhere}
 .op-quick-stats{align-items:start}
 .op-quick-partners-card .op-partners-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
 @media(max-width:850px){
@@ -329,8 +330,7 @@
   .op-quick-partners-card .op-partners-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 @media(max-width:420px){
-  .op-quick-weapon-card{padding:10px}
-  .op-quick-weapon-card .op-mini-art{width:48px;height:48px;flex-basis:48px}
+  .op-quick-weapon-item .op-mini-art{width:48px;height:48px;flex-basis:48px}
 }
 
 /* Optimized 16:9 local WebP Operator Snapshots (P1/P3/P5), optional by asset. */
@@ -338,3 +338,50 @@
 .op-potential-snapshot img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;border-radius:10px;background:#15141b;border:1px solid #39313f}
 .op-potential-snapshot figcaption{margin-top:6px;color:var(--muted);font-size:10px;line-height:1.5}
 .op-potential-snapshot a{color:var(--cyan)}
+
+/* Weapon details: turn SKPORT's fragmented/empty columns and [item:ID]
+   source tokens into aligned readable values and shared material icon chips.
+   The wide rank matrices scroll INSIDE their container on narrow screens. */
+.op-weapon-panel{min-width:0}
+.op-weapon-panel-heading{margin-bottom:16px}
+.op-weapon-subtitle,.op-weapon-effect-summary h4,.op-weapon-data-group h4{
+  margin:17px 0 10px;font-size:13px;line-height:1.5;color:#f1eaf4
+}
+.op-weapon-attributes-table{table-layout:fixed;min-width:420px}
+.op-weapon-attributes-table th:first-child{width:33%}
+.op-weapon-attributes-table tbody th,.op-weapon-tuning-table tbody th,.op-weapon-matrix-table tbody th{
+  font-weight:650;font-size:11px;padding:11px;text-align:left;color:#eae3ef;
+  background:#211d28;border-bottom:1px solid #332f3a;overflow-wrap:anywhere
+}
+.op-weapon-attributes-table td{vertical-align:top;white-space:pre-line;overflow-wrap:anywhere}
+.op-weapon-rank{display:block;margin-top:4px;font-size:10px;color:var(--muted)}
+.op-weapon-effect-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.op-weapon-effect-copy{min-width:0;border:1px solid #3d3645;border-radius:10px;padding:12px;background:#211e28}
+.op-weapon-effect-copy>strong{font-size:11px;color:var(--cyan)}
+.op-weapon-effect-copy p{font-size:11px;line-height:1.6;margin-top:8px}
+.op-weapon-evaluation{margin-top:18px!important}
+.op-weapon-detailed-stats{margin-top:17px}
+.op-weapon-data-group+.op-weapon-data-group{border-top:1px solid #3c3441;margin-top:20px;padding-top:15px}
+.op-weapon-tuning-table{table-layout:fixed;min-width:840px}
+.op-weapon-tuning-table th:nth-child(1){width:105px}
+.op-weapon-tuning-table th:nth-child(2){width:114px}
+.op-weapon-tuning-table th:nth-child(3),.op-weapon-tuning-table th:nth-child(4){width:172px}
+.op-weapon-tuning-table th:nth-child(5){width:270px}
+.op-weapon-tuning-table td{vertical-align:middle;white-space:normal;line-height:1.6;overflow-wrap:anywhere}
+.op-weapon-material-cell .op-resource-list{min-width:0;gap:5px}
+.op-weapon-material-cell .op-resource{min-height:34px}
+.op-weapon-material-cell .op-resource img{width:29px;height:29px}
+.op-weapon-material-cell .op-resource-count{font-size:10px}
+.op-weapon-data-note{margin:9px 0 0!important;font-size:10px!important}
+.op-weapon-matrix-table{table-layout:fixed;min-width:780px}
+.op-weapon-matrix-table th:first-child{width:100px}
+.op-weapon-matrix-table th:last-child{width:53%}
+.op-weapon-matrix-table td{vertical-align:top;white-space:pre-line;overflow-wrap:anywhere;line-height:1.5}
+.op-weapon-source{font-size:10px!important;margin-top:15px!important}
+@media(max-width:680px){
+  .op-weapon-effect-grid{grid-template-columns:1fr}
+  .op-weapon-effect-copy{padding:10px}
+  .op-weapon-attributes-table{min-width:400px}
+  .op-weapon-tuning-table{min-width:760px}
+  .op-weapon-tuning-table th:nth-child(5){width:240px}
+}
