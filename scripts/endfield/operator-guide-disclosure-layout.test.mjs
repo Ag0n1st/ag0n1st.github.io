@@ -50,7 +50,7 @@ test("important at-a-glance content remains outside secondary disclosures",()=>{
 });
 
 test("meta team labels are separate pills and only Meta is accented",()=>{
-  assert.match(sections.teams,/<span class="op-chip is-accent">Meta<\/span><span class="op-chip">\{roleLabels\[team\.role\]\}<\/span>/);
+  assert.match(sections.teams,/<div class="op-meta-team-labels"><span class="op-chip is-accent">Meta<\/span><span class="op-chip">\{roleLabels\[team\.role\]\}<\/span><\/div>/);
   assert.doesNotMatch(sections.teams,/Meta · \{roleLabels/);
   assert.match(sections.teams,/data-team-role=\{team\.role\}/);
   assert.match(sections.teams,/data-team-filter="all"/);
