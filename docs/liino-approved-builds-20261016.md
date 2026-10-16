@@ -18,6 +18,12 @@
 
 **Bewusste Dopplung:** Zwei gleiche Kits bedeuten **zwei gefertigte Stücke** und **eine einzige freigeschaltete Blaupause** pro unterschiedlicher Gear-ID. Die ermittelten Fabrikstufen ergeben sich aus den **vier offiziellen Standardrezepten**. Die Besitzbestätigung in `localStorage` wird nicht durch Story-/Autoritäts- oder Gebietszugang ersetzt.
 
+## Neue Meta-Build-Darstellung (16.10.2026, PR #17)
+
+**Verbindliche zusätzliche Creator-Entscheidung:** Die drei Level-70-Builds **A Ultimate-Fokus, B Balanced und C Will-Fokus** sind `meta: true`. Jeder besitzt eine separate kompakte `metaSummary` für die neue Sektion **„Meta Builds“ oberhalb des Build-Finders**. Die Progressions-Builds **D/E/F (Level 60/50/36)** bleiben `meta: false` (impliziter Standard) und weiterhin im Finder verfügbar. Auch Meta-Builds sind unverändert über ihre IDs in `equipment.builds[]` mit den vollständigen Werten/Herstellungs- und Blaupausendetails im Finder verknüpft.
+
+**Wiederverwendbares Framework:** Alle Operator-Guides benutzen dieselbe Komponente `OperatorEquipment.astro`. Ein Operator ohne redaktionell gekennzeichnete Meta-Builds zeigt **keinen leeren Meta-Abschnitt**. Die Cards zeigen Titel, Gear-Icons und die offiziellen Namen aller vier Teile, den kurzen Einsatztext und einen Link zur entsprechenden Auswahl im Finder. Einzelheiten zum Pflegen: [Operator-Guide-Workflow](operator-guide-workflow.md#meta-builds-im-gemeinsamen-operator-guide-framework). **PR #17 nach erfolgreicher CI #77** auf `main` gemergt (Commit `028463f6cca530d888510d4fa3969e29c962b557`). Reale Pages-Auslieferung und Browser-Smoke-Test sind separat noch zu verifizieren.
+
 ## Redaktionelle Entscheidungen und Begründungen
 
 **A – Ultimate-Fokus:** Die vom Betreiber gewählte Standard-Ultimate-Variante liefert drei Eternal-Xiranite-Teile und damit einen über Liinos Ultimate aktivierbaren Schadensbonus für andere Teammitglieder. Liino benötigt genügend ULT-Aufladung für die beabsichtigten Teamrotationen; Gear-Grundwerte summieren sich auf **57,4 % Ultimate Gain Efficiency vor Veredelung/anderen Buffs**. Diese Variante wurde **bewusst Ultimate-Fokus genannt**, nicht „Standard-Support“, und die frühere, vier Eternal-Xiranite-Teile umfassende Alternative wurde **nicht** ausgewählt.
