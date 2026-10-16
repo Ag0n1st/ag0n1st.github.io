@@ -758,7 +758,7 @@ Dies ist eine **priorisierte Roadmap**, kein bereits bezahlter Projektvertrag un
 
 ### Phase P1 – Erste **echte** Operator-Ausrüstungsbuilds und End-to-End-Kontrolle
 
-**Status:** [CREATOR-BUILDS FREIGEGEBEN / IMPLEMENTIERT IM FEATURE-BRANCH, 16.10.2026 – TEST-/DEPLOY-ABNAHME OFFEN].** Exakt sechs bestätigte Liino-Builds (A: Ultimate, B: Balanced, C: Will, D: 60, E: 50, F: 36), vollständige Namens-/ID-Zuordnungen in [`docs/liino-approved-builds-20261016.md`](docs/liino-approved-builds-20261016.md). Der Guide bleibt **`preview`**, bis die restliche Redaktion P2 abschlossen ist. Die alten Vorschläge sind nur Forschungsarchiv.
+**Status:** [CREATOR-BUILDS FREIGEGEBEN / AUF `main` GEMERGT; CI/ASTRO-BUILD GRÜN; LIVE-BROWSER-TEST OFFEN, 16.10.2026].** Exakt sechs bestätigte Liino-Builds (A: Ultimate, B: Balanced, C: Will, D: 60, E: 50, F: 36), vollständige Namens-/ID-Zuordnungen in [`docs/liino-approved-builds-20261016.md`](docs/liino-approved-builds-20261016.md). Der Guide bleibt **`preview`**, bis die restliche Redaktion P2 abschlossen ist. Die alten Vorschläge sind nur Forschungsarchiv.
 
 **Vorbedingung:** Der Creator liefert/prüft die tatsächlichen vierteiligen Gear-Empfehlungen für einen Operator (zuerst **Liino**), Rollen, Levelvarianten, Zweck der Sets und ggf. Hinweise zu seltenen Materialien.
 
@@ -1174,6 +1174,10 @@ Warum dieser Schritt zuerst: Die technische Engine ist vorhanden, aber `liino.md
 
 ### 14.3c Creator-Freigabe: 6 Liino-Builds + technische Umsetzung (16.10.2026)
 
+**GitHub-Abschluss / nachträgliche Prüfung 16.10.2026:** [**PR #16**](https://github.com/Ag0n1st/ag0n1st.github.io/pull/16) wurde nach **Squash-Merge auf `main`** übernommen: Commit **`3ace991ff18781207fe8970c0fdfc62e8e52e682`**. GitHub Actions **Validate Astro and operator guides #76** war **success**; geprüft wurden `npm ci`, **Endfield-Node-Tests**, **100-MB-Endfield-Budget** und **Astro-Produktions-Build**, jeweils erfolgreich. Der vorherige Lauf #75 zeigte noch eine Legacy-Fixture mit zwei Rüstungen statt 1/1/2 (fehlgeschlagen); sie wurde auf einen echten tragbaren Vier-Teile-Build korrigiert, anschließend Lauf #76 grün. **Der separate GitHub-Pages-Deploy und ein realer Browser-/Mobil-End-to-End-Test sind weiterhin nicht verifiziert und dürfen nicht als abgeschlossen ausgegeben werden.** Die redaktionellen Liino-Builds sind technisch integriert; der komplette Liino-Guide bleibt `status: preview`.
+
+
+
 **Verbindliche aktuelle redaktionelle Entscheidung:** Der Nutzer hat die sechs Builds *explizit* neu festgelegt. Maßgebliches Dokument: [`docs/liino-approved-builds-20261016.md`](docs/liino-approved-builds-20261016.md) mit sämtlichen **offiziellen Gear-Namen und IDs**, Einsatzkontext, Kosten, Datenvertrauen und Tests. Die ursprüngliche Vorschlagsdatei ist **ARCHIV** und darf nicht mehr als Freigabe-Liste behandelt werden.
 
 | Build / neues redaktionelles Ziel | Vier offizielle Gear-IDs in Reihenfolge Rüstung / Handschuhe / Kit / Kit | Freigabestand |
@@ -1192,7 +1196,7 @@ Warum dieser Schritt zuerst: Die technische Engine ist vorhanden, aber `liino.md
 - **B3 technisch gelöst auf dem Feature-Branch:** `buildFinder.mjs` prüft nun genau **1 Armor, 1 Gloves, 2 Kits** zusätzlich zu vier vorhandenen offiziellen IDs/Rezepten. Zwei gleiche Kits sind legitim; Besitz wird nach **einmaliger Blaupausen-ID** geprüft, die Herstellung benötigt zwei Exemplare.
 - Tests: `scripts/endfield/liino-builds.test.mjs` (Creator-IDs + offizielle Katalogwerte/Komponenten/Blaupausen) und erweiterte `build-finder.test.mjs` (Slots, doppelte Kits, Demo-Preview).
 - **Wichtige Grenze:** Die Client-UI belegt sich noch mit echtem Browser-/Mobile-Check. **Bis erfolgreicher CI/Merge/Pages-Nachprüfung nicht `P1 FERTIG` markieren.** Unveränderte Story-/Gebiets-/Besitztrennung, 60er-Autoritätslimit, `localStorage` ohne Login.
-- **Nächste Schritte:** (1) PR mit allen Änderungen erstellen, (2) PR-CI `Validate Astro and operator guides` grün verifizieren und bei Fehlern reparieren, (3) Merge nach `main` und Deploy-Status gesondert prüfen, (4) Browser-Gegenprüfung, (5) P2 Guide-Ausbau. Jede Teilprüfung in der Roadmap nachtragen.
+- **Abgeschlossen:** PR #16, CI-Run #76 (Node-Tests, Budget, Astro-Build) und Squash-Merge auf `main` (`3ace991f`). **Offen:** tatsächlichen GitHub-Pages-Deploy dieses Commits verifizieren; anschließend Browser-Gegenprüfung mit realen Liino-Builds, Mobilansicht, `localStorage`/Reset, Level-/Fabrik-/Gebiets- und Blaupausenkombinationen sowie Typhoeus-Regression. Danach P2 Guide-Ausbau.
 
 ### 14.4 Checkliste zur Aktualisierung DIESER Datei
 
@@ -1263,5 +1267,7 @@ Nach **jedem** zukünftigen Task, unabhängig davon, ob ihn dieselbe oder eine a
 | 16.10.2026 | **Liino-Builds A–F konkret vom Creator festgelegt und für die redaktionelle Ausrüstung freigegeben** | A Ultimate `1134/1138/1236/365`; B Balanced `1134/1133/365/365`; C Will `1126/1129/365/365` (volle Anfangs-ULT, keine zweite); D Lv. 60 `1117/1123/1120/1120` (doppelter Ember statt Heal); E/F unverändert. Namen/IDs und Kontexte: `docs/liino-approved-builds-20261016.md`. Weitere Guide-Abschnitte bleiben Preview. |
 | 16.10.2026 | Technische Build-Finder-Integration B1–B3 auf Feature-Branch umgesetzt, **QA/Deploy noch offen** | ID 1138 itemgenau als Gloves normalisiert; echte Builds innerhalb Preview zugelassen; 1/1/2-Slotprüfung, Unit-Tests und Blueprint-Doppelstückregeln. |
 
+| 16.10.2026 | Liino A–F über **PR #16** nach grünem CI #76 auf `main` gemergt | Commit `3ace991ff18781207fe8970c0fdfc62e8e52e682`; 66/66 Node-Tests grün nach Legacy-Fixture-Korrektur, Budget/Build erfolgreich; Pages-Deploy und Browser-Smoke-Tests getrennt offen. |
+
 **Ende der aktuellen Roadmap.**  
-**Fortsetzungspunkt:** Abschnitt 14 **und den PDF-Konversationsabgleich** lesen sowie aktuellen `main` und offene PRs prüfen. Nach jedem weiteren Task Prüfungen, Merge und verifizierten Deploy ergänzen.
+**Fortsetzungspunkt:** Abschnitt 14.3c, [`docs/liino-approved-builds-20261016.md`](docs/liino-approved-builds-20261016.md) und den PDF-Konversationsabgleich lesen; aktuellen `main`/PRs und den **Pages-Deploy von PR #16** prüfen. Danach vollständigen Liino-Build-Finder im Browser testen (inkl. Story/Fabrik/vier Blaupausen und Reset); erst dann P1 vollständig abschließen und P2 weiterführen.
