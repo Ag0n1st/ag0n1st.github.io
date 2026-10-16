@@ -161,6 +161,8 @@ export const operatorGuideSchema = z.object({
 
   overview: z.object({
     summary: text.default(""),
+    // Editorial English trait labels pending a separate terminology translation.
+    traits: z.array(z.string().trim().min(1).max(90)).default([]),
     strengths: z.array(text).default([]),
     weaknesses: z.array(text).default([]),
     ratings: z.object({
@@ -225,6 +227,9 @@ export const operatorGuideSchema = z.object({
   }).default({}),
 
   gameplay: z.object({
+    // When videos are consciously deferred, suppress all fictional preview runs
+    // and show one subtle "Folgt" status in the Gameplay section.
+    pending: z.boolean().default(false),
     showcases: z.array(showcase).default([]),
   }).default({}),
 
