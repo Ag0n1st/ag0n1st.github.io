@@ -40,7 +40,7 @@ function namedScenarioBlocks(){
 
 test("Liino has four independent, UNRANKED creator weapon recommendations in required category order",()=>{
  const recommendations=weaponsYaml.match(/  recommendations:\n([\s\S]*?)(?=^  comparisons:)/m)?.[1]??"";
- const rows=[...recommendations.matchAll(/^    - weaponId: "(\d+)"\n      category: ([a-z-]+)/gm)]
+ const rows=[...recommendations.matchAll(/^    - weaponId: "(\d+)"\n      category: ([a-z0-9-]+)/gm)]
    .map(x=>({id:x[1],category:x[2]}));
  assert.deepEqual(rows,[
   {id:"1046",category:"bis"},
