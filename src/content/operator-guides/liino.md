@@ -94,7 +94,7 @@ weapons:
       title: "Zhuang Perlica Arclight Team"
       sourcePageType: character-profile
       sourceNote: "Datafield"
-      snapshotDate: 2026-10-16
+      snapshotDate: "2026-10-16"
       referenceWeaponId: "1046"
       referenceRank: 4
       comparisonConditions: >-
@@ -115,7 +115,7 @@ weapons:
       title: "Arcane TT Xaihi Team"
       sourcePageType: character-profile
       sourceNote: "Datafield"
-      snapshotDate: 2026-10-16
+      snapshotDate: "2026-10-16"
       referenceWeaponId: "1046"
       referenceRank: 4
       comparisonConditions: >-
