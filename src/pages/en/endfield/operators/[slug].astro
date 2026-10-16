@@ -1,0 +1,160 @@
+---
+import {getCollection,type CollectionEntry} from "astro:content";
+import enGuides from "../../../../data/i18n/en-guides.json";
+import EndfieldPlaceholder from "../../../../layouts/EndfieldPlaceholder.astro";
+import ItemIcon from "../../../../components/endfield/ItemIcon.astro";
+import {getImportedOperator,getImportedOperatorExtras} from "../../../../lib/endfield/operatorData";
+import {getOperatorImageUrl} from "../../../../lib/endfield/operatorAssets";
+import {getEndfieldItem} from "../../../../lib/endfield/itemCatalog";
+import "../../../../styles/operator-guides.css";
+import "../../../../styles/i18n.css";
+
+export async function getStaticPaths(){
+ const entries=await getCollection("operator-guides",({data})=>["published","preview"].includes(data.status));
+ return entries.filter(e=>Object.hasOwn(enGuides,e.data.operator)).map(entry=>({
+  params:{slug:entry.data.operator},props:{guide:entry.data}
+ }));
+}
+interface Props { guide: CollectionEntry<"operator-guides">["data"] }
+const {guide}=Astro.props;
+const text=enGuides[guide.operator as keyof typeof enGuides];
+if(!text)throw Error("English editorial entry missing for "+guide.operator);
+const game=getImportedOperator(guide.operator);
+const extra=getImportedOperatorExtras(guide.operator);
+const name=game?.operator.name??guide.displayName??guide.operator;
+const published=guide.status==="published";
+const pairs=Object.entries(text.builds);
+const englishBuilds=pairs.map(([id,copy])=>({id,...copy,original:guide.equipment.builds.find(b=>b.id===id)}));
+if(englishBuilds.some(b=>!b.original))throw Error("English build ID has no source build for "+name);
+const featuredTeams=guide.teams.meta;
+const teamNotes:Record<string,string>=text.teamNotes;
+const metaIds=new Set(featuredTeams.map(x=>x.id));
+const extraTeamCount=guide.teams.more.length;
+const skillSlots=[["basic","Basic Attack"],["battle","Battle Skill"],["combo","Combo Skill"],["ultimate","Ultimate"]] as const;
+const skillPriority=guide.skills.priority;
+const videoUrl=guide.guideVideo.url;
+const headline=`${name} Guide | Arknights: Endfield`;
+---
+<EndfieldPlaceholder
+  title={text.seoTitle}
+  kicker="ARKNIGHTS: ENDFIELD · ENGLISH OPERATOR GUIDES"
+  active="operators"
+  lang="en"
+  noindex={!published}
+  description={text.seoDescription}
+  image={getOperatorImageUrl(guide.operator,"cover",game?.operator.coverUrl)}
+>
+  <main class="op-page section-wrap" id="top">
+    <nav class="op-breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a><span aria-hidden="true">›</span>
+      <a href="/en/endfield/">Endfield</a><span aria-hidden="true">›</span>
+      <a href="/en/endfield/operators/">Operators</a><span aria-hidden="true">›</span>
+      <span aria-current="page">{name}</span>
+    </nav>
+    <span class="op-eyebrow">ARKNIGHTS: ENDFIELD / {name.toUpperCase()} / ENGLISH</span>
+    <h1 class="op-page-heading">{name} – Build, Skills & Team Guide<span class="title-period">.</span></h1>
+    {!published && <p class="op-notice">Editorial preview: this guide is still being expanded.</p>}
+    <p class="en-guide-intro">{text.intro}</p>
+    <p class="en-guide-author-note">Guide by Ag0n1st · Official English skill names and descriptions from SKPORT · <a class="op-link" href={`/endfield/operatoren/${guide.operator}/`}>Read the detailed German guide ↗</a></p>
+    <nav class="en-guide-toc" aria-label="On this page">
+      <a href="#overview">Overview</a>
+      <a href="#kit">Mechanics</a>
+      <a href="#skills">Skills</a>
+      <a href="#builds">Builds</a>
+      <a href="#teams">Teams</a>
+      <a href="#verdict">Verdict</a>
+    </nav>
+    <section class="op-section" id="overview">
+      <h2>Operator Overview</h2>
+      <div class="op-two op-profile-grid">
+        <article class="op-cardlet">
+          {game?.operator.illustrationUrl && <img class="op-profile-art" style="width:100%;height:250px;object-fit:contain" src={getOperatorImageUrl(guide.operator,"illustration",game.operator.illustrationUrl)} alt={name+" – official Arknights: Endfield artwork"} loading="lazy" decoding="async" />}
+          <h3>{name}</h3>
+          <div class="op-chip-row">
+            <span class="op-chip is-pink">{game?.operator.rarity}★</span>
+            <span class="op-chip">{game?.operator.element}</span>
+            <span class="op-chip">{game?.operator.class}</span>
+            <span class="op-chip">{game?.operator.weaponType}</span>
+            {guide.overview.traits.map(trait=><span class="op-chip is-accent">{trait}</span>)}
+          </div>
+          {extra?.attributes && <p class="op-muted">Main attribute: {extra.attributes.mainAttribute} · Secondary: {extra.attributes.secondaryAttribute}</p>}
+        </article>
+        <article class="op-cardlet">
+          <h3>At a Glance</h3>
+          <div class="op-rating"><strong>Beginner friendliness: {guide.overview.ratings.difficulty===undefined?"—":6-guide.overview.ratings.difficulty} / 5</strong></div>
+          <div class="op-rating"><strong>Flexibility: {guide.overview.ratings.flexibility??"—"} / 5</strong></div>
+          {guide.overview.ratings.accessibility!==undefined && <div class="op-rating"><strong>Endgame build accessibility: {guide.overview.ratings.accessibility} / 5</strong></div>}
+          <p class="op-muted">Ratings reflect my own assessment. Limited gear availability is not a substitute for checking your actual story progress and blueprints.</p>
+          {videoUrl && <a class="op-link" href={videoUrl} target="_blank" rel="noopener noreferrer">Watch the original German-language video guide ↗</a>}
+          {!videoUrl && <p class="op-muted">Video guide coming later.</p>}
+        </article>
+      </div>
+      <div class="en-guide-columns" style="margin-top:14px">
+        <div class="op-cardlet op-strengths-card">
+          <h3>✓ Strengths</h3>
+          <ul class="en-guide-list">{text.strengths.map(x=><li>{x}</li>)}</ul>
+        </div>
+        <div class="op-cardlet op-weaknesses-card">
+          <h3>− Weaknesses</h3>
+          <ul class="en-guide-list">{text.weaknesses.map(x=><li>{x}</li>)}</ul>
+        </div>
+      </div>
+    </section>
+    <section class="op-section" id="kit">
+      <h2>Kit & How to Play</h2>
+      {text.mechanics.map(item=><article class="op-divided" style="margin-top:16px"><h3>{item.title}</h3><p class="op-body-copy">{item.text}</p></article>)}
+    </section>
+    <section class="op-section" id="skills">
+      <h2>Skill Priority & Official Skills</h2>
+      <div class="en-guide-callout"><strong>Main damage / primary role:</strong> {text.priority.dps}</div>
+      {"support" in text.priority && <div class="en-guide-callout"><strong>Support priority:</strong> {text.priority.support}</div>}
+      <p class="op-muted">Skill names and descriptions below use the original English SKPORT data. My investment priorities are editorial recommendations; exact in-game values depend on rank.</p>
+      {skillSlots.map(([key,label])=>{
+        const original=game?.skills.find(s=>s.slot===key);
+        return <article class="en-guide-skill"><h3>{label}: {original?.name??"Official name pending"}</h3>
+          <p>{original?.description??"Official description not yet imported."}</p></article>;
+      })}
+    </section>
+    <section class="op-section" id="builds">
+      <h2>Recommended Gear Builds</h2>
+      <p class="op-muted">Gear slot selection and build labels follow the original guide. These cards are recommendations, not proof that a blueprint is unlocked on your account.</p>
+      <div class="en-guide-build-grid">
+        {englishBuilds.map((build,i)=><article class="op-cardlet en-guide-build" id={`build-${build.id}`}>
+          <div class="op-subtitle"><h3>{build.title}</h3><span class:list={["op-chip",{"is-accent":i===0}]}>Level {build.original?.availableFromLevel??"—"}</span></div>
+          <div class="en-guide-gear">
+            {build.original?.items.map(id=>{
+              const item=getEndfieldItem(id);
+              return <div><div class="op-mini-art"><ItemIcon id={id}/></div><small>{item?.name??id}</small></div>;
+            })}
+          </div>
+          <p>{build.text}</p>
+        </article>)}
+      </div>
+      <p class="en-guide-callout">{text.gearNote}</p>
+      <p class="op-muted">For detailed progression builds, materials, item availability and the interactive Build-Finder, see the <a class="op-link" href={`/endfield/operatoren/${guide.operator}/#ausruestung`}>German equipment section ↗</a>.</p>
+    </section>
+    <section class="op-section" id="teams">
+      <h2>Featured Teams</h2>
+      <p class="op-body-copy">{text.teamsIntro}</p>
+      <div class="en-guide-team-grid">
+        {featuredTeams.map(team=><article class="op-cardlet">
+          <div class="op-subtitle"><h3>{team.title}</h3><span class="op-chip is-accent">Meta</span></div>
+          <div class="en-guide-team-members">{team.members.map(member=><span>{getImportedOperator(member)?.operator.name??member.split("-").map(w=>w[0].toUpperCase()+w.slice(1)).join(" ")}</span>)}</div>
+          {"teamNotes" in text && teamNotes[team.id] && <p>{text.teamNotes[team.id]}</p>}
+          {team.buildId && <a class="op-link" href={`#build-${team.buildId}`}>View associated build ↗</a>}
+        </article>)}
+      </div>
+      {extraTeamCount>0 && <p class="op-muted">{extraTeamCount} further team combinations are listed in the <a class="op-link" href={`/endfield/operatoren/${guide.operator}/#teams`}>original German guide ↗</a>.</p>}
+    </section>
+    <section class="op-section" id="verdict">
+      <h2>Verdict & Pull Recommendation</h2>
+      <p class="op-conclusion-lead">{text.conclusion}</p>
+      <div class="en-guide-columns">
+        <article class="op-cardlet op-strengths-card"><h3>✓ Recommended for</h3><ul class="en-guide-list">{text.recommendedFor.map(item=><li>{item}</li>)}</ul></article>
+        <article class="op-cardlet op-weaknesses-card"><h3>− Consider skipping if</h3><ul class="en-guide-list">{text.skipIf.map(item=><li>{item}</li>)}</ul></article>
+      </div>
+      <div class="op-divided en-guide-faq"><h3>Frequently Asked Questions</h3>{text.faq.map(row=><details><summary>{row.q}</summary><p>{row.a}</p></details>)}</div>
+      <p class="op-muted">Want to discuss teams, mechanics or the recommendations? You can find me on <a class="op-link" href="https://twitch.tv/Ag0n1st">Twitch</a>. You can also link directly to any section of this English guide.</p>
+    </section>
+  </main>
+</EndfieldPlaceholder>

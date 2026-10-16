@@ -1,41 +1,50 @@
 ---
 import "../styles/global.css";
 import EndfieldNav from "../components/EndfieldNav.astro";
+import SeoHead from "../components/i18n/SeoHead.astro";
+import LanguageSwitch from "../components/i18n/LanguageSwitch.astro";
+import "../styles/i18n.css";
 
 interface Props {
   title: string;
   kicker: string;
   description: string;
   active: string;
+  lang?: "de"|"en";
+  noindex?: boolean;
+  image?: string;
 }
-const { title, kicker, description, active } = Astro.props;
+const { title, kicker, description, active, lang="de", noindex=false, image } = Astro.props;
+const isEn=lang==="en";
+const base=isEn?"/en":"";
 ---
 <!doctype html>
-<html lang="de">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#09090d" />
     <link rel="icon" type="image/svg+xml" href="/images/ag0n1st-logo.svg" />
-    <meta name="description" content={`${title} — Arknights: Endfield bei Ag0n1st. Guides, Builds und Informationen.`} />
-    <title>{title} — Arknights: Endfield | Ag0n1st</title>
+    <SeoHead path={Astro.url.pathname} title={title} description={description} noindex={noindex} image={image} lang={lang} translated={!noindex} />
+    <title>{title.includes(" | ")||title.includes("– Ag0n1st")?title:title+" — Arknights: Endfield | Ag0n1st"}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;700&display=swap" rel="stylesheet" />
   </head>
   <body>
     <header class="site-header">
-      <a class="wordmark" href="/" aria-label="Ag0n1st – Startseite">
+      <a class="wordmark" href={base+"/"} aria-label={isEn?"Ag0n1st – Homepage":"Ag0n1st – Startseite"}>
         <img class="wordmark-logo" src="/images/ag0n1st-logo.svg" alt="" aria-hidden="true" />
         <span>Ag0n1st</span>
       </a>
 
-      <button class="menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-navigation"><span></span><span></span><span></span></button>
+      <button class="menu-toggle" type="button" aria-label={isEn?"Open menu":"Menü öffnen"} aria-expanded="false" aria-controls="main-navigation"><span></span><span></span><span></span></button>
 
-      <nav class="main-nav" id="main-navigation" aria-label="Hauptnavigation">
-        <a href="/endfield/" aria-current="page">Arknights: Endfield</a>
-        <a href="/nte/">Neverness to Everness</a>
-        <a href="/about/">About Me</a>
+      <nav class="main-nav" id="main-navigation" aria-label={isEn?"Main navigation":"Hauptnavigation"}>
+        <a href={base+"/endfield/"} aria-current={active!=="none"?"page":undefined}>Arknights: Endfield</a>
+        <a href={base+"/nte/"}>Neverness to Everness</a>
+        <a href={base+"/about/"}>About Me</a>
+        <LanguageSwitch path={Astro.url.pathname} lang={lang} />
       </nav>
 
       <a class="header-cta" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">
@@ -43,14 +52,14 @@ const { title, kicker, description, active } = Astro.props;
       </a>
     </header>
 
-    <EndfieldNav active={active} />
+    {active!=="none" && <EndfieldNav active={active} lang={lang} />}
 
     {Astro.slots.has("default") ? <slot /> : <main class="placeholder-page endfield-placeholder-page">
       <section class="placeholder-card">
         <span class="section-kicker">{kicker}</span>
-        <h1>Diese Seite entsteht gerade<span class="title-period">.</span></h1>
+        <h1>{isEn?"Coming soon":"Diese Seite entsteht gerade"}<span class="title-period">.</span></h1>
         <p>{description}</p>
-        <a class="back-home" href="/endfield/">← Zurück zur Endfield-Übersicht</a>
+        <a class="back-home" href={base+"/endfield/"}>{isEn?"← Back to the Endfield overview":"← Zurück zur Endfield-Übersicht"}</a>
       </section>
     </main>}
 
@@ -66,7 +75,7 @@ const { title, kicker, description, active } = Astro.props;
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3ZM5 5h6v2H7v10h10v-4h2v6H5V5Z"/></svg>
         </a>
       </nav>
-      <a class="footer-wordmark" href="/" aria-label="Ag0n1st Startseite"><img class="wordmark-logo" src="/images/ag0n1st-logo.svg" alt="Ag0n1st Logo" /></a>
+      <a class="footer-wordmark" href={base+"/"} aria-label={isEn?"Ag0n1st homepage":"Ag0n1st Startseite"}><img class="wordmark-logo" src="/images/ag0n1st-logo.svg" alt="Ag0n1st Logo" /></a>
       <span class="copyright">© 2025 Ag0n1st. All rights reserved.</span>
     </footer>
     <script>

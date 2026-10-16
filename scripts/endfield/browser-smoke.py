@@ -502,6 +502,55 @@ def smoke_si(page, base_url, width):
     check_overflow(page,label+" all sections")
 
 
+
+def smoke_i18n(page, base_url, width):
+    label = str(width)+"px English"
+    for route in ["/en/","/en/endfield/","/en/endfield/operators/","/en/about/","/en/nte/"]:
+        resp=page.goto(base_url+route,wait_until="domcontentloaded")
+        verify(resp is not None and resp.status==200,label+": published route "+route)
+        verify(page.locator("html").get_attribute("lang")=="en",label+": English lang "+route)
+        verify(page.locator('link[rel="canonical"]').get_attribute("href")=="https://ag0n1st.com"+route,
+               label+": custom-domain canonical "+route)
+        verify(page.locator('link[hreflang="de"]').count()==1 and
+               page.locator('link[hreflang="en"]').count()==1,
+               label+": DE and EN alternates "+route)
+        check_overflow(page,label+" "+route)
+    page.goto(base_url+"/en/endfield/operators/si/")
+    verify(page.locator('meta[property="og:image"]').get_attribute("content")==
+           "https://ag0n1st.com/images/endfield/operators/si/cover.webp" and
+           page.locator('meta[name="twitter:card"]').get_attribute("content")=="summary_large_image",
+           label+": Si social preview uses existing local cover with English article metadata")
+    verify("Brushwork Realm" in page.locator("#skills").inner_text() and
+           "Fully Envisioned" in page.locator("#skills").inner_text() and
+           page.locator("#skills .en-guide-skill").count()==4,
+           label+": authoritative original English Si skills")
+    verify(page.locator("#builds .en-guide-build").count()==4 and
+           page.locator("#teams .en-guide-team-grid article").count()==6,
+           label+": all 4 Si meta builds and 6 meta teams in English")
+    verify(page.locator('.language-switch a[lang="de"]').get_attribute("href")==
+           "/endfield/operatoren/si/",label+": English Si links to German Si")
+    check_overflow(page,label+" Si")
+    page.goto(base_url+"/endfield/operatoren/si/")
+    verify(page.locator('.language-switch a[lang="en"]').get_attribute("href")==
+           "/en/endfield/operators/si/",label+": German Si links to English Si")
+    check_overflow(page,label+" German Si")
+    page.goto(base_url+"/en/endfield/operators/typhoeus/")
+    verify("Nature Burst" in page.locator("body").inner_text() and
+           page.locator("#skills .en-guide-skill").count()==4,
+           label+": Typhoeus has English mechanic guide and skill texts")
+    check_overflow(page,label+" Typhoeus")
+    page.goto(base_url+"/en/endfield/operators/liino/")
+    verify(page.locator('meta[name="robots"]').get_attribute("content")=="noindex,follow",
+           label+": unfinished Liino preview is noindex")
+    verify(page.locator('link[hreflang="en"]').count()==0,
+           label+": no alternates advertised for preview")
+    check_overflow(page,label+" Liino")
+    sitemap=page.request.get(base_url+"/sitemap.xml")
+    verify(sitemap.status==200 and
+           "<loc>https://ag0n1st.com/en/endfield/operators/si/</loc>" in sitemap.text() and
+           "https://ag0n1st.com/en/endfield/operators/liino/" not in sitemap.text(),
+           label+": SEO sitemap publishes translated guides but excludes previews")
+
 def main():
     if not (DIST / "index.html").is_file():
         raise SystemExit("Missing dist; run npm run build first")
@@ -522,6 +571,7 @@ def main():
                         smoke(page, base_url, width)
                         smoke_typhoeus(page, base_url, width)
                         smoke_si(page, base_url, width)
+                        smoke_i18n(page, base_url, width)
                     finally:
                         context.close()
             finally:
