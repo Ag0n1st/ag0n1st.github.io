@@ -46,11 +46,6 @@ const { guide, gameData, extraData, trTerm, trMetric, trReq, trPromotion, locali
               <td><MaterialCosts items={p.cost} translatedNames={localized?.materials} fallbackNames={extraData?.materials} /></td>
             </tr>) : [1,2,3,4,5].map(n=><tr><td>[Stufe {n}]</td><td>[Freischaltung]</td><td>[Level/Story]</td><td>[Materialien]</td></tr>)}</tbody>
           </table></div>
-          {guide.operatorKit.progressionNotes && <p class="op-body-copy">{guide.operatorKit.progressionNotes}</p>}
           </div>
         </details>
-        <div class="op-divided">
-          <h3>Ressourcen & Verfügbarkeit</h3>
-          <div class="op-cardlet"><p class="op-body-copy">{guide.operatorKit.resourceNotes || "[Bezugsquellen und Freischaltbedingungen folgen]"}</p></div>
-        </div>
       </section>
