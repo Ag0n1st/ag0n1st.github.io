@@ -53,6 +53,14 @@ Die hier gezeigten Werte gelten, sofern vorhanden, für **Community-Basiswerte o
 - Der Katalog enthält bereits andere 1.6-Daten, etwa Operator Si / Argent Flow und die neuen Waffen. **Deshalb ist die fehlende Gear-Erweiterung ein echter Unterschied der aktuell veröffentlichten SKPORT-Kategorien**, nicht automatisch ein auf gesamter Seite veralteter Snapshot.
 - Keine 18 Community-IDs auf offizielle numerische IDs hochstufen; zunächst den jetzigen Zustand sauber persistieren.
 
+## Lokal verfügbare v1.6-Ausrüstungssymbole und Bildkontingente
+
+Die 18 v1.6-Artikel werden über den allgemeinen `itemCatalog.ts` anhand eines eindeutigen temporären Namens/Slugs aufgelöst. Die fünf schon für Si archivierten Symbole bleiben an ihrem Ursprungsort; sechs neue WebP-Bilddateien wurden über [GitHub Actions: „Cache all version 1.6 community gear icons“ #1](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/38949465060) nach `public/images/endfield/gear/releases/v16/` geschrieben. Der Aufruf ergab **5 bereits vorhandene + 6 neu gespeicherte + 7 fehlende = 18** Bilder. Die sieben fehlenden Symbole wurden nach **HTTP 429 (Rate Limit)** bewusst nicht aggressiv erneut abgefragt. Für sie bleibt ein Text-/Icon-Platzhalter; die Daten stehen trotzdem im Manifest. Keine nicht belegten Bilder aus ähnlich benannten älteren Gear-Varianten werden verwendet.
+
+Das Cache-Skript `scripts/endfield/cache-v16-gear-icons.mjs` beschränkt sich auf das Community-Wiki-Quellverzeichnis, erlaubt nur PNG/JPEG/WebP und maximal 5 MB Eingangsbild/95 KB Ausgabedatei; Konvertierung zu lokalen WebPs 240 × 240; Speicherung ausschließlich im Branch, nicht zur Laufzeit der Website. GitHub Actions #1 beendete die Tests mit **131/131 erfolgreich** und lag bei **22.096.296 B / 100.000.000 B** Endfield-Projektgröße (vor eventuellen späteren Dokumentationsänderungen). Die bei künftiger Bearbeitung aktualisierte Galerie bleibt unabhängig von den offiziell verifizierten Spielwerten.
+
+Eine neue `workflow_dispatch`-Option im read-only Workflow `.github/workflows/probe-v16-skport.yml` lässt sich künftig über GitHub Actions manuell ausführen, sobald der SKPORT-Katalog erweitert wird. Dabei wird **nichts nach main gepusht**, nur der anonyme öffentliche Katalog geprüft und eine normalisierte JSON-Datei als zweitägiges temporäres Workflow-Artefakt bereitgestellt.
+
 ## Sicherer technischer Übergang zur vollständigen offiziellen Integration
 
 1. Das `v16-gear.json` bleibt ein vollständiger, versionierter **Preview-Katalog** (nicht dieselbe Klasse wie offiziell verifizierte `items.json` / `equipment-details.json`). Die (ItemCatalog)-Auflösung bevorzugt offizielle numerische Records bei exakter Namensgleichheit. Bestehende Si-Slugs bleiben weiterhin nutzbar.
