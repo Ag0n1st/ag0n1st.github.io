@@ -49,3 +49,29 @@ Der Release-Datensatz enthält `type-50-yinglung-gauntlets`, für das bereits vo
 **Öffentliche redaktionelle Texte:** direkte Guide-Stimme, keine Konstruktionen wie „vom Creator empfohlen“, „vom Autor bewertet“ oder eine Drittautor-Perspektive. Interne Provenienz in Roadmap/Quellprotokollen ist davon unabhängig und bleibt notwendig. Neuer statischer Regressionstest: `scripts/endfield/editorial-voice.test.mjs` für die öffentlichen Guide-Dateien, Astro-Operator-Komponenten und deutschsprachige Anzeige-Lokalisierung; interne YAML-Kommentare und nicht angezeigte Provenienzmetadaten sind bewusst ausgenommen.
 
 **Nächster fachlicher Übergabepunkt:** Nutzer prüft [Si live](https://ag0n1st.com/endfield/operatoren/si/). Danach erneuter offizieller SKPORT-Abgleich für noch fehlende numerische v1.6-IDs/Rezepte; ohne eindeutige Fachdaten bleibt der Build-Finder bewusst vorsichtig. Kein neuer Guide ohne inhaltliche Freigabe.
+
+
+## 5. Fortsetzung 16.10.2026: v1.6-Attribute/Varianten aus Community-Seiten (OFFIZIELLE SKPORT-Zuordnung weiter offen)
+
+Der nachstehende Abgleich ist **nur Recherche in separater Dokumentation**, keine Übertragung in den offiziellen lokalen SKPORT-Itemkatalog und **keine Freischaltung** im Build-Finder. Version 1.6 fügte neue Type-50-/Eternal-Xiranite-Teile hinzu. Für fünf bestehende Release-Slugs sind mit eindeutigen Artikeln nun **Basisattribute auf Artifice 0** bekannt:
+
+| v1.6-Teil | Gear-Slot | Community-interne ID | Intellekt | Stärke | Sonstiger Basiseffekt | Quelle |
+| --- | --- | --- | ---: | ---: | --- | --- |
+| Type 50 Yinglung Soft Armor | Rüstung | `item_equip_t4_suit_atk02_body_05` | 87 | 58 | Combo-SDN +20,7 % | [Wiki](https://endfield.wiki.gg/wiki/Type_50_Yinglung_Soft_Armor) |
+| Type 50 Yinglung Beacon | Kit | `item_equip_t4_suit_atk02_edc_06` | 32 | 21 | Combo-SDN +41,4 % | [Wiki](https://endfield.wiki.gg/wiki/Type_50_Yinglung_Beacon) |
+| Eternal Xiranite Overalls | Rüstung | `item_equip_t4_suit_usp02_body_05` | 87 | 58 | Ultimate-Energieeffizienz +12,3 % | [Wiki](https://endfield.wiki.gg/wiki/Eternal_Xiranite_Overalls) |
+| Eternal Xiranite Channeling Gloves | Handschuhe | `item_equip_t4_suit_usp02_hand_05` | 65 | 43 | Combo-SDN +34,5 % | [Wiki](https://endfield.wiki.gg/wiki/Eternal_Xiranite_Channeling_Gloves) |
+| Eternal Xiranite Rangefinder | Kit | `item_equip_t4_suit_usp02_edc_07` | 32 | 21 | Combo-SDN +41,4 % | [Wiki](https://endfield.wiki.gg/wiki/Eternal_Xiranite_Rangefinder) |
+
+**Type 50 Yinglung Gauntlets bleibt der kritische sechste Eintrag.** Die neue Version listet diesen Namen in ihrer [Version-1.6-Ausrüstungsübersicht](https://endfield.wiki.gg/wiki/1.6), während die gesonderte Wiki-Seite [Type 50 Yinglung Gloves (03)](https://endfield.wiki.gg/wiki/Type_50_Yinglung_Gloves_%2803%29) **mit internem Code `item_equip_t4_suit_atk02_hand_03`** die für Si passenden INT 65 / STR 43 / Combo-SDN +34,5 % aufführt. Dies ist ein **plausibler Kandidat**, jedoch wegen abweichender Benennung **keine bestätigte Identitätsgleichheit** mit dem vorhandenen Release-Slug `type-50-yinglung-gauntlets`. Die ältere offizielle `Type 50 Yinglung Gloves` **ID 411** entspricht stattdessen AGI 65 / INT 43 (Code `...hand_01`) und ist ausdrücklich **nicht** die neue Si-Ausrüstung.
+
+**Rezeptdaten:** Die Community-Seiten zeigen bei den fünf neuen Teilen 360 und 50 als Rezeptpositionen; Quellen, Menge und Zugehörigkeit sind über die lokalen offiziellen SKPORT-Item-/Materialtabellen noch nicht validiert. Vor einer öffentlichen Rezept- oder Storyzuordnung müssen Material-IDs, genaue Namen, Mengen, Eigentumsstatus und individuelle Blaupausenfundorte aus den offiziellen Daten nachvollzogen werden.
+
+**Nächste Umsetzung für die v1.6-Vervollständigung (Priorität nach diesem Layout-PR):**
+1. Aktuellen öffentlichen anonymen SKPORT-Wiki-Katalog importieren und gegen die 940 bisherigen Item-Einträge diffen; nur die notwendigen Veröffentlichungs-/Gear-Kategorien, keine fremden Kontodaten.
+2. Die sechs neuen Artikel anhand von Name, Slot, Attributen, dokumentiertem internen Code und ggf. Originalbildern eindeutig auf **numerische** SKPORT-IDs abgleichen; Besonderheit `Gauntlets`/ähnlich benannte `Gloves` einzeln bestätigen.
+3. Alle offiziellen `item/info`-Dokumente pro Item für Sets, Stufen, Rezepte/Material-IDs und ggf. Blaupausenfundorte parsen und mit bestehenden Datenfeldern abgleichen. Nicht belegte Gebiets-/Story-Voraussetzungen bleiben `unverified`.
+4. Erst nach Validierung die temporären Release-Slugs in einem eigenen Migrations-PR überführen und alle betroffenen Operator-Guides und Build-Finder-Tests aktualisieren. **Kein Auto-Mapping anhand gleichlautender Namen**, keine heimliche Veränderung der redaktionell bestätigten Builds.
+5. Wie bei jedem Release 100-MB-Endfield-/1-GB-Pages-Budget und vollständige Desktop-/Mobil-CI prüfen.
+
+**Separat bereits belegbarer Early-Access-Build:** `Redeemer Armor 796` (Armor) + `Type 50 Yinglung Gloves 411` (alte AGI/INT-Variante) + `Type 50 Yinglung Knife T1 342` zweimal (Kits). Sämtliche **numerischen SKPORT-Item-IDs sind bereits im bisherigen offiziellen Katalog** und verwenden bestehende lokale WebP-Dateien. Nicht mit den noch ungeklärten neuen v1.6-Gauntlets verwechseln. „Early Access“ bezeichnet frühe Type-50-Verfügbarkeit im Vergleich zu neuen 1.6-Endgame-Teilen, nicht Gear unter Level 70.
