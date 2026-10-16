@@ -27,6 +27,8 @@ jobs:
         run: node scripts/endfield/check-budget.mjs
       - name: Build Astro website
         run: npm run build
+      - name: Enforce 1 GB deployable GitHub Pages site budget
+        run: node scripts/check-pages-budget.mjs
       - name: Set up Python for real Chromium browser QA
         uses: actions/setup-python@v5
         with:
