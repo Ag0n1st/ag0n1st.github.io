@@ -412,6 +412,8 @@ def smoke_si(page, base_url, width):
            label+": author's Meta designation remains visible")
     verify(page.locator("#uebersicht .op-priority-symbol").all_text_contents()==[">",">",">"],
            label+": author's main DPS combo > battle > ultimate priority")
+    skills=page.locator('#fertigkeiten details[data-guide-disclosure="skill-details"]')
+    skills.evaluate("el=>el.open=true")
     for key,de in [("basic","Schaffensdrang"),("battle","Dimension der Pinselkunst"),
                    ("combo","Vision vor Auge"),("ultimate","Spielverderber verboten")]:
         card=page.locator("#fertigkeiten .op-skill-description").nth(["basic","battle","combo","ultimate"].index(key))
