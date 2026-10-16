@@ -44,6 +44,9 @@ console.log("CAPTURE",JSON.stringify({info:capture.info.data?.item?.name,
  hasList:!!capture.list,itemCount:Object.keys(idx).length,catalog:cat.length,
  newGear:cat.filter(x=>x.category==="Gear"&&!old.items.some(y=>y.id===x.id)).map(x=>({id:x.id,name:x.name})).slice(0,36)}));
 const {main,extras}=importOperator(capture.info,idx,{itemId:id,slug:"si",snapshot:day});
+// SKPORT public Si widget still uses placeholder tab title "Skill Name"; the same official text names it Brushwork Realm.
+if(main.skills[1]?.name==="Skill Name" && /Artful Intent|Inksoul|Initial Stroke/.test(main.skills[1]?.description??"")) main.skills[1].name="Brushwork Realm";
+if(main.skills[1]?.name!=="Brushwork Realm")throw Error("Battle Skill name/description needs manual source review");
 if(main.operator.name!=="Si"||main.operator.id!==id||
  extras.attributes.mainAttribute!=="Intellect"||extras.attributes.secondaryAttribute!=="Strength")
  throw Error("Official data mismatch with Si identity/attributes");
