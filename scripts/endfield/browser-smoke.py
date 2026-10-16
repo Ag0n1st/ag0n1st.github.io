@@ -64,6 +64,34 @@ def smoke(page, base_url, width):
            and "autoplay=1" not in video_src,
            label + ": correct privacy-enhanced guide embed, no autoplay")
 
+    verify(page.locator("#uebersicht .op-quick-weapon-grid .op-quick-weapon-card").count() == 4,
+           label + ": four separate overview weapon cards")
+    verify(page.locator("#uebersicht .op-rating").first.locator(".op-rating-header").inner_text().startswith("Einsteigerfreundlichkeit"),
+           label + ": positive ease rating replaces negative difficulty heading")
+    verify(page.locator("#uebersicht .op-rating").first.locator(".op-meter i.active").count() == 5,
+           label + ": Liino difficulty 1 renders five beginner-friendliness bars")
+    verify(page.locator("#operator-kit").get_by_text("Ressourcen & Verfügbarkeit").count() == 0,
+           label + ": obsolete resources block removed")
+    verify(page.locator("#operator-kit").get_by_text("Liino unterstützt ihr Team").count() == 1,
+           label + ": approved Liino Kit playstyle is displayed")
+    if width > 1000:
+        video = page.locator("#uebersicht .op-video-card").bounding_box()
+        profile = page.locator("#uebersicht .op-profile-card").bounding_box()
+        verify(video is not None and profile is not None
+               and video["height"] < profile["height"],
+               label + ": video card no longer stretches to profile height")
+        verify(page.locator("#uebersicht .op-quick-stats").evaluate(
+            "(el) => getComputedStyle(el).alignItems") == "start",
+               label + ": gear and skill quick cards do not stretch")
+    for n in (1, 3, 5):
+        img = page.locator('[data-potential-panel="' + str(n) +
+                           '"] .op-potential-snapshot img')
+        verify(img.count() == 1 and img.get_attribute("src").endswith(
+            "/images/endfield/operators/liino/potentials/potential-" + str(n) + ".webp"),
+               label + ": Liino P" + str(n) + " uses local WebP snapshot")
+        verify(img.evaluate("(el) => el.complete && el.naturalWidth > 100"),
+               label + ": Liino P" + str(n) + " WebP loads in Chromium")
+
     verify(page.locator(".op-meta-build-card").count() == 3,
            label + ": exactly three visible Meta equipment builds")
     labels = page.locator("#teams .op-meta-team-labels")
