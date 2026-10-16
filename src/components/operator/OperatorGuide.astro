@@ -48,6 +48,7 @@ const { guide, operatorName, preview, localized } = model;
 <script>
   import { evaluateBuildAvailability, FACTORY_COMPONENT_STAGES, DEFAULT_FACTORY_COMPONENT } from "../../lib/endfield/buildFinder.mjs";
   import { STORY_BUILD_STATUSES, MAX_AUTHORITY_LEVEL, validAuthorityLevel } from "../../lib/endfield/buildStoryProgress.mjs";
+  import { getMaxBuildFinderPreset } from "../../lib/endfield/buildFinderDefaults.mjs";
   // A single rank selector controls all displayed headline values in its skill.
   document.querySelectorAll<HTMLSelectElement>("[data-skill-rank]").forEach(select => {
     select.addEventListener("change", () => {
@@ -124,6 +125,9 @@ const { guide, operatorName, preview, localized } = model;
       const choice=Array.from(document.querySelectorAll<HTMLButtonElement>("[data-build-button]"))
         .find(button=>button.dataset.buildButton===id);
       if(!choice)return;
+      // Meta cards and team links must reveal the native disclosure first.
+      const finder=document.querySelector<HTMLDetailsElement>("#build-finder");
+      if(finder&&!finder.open)finder.open=true;
       if(choice.hidden){
         const checkbox=document.querySelector<HTMLInputElement>("#op-build-show-all");
         if(checkbox)checkbox.checked=true;
@@ -147,34 +151,93 @@ const { guide, operatorName, preview, localized } = model;
   const buildEmpty=document.querySelector<HTMLElement>("#op-build-empty");
   const buildButtons=Array.from(document.querySelectorAll<HTMLButtonElement>("[data-build-button]"));
   const factoryIcon=document.querySelector<HTMLImageElement>("#op-factory-icon");
-  const savedKey="ag0n1st:endfield:build-story-progress:v1";
+  const savedKey="ag0n1st:endfield:build-story-progress:v2";
+  const legacySavedKey="ag0n1st:endfield:build-story-progress:v1";
   const resetProgress=document.querySelector<HTMLButtonElement>("#op-progress-reset");
   const ownedBlueprintIds=new Set<string>();
+  // v2 persists DESELECTED IDs. New Gear/areas in future guides therefore
+  // default to available without overwriting a player's explicit opt-outs.
+  const unselectedBlueprintIds=new Set<string>();
+  const lockedAreaIds=new Set<string>();
   const statusText:Record<string,string>={
-    available:"Passend","level-locked":"Level zu niedrig",
-    "component-locked":"Komponente fehlt",...STORY_BUILD_STATUSES,
+    available:"Passend", "level-locked":"Level zu niedrig",
+    "component-locked":"Komponente fehlt", ...STORY_BUILD_STATUSES,
     unverified:"Rezept/Daten ungeklärt"
   };
+  const allGearIds=()=>[...new Set(blueprintCheckboxes
+    .filter(input=>!input.disabled && /^\\d+$/.test(input.dataset.blueprintOwned||""))
+    .map(input=>input.dataset.blueprintOwned||""))];
 
-  // No accounts or backend: keep only explicit selections locally.
-  // The factory always starts at the highest component as requested.
+  // This is a user-friendly MAXIMAL ASSUMPTION, NOT synced game ownership.
+  function applyMaxPreset(){
+    const defaults=getMaxBuildFinderPreset({
+      regionIds:Array.from(region?.options||[]).map(option=>option.value).filter(Boolean),
+      areaIds:areaCheckboxes.map(input=>input.value),
+      blueprintIds:allGearIds(),
+      stockLevels:Array.from(stock?.options||[]).map(option=>option.value).filter(Boolean)
+    });
+    if(level)level.value=String(defaults.level);
+    if(factory)factory.value=defaults.factoryComponent;
+    if(region)region.value=defaults.storyProgress.regionId;
+    if(authority)authority.value=String(defaults.storyProgress.authorityLevel);
+    if(stock)stock.value=defaults.storyProgress.stockRedistributionLevel===null
+      ?"":String(defaults.storyProgress.stockRedistributionLevel);
+    lockedAreaIds.clear();
+    areaCheckboxes.forEach(input=>input.checked=true);
+    unselectedBlueprintIds.clear();
+    ownedBlueprintIds.clear();
+    for(const id of defaults.storyProgress.acquiredGearBlueprintIds)ownedBlueprintIds.add(id);
+    blueprintCheckboxes.forEach(input=>input.checked=ownedBlueprintIds.has(input.dataset.blueprintOwned||""));
+  }
+
   function restoreStoryProgress(){
+    applyMaxPreset();
     try{
-      const saved=JSON.parse(window.localStorage.getItem(savedKey)||"null");
-      if(!saved||saved.version!==1)return;
-      if(region && Array.from(region.options).some(x=>x.value===saved.regionId))
+      // Preserve explicit past choices when upgrading, including empty picks.
+      const raw=window.localStorage.getItem(savedKey)??window.localStorage.getItem(legacySavedKey);
+      if(!raw)return;
+      const saved=JSON.parse(raw);
+      if(!saved || ![1,2].includes(saved.version))return;
+      if(region && typeof saved.regionId==="string" &&
+         Array.from(region.options).some(option=>option.value===saved.regionId))
         region.value=saved.regionId;
-      const selected=new Set(Array.isArray(saved.unlockedAreaIds)?saved.unlockedAreaIds:[]);
-      areaCheckboxes.forEach(x=>x.checked=selected.has(x.value));
-      const owned=Array.isArray(saved.acquiredGearBlueprintIds)?saved.acquiredGearBlueprintIds:[];
-      for(const id of owned)if(typeof id==="string"&&/^\d+$/.test(id)&&ownedBlueprintIds.size<500)
-        ownedBlueprintIds.add(id);
-      blueprintCheckboxes.forEach(x=>x.checked=ownedBlueprintIds.has(x.dataset.blueprintOwned||""));
-      if(authority && validAuthorityLevel(saved.authorityLevel))
-        authority.value=String(saved.authorityLevel);
-      if(stock && Array.from(stock.options).some(x=>x.value===String(saved.stockRedistributionLevel)))
-        stock.value=String(saved.stockRedistributionLevel);
-    }catch{/* Private browsing or corrupted old data: show empty selections. */}
+      lockedAreaIds.clear();
+      if(saved.version===2){
+        for(const id of Array.isArray(saved.lockedAreaIds)?saved.lockedAreaIds:[])
+          if(typeof id==="string" && lockedAreaIds.size<500)lockedAreaIds.add(id);
+      }else{
+        const unlocked=new Set(Array.isArray(saved.unlockedAreaIds)?saved.unlockedAreaIds:[]);
+        areaCheckboxes.forEach(input=>{
+          if(!unlocked.has(input.value))lockedAreaIds.add(input.value);
+        });
+      }
+      areaCheckboxes.forEach(input=>input.checked=!lockedAreaIds.has(input.value));
+      unselectedBlueprintIds.clear();
+      if(saved.version===2){
+        for(const id of Array.isArray(saved.unselectedGearBlueprintIds)?saved.unselectedGearBlueprintIds:[])
+          if(typeof id==="string" && /^\\d+$/.test(id) && unselectedBlueprintIds.size<500)
+            unselectedBlueprintIds.add(id);
+      }else{
+        const acquired=new Set(Array.isArray(saved.acquiredGearBlueprintIds)?saved.acquiredGearBlueprintIds:[]);
+        for(const id of allGearIds())
+          if(!acquired.has(id))unselectedBlueprintIds.add(id);
+      }
+      ownedBlueprintIds.clear();
+      for(const id of allGearIds())
+        if(!unselectedBlueprintIds.has(id))ownedBlueprintIds.add(id);
+      blueprintCheckboxes.forEach(input=>input.checked=ownedBlueprintIds.has(input.dataset.blueprintOwned||""));
+      if(authority)
+        authority.value=validAuthorityLevel(saved.authorityLevel)?String(saved.authorityLevel):"";
+      if(stock)
+        stock.value=Array.from(stock.options).some(x=>x.value===String(saved.stockRedistributionLevel))
+          ?String(saved.stockRedistributionLevel):"";
+      if(saved.version===2){
+        if(level && Array.from(level.options).some(x=>x.value===String(saved.level)))
+          level.value=String(saved.level);
+        if(factory && FACTORY_COMPONENT_STAGES.some(stage=>stage.id===saved.factoryComponent))
+          factory.value=saved.factoryComponent;
+      }
+    }catch{/* Damaged/unavailable localStorage: retain maximum preset. */}
   }
   function storySelection(){
     const number=authority?.value.trim()||"";
@@ -188,9 +251,19 @@ const { guide, operatorName, preview, localized } = model;
     };
   }
   function saveStoryProgress(){
-    try{window.localStorage.setItem(savedKey,JSON.stringify({
-      version:1,...storySelection()
-    }));}catch{/* Local storage may be disabled; selection remains in this tab. */}
+    try{
+      window.localStorage.setItem(savedKey,JSON.stringify({
+        version:2,
+        regionId:region?.value||"",
+        lockedAreaIds:[...lockedAreaIds],
+        unselectedGearBlueprintIds:[...unselectedBlueprintIds],
+        authorityLevel:storySelection().authorityLevel,
+        stockRedistributionLevel:storySelection().stockRedistributionLevel,
+        level:level?Number(level.value):null,
+        factoryComponent:factory?.value||DEFAULT_FACTORY_COMPONENT
+      }));
+      window.localStorage.removeItem(legacySavedKey);
+    }catch{/* Local storage disabled: changes remain within this tab. */}
   }
   function updateConfig(){
     if(!level||!factory)return;
@@ -225,7 +298,7 @@ const { guide, operatorName, preview, localized } = model;
       if(reason){
         const checked=result.parts?.filter((part:{status:string})=>part.status==="available").length??0;
         reason.textContent=result.status==="available"
-          ?"Alle vier Blaupausen bestätigt. Level und Komponenten reichen aus."
+          ?"Alle vier Blaupausen sind in deiner Auswahl aktiviert; Level und Komponenten reichen aus. (Kein Kontonachweis.)"
           :(result.reason+" · "+checked+"/4 Blaupausen als erhalten markiert.");
       }
       return result.status;
@@ -250,14 +323,12 @@ const { guide, operatorName, preview, localized } = model;
     }
   }
 
-  // Story progress is restored, but the highest factory stage ALWAYS wins on entry.
+  // New visitors start with maximum assumptions; previously saved edits win.
   restoreStoryProgress();
-  if(factory)factory.value=DEFAULT_FACTORY_COMPONENT;
-  level?.addEventListener("change",updateConfig);
-  factory?.addEventListener("change",updateConfig);
+  level?.addEventListener("change",()=>{saveStoryProgress();updateConfig();});
+  factory?.addEventListener("change",()=>{saveStoryProgress();updateConfig();});
   showAllBuilds?.addEventListener("change",updateConfig);
   region?.addEventListener("change",()=>{saveStoryProgress();updateConfig();});
-  // HTML max is not sufficient: clamp manual input/pasted values as well.
   authority?.addEventListener("change",()=>{
     if(authority.value.trim()!==""){
       const value=Number(authority.value);
@@ -268,28 +339,31 @@ const { guide, operatorName, preview, localized } = model;
   });
   stock?.addEventListener("change",()=>{saveStoryProgress();updateConfig();});
   areaCheckboxes.forEach(input=>input.addEventListener("change",()=>{
+    if(input.checked)lockedAreaIds.delete(input.value);
+    else lockedAreaIds.add(input.value);
     saveStoryProgress();updateConfig();
   }));
   blueprintCheckboxes.forEach(input=>input.addEventListener("change",()=>{
     const gearId=input.dataset.blueprintOwned;
     blueprintCheckboxes.filter(other=>other.dataset.blueprintOwned===gearId)
       .forEach(other=>other.checked=input.checked);
-    if(gearId && /^\d+$/.test(gearId)){
-      if(input.checked)ownedBlueprintIds.add(gearId);
-      else ownedBlueprintIds.delete(gearId);
+    if(gearId && /^\\d+$/.test(gearId)){
+      if(input.checked){
+        unselectedBlueprintIds.delete(gearId);
+        ownedBlueprintIds.add(gearId);
+      }else{
+        unselectedBlueprintIds.add(gearId);
+        ownedBlueprintIds.delete(gearId);
+      }
     }
     saveStoryProgress();updateConfig();
   }));
   resetProgress?.addEventListener("click",()=>{
-    try{window.localStorage.removeItem(savedKey);}catch{}
-    ownedBlueprintIds.clear();
-    if(region)region.value="";
-    if(authority)authority.value="";
-    if(stock)stock.value="";
-    if(level)level.value="70";
-    if(factory)factory.value=DEFAULT_FACTORY_COMPONENT;
-    areaCheckboxes.forEach(x=>x.checked=false);
-    blueprintCheckboxes.forEach(x=>x.checked=false);
+    try{
+      window.localStorage.removeItem(savedKey);
+      window.localStorage.removeItem(legacySavedKey);
+    }catch{}
+    applyMaxPreset();
     updateConfig();
   });
   updateConfig();
