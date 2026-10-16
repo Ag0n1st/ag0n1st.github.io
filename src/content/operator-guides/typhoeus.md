@@ -33,8 +33,8 @@ overview:
     - "Unterbrechungen im Schwebeflug kosten wichtige Energieschüsse; die Schutzbarriere kann brechen und hat eine lange Reaktivierungszeit."
     - "Die Signature-Waffe liegt deutlich vor den Alternativen; für andere Waffen und unvollständige Teams sinkt ihr Potenzial."
   ratings:
-    difficulty: 4
-    flexibility: 3
+    difficulty: 5
+    flexibility: 1
   featuredBuildId: deep-rampart-lynx
   partners: []
 
@@ -528,11 +528,11 @@ teams:
   introduction: >-
     Typhi sollte immer mit mindestens einem Teammitglied
     gespielt werden, das zuverlässig Natur-Stacks
-    aufbauen kann. Arcane in der Willenskraft-Variante
+    aufbauen kann. Arcane in der Wille-Variante
     ist die stärkste und flexibelste Partnerin:
     Natur-Anhaftungen, Gruppierung und passende Buffs
     verbinden sich zu einer sinnvollen Burst-Rotation.
-    Im Willenskraft-Build sollte Arcane nach dem
+    Im Wille-Build sollte Arcane nach dem
     ursprünglichen Spielbeispiel mindestens 640 Wille
     erreichen, um ihre relevanten Buffs auszureizen.
     Fluorite ist die besonders gute Alternative,
@@ -573,11 +573,10 @@ teams:
         - member: arcane
           items: ["1134", "1138", "1136", "1136"]
           note: >-
-            Beispielausrüstung für die Support-Arcane
-            aus einem dokumentierten
-            Datafield-Teamkontext; Willenskraft-
-            Ziel und aktivierte Set-Boni
-            im eigenen Account prüfen.
+            Eternal Xiranite mit zwei Bracing Slabs:
+            Arcane in der Wille-Variante spielen
+            und den für ihre Buffs nötigen
+            Wille-Wert prüfen (im Guide-Ziel: 640).
         - member: ardelia
           items: ["881", "1131", "876", "876"]
           note: >-
@@ -612,14 +611,14 @@ teams:
         belasten.
       memberGear:
         - member: arcane
-          items: ["1126", "292", "286", "286"]
+          items: ["1134", "1138", "1136", "1136"]
           note: >-
-            Ein Beispiel mit Hot Work
-            als Natur-Buffer-
-            Unterstützung, wie in
-            einer öffentlichen
-            Datafield-Teamvariante
-            dokumentiert.
+            Eternal-Xiranite-Support-Build mit zwei
+            Bracing Slabs. Für Typhis Natur-Team
+            ist Arcane in der Wille-Variante
+            vorgesehen; die dafür benötigten
+            Werte und Setboni im eigenen
+            Spielstand prüfen.
         - member: perlica
           items: ["353", "341", "338", "338"]
           note: >-
@@ -718,7 +717,6 @@ gameplay:
     - id: trial-erlaeutert
       title: "Trial – Natur-Stacks und FP-Rotation"
       type: trial
-      featured: true
       url: "https://www.youtube.com/watch?v=wNVJkGzkfMg&t=974s"
       description: >-
         Kampfübungs-Team mit Typhi, Arcane,
@@ -836,6 +834,7 @@ gameplay:
     - id: nefarith-p0
       title: "Nefarith – P0 No Food Speedrun"
       type: speedrun
+      featured: true
       url: "https://www.youtube.com/watch?v=Zw8B2F2nJP8"
       description: >-
         Eigenständiger 0:39-Run
@@ -866,42 +865,6 @@ gameplay:
         Laufzeiten daher
         nicht ohne dieselben
         Bedingungen vergleichen.
-    - id: quiz-zeichen
-      title: "Quiz – wie viele Zeichen?"
-      type: other
-      url: "https://www.youtube.com/watch?v=wNVJkGzkfMg&t=1526s"
-      description: >-
-        Zum Verständnis des
-        Ressourcen-Loops:
-        Ein Gegner mit zwei
-        Natur-Stacks,
-        vier Jagdpfeile
-        und bereits einem
-        Zeichen – wie
-        viele Zeichen
-        stehen nach vier
-        Energieschüssen
-        und Final Strike
-        zur Verfügung?
-      rotationAndTips: >-
-        Lösung: acht Zeichen.
-        Die ersten zwei
-        Energieschüsse
-        verbrauchen je
-        einen Natur-Stack
-        und lösen zusätzlich
-        je eine Natur-Explosion
-        aus: zwei Zeichen
-        pro Schuss.
-        Schuss drei und vier
-        geben jeweils ein
-        Zeichen, der letzte
-        Luft-Final-Strike
-        ebenfalls eines.
-        Zusammen mit
-        dem Startzeichen
-        ergibt das acht.
-
 conclusion:
   verdict: >-
     Typhoeus ist eine starke,
