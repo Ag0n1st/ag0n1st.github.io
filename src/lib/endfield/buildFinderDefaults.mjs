@@ -24,3 +24,24 @@ export function getMaxBuildFinderPreset({regionIds=[],areaIds=[],blueprintIds=[]
    }
  };
 }
+
+/**
+ * Opt-in starter preset for players who want to mark progress individually.
+ * None of these values claim that a blueprint or a location is unlocked.
+ * A factory's lowest currently selectable tier is Amethyst; earlier stages
+ * can still be represented by setting a low operator level.
+ */
+export function getMinBuildFinderPreset({levelOptions=[]}={}){
+ const validLevels=levelOptions.map(Number).filter(n=>Number.isSafeInteger(n)&&n>0);
+ return {
+   level:validLevels.length?Math.min(...validLevels):10,
+   factoryComponent:FACTORY_COMPONENT_STAGES[0].id,
+   storyProgress:{
+     regionId:"",
+     unlockedAreaIds:[],
+     acquiredGearBlueprintIds:[],
+     authorityLevel:null,
+     stockRedistributionLevel:null
+   }
+ };
+}

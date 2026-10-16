@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
-import {getMaxBuildFinderPreset} from "../../src/lib/endfield/buildFinderDefaults.mjs";
+import {getMaxBuildFinderPreset,getMinBuildFinderPreset} from "../../src/lib/endfield/buildFinderDefaults.mjs";
 import {getBuildRequirements,evaluateBuildAvailability} from "../../src/lib/endfield/buildFinder.mjs";
 import {normalizeOfficialGearSlot} from "../../src/lib/endfield/gearSlotCorrections.mjs";
 import {MAX_AUTHORITY_LEVEL} from "../../src/lib/endfield/buildStoryProgress.mjs";
@@ -90,7 +90,7 @@ test("equipment uses a CLOSED native disclosure for all heavy filters and detail
  assert.doesNotMatch(equipment.slice(start,start+110),/\sopen(?:\s|>)/);
  assert.match(equipment.slice(start,start+400),/<summary class="op-build-finder-toggle">/);
  assert.match(equipment,/id="op-progress-reset">Maximal-Vorauswahl wiederherstellen/);
- assert.match(equipment,/Blaupausen-Auswahl \(standardmäßig alle aktiv\)/);
+ assert.match(equipment,/Blaupausen-Auswahl \(bei Maximal-Vorauswahl alle aktiv\)/);
  assert.match(equipment,/kein automatischer Abgleich mit deinem Spielkonto/);
 });
 
@@ -117,4 +117,65 @@ test("local v2 stores explicit deselections and persists player level/factory; l
  assert.match(controller,/factory\?\.addEventListener\("change",\(\)=>\{saveStoryProgress\(\);updateConfig\(\);\}\)/);
  assert.match(controller,/resetProgress\?\.addEventListener\("click",\(\)=>\{[\s\S]*?applyMaxPreset\(\)/);
  assert.match(controller,/if\(!unselectedBlueprintIds\.has\(id\)\)ownedBlueprintIds\.add\(id\)/);
+});
+
+test("minimal preset clears all storyline/blueprint choices and uses the lowest available options",()=>{
+ const min=getMinBuildFinderPreset({levelOptions:[70,60,50,36,28,20,10]});
+ assert.equal(min.level,10);
+ assert.equal(min.factoryComponent,"amethyst","Lowest offered component, before Ferrium");
+ assert.equal(min.storyProgress.regionId,"");
+ assert.deepEqual(min.storyProgress.unlockedAreaIds,[]);
+ assert.deepEqual(min.storyProgress.acquiredGearBlueprintIds,[]);
+ assert.equal(min.storyProgress.authorityLevel,null);
+ assert.equal(min.storyProgress.stockRedistributionLevel,null);
+ const another=getMinBuildFinderPreset({levelOptions:[36,20]});
+ assert.equal(another.level,20);
+});
+
+test("minimal selection never marks a Liino build as owned until the user edits it",()=>{
+ const min=getMinBuildFinderPreset({levelOptions:[70,60,50,36,28,20,10]});
+ for(const [i,ids] of officialLiinoBuilds.entries()){
+  const requirement=getBuildRequirements(ids.map(id=>normalizeOfficialGearSlot(byId.get(id))));
+  const status=evaluateBuildAvailability(requirement,{
+   level:min.level,factoryComponent:min.factoryComponent,storyProgress:min.storyProgress
+  }).status;
+  assert.notEqual(status,"available","Build "+String.fromCharCode(65+i)+" must not be unlocked");
+ }
+ assert.equal(preset().level,70,"The global default must remain max for new visitors");
+});
+
+test("both preset buttons appear next to each other within the collapsed Finder",()=>{
+ const equipment=readFileSync("src/components/operator/sections/OperatorEquipment.astro","utf8");
+ const styles=readFileSync("src/styles/operator-guides.css","utf8");
+ const start=equipment.indexOf('<details class="op-divided op-build-finder-accordion" id="build-finder">');
+ const group=equipment.indexOf('class="op-progress-preset-actions"');
+ const max=equipment.indexOf('id="op-progress-reset"');
+ const min=equipment.indexOf('id="op-progress-min"');
+ const end=equipment.indexOf('op-gear-disclaimer',min);
+ assert.ok(start>=0 && start<group && group<max && max<min && min<end);
+ assert.match(equipment,/Maximal-Vorauswahl wiederherstellen \(Anpassungen löschen\)/);
+ assert.match(equipment,/Minimal-Vorauswahl einstellen \(für neue Spieler\)/);
+ assert.match(equipment,/Für neue Besucher gilt weiterhin die/);
+ assert.match(styles,/\.op-progress-preset-actions\{display:flex;flex-wrap:wrap/);
+ assert.match(styles,/\.op-progress-preset-button:focus-visible/);
+ assert.match(styles,/@media\(max-width:680px\)\{\.op-progress-preset-actions/);
+});
+
+test("explicit minimal preset persists across reloads and operator changes without turning on new Gear",()=>{
+ const controller=readFileSync("src/components/operator/OperatorGuide.astro","utf8");
+ assert.match(controller,/let selectionMode:"max"\|"min"="max"/);
+ assert.match(controller,/function applyMinPreset\(\)\{\s*selectionMode="min"/);
+ assert.match(controller,/getMinBuildFinderPreset\(/);
+ assert.match(controller,/if\(hasMinimalPreset\)applyMinPreset\(\)/);
+ assert.match(controller,/selectedAreaIds:selectionMode==="min"/);
+ assert.match(controller,/selectedGearBlueprintIds:selectionMode==="min"\?\[\.\.\.selectedBlueprintIds\]/);
+ assert.match(controller,/for\(const id of allGearIds\(\)\)\s*if\(selectedBlueprintIds\.has\(id\)\)ownedBlueprintIds\.add\(id\)/);
+ assert.match(controller,/if\(selectionMode==="min"\)\{\s*if\(input\.checked\)selectedBlueprintIds\.add\(gearId\)/);
+ assert.match(controller,/minProgress\?\.addEventListener\("click",\(\)=>\{\s*applyMinPreset\(\);\s*saveStoryProgress\(\);\s*updateConfig\(\)/);
+ assert.match(controller,/resetProgress\?\.addEventListener\("click",\(\)=>\{[\s\S]*?applyMaxPreset\(\)/);
+ assert.match(controller,/restoreStoryProgress\(\);/);
+ assert.match(controller,/\[1,2\]\.includes\(saved\.version\)/);
+ assert.match(controller,/saved\.selectionMode==="min"/);
+ // A saved max profile without a selectionMode field stays on max.
+ assert.match(controller,/const hasMinimalPreset=saved\.version===2 && saved\.selectionMode==="min"/);
 });

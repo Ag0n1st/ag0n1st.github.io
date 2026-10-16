@@ -48,7 +48,7 @@ const { guide, operatorName, preview, localized } = model;
 <script>
   import { evaluateBuildAvailability, FACTORY_COMPONENT_STAGES, DEFAULT_FACTORY_COMPONENT } from "../../lib/endfield/buildFinder.mjs";
   import { STORY_BUILD_STATUSES, MAX_AUTHORITY_LEVEL, validAuthorityLevel } from "../../lib/endfield/buildStoryProgress.mjs";
-  import { getMaxBuildFinderPreset } from "../../lib/endfield/buildFinderDefaults.mjs";
+  import { getMaxBuildFinderPreset, getMinBuildFinderPreset } from "../../lib/endfield/buildFinderDefaults.mjs";
   // A single rank selector controls all displayed headline values in its skill.
   document.querySelectorAll<HTMLSelectElement>("[data-skill-rank]").forEach(select => {
     select.addEventListener("change", () => {
@@ -154,7 +154,11 @@ const { guide, operatorName, preview, localized } = model;
   const savedKey="ag0n1st:endfield:build-story-progress:v2";
   const legacySavedKey="ag0n1st:endfield:build-story-progress:v1";
   const resetProgress=document.querySelector<HTMLButtonElement>("#op-progress-reset");
+  const minProgress=document.querySelector<HTMLButtonElement>("#op-progress-min");
+  let selectionMode:"max"|"min"="max";
   const ownedBlueprintIds=new Set<string>();
+  // In min mode remember opt-ins from ALL operators, not just visible cards.
+  const selectedBlueprintIds=new Set<string>();
   // v2 persists DESELECTED IDs. New Gear/areas in future guides therefore
   // default to available without overwriting a player's explicit opt-outs.
   const unselectedBlueprintIds=new Set<string>();
@@ -170,6 +174,7 @@ const { guide, operatorName, preview, localized } = model;
 
   // This is a user-friendly MAXIMAL ASSUMPTION, NOT synced game ownership.
   function applyMaxPreset(){
+    selectionMode="max";
     const defaults=getMaxBuildFinderPreset({
       regionIds:Array.from(region?.options||[]).map(option=>option.value).filter(Boolean),
       areaIds:areaCheckboxes.map(input=>input.value),
@@ -186,8 +191,27 @@ const { guide, operatorName, preview, localized } = model;
     areaCheckboxes.forEach(input=>input.checked=true);
     unselectedBlueprintIds.clear();
     ownedBlueprintIds.clear();
+    selectedBlueprintIds.clear();
     for(const id of defaults.storyProgress.acquiredGearBlueprintIds)ownedBlueprintIds.add(id);
     blueprintCheckboxes.forEach(input=>input.checked=ownedBlueprintIds.has(input.dataset.blueprintOwned||""));
+  }
+
+  function applyMinPreset(){
+    selectionMode="min";
+    const defaults=getMinBuildFinderPreset({
+      levelOptions:Array.from(level?.options||[]).map(option=>option.value)
+    });
+    if(level)level.value=String(defaults.level);
+    if(factory)factory.value=defaults.factoryComponent;
+    if(region)region.value=defaults.storyProgress.regionId;
+    if(authority)authority.value="";
+    if(stock)stock.value="";
+    lockedAreaIds.clear();
+    unselectedBlueprintIds.clear();
+    ownedBlueprintIds.clear();
+    selectedBlueprintIds.clear();
+    areaCheckboxes.forEach(input=>input.checked=false);
+    blueprintCheckboxes.forEach(input=>input.checked=false);
   }
 
   function restoreStoryProgress(){
@@ -198,33 +222,49 @@ const { guide, operatorName, preview, localized } = model;
       if(!raw)return;
       const saved=JSON.parse(raw);
       if(!saved || ![1,2].includes(saved.version))return;
+      const hasMinimalPreset=saved.version===2 && saved.selectionMode==="min";
+      if(hasMinimalPreset)applyMinPreset();
       if(region && typeof saved.regionId==="string" &&
          Array.from(region.options).some(option=>option.value===saved.regionId))
         region.value=saved.regionId;
       lockedAreaIds.clear();
-      if(saved.version===2){
-        for(const id of Array.isArray(saved.lockedAreaIds)?saved.lockedAreaIds:[])
-          if(typeof id==="string" && lockedAreaIds.size<500)lockedAreaIds.add(id);
+      if(hasMinimalPreset){
+        const selectedAreas=new Set(Array.isArray(saved.selectedAreaIds)?saved.selectedAreaIds:[]);
+        areaCheckboxes.forEach(input=>input.checked=selectedAreas.has(input.value));
       }else{
-        const unlocked=new Set(Array.isArray(saved.unlockedAreaIds)?saved.unlockedAreaIds:[]);
-        areaCheckboxes.forEach(input=>{
-          if(!unlocked.has(input.value))lockedAreaIds.add(input.value);
-        });
+        if(saved.version===2){
+          for(const id of Array.isArray(saved.lockedAreaIds)?saved.lockedAreaIds:[])
+            if(typeof id==="string" && lockedAreaIds.size<500)lockedAreaIds.add(id);
+        }else{
+          const unlocked=new Set(Array.isArray(saved.unlockedAreaIds)?saved.unlockedAreaIds:[]);
+          areaCheckboxes.forEach(input=>{
+            if(!unlocked.has(input.value))lockedAreaIds.add(input.value);
+          });
+        }
+        areaCheckboxes.forEach(input=>input.checked=!lockedAreaIds.has(input.value));
       }
-      areaCheckboxes.forEach(input=>input.checked=!lockedAreaIds.has(input.value));
       unselectedBlueprintIds.clear();
-      if(saved.version===2){
-        for(const id of Array.isArray(saved.unselectedGearBlueprintIds)?saved.unselectedGearBlueprintIds:[])
-          if(typeof id==="string" && /^\d+$/.test(id) && unselectedBlueprintIds.size<500)
-            unselectedBlueprintIds.add(id);
-      }else{
-        const acquired=new Set(Array.isArray(saved.acquiredGearBlueprintIds)?saved.acquiredGearBlueprintIds:[]);
-        for(const id of allGearIds())
-          if(!acquired.has(id))unselectedBlueprintIds.add(id);
-      }
       ownedBlueprintIds.clear();
-      for(const id of allGearIds())
-        if(!unselectedBlueprintIds.has(id))ownedBlueprintIds.add(id);
+      if(hasMinimalPreset){
+        selectedBlueprintIds.clear();
+        for(const id of Array.isArray(saved.selectedGearBlueprintIds)?saved.selectedGearBlueprintIds:[])
+          if(typeof id==="string" && /^\d+$/.test(id) && selectedBlueprintIds.size<500)
+            selectedBlueprintIds.add(id);
+        for(const id of allGearIds())
+          if(selectedBlueprintIds.has(id))ownedBlueprintIds.add(id);
+      }else{
+        if(saved.version===2){
+          for(const id of Array.isArray(saved.unselectedGearBlueprintIds)?saved.unselectedGearBlueprintIds:[])
+            if(typeof id==="string" && /^\d+$/.test(id) && unselectedBlueprintIds.size<500)
+              unselectedBlueprintIds.add(id);
+        }else{
+          const acquired=new Set(Array.isArray(saved.acquiredGearBlueprintIds)?saved.acquiredGearBlueprintIds:[]);
+          for(const id of allGearIds())
+            if(!acquired.has(id))unselectedBlueprintIds.add(id);
+        }
+        for(const id of allGearIds())
+          if(!unselectedBlueprintIds.has(id))ownedBlueprintIds.add(id);
+      }
       blueprintCheckboxes.forEach(input=>input.checked=ownedBlueprintIds.has(input.dataset.blueprintOwned||""));
       if(authority)
         authority.value=validAuthorityLevel(saved.authorityLevel)?String(saved.authorityLevel):"";
@@ -254,6 +294,12 @@ const { guide, operatorName, preview, localized } = model;
     try{
       window.localStorage.setItem(savedKey,JSON.stringify({
         version:2,
+        selectionMode,
+        // Max mode saves explicit opt-outs; min mode saves explicit opt-ins.
+        // Thus NEW Gear and areas stay off in min mode across other guides.
+        selectedAreaIds:selectionMode==="min"
+          ?areaCheckboxes.filter(input=>input.checked).map(input=>input.value):[],
+        selectedGearBlueprintIds:selectionMode==="min"?[...selectedBlueprintIds]:[],
         regionId:region?.value||"",
         lockedAreaIds:[...lockedAreaIds],
         unselectedGearBlueprintIds:[...unselectedBlueprintIds],
@@ -348,6 +394,10 @@ const { guide, operatorName, preview, localized } = model;
     blueprintCheckboxes.filter(other=>other.dataset.blueprintOwned===gearId)
       .forEach(other=>other.checked=input.checked);
     if(gearId && /^\d+$/.test(gearId)){
+      if(selectionMode==="min"){
+        if(input.checked)selectedBlueprintIds.add(gearId);
+        else selectedBlueprintIds.delete(gearId);
+      }
       if(input.checked){
         unselectedBlueprintIds.delete(gearId);
         ownedBlueprintIds.add(gearId);
@@ -358,6 +408,11 @@ const { guide, operatorName, preview, localized } = model;
     }
     saveStoryProgress();updateConfig();
   }));
+  minProgress?.addEventListener("click",()=>{
+    applyMinPreset();
+    saveStoryProgress();
+    updateConfig();
+  });
   resetProgress?.addEventListener("click",()=>{
     try{
       window.localStorage.removeItem(savedKey);
