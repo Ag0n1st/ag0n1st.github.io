@@ -384,15 +384,23 @@ def smoke_si(page, base_url, width):
     verify("Redeemer Seal" in page.locator("#uebersicht .op-quick-stats").inner_text(),
            label+": Balanced Redeemer Seal is the featured quick build")
     cards=page.locator("#ausruestung .op-meta-build-card")
-    verify(cards.count()==3,label+": Balanced, Max DMG and Max Buffs meta builds")
-    for i,(tag,style) in enumerate([("Balanced","is-accent"),("Max. DMG","is-pink"),("Max. Buffs",None)]):
+    verify(cards.count()==4,label+": Balanced, Max DMG, Max Buffs and Early Access meta builds")
+    for i,(tag,style) in enumerate([("Balanced","is-accent"),("Max. DMG","is-pink"),("Max. Buffs",None),("Early Access","is-early")]):
         chip=cards.nth(i).locator(".op-meta-build-tags .op-chip").first
         verify(tag in chip.inner_text() and (style is None or style in (chip.get_attribute("class") or "")),
                label+": distinct Meta build label "+tag)
-    verify(page.locator("#ausruestung [data-build-button]").count()==8,
-           label+": three Meta and five alternative/progression builds")
+    verify(page.locator("#ausruestung [data-build-button]").count()==9,
+           label+": four Meta and five alternative/progression builds")
+    verify(cards.first.evaluate("(el)=>getComputedStyle(el.parentElement).gridTemplateColumns.split(' ').length")==2,
+           label+": four Meta builds form two equal columns on desktop" if width==1440 else
+           label+": mobile Meta cards render without grid overflow") if width==1440 else None
+    verify(page.locator("#uebersicht .op-strengths-card").count()==1 and
+           page.locator("#uebersicht .op-weaknesses-card").count()==1,
+           label+": shared strength and weakness accent cards")
     verify(page.locator("#ausruestung [data-build-button='si-balanced']").count()==1,
            label+": Balanced meta build exists")
+    verify(page.locator("#ausruestung [data-build-button='si-early-access']").count()==1,
+           label+": 70-level Early Access build exists")
     verify(page.locator("#ausruestung [data-build-button='si-main']").count()==1,
            label+": original LYNX maximal damage build remains available")
     verify(page.locator("#ausruestung [data-build-button='si-level50']").count()==1 and
@@ -413,6 +421,12 @@ def smoke_si(page, base_url, width):
            label+": new gear remains unverified without fake SKPORT blueprints")
     verify(panel.locator('input[data-blueprint-owned]:not([disabled])').count()<4,
            label+": unverified 1.6 blueprints cannot be claimed owned")
+    page.locator('[data-build-button="si-early-access"]').click()
+    early=page.locator('[data-build-panel="si-early-access"]')
+    verify(early.locator("img[src$='/images/endfield/gear/796.webp']").count()==1 and
+           early.locator("img[src$='/images/endfield/gear/411.webp']").count()==1 and
+           early.locator("img[src$='/images/endfield/gear/342.webp']").count()==2,
+           label+": Early Access has Redeemer Armor, old Gloves and two Knife T1 pieces")
     page.locator('[data-build-button="si-main"]').click()
     verify(page.locator('[data-build-panel="si-main"] img[src$="/images/endfield/gear/365.webp"]').count()==1,
            label+": Max. DMG still has the original LYNX Slab")
