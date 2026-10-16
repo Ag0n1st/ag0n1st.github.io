@@ -1464,6 +1464,28 @@ Alle 109 Endfield-Unit-Tests und die beiden Budgetchecks erfolgreich. Desktop 14
 
 ---
 
+
+### 14.3n Liino-Operator-Kit: quellengestützter Freigabeentwurf (16.10.2026)
+
+**Beschluss aus dem Folgechat:** Nach der abgeschlossenen Browser-QA von PR #28 wird **zuerst Liinos noch leere Operator-Kit-Redaktion zur Freigabe vorbereitet**. Es handelt sich ausdrücklich noch **nicht** um eine Zustimmung zu den konkreten Texten. Ziel ist, den zuletzt dokumentierten Übergabepunkt fortzusetzen und alle redaktionellen Änderungen kontrolliert auszuführen.
+
+**Repository-Stand bei Beginn:** main-HEAD `eeb7915cf4f8e2b3d6108d692b7ef22487c521a5`, PR #28 bereits gemergt; Chromium-/Endfield- und 100-MB-/1-GB-Gates verfügbar.
+
+**Neue Dokumentation:** [`docs/liino-operator-kit-review-20261016.md`](docs/liino-operator-kit-review-20261016.md) auf Feature-Branch `content-liino-operator-kit-review-20261016`. Enthält:
+1. **Drei copy-ready YAML-Textfelder:** `operatorKit.playstyle`, `operatorKit.progressionNotes`, `operatorKit.resourceNotes` – in direkt verwendbarer redaktioneller Eigenstimme, aber **noch nicht vom Betreiber freigegeben**.
+2. **Präzise SKPORT-Quellenkontrolle** aus dem unveränderten offiziellen Import `liino.json` und `liino.extra.json` (Snapshot 15.10.2026) sowie der vorhandenen deutschen Lokalisation: Vocalist 25 FP/60 s/ANG +10 % auf BS M3; Combo-Auslöser auf Arts-Reaktionen, 20 Ultimate-Energie; Talent-FP 5/10 erst bei Folgekampffertigkeit im 30-s-Fenster und abhängig von Talentstufe; Ultimate 160 Energie/15 s/Will-Amp, vorzeitiges Ende ohne Abschlussimpuls; Aufstiege E1–E4 mit Levelcaps und getrennten Ausrüstungsqualitäten; Stalwart-Vertrauensvoraussetzungen 20/50/100 %.
+3. **Abgrenzungen:** Ultimate-Timing-Tipp ist redaktionelle Empfehlung zur Bestätigung, keine Spieldatenbehauptung; weder garantierte zweite Ultimate noch frei erfundene Farmrouten oder aktuelle Rekrutierungszeiten. Attribute, Skilltabellen, Materialkosten und Gameplay-Clips nicht dupliziert.
+
+**Keine produktive Content-Änderung:** `src/content/operator-guides/liino.md` bleibt mit drei leeren `operatorKit`-Feldern und `status: preview`; alle sechs bestätigten Gear-Builds, zwei Meta-Teams, Waffen-/Datafield-Werte, Skill-Priorität, Eigenstimmenregeln und Gameplay-`pending` bleiben unverändert.
+
+**Freigabefragen:** (F1) Spielweise und Timing-Erklärung, (F2) Ausführlichkeit der Progressionsnotiz, (F3) Soll die Datenlücke zu Farmorten/Rekrutierungszeiten sichtbar sein oder nur intern dokumentiert werden?
+
+**Technische Qualitätssicherung bei PR:** Endfield-Tests, Endfield-100-MB-Gate, Astro-Build, Pages-dist-1-GB-Gate und realer Chromium-Smoketest müssen grün bleiben. Als letzter bestätigter Stand vor dieser rein dokumentarischen Änderung: 20.451.384 Endfield-Byte / 100.000.000 und 17.104.472 dist-Byte / 1.000.000.000. Bei neuem CI die tatsächlichen Werte übernehmen; Git-History wird von diesen Messungen nicht erfasst.
+
+**Danach:** Zuerst den Nutzer um Freigabe/Korrektur bitten. Nur akzeptierte Textteile per neuem Änderungs-PR nach `liino.md` übertragen und die Roadmap bei CI, Merge, Pages-Deploy und anschließenden offenen Gameplay-Clips aktualisieren.
+
+---
+
 ## 15. WICHTIGE LINKS UND QUELLVERWEISE
 
 **Repository & Auslieferung:**
@@ -1571,7 +1593,7 @@ Alle 109 Endfield-Unit-Tests und die beiden Budgetchecks erfolgreich. Desktop 14
 
 | 16.10.2026 | GitHub Pages nach PR #28 produktiv veröffentlicht | Pages #262 nach Merge erfolgreich; Pages #263 nach detailliertem main-ROADMAP-Commit 21f0502 vollständig success einschliesslich beider Budget-Gates und Deploy-Job. Browser-Playback externer YouTube-Videos weiterhin nicht unabhängig geprüft. |
 
-**Ende der aktuellen Roadmap.**  
-**Fortsetzungspunkt (16.10.2026, nach PR #28):** PR #28 mit Browser-QA und 1-GB-Pages-dist-Gate nach grüner CI #118 in main integriert (Squash 81501f580a95cc3a86354982e1049ca468a3bc85). 109 Endfield-Tests grün, Chromium bei 1440/390 px mit Liino/Typhoeus-Presets, Meta-Partnern, Build-Links, UI-Ankern und responsive Checks grün. Aktuelle CI-Budgetwerte: Endfield 20.451.384/100.000.000 Byte, Pages-dist 17.104.472/1.000.000.000 Byte. Pages-Deployment für PR #28 und Roadmap-Commit durch Workflow #262 und #263 erfolgreich bestätigt; tatsächliche externe YouTube-Wiedergabe weiterhin nicht unabhängig geprüft; der alte Forschungs-PR #3 bleibt ohne Merge offen. Nächste fachliche Aufgabe: Liino-Kit-Redaktion und separate Gameplay-Clips ausschliesslich mit Creator-Freigabe/echten Daten; niemals Meta-Builds/Werte erfinden. Jeder zukünftige Chat strikt textbasiert; jede weitere Änderung in ROADMAP nachführen, beide Budgetchecks beibehalten.
+| 16.10.2026 | **Liino-Operator-Kit-Redaktion als Freigabeentwurf auf GitHub vorbereitet** | Nur Quell-Audit + drei YAML-Vorschläge aus SKPORT 1041 (Sängerinnen-/Cosmovoice-Haltung, Kombo-/Talent-FP, Level- und Ausrüstungsfreischaltung). Keine Texte vor Freigabe in den sichtbaren Guide; interne Übernahmeregeln §14.3n. CI-/PR-/Merge-Status dort fortschreiben. |
 
-**Nachtrag für neue Chats:** PR #28 ist nicht mehr offen; vor Arbeiten am nächsten Feature auf main den jeweils aktuellen Workflow-Stand des letzten Dokumentations-Commits verifizieren.
+**Ende der aktuellen Roadmap.**  
+**Fortsetzungspunkt (16.10.2026, Liino-Kit-Freigabe):** Der GitHub-Browser-QA-Abschluss aus PR #28 bleibt aktiv. Nun liegt ein quellengestützter Operator-Kit-Autorenentwurf mit drei YAML-Feldern und Quellenprüfung in `docs/liino-operator-kit-review-20261016.md` auf dem Feature-Branch `content-liino-operator-kit-review-20261016` zur **inhaltlichen Freigabe** vor (§14.3n). Den PR-/CI-/Merge-Status dieser Dokumentation verifizieren/nachtragen. **`liino.md` noch nicht verändern.** Danach Nutzerantwort zu F1–F3 abwarten, nur freigegebene Texte übernehmen, und Endfield-100-MB-/Pages-1-GB-Gates sowie mobile Chromium-Tests erneut prüfen. Öffentlich sichtbare redaktionelle Empfehlungen ausschliesslich in Guide-Eigenstimme; Gameplay-Clips bleiben ohne echte URLs auf `pending: true`, Guide-Status weiter `preview`. Website-Entwicklungschat bleibt ausschliesslich textbasiert. Alle Entwicklungsfortschritte in ROADMAP fortschreiben.
