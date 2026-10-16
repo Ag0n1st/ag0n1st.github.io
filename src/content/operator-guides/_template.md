@@ -21,7 +21,7 @@ overview:
   weaknesses: []
   ratings:
     # Skala jeweils 1 bis 5. Weglassen, solange keine Bewertung vorliegt.
-    # difficulty: 3
+    # difficulty: 3 # gespeichert: 1 = leicht, 5 = schwer; UI zeigt Einsteigerfreundlichkeit = 6 - difficulty
     # flexibility: 4
     # accessibility: automatisch aus den offiziellen Anforderungen der Meta-Builds; nicht eintragen
   # featuredBuildId: standard
@@ -32,9 +32,7 @@ overview:
 
 # 2. OPERATOR KIT
 operatorKit:
-  playstyle: "" # Rolle, Kernmechaniken, Spielweise
-  progressionNotes: ""
-  resourceNotes: "" # Fundorte / Story- und Fabrik-Freischaltungen kommentieren
+  playstyle: "" # Rolle, Kernmechaniken, Spielweise (Aufstiegsdetails stehen bereits in offiziellen Tabellen)
 
 # 3. FERTIGKEITEN
 skills:
