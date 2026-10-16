@@ -1,0 +1,32 @@
+name: One-time Si official weapon details
+on:
+  push:
+    branches: [feature-si-complete-guide-20261016]
+    paths: [.github/workflows/import-si-weapons-once.yml]
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: |
+          npm install --no-save --package-lock=false playwright
+          npx playwright install --with-deps chromium
+      - run: node scripts/endfield/import-si-weapon-details.mjs
+      - run: node scripts/endfield/check-budget.mjs
+      - name: Push validated public detail snapshot only if changed
+        shell: bash
+        run: |
+          git add src/data/endfield/catalog/equipment-details.json
+          if git diff --cached --quiet; then echo "Weapons already verified"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Add missing SKPORT Si signature and pass weapon tuning details"
+          git fetch origin feature-si-complete-guide-20261016
+          git rebase origin/feature-si-complete-guide-20261016
+          git push origin HEAD:feature-si-complete-guide-20261016
