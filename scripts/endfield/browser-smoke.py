@@ -391,9 +391,10 @@ def smoke_si(page, base_url, width):
                label+": distinct Meta build label "+tag)
     verify(page.locator("#ausruestung [data-build-button]").count()==9,
            label+": four Meta and five alternative/progression builds")
-    verify(cards.first.evaluate("(el)=>getComputedStyle(el.parentElement).gridTemplateColumns.split(' ').length")==2,
-           label+": four Meta builds form two equal columns on desktop" if width==1440 else
-           label+": mobile Meta cards render without grid overflow") if width==1440 else None
+    actual_columns=cards.first.evaluate(
+        "(el)=>getComputedStyle(el.parentElement).gridTemplateColumns.split(' ').length")
+    verify(actual_columns==(1 if width==390 else 2),
+           label+": Meta cards have "+("one mobile column" if width==390 else "two desktop columns"))
     verify(page.locator("#uebersicht .op-strengths-card").count()==1 and
            page.locator("#uebersicht .op-weaknesses-card").count()==1,
            label+": shared strength and weakness accent cards")
