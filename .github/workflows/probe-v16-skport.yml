@@ -1,0 +1,43 @@
+name: Read-only v1.6 SKPORT gear catalogue probe
+
+on:
+  # Rerun the read-only audit when SKPORT eventually publishes the new gear.
+  workflow_dispatch:
+  push:
+    branches: [feature-endfield-v16-all-gear-20261016]
+    paths:
+      - .github/workflows/probe-v16-skport.yml
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install locked dependencies and browser helpers
+        run: |
+          npm ci
+          npm install --no-save --package-lock=false playwright-core sharp
+          google-chrome --version
+      - name: Check 18-piece source inventory against the existing official snapshot
+        run: node scripts/endfield/probe-v16-skport.mjs
+      - name: Collect current anonymous SKPORT catalog and cache only missing WebP icons in workspace
+        run: node scripts/endfield/catalog-assets.mjs
+      - name: Audit all eighteen pieces against live official numeric catalog
+        run: node scripts/endfield/probe-v16-skport.mjs
+      - name: Verify new cache fits Endfield budget
+        run: node scripts/endfield/check-budget.mjs
+      - name: Upload normalized public catalog only, never browser sessions
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: skport-v16-gear-catalogue-audit
+          path: src/data/endfield/catalog/items.json
+          retention-days: 2
+          if-no-files-found: ignore
