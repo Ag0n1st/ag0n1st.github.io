@@ -8,6 +8,8 @@ status: draft # draft = verborgen; preview = sichtbare Vorschau; published = fer
 # updatedAt: 2026-10-15
 
 # 1. ÜBERSICHT
+# Stärken/Schwächen erhalten in allen Guides automatisch dezente grüne/rote
+# Akzent-Cards; keine Farben oder HTML in den Inhaltstexten notwendig.
 # Offizielle Klasse, Element, Waffentyp, Sterne, Skilltexte und Bilder NICHT
 # doppelt eintragen – sie werden künftig aus den automatischen Spieldaten geladen.
 guideVideo:
@@ -100,7 +102,7 @@ equipment:
   #   role: main-dps # main-dps | support | hybrid | sub-dps | control | other
   #   meta: true # optional; nur Meta-Builds werden oberhalb des Finders als kompakte Cards gezeigt
   #   metaSummary: "Kurze, aussagekräftige Empfehlung für den Meta-Build (max. 280 Zeichen)."
-  #   metaTag: balanced # optional: balanced (Cyan), max-dmg (Magenta), max-buffs (neutral)
+  #   metaTag: balanced # optional: balanced (Cyan), max-dmg (Magenta), max-buffs (neutral), early-access (warm)
   #   # metaSummary ist bei meta: true verpflichtend. Sonst fehlen lassen.
   #   # Detailtexte und alle nicht als Meta markierten Builds erscheinen weiterhin im Build-Finder.
   #   items: ["1246", "1245", "1244", "1243"] # Beispiel-IDs, KEINE Build-Empfehlung. EXAKT 4
