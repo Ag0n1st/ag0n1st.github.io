@@ -223,3 +223,22 @@
  .op-meta-build-part .op-mini-art{max-width:72px;margin-inline:auto}
  #build-finder{scroll-margin-top:193px}
 }
+
+/* The heavyweight Build-Finder is opt-in: native details keep keyboard and
+ * assistive-technology toggle semantics without a second JS state machine. */
+.op-build-finder-accordion{min-width:0}
+.op-build-finder-toggle{display:flex;align-items:center;justify-content:space-between;gap:14px;cursor:pointer;list-style:none;border:1px solid #454052;border-radius:13px;padding:18px;background:linear-gradient(110deg,rgba(240,91,212,.06),#1b1923 56%,rgba(101,232,242,.055))}
+.op-build-finder-toggle::-webkit-details-marker{display:none}
+.op-build-finder-toggle::marker{content:""}
+.op-build-finder-toggle:hover{border-color:rgba(101,232,242,.55)}
+.op-build-finder-toggle:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.op-build-finder-title{display:flex;flex-direction:column;gap:4px;min-width:0}
+.op-build-finder-title strong{font-size:16px;letter-spacing:-.025em;color:var(--white)}
+.op-build-finder-title small{color:var(--muted);font-size:12px;line-height:1.5}
+.op-build-finder-chevron{display:inline-grid;place-items:center;flex:0 0 32px;width:32px;height:32px;border-radius:9px;background:#292532;border:1px solid #3f3849;color:var(--cyan);font-size:21px;transition:transform .18s}
+.op-build-finder-accordion[open]>.op-build-finder-toggle .op-build-finder-chevron{transform:rotate(180deg)}
+.op-build-finder-content{padding-top:22px}
+@media(max-width:680px){
+ .op-build-finder-toggle{padding:14px}
+ .op-build-finder-content{padding-top:17px}
+}

@@ -53,9 +53,13 @@ const metaBuilds=officialBuilds.filter(build=>build.meta===true);
           </div>
           <p class="op-muted op-meta-build-hint">Weitere Informationen zu Werten, Seteffekten, Herstellung und Freischaltungen sowie alle Progressions-Builds findest du im Build-Finder weiter unten.</p>
         </div>}
-        <div class="op-divided" id="build-finder">
-          <h3>Build-Finder</h3>
-          <p class="op-section-intro">Wähle Level, höchste herstellbare Fabrikkomponente und die bereits freigeschalteten Gebiete. Der Finder prüft bei jedem Build alle vier Ausrüstungsteile einzeln – einschließlich des Blaupausenbesitzes.</p>
+        <details class="op-divided op-build-finder-accordion" id="build-finder">
+          <summary class="op-build-finder-toggle">
+            <span class="op-build-finder-title"><strong>Build-Finder</strong><small>Ausführliche Builds, Filter und Herstellung anzeigen</small></span>
+            <span class="op-build-finder-chevron" aria-hidden="true">⌄</span>
+          </summary>
+          <div class="op-build-finder-content">
+            <p class="op-section-intro">Der Finder startet mit maximalem Fortschritt und allen verfügbaren Blaupausen als Vorauswahl. Passe Level, Fabrikkomponente, Region, Gebiete und Vorlagen an deinen tatsächlichen Spielstand an. Jede Auswahl ist unabhängig und kein automatischer Abgleich mit deinem Spielkonto.</p>
           <div class="op-two">
             <label class="op-cardlet" style="font-size:12px">Operator- / Ausrüstungslevel
               <select class="op-select" id="op-level">
@@ -90,7 +94,7 @@ const metaBuilds=officialBuilds.filter(build=>build.meta===true);
               </label>
               <div class="op-cardlet op-story-help">
                 <strong>Freigeschaltete Gebiete</strong>
-                <p class="op-muted">Wähle nur Gebiete, die du im Spiel tatsächlich betreten kannst. Ein Gebiet der aktuellen Version wird nicht automatisch freigeschaltet.</p>
+                <p class="op-muted">Standardmäßig gelten für den Vergleich alle bekannten Gebiete als freigeschaltet. Deaktiviere die Gebiete, die du in deinem eigenen Spielstand noch nicht erreicht hast.</p>
               </div>
             </div>
             <details class="op-details op-story-areas" id="op-story-areas-panel">
@@ -107,7 +111,7 @@ const metaBuilds=officialBuilds.filter(build=>build.meta===true);
                         </label>)}
                     </div>
                   </fieldset>)}
-                <p class="op-muted">Die Auswahl bestätigt nur den Gebiets-Zugang, nicht das Einsammeln der dortigen Blaupausenkisten. Nebenmissionen können Gebiete unabhängig von der Hauptstory freischalten.</p>
+                <p class="op-muted">Die Maximal-Vorauswahl ist eine Annahme, kein Nachweis über Story-Quests oder Blaupausenkisten. Einzelne Gebiete können auch unabhängig vom Hauptkapitel freigeschaltet sein.</p>
               </div>
             </details>
             <details class="op-details op-story-extra">
@@ -123,7 +127,7 @@ const metaBuilds=officialBuilds.filter(build=>build.meta===true);
                   </select>
                 </label>
               </div>
-              <p class="op-muted">Auch ein erreichtes Autoritätslevel oder eine Warenumverteilungsstufe bestätigt noch nicht, dass eine Vorlage abgeholt wurde.</p>
+              <p class="op-muted">Maximalwerte werden nur als Startannahme gesetzt. Dein tatsächliches Autoritätslevel und deine Warenumverteilungsstufe können darunter liegen.</p>
             </details>
           </div>
           <div class="op-notice" style="margin-top:12px">
@@ -134,12 +138,12 @@ const metaBuilds=officialBuilds.filter(build=>build.meta===true);
               Auch noch gesperrte oder ungeprüfte Builds anzeigen
             </label>
           </div>
-          <p class="op-muted">Die Komponentenstufe stammt aus offiziellen Standardrezepten; die Gebiets- und Einzelteilhinweise aus unserer gekennzeichneten Recherche. Reicht ein Fundortnachweis nicht aus, bleibt das Ergebnis ungeklärt. Deine Eingaben werden nur in diesem Browser gespeichert, ohne Login.</p>
-          <button class="op-progress-reset" type="button" id="op-progress-reset">Gespeicherten Story- und Blaupausenfortschritt zurücksetzen</button>
+          <p class="op-muted">Standardprofil: Alle hier angebotenen Gear-Blaupausen und Freischaltungen werden als verfügbar <strong>angenommen</strong>, nicht als realer Besitz bestätigt. Komponenten und Rezepte stammen aus offiziellen Spieldaten, Fundortangaben aus gekennzeichneter Recherche. Änderungen werden nur in diesem Browser gespeichert, ohne Login.</p>
+          <button class="op-progress-reset" type="button" id="op-progress-reset">Maximal-Vorauswahl wiederherstellen (Anpassungen löschen)</button>
           <div class="op-notice op-gear-disclaimer" style="margin-top:12px"><strong>Hinweis zur Ausrüstung:</strong> Achtet bei der Ausrüstung grundsätzlich darauf, Ausrüstungsteile zu nutzen, die das Haupt- und Sekundärattribut des jeweiligen Operators erhöhen. Das gilt besonders für Builds auf niedrigeren Leveln.</div>
           {guide.equipment.generalNotes && <p class="op-body-copy">{guide.equipment.generalNotes}</p>}
-        </div>
-        <div class="op-divided">
+          </div>
+          <div class="op-divided">
           <h3>Empfohlene Ausrüstung</h3>
           {officialBuilds.length ? <>
             <p id="op-build-empty" class="op-notice" hidden>Kein Build ist für deine bisherigen Angaben vollständig verfügbar. Ändere den Fortschritt, bestätige die eigenen Blaupausen oder aktiviere die Anzeige gesperrter Builds.</p>
@@ -159,13 +163,13 @@ const metaBuilds=officialBuilds.filter(build=>build.meta===true);
               {b.storyUnlock && <p class="op-body-copy"><strong>Redaktioneller Story-Hinweis:</strong> {b.storyUnlock}</p>}
               <p class="op-body-copy" data-build-reason aria-live="polite">Story- und Blaupausenstatus wird geprüft …</p>
               <fieldset class="op-blueprint-checklist">
-                <legend>Blaupausenbesitz bestätigen</legend>
+                <legend>Blaupausen-Auswahl (standardmäßig alle aktiv)</legend>
                 {b.parts.map(part=><label class="op-blueprint-check">
                   <input type="checkbox" data-blueprint-owned={part.catalog?.id??part.reference}
                     disabled={!part.catalog} />
                   <span>{part.catalog?.name??part.reference}</span>
                 </label>)}
-                <p class="op-muted">Markiere nur Blaupausen, die du bereits tatsächlich erhalten hast. Diese Angaben gelten für das jeweilige Ausrüstungsteil – auch in anderen Guides.</p>
+                <p class="op-muted">Alle Vorlagen sind zum Vergleich anfangs vorausgewählt. Entferne Häkchen bei Blaupausen, die dir tatsächlich fehlen. Gleiche Gear-IDs werden über alle Builds und Operatoren gemeinsam ausgewertet.</p>
               </fieldset>
               {b.teamContext && <p class="op-body-copy"><strong>Einsatzbereich:</strong> {b.teamContext}</p>}
               {b.setBonusNotes && <p class="op-body-copy"><strong>Seteffekte:</strong> {b.setBonusNotes}</p>}
@@ -231,4 +235,6 @@ const metaBuilds=officialBuilds.filter(build=>build.meta===true);
             <div class="op-mini-list">{guide.equipment.progression.map((p,i)=><div class="op-cardlet"><strong>{i+1}. {stageLabels[p.stage]}</strong><p class="op-body-copy">{p.note}</p></div>)}</div> :
             <p class="op-placeholder">[Progressionsübersicht nach Story und Fabrik folgt]</p>}
         </div>
+          </div>
+        </details>
       </section>
