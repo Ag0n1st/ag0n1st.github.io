@@ -5,6 +5,8 @@ import {resolveOfficialItem} from "../../../lib/endfield/itemCatalog";
 interface GearRow {
   member:string;
   items:[string,string,string,string];
+  weaponId?:string;
+  weaponRank?:number;
   note?:string;
 }
 interface Props {
@@ -12,9 +14,10 @@ interface Props {
   displayTeamMember:(slug:string)=>string;
 }
 const {rows,displayTeamMember}=Astro.props;
-const resolved=rows.map(row=>({...row,parts:row.items.map(id=>({
-  id,official:resolveOfficialItem(id,"Gear")
-}))}));
+const resolved=rows.map(row=>({...row,
+  weapon:row.weaponId?resolveOfficialItem(row.weaponId,"Weapons"):undefined,
+  parts:row.items.map(id=>({id,official:resolveOfficialItem(id,"Gear")}))
+}));
 ---
 {resolved.length>0 && <details class="op-details op-team-gear">
   <summary>Beispielausrüstung der Teammitglieder · {resolved.length} Operatoren</summary>
@@ -23,6 +26,10 @@ const resolved=rows.map(row=>({...row,parts:row.items.map(id=>({
     <div class="op-team-gear-list">
       {resolved.map(row=><div class="op-team-gear-entry">
         <strong>{displayTeamMember(row.member)}</strong>
+        {row.weaponId && <div class="op-team-member-weapon">
+          <ItemIcon id={row.weapon?.id??row.weaponId} size="small" />
+          <span><small>Waffe{row.weaponRank?" · R"+row.weaponRank:""}</small><strong>{row.weapon?.name??row.weaponId}</strong></span>
+        </div>}
         <div class="op-team-gear-parts">
           {row.parts.map(part=><div class="op-team-gear-part">
             <ItemIcon id={part.official?.id??part.id} size="small"/>
