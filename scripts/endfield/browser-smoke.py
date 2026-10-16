@@ -208,6 +208,96 @@ def smoke(page, base_url, width):
     check_overflow(page, label)
 
 
+def smoke_typhoeus(page, base_url, width):
+    label = str(width) + "px Typhoeus"
+    guide(page, base_url, "typhoeus")
+    check_overflow(page, label)
+    verify(page.locator(".op-preview-banner").count() == 0,
+           label + ": complete editorial guide is not marked as placeholder")
+    verify(page.locator("#uebersicht .op-quick-weapons-card .op-quick-weapon-item").count() == 3,
+           label + ": three confirmed Typhoeus weapon recommendations in one card")
+    verify(page.locator("#uebersicht .op-quick-partners-card .op-gear-part").count() == 4,
+           label + ": all four unique partners from creator-approved Meta team core")
+    verify("wNVJkGzkfMg" in (page.locator(
+        "#uebersicht iframe.op-video-embed").first.get_attribute("src") or ""),
+           label + ": real 29-minute Ag0n1st guide video is embedded")
+
+    verify(page.locator("#ausruestung .op-meta-build-card").count() == 2,
+           label + ": both core endgame builds have concise Meta cards")
+    verify(page.locator("#ausruestung [data-build-button]").count() == 6,
+           label + ": three endgame and three progression builds (36/50/60)")
+    verify(page.locator("#teams .op-meta-team-heading").count() == 2,
+           label + ": two Meta teams and their distinct operator roles")
+    verify(page.locator("#teams .op-team-gear").count() == 2,
+           label + ": team-specific teammate gear notes are disclosed on demand")
+    for team_gear in page.locator("#teams .op-team-gear").all():
+        team_gear.evaluate("el => el.open = true")
+        verify(team_gear.locator(".op-team-gear-entry").count() == 3,
+               label + ": each Meta team has three additional operator loadouts")
+        verify(team_gear.locator(".op-team-gear-part img").count() == 12,
+               label + ": twelve SKPORT Gear WebP icons per Meta lineup")
+        img = team_gear.locator(".op-team-gear-part img").first
+        img.scroll_into_view_if_needed()
+        page.wait_for_function(
+            "(el) => el.complete && el.naturalWidth > 10", arg=img.element_handle())
+    verify(page.locator("#teams [data-team-role]").count() == 5,
+           label + ": five alternative teams including Trial and Nefarith")
+
+    skill_priorities = page.locator("#uebersicht .op-priority-skill small").all_text_contents()
+    verify(len(skill_priorities) == 4 and skill_priorities[0] == "Kampffertigkeit"
+           and skill_priorities[1] == "Kombofertigkeit",
+           label + ": Battle > Combo skill priority from authored script")
+
+    verify(page.locator("#waffen [data-weapon-button]").count() == 3,
+           label + ": signature, Battle Pass and conditional alternate weapon")
+    weapon_details = page.locator('#waffen details[data-guide-disclosure="weapon-details"]')
+    weapon_details.evaluate("el => el.open = true")
+    for button in page.locator("#waffen [data-weapon-button]").all():
+        wid = button.get_attribute("data-weapon-button")
+        button.click()
+        panel = page.locator('[data-weapon-panel="' + wid + '"]')
+        verify(panel.locator(".op-weapon-attributes-table tbody tr").count() == 3,
+               label + ": full verified SKPORT weapon attributes " + wid)
+        panel.locator(".op-weapon-detailed-stats").evaluate("el => el.open = true")
+        verify(panel.locator(".op-weapon-tuning-table tbody tr").count() == 6,
+               label + ": six original weapon tuning stages " + wid)
+        verify(panel.locator(".op-weapon-material-cell img").count() >= 3,
+               label + ": weapon tuning costs use cached item icons " + wid)
+
+    for n in (1, 3, 5):
+        page.locator('[data-potential-button="' + str(n) + '"]').click()
+        pot = page.locator('[data-potential-panel="' + str(n) +
+                           '"] .op-potential-snapshot img')
+        pot.wait_for(state="visible")
+        verify(pot.count() == 1 and pot.get_attribute("src").endswith(
+            "/images/endfield/operators/typhoeus/potentials/potential-" + str(n) + ".webp"),
+               label + ": specific P" + str(n) + " static potential snapshot")
+        page.wait_for_function(
+            "(el) => el.complete && el.naturalWidth > 100", arg=pot.element_handle())
+    gallery = page.locator("#potenziale .op-potential-snapshot a").first.get_attribute("href")
+    verify("Typhoeus/Gallery" in gallery,
+           label + ": potential images link to Typhoeus gallery, not Liino")
+
+    showcase = page.locator("#gameplay [data-showcase-panel]")
+    verify(showcase.count() == 6,
+           label + ": all six actual gameplay videos/chapters plus quiz")
+    verify(page.locator("#gameplay .op-gameplay-pending-label").count() == 0,
+           label + ": real gameplay section, no FUTURE placeholder")
+    verify("start=974" in (page.locator(
+        '[data-showcase-panel="trial-erlaeutert"] iframe').get_attribute("src") or ""),
+           label + ": trial video starts at documented guide chapter")
+    verify("start=1218" in (page.locator(
+        '[data-showcase-panel="echos-zwei-gegner"] iframe').get_attribute("src") or ""),
+           label + ": Echoes chapter start preserved in embedded video")
+    verify(page.locator("#gameplay .op-showcase-button .op-faux-thumb img").count() == 6,
+           label + ": all six showcase tiles use real local WebP thumbnails")
+    thumb = page.locator("#gameplay .op-showcase-button .op-faux-thumb img").first
+    thumb.scroll_into_view_if_needed()
+    page.wait_for_function(
+        "(el) => el.complete && el.naturalWidth > 100", arg=thumb.element_handle())
+    check_overflow(page, label + " all sections")
+
+
 def main():
     if not (DIST / "index.html").is_file():
         raise SystemExit("Missing dist; run npm run build first")
@@ -224,7 +314,9 @@ def main():
                         viewport={"width": width, "height": 900},
                         reduced_motion="reduce")
                     try:
-                        smoke(context.new_page(), base_url, width)
+                        page = context.new_page()
+                        smoke(page, base_url, width)
+                        smoke_typhoeus(page, base_url, width)
                     finally:
                         context.close()
             finally:

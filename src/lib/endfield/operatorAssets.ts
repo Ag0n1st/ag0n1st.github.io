@@ -19,3 +19,24 @@ export function getOperatorImageUrl(
   }
   return publicRemoteUrl;
 }
+
+/** Public YouTube video thumb -> optional local cached 320x180 WebP.
+ * Never request a remote image while building or rendering a static page.
+ */
+export function getGuideThumbnailUrl(videoUrl?:string):string|undefined{
+  if(!videoUrl)return undefined;
+  let id:string|undefined;
+  try{
+    const url=new URL(videoUrl);
+    const host=url.hostname.toLowerCase();
+    if(host==="youtu.be")id=url.pathname.split("/")[1];
+    else if(["youtube.com","www.youtube.com","m.youtube.com"].includes(host)){
+      if(url.pathname==="/watch")id=url.searchParams.get("v")??undefined;
+      else if(url.pathname.startsWith("/embed/"))id=url.pathname.split("/")[2];
+    }
+  }catch{return undefined;}
+  if(!id||!/^[A-Za-z0-9_-]{11}$/.test(id))return undefined;
+  const name=id+".webp",root="public/images/endfield/video-thumbnails";
+  return existsSync(join(process.cwd(),root,name))
+    ?"/images/endfield/video-thumbnails/"+name:undefined;
+}

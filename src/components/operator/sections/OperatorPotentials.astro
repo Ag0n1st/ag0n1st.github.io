@@ -3,7 +3,8 @@ import type { OperatorGuideModel } from "../../../lib/endfield/operatorGuideMode
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
-const { guide, localized, trPotential, officialPotentials, potentialByLevel, getOperatorImageUrl } = model;
+const { guide, gameData, localized, trPotential, officialPotentials, potentialByLevel, getOperatorImageUrl } = model;
+const wikiGalleryUrl="https://endfield.wiki.gg/wiki/"+encodeURIComponent(gameData?.operator.name??guide.displayName??guide.operator)+"/Gallery";
 ---
 <section class="op-section" id="potenziale">
         <h2>Potenziale</h2>
@@ -21,7 +22,7 @@ const { guide, localized, trPotential, officialPotentials, potentialByLevel, get
                 const snapshot=getOperatorImageUrl(guide.operator, ("potential-"+n) as "potential-1" | "potential-3" | "potential-5");
                 return snapshot ? <figure class="op-potential-snapshot">
                   <img src={snapshot} width="960" height="540" loading="lazy" decoding="async" alt={"Operator-Snapshot "+guide.operator+" P"+n} />
-                  <figcaption>Freischaltbarer Operator-Snapshot · P{n} · <a href="https://endfield.wiki.gg/wiki/Liino/Gallery" target="_blank" rel="noopener noreferrer">Bildreferenz: Endfield Talos Wiki ↗</a></figcaption>
+                  <figcaption>Freischaltbarer Operator-Snapshot · P{n} · <a href={wikiGalleryUrl} target="_blank" rel="noopener noreferrer">Bildreferenz: Endfield Talos Wiki ↗</a></figcaption>
                 </figure> : null;
               })()}
               {p?.evaluation && <p class="op-body-copy"><strong>Einordnung:</strong> {p.evaluation}</p>}

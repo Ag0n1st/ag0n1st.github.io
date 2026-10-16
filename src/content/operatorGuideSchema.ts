@@ -109,6 +109,24 @@ const team = z.object({
   buildId: identifier.optional(),
   note: text.optional(),
   evaluation: text.optional(),
+  // Optional documented example equipment for teammates. Never part of the
+  // character's own build finder; avoid asserting account ownership.
+  memberGear: z.array(z.object({
+    member: identifier,
+    items: z.tuple([identifier,identifier,identifier,identifier]),
+    note: text.optional(),
+  })).default([]),
+}).superRefine((team,ctx)=>{
+  const loaded=new Set<string>();
+  for(const [i,entry] of team.memberGear.entries()){
+    if(!team.members.includes(entry.member))
+      ctx.addIssue({code:z.ZodIssueCode.custom,path:["memberGear",i,"member"],
+        message:"Ausrüstung darf nur für ein Mitglied dieses Teams hinterlegt werden."});
+    if(loaded.has(entry.member))
+      ctx.addIssue({code:z.ZodIssueCode.custom,path:["memberGear",i,"member"],
+        message:"Teammitglieder dürfen nur einmal Ausrüstung erhalten."});
+    loaded.add(entry.member);
+  }
 });
 
 const showcase = z.object({

@@ -385,3 +385,24 @@
   .op-weapon-tuning-table{min-width:760px}
   .op-weapon-tuning-table th:nth-child(5){width:240px}
 }
+
+/* Optional team-specific support builds: four real SKPORT item icons each.
+   Details remain collapsed to keep the primary meta-team cards scannable. */
+.op-team-gear{margin:15px 0 10px}
+.op-team-gear-caveat{margin:0 0 12px!important;font-size:10px!important}
+.op-team-gear-list{display:flex;flex-direction:column;gap:12px}
+.op-team-gear-entry{padding:12px;border:1px solid #3d3648;border-radius:10px;min-width:0;background:#191822}
+.op-team-gear-entry>strong{display:block;font-size:12px;margin-bottom:9px}
+.op-team-gear-entry>p{margin:8px 0 0;font-size:10px!important}
+.op-team-gear-parts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
+.op-team-gear-part{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0;text-align:center}
+.op-team-gear-part img{width:30px;height:30px;object-fit:contain}
+.op-team-gear-part small{font-size:9px;line-height:1.35;color:var(--muted);overflow-wrap:anywhere}
+@media(max-width:420px){
+  .op-team-gear-entry{padding:8px}
+  .op-team-gear-part small{font-size:8px}
+}
+/* Static YouTube thumbnails belong to uploaded WebP game resources;
+   video streaming is never hosted in the GitHub Pages repository. */
+.op-faux-thumb{overflow:hidden}
+.op-faux-thumb img{display:block;width:100%;height:100%;object-fit:cover}

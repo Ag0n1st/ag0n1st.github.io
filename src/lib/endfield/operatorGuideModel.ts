@@ -152,7 +152,14 @@ function youtubeEmbed(url?:string):string|null {
       if(parsed.pathname==="/watch") id=parsed.searchParams.get("v");
       else if(parsed.pathname.startsWith("/shorts/")||parsed.pathname.startsWith("/embed/")||parsed.pathname.startsWith("/live/")) id=parsed.pathname.split("/")[2];
     }
-    return id && /^[a-zA-Z0-9_-]{11}$/.test(id) ? "https://www.youtube-nocookie.com/embed/"+id : null;
+    if(!id||!/^[a-zA-Z0-9_-]{11}$/.test(id))return null;
+    // Static section deep links start a user-invoked video at its actual chapter.
+    // Never autoplay or inherit arbitrary URL parameters.
+    const start=parsed.searchParams.get("start")??parsed.searchParams.get("t")??"";
+    const match=start.match(/^(\d{1,5})s?$/);
+    const seconds=match?Number(match[1]):0;
+    return "https://www.youtube-nocookie.com/embed/"+id
+      +(seconds>0 && seconds<=86400?"?start="+seconds:"");
   }catch{return null;}
 }
 const videoEmbed=youtubeEmbed(guide.guideVideo.url);
