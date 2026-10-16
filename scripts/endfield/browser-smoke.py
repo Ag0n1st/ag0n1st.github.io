@@ -87,26 +87,6 @@ def smoke(page, base_url, width):
         verify(page.locator("#uebersicht .op-quick-stats").evaluate(
             "(el) => getComputedStyle(el).alignItems") == "start",
                label + ": gear and skill quick cards do not stretch")
-    comparison = page.locator('#waffen details[data-guide-disclosure="weapon-comparison"]')
-    comparison.evaluate("el => el.open = true")
-    scenarios = page.locator("#waffen .op-comparison-scenario")
-    verify(scenarios.count() == 2,
-           label + ": both Datafield character-profile weapon scenarios are shown")
-    verify("124,7 %" in scenarios.first.inner_text() and
-           "84,3 %" in scenarios.first.inner_text(),
-           label + ": actual Ardelia/Arcane/Liino ranking includes R9 and R4")
-    verify("123,3 %" in scenarios.nth(1).inner_text(),
-           label + ": No-Liino lower-ATK scenario stays separate")
-
-    pot_comparison = page.locator('#potenziale details[data-guide-disclosure="potential-comparison"]')
-    pot_comparison.evaluate("el => el.open = true")
-    verify(page.locator("#potenziale .op-potential-comparison-table tbody tr").count() == 5,
-           label + ": five potential ranks with source-specific comparisons")
-    potential_text = page.locator("#potenziale .op-potential-comparison-table").inner_text()
-    verify("8,8 %" in potential_text and "6,6 %" in potential_text and
-           "8,3 %" in potential_text and "0,0 %" in potential_text,
-           label + ": separate Datafield Ultimate-energy vs no-extra-energy P gains")
-
     for n in (1, 3, 5):
         page.locator('[data-potential-button="' + str(n) + '"]').click()
         img = page.locator('[data-potential-panel="' + str(n) +
@@ -289,6 +269,26 @@ def smoke_typhoeus(page, base_url, width):
                label + ": six original weapon tuning stages " + wid)
         verify(panel.locator(".op-weapon-material-cell img").count() >= 3,
                label + ": weapon tuning costs use cached item icons " + wid)
+
+    comparison = page.locator('#waffen details[data-guide-disclosure="weapon-comparison"]')
+    comparison.evaluate("el => el.open = true")
+    scenarios = page.locator("#waffen .op-comparison-scenario")
+    verify(scenarios.count() == 2,
+           label + ": both Datafield character-profile weapon scenarios are shown")
+    verify("124,7 %" in scenarios.first.inner_text() and
+           "84,3 %" in scenarios.first.inner_text(),
+           label + ": actual Ardelia/Arcane/Liino ranking includes R9 and R4")
+    verify("123,3 %" in scenarios.nth(1).inner_text(),
+           label + ": No-Liino lower-ATK scenario stays separate")
+
+    pot_comparison = page.locator('#potenziale details[data-guide-disclosure="potential-comparison"]')
+    pot_comparison.evaluate("el => el.open = true")
+    verify(page.locator("#potenziale .op-potential-comparison-table tbody tr").count() == 5,
+           label + ": five potential ranks with source-specific comparisons")
+    potential_text = page.locator("#potenziale .op-potential-comparison-table").inner_text()
+    verify("8,8 %" in potential_text and "6,6 %" in potential_text and
+           "8,3 %" in potential_text and "0,0 %" in potential_text,
+           label + ": separate Datafield Ultimate-energy vs no-extra-energy P gains")
 
     for n in (1, 3, 5):
         page.locator('[data-potential-button="' + str(n) + '"]').click()
