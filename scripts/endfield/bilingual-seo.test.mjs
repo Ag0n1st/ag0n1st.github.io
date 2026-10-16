@@ -34,6 +34,10 @@ test("All three English editorial guides are real English content keyed to the o
   assert.ok(existsSync("src/data/endfield/operators/"+slug+".json"));
  }
  assert.match(en.si.priority.support,/Battle Skill > Ultimate > Combo Skill/);
+ assert.match(JSON.stringify(en.si.mechanics),/Initial Stroke \(15 SP\)/);
+ assert.match(JSON.stringify(en.si.mechanics),/Final Stroke/);
+ assert.match(JSON.stringify(en.si.mechanics),/Inksoul/);
+ assert.doesNotMatch(JSON.stringify(en),/First Brushstroke|Last Brushstroke|\\bFP\\b/);
  assert.match(en.si.builds["si-early-access"].text,/older Type 50 Yinglung Gloves/);
  assert.match(en.typhoeus.intro,/Nature/);
  assert.match(en.liino.intro,/Electric/);
