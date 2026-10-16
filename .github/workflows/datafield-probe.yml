@@ -1,20 +1,23 @@
-name: Probe rendered Datafield Liino data
+name: Export Datafield character (manual)
 
 on:
-  push:
-    branches: [research-datafield-rendered-dom-export-20261016]
-    paths:
-      - scripts/endfield/datafield_rendered_export.py
-      - .github/workflows/datafield-probe.yml
   workflow_dispatch:
+    inputs:
+      slug:
+        description: 'Datafield character slug, e.g. liino (one public page per run)'
+        required: true
+        default: 'liino'
+        type: string
 
 permissions:
   contents: read
 
 jobs:
-  probe:
+  export:
     runs-on: ubuntu-latest
     timeout-minutes: 8
+    env:
+      DATAFIELD_SLUG: ${{ inputs.slug }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -23,14 +26,15 @@ jobs:
       - name: Install browser for research (not part of Astro/Pages)
         run: |
           python -m pip install --disable-pip-version-check playwright
-          python -m playwright install --with-deps chromium
-      - name: Probe a single public Datafield character page
+          python -m playwright install chromium
+      - name: Export one rendered Datafield character
         run: |
-          python scripts/endfield/datafield_rendered_export.py liino --output datafield-liino-probe.json --timeout-ms 60000
-      - uses: actions/upload-artifact@v4
+          python scripts/endfield/datafield_rendered_export.py "$DATAFIELD_SLUG" --output datafield-character-snapshot.json --timeout-ms 65000
+      - name: Upload JSON snapshot even if incomplete
         if: always()
+        uses: actions/upload-artifact@v4
         with:
-          name: datafield-liino-rendered-snapshot
-          path: datafield-liino-probe.json
+          name: datafield-character-snapshot
+          path: datafield-character-snapshot.json
           if-no-files-found: ignore
-          retention-days: 3
+          retention-days: 7
