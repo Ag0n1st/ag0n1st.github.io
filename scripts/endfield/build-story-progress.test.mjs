@@ -70,7 +70,8 @@ test("four pieces must all be confirmed before the story gate can return availab
  assert.equal(evaluateBuildStoryAccess(items.slice(0,3),progress()).status,"story-unverified");
 });
 test("level + factory + area plus all owned blueprints produces a valid fully available build",()=>{
- const ids=["341","338","353","371"];
+ // A legitimate equipment layout: one Armor, one Gloves and two Kits.
+ const ids=["353","341","338","325"];
  const rows=ids.map(id=>data.find(x=>x.id===id));
  const req=getBuildRequirements(rows,{storyUnlock:"Redaktionell geprüft",
   locations:rows.map(locationOf)});
