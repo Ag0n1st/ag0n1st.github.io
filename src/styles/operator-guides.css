@@ -242,3 +242,11 @@
  .op-build-finder-toggle{padding:14px}
  .op-build-finder-content{padding-top:17px}
 }
+
+/* Max/min progress profiles live side by side, wrapping on narrow screens. */
+.op-progress-preset-actions{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;margin-top:12px}
+.op-progress-preset-button{flex:1 1 230px;min-height:44px;padding:11px 14px;border:1px solid #595066;border-radius:10px;background:#26202f;color:#e8e3ed;font:inherit;font-size:12px;font-weight:700;line-height:1.5;text-align:center;cursor:pointer;transition:border-color .15s,background .15s}
+.op-progress-preset-button:hover{border-color:var(--cyan);background:#2d2837}
+.op-progress-preset-button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.op-progress-preset-min{border-color:rgba(101,232,242,.38);background:rgba(101,232,242,.07);color:#b3f0f4}
+@media(max-width:680px){.op-progress-preset-actions{gap:8px}.op-progress-preset-button{flex-basis:100%;min-height:44px}}
