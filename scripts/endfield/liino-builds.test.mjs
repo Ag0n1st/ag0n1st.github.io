@@ -146,11 +146,17 @@ test("the shared equipment framework places responsive Meta Builds before the Fi
   assert.match(template,/metaSummary:/);
 });
 
-test("other guides are not forced to invent meta recommendations",()=>{
+test("Meta tags only come from authored guides; other operators are never forced",()=>{
  const typhoeus=readFileSync("src/content/operator-guides/typhoeus.md","utf8");
- assert.doesNotMatch(typhoeus,/^      meta: true$/m);
+ // Since the October 2026 Typhoeus guide was authored, its two Meta builds
+ // must stay real editorial entries; this old test must not require a prototype.
+ assert.equal((typhoeus.match(/^      meta: true$/gm)||[]).length,2);
+ assert.equal((typhoeus.match(/^      metaSummary:/gm)||[]).length,2);
+ const template=readFileSync("src/content/operator-guides/_template.md","utf8");
+ assert.match(template,/meta: true/,"the template merely explains the optional tag");
  const model=readFileSync("src/lib/endfield/operatorGuideModel.ts","utf8");
- assert.match(model,/meta:false,metaSummary:""/);
+ assert.match(model,/meta:false,metaSummary:""/,
+   "the demo build is never falsely marked as Meta");
 });
 
 test("creator-approved Liino skill priority uses the exact four level targets and comparisons",()=>{
