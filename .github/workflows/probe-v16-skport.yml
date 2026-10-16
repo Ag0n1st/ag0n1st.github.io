@@ -1,6 +1,8 @@
 name: Read-only v1.6 SKPORT gear catalogue probe
 
 on:
+  # Rerun the read-only audit when SKPORT eventually publishes the new gear.
+  workflow_dispatch:
   push:
     branches: [feature-endfield-v16-all-gear-20261016]
     paths:
