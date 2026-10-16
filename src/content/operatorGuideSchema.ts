@@ -117,10 +117,23 @@ const team = z.object({
     // Individual teammate weapons are separate from the four armor/gear slots.
     weaponId: identifier.optional(),
     weaponRank: z.number().int().min(1).max(9).optional(),
+    // The author's optional second/third weapon choices; never imply a rank.
+    weaponAlternatives: z.array(identifier).max(4).default([]),
+    // Distinct documented loadouts, depending on Xiranite teammates,
+    // Ultimate energy needs or stagger/Arts-intensity strategy.
+    alternatives: z.array(z.object({
+      title: z.string().trim().min(1).max(160),
+      items: z.tuple([identifier,identifier,identifier,identifier]),
+      note: text.optional(),
+    })).max(6).default([]),
     note: text.optional(),
   }).superRefine((row,ctx)=>{
     if(row.weaponRank!==undefined && !row.weaponId)
       ctx.addIssue({code:z.ZodIssueCode.custom,path:["weaponId"],message:"Waffenrang benötigt eine belegte Waffen-ID."});
+    if(row.weaponAlternatives.some(w=>w===row.weaponId)||
+       new Set(row.weaponAlternatives).size!==row.weaponAlternatives.length)
+      ctx.addIssue({code:z.ZodIssueCode.custom,path:["weaponAlternatives"],
+        message:"Waffenempfehlungen dürfen nicht doppelt erscheinen."});
   })).default([]),
 }).superRefine((team,ctx)=>{
   const loaded=new Set<string>();
