@@ -1,0 +1,27 @@
+name: One-time Typhoeus progression gear audit
+on:
+  push:
+    branches: [feature-typhoeus-complete-guide-20261016]
+    paths: [.github/workflows/audit-typhoeus-progression.yml]
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect official gear at levels 36, 50 and 60
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const j=JSON.parse(fs.readFileSync("src/data/endfield/catalog/equipment-details.json","utf8"));
+          for(const lvl of [36,50,60]){
+            const matches=j.gear.filter(x=>x.level===lvl&&x.status==="verified")
+              .map(x=>{
+                const rows=x.stats.flatMap(t=>t.tables.flatMap(t=>t.rows));
+                const metric=rows.filter(r=>/Agility|Arts Intensity|ATK|Nature DMG|Ultimate Gain|Main Attribute/i.test(r.cells.join(" "))).map(r=>r.cells.slice(0,2).join(":")).slice(0,5);
+                return {id:x.id,name:x.name,slot:x.gearSlot,set:x.setName,level:x.level,stats:metric,recipeStatus:x.recipeStatus};
+              });
+            console.log("GEAR_LEVEL_"+lvl+" "+JSON.stringify(matches).slice(0,120000));
+          }
+          NODE
