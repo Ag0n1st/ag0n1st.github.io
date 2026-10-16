@@ -246,7 +246,7 @@ export const operatorGuideSchema = z.object({
       title: z.string().trim().min(1),
       sourceNote: z.string().trim().min(1),
       comparisonConditions: z.string().trim().min(1),
-      snapshotDate: z.string().regex(/^\\d{4}-\\d{2}-\\d{2}$/).optional(),
+      snapshotDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
       entries: z.array(z.object({
         level: z.number().int().min(1).max(5),
         increaseOverPreviousPercent: z.number().finite(),
