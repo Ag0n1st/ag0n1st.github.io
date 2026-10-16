@@ -1,5 +1,6 @@
 ---
 import type { OperatorGuideModel } from "../../../lib/endfield/operatorGuideModel";
+import { getGuideThumbnailUrl } from "../../../lib/endfield/operatorAssets";
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
@@ -23,7 +24,7 @@ const { guide, showcaseTypeLabels, showcases, selectedShowcaseIndex, youtubeEmbe
                 <div class="op-subtitle"><h3 style="margin:0">{run.title}</h3><span class="op-chip">{showcaseTypeLabels[run.type]}</span></div>
                 {embed ?
                   <iframe class="op-video-embed" loading="lazy" src={embed} title={run.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> :
-                  <div class="op-video-placeholder" style="margin-top:12px"><div><span aria-hidden="true">▶</span><br />[Gameplay-Video / Clip]</div></div>
+                  <div class="op-notice" style="margin-top:12px">Zu diesem Eintrag ist kein eigenständiger Video-Link hinterlegt. Die schriftlichen Rotationshinweise sind unten verfügbar.</div>
                 }
                 {run.url && <p><a class="op-link" href={run.url} target="_blank" rel="noopener noreferrer">Run öffnen ↗</a></p>}
                 {run.description && <p class="op-body-copy">{run.description}</p>}
@@ -32,7 +33,9 @@ const { guide, showcaseTypeLabels, showcases, selectedShowcaseIndex, youtubeEmbe
             })}
           </div>
           <div class="op-divided"><h3>Weitere Runs</h3>
-            <div class="op-media-list">{showcases.map((run,i)=><button type="button" class="op-cardlet op-showcase-button" data-showcase-button={run.id} aria-pressed={i===selectedShowcaseIndex?"true":"false"} style="text-align:left;color:inherit;font:inherit;cursor:pointer"><div class="op-faux-thumb">[Thumbnail]</div><strong style="display:block;font-size:12px;margin-top:10px">{run.title}</strong><span class="op-muted">{showcaseTypeLabels[run.type]}</span></button>)}</div>
+            <div class="op-media-list">{showcases.map((run,i)=><button type="button" class="op-cardlet op-showcase-button" data-showcase-button={run.id} aria-pressed={i===selectedShowcaseIndex?"true":"false"} style="text-align:left;color:inherit;font:inherit;cursor:pointer"><div class="op-faux-thumb">{getGuideThumbnailUrl(run.url)
+                  ? <img src={getGuideThumbnailUrl(run.url)} width="320" height="180" alt="" loading="lazy" decoding="async" />
+                  : <span>{run.title}</span>}</div><strong style="display:block;font-size:12px;margin-top:10px">{run.title}</strong><span class="op-muted">{showcaseTypeLabels[run.type]}</span></button>)}</div>
           </div>
         </> : <p class="op-placeholder">[Noch keine Gameplay-Showcases hinterlegt]</p>}
         </>}
