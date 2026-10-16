@@ -79,7 +79,7 @@ const overviewGear=featuredBuild?.items.map(reference=>({
                 {featuredBuild ? <div class="op-gear-parts">{overviewGear.map(part=><div class="op-gear-part"><div class="op-mini-art"><ItemIcon id={part.official?.id??part.reference} /></div><small>{part.official?.name??part.reference}</small></div>)}</div> : <p class="op-placeholder">[Noch kein Ausrüstungs-Build]</p>}
               </article>
               <article class="op-cardlet">
-                <h3>Skill-Priorität</h3>
+                <h3>Skill-Priorität{guide.skills.supportPriority ? " · DPS" : ""}</h3>
                 {(priority || preview) ? <div class="op-skill-row">{priorityOrder.map((key,i)=><>
                   <div class="op-priority-skill"><div class="op-mini-art">{skillImage(key) ? <img class="op-skill-icon" src={skillImage(key)} loading="lazy" decoding="async" alt="" /> : slotIcons[key]}</div><small>{slotLabels[key]}</small><b>{priority?.targetLevels[key] || "–"}</b></div>
                   {i<3 && <span class="op-priority-symbol">{priorityComparisons[i]}</span>}

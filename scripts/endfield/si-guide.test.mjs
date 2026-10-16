@@ -57,7 +57,9 @@ test("Si's editorial 6 Meta and 37 additional teams match the author's theorycra
   for(const required of ["yvonne","last-rite","laevatain","rossi","si"])
     assert.ok(meta.includes('"'+required+'"'),"Meta partners must include "+required);
   assert.equal((meta.match(/evaluation:/g)||[]).length,6);
-  assert.match(guide,/featuredBuildId: "si-main"/);
+  assert.match(guide,/featuredBuildId: "si-balanced"/);
+  for(const title of ["Yvonne Main DPS","Last Rite Main DPS","Laevatain Main DPS","Rossi Main DPS","Si Main DPS","Si Main DPS (2)"])
+    assert.ok(meta.includes('title: "'+title+'"'),title);
 });
 
 test("Si official weapons and Datafield relative reference are well sourced",()=>{
@@ -84,17 +86,24 @@ test("new 1.6 Si gear keeps source-tagged nonnumeric IDs and must not fake SKPOR
   }
   for(const id of ["type-50-yinglung-soft-armor","type-50-yinglung-gauntlets","type-50-yinglung-beacon"])
     assert.ok(ids.has(id));
+  assert.match(guide,/^    - id: "si-balanced"$/m);
+  assert.match(guide,/^ +items: \["type-50-yinglung-soft-armor", "type-50-yinglung-gauntlets", "type-50-yinglung-beacon", "349"\]/m);
   assert.match(guide,/^    - id: "si-main"$/m);
+  assert.match(guide,/metaTag: "balanced"/);
+  assert.match(guide,/metaTag: "max-dmg"/);
+  assert.match(guide,/metaTag: "max-buffs"/);
   assert.match(guide,/^ +items: \["type-50-yinglung-soft-armor", "type-50-yinglung-gauntlets", "type-50-yinglung-beacon", "365"\]/m);
   const equipment=readFileSync("src/components/operator/sections/OperatorEquipment.astro","utf8");
   assert.match(equipment,/!part\.detail\s*\|\| part\.detail\.status!==["']verified["']/);
   assert.match(equipment,/disabled=\{!part\.catalog \|\| !part\.detail/);
 });
 
-test("Si's game content includes text-based rotation and defers ONLY nonexistent videos",()=>{
+test("Si keeps gameplay pending without premature written rotation or fabricated videos",()=>{
   assert.match(guide,/pending: true/);
-  assert.match(guide,/explanation:/);
+  assert.doesNotMatch(guide,/gameplay:\n  explanation:/);
   assert.match(guide,/Tintenseele/);
+  assert.match(guide,/accessibility: 1/);
+  assert.match(guide,/accessibilityNote:/);
   const component=readFileSync("src/components/operator/sections/OperatorGameplay.astro","utf8");
   assert.match(component,/guide\.gameplay\.explanation/);
   assert.equal((guide.match(/featured: true/g)||[]).length,0);
@@ -104,4 +113,42 @@ test("Si's game content includes text-based rotation and defers ONLY nonexistent
     "potentials/potential-1.webp","potentials/potential-3.webp","potentials/potential-5.webp"]){
     assert.ok(existsSync("public/images/endfield/operators/si/"+image),image);
   }
+});
+
+test("Si has two independently ordered skill priorities and clear level targets",()=>{
+  assert.match(guide,/order: \["combo", "battle", "basic", "ultimate"\]/);
+  assert.match(guide,/comparisons: \[">", ">", ">="\]/);
+  assert.match(guide,/supportPriority:/);
+  assert.match(guide,/order: \["battle", "ultimate", "combo", "basic"\]/);
+  assert.match(guide,/Lv 1–9 \(optional\)/);
+  const model=readFileSync("src/lib/endfield/operatorGuideModel.ts","utf8");
+  const section=readFileSync("src/components/operator/sections/OperatorSkills.astro","utf8");
+  assert.match(model,/supportPriority/);
+  assert.match(section,/prioritySets/);
+});
+test("Si early builds, main meta labels and direct editorial voice stay consistent",()=>{
+  const byId=new Map(official.items.map(i=>[i.id,i]));
+  for(const row of [
+    ["349","Redeemer Seal"],["322","Mordvolt Insulation Vest T1"],
+    ["323","Mordvolt Insulation Gloves T1"],["327","Mordvolt Insulation Battery T1"],
+    ["291","Aburrey Flashlight"],["256","Mordvolt Insulation Vest"],
+    ["259","Mordvolt Insulation Gloves"],["266","Mordvolt Insulation Wrench T1"],
+    ["262","Mordvolt Insulation Wrench"]
+  ])assert.equal(byId.get(row[0])?.name,row[1]);
+  for(const id of ["si-balanced","si-main","si-support-xiranite","si-level36","si-level50"])
+    assert.ok(guide.includes('id: "'+id+'"'),id);
+  assert.match(guide,/items: \["322", "323", "327", "291"\]/);
+  assert.match(guide,/items: \["256", "259", "266", "262"\]/);
+  assert.match(guide,/Type-50-Yinglung-Set ist Sis Go-to-Set/);
+  assert.doesNotMatch(guide,/Pre-Guide|Mobalytics|eigenen Pre-Guides|aus dem PDF/);
+  assert.doesNotMatch(guide,/  closingNote:/);
+  assert.match(guide,/Du hast keine Nutzung für Kryo-\/Hitze-Verstärkung/);
+  const op=readFileSync("src/components/operator/OperatorGuide.astro","utf8");
+  assert.match(op,/SKPORT-Datenstand: \{localized.sourceSnapshot\}/);
+  assert.doesNotMatch(op,/localized.terminologyNote/);
+  const teams=readFileSync("src/components/operator/sections/OperatorTeams.astro","utf8");
+  assert.match(teams,/teamMemberCard\(member\)/);
+  assert.match(teams,/op-si-main-team":guide.operator==="si"&&team.role==="main-dps"/);
+  const css=readFileSync("src/styles/operator-guides.css","utf8");
+  assert.match(css,/\.op-si-main-team \.op-meta-team-labels \.op-chip:last-child/);
 });

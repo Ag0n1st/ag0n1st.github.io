@@ -81,6 +81,8 @@ const equipmentBuild = z.object({
   meta: z.boolean().default(false),
   // Kurzer, eigenständiger Card-Text; die ausführliche Bewertung bleibt im Finder.
   metaSummary: z.string().trim().max(280).optional(),
+  // Optional short highlighted label in Meta Cards, e.g. a build's distinct role.
+  metaTag: z.enum(["balanced", "max-dmg", "max-buffs"]).optional(),
   // Die vier Ausrüstungsplätze sind verbindlich.
   items: z.tuple([identifier, identifier, identifier, identifier]),
   availableFromLevel: equipmentLevel.optional(),
@@ -92,6 +94,9 @@ const equipmentBuild = z.object({
   craftingNotes: text.optional(),
   setBonusNotes: text.optional(),
 }).superRefine((build, ctx) => {
+  if (build.metaTag && !build.meta) {
+    ctx.addIssue({code:z.ZodIssueCode.custom,path:["metaTag"],message:"Meta-Labels nur bei Meta-Builds angeben."});
+  }
   if (build.meta && !build.metaSummary) {
     ctx.addIssue({
       code: z.ZodIssueCode.custom,
@@ -209,6 +214,7 @@ export const operatorGuideSchema = z.object({
       accessibility: z.number().int().min(1).max(5).optional(),
     }).default({}),
     featuredBuildId: identifier.optional(),
+    accessibilityNote: text.optional(),
     partners: z.array(identifier).default([]),
   }).default({}),
 
@@ -218,6 +224,7 @@ export const operatorGuideSchema = z.object({
 
   skills: z.object({
     priority: skillPriority.optional(),
+    supportPriority: skillPriority.optional(),
     active: z.object({
       basic: text.optional(),
       battle: text.optional(),

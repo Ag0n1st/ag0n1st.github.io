@@ -376,42 +376,74 @@ def smoke_si(page, base_url, width):
     verify(page.locator("#uebersicht .op-video-placeholder").count()==1,
            label+": no invented Si YouTube guide embedded")
 
-    verify(page.locator("#ausruestung .op-meta-build-card").count()==2,
-           label+": editorial Type 50 main meta and optional Xiranite support meta")
-    verify(page.locator("#ausruestung [data-build-button]").count()==5,
-           label+": five editorial/main/support/progression equipment builds")
+    verify("SKPORT-Datenstand: 2026-10-16" in page.locator(".op-locale-note").inner_text() and
+           "PDF" not in page.locator(".op-locale-note").inner_text(),
+           label+": concise SKPORT heading without internal provenance")
+    verify(len(ratings)>=3 and "1 / 5" in ratings[2].inner_text(),
+           label+": Si provisional 1/5 Endgame accessibility")
+    verify("Redeemer Seal" in page.locator("#uebersicht .op-quick-stats").inner_text(),
+           label+": Balanced Redeemer Seal is the featured quick build")
+    cards=page.locator("#ausruestung .op-meta-build-card")
+    verify(cards.count()==3,label+": Balanced, Max DMG and Max Buffs meta builds")
+    for i,(tag,style) in enumerate([("Balanced","is-accent"),("Max. DMG","is-pink"),("Max. Buffs",None)]):
+        chip=cards.nth(i).locator(".op-meta-build-tags .op-chip").first
+        verify(tag in chip.inner_text() and (style is None or style in (chip.get_attribute("class") or "")),
+               label+": distinct Meta build label "+tag)
+    verify(page.locator("#ausruestung [data-build-button]").count()==8,
+           label+": three Meta and five alternative/progression builds")
+    verify(page.locator("#ausruestung [data-build-button='si-balanced']").count()==1,
+           label+": Balanced meta build exists")
     verify(page.locator("#ausruestung [data-build-button='si-main']").count()==1,
-           label+": author's new Type 50 + LYNX build is primary")
-    verify(page.locator("#ausruestung [data-build-button='si-support-xiranite']").count()==1,
-           label+": conditional heat/support build exists")
+           label+": original LYNX maximal damage build remains available")
+    verify(page.locator("#ausruestung [data-build-button='si-level50']").count()==1 and
+           page.locator("#ausruestung [data-build-button='si-level36']").count()==1,
+           label+": independently chosen level 36/50 progression available")
     finder=page.locator("#build-finder")
     verify(finder.get_attribute("open") is None,
            label+": Si build finder initially collapsed")
     finder.evaluate("el=>el.open=true")
-    page.locator('[data-build-button="si-main"]').click()
-    panel=page.locator('[data-build-panel="si-main"]')
-    verify(panel.locator(".op-gear-part").count()==4,
-           label+": Type 50 meta build has precisely four pieces")
-    icons=panel.locator(".op-gear-part img")
-    verify(icons.count()>=3,
-           label+": existing Type 50 artwork and LYNX WebPs are displayed")
+    page.locator('[data-build-button="si-balanced"]').click()
+    panel=page.locator('[data-build-panel="si-balanced"]')
+    verify(panel.locator(".op-gear-part").count()==4 and
+           panel.locator("img[src$='/images/endfield/gear/349.webp']").count()==1,
+           label+": Balanced includes Type 50 pieces and real Redeemer Seal icon")
     verify("ungeprüft" in panel.inner_text().lower() or
            "nicht zugeordnet" in panel.inner_text().lower() or
            "ungeklärt" in panel.inner_text().lower(),
-           label+": new gear is not falsely shown officially available")
+           label+": new gear remains unverified without fake SKPORT blueprints")
     verify(panel.locator('input[data-blueprint-owned]:not([disabled])').count()<4,
            label+": unverified 1.6 blueprints cannot be claimed owned")
+    page.locator('[data-build-button="si-main"]').click()
+    verify(page.locator('[data-build-panel="si-main"] img[src$="/images/endfield/gear/365.webp"]').count()==1,
+           label+": Max. DMG still has the original LYNX Slab")
 
     verify(page.locator("#teams .op-meta-team-heading").count()==6,
-           label+": all six personally highlighted PDF Meta teams")
+           label+": all six existing Meta teams")
+    verify(page.locator("#teams .op-si-main-team .op-meta-team-labels .op-chip").count()==4 and
+           page.locator("#teams .op-si-main-team").count()==2,
+           label+": both Si main DPS role labels have magenta accents")
+    verify(page.locator("#teams .op-meta-team-heading").first.inner_text().startswith("Yvonne Main DPS"),
+           label+": first team renamed to Yvonne Main DPS")
+    verify(page.locator("#teams .op-meta-team-heading").last.inner_text().startswith("Si Main DPS (2)"),
+           label+": last team renamed to Si Main DPS (2)")
+    verify(page.locator("#teams .op-meta-team-heading").count()==6 and
+           page.locator("#teams .op-two .op-team-art img").count()>=20,
+           label+": team mini cards use cached operator portraits")
     more=page.locator('#teams details[data-guide-disclosure="team-options"]')
     more.evaluate("el=>el.open=true")
     verify(page.locator("#teams [data-team-role]").count()==37,
            label+": all 37 other exact PDF lineups are in the overview")
     verify(page.locator("#teams .op-meta-team-heading").first.inner_text().find("Meta")>=0,
            label+": author's Meta designation remains visible")
-    verify(page.locator("#uebersicht .op-priority-symbol").all_text_contents()==[">",">",">"],
-           label+": author's main DPS combo > battle > ultimate priority")
+    verify(page.locator("#uebersicht .op-priority-symbol").all_text_contents()==[">",">",">="],
+           label+": main DPS skill priority ends with Basic >= Ultimate")
+    priorities=page.locator("#fertigkeiten .op-priority-variant")
+    verify(priorities.count()==2,label+": DPS and Support each have an individual priority")
+    verify(priorities.first.locator(".op-priority-symbol").all_text_contents()==[">",">",">="] and
+           priorities.last.locator(".op-priority-symbol").all_text_contents()==[">",">",">"],
+           label+": both priority comparisons are correct")
+    verify("Lv 1–9 (optional)" in priorities.last.inner_text(),
+           label+": optional Support basic-attack target level")
     skills=page.locator('#fertigkeiten details[data-guide-disclosure="skill-details"]')
     skills.evaluate("el=>el.open=true")
     for key,de in [("basic","Schaffensdrang"),("battle","Dimension der Pinselkunst"),
@@ -443,9 +475,12 @@ def smoke_si(page, base_url, width):
            label+": Datafield Jade Vessel and Long Heritage rank metrics")
     verify(page.locator("#gameplay .op-gameplay-pending-label").count()==1,
            label+": nonexistent Si video is marked as future")
-    verify("Tintenseele" in page.locator("#gameplay").inner_text() and
-           "15 FP" in page.locator("#gameplay").inner_text(),
-           label+": complete authored text rotation exists without video")
+    verify(page.locator("#gameplay .op-divided").count()==0 and
+           "15 FP" not in page.locator("#gameplay").inner_text(),
+           label+": Si Gameplay is an empty pending section without written rotation")
+    verify(page.locator("#fazit .op-conclusion-audiences .op-cardlet").first.locator("p").count()==3 and
+           page.locator("#fazit .op-conclusion-audiences .op-cardlet").last.locator("p").count()==1,
+           label+": concise suitability criteria without redundant points")
     verify(page.locator("#fazit").evaluate(
         "(el)=>el.lastElementChild?.classList.contains('op-conclusion-audiences')") is True,
            label+": conclusion still ends with two audience cards")

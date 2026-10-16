@@ -22,7 +22,7 @@ const { guide, operatorName, preview, localized } = model;
     <span aria-current="page">{operatorName}</span>
   </nav>
   {preview && <div class="op-notice op-preview-banner" role="status">Layout-Vorschau: Für {operatorName} sind noch nicht alle Daten eingepflegt. Eckige Klammern kennzeichnen Platzhalter.</div>}
-  {localized && <p class="op-muted op-locale-note">SKPORT-Datenstand: {localized.sourceSnapshot} · {localized.terminologyNote}</p>}
+  {localized && <p class="op-muted op-locale-note">SKPORT-Datenstand: {localized.sourceSnapshot}</p>}
   <div class="op-guide">
     <div class="op-guide-content">
       <OperatorOverview model={model} />
