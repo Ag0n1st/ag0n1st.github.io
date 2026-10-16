@@ -7,6 +7,10 @@ const { model } = Astro.props;
 const { guide, showcaseTypeLabels, showcases, selectedShowcaseIndex, youtubeEmbed } = model;
 ---
 <section class="op-section" id="gameplay">
+        {guide.gameplay.explanation && <div class="op-divided">
+          <h2>Gameplay · Rotation und Timing</h2>
+          <p class="op-body-copy">{guide.gameplay.explanation}</p>
+        </div>}
         {guide.gameplay.pending ? <>
           <div class="op-gameplay-pending-header">
             <span class="op-gameplay-pending-label" aria-label="Gameplay-Videos folgen">FOLGT</span>
