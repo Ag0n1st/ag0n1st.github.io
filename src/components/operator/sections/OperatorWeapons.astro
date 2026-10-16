@@ -64,8 +64,8 @@ const officialWeapons=shownWeapons.map(w=>{
           <p class="op-section-intro">Nur auf Basis nachvollziehbarer Berechnungen und Vergleichsbedingungen.</p>
           {weapons.some(w=>w.performancePercent!==undefined) ?
             <div class="op-table-wrap"><table class="op-table">
-              <thead><tr><th>Waffe</th><th>Relative Leistung</th><th>Vergleichsbedingungen</th></tr></thead>
-              <tbody>{weapons.filter(w=>w.performancePercent!==undefined).map(w=><tr><td>{resolveOfficialItem(w.name,"Weapons")?.name??w.name}</td><td>{w.performancePercent} %</td><td>{w.comparisonConditions}</td></tr>)}</tbody>
+              <thead><tr><th>Waffe</th><th>Relative Leistung</th><th>Vergleichsbedingungen</th><th>Quelle</th></tr></thead>
+              <tbody>{weapons.filter(w=>w.performancePercent!==undefined).map(w=><tr><td>{resolveOfficialItem(w.name,"Weapons")?.name??w.name}</td><td>{w.performancePercent} %</td><td>{w.comparisonConditions}</td><td>{w.source || "–"}</td></tr>)}</tbody>
             </table></div> :
             <p class="op-placeholder">[Noch keine belastbaren Vergleichswerte]</p>}
         </div>
