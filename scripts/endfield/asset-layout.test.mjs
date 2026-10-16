@@ -40,7 +40,9 @@ test("all 940 official SKPORT IDs resolve to unique local WebPs in their categor
    "old catch-all item directory must not survive");
  for(const [category,folder] of Object.entries(categoryFolders)){
    const expectedFiles=expected[category]-(category==="Operators"?2:0);
-   const realFiles=readdirSync("public/images/endfield/"+folder);
+   const realFiles=readdirSync("public/images/endfield/"+folder).filter(x=>x!=="releases");
+   // Source-tagged unnumbered 1.6 wiki gear lives in its own isolated subfolder;
+   // this official SKPORT 940-item inventory must not count it as an official item.
    assert.equal(realFiles.length,expectedFiles,category+" unexpected additional files");
    assert.ok(realFiles.every(x=>/^\d+\.webp$/.test(x)),category+" nonnumeric or non-WebP");
  }
@@ -55,7 +57,7 @@ test("all weapon and gear detail records share the canonical icon path",()=>{
  }
 });
 test("operator art and all 8 skill WebPs use separate per-operator folders",()=>{
- for(const slug of ["liino","typhoeus"]){
+ for(const slug of ["liino","typhoeus","si"]){
    const base="public/images/endfield/operators/"+slug;
    for(const name of ["cover.webp","illustration.webp"]){
      const filepath=join(base,name);
