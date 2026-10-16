@@ -70,6 +70,10 @@ test("Fazit has one lead, badge aligned to headline and two audience cards",()=>
   assert.doesNotMatch(s,/<h3>Pull-Empfehlung<\/h3>/);
   assert.doesNotMatch(s,/>Gesamturteil<\/span>/);
   assert.match(s,/guide\.conclusion\.verdict \|\| guide\.conclusion\.pullAdvice/);
+  assert.ok(s.indexOf("guide.conclusion.closingNote") < s.indexOf('class="op-two op-conclusion-audiences"'),
+    "closing editorial text must be before the two final audience cards");
+  assert.ok(s.indexOf("<slot />") < s.indexOf('class="op-two op-conclusion-audiences"'),
+    "any freeform Markdown must not trail the final two audience cards");
 });
 
 test("TOC explicit Gameplay navigation is preserved against bottom-of-document scroll clamp",()=>{
