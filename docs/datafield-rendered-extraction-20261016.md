@@ -1,7 +1,9 @@
 # Datafield – reproduzierbarer Browser-DOM-Export und Liino-Probe
 
 **Datum:** 16.10.2026  
-**Technischer Status:** [ECHT GETESTET]. `scripts/endfield/datafield_rendered_export.py` konnte im GitHub-Actions-Chromium-Run **#87** auf `https://datafield.cc/characters/liino` nach vollständigem Laden **5 Potenziale und 7 Waffenvergleichswerte** aus dem gerenderten HTML-DOM lesen. JSON-Ausgabe lag als kurzlebiges Workflow-Artefakt `datafield-liino-rendered` vor. **Keine Veröffentlichung im Liino-Guide in diesem Untersuchungsschritt.**
+**Technischer Status:** [ECHT GETESTET; VIA PR #22 AUF `main` GEMERGT, CI #95 GRÜN]. `scripts/endfield/datafield_rendered_export.py` konnte im GitHub-Actions-Chromium-Run **#87** auf `https://datafield.cc/characters/liino` nach vollständigem Laden **5 Potenziale und 7 Waffenvergleichswerte** aus dem gerenderten HTML-DOM lesen. JSON-Ausgabe lag als kurzlebiges Workflow-Artefakt `datafield-liino-rendered` vor. **Keine Veröffentlichung im Liino-Guide in diesem Untersuchungsschritt.**
+
+**GitHub-Nachweis:** [PR #22](https://github.com/Ag0n1st/ag0n1st.github.io/pull/22), Merge-Commit `c30057ae86c88be79d151c02ecfe059d2335dba4`. Chromium-Liveproben GitHub CI #87 und #91 bestätigten die Rohdaten; normaler Build-/Testlauf #95 erfolgreich. Manual-`workflow_dispatch`-UI selbst noch nicht getestet.
 
 ## Warum die alte Recherche fälschlich `Loading data...` sah
 
