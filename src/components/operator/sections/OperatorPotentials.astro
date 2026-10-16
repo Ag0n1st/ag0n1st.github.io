@@ -24,12 +24,13 @@ const { guide, localized, trPotential, officialPotentials, missing, potentialByL
                 <div class="op-info-field"><small>Zusatzgewinn durch P{n}</small><strong>{p?.increaseOverPreviousPercent === undefined ? "–" : p.increaseOverPreviousPercent+" %"}</strong></div>
               </div>
               {p?.comparisonConditions && <p class="op-muted op-body-copy">Vergleichsbedingungen: {p.comparisonConditions}</p>}
+              {p?.sourceNote && <p class="op-muted op-body-copy">Quelle: {p.sourceNote}</p>}
             </div>;
           })}
         </div>
         <div class="op-divided"><h3>Potenzialvergleich</h3>
-          <div class="op-table-wrap"><table class="op-table"><thead><tr><th>Potenzial</th><th>Offizieller Effekt (EN)</th><th>Gemessener Gewinn vs. P0</th></tr></thead>
-            <tbody>{[1,2,3,4,5].map(n=><tr><td>P{n}</td><td class="op-body-copy">{trPotential(n, officialPotentials.get(n)?.effect || "[Folgt]")}</td><td>{potentialByLevel.get(n)?.increaseOverP0Percent === undefined ? "–" : potentialByLevel.get(n)?.increaseOverP0Percent+" %"}</td></tr>)}</tbody>
+          <div class="op-table-wrap"><table class="op-table"><thead><tr><th>Potenzial</th><th>Offizieller Effekt (EN)</th><th>Gemessener Gewinn vs. P0</th><th>Quelle</th></tr></thead>
+            <tbody>{[1,2,3,4,5].map(n=><tr><td>P{n}</td><td class="op-body-copy">{trPotential(n, officialPotentials.get(n)?.effect || "[Folgt]")}</td><td>{potentialByLevel.get(n)?.increaseOverP0Percent === undefined ? "–" : potentialByLevel.get(n)?.increaseOverP0Percent+" %"}</td><td>{potentialByLevel.get(n)?.sourceNote || "–"}</td></tr>)}</tbody>
           </table></div>
         </div>
         <div class="op-divided"><h3>Pull-Empfehlung</h3><p class="op-muted op-body-copy">{guide.potentials.pullAdvice || "[Empfohlener Stopp-Punkt und persönliche Einordnung folgen]"}</p></div>
