@@ -17,10 +17,10 @@ const { guide, operatorName, pullLabels } = model;
         {(guide.conclusion.verdict || guide.conclusion.pullAdvice)
           ? <p class="op-conclusion-lead">{guide.conclusion.verdict || guide.conclusion.pullAdvice}</p>
           : <p class="op-placeholder">[Fazit folgt]</p>}
+        {guide.conclusion.closingNote && <div class="op-divided"><h3>Abschließende Einschätzung</h3><p class="op-muted op-body-copy">{guide.conclusion.closingNote}</p></div>}
+        <slot />
         <div class="op-two op-conclusion-audiences">
           <div class="op-cardlet"><h3>✓ Für wen lohnt es sich?</h3>{guide.conclusion.recommendedFor.length ? guide.conclusion.recommendedFor.map(s=><p class="op-body-copy">{s}</p>) : <p class="op-placeholder">[Empfehlungen folgen]</p>}</div>
           <div class="op-cardlet"><h3>− Wer kann verzichten?</h3>{guide.conclusion.skipIf.length ? guide.conclusion.skipIf.map(s=><p class="op-body-copy">{s}</p>) : <p class="op-placeholder">[Einschätzung folgt]</p>}</div>
         </div>
-        {guide.conclusion.closingNote && <div class="op-divided"><h3>Abschließende Einschätzung</h3><p class="op-muted op-body-copy">{guide.conclusion.closingNote}</p></div>}
-        <slot />
       </section>
