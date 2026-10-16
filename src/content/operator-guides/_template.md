@@ -22,7 +22,7 @@ overview:
     # Skala jeweils 1 bis 5. Weglassen, solange keine Bewertung vorliegt.
     # difficulty: 3
     # flexibility: 4
-    # accessibility: 2
+    # accessibility: automatisch aus den offiziellen Anforderungen der Meta-Builds; nicht eintragen
   # featuredBuildId: standard
   partners: [] # Operator-IDs, z.B. [operator-a, operator-b]
 
@@ -81,7 +81,7 @@ weapons:
   #     entries:
   #       - { weaponId: "1046", rank: 4, performancePercent: 100.0 }
   #       - { weaponId: "1046", rank: 9, performancePercent: 112.1 }
-  # disclaimer: "Prozentwerte sind modellabhängig, nicht für jede Rotation garantiert."
+  # Datafield-Quelle erscheint nur als kleine Fußnote unter dem Vergleich,\n  # Modell-/Rotationsbedingungen bleiben intern als Metadaten gespeichert.
   generalNotes: ""
 
 # 5. AUSRÜSTUNG
@@ -117,15 +117,15 @@ potentials:
   #   evaluation: |
   #     Zusätzlicher Nutzen und praktische Einordnung.
   #   increaseOverPreviousPercent: 0 # optional; nur mit Belegen
-  #   increaseOverP0Percent: 0        # optional; nur mit Belegen
-  #   comparisonConditions: "Datafield-Modell, Team/Rotation, Ausrüstung, Potenziale, P0-/P(n-1)-Vergleich ..."
+  #   # Kumulatives Potenzial vs. P0 gibt es im Framework bewusst nicht.
+  #   comparisonConditions: "Datafield-Charakterprofil; Gewinn gegenüber der vorherigen Stufe; Modellannahmen intern"
   #   sourceNote: "Datafield" # Pflicht sobald einer der Prozentwerte befüllt ist, nur Klartext (kein Link)
   # Bei Potentials (DPS Increase) der Datafield-Charakterseite:
   # nur increaseOverPreviousPercent verwenden, WENN die Quelle
   # ausdrücklich einen Vergleich zur jeweiligen Vorstufe nennt.
-  # KEINE Prozentwerte ungeprüft als kumulative vs. P0 eintragen!
-  # disclaimer: "Datenstand, Modellannahmen, keine universelle Pull-Garantie"
-  pullAdvice: "" # persönlicher Stopp-Punkt; allgemeiner Disclaimer erscheint automatisch
+  # KEINE kumulativen vs.-P0-Prozente im Framework anzeigen!
+  # Eine einzige subtile Quellenfußnote unter der gesamten Potenzialvergleichstabelle.
+  # Pull-Empfehlungen ausschließlich im Fazit: conclusion.pullAdvice.
 
 # 7. TEAMS
 teams:
