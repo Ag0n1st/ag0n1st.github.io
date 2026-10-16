@@ -27,3 +27,18 @@ jobs:
         run: node scripts/endfield/check-budget.mjs
       - name: Build Astro website
         run: npm run build
+      # TEMPORARY RESEARCH VALIDATION: remove this step before merging.
+      - name: Probe Datafield rendered DOM (single Liino page)
+        continue-on-error: true
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install chromium
+          python scripts/endfield/datafield_rendered_export.py liino --output datafield-liino-probe.json --timeout-ms 65000
+      - name: Upload Datafield probe snapshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: datafield-liino-rendered
+          path: datafield-liino-probe.json
+          if-no-files-found: ignore
+          retention-days: 2
