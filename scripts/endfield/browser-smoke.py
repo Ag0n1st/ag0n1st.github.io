@@ -232,29 +232,46 @@ def smoke_typhoeus(page, base_url, width):
     verify(len(ratings) >= 2 and "1 / 5" in ratings[0].inner_text()
            and "1 / 5" in ratings[1].inner_text(),
            label + ": creator-defined 1/5 beginner friendliness and flexibility")
-    verify(page.locator("#teams .op-team-gear").count() == 2,
-           label + ": team-specific teammate gear notes are disclosed on demand")
-    for team_gear in page.locator("#teams .op-team-gear").all():
+    meta_gear = page.locator("#teams .op-two .op-team-gear")
+    verify(meta_gear.count() == 2,
+           label + ": both Meta team loadouts contain author's weapons and gear")
+    for team_gear in meta_gear.all():
         team_gear.evaluate("el => el.open = true")
         verify(team_gear.locator(".op-team-gear-entry").count() == 3,
                label + ": each Meta team has three additional operator loadouts")
-        verify(team_gear.locator(".op-team-gear-part img").count() == 12,
-               label + ": twelve SKPORT Gear WebP icons per Meta lineup")
-        img = team_gear.locator(".op-team-gear-part img").first
+        verify(team_gear.locator(".op-team-gear-entry > .op-team-gear-parts .op-team-gear-part img").count() == 12,
+               label + ": twelve main SKPORT Gear WebP icons per Meta lineup")
+        verify(team_gear.locator(".op-team-member-weapon img").count() == 3,
+               label + ": three sourced teammate weapon icon cards per Meta lineup")
+        verify(team_gear.locator(".op-team-gear-variants").count() == 2,
+               label + ": contextual team member loadouts stay collapsed by default")
+        variants=team_gear.locator(".op-team-gear-variants").first
+        variants.evaluate("el=>el.open=true")
+        verify(variants.locator(".op-team-gear-variant .op-team-gear-parts img").count() >= 4,
+               label + ": PDF-sourced alternative setups have four real item icons")
+        img = team_gear.locator(".op-team-gear-entry > .op-team-gear-parts .op-team-gear-part img").first
         img.scroll_into_view_if_needed()
         page.wait_for_function(
             "(el) => el.complete && el.naturalWidth > 10", arg=img.element_handle())
-    for team_gear in page.locator("#teams .op-team-gear").all():
-        slabs = team_gear.locator("img[src$='/images/endfield/gear/1136.webp']")
-        verify(slabs.count() == 2,
-               label + ": Arcane uses 2 canonical SKPORT Bracing Slab 1136 in each Meta team")
-    verify(page.locator("#teams [data-team-role]").count() == 5,
-           label + ": five alternative teams including Trial and Nefarith")
+    for team_gear in meta_gear.all():
+        slabs = team_gear.locator(".op-team-gear-entry:first-child > .op-team-gear-parts img[src$='/images/endfield/gear/1136.webp']")
+        wraps = team_gear.locator(".op-team-gear-entry:first-child > .op-team-gear-parts img[src$='/images/endfield/gear/1137.webp']")
+        verify(slabs.count() == 2 and wraps.count() == 1,
+               label + ": author's Arcane build has 2 Slabs plus Wraps, not Hands")
+        verify(team_gear.locator(".op-team-gear-entry:first-child .op-team-member-weapon img[src$='/images/endfield/weapons/1045.webp']").count() == 1,
+               label + ": Arcane Type 42: Solemn Phalanx sourced from author's PDF")
+    verify(page.locator("#teams [data-team-role]").count() == 7,
+           label + ": seven editorial team options including PDF Gilberta alternatives")
 
     skill_priorities = page.locator("#uebersicht .op-priority-skill small").all_text_contents()
     verify(len(skill_priorities) == 4 and skill_priorities[0] == "Kampffertigkeit"
            and skill_priorities[1] == "Kombofertigkeit",
            label + ": Battle > Combo skill priority from authored script")
+    priorities=page.locator("#uebersicht .op-priority-symbol").all_text_contents()
+    verify(priorities == [">", ">", "="],
+           label + ": source-correct Battle > Combo > Ultimate = Basic")
+    verify(page.locator("#ausruestung [data-build-button='deep-rampart-ultimate']").count() == 1,
+           label + ": special Ultimate-energy build is present")
 
     verify(page.locator("#waffen [data-weapon-button]").count() == 3,
            label + ": signature, Battle Pass and conditional alternate weapon")
@@ -327,6 +344,8 @@ def smoke_typhoeus(page, base_url, width):
     thumb.scroll_into_view_if_needed()
     page.wait_for_function(
         "(el) => el.complete && el.naturalWidth > 100", arg=thumb.element_handle())
+    verify(page.locator("#fazit").evaluate("(el)=>el.lastElementChild?.classList.contains('op-conclusion-audiences')") is True,
+           label + ": last section ends in exactly the two audience cards")
     check_overflow(page, label + " all sections")
 
 
