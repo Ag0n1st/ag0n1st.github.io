@@ -1,0 +1,36 @@
+name: Probe rendered Datafield Liino data
+
+on:
+  push:
+    branches: [research-datafield-rendered-dom-export-20261016]
+    paths:
+      - scripts/endfield/datafield_rendered_export.py
+      - .github/workflows/datafield-probe.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser for research (not part of Astro/Pages)
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install --with-deps chromium
+      - name: Probe a single public Datafield character page
+        run: |
+          python scripts/endfield/datafield_rendered_export.py liino --output datafield-liino-probe.json --timeout-ms 60000
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: datafield-liino-rendered-snapshot
+          path: datafield-liino-probe.json
+          if-no-files-found: ignore
+          retention-days: 3
