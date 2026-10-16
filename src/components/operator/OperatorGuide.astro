@@ -122,7 +122,7 @@ const { guide, operatorName, preview, localized } = model;
     event.preventDefault();
     selectedByClick = id;
     // Use the existing scroll-margin-top CSS to clear the sticky navigation.
-    destination.scrollIntoView({ behavior: "instant", block: "start" });
+    destination.scrollIntoView({ behavior: "auto", block: "start" });
     if (window.location.hash !== link.hash) window.history.pushState(null, "", link.hash);
     setGuideLocation(id);
     scheduleGuideLocation();
