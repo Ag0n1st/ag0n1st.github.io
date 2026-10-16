@@ -42,6 +42,7 @@ const headline=`${name} Guide | Arknights: Endfield`;
   lang="en"
   noindex={!published}
   description={text.seoDescription}
+  image={getOperatorImageUrl(guide.operator,"cover",game?.operator.coverUrl)}
 >
   <main class="op-page section-wrap" id="top">
     <nav class="op-breadcrumb" aria-label="Breadcrumb">
