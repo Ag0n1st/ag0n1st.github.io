@@ -1,0 +1,123 @@
+{
+  "operator": "si",
+  "locale": "de",
+  "sourceLanguage": "en",
+  "sourceSnapshot": "2026-10-16",
+  "status": "spieltext-aus-mobalytics-pdf-direkt-vom-user",
+  "terminologyNote": "Die deutschen Fertigkeitsbeschreibungen im PDF-Abschnitt Skill Overview (Seiten 3–4) stammen laut Autor direkt aus dem Spiel und wurden inhaltlich wortgetreu übertragen. Die offiziellen englischen SKPORT-Tabellen bleiben unverändert abrufbar. Talente, Potenziale und Metriknamen sind, wo nicht im PDF, klar getrennte redaktionelle Übersetzungen.",
+  "operatorTerms": {
+    "Agility": "Beweglichkeit",
+    "Will": "Wille",
+    "Strength": "Stärke",
+    "Intellect": "Intellekt",
+    "Base ATK": "Basis-ANG",
+    "Base HP": "Basis-LP",
+    "Cryo": "Kryo",
+    "Supporter": "Unterstützer",
+    "Greatsword": "Großschwert"
+  },
+  "skills": {
+    "basic": {
+      "name": "Schaffensdrang",
+      "description": "STANDARDANGRIFF:\nEin Angriff mit bis zu 5 Sequenzen, der Kryo-SDN zufügt. Mit dem gesteuerten Operator fügt der Abschlussangriff außerdem 18 Taumeln hinzu.\n\nSTURZANGRIFF:\nStandardangriffe, die in der Luft durchgeführt werden, werden zu Sturzangriffen, die Gegnern in der Nähe Kryo-SDN zufügen.\n\nWUCHTSCHLAG:\nStandardangriffe, die nahe einem Taumelnden Gegner durchgeführt werden, werden zu Wuchtschlägen, die massiven Kryo-SDN zufügen und ein wenig FP wiederherstellen."
+    },
+    "battle": {
+      "name": "Dimension der Pinselkunst",
+      "description": "Si verursacht Kryo-SDN und bewirkt Künstlerische Absicht, Bewegungsunfähigkeit und Kryo (oder Hitze, falls sich ein Operator mit dem Element Hitze in Teamposition 1 befindet). Wenn ein Ziel mit Künstlerische Absicht SDN erleidet, wird ein Teil des erlittenen SDN gespeichert. Wenn die Dauer von Künstlerische Absicht abläuft, explodiert der Effekt und verursacht Festen SDN in Höhe des gespeicherten SDN. Nach dem Wirken der Fertigkeit wird Sis Kampffertigkeit vorübergehend zu Erster Pinselstrich geändert.\n\nErster Pinselstrich: Kostet 15 FP. Si zieht eine Tintenseele aus einem mit Künstlerische Absicht belegten Ziel. Alle Arten SDN und alle Effekte, die der Tintenseele zugefügt werden bzw. mit denen sie belegt wird, werden auch dem ursprünglichen Ziel zugefügt. Die Tintenseele bleibt so lange bestehen, bis die verbleibende Dauer von Künstlerische Absicht abgelaufen ist. Nach dem Wirken der Fertigkeit wird Sis Kampffertigkeit vorübergehend zu Letzter Pinselstrich geändert.\n\nLetzter Pinselstrich: Kostet keine FP. Lässt die Tintenseele frühzeitig verschwinden. Wenn die Tintenseele verschwindet, kehrt sie zum ursprünglichen Ziel zurück und löst eine Explosion aus, die jener am Ende von Künstlerische Absicht ähnelt."
+    },
+    "combo": {
+      "name": "Vision vor Auge",
+      "description": "KOMBOAUSLÖSER: Wenn die Kryo- oder Hitzekumulierung eines Gegners verbraucht oder absorbiert wird.\n\nSi beschwört einen Tinten-Lung, der Kryo-SDN verursacht. Je mehr Technikkumulierungen von nur einem Ziel verbraucht oder absorbiert wurden, desto höher der SDN."
+    },
+    "ultimate": {
+      "name": "Spielverderber verboten",
+      "description": "Si beschwört einen Riesigen Tinten-Lung aus ihrem Gemälde. Dieser verursacht Kryo-SDN und verleiht dem gesamten Team vorübergehend Kryo-Verstärkung und Hitze-Verstärkung."
+    }
+  },
+  "metricLabels": {
+    "BATK SEQ 1 Multiplier": "Basisangriff – Treffer 1",
+    "BATK SEQ 2 Multiplier": "Basisangriff – Treffer 2",
+    "BATK SEQ 3 Multiplier": "Basisangriff – Treffer 3",
+    "BATK SEQ 4 Multiplier": "Basisangriff – Treffer 4",
+    "BATK SEQ 5 Multiplier": "Basisangriff – Treffer 5",
+    "Finisher ATK Multiplier": "Wuchtschlag – Multiplikator",
+    "Dive ATK Multiplier": "Sturzangriff – Multiplikator",
+    "SP Cost": "FP-Kosten",
+    "DMG Multiplier": "Schadensmultiplikator",
+    "Immobilization Duration (s)": "Bewegungsunfähigkeit (Sek.)",
+    "Artful Intent Duration (s)": "Künstlerische Absicht (Sek.)",
+    "DMG Record Ratio": "Gespeicherter Schadensanteil",
+    "Stagger": "Taumel",
+    "Artful Intent Burst Stagger": "Taumel durch Explosion",
+    "Cooldown": "Abklingzeit",
+    "Multiplier Increase per Stack Consumed or Absorbed": "Multiplikator pro verbrauchter Kumulierung",
+    "Ultimate Energy Gain": "Ultimate-Energiegewinn",
+    "Ultimate Energy Cost": "Ultimate-Energiekosten",
+    "Amp": "Verstärkung",
+    "Amp Duration (s)": "Verstärkungsdauer (Sek.)"
+  },
+  "potentials": {
+    "1": {
+      "name": "Frühling und Herbst als Tinte",
+      "effect": "Die Kampffertigkeit Dimension der Pinselkunst wird verbessert: Die Dauer der verursachten Bewegungsunfähigkeit steigt um 50 %, der aufgezeichnete Schadensanteil von Künstlerische Absicht um 7 % und der Explosionsradius um 40 %."
+    },
+    "2": {
+      "name": "Drei Zeichen tief im Holz",
+      "effect": "Beim Einsatz der Kombofertigkeit erhält Si zehn Sekunden lang ANG +[8 % + 3 % × höchste Anzahl verbrauchter oder absorbierter Technikkumulierungen eines einzelnen Ziels]. Dieser Effekt ist nicht stapelbar."
+    },
+    "3": {
+      "name": "Studium von Muskeln und Knochen",
+      "effect": "Die Ultimate Spielverderber verboten wird verbessert: Ihr Schaden steigt auf das 1,2-Fache und die Stärke ihrer Kryo-/Hitze-Verstärkung ebenfalls auf das 1,2-Fache."
+    },
+    "4": {
+      "name": "Perfekt in Form und Geist",
+      "effect": "Die Energiekosten von Spielverderber verboten werden um 15 % gesenkt."
+    },
+    "5": {
+      "name": "Pinselpunkt im Augenweiß",
+      "effect": "Vision vor Auge wird verbessert: Die Abklingzeit sinkt um zwei Sekunden, der Schaden steigt auf das 1,15-Fache und beim Auslösen wird eine zusätzliche verbrauchte oder absorbierte Kumulierung angerechnet."
+    }
+  },
+  "talents": {
+    "keen-mind": {
+      "name": "Scharfer Verstand",
+      "levelEffects": [
+        "Intellekt des Operators +10.",
+        "Intellekt des Operators +15.",
+        "Intellekt des Operators +15.",
+        "Intellekt des Operators +20."
+      ]
+    },
+    "proxy-s-patronage": {
+      "name": "Gönnerschaft der Proxy",
+      "levelEffects": [
+        "Nach der Ultimate sinkt die Abklingzeit der Kombofertigkeit des Operators auf Teamposition 1 um 10 Sekunden.",
+        "Nach der Ultimate sinkt die Abklingzeit der Kombofertigkeit des Operators auf Teamposition 1 um 20 Sekunden."
+      ]
+    },
+    "unsoiled-brush": {
+      "name": "Blütenreiner Pinsel",
+      "levelEffects": [
+        "Wenn die Tintenseele verschwindet, erhalten verbündete Operatoren 15 % Hast für fünf Sekunden.",
+        "Wenn die Tintenseele verschwindet, erhalten verbündete Operatoren 30 % Hast für fünf Sekunden."
+      ]
+    },
+    "ware-is-the-geist": {
+      "name": "Ware ist der Geist",
+      "levelEffects": [
+        "Im Empfangsraum: Effektivität der Hinweisbeschaffung +20 %.",
+        "Im Empfangsraum: Effektivität der Hinweisbeschaffung +30 %."
+      ]
+    },
+    "ink-spirit-aide": {
+      "name": "Tinten-Geist-Assistent",
+      "levelEffects": [
+        "Im Empfangsraum: Stimmungsabnahme aller dort befindlichen Operatoren um 14 % verlangsamt.",
+        "Im Empfangsraum: Stimmungsabnahme aller dort befindlichen Operatoren um 18 % verlangsamt."
+      ]
+    }
+  },
+  "requirementLabels": {},
+  "promotions": {},
+  "materials": {}
+}
