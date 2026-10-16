@@ -29,8 +29,8 @@ jobs:
               response=pg.goto("https://datafield.cc/characters/si",wait_until="domcontentloaded",timeout=60000)
               pg.wait_for_timeout(6500)
               print("SI_DF_STATUS",response.status if response else None)
-              try:pg.get_by_role("button",name="×").first.click(timeout=1200)
-              except Exception:pass
+              pg.locator(".modal-backdrop").evaluate_all("(nodes)=>nodes.forEach(n=>n.remove())")
+              pg.get_by_role("button",name="×").evaluate_all("(nodes)=>nodes.forEach(n=>n.remove())")
               def section():
                 s=pg.locator("body").inner_text()
                 a=s.find("Potentials\\n")
@@ -40,12 +40,12 @@ jobs:
               section()
               for target in ["Support Potentials","DPS Potentials","Support","Main DPS"]:
                 try:
-                  pg.get_by_role("button",name=target,exact=True).first.click(timeout=3500)
+                  pg.get_by_role("button",name=target,exact=True).first.evaluate("(el)=>el.click()")
                   pg.wait_for_timeout(450)
                   print("SELECT",target);section()
                 except Exception as e:print("CLICK_FAILED",target,str(e)[:240])
               try:
-                pg.get_by_role("button",name="Show 6 More Weapons").first.click(timeout=4000)
+                pg.get_by_role("button",name="Show 6 More Weapons").first.evaluate("(el)=>el.click()")
                 print("ALL_WEAPONS",pg.locator("body").inner_text()[pg.locator("body").inner_text().find("Recommended Weapons"):][:9000])
               except Exception as e:print("EXPAND_FAILED",str(e)[:250])
             finally:b.close()
