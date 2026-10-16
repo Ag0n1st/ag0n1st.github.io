@@ -1,4 +1,5 @@
 import rawCatalog from "../../data/endfield/catalog/items.json";
+import { normalizeOfficialGearSlot } from "./gearSlotCorrections.mjs";
 // The detailed data file is optional until a verified official import exists.
 // Vite/Astro discovers it at build time, not by making runtime SKPORT requests.
 const snapshotFiles=import.meta.glob("../../data/endfield/catalog/equipment-details.json",{
@@ -34,5 +35,8 @@ const snapshot=Object.values(snapshotFiles)[0];
 const weaponIndex=new Map(snapshot?.weapons.map(x=>[x.id,x])??[]);
 const gearIndex=new Map(snapshot?.gear.map(x=>[x.id,x])??[]);
 export function getOfficialWeapon(id:string):OfficialWeapon|undefined{return weaponIndex.get(id);}
-export function getOfficialGear(id:string):OfficialGear|undefined{return gearIndex.get(id);}
+export function getOfficialGear(id:string):OfficialGear|undefined{
+  const original=gearIndex.get(id);
+  return original ? normalizeOfficialGearSlot(original) as OfficialGear : undefined;
+}
 export function equipmentDataCoverage(){return snapshot?.coverage??null;}
