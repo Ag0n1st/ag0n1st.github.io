@@ -419,7 +419,8 @@ def smoke_si(page, base_url, width):
 
     verify(page.locator("#teams .op-meta-team-heading").count()==6,
            label+": all six existing Meta teams")
-    verify(page.locator("#teams .op-meta-team-heading .op-chip.is-pink").count()==2,
+    verify(page.locator("#teams .op-si-main-team .op-meta-team-labels .op-chip").count()==4 and
+           page.locator("#teams .op-si-main-team").count()==2,
            label+": both Si main DPS role labels have magenta accents")
     verify(page.locator("#teams .op-meta-team-heading").first.inner_text().startswith("Yvonne Main DPS"),
            label+": first team renamed to Yvonne Main DPS")
