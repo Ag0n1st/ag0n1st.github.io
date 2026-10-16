@@ -32,7 +32,7 @@ def guide(page, base_url, slug):
                          wait_until="domcontentloaded")
     verify(response is not None and response.status == 200,
            slug + ": guide route serves HTTP 200")
-    page.locator("#op-level").wait_for()
+    page.locator("#op-level").wait_for(state="attached")
     page.wait_for_function(
         "() => !document.querySelector('#op-build-results').textContent.includes('Prüfe vorhandene')"
     )
@@ -106,7 +106,7 @@ def smoke(page, base_url, width):
     verify(mode == "min", label + ": minimal mode saved as localStorage v2")
 
     page.reload(wait_until="domcontentloaded")
-    page.locator("#op-level").wait_for()
+    page.locator("#op-level").wait_for(state="attached")
     verify(page.locator("#op-level").input_value() == "10",
            label + ": minimum survives reload")
     verify(page.locator('[data-blueprint-owned="' + gear_id +
