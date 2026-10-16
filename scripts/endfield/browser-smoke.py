@@ -349,6 +349,107 @@ def smoke_typhoeus(page, base_url, width):
     check_overflow(page, label + " all sections")
 
 
+def smoke_si(page, base_url, width):
+    label=str(width)+"px Si"
+    guide(page,base_url,"si")
+    check_overflow(page,label)
+    verify(page.locator(".op-preview-banner").count()==0,
+           label+": published guide must not be marked preview")
+    ratings=page.locator("#uebersicht .op-rating").all()
+    verify(len(ratings)>=2 and "3 / 5" in ratings[0].inner_text()
+           and "5 / 5" in ratings[1].inner_text(),
+           label+": 3/5 beginner-friendly and 5/5 flexible")
+    traits=page.locator("#uebersicht .op-profile-card .op-chip").all_text_contents()
+    for term in ["Amp","Damage Dealer","Cryo Infliction"]:
+        verify(term in traits,label+": exact author trait "+term)
+    for term in ["Intellekt","Stärke"]:
+        verify(term in page.locator("#uebersicht .op-profile-card").inner_text(),
+               label+": official main/secondary localized attribute "+term)
+    verify(page.locator("#uebersicht .op-profile-art img").count()==1,
+           label+": official local Si portrait/illustration")
+    mainart=page.locator("#uebersicht .op-profile-art img")
+    page.wait_for_function("(el)=>el.complete && el.naturalWidth>100",arg=mainart.element_handle())
+    verify(page.locator("#uebersicht .op-quick-weapons-card .op-quick-weapon-item").count()==3,
+           label+": Jade Vessel + Long Heritage + verified Khravengger")
+    verify(page.locator("#uebersicht .op-quick-partners-card img").count()>=9,
+           label+": official cached portraits for diverse Meta partners")
+    verify(page.locator("#uebersicht .op-video-placeholder").count()==1,
+           label+": no invented Si YouTube guide embedded")
+
+    verify(page.locator("#ausruestung .op-meta-build-card").count()==2,
+           label+": editorial Type 50 main meta and optional Xiranite support meta")
+    verify(page.locator("#ausruestung [data-build-button]").count()==5,
+           label+": five editorial/main/support/progression equipment builds")
+    verify(page.locator("#ausruestung [data-build-button='si-main']").count()==1,
+           label+": author's new Type 50 + LYNX build is primary")
+    verify(page.locator("#ausruestung [data-build-button='si-support-xiranite']").count()==1,
+           label+": conditional heat/support build exists")
+    finder=page.locator("#build-finder")
+    verify(finder.get_attribute("open") is None,
+           label+": Si build finder initially collapsed")
+    finder.evaluate("el=>el.open=true")
+    page.locator('[data-build-button="si-main"]').click()
+    panel=page.locator('[data-build-panel="si-main"]')
+    verify(panel.locator(".op-gear-part").count()==4,
+           label+": Type 50 meta build has precisely four pieces")
+    icons=panel.locator(".op-gear-part img")
+    verify(icons.count()>=3,
+           label+": existing Type 50 artwork and LYNX WebPs are displayed")
+    verify("ungeprüft" in panel.inner_text().lower() or
+           "nicht zugeordnet" in panel.inner_text().lower() or
+           "ungeklärt" in panel.inner_text().lower(),
+           label+": new gear is not falsely shown officially available")
+    verify(panel.locator('input[data-blueprint-owned]:not([disabled])').count()<4,
+           label+": unverified 1.6 blueprints cannot be claimed owned")
+
+    verify(page.locator("#teams .op-meta-team-heading").count()==6,
+           label+": all six personally highlighted PDF Meta teams")
+    more=page.locator('#teams details[data-guide-disclosure="team-options"]')
+    more.evaluate("el=>el.open=true")
+    verify(page.locator("#teams [data-team-role]").count()==37,
+           label+": all 37 other exact PDF lineups are in the overview")
+    verify(page.locator("#teams .op-meta-team-heading").first.inner_text().find("Meta")>=0,
+           label+": author's Meta designation remains visible")
+    verify(page.locator("#uebersicht .op-priority-symbol").all_text_contents()==[">",">",">"],
+           label+": author's main DPS combo > battle > ultimate priority")
+    for key,de in [("basic","Schaffensdrang"),("battle","Dimension der Pinselkunst"),
+                   ("combo","Vision vor Auge"),("ultimate","Spielverderber verboten")]:
+        card=page.locator("#fertigkeiten .op-skill-description").nth(["basic","battle","combo","ultimate"].index(key))
+        verify(len(card.inner_text())>=70,
+               label+": full in-game German original description for "+de)
+    verify("Erster Pinselstrich: Kostet 15 FP" in page.locator(
+        "#fertigkeiten .op-skill-description").nth(1).inner_text(),
+           label+": verbatim authoritative German 15 FP description")
+    verify(page.locator("#potenziale [data-potential-button]").count()==5,
+           label+": all five SKPORT potentials and personal appraisal")
+    for n in (1,3,5):
+        page.locator('[data-potential-button="'+str(n)+'"]').click()
+        img=page.locator('[data-potential-panel="'+str(n)+'"] .op-potential-snapshot img')
+        img.wait_for(state="visible")
+        verify(img.get_attribute("src").endswith("/images/endfield/operators/si/potentials/potential-"+str(n)+".webp"),
+               label+": exact official snapshot P"+str(n))
+        page.wait_for_function("(el)=>el.complete && el.naturalWidth>100",arg=img.element_handle())
+    pot=page.locator('#potenziale details[data-guide-disclosure="potential-comparison"]')
+    pot.evaluate("el=>el.open=true")
+    val=pot.inner_text()
+    verify("5,6 %" in val and "9,3 %" in val,
+           label+": Datafield incremental P1 and P5 (DPS model only)")
+    cmp=page.locator('#waffen details[data-guide-disclosure="weapon-comparison"]')
+    cmp.evaluate("el=>el.open=true")
+    val=cmp.inner_text()
+    verify("114,5 %" in val and "90,5 %" in val and "86,8 %" in val,
+           label+": Datafield Jade Vessel and Long Heritage rank metrics")
+    verify(page.locator("#gameplay .op-gameplay-pending-label").count()==1,
+           label+": nonexistent Si video is marked as future")
+    verify("Tintenseele" in page.locator("#gameplay").inner_text() and
+           "15 FP" in page.locator("#gameplay").inner_text(),
+           label+": complete authored text rotation exists without video")
+    verify(page.locator("#fazit").evaluate(
+        "(el)=>el.lastElementChild?.classList.contains('op-conclusion-audiences')") is True,
+           label+": conclusion still ends with two audience cards")
+    check_overflow(page,label+" all sections")
+
+
 def main():
     if not (DIST / "index.html").is_file():
         raise SystemExit("Missing dist; run npm run build first")
@@ -368,6 +469,7 @@ def main():
                         page = context.new_page()
                         smoke(page, base_url, width)
                         smoke_typhoeus(page, base_url, width)
+                        smoke_si(page, base_url, width)
                     finally:
                         context.close()
             finally:
