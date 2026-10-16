@@ -114,7 +114,13 @@ const team = z.object({
   memberGear: z.array(z.object({
     member: identifier,
     items: z.tuple([identifier,identifier,identifier,identifier]),
+    // Individual teammate weapons are separate from the four armor/gear slots.
+    weaponId: identifier.optional(),
+    weaponRank: z.number().int().min(1).max(9).optional(),
     note: text.optional(),
+  }).superRefine((row,ctx)=>{
+    if(row.weaponRank!==undefined && !row.weaponId)
+      ctx.addIssue({code:z.ZodIssueCode.custom,path:["weaponId"],message:"Waffenrang benötigt eine belegte Waffen-ID."});
   })).default([]),
 }).superRefine((team,ctx)=>{
   const loaded=new Set<string>();
@@ -233,6 +239,20 @@ export const operatorGuideSchema = z.object({
     entries: z.array(potential)
       .refine(entries => new Set(entries.map(p => p.level)).size === entries.length, "Jedes Potenzial P1 bis P5 darf nur einmal vorkommen.")
       .default([]),
+    // Optional second Datafield profile model (e.g. no extra Ultimate energy).
+    // A named scenario contains per-step increments, never cumulative P0 gains.
+    comparisons: z.array(z.object({
+      id: identifier,
+      title: z.string().trim().min(1),
+      sourceNote: z.string().trim().min(1),
+      comparisonConditions: z.string().trim().min(1),
+      snapshotDate: z.string().regex(/^\\d{4}-\\d{2}-\\d{2}$/).optional(),
+      entries: z.array(z.object({
+        level: z.number().int().min(1).max(5),
+        increaseOverPreviousPercent: z.number().finite(),
+      })).length(5).refine(rows=>new Set(rows.map(r=>r.level)).size===5,
+        "Jedes Szenario benötigt genau P1 bis P5."),
+    })).refine(noDuplicateIds,"Potenzialszenarien müssen eindeutige IDs haben.").default([]),
   }).default({}),
 
   teams: z.object({
