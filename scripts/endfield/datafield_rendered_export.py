@@ -226,14 +226,21 @@ def run(slug: str, output: Path, headed: bool, timeout: int) -> int:
 
     potentials = parse_potentials(data["potentials"]["lines"])
     weapons = parse_weapons(data["weapons"]["lines"])
+    potential_rule = next((line for line in data["potentials"]["lines"]
+        if "relative to the previous potential" in line.lower()), None)
+    for scenario in weapon_scenarios:
+        scenario["referenceWeapons"] = [
+            {"name": w["name"], "rank": w["rank"]}
+            for w in scenario["weapons"] if w["reportedPercent"] == 100.0
+        ]
     result = {
         "schemaVersion": 1,
         "source": "Datafield",
         "url": target,
         "retrievedAtUtc": datetime.now(timezone.utc).isoformat(),
         "method": "Playwright rendered DOM (public page; one character)",
-        "potentialPercentageBaseline": "UNVERIFIED – check Datafield spreadsheet and comparison wording",
-        "weaponPercentageBaseline": "UNVERIFIED – check Datafield spreadsheet, rank, rotation and reference",
+        "potentialPercentageBaseline": potential_rule or "UNVERIFIED – inspect Datafield wording",
+        "weaponPercentageBaseline": "100% reference identified PER SCENARIO; team, rotation, equipment and spreadsheet conditions still require verification",
         "sections": {"potentials": data["potentials"]["found"], "weapons": data["weapons"]["found"]},
         "potentials": potentials,
         "weapons": weapons,
@@ -254,7 +261,11 @@ def run(slug: str, output: Path, headed: bool, timeout: int) -> int:
     print(f"Exported: {output} | potentials={len(potentials)} | weapon scenarios={len(weapon_scenarios)} | default weapons={len(weapons)}", file=sys.stderr)
     if (len(potentials) < 5 or not weapons
             or not any(w["reportedPercent"] is not None for w in weapons)
-            or any(not scenario["weapons"] for scenario in weapon_scenarios)):
+            or any(p["reportedPercent"] is None for p in potentials)
+            or any(not scenario["weapons"]
+                   or any(w["reportedPercent"] is None for w in scenario["weapons"])
+                   or not scenario["referenceWeapons"]
+                   for scenario in weapon_scenarios)):
         print("PARTIAL: Missing entries or percentages; examine diagnostics, do NOT publish.", file=sys.stderr)
         return 3
     print("Structured entries detected. Comparison assumptions STILL REQUIRE manual verification.", file=sys.stderr)
