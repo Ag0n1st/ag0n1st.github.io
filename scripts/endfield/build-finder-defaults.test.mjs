@@ -90,7 +90,7 @@ test("equipment uses a CLOSED native disclosure for all heavy filters and detail
  assert.doesNotMatch(equipment.slice(start,start+110),/\sopen(?:\s|>)/);
  assert.match(equipment.slice(start,start+400),/<summary class="op-build-finder-toggle">/);
  assert.match(equipment,/id="op-progress-reset">Maximal-Vorauswahl wiederherstellen/);
- assert.match(equipment,/Blaupausen-Auswahl \(standardmäßig alle aktiv\)/);
+ assert.match(equipment,/Blaupausen-Auswahl \(bei Maximal-Vorauswahl alle aktiv\)/);
  assert.match(equipment,/kein automatischer Abgleich mit deinem Spielkonto/);
 });
 
@@ -151,7 +151,7 @@ test("both preset buttons appear next to each other within the collapsed Finder"
  const group=equipment.indexOf('class="op-progress-preset-actions"');
  const max=equipment.indexOf('id="op-progress-reset"');
  const min=equipment.indexOf('id="op-progress-min"');
- const end=equipment.indexOf('class="op-gear-disclaimer"');
+ const end=equipment.indexOf('op-gear-disclaimer',min);
  assert.ok(start>=0 && start<group && group<max && max<min && min<end);
  assert.match(equipment,/Maximal-Vorauswahl wiederherstellen \(Anpassungen löschen\)/);
  assert.match(equipment,/Minimal-Vorauswahl einstellen \(für neue Spieler\)/);
