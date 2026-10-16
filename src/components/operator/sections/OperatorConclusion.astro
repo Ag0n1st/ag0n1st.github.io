@@ -14,10 +14,9 @@ const { guide, operatorName, pullLabels } = model;
               ? <span class="op-chip is-accent">{pullLabels[guide.conclusion.recommendation]}</span>
               : null}
         </div>
-        {guide.conclusion.verdict
-          ? <p class="op-conclusion-lead">{guide.conclusion.verdict}</p>
-          : <p class="op-placeholder">[Gesamturteil folgt]</p>}
-        {guide.conclusion.pullAdvice && <p class="op-muted op-body-copy op-conclusion-detail">{guide.conclusion.pullAdvice}</p>}
+        {(guide.conclusion.verdict || guide.conclusion.pullAdvice)
+          ? <p class="op-conclusion-lead">{guide.conclusion.verdict || guide.conclusion.pullAdvice}</p>
+          : <p class="op-placeholder">[Fazit folgt]</p>}
         <div class="op-two op-conclusion-audiences">
           <div class="op-cardlet"><h3>✓ Für wen lohnt es sich?</h3>{guide.conclusion.recommendedFor.length ? guide.conclusion.recommendedFor.map(s=><p class="op-body-copy">{s}</p>) : <p class="op-placeholder">[Empfehlungen folgen]</p>}</div>
           <div class="op-cardlet"><h3>− Wer kann verzichten?</h3>{guide.conclusion.skipIf.length ? guide.conclusion.skipIf.map(s=><p class="op-body-copy">{s}</p>) : <p class="op-placeholder">[Einschätzung folgt]</p>}</div>
