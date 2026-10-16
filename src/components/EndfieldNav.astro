@@ -17,7 +17,7 @@ const items=isEn?itemsDe.map(item=>({
  label:({"overview":"Overview","operators":"Operators","factory":"Factory","recruitment":"Recruitment","refinement":"Refinement","essences":"Essences","speedruns":"Speedruns","checklist":"Checklist","countdown":"Countdown"} as Record<string,string>)[item.key]??item.label,
  href:item.key==="overview"?"/en/endfield/":item.key==="operators"?"/en/endfield/operators/":item.href,
  untranslated:!["overview","operators"].includes(item.key)
-})):itemsDe;
+})):itemsDe.map(item=>({...item,untranslated:false}));
 ---
 <nav class="endfield-nav" aria-label="Arknights: Endfield Navigation">
   <div class="endfield-nav-inner">
