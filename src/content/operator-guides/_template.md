@@ -25,7 +25,10 @@ overview:
     # flexibility: 4
     # accessibility: automatisch aus den offiziellen Anforderungen der Meta-Builds; nicht eintragen
   # featuredBuildId: standard
-  partners: [] # Operator-IDs, z.B. [operator-a, operator-b]
+  # Partners werden automatisch aus den Meta-Teams errechnet (ohne den Guide-Operator).
+  # Einträge nur als Rückfall verwenden, solange keine Meta-Teams vorhanden sind.
+  # Die Profilkarte verweist für zusätzliche Teamoptionen auf den Teams-Abschnitt.
+  partners: []
 
 # 2. OPERATOR KIT
 operatorKit:
