@@ -1,5 +1,5 @@
 ---
-import {getCollection} from "astro:content";
+import {getCollection,type CollectionEntry} from "astro:content";
 import enGuides from "../../../../data/i18n/en-guides.json";
 import EndfieldPlaceholder from "../../../../layouts/EndfieldPlaceholder.astro";
 import ItemIcon from "../../../../components/endfield/ItemIcon.astro";
@@ -15,7 +15,7 @@ export async function getStaticPaths(){
   params:{slug:entry.data.operator},props:{guide:entry.data}
  }));
 }
-interface Props { guide: (Awaited<ReturnType<typeof getCollection<"operator-guides">>>)[number]["data"] }
+interface Props { guide: CollectionEntry<"operator-guides">["data"] }
 const {guide}=Astro.props;
 const text=enGuides[guide.operator as keyof typeof enGuides];
 if(!text)throw Error("English editorial entry missing for "+guide.operator);
@@ -27,6 +27,7 @@ const pairs=Object.entries(text.builds);
 const englishBuilds=pairs.map(([id,copy])=>({id,...copy,original:guide.equipment.builds.find(b=>b.id===id)}));
 if(englishBuilds.some(b=>!b.original))throw Error("English build ID has no source build for "+name);
 const featuredTeams=guide.teams.meta;
+const teamNotes:Record<string,string>=text.teamNotes;
 const metaIds=new Set(featuredTeams.map(x=>x.id));
 const extraTeamCount=guide.teams.more.length;
 const skillSlots=[["basic","Basic Attack"],["battle","Battle Skill"],["combo","Combo Skill"],["ultimate","Ultimate"]] as const;
@@ -118,7 +119,7 @@ const headline=`${name} Guide | Arknights: Endfield`;
       <p class="op-muted">Gear slot selection and build labels follow the original guide. These cards are recommendations, not proof that a blueprint is unlocked on your account.</p>
       <div class="en-guide-build-grid">
         {englishBuilds.map((build,i)=><article class="op-cardlet en-guide-build" id={`build-${build.id}`}>
-          <div class="op-subtitle"><h3>{build.title}</h3><span class="op-chip" class:is-accent={i===0}>Level {build.original?.availableFromLevel??"—"}</span></div>
+          <div class="op-subtitle"><h3>{build.title}</h3><span class:list={["op-chip",{"is-accent":i===0}]}>Level {build.original?.availableFromLevel??"—"}</span></div>
           <div class="en-guide-gear">
             {build.original?.items.map(id=>{
               const item=getEndfieldItem(id);
@@ -138,7 +139,7 @@ const headline=`${name} Guide | Arknights: Endfield`;
         {featuredTeams.map(team=><article class="op-cardlet">
           <div class="op-subtitle"><h3>{team.title}</h3><span class="op-chip is-accent">Meta</span></div>
           <div class="en-guide-team-members">{team.members.map(member=><span>{getImportedOperator(member)?.operator.name??member.split("-").map(w=>w[0].toUpperCase()+w.slice(1)).join(" ")}</span>)}</div>
-          {"teamNotes" in text && text.teamNotes[team.id] && <p>{text.teamNotes[team.id]}</p>}
+          {"teamNotes" in text && teamNotes[team.id] && <p>{text.teamNotes[team.id]}</p>}
           {team.buildId && <a class="op-link" href={`#build-${team.buildId}`}>View associated build ↗</a>}
         </article>)}
       </div>
