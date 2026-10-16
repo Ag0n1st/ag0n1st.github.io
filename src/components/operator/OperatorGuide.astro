@@ -165,7 +165,7 @@ const { guide, operatorName, preview, localized } = model;
     unverified:"Rezept/Daten ungeklärt"
   };
   const allGearIds=()=>[...new Set(blueprintCheckboxes
-    .filter(input=>!input.disabled && /^\\d+$/.test(input.dataset.blueprintOwned||""))
+    .filter(input=>!input.disabled && /^\d+$/.test(input.dataset.blueprintOwned||""))
     .map(input=>input.dataset.blueprintOwned||""))];
 
   // This is a user-friendly MAXIMAL ASSUMPTION, NOT synced game ownership.
@@ -215,7 +215,7 @@ const { guide, operatorName, preview, localized } = model;
       unselectedBlueprintIds.clear();
       if(saved.version===2){
         for(const id of Array.isArray(saved.unselectedGearBlueprintIds)?saved.unselectedGearBlueprintIds:[])
-          if(typeof id==="string" && /^\\d+$/.test(id) && unselectedBlueprintIds.size<500)
+          if(typeof id==="string" && /^\d+$/.test(id) && unselectedBlueprintIds.size<500)
             unselectedBlueprintIds.add(id);
       }else{
         const acquired=new Set(Array.isArray(saved.acquiredGearBlueprintIds)?saved.acquiredGearBlueprintIds:[]);
@@ -347,7 +347,7 @@ const { guide, operatorName, preview, localized } = model;
     const gearId=input.dataset.blueprintOwned;
     blueprintCheckboxes.filter(other=>other.dataset.blueprintOwned===gearId)
       .forEach(other=>other.checked=input.checked);
-    if(gearId && /^\\d+$/.test(gearId)){
+    if(gearId && /^\d+$/.test(gearId)){
       if(input.checked){
         unselectedBlueprintIds.delete(gearId);
         ownedBlueprintIds.add(gearId);
