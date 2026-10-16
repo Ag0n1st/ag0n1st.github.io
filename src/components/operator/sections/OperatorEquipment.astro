@@ -21,7 +21,9 @@ const officialBuilds=builds.map(build=>{
    availableFromLevel:build.availableFromLevel,
    storyUnlock:build.storyUnlock,
    locations:parts.map(part=>part.blueprint),
-   preview
+   // A real, editor-approved build must not be treated as a demo merely
+   // because other sections of the overall operator guide remain in preview.
+   preview: preview && guide.equipment.builds.length===0
  });
  return {...build,parts,requirements};
 });
