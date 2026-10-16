@@ -796,6 +796,15 @@ Dies ist eine **priorisierte Roadmap**, kein bereits bezahlter Projektvertrag un
 
 **Abnahme:** Nutzer kann die gesamte Spielweise **ohne das Video vollständig anschauen zu müssen** verstehen, und alle Daten sind quellengerecht sowie von eigenen Empfehlungen unterscheidbar.
 
+**P2-Start (16.10.2026):** Die bis dahin ausstehende Redaktion für Spielweise, Skill-Priorität und Waffen ist **nachprüfbar recherchiert, aber noch NICHT vom Creator freigegeben**. Sie liegt vollständig in [`docs/liino-p2-kit-skills-weapons-draft-20261016.md`](docs/liino-p2-kit-skills-weapons-draft-20261016.md). Grundlage: offizieller lokaler SKPORT-Snapshot (`liino.json` + `liino.extra.json`, vier Skills, zwei Kampftalente, **Waffen 1046/1044/97/93/75**) und separat als Community-Vorschläge markierte Prydwen-/Mobalytics-Ranglisten. Das `liino.md` bleibt **unverändert** (`status: preview`; nur sechs bereits genehmigte Ausrüstungs-Builds vorhanden).
+
+**Konkrete Inhalte für die redaktionelle Entscheidung:**
+- Deutsche Spielweise mit Vocalist Stance **60s/25 SP**, Arts-Reaktions-Kom­bo mit **20 Ultimate-Energie**, Ultimate **160 Energie/15s**, willensbasierter Elektro-/Natur-Amp, Schutz-/SP-Talenten und Gefahren des vorzeitigen Haltung-Endes.
+- Entwurf von **3 Stärken / 3 Schwächen** sowie Skill-Priorität **`Ultimate > Battle > Combo >= Basic`**; technische Besonderheit, dass die **20 Ultimate-Energie pro Kombo im offiziellen Snapshot nicht mit Skilllevel steigen**.
+- Waffenliste mit **offiziellen IDs plus Namen**: **Bedazzling Night Debut 1046** (BiS-Kandidat), **Golden Age 1044** (Battle Pass, **nicht** gratis), **Cohesive Traction 97** (5★ Will-Alternative, F2P-Status nicht belegt), **Chimeric Justice 93** (5★, Stärke statt Will, UGE-Notlösung), **JET 75** (6★, hauptsächlich persönlicher Schaden). Keine unbelegten DPS-/Amp-Prozentvergleiche; offizielle Waffeneffekte nach **Rank** getrennt, nicht mit Potenzial verwechselt.
+- **Offen:** Creator muss die deutschen redaktionellen Kurztexte, Prioritäten und Waffen-Auswahl bestätigen oder korrigieren. `overview.ratings` (Schwierigkeit/Flexibilität/Zugänglichkeit je 1–5), Potenziale, Teams, YouTube-URL und Fazit bleiben ohne eigene Creatorfreigabe offen. Die tatsächliche „F2P“-Bezugsquelle darf nicht aus unklarer Shop-/BP-Beschriftung geraten werden.
+- **Nächste kleinste Aufgabe:** Entwurf in `docs/liino-p2-kit-skills-weapons-draft-20261016.md` dem Nutzer mit Quellenhierarchie vorstellen; **nach** ausdrücklicher Zustimmung nur akzeptierte Teile in `liino.md` übertragen, validieren/testen/mergen. P1-Browser-Abnahme (Max-/Min-Profile) separat offen und darf bei der redaktionellen P2-Recherche nicht als bestanden eingetragen werden.
+
 ### Phase P3 – Typhoeus-Guide, danach universelle Operator-Pipeline
 
 **Status:** [GEPLANT], teils parallel zu P2.
@@ -1281,6 +1290,7 @@ Nach **jedem** zukünftigen Task, unabhängig davon, ob ihn dieselbe oder eine a
 - Eigene Domain: https://ag0n1st.com
 
 **Fachdokumente im Repository:**
+- [Liino P2 – Spielweise, Skills und Waffen (Rechercheentwurf, nicht freigegeben)](docs/liino-p2-kit-skills-weapons-draft-20261016.md)
 - [Meta Builds: Autorenanleitung, Datenmodell und Layout](docs/operator-guide-workflow.md#meta-builds-im-gemeinsamen-operator-guide-framework)
 - [Liino – vom Creator festgelegte Builds](docs/liino-approved-builds-20261016.md)
 - [Liino – historische Build-Recherche (überholt)](docs/liino-build-proposals-20261016.md)
@@ -1340,5 +1350,7 @@ Nach **jedem** zukünftigen Task, unabhängig davon, ob ihn dieselbe oder eine a
 
 | 16.10.2026 | **Minimal-Vorauswahl** zusätzlich zum unveränderten Max-Default durch [PR #19](https://github.com/Ag0n1st/ag0n1st.github.io/pull/19) auf `main` gemergt | CI #82 vollständig `success` (Tests, Budget, Build), Squash-Commit `343c8a0d0a626dc423a534bc9004d1eda971e796`. Zwei Buttons nebeneinander/mobil gestapelt; Minimalprofil 10/Amethyst, Region/Gebiete/Authority/Stock/Blaupausen leer; `selectionMode: min` speichert nur manuelle Opt-ins guideübergreifend. Neue Nutzer weiterhin automatisch Maximalprofil. Live-Pages-Deploy und echter Browsertest offen. |
 
+| 16.10.2026 | **Liino P2 – Spielweise/Skill-Priorität/Waffen aus offiziellen SKPORT-Daten analysiert und zur Freigabe vorbereitet** | Noch **keine redaktionelle Veröffentlichung**. `docs/liino-p2-kit-skills-weapons-draft-20261016.md` dokumentiert relevante Skill-/Talentmechaniken, abgestufte Quellen, 3+3 Stärken/Schwächen, vorläufige Priorität und Waffen inklusive offizieller IDs 1046/1044/97/93/75; falsche „Golden Age F2P“-Einordnung vermieden. Nach Creatorfreigabe nach `liino.md` übernehmen. |
+
 **Ende der aktuellen Roadmap.**  
-**Fortsetzungspunkt:** Aktuellen `main` (PR #19 Merge `343c8a0d`) sowie ROADMAP **§14.3c–14.3f** und [`docs/operator-guide-workflow.md`](docs/operator-guide-workflow.md) lesen. **CI #82 komplett grün**, beide Max-/Min-Vorauswahlbuttons bereits auf `main`; **Live-Pages-Deploy und echter Browser-/Mobile-/Keyboard-Test noch offen**. Nächste kleinste Aufgabe: Liino-Guide unter `/endfield/operatoren/liino/` prüfen: Finder bleibt geschlossen, beide Buttons nebeneinander (mobil untereinander); kein gespeicherter Fortschritt = Maximal (Lv70/Pyrrolit/Wuling/19 Gebiete/Authority60/Stock3/alle Blueprint-IDs an); Klick Minimal = Lv10/Amethyst, Region/Authority/Stock leer, alle Area-/Blueprint-Checkboxen aus; individuelle Häkchen über Reload und Guide-Wechsel inklusive Typhoeus bewahren, neue unbekannte Gear-IDs nur im Max-Modus automatisch an; Max-Button löscht v1/v2 und setzt auf Max, alte v2 ohne Modus bleibt lesbar; Card-Link öffnet und selektiert Finder. Danach P1-End-to-End-Abnahme belegen und P2 Liino-Guide redaktionell fortsetzen.
+**Fortsetzungspunkt:** Aktuellen `main` und PRs prüfen; P1-Stand und Rest-QA in **§14.3e–f**; P2-Redaktionsentwurf in [`docs/liino-p2-kit-skills-weapons-draft-20261016.md`](docs/liino-p2-kit-skills-weapons-draft-20261016.md). **Zuerst Creatorfreigabe** für 3+3 Stärken/Schwächen, Kit-Text, Skill-Priorität und Waffen-Shortlist einholen. **Keine** unverifizierten Beschaffungswege oder Meta-Waffen-Prozentwerte als Ag0n1st-Empfehlung publizieren. Danach nur explizit bestätigte Texte in `liino.md` übernehmen, tests/budget/Astro-Build/PR/Merge nachweisen, P2 Potenziale/Teams/Gameplay/Fazit ausarbeiten. Der separat erforderliche echte Browser-/Pages-End-to-End-Test von Max-/Min-Progression (P1) ist weiterhin **offen**.
