@@ -418,3 +418,16 @@
 .op-potential-comparison-table{min-width:670px}
 .op-potential-comparison-table th:nth-child(2){min-width:285px}
 .op-potential-comparison-table td{vertical-align:top}
+
+/* The author's Mobalytics teammate advice: optional additional weapons and
+   context-specific 4-piece gear presets, not nested standalone build finder. */
+.op-team-member-weapon-options{margin:0 0 12px}
+.op-team-weapon-alternatives{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.op-team-weapon-alternative{display:flex;gap:6px;align-items:center;padding:5px 7px;
+  border:1px solid #464050;border-radius:8px;min-width:0;background:#211d2a}
+.op-team-weapon-alternative small{font-size:10px;overflow-wrap:anywhere}
+.op-team-gear-variants{margin-top:11px}
+.op-team-gear-variants .op-details-body{display:flex;flex-direction:column;gap:9px}
+.op-team-gear-variant{padding:10px;border:1px solid #494153;border-radius:9px}
+.op-team-gear-variant>strong{display:block;font-size:11px;margin-bottom:10px}
+.op-team-gear-variant>p{font-size:10px!important;margin:8px 0 0}
