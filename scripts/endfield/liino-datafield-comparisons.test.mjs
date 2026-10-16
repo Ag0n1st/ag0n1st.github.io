@@ -23,7 +23,7 @@ const expected=[
 ];
 
 function namedScenarioBlocks(){
- const raw=weaponsYaml.match(/  comparisons:\n([\s\S]*?)(?=^  generalNotes:)/m)?.[1];
+ const raw=weaponsYaml.split("  comparisons:\n")[1]?.split("\n  generalNotes:")[0];
  assert.ok(raw,"Comparisons need a separate scenario section");
  return raw.split("    - id: ").slice(1).map(s=>({
   id:s.split("\n",1)[0],
