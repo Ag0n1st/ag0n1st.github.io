@@ -17,8 +17,9 @@ const { guide, gameData, extraData, trTerm, trMetric, trReq, trPromotion, locali
             ].map(([label,value])=><div class="op-info-field"><small>{label}</small><strong>{value || "[Spieldaten folgen]"}</strong></div>)}</div>
           <p class="op-muted op-body-copy">{guide.operatorKit.playstyle || "[Spielweise und Grundlagen folgen]"}</p>
         </div>
-        <div class="op-divided">
-          <h3>Attributentwicklung</h3>
+        <details class="op-divided op-guide-accordion" data-guide-disclosure="attribute-progression">
+          <summary class="op-guide-accordion-summary"><h3>Attributentwicklung</h3><span class="op-guide-accordion-hint">Levelwerte anzeigen</span></summary>
+          <div class="op-guide-accordion-content">
           {extraData ? <>
             <p class="op-section-intro">Originalwerte der englischen SKPORT-Wiki für die dort angegebenen Levelstufen. Dies sind keine Ausrüstungslevel.</p>
             <div class="op-table-wrap"><table class="op-table op-progression-table">
@@ -32,9 +33,11 @@ const { guide, gameData, extraData, trTerm, trMetric, trReq, trPromotion, locali
               </table></div>
             </details>
           </> : <p class="op-placeholder">[Attributwerte werden nach dem SKPORT-Import angezeigt]</p>}
-        </div>
-        <div class="op-divided">
-          <h3>Operator-Aufstieg & Freischaltungen</h3>
+          </div>
+        </details>
+        <details class="op-divided op-guide-accordion" data-guide-disclosure="operator-promotions">
+          <summary class="op-guide-accordion-summary"><h3>Operator-Aufstieg & Freischaltungen</h3><span class="op-guide-accordion-hint">Aufstiege anzeigen</span></summary>
+          <div class="op-guide-accordion-content">
           <p class="op-section-intro">Promotion und Outfitting sind unterschiedliche Freischaltungen. Die Levelangaben entsprechen den offiziellen Operator-Meilensteinen.</p>
           <div class="op-table-wrap"><table class="op-table op-progression-table">
             <thead><tr><th>Aufstieg</th><th>Freischaltung</th><th>Voraussetzung</th><th>Materialien</th></tr></thead>
@@ -44,7 +47,8 @@ const { guide, gameData, extraData, trTerm, trMetric, trReq, trPromotion, locali
             </tr>) : [1,2,3,4,5].map(n=><tr><td>[Stufe {n}]</td><td>[Freischaltung]</td><td>[Level/Story]</td><td>[Materialien]</td></tr>)}</tbody>
           </table></div>
           {guide.operatorKit.progressionNotes && <p class="op-body-copy">{guide.operatorKit.progressionNotes}</p>}
-        </div>
+          </div>
+        </details>
         <div class="op-divided">
           <h3>Ressourcen & Verfügbarkeit</h3>
           <div class="op-cardlet"><p class="op-body-copy">{guide.operatorKit.resourceNotes || "[Bezugsquellen und Freischaltbedingungen folgen]"}</p></div>
