@@ -675,26 +675,33 @@ teams:
         davon profitieren.
       memberGear:
         - member: arcane
-          items: ["1134", "1138", "1136", "1136"]
-          note: >-
-            Eternal Xiranite mit zwei Bracing Slabs:
-            Arcane in der Wille-Variante spielen
-            und den für ihre Buffs nötigen
-            Wille-Wert prüfen (im Guide-Ziel: 640).
+          weaponId: "1045"
+          weaponAlternatives: ["47", "1043"]
+          items: ["1134", "1137", "1136", "1136"]
+          note: "Wille-Form, mindestens 640 Wille. Type 42: Solemn Phalanx ist die Hauptempfehlung; Detonation Unit lässt sich durch wiederholte Natur-Kumulierungen auslösen. Das PDF bevorzugt für dieses Team ausdrücklich beide Bracing Slabs."
         - member: ardelia
+          weaponId: "49"
           items: ["881", "1131", "876", "876"]
-          note: >-
-            Qingbo-Fokus und ein Hot-Work-
-            Off-Piece. Unterstützt eine
-            Combo-/Debuff-Orientierung.
+          note: "Mit Arcane als Xiranit-Träger und Liino: Qingbo Light Armor, Hot Work Hands PPE und zweimal Qingbo Cask. Signature Dreams of the Starry Beach bevorzugen."
+          alternatives:
+            - title: "Nur ohne anderen Xiranit-Nutzer"
+              items: ["1134", "332", "337", "337"]
+              note: "Vier Teile für den Fall, dass kein anderer Operator den Xiranit-Bonus übernimmt."
+            - title: "Mit Xiranit-Nutzer, aber ohne Liino"
+              items: ["328", "775", "286", "286"]
+              note: "Hot-Work-Fokus in alternativen Teams ohne Liino."
         - member: liino
-          items: ["1132", "1133", "365", "1236"]
-          note: >-
-            LYNX-Heilungsvariante als
-            mögliches Team-Loadout.
-            Liinos eigener Guide zeigt
-            weitere spezialisierte
-            Support-Builds.
+          weaponId: "1046"
+          weaponAlternatives: ["1044"]
+          items: ["1134", "1138", "365", "365"]
+          note: "Mit Arcane als Xiranit-Nutzer und zusätzlichem Ultimate-Energiebedarf: Light Armor, Hands, zwei LYNX Slabs. Bedazzling Night Debut bevorzugen, Golden Age ist die Battle-Pass-Alternative."
+          alternatives:
+            - title: "Mit Xiranit-Nutzer, ohne zusätzlichen Ultimate-Energiebedarf"
+              items: ["1126", "1129", "365", "365"]
+              note: "Rift Trekker Light Armor und Hands plus zwei LYNX Slabs für möglichst viel Wille und Ultimate-Verstärkung."
+            - title: "Nur ohne anderen Xiranit-Nutzer"
+              items: ["1134", "1138", "337", "365"]
+              note: "Light Armor, Hands, Auxiliary Arm und LYNX Slab – nur wenn Arcane im Team tatsächlich kein Xiranit spielt."
     - id: arcane-perlica-liino
       title: "Arcane · Perlica · Liino"
       role: main-dps
@@ -715,33 +722,30 @@ teams:
         belasten.
       memberGear:
         - member: arcane
-          items: ["1134", "1138", "1136", "1136"]
-          note: >-
-            Eternal-Xiranite-Support-Build mit zwei
-            Bracing Slabs. Für Typhis Natur-Team
-            ist Arcane in der Wille-Variante
-            vorgesehen; die dafür benötigten
-            Werte und Setboni im eigenen
-            Spielstand prüfen.
+          weaponId: "1045"
+          weaponAlternatives: ["47", "1043"]
+          items: ["1134", "1137", "1136", "1136"]
+          note: "Wille-Form, mindestens 640 Wille. Type 42: Solemn Phalanx ist die Hauptempfehlung; Detonation Unit lässt sich durch wiederholte Natur-Kumulierungen auslösen. Das PDF bevorzugt für dieses Team ausdrücklich beide Bracing Slabs."
         - member: perlica
-          items: ["353", "341", "338", "338"]
-          note: >-
-            Pulser Labs, zwei
-            Calibrators und
-            Fokus auf
-            unterstützende
-            Technik-Reaktionen.
+          weaponId: "94"
+          items: ["881", "775", "876", "876"]
+          note: "Stanza of Memorials für den größtmöglichen Typhoeus-Buff. Qingbo Light Armor, Hot Work Gloves und zwei Qingbo Casks für Combo-Abklingzeit und Elektrifikation."
+          alternatives:
+            - title: "Mehr eigener Schaden bei vollem Elektrifikation-Effekt"
+              items: ["353", "775", "338", "338"]
+              note: "Pulser Labs Disruptor Suit, Hot Work Gloves, zweimal Pulser Labs Calibrator."
         - member: liino
-          items: ["1134", "1138", "1236", "365"]
-          note: >-
-            Eternal-Xiranite-
-            Support-Variante
-            mit LYNX Slab.
-            Bauplanbesitz und
-            individuellen
-            Ultimate-Bedarf
-            separat prüfen.
-  more:
+          weaponId: "1046"
+          weaponAlternatives: ["1044"]
+          items: ["1134", "1138", "365", "365"]
+          note: "Mit Arcane als Xiranit-Nutzer und zusätzlichem Ultimate-Energiebedarf: Light Armor, Hands, zwei LYNX Slabs. Bedazzling Night Debut bevorzugen, Golden Age ist die Battle-Pass-Alternative."
+          alternatives:
+            - title: "Mit Xiranit-Nutzer, ohne zusätzlichen Ultimate-Energiebedarf"
+              items: ["1126", "1129", "365", "365"]
+              note: "Rift Trekker Light Armor und Hands plus zwei LYNX Slabs für möglichst viel Wille und Ultimate-Verstärkung."
+            - title: "Nur ohne anderen Xiranit-Nutzer"
+              items: ["1134", "1138", "337", "365"]
+              note: "Light Armor, Hands, Auxiliary Arm und LYNX Slab – nur wenn Arcane im Team tatsächlich kein Xiranit spielt."
     - id: arcane-xaihi-liino
       title: "Arcane · Xaihi · Liino"
       role: main-dps
@@ -756,17 +760,67 @@ teams:
         Besonders stark mit
         einer präzise
         geplanten Rotation.
+      memberGear:
+        - member: arcane
+          weaponId: "1045"
+          weaponAlternatives: ["47", "1043"]
+          items: ["1134", "1137", "1136", "1136"]
+          note: "Wille-Form, mindestens 640 Wille. Type 42: Solemn Phalanx ist die Hauptempfehlung; Detonation Unit lässt sich durch wiederholte Natur-Kumulierungen auslösen. Das PDF bevorzugt für dieses Team ausdrücklich beide Bracing Slabs."
+        - member: liino
+          weaponId: "1046"
+          weaponAlternatives: ["1044"]
+          items: ["1134", "1138", "365", "365"]
+          note: "Mit Arcane als Xiranit-Nutzer und zusätzlichem Ultimate-Energiebedarf: Light Armor, Hands, zwei LYNX Slabs. Bedazzling Night Debut bevorzugen, Golden Age ist die Battle-Pass-Alternative."
+          alternatives:
+            - title: "Mit Xiranit-Nutzer, ohne zusätzlichen Ultimate-Energiebedarf"
+              items: ["1126", "1129", "365", "365"]
+              note: "Rift Trekker Light Armor und Hands plus zwei LYNX Slabs für möglichst viel Wille und Ultimate-Verstärkung."
+            - title: "Nur ohne anderen Xiranit-Nutzer"
+              items: ["1134", "1138", "337", "365"]
+              note: "Light Armor, Hands, Auxiliary Arm und LYNX Slab – nur wenn Arcane im Team tatsächlich kein Xiranit spielt."
     - id: arcane-gilberta-liino
       title: "Arcane · Gilberta · Liino"
       role: main-dps
       members: [typhoeus, arcane, gilberta, liino]
       buildId: deep-rampart-lynx
       note: >-
-        Alternative mit Gilberta
-        zum Gruppieren und
-        für zusätzliche Reaktionen,
-        die wiederum Liinos
-        Combo nutzbar machen.
+        Rhodagn-Nuke-Aufbau aus meinem Mobalytics-Guide: Zunächst Liinos Ultimate
+        (ANG + Natur-Verstärkung), dann Arcanes Battle Skill so verzögert treffen lassen,
+        dass Gilbertas Combo auf Elektrifikation ausgelöst werden kann. Arcanes Combo
+        zunächst nicht verwenden. Nach Typhis Final Strike folgen Typhis Ultimate,
+        Gilbertas Ultimate und anschließend abgestimmte Natur-Explosionen und
+        Jagdpfeile; Arcanes Combo dient dem notwendigen Taumel- und Zeichen-Timing.
+        Gilbertas Swordmancer-Taumelausrüstung ist dafür die dokumentierte Variante.
+      memberGear:
+        - member: arcane
+          weaponId: "1045"
+          weaponAlternatives: ["47", "1043"]
+          items: ["1134", "1137", "1136", "1136"]
+          note: "Wille-Form, mindestens 640 Wille. Type 42: Solemn Phalanx ist die Hauptempfehlung; Detonation Unit lässt sich durch wiederholte Natur-Kumulierungen auslösen. Das PDF bevorzugt für dieses Team ausdrücklich beide Bracing Slabs."
+        - member: gilberta
+          weaponId: "79"
+          weaponAlternatives: ["47"]
+          items: ["328", "874", "793", "793"]
+          note: "Taumel-Fokus aus meinem Rhodagn-Nuke-Showcase: Eternal Xiranite Armor, Swordmancer TAC Gauntlets T1 und zwei NAV Beacons. Delivery Guaranteed bevorzugen."
+          alternatives:
+            - title: "Technik-Intensität"
+              items: ["328", "775", "286", "286"]
+              note: "Hot Work Gloves und zwei Power Cartridges."
+            - title: "Nur ohne weiteren Xiranit-Nutzer"
+              items: ["328", "332", "337", "337"]
+              note: "Eternal Xiranite Armor, Gloves T1 und zweimal Auxiliary Arm."
+        - member: liino
+          weaponId: "1046"
+          weaponAlternatives: ["1044"]
+          items: ["1134", "1138", "365", "365"]
+          note: "Mit Arcane als Xiranit-Nutzer und zusätzlichem Ultimate-Energiebedarf: Light Armor, Hands, zwei LYNX Slabs. Bedazzling Night Debut bevorzugen, Golden Age ist die Battle-Pass-Alternative."
+          alternatives:
+            - title: "Mit Xiranit-Nutzer, ohne zusätzlichen Ultimate-Energiebedarf"
+              items: ["1126", "1129", "365", "365"]
+              note: "Rift Trekker Light Armor und Hands plus zwei LYNX Slabs für möglichst viel Wille und Ultimate-Verstärkung."
+            - title: "Nur ohne anderen Xiranit-Nutzer"
+              items: ["1134", "1138", "337", "365"]
+              note: "Light Armor, Hands, Auxiliary Arm und LYNX Slab – nur wenn Arcane im Team tatsächlich kein Xiranit spielt."
     - id: trial-nature-stacks
       title: "Arcane · Fluorite · Antal"
       role: main-dps
@@ -784,6 +838,12 @@ teams:
         vorbereiten. Im
         Demo-Run verwendete
         Antal Xiranit-Ausrüstung.
+      memberGear:
+        - member: arcane
+          weaponId: "1045"
+          weaponAlternatives: ["47", "1043"]
+          items: ["1134", "1137", "1136", "1136"]
+          note: "Wille-Form, mindestens 640 Wille. Type 42: Solemn Phalanx ist die Hauptempfehlung; Detonation Unit lässt sich durch wiederholte Natur-Kumulierungen auslösen. Das PDF bevorzugt für dieses Team ausdrücklich beide Bracing Slabs."
     - id: fluorite-gilberta-xaihi
       title: "Fluorite · Gilberta · Xaihi"
       role: main-dps
@@ -800,6 +860,19 @@ teams:
         Natur-Buffs bei.
         Die FP-Bilanz muss
         zu deiner Rotation passen.
+      memberGear:
+        - member: gilberta
+          weaponId: "79"
+          weaponAlternatives: ["47"]
+          items: ["328", "332", "337", "337"]
+          note: "Xiranit-Variante, falls sonst niemand dieses Set trägt; Delivery Guaranteed bevorzugen."
+          alternatives:
+            - title: "Taumel-Fokus (Rhodagn-Nuke)"
+              items: ["328", "874", "793", "793"]
+              note: "Taumelpunkte und Timing des Nuke-Fensters."
+            - title: "Technik-Intensität"
+              items: ["328", "775", "286", "286"]
+              note: "Hot Work Gloves und zwei Power Cartridges."
     - id: arcane-fluorite-purrchena
       title: "Arcane · Fluorite · Purrchena"
       role: main-dps
@@ -814,6 +887,79 @@ teams:
         ihren Schwebeflug
         möglichst vollständig
         ausspielen kann.
+      memberGear:
+        - member: arcane
+          weaponId: "1045"
+          weaponAlternatives: ["47", "1043"]
+          items: ["1134", "1137", "1136", "1136"]
+          note: "Wille-Form, mindestens 640 Wille. Type 42: Solemn Phalanx ist die Hauptempfehlung; Detonation Unit lässt sich durch wiederholte Natur-Kumulierungen auslösen. Das PDF bevorzugt für dieses Team ausdrücklich beide Bracing Slabs."
+    - id: arcane-ardelia-gilberta
+      title: "Arcane · Ardelia · Gilberta"
+      role: main-dps
+      members: [typhoeus, arcane, ardelia, gilberta]
+      buildId: deep-rampart-lynx
+      note: "Alternative aus meinem Mobalytics-Guide: Ardelias Korrosion aktiviert Gilbertas Combo, die zusätzliche Technik-Empfänglichkeit bringt. Ohne Liino entfällt ihr FP-Rückgewinn; die Rotation muss entsprechend geplant werden."
+      memberGear:
+        - member: arcane
+          weaponId: "1045"
+          weaponAlternatives: ["47", "1043"]
+          items: ["1134", "1137", "1136", "1136"]
+          note: "Wille-Form, mindestens 640 Wille. Type 42: Solemn Phalanx ist die Hauptempfehlung; Detonation Unit lässt sich durch wiederholte Natur-Kumulierungen auslösen. Das PDF bevorzugt für dieses Team ausdrücklich beide Bracing Slabs."
+        - member: ardelia
+          weaponId: "49"
+          items: ["328", "775", "286", "286"]
+          note: "Mit Arcane als Xiranit-Träger, aber ohne Liino: Eternal Xiranite Armor plus Hot Work für Technik-Intensität."
+          alternatives:
+            - title: "Nur ohne weiteren Xiranit-Nutzer"
+              items: ["1134", "332", "337", "337"]
+              note: "Eternal Xiranite Light Armor, Gloves T1 und zwei Auxiliary Arms; nur bei entsprechend anderem Teamaufbau."
+            - title: "Mit Xiranit-Nutzer und Liino"
+              items: ["881", "1131", "876", "876"]
+              note: "Qingbo/Hot Work in der Variante mit Liino."
+        - member: gilberta
+          weaponId: "79"
+          weaponAlternatives: ["47"]
+          items: ["328", "775", "286", "286"]
+          note: "Technik-Intensität im Team mit Arcane: Eternal Xiranite Armor, Hot Work Gloves, zwei Hot Work Power Cartridges."
+          alternatives:
+            - title: "Taumel-Fokus (Rhodagn-Nuke)"
+              items: ["328", "874", "793", "793"]
+              note: "Taumelpunkte und Timing des Nuke-Fensters."
+            - title: "Nur ohne weiteren Xiranit-Nutzer"
+              items: ["328", "332", "337", "337"]
+              note: "Eternal Xiranite Armor, Gloves T1 und zweimal Auxiliary Arm."
+    - id: arcane-perlica-gilberta
+      title: "Arcane · Perlica · Gilberta"
+      role: main-dps
+      members: [typhoeus, arcane, perlica, gilberta]
+      buildId: deep-rampart-lynx
+      note: "Alternative ohne Liino: Perlicas Elektrifikation triggert Gilbertas Combo. Arcane liefert Natur-Kumulierungen und den Wille-Buff. Ohne Liinos Combo den FP-Haushalt besonders genau beachten."
+      memberGear:
+        - member: arcane
+          weaponId: "1045"
+          weaponAlternatives: ["47", "1043"]
+          items: ["1134", "1137", "1136", "1136"]
+          note: "Wille-Form, mindestens 640 Wille. Type 42: Solemn Phalanx ist die Hauptempfehlung; Detonation Unit lässt sich durch wiederholte Natur-Kumulierungen auslösen. Das PDF bevorzugt für dieses Team ausdrücklich beide Bracing Slabs."
+        - member: perlica
+          weaponId: "94"
+          items: ["881", "775", "876", "876"]
+          note: "Stanza of Memorials für den größtmöglichen Typhoeus-Buff. Qingbo Light Armor, Hot Work Gloves und zwei Qingbo Casks für Combo-Abklingzeit und Elektrifikation."
+          alternatives:
+            - title: "Mehr eigener Schaden bei vollem Elektrifikation-Effekt"
+              items: ["353", "775", "338", "338"]
+              note: "Pulser Labs Disruptor Suit, Hot Work Gloves, zweimal Pulser Labs Calibrator."
+        - member: gilberta
+          weaponId: "79"
+          weaponAlternatives: ["47"]
+          items: ["328", "775", "286", "286"]
+          note: "Technik-Intensität im Team mit Arcane: Eternal Xiranite Armor, Hot Work Gloves, zwei Hot Work Power Cartridges."
+          alternatives:
+            - title: "Taumel-Fokus (Rhodagn-Nuke)"
+              items: ["328", "874", "793", "793"]
+              note: "Taumelpunkte und Timing des Nuke-Fensters."
+            - title: "Nur ohne weiteren Xiranit-Nutzer"
+              items: ["328", "332", "337", "337"]
+              note: "Eternal Xiranite Armor, Gloves T1 und zweimal Auxiliary Arm."
 
 gameplay:
   pending: false
