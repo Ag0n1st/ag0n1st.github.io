@@ -38,6 +38,21 @@ Liino ist **6★ Elektro / Supporter / Stangenwaffe**, **Willenskraft** als Haup
 
 ## 3. Sechs vollständige vierteilige Vorschläge (IDs gegen offiziellen Katalog kontrolliert)
 
+### Lesbare Schnellübersicht – Name und ID immer gemeinsam
+
+Die Item-ID ist ein technischer Identifikator und ersetzt **nie** die lesbare Bezeichnung. Die Reihenfolge ist jeweils **Rüstung / Handschuhe / Kit 1 / Kit 2**. Bei doppeltem Kit werden **zwei Exemplare** desselben Teils benötigt. **ID 1138** ist wegen der noch zu prüfenden Import-Slot-Zuordnung vorläufig mit Stern markiert.
+
+| Build / Ziel | Rüstung | Handschuhe | Kit 1 | Kit 2 |
+| --- | --- | --- | --- | --- |
+| A – Lv. 70, Standard-Support | Eternal Xiranite Light Armor (ID 1134) | Eternal Xiranite Hands (ID 1138)* | Eternal Xiranite Bracing Slab T1 (ID 1236) | LYNX Slab (ID 365) |
+| B – Lv. 70, Ultimate-Fokus | Eternal Xiranite Light Armor (ID 1134) | Eternal Xiranite Hands (ID 1138)* | Eternal Xiranite Bracing Slab T1 (ID 1236) | Eternal Xiranite Bracing Slab T1 (ID 1236) |
+| C – Lv. 70, LYNX-Support | Eternal Xiranite Light Armor (ID 1134) | LYNX Gauntlets T1 (ID 1133) | LYNX Slab (ID 365) | LYNX Slab (ID 365) |
+| D – Lv. 60, Wuling | AIC Fieldwork Plate (ID 1117) | AIC Fieldwork Hands (ID 1123) | AIC Fieldwork Ember (ID 1120) | AIC Fieldwork Power Bank (ID 1241) |
+| E – Lv. 50, Midgame | Aburrey Light Armor T1 (ID 279) | Mordvolt Resistant Gloves T1 (ID 331) | Mordvolt Resistant Battery T1 (ID 335) | Mordvolt Resistant Battery T1 (ID 335) |
+| F – Lv. 36, Early Game | Mordvolt Resistant Vest (ID 274) | Mordvolt Resistant Gloves (ID 278) | Mordvolt Resistant Battery (ID 284) | Mordvolt Resistant Battery (ID 284) |
+
+
+
 **Slotregel:** Eine Rüstung (**Armor**) + ein Handschuh (**Gloves**) + **zwei Kits**. Doppelte Kits benötigen zwei hergestellte Exemplare, aber nicht zwei unterschiedliche Blaupausen. Alle Einzelteile sind im offiziellen lokalen Snapshot als `verified` mit `recipeStatus: verified` geführt. **Ausnahme zur Slot-Qualität: ID 1138 siehe Blocker Abschnitt 6.**
 
 ### L70-A – Standard-Support, Eternal Xiranite 3+1 (bevorzugter P0-Freigabekandidat)
