@@ -1,5 +1,5 @@
 ---
-const items = [
+const itemsDe = [
   { label: "Übersicht", href: "/endfield/", key: "overview" },
   { label: "Operatoren", href: "/endfield/operatoren/", key: "operators" },
   { label: "Fabrik", href: "/endfield/fabrik/", key: "factory" },
@@ -10,13 +10,20 @@ const items = [
   { label: "Checkliste", href: "/endfield/checkliste/", key: "checklist" },
   { label: "Countdown", href: "/endfield/countdown/", key: "countdown" },
 ];
-const { active = "overview" } = Astro.props;
+const { active = "overview", lang = "de" } = Astro.props;
+const isEn=lang==="en";
+const items=isEn?itemsDe.map(item=>({
+ ...item,
+ label:({"overview":"Overview","operators":"Operators","factory":"Factory","recruitment":"Recruitment","refinement":"Refinement","essences":"Essences","speedruns":"Speedruns","checklist":"Checklist","countdown":"Countdown"} as Record<string,string>)[item.key]??item.label,
+ href:item.key==="overview"?"/en/endfield/":item.key==="operators"?"/en/endfield/operators/":item.href,
+ untranslated:!["overview","operators"].includes(item.key)
+})):itemsDe;
 ---
 <nav class="endfield-nav" aria-label="Arknights: Endfield Navigation">
   <div class="endfield-nav-inner">
     {items.map((item) => (
       <a href={item.href} class:list={["endfield-nav-link", { "is-active": active === item.key }]} aria-current={active === item.key ? "page" : undefined}>
-        {item.label}
+        {item.label}{item.untranslated?" (DE)":""}
       </a>
     ))}
   </div>
