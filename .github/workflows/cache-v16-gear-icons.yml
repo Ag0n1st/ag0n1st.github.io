@@ -1,0 +1,46 @@
+name: Cache all version 1.6 community gear icons
+
+on:
+  push:
+    branches: [feature-endfield-v16-all-gear-20261016]
+    paths:
+      - .github/workflows/cache-v16-gear-icons.yml
+
+permissions:
+  contents: write
+
+jobs:
+  cache:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install local image optimizer
+        run: |
+          npm ci
+          npm install --no-save --package-lock=false sharp
+      - name: Cache only newly introduced publicly listed v1.6 gear icons
+        run: node scripts/endfield/cache-v16-gear-icons.mjs
+      - name: Enforce Endfield budget and regression tests
+        run: |
+          node scripts/endfield/check-budget.mjs
+          npm run test:endfield
+      - name: Commit verified local WebPs and updated preview manifest to this feature branch
+        shell: bash
+        run: |
+          git add src/data/endfield/catalog/v16-gear.json public/images/endfield/gear/releases/v16/
+          if git diff --cached --quiet; then
+            echo "No new release icons to commit"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Cache approved public v1.6 gear WebP icon previews"
+            git fetch origin feature-endfield-v16-all-gear-20261016
+            git rebase origin/feature-endfield-v16-all-gear-20261016
+            git push origin HEAD:feature-endfield-v16-all-gear-20261016
+          fi
