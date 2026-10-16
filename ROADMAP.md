@@ -5,7 +5,7 @@
 > **Projekt:** Ag0n1st – deutschsprachiges Gaming-/Guide-Portal.  
 > **Repository:** https://github.com/Ag0n1st/ag0n1st.github.io  
 > **Produktionswebsite:** https://ag0n1st.com (eigene Domain), alternativ https://ag0n1st.github.io  
-> **Hauptbranch:** `main`. Die zuletzt vor dieser Roadmap integrierte Funktion ist der Story-/Gebietsfilter aus **PR #12**, Merge-Commit `631980a`.  
+> **Hauptbranch:** `main`. Aktueller geprüfter HEAD: `f5d7ccf4f650817e7f7059ac4e05a2d8b551990c` (Si-Guide aus **PR #34** bereits integriert und live; letzter Dokumentations-Deploy Pages #279 erfolgreich). Historischer erster Übergabestand war PR #12.  
 > **Diese Dokumentation und die Autoritätslevel-Grenze 60:** [Pull Request #13](https://github.com/Ag0n1st/ag0n1st.github.io/pull/13).  
 > **Wichtig:** Bei jeder folgenden Entwicklungsphase diese Datei und das tatsächliche Repository **gemeinsam** prüfen. GitHub-Code und erfolgreiche CI-Läufe sind der Nachweis für Implementierungen; die Roadmap ist die verbindliche Sammlung von Anforderungen, Entscheidungen, Aufgaben und Übergabehinweisen.
 
@@ -31,7 +31,7 @@
 | Wo liegen persönliche Guide-Texte? | `src/content/operator-guides/<slug>.md`; Vorlage `_template.md`. |
 | Wie heißt der zentrale UI-Bereich? | `src/components/operator/sections/OperatorEquipment.astro`; Browserinteraktionen in `src/components/operator/OperatorGuide.astro`. |
 | Welche Tests? | `npm run test:endfield`, `node scripts/endfield/check-budget.mjs`, `npm run build`. |
-| Was ist aktuell als Nächstes sinnvoll? | **Erste redaktionelle, vom Creator bestätigte Liino-Builds** und deren Funktionsprüfung im neuen Finder; danach Story-/Blaupausen-Feinheiten und weitere Operator-Guides. **Zusätzlich gilt das vollständige PDF-Konversationsaudit** in `docs/website-conversation-audit.md` für historische Designentscheidungen. |
+| Was ist aktuell als Nächstes sinnvoll? | **Si v1.6 sichten/freigeben**, danach fehlende numerische SKPORT-IDs, offiziellen Item-Details und Blaupausen-/Rezeptnachweise sicher nachziehen; nie Community-Namen als offizielle IDs ausgeben. Liino, Typhoeus und Si sind bereits online. Details: §14.3t/u und `docs/si-v16-gear-followup-20261016.md`; historisches PDF-Audit: `docs/website-conversation-audit.md`. |
 | Stand Authority? | Obergrenze **60**, inklusive HTML-Feld, gespeicherten Eingaben und Auswertelogik; bei künftiger Erhöhung zentral anpassen. |
 
 **Diese Datei ist kein Ersatz für die Dateien im Repository.** Wo der Code und die Roadmap abweichen, nicht stillschweigend „korrigieren“: Diskrepanz feststellen, Ursache prüfen, dem Nutzer erläutern, dann dokumentiert ändern.
@@ -1119,7 +1119,7 @@ Bei Untersuchung **nur die belegten Fälle korrigieren**, nicht auf ganze Sets/R
 
 ---
 
-## 14. AKTUELLER ÜBERGABEPUNKT: 15. OKTOBER 2026
+## 14. AKTUELLER ÜBERGABEPUNKT: fortgeschrieben bis 16. OKTOBER 2026
 
 ### 14.1 Letzter abgeschlossener Funktionsstand
 
@@ -1681,6 +1681,16 @@ Alle 109 Endfield-Unit-Tests und die beiden Budgetchecks erfolgreich. Desktop 14
 
 ---
 
+### 14.3u Nach Si-Release: dokumentierte Recherche, Editorial-Voice-Regel und Deploy-Abnahme (16.10.2026)
+
+- **GitHub unabhängig geprüft:** `main` HEAD `f5d7ccf4f650817e7f7059ac4e05a2d8b551990c`; nur `ROADMAP.md` gegenüber dem gemergten Si-PR #34 geändert. Deploy-Workflows [Pages #278](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/38898689708) und [Pages #279](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/38904475834) jeweils `success` im Build **und** Deploy, beide Budget-Gates grün. Bereits bei Si-CI #156 bestätigtes `dist/`: 18.906.777 / 1.000.000.000 Byte; für #279 **keine neue exakte dist-Größe abgelesen**, nur bestandenes Hard-Gate.
+- **Endfield-Iststand anhand des nicht abgeschnittenen Git-Trees auf `main`:** exakt **21.979.256 / 100.000.000 Byte** (1.086 zu diesem Teilbudget gehörige Blob-Dateien, **78.020.744 Byte Rest**). Unabhängig vom Pages-`dist/`-Limit und von der Git-History. Die dokumentarischen Zusatzdateien verändern die Endfield-Quellbäume nur gering; neue CI liefert den gültigen Folge-Snapshot.
+- **Alter PR #3 geprüft:** offen, `draft`, read-only-SKPORT-Wiki-Recherche, Branch 13 Commits vor / 60 hinter `main`, `diverged`. Keine Übernahme ohne erneuten Abgleich und Nutzerentscheidung; weiterhin nur ein veralteter Forschungszweig.
+- **Erneute öffentliche Quellenprüfung:** fünf der sechs Si-v1.6-Release-Gear-Einträge besitzen unterscheidbare **Community-interne** `item_equip_...`-Kennungen. Für `type-50-yinglung-gauntlets` konkurrieren mehrere ähnlich benannte Type-50-Glove-Varianten; **keine eindeutige numerische SKPORT-ID** nachgewiesen. Teilweise genannte Community-Rezeptkosten sind **keine offiziell validierten SKPORT-Rezepte**. Deshalb **keine Änderung** des öffentlichen Gear-Manifests, der Build-IDs, der empfohlenen Type-50-/LYNX-Kombination oder des konservativen `unverified`-Build-Finder-Verhaltens. Einzelbelege, Links, strikter Migrationsablauf und nächste Abnahme: `docs/si-v16-gear-followup-20261016.md`.
+- **Redaktionelle Eigenstimme als Regression:** Neu `scripts/endfield/editorial-voice.test.mjs` mit Prüfungen für Guide-Dateien, Operator-Astro-Komponenten und deutsche Anzeige-Lokalisierungen. Fremdautoren-Zuschreibungen sind in sichtbaren Guide-Inhalten verboten; interne YAML-Kommentare und ausdrücklich nicht angezeigte Herkunftsmetadaten sind ausgenommen. **Keine erneute Prosa über „vom Creator“ im ausgelieferten Guide.**
+- **Feature-Branch:** `chore-si-v16-handoff-voice-20261016`; PR/CI/Merge/Pages-Deploy für diese Änderungen nachtragen. `main` wird erst nach erfolgreichen Tests verändert.
+- **Nächster redaktioneller Gate:** Nutzer-Sichtung des vollständigen [Si-Guides](https://ag0n1st.com/endfield/operatoren/si/). Keine nachträglichen, unfreigegebenen Build-Umwertungen, kein vierter Operator ohne Freigabe. Si-Gameplay-Einzelvideos bleiben `pending`.
+
 ## 15. WICHTIGE LINKS UND QUELLVERWEISE
 
 **Repository & Auslieferung:**
@@ -1820,5 +1830,7 @@ Alle 109 Endfield-Unit-Tests und die beiden Budgetchecks erfolgreich. Desktop 14
 
 | 16.10.2026 | **Si v1.6 vollständig auf main veröffentlicht** | [PR #34](https://github.com/Ag0n1st/ag0n1st.github.io/pull/34), Squash `a265af49d8cba1e68f2c79c50c15b344e2b6840c`, CI #156 120/120 + Astro + beide Budgets + Desktop/Mobil-Chromium grün, Pages #277 build und deploy `success`. Endfield 21.979.256/100M, Pages-dist 18.906.777/1.000M Byte. 6 Meta-/37 weitere Teams, echte SKPORT-Operator-1278-Daten, eigene deutsche Skilltexte, optimierte WebPs und Datafield-Prozente. Numerische v1.6-Gear-Blueprint-IDs/Recipes noch ehrlich offen, Si-Gameplay-Videos pending. |
 
+| 16.10.2026 | **Si-Release-Nachkontrolle + verbindliche Eigenstimme als automatischer Test** | Bestätigter `main`-Deploy #279, exact Git-Tree-Endfield 21.979.256/100M; neue Community-interne v1.6-Gear-Namen nur recherchiert, **nicht** als numerische SKPORT-IDs/Blueprints übernommen; Type-50-Gauntlets bleiben unklar. Neuer redaktioneller Regressionstest in `scripts/endfield/editorial-voice.test.mjs`; Quelle `docs/si-v16-gear-followup-20261016.md`; PR/CI/Merge später ergänzen. |
+
 **Ende der aktuellen Roadmap.**  
-**Fortsetzungspunkt (16.10.2026; Si v1.6 veröffentlicht und PR #34 ABGESCHLOSSEN):** [PR #34](https://github.com/Ag0n1st/ag0n1st.github.io/pull/34) mit dem vollständigen Si-Guide ist **squash-gemergt** auf `main` SHA `a265af49d8cba1e68f2c79c50c15b344e2b6840c`. [CI #156](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/38898346410) grün 120/120 Tests, Astro, Endfield max100M (21.979.256 Byte), Pages max1GB (18.906.777 Byte), Chromium desktop+mobil 1440/390 Liino/Typhoeus/Si. [Pages #277](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/38898491895) **build und deploy success**, live URL `https://ag0n1st.com/endfield/operatoren/si/`. PDF Ag0n1st Si 8 Seiten als redaktionelle Hauptquelle vollständig ausgewertet (NICHT öffentlich gepusht), offizielle SKPORT 1278 Operator/Skills/Talents/Potenziale, Deutsche Skilltextlocale aus direktem Ingame-Wortlaut des Nutzers, 3/5 Einsteigerfreundlichkeit + 5/5 Flexibilität, Amp/Damage Dealer/Cryo Infliction, Intellekt/Stärke, 5 Builds mit Haupt-Meta Type50 3pc + LYNX Slab, Jade Vessel/Long Heritage/Khravengger, Datafield 1 Waffenszenario + 5 inkrementelle P-Werte, 6 PDF-Meta + 37 weitere PDF-Teams, Gameplay-Text und Fazit, 9 Si-Operator-WebPs plus 6 kleine neue Gear-Icons. **Offen als eigenständige reale Datenaufgabe:** neuer Version-1.6-Rüstungen numerische originale SKPORT-Item-/Blueprint-IDs und Recipes sowie einzelne Waffentuning-Tabellen waren direkt nach Release noch unvollständig; Build-Finder zeigt klar `ungeprüft` statt falschem Besitz/Freischaltung. Eigene Gameplay-Videos pending, keines erfunden. Quelle und Grenzen `docs/si-source-audit-20261016.md`, Roadmap §14.3t. **Nächster Schritt:** Deployment der ausschließlich dokumentarischen Roadmap-Änderung separat kontrollieren, Nutzer den Si-Guide sichten lassen, beim nächsten offiziellen SKPORT-Update die noch nicht eindeutig bestätigten Type-50-Item-/Rezeptdaten vervollständigen, falls dort inzwischen verfügbar; erst nach Zustimmung nachfolgende Guides. Nutzerchat textbasiert.
+**Fortsetzungspunkt (16.10.2026; Hauptstand Si v1.6 aus PR #34 live, neuester dokumentarischer Deploy #279 ebenfalls live):** `main` f5d7ccf wurde erfolgreich veröffentlicht. Endfield-Tree 21.979.256/100M Byte; letzter exakt gemessener Pages-`dist/`-Snapshot 18.906.777/1GB Byte, Folge-Deploy-Hard-Gate bestanden. **Neue Untersuchungsdokumentation** `docs/si-v16-gear-followup-20261016.md` und Editorial-Voice-Regressionsprüfung `scripts/endfield/editorial-voice.test.mjs` im Feature-Branch `chore-si-v16-handoff-voice-20261016`; Test-, PR- und Merge-Ergebnis nachtragen. **Nächste fachliche Entscheidung:** Betreiber sichtet den Si-Guide. Fehlende numerische originale v1.6-SKPORT-Item-/Blueprint-IDs und Recipes nur nach belastbarem offiziellen Abgleich in Katalog/Finder überführen; nicht aus Namensähnlichkeit oder Community-internen Item-Codes ableiten. PR #3 bleibt ungemergter, alter Draft; ungeprüfte Übernahme ausgeschlossen. Kein weiterer Guide vor Zustimmung. Chat textbasiert.\n
