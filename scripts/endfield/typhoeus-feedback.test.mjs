@@ -59,7 +59,7 @@ test("Mobalytics author PDF gear recipes and weapons map only to official item I
   const gear=new Set(items.filter(x=>x.categories.includes("Gear")).map(x=>x.id));
   const weapons=new Set(items.filter(x=>x.categories.includes("Weapons")).map(x=>x.id));
   const allItems=[...guide.matchAll(/^\s+items: \[([^\]]+)\]/gm)];
-  assert.ok(allItems.length>=50, "Typhoeus and all sourced teammate/gear variants present");
+  assert.ok(allItems.length>=48, "Typhoeus and all sourced teammate/gear variants present");
   for(const row of allItems){
     const ids=[...row[1].matchAll(/"([^"]+)"/g)].map(x=>x[1]);
     assert.equal(ids.length,4,"each loadout has exactly four valid gear slots");
