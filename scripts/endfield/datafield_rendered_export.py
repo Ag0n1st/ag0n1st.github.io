@@ -72,6 +72,12 @@ SNAPSHOT_JS = r"""() => {
       found:true,
       lines:flatten(holder).slice(0, 900),
       htmlPreview:holder.innerHTML.slice(0, 6000),
+      buttons:[...holder.querySelectorAll('button,[role="tab"]')].map(b=>({
+        text:(b.textContent||'').trim(),
+        className:b.getAttribute('class')||'',
+        ariaSelected:b.getAttribute('aria-selected'),
+        ariaPressed:b.getAttribute('aria-pressed')
+      })).slice(0, 40),
       headingTag:start.tagName
     };
   };
@@ -202,6 +208,8 @@ def run(slug: str, output: Path, headed: bool, timeout: int) -> int:
             "title": data["title"], "headings": data["headings"],
             "potentialTokens": data["potentials"]["lines"],
             "weaponTokens": data["weapons"]["lines"],
+            "weaponTabs": data["weapons"].get("buttons", []),
+            "weaponHtmlPreview": data["weapons"].get("htmlPreview", ""),
             "bodyPreview": data["bodyPreview"]
         }
     }
