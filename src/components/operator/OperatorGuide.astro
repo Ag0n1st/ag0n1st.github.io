@@ -157,6 +157,8 @@ const { guide, operatorName, preview, localized } = model;
   const minProgress=document.querySelector<HTMLButtonElement>("#op-progress-min");
   let selectionMode:"max"|"min"="max";
   const ownedBlueprintIds=new Set<string>();
+  // In min mode remember opt-ins from ALL operators, not just visible cards.
+  const selectedBlueprintIds=new Set<string>();
   // v2 persists DESELECTED IDs. New Gear/areas in future guides therefore
   // default to available without overwriting a player's explicit opt-outs.
   const unselectedBlueprintIds=new Set<string>();
@@ -189,6 +191,7 @@ const { guide, operatorName, preview, localized } = model;
     areaCheckboxes.forEach(input=>input.checked=true);
     unselectedBlueprintIds.clear();
     ownedBlueprintIds.clear();
+    selectedBlueprintIds.clear();
     for(const id of defaults.storyProgress.acquiredGearBlueprintIds)ownedBlueprintIds.add(id);
     blueprintCheckboxes.forEach(input=>input.checked=ownedBlueprintIds.has(input.dataset.blueprintOwned||""));
   }
@@ -206,6 +209,7 @@ const { guide, operatorName, preview, localized } = model;
     lockedAreaIds.clear();
     unselectedBlueprintIds.clear();
     ownedBlueprintIds.clear();
+    selectedBlueprintIds.clear();
     areaCheckboxes.forEach(input=>input.checked=false);
     blueprintCheckboxes.forEach(input=>input.checked=false);
   }
@@ -242,9 +246,12 @@ const { guide, operatorName, preview, localized } = model;
       unselectedBlueprintIds.clear();
       ownedBlueprintIds.clear();
       if(hasMinimalPreset){
-        const selectedGear=new Set(Array.isArray(saved.selectedGearBlueprintIds)?saved.selectedGearBlueprintIds:[]);
+        selectedBlueprintIds.clear();
+        for(const id of Array.isArray(saved.selectedGearBlueprintIds)?saved.selectedGearBlueprintIds:[])
+          if(typeof id==="string" && /^\d+$/.test(id) && selectedBlueprintIds.size<500)
+            selectedBlueprintIds.add(id);
         for(const id of allGearIds())
-          if(selectedGear.has(id))ownedBlueprintIds.add(id);
+          if(selectedBlueprintIds.has(id))ownedBlueprintIds.add(id);
       }else{
         if(saved.version===2){
           for(const id of Array.isArray(saved.unselectedGearBlueprintIds)?saved.unselectedGearBlueprintIds:[])
@@ -292,7 +299,7 @@ const { guide, operatorName, preview, localized } = model;
         // Thus NEW Gear and areas stay off in min mode across other guides.
         selectedAreaIds:selectionMode==="min"
           ?areaCheckboxes.filter(input=>input.checked).map(input=>input.value):[],
-        selectedGearBlueprintIds:selectionMode==="min"?[...ownedBlueprintIds]:[],
+        selectedGearBlueprintIds:selectionMode==="min"?[...selectedBlueprintIds]:[],
         regionId:region?.value||"",
         lockedAreaIds:[...lockedAreaIds],
         unselectedGearBlueprintIds:[...unselectedBlueprintIds],
@@ -387,6 +394,10 @@ const { guide, operatorName, preview, localized } = model;
     blueprintCheckboxes.filter(other=>other.dataset.blueprintOwned===gearId)
       .forEach(other=>other.checked=input.checked);
     if(gearId && /^\d+$/.test(gearId)){
+      if(selectionMode==="min"){
+        if(input.checked)selectedBlueprintIds.add(gearId);
+        else selectedBlueprintIds.delete(gearId);
+      }
       if(input.checked){
         unselectedBlueprintIds.delete(gearId);
         ownedBlueprintIds.add(gearId);
