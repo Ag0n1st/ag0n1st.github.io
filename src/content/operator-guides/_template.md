@@ -75,6 +75,10 @@ equipment:
   # - id: standard
   #   title: "Standard-Build"
   #   role: main-dps # main-dps | support | hybrid | sub-dps | control | other
+  #   meta: true # optional; nur Meta-Builds werden oberhalb des Finders als kompakte Cards gezeigt
+  #   metaSummary: "Kurze, aussagekräftige Empfehlung für den Meta-Build (max. 280 Zeichen)."
+  #   # metaSummary ist bei meta: true verpflichtend. Sonst fehlen lassen.
+  #   # Detailtexte und alle nicht als Meta markierten Builds erscheinen weiterhin im Build-Finder.
   #   items: ["1246", "1245", "1244", "1243"] # Beispiel-IDs, KEINE Build-Empfehlung. EXAKT 4
   #   availableFromLevel: 70 # optional: 10/20/28/36/50/60/70, offizielles Gear-Level wird zusätzlich geprüft
   #   # Höchste benötigte Komponente (Amethyst → Pyrrolit) wird automatisch aus vier SKPORT-Standardrezepten ermittelt.
