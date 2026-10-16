@@ -148,5 +148,7 @@ test("Si early builds, main meta labels and direct editorial voice stay consiste
   assert.doesNotMatch(op,/localized.terminologyNote/);
   const teams=readFileSync("src/components/operator/sections/OperatorTeams.astro","utf8");
   assert.match(teams,/teamMemberCard\(member\)/);
-  assert.match(teams,/is-pink":team.role==="main-dps"/);
+  assert.match(teams,/op-si-main-team":guide.operator==="si"&&team.role==="main-dps"/);
+  const css=readFileSync("src/styles/operator-guides.css","utf8");
+  assert.match(css,/\.op-si-main-team \.op-meta-team-labels \.op-chip:last-child/);
 });
