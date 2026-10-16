@@ -2,11 +2,18 @@
 import ItemIcon from "../../endfield/ItemIcon.astro";
 import {resolveOfficialItem} from "../../../lib/endfield/itemCatalog";
 
+interface GearVariant {
+  title:string;
+  items:[string,string,string,string];
+  note?:string;
+}
 interface GearRow {
   member:string;
   items:[string,string,string,string];
   weaponId?:string;
   weaponRank?:number;
+  weaponAlternatives?:string[];
+  alternatives?:GearVariant[];
   note?:string;
 }
 interface Props {
@@ -14,29 +21,53 @@ interface Props {
   displayTeamMember:(slug:string)=>string;
 }
 const {rows,displayTeamMember}=Astro.props;
-const resolved=rows.map(row=>({...row,
+const resolved=rows.map(row=>({
+  ...row,
   weapon:row.weaponId?resolveOfficialItem(row.weaponId,"Weapons"):undefined,
-  parts:row.items.map(id=>({id,official:resolveOfficialItem(id,"Gear")}))
+  otherWeapons:(row.weaponAlternatives??[]).map(id=>({
+    id,official:resolveOfficialItem(id,"Weapons")
+  })),
+  parts:row.items.map(id=>({id,official:resolveOfficialItem(id,"Gear")})),
+  variants:(row.alternatives??[]).map(variant=>({
+    ...variant,
+    parts:variant.items.map(id=>({id,official:resolveOfficialItem(id,"Gear")}))
+  }))
 }));
 ---
 {resolved.length>0 && <details class="op-details op-team-gear">
-  <summary>Beispielausrüstung der Teammitglieder · {resolved.length} Operatoren</summary>
+  <summary>Waffen & Ausrüstung der Teammitglieder · {resolved.length} Operatoren</summary>
   <div class="op-details-body">
-    <p class="op-muted op-team-gear-caveat">Teamabhängige Ausrüstungsbeispiele, kein Nachweis über deinen Blaupausenbesitz. Ausrüstungswerte und Herstellungsbedingungen sind im Ausrüstungs-Build-Finder separat überprüfbar.</p>
+    <p class="op-muted op-team-gear-caveat">Empfehlungen für die jeweilige Teamzusammenstellung; Varianten hängen von bestehenden Xiranit-Nutzern, Ultimate-Energiebedarf und Spielweise ab. Die Anzeige behauptet weder Blaupausenbesitz noch feste Waffenränge.</p>
     <div class="op-team-gear-list">
       {resolved.map(row=><div class="op-team-gear-entry">
         <strong>{displayTeamMember(row.member)}</strong>
         {row.weaponId && <div class="op-team-member-weapon">
           <ItemIcon id={row.weapon?.id??row.weaponId} size="small" />
-          <span><small>Waffe{row.weaponRank?" · R"+row.weaponRank:""}</small><strong>{row.weapon?.name??row.weaponId}</strong></span>
+          <span><small>Empfohlene Waffe{row.weaponRank?" · R"+row.weaponRank:""}</small><strong>{row.weapon?.name??row.weaponId}</strong></span>
         </div>}
-        <div class="op-team-gear-parts">
-          {row.parts.map(part=><div class="op-team-gear-part">
-            <ItemIcon id={part.official?.id??part.id} size="small"/>
-            <small>{part.official?.name??part.id}</small>
-          </div>)}
-        </div>
+        {row.otherWeapons.length>0 && <div class="op-team-member-weapon-options">
+          <small class="op-muted">Waffenalternativen</small>
+          <div class="op-team-weapon-alternatives">{row.otherWeapons.map(w=><span class="op-team-weapon-alternative">
+            <ItemIcon id={w.official?.id??w.id} size="small"/>
+            <small>{w.official?.name??w.id}</small>
+          </span>)}</div>
+        </div>}
+        <div class="op-team-gear-parts">{row.parts.map(part=><div class="op-team-gear-part">
+          <ItemIcon id={part.official?.id??part.id} size="small"/>
+          <small>{part.official?.name??part.id}</small>
+        </div>)}</div>
         {row.note && <p class="op-muted op-body-copy">{row.note}</p>}
+        {row.variants.length>0 && <details class="op-details op-team-gear-variants">
+          <summary>Weitere Setups · {row.variants.length}</summary>
+          <div class="op-details-body">{row.variants.map(variant=><div class="op-team-gear-variant">
+            <strong>{variant.title}</strong>
+            <div class="op-team-gear-parts">{variant.parts.map(part=><div class="op-team-gear-part">
+              <ItemIcon id={part.official?.id??part.id} size="small"/>
+              <small>{part.official?.name??part.id}</small>
+            </div>)}</div>
+            {variant.note && <p class="op-muted op-body-copy">{variant.note}</p>}
+          </div>)}</div>
+        </details>}
       </div>)}
     </div>
   </div>
