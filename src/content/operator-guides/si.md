@@ -31,7 +31,7 @@ skills:
   priority:
     order: ["combo", "battle", "ultimate", "basic"]
     comparisons: [">", ">", ">"]
-    targetLevels:
+    targetLevels: {}
 
   active:
     basic: "Schaffensdrang ist Sis fünfteiliger Kryo-Basisangriff mit 18 Taumelpunkten auf dem Abschlussangriff, wenn sie aktiv gesteuert wird. Er ist im Main-DPS-Build für Feldzeit und FP-Gewinn nützlich. Die Level-Priorität hängt aber davon ab, wie häufig du sie selbst steuerst: Für die Kernrotation sind Combo und Battle Skill zuerst entscheidend."
