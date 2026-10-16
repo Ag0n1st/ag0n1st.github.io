@@ -3,9 +3,16 @@ import type { OperatorGuideModel } from "../../../lib/endfield/operatorGuideMode
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
-const { showcaseTypeLabels, showcases, selectedShowcaseIndex, youtubeEmbed } = model;
+const { guide, showcaseTypeLabels, showcases, selectedShowcaseIndex, youtubeEmbed } = model;
 ---
 <section class="op-section" id="gameplay">
+        {guide.gameplay.pending ? <>
+          <div class="op-gameplay-pending-header">
+            <span class="op-gameplay-pending-label" aria-label="Gameplay-Videos folgen">FOLGT</span>
+            <h2>Gameplay</h2>
+          </div>
+          <p class="op-muted op-body-copy">Gameplay-Videos und Showcases werden später ergänzt.</p>
+        </> : <>
         <h2>Gameplay</h2>
         <p class="op-section-intro">Bestehende Gameplay-Runs mit optionalen Rotationshinweisen; jederzeit erweiterbar.</p>
         {showcases.length ? <>
@@ -28,4 +35,5 @@ const { showcaseTypeLabels, showcases, selectedShowcaseIndex, youtubeEmbed } = m
             <div class="op-media-list">{showcases.map((run,i)=><button type="button" class="op-cardlet op-showcase-button" data-showcase-button={run.id} aria-pressed={i===selectedShowcaseIndex?"true":"false"} style="text-align:left;color:inherit;font:inherit;cursor:pointer"><div class="op-faux-thumb">[Thumbnail]</div><strong style="display:block;font-size:12px;margin-top:10px">{run.title}</strong><span class="op-muted">{showcaseTypeLabels[run.type]}</span></button>)}</div>
           </div>
         </> : <p class="op-placeholder">[Noch keine Gameplay-Showcases hinterlegt]</p>}
+        </>}
       </section>

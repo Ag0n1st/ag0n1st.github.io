@@ -16,6 +16,7 @@ guideVideo:
 
 overview:
   summary: "" # vor Veröffentlichung ausfüllen
+  traits: [] # vorläufig offiziell englische Trait-Labels, z. B. ["HP Treatment", "Amp"]; Übersetzung separat
   strengths: []
   weaknesses: []
   ratings:
@@ -131,6 +132,10 @@ potentials:
 teams:
   introduction: "" # Teambauprinzipien und mögliche Rollen
   roles: [] # mögliche Rollen: main-dps, support, hybrid, sub-dps, control, other
+  # Für reine Support-Operatoren z. B. [support].
+  # meta: enthält beliebige zwei oder mehr BESTÄTIGTE Meta-Teams;
+  # more: weitere Teams. Main-DPS-/Support-Split nicht erzwingen.
+  # Teammitglieder als Slugs (zhuang-fangyi etc.) speichern; im UI Klarnamen zeigen.
   meta: []
   # - id: meta-team-1
   #   title: "Meta-Team 1"
@@ -149,6 +154,7 @@ teams:
 
 # 8. GAMEPLAY
 gameplay:
+  pending: false # true = FOLGT-Ecklabel, keine fiktiven Vorschau-Runs; bis echte Videos vorliegen
   showcases: []
   # - id: trial-run
   #   title: "Operator-Probe"

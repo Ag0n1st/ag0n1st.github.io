@@ -259,3 +259,10 @@
 .op-comparison-scenario .op-table{font-size:12px}
 .op-data-source-note{display:block;margin-top:8px;font-size:10px;line-height:1.45;font-weight:400;color:var(--muted);opacity:.83;overflow-wrap:anywhere}
 @media(max-width:1040px){.op-comparison-scenarios{grid-template-columns:1fr}}
+
+/* Published recommendation & deliberately deferred gameplay media */
+.op-pull-recommendation-badge{display:inline-flex;align-items:center;gap:7px;min-height:32px;padding:6px 12px;border:1px solid rgba(101,232,242,.54);border-radius:999px;background:rgba(101,232,242,.12);color:var(--cyan);font-size:12px;font-weight:750;line-height:1.35}
+.op-pull-recommendation-badge>span{display:inline-grid;place-items:center;width:17px;height:17px;border-radius:50%;background:var(--cyan);color:#11151c;font-weight:900;font-size:12px}
+.op-gameplay-pending-header{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.op-gameplay-pending-header h2{margin-top:0}
+.op-gameplay-pending-label{display:inline-block;border:1px solid rgba(240,91,212,.45);background:rgba(240,91,212,.11);color:var(--pink);padding:5px 10px;border-radius:7px;font-size:10px;font-weight:800;letter-spacing:.08em}
