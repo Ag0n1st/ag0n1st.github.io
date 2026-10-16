@@ -12,8 +12,16 @@ overview:
     Liino ist eine 6★-Electric-Supporterin mit Polearm. Ihre Fertigkeiten
     kombinieren Gruppenheilung, ANG-Verstärkung und Elektro-/Natur-Amps.
   featuredBuildId: ultimate-fokus
-  strengths: []
-  weaknesses: []
+  # Creator: Englische Trait-Begriffe bewusst beibehalten; Übersetzung folgt.
+  traits: ["HP Treatment", "Amp"]
+  strengths:
+    - "Großzügige Verstärkungseffekte"
+    - "FP-Generierung"
+    - "Vielseitig einsetzbar durch ihre Kampffertigkeit"
+    - "Einfach zu spielen, ohne komplexe Mechaniken"
+  weaknesses:
+    - "Stark von ihrer Signature-Waffe abhängig, um die maximalen Verstärkungseffekte herauszuholen"
+    - "Golden Age (BP) ist eine gute, aber deutlich schwächere und bei den Verstärkungseffekten die einzig wirklich sinnvolle Alternative zur Signature-Waffe"
   partners: []
   ratings:
     difficulty: 1
@@ -299,16 +307,76 @@ potentials:
       sourceNote: "Datafield"
 
 teams:
-  meta: []
-  more: []
+  introduction: >-
+    Liino übernimmt in jeder hier gezeigten Zusammenstellung die Support-Rolle.
+    Besonders Elektro- und Natur-Teams profitieren von ihrer Ultimate,
+    während der lang anhaltende allgemeine ANG-Bonus ihrer Kampffertigkeit
+    auch weitere Teamzusammenstellungen ermöglicht.
+  roles: [support]
+  # Keine künstliche Unterteilung nach Liino-Main-DPS- oder Support-Teams.
+  # Meta-Team-Zuordnung ausdrücklich durch den Creator vorgegeben.
+  meta:
+    - id: zhuang-meta
+      title: "Zhuang Fangyi · Meta-Team"
+      role: support
+      members: [zhuang-fangyi, perlica, arclight, liino]
+      evaluation: >-
+        Vom Creator als Zhuang-Fangyi-Meta-Team festgelegt.
+        Liino übernimmt den Support-Slot.
+    - id: arcane-meta
+      title: "Arcane · Meta-Team"
+      role: support
+      members: [arcane, tangtang, xaihi, liino]
+      evaluation: >-
+        Vom Creator als Arcane-Meta-Team festgelegt.
+        Liino übernimmt den Support-Slot.
+  more:
+    - id: zhuang-arcane
+      title: "Zhuang Fangyi · Arcane"
+      role: support
+      members: [zhuang-fangyi, perlica, arcane, liino]
+      note: "Weitere vom Creator empfohlene Zhuang-Fangyi-Konstellation mit Liino als Support."
+    - id: arcane-snowshine
+      title: "Arcane · Snowshine"
+      role: support
+      members: [arcane, snowshine, xaihi, liino]
+      note: "Weitere vom Creator empfohlene Arcane-Konstellation mit Liino als Support."
+    - id: arcane-estella
+      title: "Arcane · Estella"
+      role: support
+      members: [arcane, estella, xaihi, liino]
+      note: "Weitere vom Creator empfohlene Arcane-Konstellation mit Liino als Support."
 
 gameplay:
+  # Creator stellt Video-/Run-Einbindungen erst zu einem späteren Zeitpunkt bereit.
+  pending: true
   showcases: []
 
 conclusion:
-  verdict: ""
-  recommendedFor: []
-  skipIf: []
+  verdict: >-
+    Liino ist eine grundsätzliche Pull-Empfehlung und ein wertvoller
+    Support für nahezu jeden Account. Ihre Ultimate verstärkt insbesondere
+    Elektro- und Natur-Schaden. Aber auch außerhalb dieser Teams ist sie
+    durch den sehr lange anhaltenden allgemeinen ANG-Bonus ihrer
+    Kampffertigkeit vielseitig einsetzbar.
+  recommendation: recommended
+  pullAdvice: >-
+    Empfehlung: Liino ist ein genereller Mehrwert für Accounts aller
+    Fortschrittsstufen. Nach dem Aktivieren ihrer Kampffertigkeit
+    unterstützt sie das Team weitgehend passiv: Man muss keine komplizierten
+    Abfolgen ihrer weiteren Fertigkeiten einplanen, um bereits von der
+    langen ANG-Verstärkung zu profitieren. Ihre Ultimate bietet
+    Elektro- und Natur-Teams zusätzlich besonders starke Effekte.
+  recommendedFor:
+    - "Grundsätzlich für jeden Spieler."
+    - "Besonders für Spieler, die ihren Fokus auf Elektro- oder Natur-Teams setzen."
+    - "Auch für viele andere Teamkombinationen: Liino lässt sich in deutlich mehr Teams einsetzen, als dieser Guide beispielhaft aufführt."
+  skipIf:
+    - "Prüfe deine vorhandenen Teams und entscheide, ob du Liino darin sinnvoll unterbringen kannst. Wenn kein passender Platz besteht, kannst du auf sie verzichten."
+
 ---
 
-<!-- Liino: Sechs Ausrüstungs-Builds wurden vom Creator am 16.10.2026 festgelegt.\nDie anderen redaktionellen Sektionen, Waffen, Teams und das Fazit sind noch\nunvollständig. status: preview bleibt deshalb bewusst erhalten. -->
+<!-- Liino: Creatorfreigabe 16.10.2026 für Traits, Stärken/Schwächen,
+fünf Teams (zwei Meta), allgemeine Pull-Empfehlung und Zielgruppen.
+Gameplay-Videos absichtlich noch ausstehend. Operator-Kit und andere
+Redaktionsteile bleiben offen; deshalb weiterhin status: preview. -->
