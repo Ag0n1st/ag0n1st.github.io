@@ -3,7 +3,7 @@ import type { OperatorGuideModel } from "../../../lib/endfield/operatorGuideMode
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
-const { guide, localized, trPotential, officialPotentials, potentialByLevel } = model;
+const { guide, localized, trPotential, officialPotentials, potentialByLevel, getOperatorImageUrl } = model;
 ---
 <section class="op-section" id="potenziale">
         <h2>Potenziale</h2>
@@ -17,7 +17,13 @@ const { guide, localized, trPotential, officialPotentials, potentialByLevel } = 
               <h3>P{n} – {officialPotentials.get(n)?.name || "[Offizieller Potenzialname]"}</h3>
               <p class="op-body-copy">{trPotential(n, officialPotentials.get(n)?.effect || "[Offizieller Effekt aus Spieldaten]")}</p>
               {officialPotentials.has(n) && <p class="op-muted" style="font-size:11px">SKPORT-Wirkung{localized ? " (deutsch übersetzt)" : " (EN)"}. Prozentangaben im Effekt sind keine Gesamt-DPS-Vergleiche.</p>}
-              {(n===1||n===3||n===5) && <div class="op-line"><div class="op-mini-art">[Bild]</div><strong>{officialPotentials.has(n) ? "Operator-Snapshot – Grafik folgt" : "Freischaltbares Profilbild"}</strong></div>}
+              {(n===1||n===3||n===5) && (()=>{
+                const snapshot=getOperatorImageUrl(guide.operator, ("potential-"+n) as "potential-1" | "potential-3" | "potential-5");
+                return snapshot ? <figure class="op-potential-snapshot">
+                  <img src={snapshot} width="960" height="540" loading="lazy" decoding="async" alt={"Operator-Snapshot "+guide.operator+" P"+n} />
+                  <figcaption>Freischaltbarer Operator-Snapshot · P{n} · <a href="https://endfield.wiki.gg/wiki/Liino/Gallery" target="_blank" rel="noopener noreferrer">Bildreferenz: Endfield Talos Wiki ↗</a></figcaption>
+                </figure> : null;
+              })()}
               {p?.evaluation && <p class="op-body-copy"><strong>Einordnung:</strong> {p.evaluation}</p>}
               <div class="op-info-field">
                 <small>Zusatzgewinn durch P{n} gegenüber P{n-1}</small>
