@@ -98,3 +98,51 @@ test("real builds in an unfinished preview guide must not use demo preview mode"
  const component=readFileSync("src/components/operator/sections/OperatorEquipment.astro","utf8");
  assert.match(component,/preview:\s*preview\s*&&\s*guide\.equipment\.builds\.length===0/);
 });
+
+test("only creator-selected Liino builds A, B and C are featured as Meta Builds",()=>{
+  const entries=[...guide.matchAll(/^    - id: ([a-z0-9-]+)\n([\s\S]*?)(?=^    - id:|^  progression:)/gm)];
+  assert.equal(entries.length,6,"Each creator build must be recorded exactly once");
+  const meta=entries.filter(([full,id,body])=>/^      meta: true$/m.test(body));
+  assert.deepEqual(meta.map(match=>match[1]),["ultimate-fokus","balanced","will-fokus"]);
+  for(const [,id,body] of meta){
+    const summary=body.match(/^      metaSummary: "([^"]+)"$/m)?.[1];
+    assert.ok(summary,id+" needs a short self-contained Meta Builds description");
+    assert.ok(summary.length<=280,id+" metaSummary must be concise");
+  }
+  for(const [,id,body] of entries.slice(3)){
+    assert.doesNotMatch(body,/^      meta: true$/m,id+" is progression, not Meta");
+  }
+});
+
+test("the shared equipment framework places responsive Meta Builds before the Finder",()=>{
+  const section=readFileSync("src/components/operator/sections/OperatorEquipment.astro","utf8");
+  const styles=readFileSync("src/styles/operator-guides.css","utf8");
+  const schema=readFileSync("src/content/operatorGuideSchema.ts","utf8");
+  const template=readFileSync("src/content/operator-guides/_template.md","utf8");
+  const controller=readFileSync("src/components/operator/OperatorGuide.astro","utf8");
+  assert.match(schema,/meta: z\.boolean\(\)\.default\(false\)/);
+  assert.match(schema,/metaSummary: z\.string\(\)\.trim\(\)\.max\(280\)/);
+  assert.match(schema,/Meta-Builds benötigen eine kurze Beschreibung/);
+  assert.match(section,/const metaBuilds=officialBuilds\.filter\(build=>build\.meta===true\)/);
+  assert.ok(section.indexOf(">Meta Builds</h3>")<section.indexOf(">Build-Finder</h3>"),
+    "Meta overview must appear above the detailed finder");
+  assert.match(section,/href="#build-finder" data-select-build=\{build\.id\}/,
+    "Card CTA must select the corresponding real finder build");
+  assert.match(section,/metaBuilds\.map\(build=>/);
+  assert.match(section,/build\.metaSummary/);
+  assert.match(section,/part\.catalog\?\.name\?\?part\.reference/,
+    "Gear labels must be official names and not numeric IDs only");
+  assert.match(controller,/\[data-select-build\]/,
+    "Shared build selector must respond to Meta card links");
+  assert.match(styles,/\.op-meta-build-grid\{display:grid/);
+  assert.match(styles,/@media\(max-width:680px\)[\s\S]*?\.op-meta-build-grid\{grid-template-columns:1fr\}/);
+  assert.match(template,/meta: true/);
+  assert.match(template,/metaSummary:/);
+});
+
+test("other guides are not forced to invent meta recommendations",()=>{
+ const typhoeus=readFileSync("src/content/operator-guides/typhoeus.md","utf8");
+ assert.doesNotMatch(typhoeus,/^      meta: true$/m);
+ const model=readFileSync("src/lib/endfield/operatorGuideModel.ts","utf8");
+ assert.match(model,/meta:false,metaSummary:""/);
+});
