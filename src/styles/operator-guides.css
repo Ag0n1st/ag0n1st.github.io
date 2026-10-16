@@ -308,3 +308,27 @@
 .op-meta-team-heading h3{min-width:0;flex:1;overflow-wrap:anywhere}
 .op-meta-team-labels{display:inline-flex;justify-content:flex-end;align-items:center;flex:0 0 auto;gap:6px;margin-left:auto}
 @media(max-width:680px){.op-partners-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.op-meta-team-labels{gap:4px}}
+
+/* Overview: avoid stretching the video card to match the taller profile.
+   Keep the native 16:9 iframe so the actual player is never cropped. */
+.op-profile-grid{align-items:start}
+.op-video-card{align-self:start}
+
+/* Quick build: each weapon is an independent card; no tall empty siblings. */
+.op-quick-overview{display:flex;flex-direction:column;gap:16px}
+.op-quick-weapons h3{margin:0 0 12px}
+.op-quick-weapon-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;align-items:start}
+.op-quick-weapon-card{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:12px;min-width:0}
+.op-quick-weapon-card .op-mini-art{width:58px;height:58px;flex:0 0 58px}
+.op-quick-weapon-card .op-chip{max-width:100%;justify-content:center}
+.op-quick-weapon-card strong{font-size:11px;line-height:1.5;overflow-wrap:anywhere}
+.op-quick-stats{align-items:start}
+.op-quick-partners-card .op-partners-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+@media(max-width:850px){
+  .op-quick-weapon-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .op-quick-partners-card .op-partners-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:420px){
+  .op-quick-weapon-card{padding:10px}
+  .op-quick-weapon-card .op-mini-art{width:48px;height:48px;flex-basis:48px}
+}
