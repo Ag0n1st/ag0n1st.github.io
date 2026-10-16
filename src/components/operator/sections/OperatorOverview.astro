@@ -63,16 +63,16 @@ const overviewGear=featuredBuild?.items.map(reference=>({
         <div class="op-divided">
           <h2>Build auf einen Blick</h2>
           <div class="op-quick-overview">
-            <div class="op-quick-weapons">
+            <article class="op-cardlet op-quick-weapons-card">
               <h3>Waffen</h3>
               {overviewWeapons.length ? <div class="op-quick-weapon-grid">{overviewWeapons.map(w=>
-                <article class="op-cardlet op-quick-weapon-card">
-                  <div class="op-mini-art">{w.official ? <ItemIcon id={w.official.id}/> : "[Icon]"}</div>
+                <div class="op-quick-weapon-item">
+                  <div class="op-mini-art">{w.official ? <ItemIcon id={w.official.id}/> : <span aria-hidden="true">–</span>}</div>
                   <span class="op-chip">{w.label}</span>
                   <strong>{w.official?.name??w.name}</strong>
-                </article>
-              )}</div> : <p class="op-placeholder">[Noch keine Waffenempfehlungen]</p>}
-            </div>
+                </div>
+              )}</div> : <p class="op-muted">Noch keine Waffenempfehlungen eingetragen.</p>}
+            </article>
             <div class="op-two op-quick-stats">
               <article class="op-cardlet">
                 <h3>Ausrüstung · {featuredBuild ? featuredBuild.title : "Meta-Set"}</h3>
