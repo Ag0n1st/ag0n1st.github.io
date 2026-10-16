@@ -92,6 +92,8 @@ test("new 1.6 Si gear keeps source-tagged nonnumeric IDs and must not fake SKPOR
   assert.match(guide,/metaTag: "balanced"/);
   assert.match(guide,/metaTag: "max-dmg"/);
   assert.match(guide,/metaTag: "max-buffs"/);
+  assert.match(guide,/metaTag: "early-access"/);
+  assert.match(guide,/items: \["796", "411", "342", "342"\]/);
   assert.match(guide,/^ +items: \["type-50-yinglung-soft-armor", "type-50-yinglung-gauntlets", "type-50-yinglung-beacon", "365"\]/m);
   const equipment=readFileSync("src/components/operator/sections/OperatorEquipment.astro","utf8");
   assert.match(equipment,/!part\.detail\s*\|\| part\.detail\.status!==["']verified["']/);
@@ -129,13 +131,13 @@ test("Si has two independently ordered skill priorities and clear level targets"
 test("Si early builds, main meta labels and direct editorial voice stay consistent",()=>{
   const byId=new Map(official.items.map(i=>[i.id,i]));
   for(const row of [
-    ["349","Redeemer Seal"],["322","Mordvolt Insulation Vest T1"],
+    ["349","Redeemer Seal"],["796","Redeemer Armor"],["411","Type 50 Yinglung Gloves"],["342","Type 50 Yinglung Knife T1"],["322","Mordvolt Insulation Vest T1"],
     ["323","Mordvolt Insulation Gloves T1"],["327","Mordvolt Insulation Battery T1"],
     ["291","Aburrey Flashlight"],["256","Mordvolt Insulation Vest"],
     ["259","Mordvolt Insulation Gloves"],["266","Mordvolt Insulation Wrench T1"],
     ["262","Mordvolt Insulation Wrench"]
   ])assert.equal(byId.get(row[0])?.name,row[1]);
-  for(const id of ["si-balanced","si-main","si-support-xiranite","si-level36","si-level50"])
+  for(const id of ["si-balanced","si-main","si-support-xiranite","si-early-access","si-level36","si-level50"])
     assert.ok(guide.includes('id: "'+id+'"'),id);
   assert.match(guide,/items: \["322", "323", "327", "291"\]/);
   assert.match(guide,/items: \["256", "259", "266", "262"\]/);
@@ -151,4 +153,33 @@ test("Si early builds, main meta labels and direct editorial voice stay consiste
   assert.match(teams,/op-si-main-team":guide.operator==="si"&&team.role==="main-dps"/);
   const css=readFileSync("src/styles/operator-guides.css","utf8");
   assert.match(css,/\.op-si-main-team \.op-meta-team-labels \.op-chip:last-child/);
+});
+
+test("Si Early Access uses four official SKPORT pieces and three Type-50 set pieces",()=>{
+  const byId=new Map(official.items.map(item=>[item.id,item]));
+  for(const id of ["796","411","342"]){
+    assert.ok(byId.has(id));
+    assert.ok(byId.get(id).categories.includes("Gear"));
+    assert.ok(existsSync("public"+byId.get(id).iconPath));
+  }
+  const early=guide.slice(guide.indexOf('    - id: "si-early-access"'),guide.indexOf('    - id: "si-level60"'));
+  assert.match(early,/meta: true/);
+  assert.match(early,/metaTag: "early-access"/);
+  assert.match(early,/availableFromLevel: 70/);
+  assert.match(early,/items: \["796", "411", "342", "342"\]/);
+  assert.doesNotMatch(early,/type-50-yinglung-gauntlets|SKPORT-ID.*erfunden/);
+  const schema=readFileSync("src/content/operatorGuideSchema.ts","utf8");
+  assert.match(schema,/max-buffs", "early-access"/);
+});
+test("All operator overview strengths and weaknesses use subtle shared accent cards",()=>{
+  const overview=readFileSync("src/components/operator/sections/OperatorOverview.astro","utf8");
+  const css=readFileSync("src/styles/operator-guides.css","utf8");
+  assert.match(overview,/op-cardlet op-strengths-card/);
+  assert.match(overview,/op-cardlet op-weaknesses-card/);
+  assert.match(css,/\.op-strengths-card\{/);
+  assert.match(css,/\.op-weaknesses-card\{/);
+  assert.match(css,/\.op-meta-build-grid\{display:grid;grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/);
+  const buildView=readFileSync("src/components/operator/sections/OperatorEquipment.astro","utf8");
+  assert.match(buildView,/Early Access/);
+  assert.match(css,/\.op-meta-build-tags \.op-chip\.is-early/);
 });

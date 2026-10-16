@@ -55,8 +55,8 @@ const overviewGear=featuredBuild?.items.map(reference=>({
             </article>
           </div>
           <div class="op-two" style="margin-top:14px">
-            <div class="op-cardlet"><h3>✓ Stärken</h3>{guide.overview.strengths.length ? guide.overview.strengths.map(s=><p class="op-body-copy">{s}</p>) : <p class="op-placeholder">[Stärken noch nicht eingetragen]</p>}</div>
-            <div class="op-cardlet"><h3>− Schwächen</h3>{guide.overview.weaknesses.length ? guide.overview.weaknesses.map(s=><p class="op-body-copy">{s}</p>) : <p class="op-placeholder">[Schwächen noch nicht eingetragen]</p>}</div>
+            <div class="op-cardlet op-strengths-card"><h3>✓ Stärken</h3>{guide.overview.strengths.length ? guide.overview.strengths.map(s=><p class="op-body-copy">{s}</p>) : <p class="op-placeholder">[Stärken noch nicht eingetragen]</p>}</div>
+            <div class="op-cardlet op-weaknesses-card"><h3>− Schwächen</h3>{guide.overview.weaknesses.length ? guide.overview.weaknesses.map(s=><p class="op-body-copy">{s}</p>) : <p class="op-placeholder">[Schwächen noch nicht eingetragen]</p>}</div>
           </div>
           {guide.overview.summary && <p class="op-body-copy">{guide.overview.summary}</p>}
         </div>

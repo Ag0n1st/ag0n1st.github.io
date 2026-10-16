@@ -75,10 +75,14 @@ teams:
 ## Neu seit Si v1.6: Rollenprioritäten, Meta-Tags und vorläufige Zugänglichkeit
 
 - `skills.priority` bezeichnet die primäre Skill-Reihenfolge des Operators und wird in **Übersicht** sowie unter **Fertigkeiten** angezeigt. Nur bei eigenständig bestätigter zweiter Rolle `skills.supportPriority` mit derselben Struktur ergänzen: `order` (vier einzigartige Slots), `comparisons` (drei `>`/`>=`/`=`) und `targetLevels`. Dann erscheinen unter Fertigkeiten **DPS** und **Support** nebeneinander/untereinander, während die Quick-Card die primäre DPS-Reihenfolge beschriftet. Liino und Typhoeus behalten ihre bisherige eine Priorität.
-- `equipment.builds[].metaTag` ist optional und nur bei `meta: true` zulässig: `balanced` = **Balanced** (Cyan), `max-dmg` = **Max. DMG** (Magenta), `max-buffs` = **Max. Buffs** (neutral). Die Reihenfolge der `meta: true`-Builds in YAML ist die sichtbare Reihenfolge der Cards; `overview.featuredBuildId` steuert weiterhin die tatsächliche Quick-Card, **nicht** ein implizit überschriebenes `si-main`.
+- `equipment.builds[].metaTag` ist optional und nur bei `meta: true` zulässig: `balanced` = **Balanced** (Cyan), `max-dmg` = **Max. DMG** (Magenta), `max-buffs` = **Max. Buffs** (neutral), `early-access` = **Early Access** (dezentes Warmgold). Die Reihenfolge der `meta: true`-Builds in YAML ist die sichtbare Reihenfolge der Cards; `overview.featuredBuildId` steuert weiterhin die tatsächliche Quick-Card, **nicht** ein implizit überschriebenes `si-main`.
 - Neue Meta-Gear-Teile ohne offizielle numerische SKPORT-Item-IDs bleiben im Finder **ungeprüft**. Wenn `metaAccessibilityFromRequirements` deshalb keinen berechenbaren Wert liefert, ist eine explizit freigegebene `overview.ratings.accessibility` (1–5) samt `overview.accessibilityNote` als vorläufige Einordnung erlaubt. Sobald **alle** Meta-Teile offiziell identifiziert und verifiziert sind, hat die automatische Bewertung Vorrang. Freischaltung/Blueprintbesitz werden nie aus dem manuellen Rating abgeleitet.
 - Teamkarten verwenden dieselben lokalen Operator-Cover/Icons wie die Partnerübersicht, mit Initialen als Fallback. Für `role: main-dps` erhält das Rollenlabel in Meta-Teams einen Magenta-Akzent; `meta` selbst bleibt als eigener Chip sichtbar.
 - Der SKPORT-Hinweis über allen Guides zeigt nur **`SKPORT-Datenstand: YYYY-MM-DD`**. Herkunfts-/PDF-/Übersetzungsprotokolle bleiben in internen Dokumentationsdateien und dürfen nicht als Erzählung über eine dritte Autorenschaft in den Guide gelangen.
+
+**Globale Card-Akzente:** Die beiden Stärken-/Schwächen-Cards der Operator-Übersicht besitzen gemeinsame CSS-Klassen `op-strengths-card` (dezentes Grün) und `op-weaknesses-card` (dezentes Rot), unabhängig vom Charakter und ohne separate Redaktionsdaten. Fließtext bleibt kontrastreich und lesbar.
+
+**Grid:** Meta-Card-Übersicht verwendet **maximal zwei Spalten auf Desktop/Tablet**, bei max. 680 px eine Spalte. Beispiel Si: vier aktive Meta-Cards ergeben 2 × 2, der Build-Finder selbst bleibt unverändert.
 
 ## Meta Builds im gemeinsamen Operator-Guide-Framework
 

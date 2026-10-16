@@ -40,7 +40,7 @@ const metaBuilds=officialBuilds.filter(build=>build.meta===true);
               <div class="op-subtitle">
                 <h4>{build.title}</h4>
                 <div class="op-meta-build-tags">
-                  {build.metaTag && <span class:list={{"op-chip":true,"is-pink":build.metaTag==="max-dmg","is-accent":build.metaTag==="balanced"}}>{build.metaTag==="max-dmg"?"Max. DMG":build.metaTag==="max-buffs"?"Max. Buffs":"Balanced"}</span>}
+                  {build.metaTag && <span class:list={{"op-chip":true,"is-pink":build.metaTag==="max-dmg","is-accent":build.metaTag==="balanced","is-early":build.metaTag==="early-access"}}>{build.metaTag==="max-dmg"?"Max. DMG":build.metaTag==="max-buffs"?"Max. Buffs":build.metaTag==="early-access"?"Early Access":"Balanced"}</span>}
                   {build.availableFromLevel && <span class="op-chip">Level {build.availableFromLevel}</span>}
                 </div>
               </div>
