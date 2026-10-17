@@ -9,7 +9,7 @@ from urllib.parse import quote
 from urllib.request import Request, urlopen
 from PIL import Image, UnidentifiedImageError
 
-OPERATORS = ["Si","Argent Flow","Endministrator","Perlica","Chen Qianyu","Typhoeus",
+OPERATORS = ["Si","Argent Flow","Endministrator (Female)","Endministrator (Male)","Perlica","Chen Qianyu","Typhoeus",
  "Purrchena","Arcane","Liino","Mi Fu","Camille","Zhuang Fangyi","Tangtang","Rossi",
  "Laevatain","Yvonne","Gilberta","Ardelia","Ember","Last Rite","Lifeng","Pogranichnik",
  "Alesh","Arclight","Avywenna","Da Pan","Snowshine","Wulfgard","Xaihi","Akekuri",
@@ -45,6 +45,13 @@ def main():
         slug=slugify(name)
         source=url_for(name)
         output=BASE/slug/"banner.webp"
+        if output.exists():
+            saved=output.read_bytes()
+            records.append({"operator":name,"slug":slug,"variant":"wiki-infobox-header",
+                "path":"/"+str(output).removeprefix("public/"),"source":source,"status":"already-present",
+                "bytes":len(saved),"sha256":hashlib.sha256(saved).hexdigest()})
+            print("SKIP",slug,"cached and retained")
+            continue
         data,status=fetch_image(source)
         if data is None:
             records.append({"operator":name,"slug":slug,"source":source,"status":status})
