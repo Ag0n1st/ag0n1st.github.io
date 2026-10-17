@@ -644,7 +644,7 @@ const href=(de:string)=>isEn?({
       function setMenuOpen(open) {
         if (!menuToggle || !mainNav) return;
         menuToggle.setAttribute("aria-expanded", String(open));
-        menuToggle.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
+        menuToggle.setAttribute("aria-label", open ? (document.documentElement.lang==="en"?"Close menu":"Menü schließen") : (document.documentElement.lang==="en"?"Open menu":"Menü öffnen"));
         mainNav.classList.toggle("is-open", open);
       }
       menuToggle?.addEventListener("click", () => setMenuOpen(menuToggle.getAttribute("aria-expanded") !== "true"));
