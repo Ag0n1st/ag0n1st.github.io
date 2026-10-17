@@ -4,29 +4,31 @@ import MaterialCosts from "../../endfield/MaterialCosts.astro";
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
+const t=(value:string)=>guideText(model.lang,value);
 const { guide, preview, gameData, extraData, localized, trMetric, trReq, trTalent, combatTalents, shipTalents, attributeNodes, otherTalents, importedBySlot, skillImage, defaultSkillRank, slotLabels, slotIcons, priority, supportPriority, priorityOrder, priorityComparisons } = model;
 const prioritySets = [
   {label:supportPriority?"DPS":"",priority,order:priorityOrder,comparisons:priorityComparisons},
   ...(supportPriority ? [{label:"Support",priority:supportPriority,order:supportPriority.order,comparisons:supportPriority.comparisons}] : [])
 ];
+import { guideText } from "../../../lib/i18n/guideUi";
 ---
 <section class="op-section" id="fertigkeiten">
-        <h2>Fertigkeiten</h2>
+        <h2>{t("Fertigkeiten")}</h2>
         <div class="op-cardlet" style="margin-bottom:15px">
-          <h3>Skill-Priorität</h3>
+          <h3>{t("Skill-Priorität")}</h3>
           {(priority || preview) ? <div class="op-priority-variants">{prioritySets.map(set=><div class="op-priority-variant">
             {set.label && <h4 class="op-priority-role">{set.label}</h4>}
             <div class="op-skill-row">{set.order.map((key,i)=><>
               <div class="op-priority-skill"><div class="op-mini-art">{skillImage(key) ? <img class="op-skill-icon" src={skillImage(key)} loading="lazy" decoding="async" alt="" /> : slotIcons[key]}</div><small>{slotLabels[key]}</small><b>{set.priority?.targetLevels[key] || "–"}</b></div>
               {i<3&&<span class="op-priority-symbol">{set.comparisons[i]}</span>}
             </>)}</div>
-          </div>)}</div> : <p class="op-placeholder">[Skill-Priorität folgt]</p>}
+          </div>)}</div> : <p class="op-placeholder">{t("[Skill-Priorität folgt]")}</p>}
         </div>
         <details class="op-divided op-guide-accordion" data-guide-disclosure="skill-details">
-          <summary class="op-guide-accordion-summary"><h3>Fertigkeiten & Talente</h3><span class="op-guide-accordion-hint">Fertigkeitsdetails anzeigen</span></summary>
+          <summary class="op-guide-accordion-summary"><h3>{t("Fertigkeiten & Talente")}</h3><span class="op-guide-accordion-hint">{t("Fertigkeitsdetails anzeigen")}</span></summary>
           <div class="op-guide-accordion-content">
           <div class="op-divided">
-          <h3>Kampffertigkeiten</h3>
+          <h3>{t("Kampffertigkeiten")}</h3>
           <div class="op-mini-list">
             {(["basic","battle","combo","ultimate"] as const).map(key=>{
               const official = importedBySlot.get(key);
@@ -37,10 +39,10 @@ const prioritySets = [
                 </div>
                 {official && <p class="op-muted" style="font-size:11px;margin:9px 0">SKPORT Wiki · Datenstand {gameData?.source.snapshot} · Original: {gameData?.source.language.toUpperCase()}{localized ? " · Deutsche redaktionelle Übersetzung" : ""}</p>}
                 {(localized?.skills[key]?.description || official?.description) && <div class="op-skill-description op-body-copy">{localized?.skills[key]?.description || official?.description}</div>}
-                {localized && official?.description && <details class="op-details"><summary>Englische Originalbeschreibung anzeigen</summary><div class="op-details-body op-body-copy">{official.description}</div></details>}
+                {localized && official?.description && <details class="op-details"><summary>{t("Englische Originalbeschreibung anzeigen")}</summary><div class="op-details-body op-body-copy">{official.description}</div></details>}
                 {official && gameData ? <>
                   <div class="op-skill-selector">
-                    <label for={"skill-rank-"+key}>Skillstufe</label>
+                    <label for={"skill-rank-"+key}>{t("Skillstufe")}</label>
                     <select id={"skill-rank-"+key} class="op-select" data-skill-rank={key}>
                       {gameData.ranks.map((rank,i)=><option value={i} selected={i===defaultSkillRank}>{rank}</option>)}
                     </select>
@@ -51,26 +53,26 @@ const prioritySets = [
                       <strong data-skill-metric-value data-skill-values={JSON.stringify(metric.slice(1))}>{metric[defaultSkillRank+1]}</strong>
                     </div>)}
                   </div>
-                </> : <p class="op-placeholder">[Offizielle Fertigkeitswerte folgen]</p>}
-                <p class="op-body-copy"><strong>Bewertung</strong><br />{guide.skills.active[key] || "[Eigene Erklärung folgt]"}</p>
-                <details class="op-details"><summary>Alle Skill-Levelwerte anzeigen</summary>
+                </> : <p class="op-placeholder">{t("[Offizielle Fertigkeitswerte folgen]")}</p>}
+                <p class="op-body-copy"><strong>{t("Bewertung")}</strong><br />{guide.skills.active[key] || "[Eigene Erklärung folgt]"}</p>
+                <details class="op-details"><summary>{t("Alle Skill-Levelwerte anzeigen")}</summary>
                   <div class="op-details-body">
                     {official && gameData ? <>
                       <div class="op-table-wrap">
                         <table class="op-table op-skill-matrix">
-                          <thead><tr><th>Skillstufe</th>{official.metrics.map(metric=><th title={metric[0]}>{trMetric(metric[0])}</th>)}</tr></thead>
+                          <thead><tr><th>{t("Skillstufe")}</th>{official.metrics.map(metric=><th title={metric[0]}>{trMetric(metric[0])}</th>)}</tr></thead>
                           <tbody>{gameData.ranks.map((rank,i)=><tr><td>{rank}</td>{official.metrics.map(metric=><td>{metric[i+1]}</td>)}</tr>)}</tbody>
                         </table>
                       </div>
                       {official.upgradeCosts?.length ? <>
-                        <h4 style="margin:17px 0 8px">Materialkosten der einzelnen Skillstufen</h4>
+                        <h4 style="margin:17px 0 8px">{t("Materialkosten der einzelnen Skillstufen")}</h4>
                         <div class="op-table-wrap"><table class="op-table">
-                          <thead><tr><th>Skillstufe</th><th>Materialien</th></tr></thead>
+                          <thead><tr><th>{t("Skillstufe")}</th><th>{t("Materialien")}</th></tr></thead>
                           <tbody>{official.upgradeCosts.map(level=><tr><td>{level.rank}</td><td><MaterialCosts items={level.items} translatedNames={localized?.materials} fallbackNames={extraData?.materials} /></td></tr>)}</tbody>
                         </table></div>
-                        <p class="op-muted" style="font-size:11px;margin-top:10px">Quelle: SKPORT-Wiki. Einzelkosten je Stufe, keine aufsummierten Kosten.</p>
-                      </> : <p class="op-muted" style="font-size:11px;margin-top:10px">Materialkosten folgen nach Zuordnung ihrer Item-IDs.</p>}
-                    </> : <p class="op-placeholder">[Skilllevel und Aufstiegsmaterialien folgen]</p>}
+                        <p class="op-muted" style="font-size:11px;margin-top:10px">{t("Quelle: SKPORT-Wiki. Einzelkosten je Stufe, keine aufsummierten Kosten.")}</p>
+                      </> : <p class="op-muted" style="font-size:11px;margin-top:10px">{t("Materialkosten folgen nach Zuordnung ihrer Item-IDs.")}</p>}
+                    </> : <p class="op-placeholder">{t("[Skilllevel und Aufstiegsmaterialien folgen]")}</p>}
                   </div>
                 </details>
               </article>;
@@ -90,10 +92,10 @@ const prioritySets = [
                 <p class="op-muted" style="font-size:11px">{localized ? "SKPORT · deutsche Übersetzung" : "SKPORT Original · Englisch"}</p>
                 <p class="op-body-copy">{trTalent(t.id,t.levels.length-1,t.levels.at(-1)?.effect || "")}</p>
                 {(talentCategory === "combat" || talentCategory === "ship") && guide.skills[talentCategory === "combat" ? "combatTalents" : "shipTalents"].find(guideTalent => guideTalent.talentId === t.id)?.evaluation &&
-                <p class="op-body-copy"><strong>Bewertung:</strong> {guide.skills[talentCategory === "combat" ? "combatTalents" : "shipTalents"].find(guideTalent => guideTalent.talentId === t.id)?.evaluation}</p>}
-                <details class="op-details"><summary>Alle Talentstufen, Voraussetzungen & Materialien</summary>
+                <p class="op-body-copy"><strong>{t("Bewertung:")}</strong> {guide.skills[talentCategory === "combat" ? "combatTalents" : "shipTalents"].find(guideTalent => guideTalent.talentId === t.id)?.evaluation}</p>}
+                <details class="op-details"><summary>{t("Alle Talentstufen, Voraussetzungen & Materialien")}</summary>
                   <div class="op-details-body op-table-wrap"><table class="op-table">
-                    <thead><tr><th>Stufe</th><th>Offizieller Effekt</th><th>Voraussetzungen</th><th>Materialien</th></tr></thead>
+                    <thead><tr><th>{t("Stufe")}</th><th>{t("Offizieller Effekt")}</th><th>{t("Voraussetzungen")}</th><th>{t("Materialien")}</th></tr></thead>
                     <tbody>{t.levels.map((level,i)=><tr>
                       <td>{level.name}</td><td class="op-body-copy">{trTalent(t.id,i,level.effect)}</td>
                       <td>{level.requirements.map(trReq).join(" · ") || "–"}</td><td><MaterialCosts items={level.cost} translatedNames={localized?.materials} fallbackNames={extraData?.materials} /></td>
@@ -101,7 +103,7 @@ const prioritySets = [
                   </table></div>
                 </details>
               </article>)}
-          </div> : <p class="op-placeholder">[Offizielle Talente folgen]</p>}
+          </div> : <p class="op-placeholder">{t("[Offizielle Talente folgen]")}</p>}
         </div>)}
           </div>
         </details>
