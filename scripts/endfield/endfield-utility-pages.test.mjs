@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 import {CURRENT_VERSION} from "../../src/data/endfield/versionCountdown.mjs";
 import {SPEEDRUN_PLAYLIST_ID} from "../../src/data/endfield/speedrunPlaylist.mjs";
-import {parseSpeedrunPlaylist} from "../../src/lib/content/speedrunFeed.mjs";
+import {parseSpeedrunPlaylist,parseSpeedrunPlaylistPage} from "../../src/lib/content/speedrunFeed.mjs";
 const read=p=>readFileSync(p,"utf8");
 
 test("manual 1.6 Protocol Pass cutoff has editor-friendly Markdown and Berlin midnight",()=>{
@@ -58,4 +58,14 @@ test("updated guide visual design retains splash and uses approved image variant
  assert.match(read("src/lib/endfield/operatorGuideModel.ts"),/official-icon/);
  assert.match(read("src/components/pages/OperatorIndex.astro"),/official-portrait/);
  assert.match(read("src/components/EndfieldNav.astro"),/nav-upcoming-wrench/);
+});
+
+test("YouTube HTML fallback extracts only real playlist video lockups, not suggested videos",()=>{
+ const entry=(id,title)=>JSON.stringify({lockupViewModel:{contentId:id,contentType:"LOCKUP_CONTENT_TYPE_VIDEO",metadata:{lockupMetadataViewModel:{title:{content:title}}}}});
+ const html='<script>'+entry("qSIktISsLPQ","Official Speedrun")+'</script><script>'+entry("uixHyNlbwAQ","Second Run")+'</script>';
+ const videos=parseSpeedrunPlaylistPage(html);
+ assert.equal(videos.length,2);
+ assert.deepEqual(videos.map(x=>x.id),["qSIktISsLPQ","uixHyNlbwAQ"]);
+ assert.equal(videos[0].title,"Official Speedrun");
+ assert.equal(parseSpeedrunPlaylistPage('{\"videoRenderer\":{\"videoId\":\"aaaaaaaaaaa\"}}').length,0);
 });
