@@ -8,7 +8,7 @@
       "operator": "Si",
       "slug": "si",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/si/banner.webp",
+      "path": "/images/endfield/operators/si/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Si_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -38,7 +38,7 @@
       "operator": "Perlica",
       "slug": "perlica",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/perlica/banner.webp",
+      "path": "/images/endfield/operators/perlica/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Perlica_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -56,7 +56,7 @@
       "operator": "Chen Qianyu",
       "slug": "chen-qianyu",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/chen-qianyu/banner.webp",
+      "path": "/images/endfield/operators/chen-qianyu/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Chen_Qianyu_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -74,7 +74,7 @@
       "operator": "Typhoeus",
       "slug": "typhoeus",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/typhoeus/banner.webp",
+      "path": "/images/endfield/operators/typhoeus/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Typhoeus_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -92,7 +92,7 @@
       "operator": "Purrchena",
       "slug": "purrchena",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/purrchena/banner.webp",
+      "path": "/images/endfield/operators/purrchena/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Purrchena_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -103,14 +103,14 @@
         900,
         352
       ],
-      "bytes": 66594,
-      "sha256": "938ac3a25ef93adcf939806a151527a0ce2f4e2d81171d7907fec27279e384a6"
+      "bytes": 65292,
+      "sha256": "c285dd0266bdf3498bfa63d7c6d16297877cb40bcf4bf45741476fcb8d5d3f47"
     },
     {
       "operator": "Arcane",
       "slug": "arcane",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/arcane/banner.webp",
+      "path": "/images/endfield/operators/arcane/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Arcane_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -128,7 +128,7 @@
       "operator": "Liino",
       "slug": "liino",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/liino/banner.webp",
+      "path": "/images/endfield/operators/liino/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Liino_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -146,7 +146,7 @@
       "operator": "Mi Fu",
       "slug": "mi-fu",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/mi-fu/banner.webp",
+      "path": "/images/endfield/operators/mi-fu/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Mi_Fu_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -164,7 +164,7 @@
       "operator": "Camille",
       "slug": "camille",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/camille/banner.webp",
+      "path": "/images/endfield/operators/camille/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Camille_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -182,7 +182,7 @@
       "operator": "Zhuang Fangyi",
       "slug": "zhuang-fangyi",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/zhuang-fangyi/banner.webp",
+      "path": "/images/endfield/operators/zhuang-fangyi/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Zhuang_Fangyi_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -199,18 +199,26 @@
     {
       "operator": "Tangtang",
       "slug": "tangtang",
+      "variant": "wiki-infobox-header",
+      "path": "/images/endfield/operators/tangtang/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Tangtang_Banner.png",
-      "status": "unsupported-artwork-shape",
+      "status": "cached",
       "sourceSize": [
         874,
         349
-      ]
+      ],
+      "size": [
+        874,
+        349
+      ],
+      "bytes": 75412,
+      "sha256": "9f9e002cdb14954b696aa66d6bb7a8de744debb186c5089e905a1034b520e061"
     },
     {
       "operator": "Rossi",
       "slug": "rossi",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/rossi/banner.webp",
+      "path": "/images/endfield/operators/rossi/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Rossi_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -228,7 +236,7 @@
       "operator": "Laevatain",
       "slug": "laevatain",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/laevatain/banner.webp",
+      "path": "/images/endfield/operators/laevatain/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Laevatain_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -246,7 +254,7 @@
       "operator": "Yvonne",
       "slug": "yvonne",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/yvonne/banner.webp",
+      "path": "/images/endfield/operators/yvonne/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Yvonne_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -264,7 +272,7 @@
       "operator": "Gilberta",
       "slug": "gilberta",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/gilberta/banner.webp",
+      "path": "/images/endfield/operators/gilberta/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Gilberta_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -282,7 +290,7 @@
       "operator": "Ardelia",
       "slug": "ardelia",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/ardelia/banner.webp",
+      "path": "/images/endfield/operators/ardelia/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Ardelia_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -300,7 +308,7 @@
       "operator": "Ember",
       "slug": "ember",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/ember/banner.webp",
+      "path": "/images/endfield/operators/ember/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Ember_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -318,7 +326,7 @@
       "operator": "Last Rite",
       "slug": "last-rite",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/last-rite/banner.webp",
+      "path": "/images/endfield/operators/last-rite/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Last_Rite_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -336,7 +344,7 @@
       "operator": "Lifeng",
       "slug": "lifeng",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/lifeng/banner.webp",
+      "path": "/images/endfield/operators/lifeng/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Lifeng_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -354,7 +362,7 @@
       "operator": "Pogranichnik",
       "slug": "pogranichnik",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/pogranichnik/banner.webp",
+      "path": "/images/endfield/operators/pogranichnik/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Pogranichnik_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -372,7 +380,7 @@
       "operator": "Alesh",
       "slug": "alesh",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/alesh/banner.webp",
+      "path": "/images/endfield/operators/alesh/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Alesh_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -390,7 +398,7 @@
       "operator": "Arclight",
       "slug": "arclight",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/arclight/banner.webp",
+      "path": "/images/endfield/operators/arclight/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Arclight_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -408,7 +416,7 @@
       "operator": "Avywenna",
       "slug": "avywenna",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/avywenna/banner.webp",
+      "path": "/images/endfield/operators/avywenna/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Avywenna_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -426,7 +434,7 @@
       "operator": "Da Pan",
       "slug": "da-pan",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/da-pan/banner.webp",
+      "path": "/images/endfield/operators/da-pan/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Da_Pan_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -444,7 +452,7 @@
       "operator": "Snowshine",
       "slug": "snowshine",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/snowshine/banner.webp",
+      "path": "/images/endfield/operators/snowshine/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Snowshine_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -462,7 +470,7 @@
       "operator": "Wulfgard",
       "slug": "wulfgard",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/wulfgard/banner.webp",
+      "path": "/images/endfield/operators/wulfgard/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Wulfgard_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -480,7 +488,7 @@
       "operator": "Xaihi",
       "slug": "xaihi",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/xaihi/banner.webp",
+      "path": "/images/endfield/operators/xaihi/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Xaihi_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -498,7 +506,7 @@
       "operator": "Akekuri",
       "slug": "akekuri",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/akekuri/banner.webp",
+      "path": "/images/endfield/operators/akekuri/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Akekuri_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -516,7 +524,7 @@
       "operator": "Antal",
       "slug": "antal",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/antal/banner.webp",
+      "path": "/images/endfield/operators/antal/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Antal_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -534,7 +542,7 @@
       "operator": "Catcher",
       "slug": "catcher",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/catcher/banner.webp",
+      "path": "/images/endfield/operators/catcher/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Catcher_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -552,7 +560,7 @@
       "operator": "Estella",
       "slug": "estella",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/estella/banner.webp",
+      "path": "/images/endfield/operators/estella/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Estella_Banner.png",
       "status": "cached",
       "sourceSize": [
@@ -570,7 +578,7 @@
       "operator": "Fluorite",
       "slug": "fluorite",
       "variant": "wiki-infobox-header",
-      "path": "/public/images/endfield/operators/fluorite/banner.webp",
+      "path": "/images/endfield/operators/fluorite/banner.webp",
       "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Fluorite_Banner.png",
       "status": "cached",
       "sourceSize": [
