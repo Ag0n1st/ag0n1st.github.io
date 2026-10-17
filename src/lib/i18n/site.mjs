@@ -6,6 +6,7 @@ export const EN_PAGES=Object.freeze({
   "/nte/":"/en/nte/",
   "/endfield/":"/en/endfield/",
   "/endfield/operatoren/":"/en/endfield/operators/",
+  "/endfield/tierlist/":"/en/endfield/tierlist/",
   "/endfield/fabrik/":"/en/endfield/factory/",
   "/endfield/rekrutierung/":"/en/endfield/recruitment/",
   "/endfield/veredelung/":"/en/endfield/refinement/",
