@@ -13,7 +13,7 @@ for url in urls:
    data=response.read(3_500_000).decode("utf-8","replace")
    print({"url":url,"status":response.status,"finalUrl":response.url,"bytes":len(data),"playlistVideoRenderer":data.count("playlistVideoRenderer"),"videoRenderer":data.count("videoRenderer"),"lockupViewModel":data.count("lockupViewModel"),"ytInitialData":data.count("ytInitialData"),"playlistId":data.count(id),"videoIdFields":data.count('"videoId"'),"htmlTitle":re.findall(r"<title>([^<]+)</title>",data)[:1]})
    if "www.youtube.com/playlist" in url:
-    markers=[x.start() for x in re.finditer(r'"lockupViewModel":\\{',data)]
+    markers=[m.start() for m in re.finditer('lockupViewModel',data) if data[m.start()-1:m.start()+20].startswith('"lockupViewModel":{')]
     print("LOCKUP_OBJECTS",len(markers))
     for i,pos in enumerate(markers[:4]):print("LOCKUP_SAMPLE",i,data[pos:pos+2100])
     for token in ["lockupViewModel", "playlistVideoRenderer", "playlistPanelVideoRenderer", "publishedTimeText", "lockupMetadataViewModel", "videoInfo", "contentId", "dateText", "playlistHeaderRenderer"]:
