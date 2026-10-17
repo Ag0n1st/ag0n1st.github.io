@@ -46,7 +46,7 @@ class Translator:
         # Pure game codes and localized references are intentionally not prose.
         if re.fullmatch(r"(M[123]|P[0-5]|Lv\\.? ?[0-9]+|\\d+(?:[.,]\\d+)? ?%|Datafield)",raw.strip()):
             return raw
-        pieces=re.split(r"(?<=\\.)\\s+(?=[A-ZÄÖÜ])|(?<=\\!)\\s+|(?<=\\?)\\s+",raw)
+        pieces=re.split(r"(?<=[.!?])\s+(?=[A-ZÄÖÜ])",raw)
         output=[]
         for p in pieces:
             if len(p)>1000:
