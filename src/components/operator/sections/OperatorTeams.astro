@@ -25,12 +25,12 @@ import { guideText } from "../../../lib/i18n/guideUi";
               return <div class="op-team-slot"><span class="op-team-art">{art.image ? <img src={art.image} loading="lazy" decoding="async" alt="" /> : <span aria-hidden="true">{art.initials}</span>}</span><span class="op-team-name">{displayTeamMember(member)}</span></div>;
             })}</div>
             {(team.evaluation || team.note) && <p class="op-body-copy">{team.evaluation || team.note}</p>}
-            <TeamMemberGear rows={team.memberGear??[]} displayTeamMember={displayTeamMember}/>
+            <TeamMemberGear rows={team.memberGear??[]} displayTeamMember={displayTeamMember} lang={model.lang}/>
             {team.buildId && <p><a class="op-link" href="#ausruestung" data-select-build={team.buildId}>{translateUi("Empfohlene Ausrüstung ansehen ↗")}</a></p>}
           </article>)}</div> : <p class="op-placeholder">{translateUi("[Noch keine Meta-Teams]")}</p>}
         </div>
         <details class="op-divided op-guide-accordion" data-guide-disclosure="team-options">
-          <summary class="op-guide-accordion-summary"><h3>{translateUi("Weitere Teamoptionen")}</h3><span class="op-guide-accordion-hint">{extraTeams.length} Teams anzeigen</span></summary>
+          <summary class="op-guide-accordion-summary"><h3>{translateUi("Weitere Teamoptionen")}</h3><span class="op-guide-accordion-hint">{extraTeams.length} {model.lang==="en"?"Teams to show":"Teams anzeigen"}</span></summary>
           <div class="op-guide-accordion-content">
           {extraTeams.length ? <>
             {teamRoles.length > 1 && <div class="op-role-filter" aria-label="Teams nach Rolle filtern">
@@ -44,7 +44,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
               return <div class="op-team-slot"><span class="op-team-art">{art.image ? <img src={art.image} loading="lazy" decoding="async" alt="" /> : <span aria-hidden="true">{art.initials}</span>}</span><span class="op-team-name">{displayTeamMember(member)}</span></div>;
             })}</div>
               {(team.note || team.buildId) && <p class="op-body-copy">{team.note || ""} {team.buildId && <a class="op-link" href="#ausruestung" data-select-build={team.buildId}>{translateUi("Ausrüstung ↗")}</a>}</p>}
-              <TeamMemberGear rows={team.memberGear??[]} displayTeamMember={displayTeamMember}/>
+              <TeamMemberGear rows={team.memberGear??[]} displayTeamMember={displayTeamMember} lang={model.lang}/>
             </article>)}</div>
           </> : <p class="op-placeholder">{translateUi("[Weitere Teamoptionen folgen]")}</p>}
           </div>
