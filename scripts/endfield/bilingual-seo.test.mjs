@@ -44,7 +44,7 @@ test("All three English editorial guides are real English content keyed to the o
 });
 test("Indexing respects true English editorial content and German preview status",()=>{
  const es=read("src/pages/en/endfield/operators/[slug].astro");
- const idx=read("src/pages/en/endfield/operators/index.astro");
+ const idx=read("src/components/pages/OperatorIndex.astro");
  const map=read("src/pages/sitemap.xml.ts");
  assert.match(es,/OperatorGuide/);
  assert.match(es,/localizeOperatorGuide/);
