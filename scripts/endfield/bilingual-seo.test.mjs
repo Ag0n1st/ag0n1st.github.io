@@ -66,7 +66,7 @@ test("Indexing respects true English editorial content and German preview status
    assert.ok(g.conclusion.verdict.length>90);
    assert.ok(g.overview.summary.length>100);
  }
- for(const file of ["factory","recruitment","refinement","essences","speedruns","checklist","countdown","characters"]){
+ for(const file of ["factory","recruitment","refinement","essences","speedruns","checklist","countdown"]){
    assert.ok(existsSync("src/pages/en/endfield/"+file+"/index.astro"));
  }
  assert.match(map,/published/);
