@@ -3,7 +3,7 @@ name: Generate complete EN operator editorial snapshots
 on:
   push:
     branches: [feature-global-en-parity-20261017]
-    paths: [".github/workflows/translate-guides-en.yml"]
+    paths: [".github/workflows/translate-guides-en.yml", "scripts/endfield/translate-operator-guides.py"]
   workflow_dispatch:
 
 permissions:
