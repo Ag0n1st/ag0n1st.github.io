@@ -2,6 +2,7 @@
 const itemsDe = [
   { label: "Übersicht", href: "/endfield/", key: "overview" },
   { label: "Operatoren", href: "/endfield/operatoren/", key: "operators" },
+  { label: "Tierlist", href: "/endfield/tierlist/", key: "tierlist" },
   { label: "Fabrik", href: "/endfield/fabrik/", key: "factory" },
   { label: "Rekrutierung", href: "/endfield/rekrutierung/", key: "recruitment" },
   { label: "Veredelung", href: "/endfield/veredelung/", key: "refinement" },
@@ -14,9 +15,9 @@ const { active = "overview", lang = "de" } = Astro.props;
 const isEn=lang==="en";
 const items=isEn?itemsDe.map(item=>({
  ...item,
- label:({"overview":"Overview","operators":"Operators","factory":"Factory","recruitment":"Recruitment","refinement":"Refinement","essences":"Essences","speedruns":"Speedruns","checklist":"Checklist","countdown":"Countdown"} as Record<string,string>)[item.key]??item.label,
+ label:({"overview":"Overview","operators":"Operators","tierlist":"Tier List","factory":"Factory","recruitment":"Recruitment","refinement":"Refinement","essences":"Essences","speedruns":"Speedruns","checklist":"Checklist","countdown":"Countdown"} as Record<string,string>)[item.key]??item.label,
  href:({
-  overview:"/en/endfield/",operators:"/en/endfield/operators/",factory:"/en/endfield/factory/",
+  overview:"/en/endfield/",operators:"/en/endfield/operators/",tierlist:"/en/endfield/tierlist/",factory:"/en/endfield/factory/",
   recruitment:"/en/endfield/recruitment/",refinement:"/en/endfield/refinement/",
   essences:"/en/endfield/essences/",speedruns:"/en/endfield/speedruns/",
   checklist:"/en/endfield/checklist/",countdown:"/en/endfield/countdown/"
