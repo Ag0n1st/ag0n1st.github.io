@@ -667,7 +667,7 @@ def smoke_i18n(page, base_url, width):
     sitemap=page.request.get(base_url+"/sitemap.xml")
     verify(sitemap.status==200 and
            "<loc>https://ag0n1st.com/en/endfield/operators/si/</loc>" in sitemap.text() and
-           "\<loc\>https://ag0n1st.com/en/endfield/operators/liino/\</loc\>" in sitemap.text(),
+           "<loc>https://ag0n1st.com/en/endfield/operators/liino/</loc>" in sitemap.text(),
            label+": correct sitemap with newly published Liino")
 
 
