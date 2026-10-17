@@ -88,7 +88,9 @@ export async function getSpeedrunVideos(){
     const html=await response.text();
     const videos=parseSpeedrunPlaylistPage(html);
     if(!videos.length)return {playlist,videos:[],status:"empty"};
-    return {playlist,videos:await Promise.all(videos.map(resolvePublishDate)),status:"ok"};
+    const enriched=await Promise.all(videos.map(resolvePublishDate));
+    console.info("Verified speedrun playlist entries:",enriched.length,"with upload dates:",enriched.filter(video=>video.published).length);
+    return {playlist,videos:enriched,status:"ok"};
   }catch(error){
     console.warn("Speedrun public playlist unavailable:",String(error));
     return {playlist,videos:[],status:"unavailable"};

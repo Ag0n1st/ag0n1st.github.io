@@ -695,8 +695,8 @@ def smoke_i18n(page, base_url, width):
         verify(page.locator("html").get_attribute("lang")==lang and
                page.locator("main.endfield-utility-page").count()==1 and
                page.locator("a[href*='playlist?list=PLVTPc82MPn3E']").count()==1 and
-               (page.locator(".videos-grid .video-card").count()>0 or page.locator(".videos-empty").count()==1),
-               label+": "+lang+" speedrun area uses exact owner playlist, no fabricated videos")
+               page.locator(".videos-grid .video-card").count()>=3,
+               label+": "+lang+" speedrun area shows three verified owner playlist videos")
         for card in page.locator(".videos-grid .video-card").all():
             verify("youtube.com/watch?v=" in (card.get_attribute("href") or "") and
                    len(card.locator(".video-meta h3").inner_text().strip())>2,
