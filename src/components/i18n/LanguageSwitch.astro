@@ -9,9 +9,34 @@ const en=lang==="en"?path:englishPath(path)??"/en/";
 <div class="language-switch" role="group" aria-label={lang==="de"?"Sprache wechseln":"Choose language"}>
   {lang==="de"
     ? <span class="language-active" aria-current="true" lang="de">DE</span>
-    : <a href={de} lang="de" hreflang="de" aria-label="Auf Deutsch ansehen" title="Deutsch">DE</a>}
+    : <a href={de} lang="de" hreflang="de" aria-label="View in German" title="German">DE</a>}
   <span class="language-divider" aria-hidden="true">/</span>
   {lang==="en"
     ? <span class="language-active" aria-current="true" lang="en">EN</span>
     : <a href={counterpart??"/en/"} lang="en" hreflang="en" aria-label={counterpart?"View this page in English":"English homepage"} title={counterpart?"English version":"English homepage"}>EN</a>}
 </div>
+
+<script is:inline>
+  (() => {
+    const storageKey = "ag0n1st:site-language";
+    const controls = document.querySelectorAll(".language-switch a[lang]");
+    for (const anchor of controls) {
+      anchor.addEventListener("click", () => {
+        try { localStorage.setItem(storageKey, anchor.getAttribute("lang")); } catch {}
+      });
+    }
+    // Remember an explicit EN selection when a visitor later enters a
+    // canonical German URL. Every linked route has a real English counterpart;
+    // no German-only tab or machine-translated runtime fallback.
+    if (document.documentElement.lang === "de") {
+      try {
+        if (localStorage.getItem(storageKey) !== "en") return;
+        const enLink = document.querySelector('.language-switch a[lang="en"]');
+        const target = enLink?.getAttribute("href");
+        if (target?.startsWith("/en/") && location.pathname !== target) {
+          location.replace(target + location.search + location.hash);
+        }
+      } catch {}
+    }
+  })();
+</script>
