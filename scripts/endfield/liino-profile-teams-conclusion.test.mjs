@@ -63,11 +63,11 @@ test("Gameplay is explicitly pending without fictional preview videos",()=>{
  const gameplay=yamlSection("gameplay","conclusion");
  assert.match(gameplay,/pending: true/);
  assert.match(gameplay,/showcases: \[\]/);
- assert.match(schema,/pending: z\.boolean\(\)\.default\(false\)/);
+ assert.match(schema,/pending: z\.boolean\(\)\.defaultranslateUi\(false\)/);
  assert.match(model,/guide\.gameplay\.pending \? \[\] :/);
  assert.match(gameplayView,/guide\.gameplay\.pending \? <>/);
  assert.match(gameplayView,/op-gameplay-pending-label/);
- assert.match(gameplayView,/>\{t\("FOLGT"\)\}<\/span>/);
+ assert.match(gameplayView,/>\{translateUi\("FOLGT"\)\}<\/span>/);
  assert.match(css,/\.op-gameplay-pending-label\{/);
  assert.match(template,/pending: false/);
 });
@@ -85,7 +85,7 @@ test("conclusion gives a finalized recommendation and keeps skip criteria person
  assert.equal((conclusion.split("  skipIf:\n")[1].match(/^    - /gm)||[]).length,1);
  assert.match(conclusion,/Prüfe deine vorhandenen Teams/);
  assert.match(conclusionView,/op-pull-recommendation-badge/);
- assert.match(conclusionView,/✓<\/span>\{t\("Empfehlung"\)\}/);
+ assert.match(conclusionView,/✓<\/span>\{translateUi\("Empfehlung"\)\}/);
  assert.match(css,/\.op-pull-recommendation-badge/);
  assert.doesNotMatch(read("src/components/operator/sections/OperatorPotentials.astro"),/>Pull-Empfehlung<\/h3>/);
 });
