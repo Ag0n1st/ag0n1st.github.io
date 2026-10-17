@@ -36,7 +36,7 @@ const resolved=rows.map(row=>({
 import { guideText } from "../../../lib/i18n/guideUi";
 ---
 {resolved.length>0 && <details class="op-details op-team-gear">
-  <summary>Waffen & Ausrüstung der Teammitglieder · {resolved.length} Operatoren</summary>
+  <summary>{model.lang==="en"?"Teammate Weapons & Equipment":"Waffen & Ausrüstung der Teammitglieder"} · {resolved.length} {model.lang==="en"?"Operators":"Operatoren"}</summary>
   <div class="op-details-body">
     <p class="op-muted op-team-gear-caveat">{t("Empfehlungen für die jeweilige Teamzusammenstellung; Varianten hängen von bestehenden Xiranit-Nutzern, Ultimate-Energiebedarf und Spielweise ab. Die Anzeige behauptet weder Blaupausenbesitz noch feste Waffenränge.")}</p>
     <div class="op-team-gear-list">
