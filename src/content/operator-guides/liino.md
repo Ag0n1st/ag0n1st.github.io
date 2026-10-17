@@ -6,6 +6,13 @@ operator: liino
 displayName: Liino
 status: preview
 updatedAt: 2026-10-16
+listing:
+  releaseDate: 2026-08-09
+  listedAt: 2026-10-17
+  category: character
+  summaryDe: "Liino als Support: Team-Buffs, Heilung, Ausrüstung und passende Teamkombinationen."
+  summaryEn: "Build Liino as a support with team buffs, healing, gear and recommended teams."
+  visible: true
 
 guideVideo:
   title: "Liino Guide"
