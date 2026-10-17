@@ -121,7 +121,7 @@ test("the shared equipment framework places responsive Meta Builds before the Fi
   const schema=readFileSync("src/content/operatorGuideSchema.ts","utf8");
   const template=readFileSync("src/content/operator-guides/_template.md","utf8");
   const controller=readFileSync("src/components/operator/OperatorGuide.astro","utf8");
-  assert.match(schema,/meta: z\.boolean\(\)\.defaultranslateUi\(false\)/);
+  assert.match(schema,/meta: z\.boolean\(\)\.default\(false\)/);
   assert.match(schema,/metaSummary: z\.string\(\)\.trim\(\)\.max\(280\)/);
   assert.match(schema,/Meta-Builds benötigen eine kurze Beschreibung/);
   assert.match(section,/const metaBuilds=officialBuilds\.filter\(build=>build\.meta===true\)/);
