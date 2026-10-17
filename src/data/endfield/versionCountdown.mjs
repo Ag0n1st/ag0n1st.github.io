@@ -24,5 +24,5 @@ export function parseVersionCountdownMarkdown(source){
  return Object.freeze({...config,zone:config.timeZone});
 }
 export const CURRENT_VERSION=parseVersionCountdownMarkdown(
- readFileSync(new URL("./version-countdown.md",import.meta.url),"utf8")
+ readFileSync("src/data/endfield/version-countdown.md","utf8")
 );
