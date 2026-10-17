@@ -82,14 +82,14 @@ test("equipment uses a CLOSED native disclosure for all heavy filters and detail
  const start=equipment.indexOf('<details class="op-divided op-build-finder-accordion" id="build-finder">');
  const meta=equipment.indexOf('{t("Meta Builds")}');
  const filters=equipment.indexOf('id="op-level"');
- const details=equipment.indexOf(">Empfohlene Ausrüstung</h3>");
- const progression=equipment.indexOf(">Ausrüstungsprogression</h3>");
+ const details=equipment.indexOf('{t("Empfohlene Ausrüstung")}');
+ const progression=equipment.indexOf('{t("Ausrüstungsprogression")}');
  const end=equipment.indexOf("</details>\n      </section>",start);
  assert.ok(meta>=0&&meta<start);
  assert.ok(start>=0&&start<filters&&filters<details&&details<progression&&progression<end);
  assert.doesNotMatch(equipment.slice(start,start+110),/\sopen(?:\s|>)/);
  assert.match(equipment.slice(start,start+400),/<summary class="op-build-finder-toggle">/);
- assert.match(equipment,/id="op-progress-reset">Maximal-Vorauswahl wiederherstellen/);
+ assert.ok(equipment.includes('id="op-progress-reset">{t("Maximal-Vorauswahl wiederherstellen (Anpassungen löschen)")}'));
  assert.match(equipment,/Blaupausen-Auswahl \(bei Maximal-Vorauswahl alle aktiv\)/);
  assert.match(equipment,/kein automatischer Abgleich mit deinem Spielkonto/);
 });
