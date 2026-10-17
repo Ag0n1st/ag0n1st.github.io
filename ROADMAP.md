@@ -861,7 +861,11 @@ Dies ist eine **priorisierte Roadmap**, kein bereits bezahlter Projektvertrag un
 
 ### Phase P5 – Fabrikbereich: vollständige, progressionsfähige Guides für **Tal4 und Wuling**
 
-**Status:** [GEPLANT]; umfangreiches eigenständiges Teilprojekt.
+**Status:** [KONZEPT TEILWEISE FESTGELEGT; ARBEIT AUF UNBESTIMMTE ZEIT PAUSIERT]. **Weder die Guide-Seiten noch Daten-/UI-Funktionen implementieren, bevor der Betreiber den Bereich ausdrücklich wieder aufgreift.**
+
+**Verbindliche Produktentscheidung vom 17.10.2026:** Der Fabrik-Bereich ist in erster Linie **ein geführter, spielstandsabhängiger Fortschritts-Guide**; ein Plug-&-Play-Blueprint-Katalog ist eine ergänzende Funktion/Schnellzugriff, nicht das Hauptnavigationsprinzip.
+
+**Ausführliches Archiv, Quellen und späterer Wiedereinstieg:** [docs/endfield-factory-concept.md](docs/endfield-factory-concept.md) – dort stehen die bisherige Recherche, Tal4-/Wuling-Fortschrittsideen, Quellen-URLs, Umfangsvorschläge, technische Ausgangsbasis, Freischaltungsrisiken und noch offene Entscheidungen. **Alle Vorschläge bleiben Entwürfe, bis der Betreiber sie freigibt.**
 
 **Produktwunsch:** Spieler, auch ohne Fabrik-Affinität, sollen ihren **aktuellen Storyfortschritt** auswählen und **sofort verwendbare, nachbaubare Fabrik-Blueprints** bekommen; fortgeschrittene Nutzer sollen die Produktionslogik vollständig verstehen.
 
@@ -1844,6 +1848,7 @@ Alle 109 Endfield-Unit-Tests und die beiden Budgetchecks erfolgreich. Desktop 14
 
 | Datum | Entscheidung | Begründung / Folgewirkung |
 | --- | --- | --- |
+| 17.10.2026 | **Fabrik wird primär ein geführter, spielstandsabhängiger Fortschritts-Guide; die weitere Arbeit ist auf unbestimmte Zeit verschoben.** | Redaktionelle Blaupausenbibliothek nur ergänzend; keine Fabrik-Coding-/Layout-/Datenschema-Arbeit ohne neue ausdrückliche Freigabe. Vollständiger Forschungs- und Konzeptstand: [docs/endfield-factory-concept.md](docs/endfield-factory-concept.md). |
 | Oktober 2026 | Astro + GitHub Pages, primär `main`, statische Daten statt Login-CMS | Günstig, kontrollierbar, Textdateien unabhängig pflegbar. |
 | Oktober 2026 | Deutsch zuerst; Magenta/Cyan, Geist; keine automatischen Website-Bilder im Chat | Einheitliche CI und klare Autorisierung von Assets. |
 | Oktober 2026 | „Operatoren“ statt „Charaktere“ | Einheitliche Endfield-Begrifflichkeit und URLs. |
@@ -2077,3 +2082,12 @@ Alle 109 Endfield-Unit-Tests und die beiden Budgetchecks erfolgreich. Desktop 14
 - **Nächster Entwicklungsschwerpunkt ist die gemeinsame Konzeptphase „Fabrik“; KEINE Fabrik-Implementierung freigegeben.** Bestehende DE `/endfield/fabrik/` und EN `/en/endfield/factory/` bleiben Platzhalter. Bestehende Build-Finder-Daten für 7 Komponentenstufen, Gear-Rezepte und Tal4-/Wuling-Storygebiete bleiben unverändert.
 - **Erste Forschungsbasis für die Diskussion:** offizieller AIC-Plan und Originalanleitungen `https://endfield.gryphline.com/en-us/news/1340`; offizielles AIC-Gas-/Regionenupdate `https://endfield.gryphline.com/en-us/news/5200`; offizielles v1.6 DEV-Comm mit neuen Einheiten/Farming-`https://endfield.gryphline.com/en-us/news/7014`; offizielles AIC-Simulationenregister (Community-Wiki) `https://endfield.wiki.gg/wiki/Simulation`; Upgrade- und Freischaltmeilensteine `https://endfield.wiki.gg/wiki/AIC_Factory_Plan`; Mobalytics' gestufte Fabriklayouts `https://mobalytics.gg/arknights-endfield/bases/blueprints`; `https://www.endfieldcalculator.com/` als Community-Produktionsrechner; diverse aktuelle Spielerprobleme in r/ArknightsEndfield, beispielsweise Wuling-Probleme mit Energie, Leitungen und Blueprint-Freischaltungen. **Quellen sind Input für die Diskussion und keine Freigabe von externen Blueprint-Codes oder Übernahme fremder Zahlen.**
 - **Vorgeschlagene, nicht beschlossene Leitlinien für das Konzept:** zwei regionale Einstiege **Tal4** und **Wuling**; Fortschritts-/Gebiets-/Technologie-bewusster Einstieg für neue Spieler neben einem direkten **Plug-&-Play-Blueprint-Katalog**; jede geprüfte Blueprint-Karte mit Voraussetzungen, EU/NA/Asia-Servercode, konkreten Input-/Output-Raten, Bauraum, Strom, nötiger Einrichtung/Nachspeisung, Gebiet/PAC, Teststand und Quelle; gesondertes kleines Fehlersuch-Nachschlagewerk (Strom, Depot, Förderbänder, Flüssigkeiten/Gas, Ports). Nicht von Storygebiet allein auf erhaltene Blaupausen schließen. **Die redaktionelle inhaltliche Tiefe, die Navigation und Umfang (z. B. automatischer Planer) werden erst in mehreren Gesprächen gemeinsam beschlossen.**
+
+
+### 17.10 Fabrik-Konzept archiviert; Umsetzung auf unbestimmte Zeit verschoben (17.10.2026)
+
+- **Neue verbindliche Entscheidung:** Die Fabrik-Website erhält einen **geführten Fortschritts-Guide als primäre Seitenlogik**. Produktionsziele und zum echten Spieler-/AIC-Fortschritt passende Aufbauetappen führen durch **Tal4 und Wuling**; eine Plug-&-Play-Blueprint-Bibliothek bleibt ergänzender Schnellzugriff, nicht der Schwerpunkt.
+- **Bisherige Forschung vollständig als eigenständiger, langfristig lesbarer Konzept- und Forschungsstand gesichert:** **[docs/endfield-factory-concept.md](docs/endfield-factory-concept.md)**. Behandelt Zielgruppen/Probleme, Didaktik, die bisher vorgeschlagene fünfteilige Informationsarchitektur, optionalen Progressionsassistenten, regionen- und freischaltungsbezogene Etappen, Tal4→Wuling-Übergang, Blueprint-Metadaten/Servercodes/Tests, Lern- und Fehlersuche-Module, Video-Verknüpfung, Konkurrenzideen (Mobalytics/Calculator/EnKAD), Quellenregister, vorhandene Repo-Daten und Datenlücken, ausstehende Entscheidungen und einen klaren Wiedereinstiegsplan. **Entscheidungen vs. belegte Repo-Fakten vs. früher recherchierte Quellenhinweise vs. unbestätigte Vorschläge klar gekennzeichnet.**
+- **Expliziter Nutzerwunsch:** **Fabrik-Bearbeitung verschieben.** Keine Website-Implementierung, Fabrikseiten-/Datenschema-/Navigationsänderungen und keine neuen Blueprint-/Produktionsangaben aus diesem Dokument ableiten, bis der Nutzer die Konzeptarbeit später wieder aufnimmt. DE `/endfield/fabrik/` und EN `/en/endfield/factory/` bleiben Platzhalter. Bestehende Build-Finder-AIC-/Gear-Logik darf dadurch nicht verändert werden.
+- **Nächster Wiedereinstieg nach künftigem Auftrag:** Erst reale Spieler-/AIC-Progression und Produktionsziele gemeinsam abstimmen, **dann** zuverlässige Forschungs-/Gebietsvoraussetzungen und überprüfte Blueprints, zuletzt Unterseiten-/Layout-/Toolentscheidung. Keine Umsetzung allein aufgrund dieses Archivs.
+- **Umfang dieses Arbeitsvorgangs:** Nur Dokumentation: neue `docs/endfield-factory-concept.md` und Aktualisierung von `ROADMAP.md`. Bestehende DE/EN-Webseiten und deren visuelles Verhalten unberührt. CI/Deployment nach PR/Commit nachtragen.
