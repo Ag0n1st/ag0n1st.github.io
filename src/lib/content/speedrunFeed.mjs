@@ -50,21 +50,6 @@ export function parseSpeedrunPlaylistPage(html,limit=SPEEDRUN_VIDEO_LIMIT){
  }
  return found;
 }
-async function resolvePublishDate(video){
- // Playlist lockups normally omit upload date. Use the video's own public
- // publishDate; keep dates blank rather than guess if YouTube blocks the page.
- try{
-  const response=await fetch(video.href,{
-   headers:{"User-Agent":"Mozilla/5.0 (compatible; Ag0n1stGuidePortal/1.0)"},
-   signal:AbortSignal.timeout(6500)});
-  if(!response.ok)return video;
-  const html=await response.text();
-  const date=html.match(/"publishDate"\s*:\s*"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
-   html.match(/"uploadDate"\s*:\s*"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
-   html.match(/"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})"/)?.[1];
-  return date?{...video,published:date+"T12:00:00Z"}:video;
- }catch{return video;}
-}
 
 export async function getSpeedrunVideos(){
   const id=SPEEDRUN_PLAYLIST_ID.trim();
@@ -88,9 +73,8 @@ export async function getSpeedrunVideos(){
     const html=await response.text();
     const videos=parseSpeedrunPlaylistPage(html);
     if(!videos.length)return {playlist,videos:[],status:"empty"};
-    const enriched=await Promise.all(videos.map(resolvePublishDate));
-    console.info("Verified speedrun playlist entries:",enriched.length,"with upload dates:",enriched.filter(video=>video.published).length);
-    return {playlist,videos:enriched,status:"ok"};
+    console.info("Verified speedrun playlist entries:",videos.length);
+    return {playlist,videos,status:"ok"};
   }catch(error){
     console.warn("Speedrun public playlist unavailable:",String(error));
     return {playlist,videos:[],status:"unavailable"};

@@ -376,6 +376,12 @@ def smoke_si(page, base_url, width):
     verify(splash.locator("img.op-recruitment-splash").count()==1 and
            "/illustration.webp" in (splash.locator("img").get_attribute("src") or ""),
            label+": recruitment splash preserved at full width in the potentials section")
+    partner_icons=page.locator("#uebersicht .op-quick-partners-card .op-partner-art")
+    verify(partner_icons.count()>=3,label+": profile has visible Meta partner portraits")
+    for icon in partner_icons.all()[:5]:
+        dimensions=icon.evaluate("(el)=>({w:el.getBoundingClientRect().width,h:el.getBoundingClientRect().height})")
+        verify(abs(dimensions["w"]-dimensions["h"])<1.5,
+               label+": partner icon stays square (1:1), not rectangular")
     mainart=page.locator("#uebersicht .op-profile-art img")
     page.wait_for_function("(el)=>el.complete && el.naturalWidth>100",arg=mainart.element_handle())
     verify(page.locator("#uebersicht .op-quick-weapons-card .op-quick-weapon-item").count()==3,
@@ -701,6 +707,9 @@ def smoke_i18n(page, base_url, width):
             verify("youtube.com/watch?v=" in (card.get_attribute("href") or "") and
                    len(card.locator(".video-meta h3").inner_text().strip())>2,
                    label+": "+lang+" speedrun card has a real YouTube video and title")
+        verify(page.locator(".videos-grid .video-card time").count()==0 and
+               page.locator(".videos-grid [data-relative-time]").count()==0,
+               label+": "+lang+" speedrun cards intentionally omit release timestamps")
         check_overflow(page,label+" "+lang+" speedruns")
     sitemap=page.request.get(base_url+"/sitemap.xml")
     verify(sitemap.status==200 and
