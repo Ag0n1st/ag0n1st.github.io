@@ -3,6 +3,13 @@ operator: "si"
 displayName: "Si"
 status: "published"
 updatedAt: "2026-10-16"
+listing:
+  releaseDate: 2026-10-15
+  listedAt: 2026-10-17
+  category: character
+  summaryDe: "Si liefert Kryo- und Hitze-Verstärkung, flexible Teamrollen und starken Combo-Schaden."
+  summaryEn: "Si offers Cryo and Heat amplification, flexible team roles and powerful Combo Skill damage."
+  visible: true
 guideVideo:
   title: "Si – ausführlicher Videoguide in Vorbereitung"
 overview:
