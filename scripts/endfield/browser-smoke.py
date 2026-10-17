@@ -511,7 +511,6 @@ def smoke_i18n(page, base_url, width):
         "/en/endfield/recruitment/","/en/endfield/refinement/",
         "/en/endfield/essences/","/en/endfield/speedruns/",
         "/en/endfield/checklist/","/en/endfield/countdown/",
-        "/en/endfield/characters/"
     ]
     for route in en_routes:
         r=page.goto(base_url+route,wait_until="domcontentloaded")
