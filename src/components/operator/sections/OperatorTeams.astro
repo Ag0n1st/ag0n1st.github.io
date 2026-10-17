@@ -4,17 +4,19 @@ import TeamMemberGear from "./TeamMemberGear.astro";
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
+const t=(value:string)=>guideText(model.lang,value);
 const { guide, roleLabels, metaTeams, extraTeams, teamRoles, displayTeamMember, teamMemberCard } = model;
+import { guideText } from "../../../lib/i18n/guideUi";
 ---
 <section class="op-section" id="teams">
-        <h2>Teams</h2>
+        <h2>{t("Teams")}</h2>
         <div class="op-divided">
-          <h3>Teamrolle & Synergien</h3>
+          <h3>{t("Teamrolle & Synergien")}</h3>
           {guide.teams.roles.length>0 && <div class="op-chip-row">{guide.teams.roles.map(r=><span class="op-chip">{roleLabels[r]}</span>)}</div>}
           <p class="op-muted op-body-copy">{guide.teams.introduction || "[Teamrollen und wichtige Synergien folgen]"}</p>
         </div>
         <div class="op-divided">
-          <h3>Empfohlene Meta-Teams</h3>
+          <h3>{t("Empfohlene Meta-Teams")}</h3>
 
           {metaTeams.length ? <div class="op-two">{metaTeams.map(team=><article class:list={{"op-cardlet":true,"op-si-main-team":guide.operator==="si"&&team.role==="main-dps"}}>
             <div class="op-subtitle op-meta-team-heading"><h3 style="margin:0">{team.title}</h3><div class="op-meta-team-labels"><span class="op-chip is-accent">Meta</span><span class="op-chip">{roleLabels[team.role]}</span></div></div>
@@ -24,15 +26,15 @@ const { guide, roleLabels, metaTeams, extraTeams, teamRoles, displayTeamMember, 
             })}</div>
             {(team.evaluation || team.note) && <p class="op-body-copy">{team.evaluation || team.note}</p>}
             <TeamMemberGear rows={team.memberGear??[]} displayTeamMember={displayTeamMember}/>
-            {team.buildId && <p><a class="op-link" href="#ausruestung" data-select-build={team.buildId}>Empfohlene Ausrüstung ansehen ↗</a></p>}
-          </article>)}</div> : <p class="op-placeholder">[Noch keine Meta-Teams]</p>}
+            {team.buildId && <p><a class="op-link" href="#ausruestung" data-select-build={team.buildId}>{t("Empfohlene Ausrüstung ansehen ↗")}</a></p>}
+          </article>)}</div> : <p class="op-placeholder">{t("[Noch keine Meta-Teams]")}</p>}
         </div>
         <details class="op-divided op-guide-accordion" data-guide-disclosure="team-options">
-          <summary class="op-guide-accordion-summary"><h3>Weitere Teamoptionen</h3><span class="op-guide-accordion-hint">{extraTeams.length} Teams anzeigen</span></summary>
+          <summary class="op-guide-accordion-summary"><h3>{t("Weitere Teamoptionen")}</h3><span class="op-guide-accordion-hint">{extraTeams.length} Teams anzeigen</span></summary>
           <div class="op-guide-accordion-content">
           {extraTeams.length ? <>
             {teamRoles.length > 1 && <div class="op-role-filter" aria-label="Teams nach Rolle filtern">
-              <button type="button" class="op-pill-button" data-team-filter="all" aria-pressed="true">Alle</button>
+              <button type="button" class="op-pill-button" data-team-filter="all" aria-pressed="true">{t("Alle")}</button>
               {teamRoles.map(role=><button type="button" class="op-pill-button" data-team-filter={role} aria-pressed="false">{roleLabels[role]}</button>)}
             </div>}
             <div class="op-team-scroll" style="margin-top:12px">{extraTeams.map(team=><article class="op-cardlet op-compact-team" data-team-role={team.role}>
@@ -41,10 +43,10 @@ const { guide, roleLabels, metaTeams, extraTeams, teamRoles, displayTeamMember, 
               const art=teamMemberCard(member);
               return <div class="op-team-slot"><span class="op-team-art">{art.image ? <img src={art.image} loading="lazy" decoding="async" alt="" /> : <span aria-hidden="true">{art.initials}</span>}</span><span class="op-team-name">{displayTeamMember(member)}</span></div>;
             })}</div>
-              {(team.note || team.buildId) && <p class="op-body-copy">{team.note || ""} {team.buildId && <a class="op-link" href="#ausruestung" data-select-build={team.buildId}>Ausrüstung ↗</a>}</p>}
+              {(team.note || team.buildId) && <p class="op-body-copy">{team.note || ""} {team.buildId && <a class="op-link" href="#ausruestung" data-select-build={team.buildId}>{t("Ausrüstung ↗")}</a>}</p>}
               <TeamMemberGear rows={team.memberGear??[]} displayTeamMember={displayTeamMember}/>
             </article>)}</div>
-          </> : <p class="op-placeholder">[Weitere Teamoptionen folgen]</p>}
+          </> : <p class="op-placeholder">{t("[Weitere Teamoptionen folgen]")}</p>}
           </div>
         </details>
       </section>
