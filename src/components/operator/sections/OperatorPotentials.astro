@@ -21,7 +21,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
             return <div class="op-weapon-panel op-cardlet" data-potential-panel={n} hidden={i!==0}>
               <h3>P{n} – {officialPotentials.get(n)?.name || "[Offizieller Potenzialname]"}</h3>
               <p class="op-body-copy">{trPotential(n, officialPotentials.get(n)?.effect || "[Offizieller Effekt aus Spieldaten]")}</p>
-              {officialPotentials.has(n) && <p class="op-muted" style="font-size:11px">SKPORT-Wirkung{localized ? " (deutsch übersetzt)" : " (EN)"}. Prozentangaben im Effekt sind keine Gesamt-DPS-Vergleiche.</p>}
+              {officialPotentials.has(n) && <p class="op-muted" style="font-size:11px">{model.lang==="en"?"SKPORT effect (original English). Percentages shown here are not total DPS comparisons.":"SKPORT-Wirkung"+(localized?" (deutsch übersetzt)":" (EN)")+". Prozentangaben im Effekt sind keine Gesamt-DPS-Vergleiche."}</p>}
               {(n===1||n===3||n===5) && (()=>{
                 const snapshot=getOperatorImageUrl(guide.operator, ("potential-"+n) as "potential-1" | "potential-3" | "potential-5");
                 return snapshot ? <figure class="op-potential-snapshot">
@@ -31,7 +31,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
               })()}
               {p?.evaluation && <p class="op-body-copy"><strong>Einordnung:</strong> {p.evaluation}</p>}
               <div class="op-info-field">
-                <small>Zusatzgewinn durch P{n} gegenüber P{n-1}{alternatePotentialModels.length?" · mit Ultimate-Energiebedarf":""}</small>
+                <small>{t("Zusatzgewinn durch")} P{n} {t("gegenüber")} P{n-1}{alternatePotentialModels.length?model.lang==="en"?" · with Ultimate energy requirement":" · mit Ultimate-Energiebedarf":""}</small>
                 <strong>{p?.increaseOverPreviousPercent === undefined ? "–" : p.increaseOverPreviousPercent.toLocaleString("de-DE",{minimumFractionDigits:1,maximumFractionDigits:1})+" %"}</strong>
               </div>
             </div>;
@@ -53,7 +53,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
             </tr>)}</tbody>
           </table></div>
           {guide.potentials.entries.some(p=>p.sourceNote && p.increaseOverPreviousPercent!==undefined) &&
-            <small class="op-data-source-note">Quelle: {[...new Set(guide.potentials.entries.filter(p=>p.increaseOverPreviousPercent!==undefined).map(p=>p.sourceNote).filter(Boolean))].join(", ")} · Zuwachs je Potenzial zur unmittelbar vorherigen Stufe{alternatePotentialModels.length?" · erster Wert: mit Ultimate-Energiebedarf":""}.</small>}
+            <small class="op-data-source-note">Quelle: {[...new Set(guide.potentials.entries.filter(p=>p.increaseOverPreviousPercent!==undefined).map(p=>p.sourceNote).filter(Boolean))].join(", ")} · {model.lang==="en"?"Incremental gain at each potential compared with the preceding stage":"Zuwachs je Potenzial zur unmittelbar vorherigen Stufe"}{alternatePotentialModels.length?model.lang==="en"?" · first value: with Ultimate energy requirement":" · erster Wert: mit Ultimate-Energiebedarf":""}.</small>}
           {alternatePotentialModels.map(scenario=><small class="op-data-source-note">{scenario.title}: {scenario.sourceNote} ({scenario.snapshotDate??"ohne Stichtag"}). Ebenfalls Werte gegenüber der jeweiligen Vorstufe; kein addierter P0-Vergleich.</small>)}
           </div>
         </details>
