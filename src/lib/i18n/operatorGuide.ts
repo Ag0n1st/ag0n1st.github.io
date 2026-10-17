@@ -1,33 +1,58 @@
 import full from "../../data/i18n/en-guide-content.json";
-import type {CollectionEntry} from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
-/**
- * Share EXACT guide schema, IDs, artwork, sections and filter logic across DE/EN.
- * Only separately stored editorial strings are replaced for English.
- * Never regenerate official SKPORT data, item IDs, teams or calculations.
- */
 type Guide = CollectionEntry<"operator-guides">["data"];
-type EnglishSnapshot = {guides:Record<string,Partial<Guide>>};
+type EnglishSnapshot = { guides:Record<string,Partial<Guide>> };
 const snapshot=full as EnglishSnapshot;
 
-export function localizeOperatorGuide(source:Guide,lang:"de"|"en"):Guide{
- if(lang==="de")return source;
- const overlay=snapshot.guides[source.operator];
- if(!overlay)throw new Error("Missing complete English guide content: "+source.operator);
- const guide=structuredClone(source);
- for(const section of ["overview","operatorKit","skills","weapons","equipment","potentials","teams","gameplay","conclusion","guideVideo"] as const){
-   const value=overlay[section];
-   if(!value)throw new Error("Missing English guide section: "+section+" / "+source.operator);
-   (guide as Record<string,unknown>)[section]=value;
- }
- // Assert structure/links never drift across languages.
- const ids=(entries:{id:string}[])=>entries.map(item=>item.id).join("|");
- if(ids(guide.equipment.builds)!==ids(source.equipment.builds))throw new Error("Translated builds changed IDs/order");
- if(ids(guide.teams.meta)!==ids(source.teams.meta)||ids(guide.teams.more)!==ids(source.teams.more))
-   throw new Error("Translated teams changed IDs/order");
- for(let i=0;i<guide.equipment.builds.length;i++){
-   if(guide.equipment.builds[i].items.join("|")!==source.equipment.builds[i].items.join("|"))
-     throw new Error("Translated build modified gear IDs");
- }
- return guide;
+/** Only prose changes by language; all layout data, numeric stats, IDs,
+ * unlock conditions, build rankings, team composition and URLs remain
+ * literally those of the original validated German guide.
+ */
+const PROSE_KEYS=new Set([
+  "summary","strengths","weaknesses","accessibilityNote","playstyle",
+  "basic","battle","combo","ultimate","evaluation","comparisonConditions",
+  "generalNotes","title","metaSummary","storyUnlock","teamContext",
+  "craftingNotes","setBonusNotes","note","introduction","explanation",
+  "description","rotationAndTips","verdict","pullAdvice","closingNote",
+  "recommendedFor","skipIf","sourceNote",
+]);
+function mergeEditorial(base:unknown,english:unknown,key:string,context:string):unknown {
+  if(english===undefined)return base;
+  if(typeof base==="string"){
+    return PROSE_KEYS.has(key)&&typeof english==="string"?english:base;
+  }
+  if(Array.isArray(base)){
+    if(!Array.isArray(english)||english.length!==base.length)
+      throw new Error("EN translation changed guide structure: "+context);
+    return base.map((item,index)=>mergeEditorial(item,english[index],key,context+"."+index));
+  }
+  if(base&&typeof base==="object"&&!Array.isArray(base)){
+    if(!english||typeof english!=="object"||Array.isArray(english))
+      throw new Error("Invalid EN guide section: "+context);
+    const translated=english as Record<string,unknown>;
+    return Object.fromEntries(
+      Object.entries(base as Record<string,unknown>).map(([child,value])=>[
+        child,mergeEditorial(value,translated[child],child,context+"."+child)
+      ])
+    );
+  }
+  return base;
+}
+
+export function localizeOperatorGuide(source:Guide,lang:"de"|"en"):Guide {
+  if(lang==="de")return source;
+  const overlay=snapshot.guides[source.operator];
+  if(!overlay)throw new Error("Missing English guide content: "+source.operator);
+  const result=structuredClone(source) as Record<string,unknown>;
+  for(const section of ["overview","operatorKit","skills","weapons","equipment",
+    "potentials","teams","gameplay","conclusion","guideVideo"] as const) {
+    if(!overlay[section])throw new Error("Missing English section "+section+" / "+source.operator);
+    result[section]=mergeEditorial(result[section],overlay[section],section,source.operator+"."+section);
+  }
+  // The original video is German, regardless of which article locale embeds it.
+  const video=overlay.guideVideo?.title;
+  if(typeof video==="string"&&video.trim())
+    (result.guideVideo as Record<string,unknown>).title=video;
+  return result as Guide;
 }
