@@ -42,7 +42,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
                 </div>
               </>}
               <p>{t("Attribute")}</p>
-              <div class="op-chip-row"><span class="op-chip">Haupt: {trTerm(extraData?.attributes.mainAttribute) || "[Attribut]"}</span><span class="op-chip">Sekundär: {trTerm(extraData?.attributes.secondaryAttribute) || "[Attribut]"}</span></div>
+              <div class="op-chip-row"><span class="op-chip">{t("Haupt:")} {trTerm(extraData?.attributes.mainAttribute) || "[Attribut]"}</span><span class="op-chip">{t("Sekundär:")} {trTerm(extraData?.attributes.secondaryAttribute) || "[Attribut]"}</span></div>
             </article>
             <article class="op-cardlet op-video-card">
               {videoEmbed ?
@@ -73,15 +73,15 @@ import { guideText } from "../../../lib/i18n/guideUi";
                   <span class="op-chip">{w.label}</span>
                   <strong>{w.official?.name??w.name}</strong>
                 </div>
-              )}</div> : <p class="op-muted">Noch keine Waffenempfehlungen eingetragen.</p>}
+              )}</div> : <p class="op-muted">{t("Keine Waffenempfehlungen eingetragen.")}</p>}
             </article>
             <div class="op-two op-quick-stats">
               <article class="op-cardlet">
-                <h3>Ausrüstung · {featuredBuild ? featuredBuild.title : "Meta-Set"}</h3>
+                <h3>{t("Ausrüstung")} · {featuredBuild ? featuredBuild.title : "Meta Set"}</h3>
                 {featuredBuild ? <div class="op-gear-parts">{overviewGear.map(part=><div class="op-gear-part"><div class="op-mini-art"><ItemIcon id={part.official?.id??part.reference} /></div><small>{part.official?.name??part.reference}</small></div>)}</div> : <p class="op-placeholder">{t("[Noch kein Ausrüstungs-Build]")}</p>}
               </article>
               <article class="op-cardlet">
-                <h3>Skill-Priorität{guide.skills.supportPriority ? " · DPS" : ""}</h3>
+                <h3>{t("Skill-Priorität")}{guide.skills.supportPriority ? " · DPS" : ""}</h3>
                 {(priority || preview) ? <div class="op-skill-row">{priorityOrder.map((key,i)=><>
                   <div class="op-priority-skill"><div class="op-mini-art">{skillImage(key) ? <img class="op-skill-icon" src={skillImage(key)} loading="lazy" decoding="async" alt="" /> : slotIcons[key]}</div><small>{slotLabels[key]}</small><b>{priority?.targetLevels[key] || "–"}</b></div>
                   {i<3 && <span class="op-priority-symbol">{priorityComparisons[i]}</span>}
