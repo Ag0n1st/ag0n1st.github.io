@@ -8,7 +8,7 @@ const read=p=>readFileSync(p,"utf8");
 
 test("manual 1.6 Protocol Pass cutoff has editor-friendly Markdown and Berlin midnight",()=>{
  const md=read("src/data/endfield/version-countdown.md");
- assert.match(md,/version: "1\\.6"/);
+ assert.match(md,/version: "1[.]6"/);
  assert.equal(CURRENT_VERSION.status,"estimated");
  assert.equal(new Date(CURRENT_VERSION.endsAt).toISOString(),"2026-11-25T23:00:00.000Z");
  assert.equal(new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Berlin",day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"}).format(new Date(CURRENT_VERSION.endsAt)),"26/11/2026, 00:00");
