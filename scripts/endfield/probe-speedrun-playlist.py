@@ -13,6 +13,9 @@ for url in urls:
    data=response.read(3_500_000).decode("utf-8","replace")
    print({"url":url,"status":response.status,"finalUrl":response.url,"bytes":len(data),"playlistVideoRenderer":data.count("playlistVideoRenderer"),"videoRenderer":data.count("videoRenderer"),"lockupViewModel":data.count("lockupViewModel"),"ytInitialData":data.count("ytInitialData"),"playlistId":data.count(id),"videoIdFields":data.count('"videoId"'),"htmlTitle":re.findall(r"<title>([^<]+)</title>",data)[:1]})
    if "www.youtube.com/playlist" in url:
+    markers=[x.start() for x in re.finditer(r'"lockupViewModel"\\s*:\\s*\\{',data)]
+    print("LOCKUP_OBJECTS",len(markers))
+    for i,pos in enumerate(markers[:4]):print("LOCKUP_SAMPLE",i,data[pos:pos+2100])
     for token in ["lockupViewModel", "playlistVideoRenderer", "playlistPanelVideoRenderer", "publishedTimeText", "lockupMetadataViewModel", "videoInfo", "contentId", "dateText", "playlistHeaderRenderer"]:
      print("TOKEN",token,"COUNT",data.count(token),"SNIPPET",data[data.find(token)-110:data.find(token)+720] if token in data else "")
  except Exception as e:print({"url":url,"error":str(e)[:250]})
