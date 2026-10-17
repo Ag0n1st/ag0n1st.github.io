@@ -41,7 +41,9 @@ test("YouTube playlist is not guessed and never invents speedruns",()=>{
   assert.equal(parsed.length,1);
   assert.equal(parsed[0].title,"Run & Test");
   assert.equal(parsed[0].href,"https://www.youtube.com/watch?v=abcdefghijk");
-  assert.match(read("src/components/endfield/SpeedrunsPage.astro"),/data-relative-time/);
+  const page=read("src/components/endfield/SpeedrunsPage.astro");
+  assert.doesNotMatch(page,/data-relative-time|<time|function relative/);
+  assert.doesNotMatch(read("src/lib/content/speedrunFeed.mjs"),/resolvePublishDate/);
 });
 test("latest guide backgrounds only use locally verified art in a specific operator folder",()=>{
  const component=read("src/components/GuideTeaserCard.astro");
@@ -68,4 +70,11 @@ test("YouTube HTML fallback extracts only real playlist video lockups, not sugge
  assert.deepEqual(videos.map(x=>x.id),["qSIktISsLPQ","uixHyNlbwAQ"]);
  assert.equal(videos[0].title,"Official Speedrun");
  assert.equal(parseSpeedrunPlaylistPage('{\"videoRenderer\":{\"videoId\":\"aaaaaaaaaaa\"}}').length,0);
+});
+
+test("partner artwork is always square, using locally cached 1:1 icon assets",()=>{
+  const css=read("src/styles/operator-guides.css");
+  assert.match(css,/\.op-quick-partners-card \.op-partner-art\s*\{/);
+  assert.match(css,/aspect-ratio:1\/1/);
+  assert.match(css,/max-height:none/);
 });
