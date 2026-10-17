@@ -1,0 +1,21 @@
+name: Probe official and community operator artwork
+on:
+  push:
+    branches: [feature/endfield-nav-speedruns-countdown-artworks-20261017]
+    paths:
+      - .github/workflows/probe-operator-artworks.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check playwright==1.56.0
+      - run: python -m playwright install --with-deps chromium
+      - name: Read public operator imagery structure (no download to repository)
+        run: python scripts/endfield/probe-operator-artworks.py
