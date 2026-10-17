@@ -437,15 +437,15 @@ const href=(de:string)=>isEn?({
     </header>
 
     <main>
-      <section class="hero section-wrap" aria-label="Willkommen bei Ag0n1st">
+      <section class="hero section-wrap" aria-label={l("Willkommen bei Ag0n1st","Welcome to Ag0n1st")}>
         <article class="hero-card hero-copy">
-          <div class="eyebrow"><span class="eyebrow-line"></span> GACHA CONTENT. AUF DEUTSCH.</div>
+          <div class="eyebrow"><span class="eyebrow-line"></span> {l("GACHA CONTENT. AUF DEUTSCH.","GACHA CONTENT. IN ENGLISH.")}</div>
           <h1>Ag0n1st<span class="title-period">.</span></h1>
-          <p class="hero-description">Live-Streams, Guides, Tools rund um aktuelle Gacha Games – <strong>alles auf Deutsch.</strong></p>
+          <p class="hero-description">{l("Live-Streams, Guides, Tools rund um aktuelle Gacha Games –","Live streams, guides and tools for the latest gacha games –")} <strong>{l("alles auf Deutsch.","now available in English.")}</strong></p>
           <div class="hero-actions">
             <a class="button button-primary" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h18v12l-5 5h-4l-3 3H7v-3H3V6l1-3Zm2 3v11h4v3l3-3h4l3-3V6H6Zm5 2h2v5h-2V8Zm5 0h2v5h-2V8Z"/></svg>
-              Zum Twitch Stream
+              {l("Zum Twitch Stream","Watch on Twitch")}
               <span class="button-arrow" aria-hidden="true">↗</span>
             </a>
             <a class="button button-secondary" href="https://youtube.com/@Ag0n1st" target="_blank" rel="noreferrer">
@@ -456,7 +456,7 @@ const href=(de:string)=>isEn?({
           </div>
         </article>
 
-        <aside class="hero-card stream-card" aria-label="Twitch-Kanalstatus">
+        <aside class="hero-card stream-card" aria-label={l("Twitch-Kanalstatus","Twitch Channel Status")}>
           <div class="stream-card-header">
             <a class="channel-link" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">
               <span class="brand-icon twitch-icon" aria-hidden="true">
@@ -470,7 +470,7 @@ const href=(de:string)=>isEn?({
             </span>
           </div>
 
-          <div class="stream-card-main" id="twitch-player-container" aria-label="Twitch-Player von Ag0n1st">
+          <div class="stream-card-main" id="twitch-player-container" aria-label={l("Twitch-Player von Ag0n1st","Ag0n1st Twitch Player")}>
             <div id="twitch-embed" class="twitch-embed"></div>
             <div class="stream-offline-overlay" id="twitch-offline-overlay">
               <span class="stream-offline-kicker">{l("STREAM STATUS","STREAM STATUS")}</span>
@@ -486,7 +486,7 @@ const href=(de:string)=>isEn?({
 
           <div class="stream-card-footer">
             <p>{l("Stelle deine Fragen jetzt Live auf Twitch!","Ask Your Questions Live on Twitch!")}</p>
-            <a href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">Zum Twitch-Kanal <span aria-hidden="true">↗</span></a>
+            <a href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">{l("Zum Twitch-Kanal","Visit Twitch Channel")} <span aria-hidden="true">↗</span></a>
           </div>
         </aside>
       </section>
@@ -499,7 +499,7 @@ const href=(de:string)=>isEn?({
           <div class="posts-grid">
             {posts.map((post, index) => (
               <article class:list={["post-card", post.data.accent]}>
-                <a href={`/posts/${post.id}/`} class="post-card-link">
+                <a href={isEn?`/en/posts/${post.id}/`:`/posts/${post.id}/`} class="post-card-link">
                   <div class="post-visual">
                     <span class="post-category">{post.data.category}</span>
                     <span class="post-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
@@ -508,7 +508,7 @@ const href=(de:string)=>isEn?({
                   <div class="post-body">
                     <h3>{post.data.title}</h3>
                     <p>{post.data.description}</p>
-                    <div class="post-footer"><span class="text-link">Beitrag lesen <span aria-hidden="true">↗</span></span><time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString("de-DE", { day: "2-digit", month: "short", year: "numeric" })}</time></div>
+                    <div class="post-footer"><span class="text-link">{l("Beitrag lesen","Read Post")} <span aria-hidden="true">↗</span></span><time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString(isEn?"en-US":"de-DE", { day: "2-digit", month: "short", year: "numeric" })}</time></div>
                   </div>
                 </a>
               </article>
