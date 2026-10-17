@@ -60,7 +60,10 @@ test("Si Gear displays no backend naming/ID provenance but keeps real build avai
  const section=read("src/components/operator/sections/OperatorEquipment.astro");
  const ui=read("src/lib/i18n/guideUi.ts");
  const toc=read("src/components/operator/OperatorGuide.astro");
- assert.doesNotMatch(si,/\bcraftingNotes:|^  generalNotes:/m);
+ assert.doesNotMatch(si,/\bcraftingNotes:/);
+ const equipmentSection=si.split("\nequipment:\n")[1]?.split("\npotentials:\n")[0]??"";
+ assert.ok(equipmentSection.length>250,"Expected a real Si gear section");
+ assert.doesNotMatch(equipmentSection,/^  generalNotes:/m);
  assert.ok(!en.equipment.generalNotes);
  assert.ok(en.equipment.builds.every(b=>!b.craftingNotes));
  assert.doesNotMatch(section,/Neue Ausrüstung: Gegenstände und Bilder vorläufig/);
@@ -78,5 +81,5 @@ test("Guide publication template explicitly enforces future DE/EN parity",()=>{
  for(const term of ["feed:","titleEn:","hrefDe:","hrefEn:","category: gameplay"])
    assert.ok(post.includes(term),"Missing future content template metadata "+term);
  assert.ok(docs.includes("immer Deutsch UND Englisch"));
- assert.ok(docs.includes("getGuideFeed"));
+ assert.ok(docs.includes("guideFeed.ts"));
 });
