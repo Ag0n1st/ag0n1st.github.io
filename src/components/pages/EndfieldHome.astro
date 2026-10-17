@@ -4,9 +4,12 @@ import SeoHead from "../i18n/SeoHead.astro";
 import LanguageSwitch from "../i18n/LanguageSwitch.astro";
 import "../../styles/i18n.css";
 import EndfieldNav from "../EndfieldNav.astro";
+import {getGuideFeed} from "../../lib/content/guideFeed";
+import GuideTeaserCard from "../GuideTeaserCard.astro";
 
 interface Props {lang?:"de"|"en"}
 const {lang="de"}=Astro.props;
+const operatorGuides=await getGuideFeed({limit:3,game:"endfield"});
 const l=(de:string,en:string)=>lang==="en"?en:de;
 const paths:Record<string,string>={
 "/":"/en/","/endfield/":"/en/endfield/","/nte/":"/en/nte/","/about/":"/en/about/",
@@ -59,15 +62,18 @@ const href=(de:string)=>lang==="en"?paths[de]??de:de;
         <h1>{l("Alles für deinen","Everything for Your")}<br /><span class="endfield-heading-accent">{l("nächsten Fortschritt","Next Step Forward")}</span><span class="title-period">.</span></h1>
         <p class="endfield-lead">{l("Operator-Guides, verständliche System-Erklärungen und praktische Tools – aufgebaut auf meinen Videos und ergänzt um Informationen, die du schnell wiederfinden möchtest.","Operator guides, clear system explanations and practical tools based on my videos, complemented by information you can easily look up.")}</p>
         <div class="endfield-intro-actions">
-          <a class="button button-primary" href={href("/endfield/operatoren/")}>Operatoren entdecken <span aria-hidden="true">↗</span></a>
-          <a class="button button-secondary" href={href("/endfield/countdown/")}>Zum Patch-Countdown <span aria-hidden="true">↗</span></a>
+          <a class="button button-primary" href={href("/endfield/operatoren/")}>{l("Operatoren entdecken","Explore Operators")} <span aria-hidden="true">↗</span></a>
+          <a class="button button-secondary" href={href("/endfield/countdown/")}>{l("Zum Patch-Countdown","Patch Countdown")} <span aria-hidden="true">↗</span></a>
         </div>
       </section>
 
       <section class="endfield-section section-wrap">
         <div class="endfield-section-heading"><div><span class="section-kicker">{l("01 / OPERATOREN","01 / OPERATORS")}</span><h2>{l("Operator-Guides","Operator Guides")}<span class="title-period">.</span></h2></div><span class="endfield-section-note">{l("Builds · Mechaniken · Teams","Builds · Mechanics · Teams")}</span></div>
         <p class="endfield-section-copy">{l("Finde den passenden Guide für deinen Operator – von den wichtigsten Mechaniken bis hin zu Builds und Team-Synergien.","Find the right guide for your operator, covering everything from core mechanics to builds and team synergies.")}</p>
-        <a class="endfield-feature-link" href={href("/endfield/operatoren/")}><span><strong>{l("Alle Operatoren","All Operators")}</strong><small>{l("Zur Operatoren-Übersicht","Operator Overview")}</small></span><span class="endfield-link-arrow" aria-hidden="true">↗</span></a>
+        <div class="guide-teaser-grid endfield-guide-teasers">
+          {operatorGuides.map(guide=><GuideTeaserCard guide={guide} lang={lang} compact />)}
+        </div>
+        <a class="endfield-guide-more" href={href("/endfield/operatoren/")}>{l("Alle Charakter-Guides ansehen","View all character guides")} <span aria-hidden="true">↗</span></a>
       </section>
       <section class="endfield-section section-wrap">
         <div class="endfield-section-heading"><div><span class="section-kicker">{l("02 / FABRIK","02 / FACTORY")}</span><h2>{l("Fabrik Guides","Factory Guides")}<span class="title-period">.</span></h2></div><span class="endfield-section-note">{l("System · Blueprints · Optimierung","Systems · Blueprints · Optimization")}</span></div>
