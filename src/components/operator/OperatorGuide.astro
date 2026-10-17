@@ -14,7 +14,7 @@ import OperatorConclusion from "./sections/OperatorConclusion.astro";
 interface Props extends OperatorGuideProps {}
 const model = createOperatorGuideModel(Astro.props);
 const translateUi=(value:string)=>guideText(model.lang,value);
-const { guide, operatorName, preview, localized } = model;
+const { guide, operatorName, preview, localized, gameData } = model;
 const isEnglish=model.lang==="en";
 import { guideText } from "../../lib/i18n/guideUi";
 ---
@@ -25,7 +25,7 @@ import { guideText } from "../../lib/i18n/guideUi";
     <span aria-current="page">{operatorName}</span>
   </nav>
   {preview && <div class="op-notice op-preview-banner" role="status">{isEnglish?"Layout preview: Some details for "+operatorName+" are still being added. Square brackets indicate placeholders.":"Layout-Vorschau: Für "+operatorName+" sind noch nicht alle Daten eingepflegt. Eckige Klammern kennzeichnen Platzhalter."}</div>}
-  {localized && <p class="op-muted op-locale-note">{translateUi("SKPORT-Datenstand:")} {localized.sourceSnapshot}</p>}
+  {(localized || (isEnglish && gameData?.source?.snapshot)) && <p class="op-muted op-locale-note">{translateUi("SKPORT-Datenstand:")} {localized?.sourceSnapshot??gameData?.source?.snapshot}</p>}
   <div class="op-guide">
     <div class="op-guide-content">
       <OperatorOverview model={model} />
