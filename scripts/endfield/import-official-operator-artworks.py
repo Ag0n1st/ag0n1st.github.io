@@ -113,8 +113,15 @@ async def main():
       ratio=source_size[0]/source_size[1]
       if 0.88<=ratio<=1.13:matching.append((ASSET_PREFIX+filename,compressed,source_size,out_size))
      except (OSError,ValueError):pass
+    if i in (0,1,4,6,9,14) or len(matching)>1:
+     print("ICON_CANDIDATES",name,[(v[0].split("/")[-1],v[2]) for v in matching])
     if len(matching)==1:
      icon=matching[0][0]
+    elif len(matching)>1:
+     # Distinguish a dedicated small square thumbnail from square splash art.
+     smallest=sorted(matching,key=lambda v:v[2][0]*v[2][1])
+     if smallest[0][2][0]<=512 and smallest[0][2][1]<=512 and (len(smallest)<2 or smallest[0][2][0]*smallest[0][2][1]<smallest[1][2][0]*smallest[1][2][1]*0.6):
+      icon=smallest[0][0]
    if icon:
     variant="official-icon";file=ROOT/variant_slug/(variant+".webp")
     if file.exists():row["assets"][variant]={"path":"/"+str(file).removeprefix("public/"),"source":icon,"status":"already-present","bytes":file.stat().st_size}
