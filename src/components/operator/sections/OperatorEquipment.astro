@@ -53,7 +53,6 @@ import { guideText } from "../../../lib/i18n/guideUi";
                 </div>)}
               </div>
               <p class="op-meta-build-summary">{build.metaSummary}</p>
-              {build.parts.some(part=>!part.detail || part.detail.status!=="verified") && <p class="op-muted op-body-copy">{translateUi("Neue Ausrüstung: Gegenstände und Bilder vorläufig aus der aktuellen Wiki; SKPORT-Item-IDs, Rezepte und Verfügbarkeit noch nicht vollständig bestätigt.")}</p>}
               <a class="op-link op-meta-build-link" href="#build-finder" data-select-build={build.id}>{translateUi("Details im Build-Finder ansehen ↗")}</a>
             </article>)}
           </div>
@@ -181,7 +180,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
                   <tbody>{b.parts.map(part=><tr>
   <td>{part.catalog?.name??part.reference}</td>
   <td>{part.detail?.status==="verified" ? <>
-    <div class="op-muted">Level {part.detail.level??"?"} · {part.detail.gearSlot??t("Ausrüstung")}</div>
+    <div class="op-muted">Level {part.detail.level??"?"} · {part.detail.gearSlot??translateUi("Ausrüstung")}</div>
     {(part.detail.stats[0]?.tables[0]?.rows??[]).map(row=><div>{row.cells[0]}: {row.cells[1]}</div>)}
     {part.detail.setEffect&&<details class="op-details"><summary>{part.detail.setName} – {model.lang==="en"?"Set Bonus":"Setbonus"}</summary><p class="op-body-copy">{part.detail.setEffect}</p></details>}
     {part.detail.acquisitionNotes?.length>0&&<p class="op-body-copy"><strong>{translateUi("Offizielle Blaupausen-Erwerbsart:")}</strong> {part.detail.acquisitionNotes.join(" · ")}</p>}

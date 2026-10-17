@@ -1,13 +1,12 @@
 ---
-import { getCollection } from "astro:content";
+import { getGuideFeed } from "../../lib/content/guideFeed";
+import GuideTeaserCard from "../GuideTeaserCard.astro";
 import "../../styles/global.css";
 import SeoHead from "../i18n/SeoHead.astro";
 import LanguageSwitch from "../i18n/LanguageSwitch.astro";
 import "../../styles/i18n.css";
 
-const posts = (await getCollection("posts", ({ data }) => !data.draft))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 2);
+const latestGuides=await getGuideFeed({limit:3});
 
 async function getLatestVideos() {
   const decode = (value: string) =>
@@ -494,31 +493,15 @@ const href=(de:string)=>isEn?({
         <div class="section-heading">
           <div><span class="section-kicker">{l("WISSEN, DAS WEITERHILFT","GUIDES THAT HELP")}</span><h2>{l("NEUESTE BEITRÄGE","LATEST POSTS")}</h2></div>
         </div>
-        {posts.length > 0 ? (
-          <div class="posts-grid">
-            {posts.map((post, index) => (
-              <article class:list={["post-card", post.data.accent]}>
-                <a href={isEn?`/en/posts/${post.id}/`:`/posts/${post.id}/`} class="post-card-link">
-                  <div class="post-visual">
-                    <span class="post-category">{post.data.category}</span>
-                    <span class="post-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                    <span class="post-type">{post.data.type}</span>
-                  </div>
-                  <div class="post-body">
-                    <h3>{post.data.title}</h3>
-                    <p>{post.data.description}</p>
-                    <div class="post-footer"><span class="text-link">{l("Beitrag lesen","Read Post")} <span aria-hidden="true">↗</span></span><time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString(isEn?"en-US":"de-DE", { day: "2-digit", month: "short", year: "numeric" })}</time></div>
-                  </div>
-                </a>
-              </article>
-            ))}
-          </div>
-        ) : (
-          <div class="posts-empty">
-            <span class="posts-empty-mark" aria-hidden="true">A0</span>
-            <div><h3>{l("Neue Beiträge folgen hier automatisch.","New Posts Will Appear Here Automatically.")}</h3><p>{l("Sobald ein veröffentlichter Guide im Content-Ordner liegt, erscheinen die zwei neuesten Beiträge an dieser Stelle.","The two latest published articles will appear here automatically.")}</p></div>
-          </div>
-        )}
+        {latestGuides.length>0
+          ? <div class="guide-teaser-grid" aria-label={l("Aktuelle Guides","Latest Guides")}>
+              {latestGuides.map(guide=><GuideTeaserCard guide={guide} lang={lang} />)}
+            </div>
+          : <div class="posts-empty">
+              <span class="posts-empty-mark" aria-hidden="true">A0</span>
+              <div><h3>{l("Neue Guides folgen hier automatisch.","New guides will appear here automatically.")}</h3>
+              <p>{l("Neue freigegebene Guides erscheinen mit ihrer Veröffentlichung automatisch.","New guides appear automatically once published.")}</p></div>
+            </div>}
       </section>
 
       <section class="content-section videos-section section-wrap" id="videos">

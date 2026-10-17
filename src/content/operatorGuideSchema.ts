@@ -197,6 +197,17 @@ export const operatorGuideSchema = z.object({
   displayName: z.string().trim().min(1).max(120).optional(),
   status: z.enum(["draft", "preview", "published"]).default("draft"),
   updatedAt: z.coerce.date().optional(),
+  // One-time publication metadata. This powers the Operator directory's
+  // character release order and both language versions of "Latest Posts".
+  // Updates to the guide body should NOT change listedAt or releaseDate.
+  listing: z.object({
+    releaseDate: z.coerce.date(),
+    listedAt: z.coerce.date(),
+    category: z.enum(["character", "gameplay", "factory", "systems", "news"]).default("character"),
+    summaryDe: z.string().trim().min(15).max(240),
+    summaryEn: z.string().trim().min(15).max(240),
+    visible: z.boolean().default(true),
+  }).optional(),
   guideVideo: z.object({
     title: text.optional(),
     url: z.string().url().optional(),

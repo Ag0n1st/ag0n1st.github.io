@@ -294,3 +294,23 @@ h1 { margin: 27px 0 17px; font-size: clamp(56px, 6.3vw, 82px); line-height: .95;
   .endfield-section-note { text-align: left; }
   .endfield-countdown-teaser { padding: 21px; }
 }
+
+/* One reusable design for latest guide teasers on both the main and Endfield homepages. */
+.guide-teaser-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.guide-teaser-card{min-width:0;background:linear-gradient(115deg,rgba(240,91,212,.055),#111116 43%,rgba(101,232,242,.025));border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .2s,transform .2s,box-shadow .2s}
+.guide-teaser-card:hover,.guide-teaser-card:focus-within{transform:translateY(-3px);border-color:rgba(101,232,242,.5);box-shadow:0 10px 22px rgba(0,0,0,.15)}
+.guide-teaser-link{display:flex;align-items:flex-start;justify-content:space-between;gap:13px;height:100%;min-height:197px;padding:21px 18px;text-decoration:none;color:inherit}
+.guide-teaser-link:focus-visible{outline:2px solid var(--cyan);outline-offset:-3px}
+.guide-teaser-copy{display:flex;flex-direction:column;flex:1;min-width:0;height:100%}
+.guide-teaser-overline{font-size:9px;color:var(--muted);font-weight:var(--font-bold);letter-spacing:.075em}
+.guide-teaser-copy h3{margin:12px 0 7px;font-size:clamp(17px,1.65vw,21px);letter-spacing:-.045em;line-height:1.2}
+.guide-teaser-copy p{margin:0 0 20px;color:#b7b1c0;font-size:12px;line-height:1.65}
+.guide-teaser-action{margin-top:auto;font-size:11px;font-weight:var(--font-bold);color:var(--cyan)}
+.guide-teaser-action span{font-size:14px}
+.guide-teaser-category{flex:0 0 80px;width:80px;height:80px;display:flex;align-items:center;justify-content:center;padding:8px;border:1px solid rgba(240,91,212,.33);border-radius:11px;background:radial-gradient(circle at 70% 35%,rgba(240,91,212,.2),transparent 75%),linear-gradient(145deg,#231622,#11141a);text-align:center;align-self:flex-start}
+.guide-teaser-category span{font-size:10px;text-transform:uppercase;letter-spacing:.04em;font-weight:var(--font-bold);overflow-wrap:anywhere;color:#f0c2e3}
+.guide-teaser-card.is-compact .guide-teaser-link{min-height:167px;padding:18px}
+.guide-teaser-card.is-compact .guide-teaser-category{width:72px;height:72px;flex-basis:72px}
+.endfield-guide-more{display:inline-flex;align-items:center;gap:8px;margin-top:17px;color:var(--cyan);font-size:12px;font-weight:var(--font-bold)}
+@media(max-width:1060px){.guide-teaser-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.guide-teaser-grid{grid-template-columns:minmax(0,1fr)}.guide-teaser-link{min-height:150px}.guide-teaser-category{width:74px;height:74px;flex-basis:74px}}

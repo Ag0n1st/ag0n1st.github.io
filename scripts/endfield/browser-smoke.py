@@ -511,6 +511,7 @@ def smoke_i18n(page, base_url, width):
         "/en/endfield/recruitment/","/en/endfield/refinement/",
         "/en/endfield/essences/","/en/endfield/speedruns/",
         "/en/endfield/checklist/","/en/endfield/countdown/",
+        "/en/endfield/tierlist/",
     ]
     for route in en_routes:
         r=page.goto(base_url+route,wait_until="domcontentloaded")
@@ -533,10 +534,10 @@ def smoke_i18n(page, base_url, width):
         check_overflow(page,label+" "+route)
     page.goto(base_url+"/en/endfield/")
     nav_paths=page.locator(".endfield-nav a").evaluate_all("(a)=>a.map(x=>new URL(x.href).pathname)")
-    verify(len(nav_paths)==9 and all(p.startswith("/en/") for p in nav_paths),
-           label+": all nine Endfield tabs remain English, no DE fallback")
-    verify(page.locator(".endfield-section").count()==8,
-           label+": identical eight-section Endfield homepage layout")
+    verify(len(nav_paths)==10 and all(p.startswith("/en/") for p in nav_paths),
+           label+": all ten Endfield tabs remain English, no DE fallback")
+    verify(page.locator(".endfield-section").count()==9,
+           label+": identical nine-section Endfield homepage layout")
     page.locator('.endfield-nav a[href="/en/endfield/factory/"]').click()
     verify(page.url.endswith("/en/endfield/factory/") and
            page.locator("html").get_attribute("lang")=="en",
@@ -596,6 +597,43 @@ def smoke_i18n(page, base_url, width):
     verify(page.locator('.language-switch a[lang="en"]').get_attribute("href")==
            "/en/endfield/operators/si/",
            label+": German original links to identical English guide")
+    # New shared guide feed is created from actual editorial guide data.
+    for locale,prefix in [("de",""),("en","/en")]:
+        home=prefix+"/"
+        page.goto(base_url+home)
+        cards=page.locator("#beitraege .guide-teaser-card")
+        verify(cards.count()==3,label+": "+locale+" homepage contains three newest guides")
+        hrefs=cards.locator("a.guide-teaser-link").evaluate_all("(els)=>els.map(el=>new URL(el.href).pathname)")
+        expected=([prefix+"/endfield/operatoren/" if locale=="de" else prefix+"/endfield/operators/"])
+        expected=[expected[0]+slug+"/" for slug in ["si","typhoeus","liino"]]
+        verify(hrefs==expected,label+": "+locale+" latest guides in order with direct localized links")
+        verify(cards.locator(".guide-teaser-category").count()==3,
+               label+": every latest guide has right-side category tile")
+        first=cards.first.locator(".guide-teaser-category")
+        square=first.evaluate("(el)=>({w:el.getBoundingClientRect().width,h:el.getBoundingClientRect().height})")
+        verify(abs(square["w"]-square["h"])<1,label+": category badge is square in "+locale)
+        verify(("Charakter" if locale=="de" else "Character") in (first.text_content() or ""),
+               label+": category uses Character naming in "+locale)
+        page.goto(base_url+prefix+"/endfield/")
+        guide_cards=page.locator(".endfield-guide-teasers .guide-teaser-card")
+        verify(guide_cards.count()==3,label+": "+locale+" Endfield overview lists three guides")
+        verify(guide_cards.locator("a").first.get_attribute("href")==expected[0],
+               label+": "+locale+" Endfield overview Si card opens same-locale guide")
+        page.goto(base_url+expected[0])
+        verify(page.locator("#ausruestung h2").first.inner_text()==
+               ("Ausrüstung" if locale=="de" else "Gear"),
+               label+": "+locale+" equipment/gear title matches terminology")
+        verify("SKPORT-Item-IDs" not in page.locator("#ausruestung").inner_text(),
+               label+": "+locale+" Si gear contains no internal numeric item ID caveats")
+        check_overflow(page,label+" "+locale+" Si after guide feed changes")
+    page.goto(base_url+"/en/endfield/tierlist/")
+    verify(page.locator("html").get_attribute("lang")=="en" and
+           "Coming soon" in page.locator("main").inner_text(),
+           label+": English Tierlist is a true translated placeholder")
+    page.goto(base_url+"/endfield/tierlist/")
+    verify(page.locator("html").get_attribute("lang")=="de" and
+           "Diese Seite entsteht" in page.locator("main").inner_text(),
+           label+": German Tierlist placeholder matches")
     page.goto(base_url+"/en/endfield/operators/typhoeus/")
     verify(page.locator("#fertigkeiten").count()==1 and
            page.locator("#ausruestung").count()==1 and

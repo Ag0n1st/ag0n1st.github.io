@@ -6,6 +6,17 @@ operator: neuer-operator
 # displayName: "Angezeigter Operatorname" # optional bis Spieldaten-Import
 status: draft # draft = verborgen; preview = sichtbare Vorschau; published = fertiger Guide
 # updatedAt: 2026-10-15
+# Release and featured-guide metadata (add when this guide is ready to appear
+# on both homepages; its first listing date must remain stable on future edits).
+# Example for a released character; no fabricated dates:
+# listing:
+#   releaseDate: 2026-10-15 # actual in-game character debut date
+#   listedAt: 2026-10-17 # day first added to "Latest Posts" on this website
+#   category: character  # other categories: gameplay, factory, systems, news
+#   summaryDe: "Eine kurze deutsche Beschreibung, mindestens 15 Zeichen."
+#   summaryEn: "A short English description of at least 15 characters."
+#   visible: true # false keeps the complete guide public but off both teaser feeds
+
 
 # 1. ÜBERSICHT
 # Stärken/Schwächen erhalten in allen Guides automatisch dezente grüne/rote

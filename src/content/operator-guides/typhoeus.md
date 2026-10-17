@@ -6,6 +6,13 @@ operator: typhoeus
 displayName: Typhoeus
 status: published
 updatedAt: 2026-10-16
+listing:
+  releaseDate: 2026-09-02
+  listedAt: 2026-10-17
+  category: character
+  summaryDe: "Typhoeus richtig spielen: Natur-Explosionen, Jagdpfeile, Ausrüstung und Teams."
+  summaryEn: "Master Typhoeus: Nature Bursts, Hunting Arrows, gear and team compositions."
+  visible: true
 
 guideVideo:
   title: "Typhoeus Guide (Deutsch) – Builds, Teams & Gameplay"

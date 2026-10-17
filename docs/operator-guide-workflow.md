@@ -1,3 +1,22 @@
+## Verbindlich: immer Deutsch UND Englisch
+
+**Keine Website-Änderung ausschließlich in einer Sprache veröffentlichen.** Neue oder angepasste Guides, Cards, Layouts, Datenzeilen, Texte, Placeholder, Navigation und neue URLs müssen in **DE und EN gleichzeitig** erscheinen. Falls nötig, in den gemeinsamen Astro-Komponenten mit `lang` übersetzen. Die neun OperatorGuide-Sektionen behalten in beiden Sprachfassungen identische Layouts und Funktionen. DE in `src/content/operator-guides/{slug}.md`, die zugehörige EN-Redaktion in `src/data/i18n/en-guide-content.json`. `src/lib/i18n/operatorGuide.ts` übernimmt ausschließlich Textfelder; numerische Spielwerte, Item- und Team-IDs werden aus der geprüften deutschen Quelle übernommen. Im Englischen heißt der Rüstungsbereich **Gear**; deutsch weiterhin **Ausrüstung**.
+
+## Neue Guides automatisch in „Letzte Beiträge“ und der Endfield-Übersicht
+
+Die Datenquelle ist `src/lib/content/guideFeed.ts`; die Card `src/components/GuideTeaserCard.astro` wird auf **beiden Homepages und beiden Endfield-Übersichten** wiederverwendet. Die Startseite zeigt die **drei neuesten registrierten Guides aller unterstützten Spiele/Kategorien**, der Endfield-Hub die **drei neuesten Endfield-Einträge**. Kategorie: **Charakter** (DE) / **Character** (EN), später auch `gameplay`, `factory`, `systems`, `news`. Das Kategorie-Label befindet sich in einer quadratischen Card oben rechts. Jede Card führt direkt zum Guide in der aktuell gewählten Sprache; kein Zwischenartikel und keine deutsche Seite unter englischem Pfad.
+
+**Operator-Guide nach Fertigstellung veröffentlichen:**
+1. `src/content/operator-guides/{slug}.md` inhaltlich auf DE freigeben (`published`; explizit gewünschte Vorschauen dürfen weiterhin `preview` bleiben), die **vollständige** englische Fassung in `src/data/i18n/en-guide-content.json` auf gleichem Stand halten.
+2. Im selben Guide unter `listing`: den tatsächlichen **`releaseDate`** des Charakters (für die Release-Reihenfolge aller Operator-Cards), **`listedAt`** (einmaliges Aufnahmedatum in den Beitrags-Feed, nach späteren Updates **nicht** verändern), `category: character`, `summaryDe`, `summaryEn`, `visible: true` ergänzen. Es werden **keine** neuen Datumsschätzungen erfunden; Release-Quelle recherchieren und intern dokumentieren. Ohne vollständig gepflegte `listing`-Metadaten erscheint ein Guide weiter auf seiner Detailseite und in der Operatorenübersicht, nicht aber in den automatischen Teasern.
+3. Beide Slug-URLs tatsächlich erzeugen und in `src/lib/i18n/site.mjs` paaren, falls der neue Operator-Slug dort noch fehlt. Um keine nicht existierenden hreflang-Sprachalternativen zu erzeugen, beide Pfade und die gemeinsame Guide-Komponente im Build prüfen.
+4. Kein zusätzlicher redaktioneller `posts/*.md`-Duplikatartikel erforderlich. Das neue `listing` reicht, um den Guide beim nächsten Astro-Build automatisch in beide Teaserlisten aufzunehmen, wenn er unter den drei neuesten ist. Ein vorhandener Guide, der mehrfach überarbeitet wird, verdrängt dadurch nicht automatisch wirklich neu hinzugekommene Guides.
+5. Für **andere** Guide-Kategorien/-Seiten können neue nicht-draft `src/content/posts/*.md`-Einträge optional `feed`-Metadaten mit `category`, `titleEn`, `summaryEn`, `hrefDe`, `hrefEn`, `listedAt`, `game` tragen. Die beiden **realen** sprachlichen Landing-/Guide-Zielseiten müssen vorher existieren. Die angegebenen `hrefDe`/`hrefEn` verlinken auf die tatsächlichen Guides; niemals einer EN-Card nur eine DE-URL geben. Auch diese Cards gehen ohne Layoutänderung automatisch in das gemeinsame Feed ein.
+6. `npm run test:endfield`, `npm run build`, Budget-Endfield ≤100 MB, Pages `dist/` ≤1 GB und Chromium-Smoketests in 1440/390px auf **beide Sprachen** sind zwingende Merge-Gates. In der Roadmap den neuen Guide und alle beteiligten Routen dokumentieren.
+
+**Release-/Listungsstand zu Beginn:** Si (Charakterdebüt 15.10.2026), Typhoeus (02.09.2026), Liino (09.08.2026); alle drei wurden am 17.10.2026 ins neue Kartenverzeichnis aufgenommen. Die Datumsfelder sind unabhängig von `updatedAt`, Guide-Releases und Content-Updates. Quellen: GRYPHLINE Versionsupdate *Sanctuary of Ink*, GRYPHLINE *Dreamscape of Wind and Snow*, Endfield Build Banner-Archiv (Liino).
+
+---
 # Operator-Guides selbst bearbeiten
 
 **Namenskonvention:** Im gesamten Endfield-Bereich heißen die Spielfiguren **Operatoren**. Die kanonischen URLs sind `/endfield/operatoren/` und `/endfield/operatoren/<slug>/`. Alte `/endfield/charaktere/`-Links bleiben nur als Weiterleitungen erhalten.

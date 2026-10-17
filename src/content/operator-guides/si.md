@@ -3,6 +3,13 @@ operator: "si"
 displayName: "Si"
 status: "published"
 updatedAt: "2026-10-16"
+listing:
+  releaseDate: 2026-10-15
+  listedAt: 2026-10-17
+  category: character
+  summaryDe: "Si liefert Kryo- und Hitze-Verstärkung, flexible Teamrollen und starken Combo-Schaden."
+  summaryEn: "Si offers Cryo and Heat amplification, flexible team roles and powerful Combo Skill damage."
+  visible: true
 guideVideo:
   title: "Si – ausführlicher Videoguide in Vorbereitung"
 overview:
@@ -105,7 +112,6 @@ equipment:
       teamContext: "Standardempfehlung für Main DPS und flexible DPS-/Support-Rotationen, wenn die Ultimate zuverlässig in wichtige Schadensfenster passen soll."
       evaluation: "Drei Type-50-Yinglung-Teile liefern den starken Combo-Setbonus. Das Redeemer Seal ergänzt als unabhängiges Off-Piece Intellekt und Ultimate-Effizienz. Dadurch bleibt der persönliche Combo-Schaden stark, während die Ultimate leichter in die Teamrotation eingebunden werden kann. Ideal, wenn ihre Ultimate ohne diese zusätzliche Energieeffizienz nicht rechtzeitig verfügbar wäre."
       setBonusNotes: "3× Type 50 Yinglung: ANG +15 % und bis zu drei Yinglung's-Edge-Stapel durch Battle Skills beliebiger Teammitglieder. Off-Piece: Redeemer Seal (Intellekt und Ultimate-Effizienz)."
-      craftingNotes: "Die neuen Type-50-Teile benötigen noch eindeutig verifizierte numerische SKPORT-Item- und Blaupausen-IDs. Der Build-Finder bleibt bis dahin bei „ungeprüft“; das Redeemer Seal besitzt dagegen die offizielle Item-ID 349."
     - id: "si-main"
       title: "Type 50 Yinglung · Max. DMG"
       role: "main-dps"
@@ -117,7 +123,6 @@ equipment:
       teamContext: "Main DPS und Sub DPS, besonders wenn andere Teammitglieder die nötigen Battle Skills für Yinglung's Edge einsetzen."
       evaluation: "Für maximalen eigenen Combo-Schaden werden drei neue Type-50-Yinglung-Teile mit LYNX Slab kombiniert. Der Dreierbonus liefert ANG +15 % und stapelweise bis zu 60 % Bonus auf die nächste Kombofertigkeit, nachdem Teammitglieder ihre Battle Skills verwendet haben. Besonders stark, wenn die Ultimate auch ohne zusätzliche Energieeffizienz rechtzeitig bereitsteht."
       setBonusNotes: "3× Type 50 Yinglung: ANG +15 %, je Battle Skill eines Teammitglieds ein Stapel Yinglung's Edge bis maximal drei; je Stapel +20 % Schaden auf Sis nächste Kombofertigkeit. LYNX Slab als Off-Piece."
-      craftingNotes: "Die drei am 15.10. neu veröffentlichten Type-50-Teile haben noch keine eindeutig zugeordneten numerischen IDs in unserem aktuellen SKPORT-Katalog. Bilder/Namen sind aus der Community-Wiki; der Build-Finder kennzeichnet Herstellung und Blaupausen deshalb ausdrücklich als unbestätigt statt sie als verfügbar vorzutäuschen."
     - id: "si-energy"
       title: "Type 50 · Alternative mit Ultimate-Energie"
       role: "sub-dps"
@@ -127,7 +132,6 @@ equipment:
       teamContext: "Wenn die Ultimate in deiner tatsächlichen Rotation sonst nicht rechtzeitig für den Team-Buff zurückkehrt."
       evaluation: "Die drei Type-50-Teile bleiben für Combo-Schaden erhalten, ein Xiranit Power Core ersetzt das LYNX-Off-Piece als situationsabhängige Option. Nur nutzen, wenn dadurch ein relevanter Ultimate-Einsatz rechtzeitig möglich wird; sonst bleibt das LYNX-Standardsetup. Das ist keine Behauptung, diese Variante sei allgemein stärker."
       setBonusNotes: "3× Type 50 Yinglung bleibt aktiv; Eternal-Xiranite-Teil im Off-Slot aktiviert ohne weitere Teile keinen eigenen zweiten Setbonus."
-      craftingNotes: "Type-50-Rezepte/Blueprint-IDs für die neuen Teile bis zur offiziellen SKPORT-Verifikation als unbestätigt behandeln."
     - id: "si-maximum-combo"
       title: "Combo-Fokus · zwei Type-50-Beacons"
       role: "main-dps"
@@ -137,7 +141,6 @@ equipment:
       teamContext: "Experimentelle Maximierung des eigenen Tinten-Lung-Schadens nach bekannten Release-Werten; nicht das voreingestellte eigene Meta-Setup."
       evaluation: "Unabhängige frühe Berechnungen vergleichen den Combo-Bonus von zwei Type-50-Beacons mit einem Eternal-Xiranite-Channeling-Gloves-Off-Piece. Diese Kombination ist vor allem für Main-DPS-Szenarien interessant, wenn alle drei Yinglung's-Edge-Stapel vor der Combo verlässlich entstehen. Sie bleibt eine experimentelle Alternative zu den beiden Meta-Builds."
       setBonusNotes: "Soft Armor + zwei Beacons = drei Type-50-Teile. Channeling Gloves bleiben ein einzelnes Off-Piece."
-      craftingNotes: "Neue Wiki-Gegenstände ohne offiziell numerisch bestätigte SKPORT-IDs; der Finder prüft die Existenz der Blaupausen nicht automatisch."
     - id: "si-support-xiranite"
       title: "Support · Eternal Xiranite 1.6"
       role: "support"
@@ -149,7 +152,6 @@ equipment:
       teamContext: "Nur wenn kein anderer Operator bereits den relevanten Eternal-Xiranite-Setbonus bereitstellt."
       evaluation: "Das neue Eternal-Xiranite-Set ist eine Nischenalternative für Teams, in denen kein anderer Operator den relevanten Setbonus bereitstellt und die Buff-Rolle im Vordergrund steht. Das Type-50-Yinglung-Set wird in den meisten Situationen voraussichtlich mehr leisten; die Xiranit-Variante lohnt sich daher nur bei einem passenden Teamaufbau und klaren Buff-Vorteilen."
       setBonusNotes: "Der Xiranit-3er-Bonus kann in einem Team normalerweise nicht mehrfach sinnvoll gestapelt werden; zuerst die vorhandenen Support-Ausrüstungen prüfen."
-      craftingNotes: "Neue 1.6-Xiranit-Items vorläufig mit Wiki-Namen und lokalem WebP. Offizielle Item-IDs/Blueprint-Erwerb separat nachtragen."
     - id: "si-early-access"
       title: "Type 50 Yinglung · Early Access"
       role: "main-dps"
@@ -161,7 +163,6 @@ equipment:
       teamContext: "Level-70-Übergang, solange die neuen Type-50-Ausrüstungsteile aus Version 1.6 noch nicht freigeschaltet sind."
       evaluation: "Redeemer Armor liefert viel Intellekt und Ultimate-Effizienz. Die älteren Type 50 Yinglung Gloves steuern Kombofertigkeitsschaden und etwas Intellekt bei, besitzen aber Beweglichkeit statt Stärke als Hauptattribut. Beide Type 50 Yinglung Knife T1 ergänzen Intellekt, Stärke und allgemeinen Fertigkeitsschaden. Mit insgesamt drei Type-50-Teilen bleibt der volle Yinglung's-Edge-Dreierbonus erhalten. Dieses Setup ist eine Übergangslösung und kein Ersatz für die besseren neuen v1.6-Teile."
       setBonusNotes: "3× Type 50 Yinglung: ANG +15 %; Battle Skills aus dem Team erzeugen bis zu drei Yinglung's-Edge-Stapel für die nächste Kombofertigkeit. Redeemer Armor als Off-Piece mit Intellekt und Ultimate-Effizienz."
-      craftingNotes: "Alle vier Item-IDs sind im bestehenden offiziellen SKPORT-Katalog enthalten. Frühere Verfügbarkeit bedeutet nicht automatisch, dass alle benötigten Blaupausen bereits im eigenen Spielstand freigeschaltet sind."
     - id: "si-level60"
       title: "Level 60 · AIC Fieldwork"
       role: "main-dps"
@@ -180,7 +181,6 @@ equipment:
       teamContext: "Übergangs-Build für Kryo-Schaden und eigene Combo-Fenster vor den Level-60-/70-Sets."
       evaluation: "Drei Mordvolt-Insulation-Teile verbessern Intellekt und verstärken den Künste-Schaden, solange Si über 80 % LP bleibt. Das Aburrey Flashlight ergänzt Intellekt, Stärke und Ultimate-Effizienz. Die Variante nutzt reale Level-50-Ausrüstung, ohne bereits Zugang zur neuen 1.6-Story-Ausrüstung vorauszusetzen."
       setBonusNotes: "3× Mordvolt Insulation: +50 Intellekt; über 80 % LP erhöhter Künste-Schaden. Off-Piece: Aburrey Flashlight für Intellekt, Stärke und Ultimate-Effizienz."
-      craftingNotes: "Freischaltung und Blaupausenbesitz im Build-Finder mit dem eigenen Fortschritt prüfen; keine Level-50-DPS-Rangfolge behauptet."
     - id: "si-level36"
       title: "Level 36 · Mordvolt Insulation"
       role: "main-dps"
@@ -190,7 +190,6 @@ equipment:
       teamContext: "Frühe Kryo-/Combo-Progression, bevor Level-50-Ausrüstung zugänglich ist."
       evaluation: "Die Mordvolt-Insulation-Weste vereint Intellekt und Stärke, die Handschuhe ergänzen weiteren Intellekt. Wrench und Wrench T1 stärken Angriff beziehungsweise Kryo-Schaden. Bereits mit drei Teilen ist der Mordvolt-Setbonus aktiv. Achte im Kampf auf genügend LP für den zusätzlichen Künste-Schadensbonus."
       setBonusNotes: "3× Mordvolt Insulation: +50 Intellekt und zusätzlicher Künste-Schaden oberhalb von 80 % LP."
-      craftingNotes: "Nur Teile aus dem vorhandenen offiziellen Level-36-Katalog; die konkrete Blaupausenfreischaltung richtet sich weiterhin nach dem eigenen Spielstand."
   progression:
     - stage: "early"
       note: "Ab Level 36 kann Si mit Mordvolt Insulation in den Kryo- und Combo-Fokus einsteigen. Stärke und Intellekt auf den verfügbaren Teilen priorisieren; Blaupausen vorher im Finder prüfen."
@@ -200,7 +199,6 @@ equipment:
       note: "Level 70: Vor dem Freischalten der neuen v1.6-Ausrüstung ist Early Access mit Redeemer Armor und drei älteren Yinglung-Teilen ein vollständiger Übergangsbuild. Sobald das neue Gebiet und die entsprechenden Story-Freischaltungen erreicht sind, drei neue Type-50-Teile anstreben. Redeemer Seal für Balanced-Rotationen, LYNX Slab für maximalen eigenen Schaden."
     - stage: "endgame"
       note: "Das mit Version 1.6 neu erschienene Type-50-Yinglung-Set ist Sis Go-to-Set. Mit Redeemer Seal ist es ausgewogen, mit LYNX Slab auf maximalen eigenen Combo-Schaden ausgerichtet. Eternal Xiranite bleibt eine stark situationsabhängige Nischenalternative, wenn der Setbonus im Team noch fehlt."
-  generalNotes: "Stand 16.10.2026: Die drei neuen Type-50-Teile und mehrere neue Xiranit-Teile sind in der aktuellen Talos-/Release-Wiki belegt, aber noch nicht eindeutig mit numerischen Item-IDs und Fertigungsrezepten im zuvor importierten SKPORT-Katalog verknüpft. Diese Builds sind echte redaktionelle Empfehlungen, keine als vollständig nachgewiesen bewerteten Blaupausen. Der Build-Finder gibt entsprechend Status „ungeprüft“ statt eine erfundene Freischaltung auszugeben."
 potentials:
   entries:
     - level: 1
