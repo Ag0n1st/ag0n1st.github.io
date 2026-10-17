@@ -13,7 +13,7 @@ import OperatorConclusion from "./sections/OperatorConclusion.astro";
 
 interface Props extends OperatorGuideProps {}
 const model = createOperatorGuideModel(Astro.props);
-const t=(value:string)=>guideText(model.lang,value);
+const translateUi=(value:string)=>guideText(model.lang,value);
 const { guide, operatorName, preview, localized } = model;
 const isEnglish=model.lang==="en";
 import { guideText } from "../../lib/i18n/guideUi";
@@ -21,11 +21,11 @@ import { guideText } from "../../lib/i18n/guideUi";
 <main class="op-page section-wrap">
   <nav class="op-breadcrumb" aria-label={isEnglish?"Breadcrumb":"Brotkrumennavigation"}>
     <a href={isEnglish?"/en/endfield/":"/endfield/"}>Endfield</a><span aria-hidden="true">›</span>
-    <a href={isEnglish?"/en/endfield/operators/":"/endfield/operatoren/"}>{t("Operatoren")}</a><span aria-hidden="true">›</span>
+    <a href={isEnglish?"/en/endfield/operators/":"/endfield/operatoren/"}>{translateUi("Operatoren")}</a><span aria-hidden="true">›</span>
     <span aria-current="page">{operatorName}</span>
   </nav>
   {preview && <div class="op-notice op-preview-banner" role="status">{isEnglish?"Layout preview: Some details for "+operatorName+" are still being added. Square brackets indicate placeholders.":"Layout-Vorschau: Für "+operatorName+" sind noch nicht alle Daten eingepflegt. Eckige Klammern kennzeichnen Platzhalter."}</div>}
-  {localized && <p class="op-muted op-locale-note">{t("SKPORT-Datenstand:")} {localized.sourceSnapshot}</p>}
+  {localized && <p class="op-muted op-locale-note">{translateUi("SKPORT-Datenstand:")} {localized.sourceSnapshot}</p>}
   <div class="op-guide">
     <div class="op-guide-content">
       <OperatorOverview model={model} />
@@ -40,7 +40,7 @@ import { guideText } from "../../lib/i18n/guideUi";
     </div>
 
     <nav class="op-guide-toc" aria-label="Guide-Inhaltsverzeichnis">
-      <strong>{t("Guide-Inhalt")}</strong>
+      <strong>{translateUi("Guide-Inhalt")}</strong>
       <div class="op-guide-toc-links">{[
         ["uebersicht",isEnglish?"1. Overview":"1. Übersicht"],["operator-kit","2. Operator Kit"],["fertigkeiten",isEnglish?"3. Skills":"3. Fertigkeiten"],["waffen",isEnglish?"4. Weapons":"4. Waffen"],
         ["ausruestung",isEnglish?"5. Equipment":"5. Ausrüstung"],["potenziale",isEnglish?"6. Potentials":"6. Potenziale"],["teams","7. Teams"],["gameplay","8. Gameplay"],["fazit",isEnglish?"9. Conclusion":"9. Fazit"]
