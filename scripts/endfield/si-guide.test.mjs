@@ -146,7 +146,7 @@ test("Si early builds, main meta labels and direct editorial voice stay consiste
   assert.doesNotMatch(guide,/  closingNote:/);
   assert.match(guide,/Du hast keine Nutzung für Kryo-\/Hitze-Verstärkung/);
   const op=readFileSync("src/components/operator/OperatorGuide.astro","utf8");
-  assert.match(op,/\{t\("SKPORT-Datenstand:"\)\} \{localized.sourceSnapshot\}/);
+  assert.match(op,/\{translateUi\("SKPORT-Datenstand:"\)\} \{localized.sourceSnapshot\}/);
   assert.doesNotMatch(op,/localized.terminologyNote/);
   const teams=readFileSync("src/components/operator/sections/OperatorTeams.astro","utf8");
   assert.match(teams,/teamMemberCard\(member\)/);
@@ -178,7 +178,7 @@ test("All operator overview strengths and weaknesses use subtle shared accent ca
   assert.match(overview,/op-cardlet op-weaknesses-card/);
   assert.match(css,/\.op-strengths-card\{/);
   assert.match(css,/\.op-weaknesses-card\{/);
-  assert.match(css,/\.op-meta-build-grid\{display:grid;grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/);
+  assert.match(css,/\.op-meta-build-grid\{display:grid;grid-template-columns:repeatranslateUi\(2,minmax\(0,1fr\)\)/);
   const buildView=readFileSync("src/components/operator/sections/OperatorEquipment.astro","utf8");
   assert.match(buildView,/Early Access/);
   assert.match(css,/\.op-meta-build-tags \.op-chip\.is-early/);
