@@ -70,7 +70,7 @@ test("Indexing respects true English editorial content and German preview status
    assert.ok(existsSync("src/pages/en/endfield/"+file+"/index.astro"));
  }
  assert.match(map,/published/);
- assert.match(map,/!published\\.has/);
+ assert.ok(map.includes("!published.has"));
  assert.ok(idx.includes("/en/endfield/operators/"));
  assert.ok(read("src/layouts/EndfieldPlaceholder.astro").includes("<SeoHead"));
  assert.ok(read("public/robots.txt").includes("https://ag0n1st.com/sitemap.xml"));
