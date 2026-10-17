@@ -4,24 +4,24 @@ import { getGuideThumbnailUrl } from "../../../lib/endfield/operatorAssets";
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
-const t=(value:string)=>guideText(model.lang,value);
+const translateUi=(value:string)=>guideText(model.lang,value);
 const { guide, showcaseTypeLabels, showcases, selectedShowcaseIndex, youtubeEmbed } = model;
 import { guideText } from "../../../lib/i18n/guideUi";
 ---
 <section class="op-section" id="gameplay">
         {guide.gameplay.explanation && <div class="op-divided">
-          <h2>{t("Gameplay · Rotation und Timing")}</h2>
+          <h2>{translateUi("Gameplay · Rotation und Timing")}</h2>
           <p class="op-body-copy">{guide.gameplay.explanation}</p>
         </div>}
         {guide.gameplay.pending ? <>
           <div class="op-gameplay-pending-header">
-            <span class="op-gameplay-pending-label" aria-label="Gameplay-Videos folgen">{t("FOLGT")}</span>
-            <h2>{t("Gameplay")}</h2>
+            <span class="op-gameplay-pending-label" aria-label="Gameplay-Videos folgen">{translateUi("FOLGT")}</span>
+            <h2>{translateUi("Gameplay")}</h2>
           </div>
-          <p class="op-muted op-body-copy">{t("Gameplay-Videos und Showcases werden später ergänzt.")}</p>
+          <p class="op-muted op-body-copy">{translateUi("Gameplay-Videos und Showcases werden später ergänzt.")}</p>
         </> : <>
-        <h2>{t("Gameplay")}</h2>
-        <p class="op-section-intro">{t("Bestehende Gameplay-Runs mit optionalen Rotationshinweisen; jederzeit erweiterbar.")}</p>
+        <h2>{translateUi("Gameplay")}</h2>
+        <p class="op-section-intro">{translateUi("Bestehende Gameplay-Runs mit optionalen Rotationshinweisen; jederzeit erweiterbar.")}</p>
         {showcases.length ? <>
           <div class="op-divided">
             {showcases.map((run,i)=>{
@@ -30,19 +30,19 @@ import { guideText } from "../../../lib/i18n/guideUi";
                 <div class="op-subtitle"><h3 style="margin:0">{run.title}</h3><span class="op-chip">{showcaseTypeLabels[run.type]}</span></div>
                 {embed ?
                   <iframe class="op-video-embed" loading="lazy" src={embed} title={run.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> :
-                  <div class="op-notice" style="margin-top:12px">{t("Zu diesem Eintrag ist kein eigenständiger Video-Link hinterlegt. Die schriftlichen Rotationshinweise sind unten verfügbar.")}</div>
+                  <div class="op-notice" style="margin-top:12px">{translateUi("Zu diesem Eintrag ist kein eigenständiger Video-Link hinterlegt. Die schriftlichen Rotationshinweise sind unten verfügbar.")}</div>
                 }
-                {run.url && <p><a class="op-link" href={run.url} target="_blank" rel="noopener noreferrer">{t("Run öffnen ↗")}</a></p>}
+                {run.url && <p><a class="op-link" href={run.url} target="_blank" rel="noopener noreferrer">{translateUi("Run öffnen ↗")}</a></p>}
                 {run.description && <p class="op-body-copy">{run.description}</p>}
-                {run.rotationAndTips && <details class="op-details"><summary>{t("Rotation & Tipps")}</summary><div class="op-details-body"><p class="op-body-copy">{run.rotationAndTips}</p></div></details>}
+                {run.rotationAndTips && <details class="op-details"><summary>{translateUi("Rotation & Tipps")}</summary><div class="op-details-body"><p class="op-body-copy">{run.rotationAndTips}</p></div></details>}
               </div>;
             })}
           </div>
-          <div class="op-divided"><h3>{t("Weitere Runs")}</h3>
+          <div class="op-divided"><h3>{translateUi("Weitere Runs")}</h3>
             <div class="op-media-list">{showcases.map((run,i)=><button type="button" class="op-cardlet op-showcase-button" data-showcase-button={run.id} aria-pressed={i===selectedShowcaseIndex?"true":"false"} style="text-align:left;color:inherit;font:inherit;cursor:pointer"><div class="op-faux-thumb">{getGuideThumbnailUrl(run.url)
                   ? <img src={getGuideThumbnailUrl(run.url)} width="320" height="180" alt="" loading="lazy" decoding="async" />
                   : <span>{run.title}</span>}</div><strong style="display:block;font-size:12px;margin-top:10px">{run.title}</strong><span class="op-muted">{showcaseTypeLabels[run.type]}</span></button>)}</div>
           </div>
-        </> : <p class="op-placeholder">{t("[Noch keine Gameplay-Showcases hinterlegt]")}</p>}
+        </> : <p class="op-placeholder">{translateUi("[Noch keine Gameplay-Showcases hinterlegt]")}</p>}
         </>}
       </section>
