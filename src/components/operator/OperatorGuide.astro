@@ -13,12 +13,14 @@ import OperatorConclusion from "./sections/OperatorConclusion.astro";
 
 interface Props extends OperatorGuideProps {}
 const model = createOperatorGuideModel(Astro.props);
+const t=(value:string)=>guideText(model.lang,value);
 const { guide, operatorName, preview, localized } = model;
+import { guideText } from "../../lib/i18n/guideUi";
 ---
 <main class="op-page section-wrap">
   <nav class="op-breadcrumb" aria-label="Brotkrumennavigation">
     <a href="/endfield/">Endfield</a><span aria-hidden="true">›</span>
-    <a href="/endfield/operatoren/">Operatoren</a><span aria-hidden="true">›</span>
+    <a href="/endfield/operatoren/">{t("Operatoren")}</a><span aria-hidden="true">›</span>
     <span aria-current="page">{operatorName}</span>
   </nav>
   {preview && <div class="op-notice op-preview-banner" role="status">Layout-Vorschau: Für {operatorName} sind noch nicht alle Daten eingepflegt. Eckige Klammern kennzeichnen Platzhalter.</div>}
@@ -37,7 +39,7 @@ const { guide, operatorName, preview, localized } = model;
     </div>
 
     <nav class="op-guide-toc" aria-label="Guide-Inhaltsverzeichnis">
-      <strong>Guide-Inhalt</strong>
+      <strong>{t("Guide-Inhalt")}</strong>
       <div class="op-guide-toc-links">{[
         ["uebersicht","1. Übersicht"],["operator-kit","2. Operator Kit"],["fertigkeiten","3. Fertigkeiten"],["waffen","4. Waffen"],
         ["ausruestung","5. Ausrüstung"],["potenziale","6. Potenziale"],["teams","7. Teams"],["gameplay","8. Gameplay"],["fazit","9. Fazit"]
