@@ -1,0 +1,702 @@
+---
+import { getCollection } from "astro:content";
+import "../../styles/global.css";
+import SeoHead from "../i18n/SeoHead.astro";
+import LanguageSwitch from "../i18n/LanguageSwitch.astro";
+import "../../styles/i18n.css";
+
+const posts = (await getCollection("posts", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 2);
+
+async function getLatestVideos() {
+  const decode = (value: string) =>
+    value
+      .replace(/&amp;/g, "&")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;|&apos;/g, "'");
+
+  const decodeJsonString = (value: string) => {
+    try {
+      return JSON.parse('"' + value + '"') as string;
+    } catch {
+      return decode(value);
+    }
+  };
+
+  const parseFeed = (feed: string) => {
+    const entries = [...feed.matchAll(/<entry>([\s\S]*?)<\/entry>/g)].slice(0, 6);
+    return entries.map(([, entry]) => {
+      const tag = (name: string) => {
+        if (name === "yt:videoId") return entry.match(/<yt:videoId>(.*?)<\/yt:videoId>/s)?.[1] ?? "";
+        if (name === "title") return entry.match(/<title>(.*?)<\/title>/s)?.[1] ?? "";
+        if (name === "published") return entry.match(/<published>(.*?)<\/published>/s)?.[1] ?? "";
+        return "";
+      };
+      const id = tag("yt:videoId");
+      const title = decode(tag("title"));
+      const published = tag("published");
+      return {
+        id,
+        title,
+        published,
+        publishedLabel: "",
+        thumbnail: "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg",
+        href: "https://www.youtube.com/watch?v=" + id,
+      };
+    }).filter((video) => video.id && video.title);
+  };
+
+  // Parse each YouTube videoRenderer as one JSON object. Looking for a videoId
+  // and then searching ahead for the next title can accidentally pair two videos.
+  const parseChannelPage = (html: string) => {
+    const videos: Array<{
+      id: string;
+      title: string;
+      published: string;
+      publishedLabel: string;
+      thumbnail: string;
+      href: string;
+    }> = [];
+    const seen = new Set<string>();
+    const rendererPattern = /"(?:videoRenderer|gridVideoRenderer|lockupViewModel)"\s*:\s*\{/g;
+
+    for (const match of html.matchAll(rendererPattern)) {
+      const objectStart = (match.index ?? 0) + match[0].lastIndexOf("{");
+      let depth = 0;
+      let inString = false;
+      let escaped = false;
+      let objectEnd = -1;
+
+      for (let i = objectStart; i < html.length; i++) {
+        const char = html[i];
+        if (inString) {
+          if (escaped) escaped = false;
+          else if (char === "\\") escaped = true;
+          else if (char === '"') inString = false;
+          continue;
+        }
+        if (char === '"') inString = true;
+        else if (char === "{") depth++;
+        else if (char === "}") {
+          depth--;
+          if (depth === 0) {
+            objectEnd = i + 1;
+            break;
+          }
+        }
+      }
+      if (objectEnd < 0) continue;
+
+      // Keep each video's ID and title inside its own renderer.
+      const renderer = html.slice(objectStart, objectEnd);
+      const id = renderer.match(/"videoId":"([a-zA-Z0-9_-]{11})"/)?.[1] ?? "";
+      let title = "";
+
+      if (match[0].includes("lockupViewModel")) {
+        // In the new YouTube layout, menu actions can also have a "title.content"
+        // field. Only read the title from the dedicated lockup metadata object.
+        const metadataMarker = '"lockupMetadataViewModel"';
+        const metadataMarkerIndex = renderer.indexOf(metadataMarker);
+        const metadataObjectStart = metadataMarkerIndex < 0
+          ? -1
+          : renderer.indexOf("{", metadataMarkerIndex + metadataMarker.length);
+        if (metadataObjectStart >= 0) {
+          let metadataDepth = 0;
+          let metadataInString = false;
+          let metadataEscaped = false;
+          let metadataObjectEnd = -1;
+          for (let i = metadataObjectStart; i < renderer.length; i++) {
+            const char = renderer[i];
+            if (metadataInString) {
+              if (metadataEscaped) metadataEscaped = false;
+              else if (char === "\\") metadataEscaped = true;
+              else if (char === '"') metadataInString = false;
+              continue;
+            }
+            if (char === '"') metadataInString = true;
+            else if (char === "{") metadataDepth++;
+            else if (char === "}") {
+              metadataDepth--;
+              if (metadataDepth === 0) {
+                metadataObjectEnd = i + 1;
+                break;
+              }
+            }
+          }
+          if (metadataObjectEnd > 0) {
+            const metadataObject = renderer.slice(metadataObjectStart, metadataObjectEnd);
+            const titleRaw = metadataObject.match(/"title"\s*:\s*\{\s*"content"\s*:\s*"((?:\\.|[^"\\])*)"/)?.[1];
+            if (titleRaw) title = decodeJsonString(titleRaw);
+          }
+        }
+      } else {
+        const titleMatch =
+          renderer.match(/"title":\{"runs":\[\{"text":"((?:\\.|[^"\\])*)"/) ??
+          renderer.match(/"title":\{"simpleText":"((?:\\.|[^"\\])*)"/);
+        if (titleMatch) title = decodeJsonString(titleMatch[1]);
+      }
+
+      // Never substitute a menu action label for a video title.
+      if (!id || !title || /^(add to queue|save to playlist|share|report)$/i.test(title) || seen.has(id)) continue;
+      const timeMatch = renderer.match(/"publishedTimeText":\{"simpleText":"((?:\\.|[^"\\])*)"/) ?? renderer.match(/"accessibilityLabel":"((?:\\.|[^"\\])*(?:ago|streamed|premiered)[^"\\]*)"/i);
+      const publishedValue = timeMatch ? decodeJsonString(timeMatch[1]) : "";
+      if (!title) continue;
+      seen.add(id);
+      videos.push({
+        id,
+        title,
+        published: "",
+        publishedLabel: publishedValue,
+        thumbnail: "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg",
+        href: "https://www.youtube.com/watch?v=" + id,
+      });
+      if (videos.length >= 6) break;
+    }
+    return videos;
+  };
+
+  const getPublishedLabelForVideo = (html: string, targetId: string) => {
+    const rendererPattern = /"(?:videoRenderer|gridVideoRenderer|lockupViewModel)"\s*:\s*\{/g;
+    for (const match of html.matchAll(rendererPattern)) {
+      const objectStart = (match.index ?? 0) + match[0].lastIndexOf("{");
+      let depth = 0;
+      let inString = false;
+      let escaped = false;
+      let objectEnd = -1;
+      for (let i = objectStart; i < html.length; i++) {
+        const char = html[i];
+        if (inString) {
+          if (escaped) escaped = false;
+          else if (char === "\\") escaped = true;
+          else if (char === '"') inString = false;
+          continue;
+        }
+        if (char === '"') inString = true;
+        else if (char === "{") depth++;
+        else if (char === "}") {
+          depth--;
+          if (depth === 0) {
+            objectEnd = i + 1;
+            break;
+          }
+        }
+      }
+      if (objectEnd < 0) continue;
+      const renderer = html.slice(objectStart, objectEnd);
+      const id = renderer.match(/"videoId":"([a-zA-Z0-9_-]{11})"/)?.[1] ?? "";
+      if (id !== targetId) continue;
+      const timeMatch = renderer.match(/"publishedTimeText":\{"simpleText":"((?:\\.|[^"\\])*)"/) ?? renderer.match(/"accessibilityLabel":"((?:\\.|[^"\\])*(?:ago|streamed|premiered)[^"\\]*)"/i);
+      return timeMatch ? decodeJsonString(timeMatch[1]) : "";
+    }
+    return "";
+  };
+
+  try {
+    // Resolve the channel ID from a known video uploaded by Ag0n1st.
+    // On a video page, videoDetails.channelId belongs to that exact upload,
+    // unlike generic channelId values on a channel page that may refer to recommendations.
+    let videoPageChannelId = "";
+    let referenceVideo: {
+      id: string;
+      title: string;
+      published: string;
+      publishedLabel: string;
+      thumbnail: string;
+      href: string;
+    } | null = null;
+    try {
+      const videoResponse = await fetch("https://www.youtube.com/watch?v=wNVJkGzkfMg", {
+        headers: { "User-Agent": "Mozilla/5.0" },
+        signal: AbortSignal.timeout(10000),
+        cache: "no-store",
+      });
+      if (videoResponse.ok) {
+        const videoHtml = await videoResponse.text();
+        // Extract each embedded JSON object with brace/string awareness. A broad
+        // regex can accidentally pick up a chapter title (for example "18")
+        // from elsewhere on the page instead of the actual video title.
+        const extractObject = (key: string) => {
+          const marker = '"' + key + '":{';
+          const markerIndex = videoHtml.indexOf(marker);
+          if (markerIndex < 0) return "";
+          const objectStart = markerIndex + marker.length - 1;
+          let depth = 0;
+          let inString = false;
+          let escaped = false;
+          for (let i = objectStart; i < videoHtml.length; i++) {
+            const char = videoHtml[i];
+            if (inString) {
+              if (escaped) escaped = false;
+              else if (char === "\\") escaped = true;
+              else if (char === '"') inString = false;
+              continue;
+            }
+            if (char === '"') inString = true;
+            else if (char === "{") depth++;
+            else if (char === "}") {
+              depth--;
+              if (depth === 0) return videoHtml.slice(objectStart, i + 1);
+            }
+          }
+          return "";
+        };
+        const details = extractObject("videoDetails");
+        const titleRaw = details.match(/"title":"((?:\\\\.|[^"\\\\])*)"/)?.[1];
+        const title = titleRaw ? decodeJsonString(titleRaw) : "";
+        const microformat = extractObject("playerMicroformatRenderer");
+        // YouTube can place the publication date in different parts of the
+        // watch-page metadata. Search the full page as well as the microformat
+        // object so the fallback card still gets a date when object parsing varies.
+        const dateRaw =
+          microformat.match(/"publishDate"\s*:\s*"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
+          microformat.match(/"uploadDate"\s*:\s*"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
+          videoHtml.match(/"publishDate"\s*:\s*"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
+          videoHtml.match(/"uploadDate"\s*:\s*"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
+          videoHtml.match(/"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})"/)?.[1] ??
+          videoHtml.match(/<meta[^>]+itemprop=["']datePublished["'][^>]+content=["'](\d{4}-\d{2}-\d{2})/i)?.[1] ??
+          videoHtml.match(/<meta[^>]+content=["'](\d{4}-\d{2}-\d{2})[^>]+itemprop=["']datePublished["']/i)?.[1] ??
+          "";
+        // Some YouTube watch pages omit publishDate/uploadDate but still expose
+        // a human-readable upload date in videoPrimaryInfoRenderer.dateText.
+        const dateTextRaw =
+          videoHtml.match(/"dateText"\s*:\s*\{\s*"simpleText"\s*:\s*"([^"]*)"/)?.[1] ??
+          videoHtml.match(/"dateText"\s*:\s*\{\s*"runs"\s*:\s*\[\s*\{\s*"text"\s*:\s*"([^"]*)"/)?.[1] ??
+          "";
+        videoPageChannelId = details.match(/"channelId":"(UC[\w-]+)"/)?.[1] ?? "";
+        if (title) {
+          referenceVideo = {
+            id: "wNVJkGzkfMg",
+            title,
+            published: dateRaw,
+            publishedLabel: dateRaw
+              ? new Date(dateRaw + "T12:00:00Z").toLocaleDateString("de-DE", { day: "2-digit", month: "short", year: "numeric", timeZone: "UTC" })
+              : dateTextRaw
+                ? decodeJsonString(dateTextRaw)
+                : "",
+            thumbnail: "https://i.ytimg.com/vi/wNVJkGzkfMg/hqdefault.jpg",
+            href: "https://www.youtube.com/watch?v=wNVJkGzkfMg",
+          };
+        }
+      }
+    } catch (error) {
+      console.warn("Metadaten konnten nicht aus dem Referenzvideo gelesen werden:", error);
+    }
+
+    // If YouTube serves the watch page but omits its embedded metadata, use its
+    // public oEmbed endpoint for the exact current title. oEmbed does not expose
+    // publication dates, so the date remains sourced from the watch-page metadata.
+
+    const channelResponse = await fetch("https://www.youtube.com/@Ag0n1st/videos", {
+      headers: { "User-Agent": "Mozilla/5.0" },
+      signal: AbortSignal.timeout(10000),
+    });
+    if (!channelResponse.ok) throw new Error("YouTube-Kanal konnte nicht geladen werden");
+    const channelHtml = await channelResponse.text();
+    // The watch page sometimes omits publishDate. In that case, get YouTube's
+    // own relative upload label for this exact video from its channel renderer.
+    if (referenceVideo && !referenceVideo.publishedLabel) {
+      referenceVideo.publishedLabel = getPublishedLabelForVideo(channelHtml, referenceVideo.id);
+    }
+    // Prefer the ID from the known upload, then the channel's own metadata.
+    const channelId =
+      videoPageChannelId ||
+      channelHtml.match(/itemprop="identifier" content="(UC[\w-]+)"/)?.[1] ||
+      channelHtml.match(/"externalId":"(UC[\w-]+)"/)?.[1] ||
+      channelHtml.match(/"channelId":"(UC[\w-]+)"/)?.[1];
+
+    if (channelId) {
+      // Retry transient RSS failures before falling back to the channel page.
+      for (let attempt = 0; attempt < 3; attempt++) {
+        try {
+          const feedResponse = await fetch(
+            "https://www.youtube.com/feeds/videos.xml?channel_id=" + channelId,
+            {
+              headers: { "User-Agent": "Mozilla/5.0 (compatible; Ag0n1stWebsite/1.0)" },
+              signal: AbortSignal.timeout(10000),
+              cache: "no-store",
+            },
+          );
+          const feedBody = await feedResponse.text();
+          if (!feedResponse.ok) {
+            if (feedResponse.status === 404) {
+              console.warn("YouTube-RSS nicht verfügbar (HTTP 404); verwende die Kanalseite.");
+              break;
+            }
+            throw new Error("YouTube-Feed antwortete mit HTTP " + feedResponse.status);
+          }
+          const videos = parseFeed(feedBody);
+          if (videos.length > 0) return videos;
+          console.warn("YouTube-RSS enthält keine Einträge; verwende die Kanalseite.");
+          break;
+        } catch (error) {
+          console.warn("YouTube-Feed-Versuch " + (attempt + 1) + "/3 fehlgeschlagen:", error);
+          if (attempt < 2) await new Promise((resolve) => setTimeout(resolve, 500 * (attempt + 1)));
+        }
+      }
+    } else {
+      console.warn("YouTube-Kanal-ID nicht gefunden; versuche Video-Metadaten aus der Kanalseite zu lesen.");
+    }
+
+    const fallbackVideos = parseChannelPage(channelHtml);
+    if (fallbackVideos.length > 0) {
+      console.warn("YouTube-RSS nicht verfügbar; verwende Video-Metadaten der Kanalseite als Fallback.");
+      return fallbackVideos;
+    }
+
+    // Last-resort display fallback: keep the video section populated even if
+    // YouTube blocks feed/page metadata during the static build. This is a
+    // confirmed video link supplied by the channel owner; normal feeds still
+    // take precedence whenever available.
+    if (referenceVideo) {
+      console.warn("Feed/Kanalseite nicht verfügbar; verwende echte Metadaten des Referenzvideos.");
+      return [referenceVideo];
+    }
+
+    // Final metadata fallback: request YouTube's public oEmbed endpoint for the
+    // exact title rather than displaying a made-up placeholder. oEmbed does not
+    // provide a publication date; leave it blank if the watch-page date was blocked.
+    try {
+      const oembedResponse = await fetch(
+        "https://www.youtube.com/oembed?format=json&url=" +
+          encodeURIComponent("https://www.youtube.com/watch?v=wNVJkGzkfMg"),
+        { headers: { "User-Agent": "Mozilla/5.0" }, signal: AbortSignal.timeout(10000), cache: "no-store" },
+      );
+      if (oembedResponse.ok) {
+        const metadata = await oembedResponse.json();
+        if (typeof metadata.title === "string" && metadata.title.trim()) {
+          return [{
+            id: "wNVJkGzkfMg",
+            title: metadata.title,
+            published: "",
+            publishedLabel: "",
+            thumbnail: "https://i.ytimg.com/vi/wNVJkGzkfMg/hqdefault.jpg",
+            href: "https://www.youtube.com/watch?v=wNVJkGzkfMg",
+          }];
+        }
+      }
+    } catch (error) {
+      console.warn("YouTube-oEmbed-Fallback fehlgeschlagen:", error);
+    }
+
+    console.warn("YouTube-Metadaten sind beim Build nicht erreichbar; kein Platzhaltertitel wird ausgegeben.");
+    return [];
+  } catch (error) {
+    console.warn("YouTube-Videos konnten beim Build nicht geladen werden:", error);
+    return [];
+  }
+}
+
+const videos = await getLatestVideos();
+
+interface Props {lang?:"de"|"en"}
+const {lang="de"}=Astro.props;
+const isEn=lang==="en";
+const l=(de:string,en:string)=>isEn?en:de;
+const href=(de:string)=>isEn?({
+"/":"/en/","/endfield/":"/en/endfield/","/about/":"/en/about/","/nte/":"/en/nte/",
+"/endfield/operatoren/":"/en/endfield/operators/"
+} as Record<string,string>)[de]??de:de;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#09090d" />
+    <link rel="icon" type="image/svg+xml" href="/images/ag0n1st-logo.svg" />
+    <SeoHead path={Astro.url.pathname} lang={lang} title={l("Ag0n1st — Gacha auf Deutsch","Ag0n1st — Gaming Guides in English")} description={l("Ag0n1st – Livestreams, Charakter-Guides und Tools zu aktuellen Gacha-Spielen.","Ag0n1st – gaming streams, detailed Endfield operator guides, team builds and tools in English.")} />
+    <meta name="description" content="Ag0n1st – Live-Streams, Guides und Tools rund um aktuelle Gacha Games. Alles auf Deutsch." />
+    <title>{l("Ag0n1st — Gacha auf Deutsch","Ag0n1st — Gaming Guides in English")}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href={href("/")} aria-label={l("Ag0n1st – Startseite","Ag0n1st Homepage")}>
+        <img class="wordmark-logo" src="/images/ag0n1st-logo.svg" alt="" aria-hidden="true" />
+        <span>Ag0n1st</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-navigation"><span></span><span></span><span></span></button>
+
+      <nav class="main-nav" id="main-navigation" aria-label={l("Hauptnavigation","Main Navigation")}>
+        <a href={href("/endfield/")}>Arknights: Endfield</a>
+        <a href={href("/nte/")}>Neverness to Everness</a>
+        <a href={href("/about/")}>About Me</a>
+        <LanguageSwitch path={Astro.url.pathname} lang={lang} />
+      </nav>
+
+      <a class="header-cta" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">
+        Twitch <span aria-hidden="true">↗</span>
+      </a>
+    </header>
+
+    <main>
+      <section class="hero section-wrap" aria-label="Willkommen bei Ag0n1st">
+        <article class="hero-card hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> GACHA CONTENT. AUF DEUTSCH.</div>
+          <h1>Ag0n1st<span class="title-period">.</span></h1>
+          <p class="hero-description">Live-Streams, Guides, Tools rund um aktuelle Gacha Games – <strong>alles auf Deutsch.</strong></p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h18v12l-5 5h-4l-3 3H7v-3H3V6l1-3Zm2 3v11h4v3l3-3h4l3-3V6H6Zm5 2h2v5h-2V8Zm5 0h2v5h-2V8Z"/></svg>
+              Zum Twitch Stream
+              <span class="button-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="button button-secondary" href="https://youtube.com/@Ag0n1st" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.1a3 3 0 0 0-2.1-2.1C19 4.5 12 4.5 12 4.5s-7 0-8.9.5A3 3 0 0 0 1 7.1 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.9A3 3 0 0 0 3.1 19c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.5 12a31 31 0 0 0-.5-4.9ZM9.5 15.5v-7l6 3.5-6 3.5Z"/></svg>
+              YouTube Guides
+              <span class="button-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <aside class="hero-card stream-card" aria-label="Twitch-Kanalstatus">
+          <div class="stream-card-header">
+            <a class="channel-link" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">
+              <span class="brand-icon twitch-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 2 1 6v15h5v3h4l3-3h4l6-6V2H4Zm17 12-4 4h-5l-3 3v-3H5V4h16v10ZM10 7h2v6h-2V7Zm5 0h2v6h-2V7Z"/></svg>
+              </span>
+              <span>twitch.tv/Ag0n1st</span>
+            </a>
+            <span class="live-pill" id="twitch-status" data-state="offline" aria-live="polite">
+              <span class="live-dot"></span>
+              <span class="live-text">{l("OFFLINE","OFFLINE")}</span>
+            </span>
+          </div>
+
+          <div class="stream-card-main" id="twitch-player-container" aria-label="Twitch-Player von Ag0n1st">
+            <div id="twitch-embed" class="twitch-embed"></div>
+            <div class="stream-offline-overlay" id="twitch-offline-overlay">
+              <span class="stream-offline-kicker">{l("STREAM STATUS","STREAM STATUS")}</span>
+              <h2>{l("OFFLINE","OFFLINE")}</h2>
+              <p>{l("Agon ist gerade nicht Live. Folge jetzt auf Twitch, um keinen Stream mehr zu verpassen!","Ag0n1st is currently offline. Follow the channel so you don't miss the next stream!")}</p>
+              <a class="stream-follow-button" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2 1 6v15h5v3h4l3-3h4l6-6V2H4Zm17 12-4 4h-5l-3 3v-3H5V4h16v10ZM10 7h2v6h-2V7Zm5 0h2v6h-2V7Z"/></svg>
+                <span>{l("Auf Twitch folgen","Follow on Twitch")}</span>
+                <span class="stream-follow-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="stream-card-footer">
+            <p>{l("Stelle deine Fragen jetzt Live auf Twitch!","Ask Your Questions Live on Twitch!")}</p>
+            <a href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">Zum Twitch-Kanal <span aria-hidden="true">↗</span></a>
+          </div>
+        </aside>
+      </section>
+
+      <section class="content-section section-wrap" id="beitraege">
+        <div class="section-heading">
+          <div><span class="section-kicker">{l("WISSEN, DAS WEITERHILFT","GUIDES THAT HELP")}</span><h2>{l("NEUESTE BEITRÄGE","LATEST POSTS")}</h2></div>
+        </div>
+        {posts.length > 0 ? (
+          <div class="posts-grid">
+            {posts.map((post, index) => (
+              <article class:list={["post-card", post.data.accent]}>
+                <a href={`/posts/${post.id}/`} class="post-card-link">
+                  <div class="post-visual">
+                    <span class="post-category">{post.data.category}</span>
+                    <span class="post-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                    <span class="post-type">{post.data.type}</span>
+                  </div>
+                  <div class="post-body">
+                    <h3>{post.data.title}</h3>
+                    <p>{post.data.description}</p>
+                    <div class="post-footer"><span class="text-link">Beitrag lesen <span aria-hidden="true">↗</span></span><time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString("de-DE", { day: "2-digit", month: "short", year: "numeric" })}</time></div>
+                  </div>
+                </a>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div class="posts-empty">
+            <span class="posts-empty-mark" aria-hidden="true">A0</span>
+            <div><h3>{l("Neue Beiträge folgen hier automatisch.","New Posts Will Appear Here Automatically.")}</h3><p>{l("Sobald ein veröffentlichter Guide im Content-Ordner liegt, erscheinen die zwei neuesten Beiträge an dieser Stelle.","The two latest published articles will appear here automatically.")}</p></div>
+          </div>
+        )}
+      </section>
+
+      <section class="content-section videos-section section-wrap" id="videos">
+        <div class="section-heading section-heading-row">
+          <div><span class="section-kicker">{l("NEUES VOM KANAL","CHANNEL UPDATES")}</span><h2>{l("LETZTE VIDEOS","LATEST VIDEOS")}</h2></div>
+          <a class="button button-secondary all-videos-button" href="https://youtube.com/@Ag0n1st" target="_blank" rel="noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.1a3 3 0 0 0-2.1-2.1C19 4.5 12 4.5 12 4.5s-7 0-8.9.5A3 3 0 0 0 1 7.1 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.9A3 3 0 0 0 3.1 19c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.5 12a31 31 0 0 0-.5-4.9ZM9.5 15.5v-7l6 3.5-6 3.5Z"/></svg>
+            Alle Videos auf YouTube
+          </a>
+        </div>
+
+        {videos.length > 0 ? (
+          <div class="videos-grid">
+            {videos.map((video) => (
+              <a class="video-card" href={video.href} target="_blank" rel="noreferrer">
+                <div class="video-thumb">
+                  <img src={video.thumbnail} alt="" loading="lazy" />
+                  <span class="play-button" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z"/></svg></span>
+                </div>
+                <div class="video-meta">
+                  <h3>{video.title}</h3>
+                  <time datetime={video.published || undefined} data-relative-time={video.published || undefined} data-relative-label={video.publishedLabel || undefined}>{video.publishedLabel || video.published}</time>
+                </div>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div class="videos-empty">
+            <span class="empty-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z"/></svg></span>
+            <div><h3>{l("Die neuesten Videos erscheinen hier.","The Latest Videos Will Appear Here.")}</h3><p>{l("Die Videoübersicht wird beim Website-Build automatisch mit öffentlichen Uploads von YouTube abgeglichen.","The Video List Is Updated Automatically from Public YouTube Uploads During Each Site Build.")}</p></div>
+            <a href="https://youtube.com/@Ag0n1st" target="_blank" rel="noreferrer">{l("Zum YouTube-Kanal ↗","Visit YouTube Channel ↗")}</a>
+          </div>
+        )}
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <nav class="social-links" aria-label="Social Media">
+        <a href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer" aria-label="Twitch">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2 1 6v15h5v3h4l3-3h4l6-6V2H4Zm17 12-4 4h-5l-3 3v-3H5V4h16v10ZM10 7h2v6h-2V7Zm5 0h2v6h-2V7Z"/></svg>
+        </a>
+        <a href="https://youtube.com/@Ag0n1st" target="_blank" rel="noreferrer" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.1a3 3 0 0 0-2.1-2.1C19 4.5 12 4.5 12 4.5s-7 0-8.9.5A3 3 0 0 0 1 7.1 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.9A3 3 0 0 0 3.1 19c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.5 12a31 31 0 0 0-.5-4.9ZM9.5 15.5v-7l6 3.5-6 3.5Z"/></svg>
+        </a>
+        <a href="https://linktr.ee/Ag0n1st" target="_blank" rel="noreferrer" aria-label="Alle Socials">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3ZM5 5h6v2H7v10h10v-4h2v6H5V5Z"/></svg>
+        </a>
+      </nav>
+      <a class="footer-wordmark" href={href("/")} aria-label="Ag0n1st Startseite"><img class="wordmark-logo" src="/images/ag0n1st-logo.svg" alt="Ag0n1st Logo" /></a>
+      <span class="copyright">© 2025 Ag0n1st. All rights reserved.</span>
+    </footer>
+
+    <script>
+      const statusPill = document.querySelector("#twitch-status");
+      const statusText = statusPill?.querySelector(".live-text");
+      let lastKnownLiveState = null;
+
+      function setTwitchLiveState(isLive) {
+        if (!statusPill || !statusText) return;
+        statusPill.dataset.state = isLive ? "live" : "offline";
+        statusText.textContent = isLive ? "LIVE" : "OFFLINE";
+        document.querySelector("#twitch-player-container")?.classList.toggle("is-offline", !isLive);
+      }
+
+      function initializeTwitchPlayer() {
+        const mount = document.querySelector("#twitch-embed");
+        if (!mount || !window.Twitch?.Embed) return;
+        if (mount.dataset.initialized === "true") return;
+        mount.dataset.initialized = "true";
+
+        const embed = new window.Twitch.Embed("twitch-embed", {
+          width: "100%",
+          height: "100%",
+          channel: "Ag0n1st",
+          layout: "video",
+          autoplay: true,
+          muted: false,
+          parent: [window.location.hostname],
+        });
+
+        embed.addEventListener(window.Twitch.Embed.VIDEO_READY, () => {
+          const player = embed.getPlayer();
+          player.setVolume(0.1);
+          player.setMuted(false);
+        });
+      }
+
+      function loadTwitchEmbedSdk() {
+        if (window.Twitch?.Embed) {
+          initializeTwitchPlayer();
+          return;
+        }
+        const existing = document.querySelector('script[data-twitch-embed-sdk]');
+        if (existing) {
+          existing.addEventListener("load", initializeTwitchPlayer, { once: true });
+          return;
+        }
+        const sdk = document.createElement("script");
+        sdk.src = "https://embed.twitch.tv/embed/v1.js";
+        sdk.async = true;
+        sdk.dataset.twitchEmbedSdk = "true";
+        sdk.addEventListener("load", initializeTwitchPlayer, { once: true });
+        document.head.append(sdk);
+      }
+
+      async function refreshTwitchStatus() {
+        if (!statusPill || !statusText) return;
+        try {
+          const response = await fetch("https://decapi.me/twitch/uptime/Ag0n1st?offline_msg=offline", { cache: "no-store" });
+          if (!response.ok) throw new Error("Twitch-Status nicht verfügbar");
+          const result = (await response.text()).trim().toLowerCase();
+          const isLive = result.length > 0 && !result.includes("offline") && !result.includes("not live") && !result.includes("error");
+          lastKnownLiveState = isLive;
+          setTwitchLiveState(isLive);
+        } catch {
+          // Bei einem vorübergehenden Status-API-Fehler den letzten bekannten Zustand beibehalten.
+          if (lastKnownLiveState === null) setTwitchLiveState(false);
+        }
+      }
+
+      const menuToggle = document.querySelector(".menu-toggle");
+      const mainNav = document.querySelector("#main-navigation");
+      function setMenuOpen(open) {
+        if (!menuToggle || !mainNav) return;
+        menuToggle.setAttribute("aria-expanded", String(open));
+        menuToggle.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
+        mainNav.classList.toggle("is-open", open);
+      }
+      menuToggle?.addEventListener("click", () => setMenuOpen(menuToggle.getAttribute("aria-expanded") !== "true"));
+      mainNav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenuOpen(false)));
+
+      loadTwitchEmbedSdk();
+      refreshTwitchStatus();
+      window.setInterval(refreshTwitchStatus, 60_000);
+
+      const isEnglish=document.documentElement.lang==="en";
+      const formatRelativeTime = (dateString) => {
+        const seconds = Math.max(0, Math.floor((Date.now() - new Date(dateString).getTime()) / 1000));
+        if (seconds < 60) return isEnglish?"a few seconds ago":"vor wenigen Sekunden";
+        if (seconds < 3600) return isEnglish?`${Math.floor(seconds / 60)} minutes ago`:`vor ${Math.floor(seconds / 60)} Minuten`;
+        if (seconds < 86400) return isEnglish?`${Math.floor(seconds / 3600)} hours ago`:`vor ${Math.floor(seconds / 3600)} Stunden`;
+        if (seconds < 86400 * 7) return isEnglish?`${Math.floor(seconds / 86400)} days ago`:`vor ${Math.floor(seconds / 86400)} Tagen`;
+        if (seconds < 86400 * 30) return `vor ${Math.floor(seconds / (86400 * 7))} Wochen`;
+        if (seconds < 86400 * 365) return `vor ${Math.floor(seconds / (86400 * 30))} Monaten`;
+        return `vor ${Math.floor(seconds / (86400 * 365))} Jahren`;
+      };
+
+      const translateRelativeLabel = (label) => {
+        const value = label.trim();
+        if(isEnglish)return value;
+        const match = value.match(/^(\d+)\s+(seconds?|minutes?|hours?|days?|weeks?|months?|years?)\s+ago$/i);
+        if (!match) return value;
+        const amount = Number(match[1]);
+        const unit = match[2].toLowerCase();
+        const units = {
+          second: "Sekunden", seconds: "Sekunden",
+          minute: "Minuten", minutes: "Minuten",
+          hour: "Stunden", hours: "Stunden",
+          day: "Tagen", days: "Tagen",
+          week: "Wochen", weeks: "Wochen",
+          month: "Monaten", months: "Monaten",
+          year: "Jahren", years: "Jahren",
+        };
+        return `vor ${amount} ${units[unit]}`;
+      };
+      document.querySelectorAll("[data-relative-time], [data-relative-label]").forEach((element) => {
+        const published = element.getAttribute("data-relative-time");
+        if (published && !Number.isNaN(new Date(published).getTime())) {
+          const update = () => { element.textContent = formatRelativeTime(published); };
+          update();
+          window.setInterval(update, 60_000);
+        } else {
+          // Keep YouTube's relative label (e.g. "vor 2 Tagen") for HTML-fallback videos.
+          const label = element.getAttribute("data-relative-label");
+          if (label) element.textContent = translateRelativeLabel(label);
+        }
+      });
+    </script>
+  </body>
+</html>
