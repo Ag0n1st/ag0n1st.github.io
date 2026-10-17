@@ -1705,8 +1705,7 @@
             "availableFromLevel": 70,
             "teamContext": "Standard recommendation for main DPS and flexible DPS/support rotations if the Ultimate is to fit reliably into important damage windows.",
             "evaluation": "Three Type 50 Yinglung parts deliver the strong combo set bonus. The Redeemer Seal complements Intellect and Ultimate efficiency as an independent off-piece. As a result, the personal combo damage remains strong, while the Ultimate can be more easily integrated into the team rotation. Ideal if their Ultimate would not be available in time without this additional energy efficiency.",
-            "setBonusNotes": "3x Type 50 Yinglung: ATK +15% and up to three Yinglung’s Edge stacks with Battle Skills from any team member. Off-Piece: Redeemer Seal (Intellect and Ultimate Efficiency).",
-            "craftingNotes": "The new Type 50 parts still require clearly verified numerical SKPORT item and blueprint IDs. The build finder remains at \"unchecked\" until then; The Redeemer Seal has the official item ID 349."
+            "setBonusNotes": "3x Type 50 Yinglung: ATK +15% and up to three Yinglung’s Edge stacks with Battle Skills from any team member. Off-Piece: Redeemer Seal (Intellect and Ultimate Efficiency)."
           },
           {
             "id": "si-main",
@@ -1724,8 +1723,7 @@
             "availableFromLevel": 70,
             "teamContext": "Main DPS and Sub DPS, especially when other team members use the necessary battle skills for Yinglung's Edge.",
             "evaluation": "For maximum own combo damage, three new Type-50-Yinglung parts are combined with LYNX Slab. The three-way bonus delivers ATK +15% and stacks up to 60% bonus to the next combo skill after team members have used their battle skills. Especially strong if the Ultimate is available on time without additional energy efficiency.",
-            "setBonusNotes": "3x Type 50 Yinglung: ATK +15 %, one stack of Yinglung's Edge up to a maximum of three per stack of Si's next combo skill. LYNX Slab as Off-Piece.",
-            "craftingNotes": "The three Type 50 parts released on October 15th do not yet have uniquely assigned numerical IDs in our current SKPORT catalogue. Images/names are from the community wiki; the build finder therefore explicitly identifies production and blueprints as unconfirmed instead of pretending them as available."
+            "setBonusNotes": "3x Type 50 Yinglung: ATK +15 %, one stack of Yinglung's Edge up to a maximum of three per stack of Si's next combo skill. LYNX Slab as Off-Piece."
           },
           {
             "id": "si-energy",
@@ -1741,8 +1739,7 @@
             "availableFromLevel": 70,
             "teamContext": "If the Ultimate in your actual rotation does not return in time for the team buff.",
             "evaluation": "The three Type 50 parts are retained for combo damage, a Xiranit Power Core replaces the LYNX-Off-Piece as a situational option. Only use if this makes a relevant Ultimate bet possible in time; Otherwise, the LYNX standard setup remains. This is not a claim that this variant is generally stronger.",
-            "setBonusNotes": "3x Type 50 Yinglung remains active; Eternal Xiranite part in the off-slot does not activate its own second set bonus without further parts.",
-            "craftingNotes": "Treat Type 50 recipes/blueprint IDs for the new parts as unconfirmed until official SKPORT verification."
+            "setBonusNotes": "3x Type 50 Yinglung remains active; Eternal Xiranite part in the off-slot does not activate its own second set bonus without further parts."
           },
           {
             "id": "si-maximum-combo",
@@ -1758,8 +1755,7 @@
             "availableFromLevel": 70,
             "teamContext": "Experimental maximization of own ink-lung damage according to known release values; Not the default meta setup.",
             "evaluation": "Independent early calculations compare the combo bonus of two Type 50 beacons to an Eternal Xiranite channelling gloves-off piece. This combination is particularly interesting for main DPS scenarios, when all three Yinglung's Edge stacks are reliably created before the combo. It remains an experimental alternative to the two meta-builds.",
-            "setBonusNotes": "Soft Armor + two beacons = three Type-50 parts. Channeling gloves remain a single off-piece.",
-            "craftingNotes": "New Wiki items without officially numerically confirmed SKPORT IDs; the finder does not automatically check the existence of the blueprints."
+            "setBonusNotes": "Soft Armor + two beacons = three Type-50 parts. Channeling gloves remain a single off-piece."
           },
           {
             "id": "si-support-xiranite",
@@ -1777,8 +1773,7 @@
             "availableFromLevel": 70,
             "teamContext": "Only if no other operator already provides the relevant Eternal Xiranite set bonus.",
             "evaluation": "The new Eternal Xiranite set is a niche alternative for teams where no other operator provides the relevant set bonus and the Buff role is paramount. The Type 50 Yinglung set is expected to do more in most situations; The Xiranit variant is therefore only worthwhile with a suitable team construction and clear buff advantages.",
-            "setBonusNotes": "The Xiranit 3 bonus can usually not be stacked several times in a team; First check the existing support equipment.",
-            "craftingNotes": "New 1.6 Xiranit items provisionally with wiki names and local WebP. Official item IDs/blueprint purchase add separately."
+            "setBonusNotes": "The Xiranit 3 bonus can usually not be stacked several times in a team; First check the existing support equipment."
           },
           {
             "id": "si-early-access",
@@ -1796,8 +1791,7 @@
             "availableFromLevel": 70,
             "teamContext": "Level 70 transition, as long as the new Type 50 equipment parts from version 1.6 are not yet unlocked.",
             "evaluation": "Redeemer Armor delivers a lot of intellect and ultimate efficiency. The older Type 50 Yinglung Gloves contribute combo skills damage and some intellect, but have agility instead of strength as main attributes. Both Type 50 Yinglung Knife T1s complement Intellect, Strength and General Skill Damage. With a total of three Type 50 parts, the full Yinglung’s Edge three-way bonus is retained. This setup is a transitional solution and not a replacement for the better new v1.6 parts.",
-            "setBonusNotes": "3 × Type 50 Yinglung: ATK +15 %; Battle Skills from the team generate up to three Yinglung’s Edge stacks for the next combo skill. Redeemer Armor as Off-Piece with Intellect and Ultimate efficiency.",
-            "craftingNotes": "All four item IDs are included in the existing official SKPORT catalogue. Early availability does not automatically mean that all required blueprints are already unlocked in their own game."
+            "setBonusNotes": "3 × Type 50 Yinglung: ATK +15 %; Battle Skills from the team generate up to three Yinglung’s Edge stacks for the next combo skill. Redeemer Armor as Off-Piece with Intellect and Ultimate efficiency."
           },
           {
             "id": "si-level60",
@@ -1829,8 +1823,7 @@
             "availableFromLevel": 50,
             "teamContext": "Transition build for Cryo DMG and own combo window before the level 60/70 sets.",
             "evaluation": "Three Murdervolt insulation parts improve intellect and amplify art damage as long as Si remains above 80% LP. The Aburrey Flashlight complements Intellect, Strength and Ultimate efficiency. The variant uses real Level 50 equipment without already requiring access to the new 1.6 story equipment.",
-            "setBonusNotes": "3× Mordvolt Insulation: +50 Intellect; over 80% LP of increased art damage. Off-Piece: Aburrey Flashlight for Intellect, Strength and Ultimate Efficiency.",
-            "craftingNotes": "Check activation and blueprint ownership in the build finder with your own progress; No Level 50 DPS ranking is claimed."
+            "setBonusNotes": "3× Mordvolt Insulation: +50 Intellect; over 80% LP of increased art damage. Off-Piece: Aburrey Flashlight for Intellect, Strength and Ultimate Efficiency."
           },
           {
             "id": "si-level36",
@@ -1846,8 +1839,7 @@
             "availableFromLevel": 36,
             "teamContext": "Early cryo/combo progression before Level 50 equipment is accessible.",
             "evaluation": "The Mordvolt insulation vest combines Intellect and Strength, the gloves complement other Intellect. Wrench and Wrench T1 strengthen attack and Cryo DMG, respectively. Already with three parts the Mordvolt set bonus is active. In battle, watch for enough LP for the additional art damage bonus.",
-            "setBonusNotes": "3x Mordvolt Insulation: +50 Intellect and additional art damage above 80% LP.",
-            "craftingNotes": "Only parts from the existing official Level-36 catalogue; the concrete blueprint release continues to depend on your own score."
+            "setBonusNotes": "3x Mordvolt Insulation: +50 Intellect and additional art damage above 80% LP."
           }
         ],
         "progression": [
@@ -1867,8 +1859,7 @@
             "stage": "endgame",
             "note": "The new version 1.6 Type-50-Yinglung-Set is Sis Go-to-Set. With Redeemer Seal it is balanced, with LYNX Slab aimed at maximum own combo damage. Eternal Xiranite remains a highly situational niche alternative if the set bonus is still missing in the team."
           }
-        ],
-        "generalNotes": "16.10.2026: The three new Type 50 parts and several new Xiranit parts are in the current Talos/Release Wiki, but are not yet clearly linked to numerical item IDs and manufacturing recipes in the previously imported SKPORT catalogue. These builds are real editorial recommendations, not fully proven blueprints. The build finder gives the status “unchecked” instead of outputting an invented activation."
+        ]
       },
       "potentials": {
         "entries": [
