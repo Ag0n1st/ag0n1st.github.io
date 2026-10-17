@@ -523,6 +523,10 @@ def smoke_i18n(page, base_url, width):
                label+": reciprocal DE alternate "+route)
         nav=page.locator(".language-switch")
         verify(nav.count()==1,label+": language control exists "+route)
+        if width<=760 and nav.first.is_hidden():
+            page.locator(".menu-toggle").click()
+            verify(page.locator(".main-nav").is_visible(),
+                   label+": mobile menu opens to reveal the compact language selector")
         height=nav.first.evaluate("(el)=>el.getBoundingClientRect().height")
         verify(27<=height<=37,label+": language control compact button height "+str(height)+" "+route)
         verify(page.locator('.language-switch a[lang="de"]').count()==1,
