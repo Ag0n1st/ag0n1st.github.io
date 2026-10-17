@@ -33,11 +33,12 @@ const resolved=rows.map(row=>({
     parts:variant.items.map(id=>({id,official:resolveOfficialItem(id,"Gear")}))
   }))
 }));
+import { guideText } from "../../../lib/i18n/guideUi";
 ---
 {resolved.length>0 && <details class="op-details op-team-gear">
   <summary>Waffen & Ausrüstung der Teammitglieder · {resolved.length} Operatoren</summary>
   <div class="op-details-body">
-    <p class="op-muted op-team-gear-caveat">Empfehlungen für die jeweilige Teamzusammenstellung; Varianten hängen von bestehenden Xiranit-Nutzern, Ultimate-Energiebedarf und Spielweise ab. Die Anzeige behauptet weder Blaupausenbesitz noch feste Waffenränge.</p>
+    <p class="op-muted op-team-gear-caveat">{t("Empfehlungen für die jeweilige Teamzusammenstellung; Varianten hängen von bestehenden Xiranit-Nutzern, Ultimate-Energiebedarf und Spielweise ab. Die Anzeige behauptet weder Blaupausenbesitz noch feste Waffenränge.")}</p>
     <div class="op-team-gear-list">
       {resolved.map(row=><div class="op-team-gear-entry">
         <strong>{displayTeamMember(row.member)}</strong>
@@ -46,7 +47,7 @@ const resolved=rows.map(row=>({
           <span><small>Empfohlene Waffe{row.weaponRank?" · R"+row.weaponRank:""}</small><strong>{row.weapon?.name??row.weaponId}</strong></span>
         </div>}
         {row.otherWeapons.length>0 && <div class="op-team-member-weapon-options">
-          <small class="op-muted">Waffenalternativen</small>
+          <small class="op-muted">{t("Waffenalternativen")}</small>
           <div class="op-team-weapon-alternatives">{row.otherWeapons.map(w=><span class="op-team-weapon-alternative">
             <ItemIcon id={w.official?.id??w.id} size="small"/>
             <small>{w.official?.name??w.id}</small>
