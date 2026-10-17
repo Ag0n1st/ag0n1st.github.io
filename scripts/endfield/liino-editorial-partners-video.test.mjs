@@ -54,7 +54,7 @@ test("Overview automatically displays readable partners and links to further Tea
   assert.match(overview, /profilePartners\.map\(partner=>/);
   assert.match(overview, /\{partner\.name\}/);
   assert.match(overview, /\{partner\.initials\}/);
-  assert.match(overview, /href="#teams">\{t\("Teams"\)\}<\/a>/);
+  assert.match(overview, /href="#teams">\{translateUi\("Teams"\)\}<\/a>/);
   assert.doesNotMatch(overview, /guide\.overview\.partners\.map/);
   assert.doesNotMatch(overview, /\[Op\]/);
   assert.match(css, /\.op-partners-grid\{/);
