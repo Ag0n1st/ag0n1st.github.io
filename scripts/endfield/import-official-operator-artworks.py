@@ -50,6 +50,23 @@ async def main():
     return {label:(card.innerText||'').replace(/\\s+/g,' ').trim(),siteKey:img?.getAttribute('data-key'),portrait:img?.style.backgroundImage};
   })""")
   if len(cards)!=len(NAMES):raise ValueError(f"Expected {len(NAMES)} distinct official cards, found {len(cards)}")
+
+  # The public Next.js chunk graph contains every static icon as a hashed
+  # media filename; it does not require visiting private APIs or accounts.
+  script_urls=await page.evaluate("""()=>[...document.querySelectorAll('script[src],link[rel=stylesheet]')].map(e=>e.src||e.href).filter(Boolean)""")
+  media_files=set()
+  for js_url in script_urls:
+   if not js_url.startswith("https://web-static.hg-cdn.com/endfield/official-v4/_next/static/") or not js_url.split("?")[0].endswith((".js",".css")):
+    continue
+   try:
+    with urlopen(Request(js_url,headers={"User-Agent":"Mozilla/5.0"}),timeout=18) as handle:
+     body=handle.read(8_000_001)
+    if len(body)>8_000_000:continue
+    media_files.update(re.findall(rb'([A-Za-z][A-Za-z0-9_-]{1,35}\.[0-9a-f]{8}\.(?:png|webp))',body))
+   except Exception as e:print("STATIC_CHUNK_UNAVAILABLE",type(e).__name__,js_url[-70:])
+  media_names={v.decode("ascii") for v in media_files}
+  print("PUBLIC_MEDIA_FILES",len(media_names),"SI_ICON_FOUND","jsspsi.0a31758c.png" in media_names)
+
   for i,(card,name) in enumerate(zip(cards,NAMES)):
    if not card["label"].startswith(name+" // "+name):
     raise ValueError(f"Official card #{i+1} changed mapping: {card['label'][:90]}")
@@ -61,11 +78,11 @@ async def main():
    row={"operator":name,"slug":variant_slug,"siteKey":key,"sourcePage":PAGE,"assets":{}}
    for variant,url in [("official-portrait",portrait)]:
     file=ROOT/variant_slug/(variant+".webp")
-    if file.exists():row["assets"][variant]={"path":"/"+str(file),"source":url,"status":"already-present","bytes":file.stat().st_size};continue
+    if file.exists():row["assets"][variant]={"path":"/"+str(file).removeprefix("public/"),"source":url,"status":"already-present","bytes":file.stat().st_size};continue
     try:
      compressed,size,outSize=download(url,variant)
      file.parent.mkdir(parents=True,exist_ok=True);file.write_bytes(compressed)
-     row["assets"][variant]={"path":"/"+str(file),"source":url,"status":"cached","size":outSize,"sourceSize":size,
+     row["assets"][variant]={"path":"/"+str(file).removeprefix("public/"),"source":url,"status":"cached","size":outSize,"sourceSize":size,
        "sha256":hashlib.sha256(compressed).hexdigest(),"bytes":len(compressed)}
     except (OSError,ValueError) as e:
      row["assets"][variant]={"source":url,"status":"unavailable","reason":str(e)}
@@ -83,14 +100,29 @@ async def main():
     portraitStem=urlsplit(portrait).path.split("/")[-1].split(".")[0]
     if candidate and stem in (portraitStem,key) and candidate!=portrait:
      icon=candidate;break
+   if not icon:
+    # Resolve exact same-site, same-asset-stem candidates from Next.js bundles.
+    # Require a uniquely square image to distinguish icons from portraits.
+    portrait_stem=urlsplit(portrait).path.split("/")[-1].split(".")[0]
+    candidates=sorted(name for name in media_names if name.split(".")[0] in (portrait_stem,key)
+       and ASSET_PREFIX+name!=portrait and name.endswith(".png"))
+    matching=[]
+    for filename in candidates:
+     try:
+      compressed,source_size,out_size=download(ASSET_PREFIX+filename,"official-icon")
+      ratio=source_size[0]/source_size[1]
+      if 0.88<=ratio<=1.13:matching.append((ASSET_PREFIX+filename,compressed,source_size,out_size))
+     except (OSError,ValueError):pass
+    if len(matching)==1:
+     icon=matching[0][0]
    if icon:
     variant="official-icon";file=ROOT/variant_slug/(variant+".webp")
-    if file.exists():row["assets"][variant]={"path":"/"+str(file),"source":icon,"status":"already-present","bytes":file.stat().st_size}
+    if file.exists():row["assets"][variant]={"path":"/"+str(file).removeprefix("public/"),"source":icon,"status":"already-present","bytes":file.stat().st_size}
     else:
      try:
       compressed,size,outSize=download(icon,variant)
       file.parent.mkdir(parents=True,exist_ok=True);file.write_bytes(compressed)
-      row["assets"][variant]={"path":"/"+str(file),"source":icon,"status":"cached","size":outSize,"sourceSize":size,
+      row["assets"][variant]={"path":"/"+str(file).removeprefix("public/"),"source":icon,"status":"cached","size":outSize,"sourceSize":size,
        "sha256":hashlib.sha256(compressed).hexdigest(),"bytes":len(compressed)}
      except (OSError,ValueError) as e:row["assets"][variant]={"source":icon,"status":"unavailable","reason":str(e)}
    else:row["assets"]["official-icon"]={"status":"unverified","reason":"No unique matching detail icon on current official page"}
