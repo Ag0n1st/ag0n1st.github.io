@@ -2,17 +2,19 @@
 const itemsDe = [
   { label: "Übersicht", href: "/endfield/", key: "overview" },
   { label: "Operatoren", href: "/endfield/operatoren/", key: "operators" },
-  { label: "Tierlist", href: "/endfield/tierlist/", key: "tierlist" },
   { label: "Fabrik", href: "/endfield/fabrik/", key: "factory" },
   { label: "Rekrutierung", href: "/endfield/rekrutierung/", key: "recruitment" },
   { label: "Veredelung", href: "/endfield/veredelung/", key: "refinement" },
   { label: "Essenzen", href: "/endfield/essenzen/", key: "essences" },
   { label: "Speedruns", href: "/endfield/speedruns/", key: "speedruns" },
   { label: "Checkliste", href: "/endfield/checkliste/", key: "checklist" },
+  { label: "Tierlist", href: "/endfield/tierlist/", key: "tierlist" },
   { label: "Countdown", href: "/endfield/countdown/", key: "countdown" },
 ];
 const { active = "overview", lang = "de" } = Astro.props;
 const isEn=lang==="en";
+// A placeholder alone is not a finished feature. Keep this shared for both languages.
+const upcoming=new Set(["factory","recruitment","refinement","essences","checklist","tierlist","speedruns"]);
 const items=isEn?itemsDe.map(item=>({
  ...item,
  label:({"overview":"Overview","operators":"Operators","tierlist":"Tier List","factory":"Factory","recruitment":"Recruitment","refinement":"Refinement","essences":"Essences","speedruns":"Speedruns","checklist":"Checklist","countdown":"Countdown"} as Record<string,string>)[item.key]??item.label,
@@ -28,8 +30,8 @@ const items=isEn?itemsDe.map(item=>({
 <nav class="endfield-nav" aria-label="Arknights: Endfield Navigation">
   <div class="endfield-nav-inner">
     {items.map((item) => (
-      <a href={item.href} class:list={["endfield-nav-link", { "is-active": active === item.key }]} aria-current={active === item.key ? "page" : undefined}>
-        {item.label}
+      <a href={item.href} class:list={["endfield-nav-link", { "is-active": active === item.key, "is-upcoming": upcoming.has(item.key) }]} aria-current={active === item.key ? "page" : undefined}>
+        {item.label}{upcoming.has(item.key) && <span class="nav-upcoming-indicator" aria-label={isEn?"In progress":"Im Aufbau"} title={isEn?"In progress":"Im Aufbau"}>·</span>}
       </a>
     ))}
   </div>
