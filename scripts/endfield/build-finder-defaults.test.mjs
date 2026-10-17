@@ -80,7 +80,7 @@ test("preset uses only passed valid Gear IDs and never invents empty/unknown sel
 test("equipment uses a CLOSED native disclosure for all heavy filters and detail builds",()=>{
  const equipment=readFileSync("src/components/operator/sections/OperatorEquipment.astro","utf8");
  const start=equipment.indexOf('<details class="op-divided op-build-finder-accordion" id="build-finder">');
- const meta=equipment.indexOf(">Meta Builds</h3>");
+ const meta=equipment.indexOf('{t("Meta Builds")}');
  const filters=equipment.indexOf('id="op-level"');
  const details=equipment.indexOf(">Empfohlene Ausrüstung</h3>");
  const progression=equipment.indexOf(">Ausrüstungsprogression</h3>");
