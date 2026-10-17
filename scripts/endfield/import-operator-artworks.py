@@ -54,7 +54,7 @@ def main():
             with Image.open(io.BytesIO(data)) as photo:
                 photo.load()
                 w,h=photo.size
-                if photo.format not in ("PNG","JPEG","WEBP") or w<400 or h<350 or w>6000 or h>6000 or w/h<2.0:
+                if photo.format not in ("PNG","JPEG","WEBP") or w<400 or h<300 or w>6000 or h>6000 or w/h<2.0:
                     records.append({"operator":name,"slug":slug,"source":source,"status":"unsupported-artwork-shape","sourceSize":[w,h]})
                     print("REJECTED",slug,w,h)
                     continue
@@ -73,7 +73,7 @@ def main():
                     continue
                 output.parent.mkdir(parents=True,exist_ok=True)
                 output.write_bytes(compressed)
-                records.append({"operator":name,"slug":slug,"variant":"wiki-infobox-header","path":"/"+str(output).replace(os.sep,"/"),"source":source,
+                records.append({"operator":name,"slug":slug,"variant":"wiki-infobox-header","path":"/"+str(output).removeprefix("public/").replace(os.sep,"/"),"source":source,
                     "status":"cached","sourceSize":[w,h],"size":[img.width,img.height],
                     "bytes":len(compressed),"sha256":hashlib.sha256(compressed).hexdigest()})
                 print("CACHED",slug,w,h,"->",img.width,img.height,len(compressed))
