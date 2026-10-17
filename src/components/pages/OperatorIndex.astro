@@ -27,7 +27,7 @@ const l=(de:string,en:string)=>isEn?en:de;
     <span class="op-eyebrow">ARKNIGHTS: ENDFIELD / GUIDES</span>
     <h1 class="op-page-heading">{l("Operatoren","Operators")}<span class="title-period">.</span></h1>
     <p class="op-muted op-page-intro">{l("Wähle einen Operator aus, um seinen Guide mit Builds, Fertigkeiten, Teams und Gameplay zu öffnen.","Select an operator to read the full guide with equipment builds, skills, teams and gameplay.")}</p>
-    <div class="op-grid" aria-label="Operatoren">
+    <div class="op-grid" aria-label={l("Operatoren","Operators")}>
       {operators.map((operator) => (
         <a class="op-card" href={isEn?`/en/endfield/operators/${operator.slug}/`:`/endfield/operatoren/${operator.slug}/`} aria-label={isEn?`Open ${operator.name} guide in English`:`Guide für ${operator.name} öffnen`}>
           <div class="op-card-art">
@@ -38,10 +38,10 @@ const l=(de:string,en:string)=>isEn?en:de;
           <div class="op-card-info">
             <h2>{operator.name}</h2>
             <div class="op-chip-row">
-              <span class="op-chip is-pink">{operator.game ? operator.game.rarity + "★" : "[Seltenheit]"}</span>
-              <span class="op-chip">{operator.game?.class || "[Klasse]"}</span>
-              <span class="op-chip">{operator.game?.element || "[Element]"}</span>
-              <span class="op-chip">{operator.game?.weaponType || "[Waffentyp]"}</span>
+              <span class="op-chip is-pink">{operator.game ? operator.game.rarity + "★" : l("[Seltenheit]","[Rarity]")}</span>
+              <span class="op-chip">{operator.game?.class || l("[Klasse]","[Class]")}</span>
+              <span class="op-chip">{operator.game?.element || l("[Element]","[Element]")}</span>
+              <span class="op-chip">{operator.game?.weaponType || l("[Waffentyp]","[Weapon type]")}</span>
               {operator.preview && <span class="op-chip is-accent">{l("Layout-Vorschau","Layout Preview")}</span>}
             </div>
             <div class="op-card-bottom"><span>{l("Operator-Guide ansehen","View Operator Guide")}</span><span aria-hidden="true">↗</span></div>
