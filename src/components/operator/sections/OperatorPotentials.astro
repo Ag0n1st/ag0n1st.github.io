@@ -3,16 +3,18 @@ import type { OperatorGuideModel } from "../../../lib/endfield/operatorGuideMode
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
+const t=(value:string)=>guideText(model.lang,value);
 const { guide, gameData, localized, trPotential, officialPotentials, potentialByLevel, getOperatorImageUrl } = model;
 const wikiGalleryUrl="https://endfield.wiki.gg/wiki/"+encodeURIComponent(gameData?.operator.name??guide.displayName??guide.operator)+"/Gallery";
 const alternatePotentialModels=guide.potentials.comparisons??[];
 const percent=(value:number|undefined)=>value===undefined?"–":value.toLocaleString("de-DE",{minimumFractionDigits:1,maximumFractionDigits:1})+" %";
+import { guideText } from "../../../lib/i18n/guideUi";
 ---
 <section class="op-section" id="potenziale">
-        <h2>Potenziale</h2>
-        <div class="op-notice"><strong>Friendly Disclaimer:</strong> Potenziale sind nice to have, aber <strong>niemals ein Muss</strong>. Zusätzliche Kopien können teuer sein und sind in der Regel nicht nötig, um einen Operator sinnvoll zu spielen.</div>
+        <h2>{t("Potenziale")}</h2>
+        <div class="op-notice"><strong>Friendly Disclaimer:</strong>{t("Potenziale sind nice to have, aber")}<strong>{t("niemals ein Muss")}</strong>{t(". Zusätzliche Kopien können teuer sein und sind in der Regel nicht nötig, um einen Operator sinnvoll zu spielen.")}</div>
         <div class="op-divided" style="margin-top:20px">
-          <h3>Potenzialübersicht</h3>
+          <h3>{t("Potenzialübersicht")}</h3>
           <div class="op-pills" aria-label="Potenzial auswählen">{[1,2,3,4,5].map((n,i)=><button type="button" class="op-pill-button" data-potential-button={n} aria-pressed={i===0?"true":"false"}>P{n}</button>)}</div>
           {[1,2,3,4,5].map((n,i)=>{
             const p=potentialByLevel.get(n);
@@ -36,10 +38,10 @@ const percent=(value:number|undefined)=>value===undefined?"–":value.toLocaleSt
           })}
         </div>
         <details class="op-divided op-guide-accordion" data-guide-disclosure="potential-comparison">
-          <summary class="op-guide-accordion-summary"><h3>Potenzialvergleich</h3><span class="op-guide-accordion-hint">Vergleich anzeigen</span></summary>
+          <summary class="op-guide-accordion-summary"><h3>{t("Potenzialvergleich")}</h3><span class="op-guide-accordion-hint">{t("Vergleich anzeigen")}</span></summary>
           <div class="op-guide-accordion-content">
           <div class="op-table-wrap"><table class="op-table op-potential-comparison-table">
-            <thead><tr><th scope="col">Potenzial</th><th scope="col">Offizieller Effekt</th>
+            <thead><tr><th scope="col">{t("Potenzial")}</th><th scope="col">{t("Offizieller Effekt")}</th>
               <th scope="col">{alternatePotentialModels.length?"Mit Ultimate-Energiebedarf":"Zusatzgewinn zur Vorstufe"}</th>
               {alternatePotentialModels.map(scenario=><th scope="col">{scenario.title}</th>)}
             </tr></thead>
