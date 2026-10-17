@@ -366,7 +366,16 @@ def smoke_si(page, base_url, width):
         verify(term in page.locator("#uebersicht .op-profile-card").inner_text(),
                label+": official main/secondary localized attribute "+term)
     verify(page.locator("#uebersicht .op-profile-art img").count()==1,
-           label+": official local Si portrait/illustration")
+           label+": local Si banner artwork")
+    verify(page.locator("#uebersicht .op-profile-art img").get_attribute("src")=="/images/endfield/operators/si/banner.webp",
+           label+": horizontal banner replaces the recruitment splash in Si overview")
+    splash=page.locator("#potenziale details[data-guide-disclosure='recruitment-splash']")
+    verify(splash.count()==1 and not splash.evaluate("(el)=>el.open"),
+           label+": recruitment splash disclosure starts closed")
+    splash.locator("summary").click()
+    verify(splash.locator("img.op-recruitment-splash").count()==1 and
+           "/illustration.webp" in (splash.locator("img").get_attribute("src") or ""),
+           label+": recruitment splash preserved at full width in the potentials section")
     mainart=page.locator("#uebersicht .op-profile-art img")
     page.wait_for_function("(el)=>el.complete && el.naturalWidth>100",arg=mainart.element_handle())
     verify(page.locator("#uebersicht .op-quick-weapons-card .op-quick-weapon-item").count()==3,
@@ -612,7 +621,8 @@ def smoke_i18n(page, base_url, width):
         first=cards.first.locator(".guide-teaser-category")
         square=first.evaluate("(el)=>({w:el.getBoundingClientRect().width,h:el.getBoundingClientRect().height})")
         verify(abs(square["w"]-square["h"])<1,label+": category badge is square in "+locale)
-        verify(("Charakter" if locale=="de" else "Character") in (first.text_content() or ""),
+        verify(first.locator("svg.guide-category-icon").count()==1 and
+               ("Charakter" if locale=="de" else "Character") in (first.get_attribute("aria-label") or ""),
                label+": category uses Character naming in "+locale)
         page.goto(base_url+prefix+"/endfield/")
         guide_cards=page.locator(".endfield-guide-teasers .guide-teaser-card")
@@ -671,8 +681,8 @@ def smoke_i18n(page, base_url, width):
                page.locator("[data-version-countdown] .countdown-digit").count()==6,
                label+": "+lang+" six-digit current-version countdown uses the shared layout")
         verify(page.locator("[data-countdown-ended][hidden]").count()==1 and
-               page.locator(".countdown-source a[href*='endfield.wiki.gg']").count()==1,
-               label+": "+lang+" has a non-expired estimated date with traceable source")
+               ("Protokoll-Pass" if lang=="de" else "Protocol Pass") in page.locator(".countdown-source").inner_text(),
+               label+": "+lang+" has a non-expired Protocol Pass comparison")
         check_overflow(page,label+" "+lang+" countdown")
         links=page.locator(".endfield-nav-link").all_text_contents()
         flat=[x.strip().replace("·","") for x in links]
