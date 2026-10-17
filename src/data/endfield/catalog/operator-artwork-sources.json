@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "sourceType": "community-mediawiki-image",
+  "verifiedAt": "2026-10-17",
+  "rights": "Game imagery belongs to the respective rightsholders; refer to the individual Wiki file page for attribution and licence.",
+  "items": [
+    {
+      "operator": "Si",
+      "slug": "si",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Si.png",
+      "status": "HTTP 404"
+    },
+    {
+      "operator": "Argent Flow",
+      "slug": "argent-flow",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Argent_Flow.png",
+      "status": "HTTP 404"
+    },
+    {
+      "operator": "Endministrator",
+      "slug": "endministrator",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Endministrator.png",
+      "status": "unsupported-artwork-shape",
+      "sourceSize": [
+        1115,
+        1181
+      ]
+    },
+    {
+      "operator": "Perlica",
+      "slug": "perlica",
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/perlica/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Perlica.png",
+      "status": "cached",
+      "sourceSize": [
+        1350,
+        1064
+      ],
+      "size": [
+        1120,
+        883
+      ],
+      "bytes": 105430,
+      "sha256": "0a6e00273ba8a7f23553f4461e36ce38526a11da6104196790626234ee4e819d"
+    },
+    {
+      "operator": "Chen Qianyu",
+      "slug": "chen-qianyu",
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/chen-qianyu/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Chen_Qianyu.png",
+      "status": "cached",
+      "sourceSize": [
+        1248,
+        1065
+      ],
+      "size": [
+        1120,
+        956
+      ],
+      "bytes": 116350,
+      "sha256": "ab1e954f5235a56d642366ce44d2f9654e006c3ca440146de72e54bf8ffa2708"
+    },
+    {
+      "operator": "Typhoeus",
+      "slug": "typhoeus",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Typhoeus.png",
+      "status": "HTTP 404"
+    },
+    {
+      "operator": "Purrchena",
+      "slug": "purrchena",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Purrchena.png",
+      "status": "HTTP 404"
+    },
+    {
+      "operator": "Arcane",
+      "slug": "arcane",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Arcane.png",
+      "status": "HTTP 404"
+    },
+    {
+      "operator": "Liino",
+      "slug": "liino",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Liino.png",
+      "status": "HTTP 404"
+    },
+    {
+      "operator": "Mi Fu",
+      "slug": "mi-fu",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Mi_Fu.png",
+      "status": "HTTP 404"
+    },
+    {
+      "operator": "Camille",
+      "slug": "camille",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Camille.png",
+      "status": "HTTP 404"
+    },
+    {
+      "operator": "Zhuang Fangyi",
+      "slug": "zhuang-fangyi",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Zhuang_Fangyi.png",
+      "status": "unsupported-artwork-shape",
+      "sourceSize": [
+        152,
+        212
+      ]
+    },
+    {
+      "operator": "Tangtang",
+      "slug": "tangtang",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Tangtang.png",
+      "status": "unsupported-artwork-shape",
+      "sourceSize": [
+        152,
+        212
+      ]
+    },
+    {
+      "operator": "Rossi",
+      "slug": "rossi",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Rossi.png",
+      "status": "HTTP 404"
+    },
+    {
+      "operator": "Laevatain",
+      "slug": "laevatain",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Laevatain.png",
+      "status": "HTTP 404"
+    },
+    {
+      "operator": "Yvonne",
+      "slug": "yvonne",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Yvonne.png",
+      "status": "HTTP 404"
+    },
+    {
+      "operator": "Gilberta",
+      "slug": "gilberta",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Gilberta.png",
+      "status": "HTTP 404"
+    },
+    {
+      "operator": "Ardelia",
+      "slug": "ardelia",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Ardelia.png",
+      "status": "HTTP 404"
+    },
+    {
+      "operator": "Ember",
+      "slug": "ember",
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/ember/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Ember.png",
+      "status": "cached",
+      "sourceSize": [
+        1076,
+        966
+      ],
+      "size": [
+        1076,
+        966
+      ],
+      "bytes": 133712,
+      "sha256": "2bcc058a3d93bf6d3b1f41acb27251e61558663e98a579d240280499f2ec3aac"
+    },
+    {
+      "operator": "Last Rite",
+      "slug": "last-rite",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Last_Rite.png",
+      "status": "HTTP 404"
+    },
+    {
+      "operator": "Lifeng",
+      "slug": "lifeng",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Lifeng.png",
+      "status": "HTTP 404"
+    },
+    {
+      "operator": "Pogranichnik",
+      "slug": "pogranichnik",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Pogranichnik.png",
+      "status": "HTTP 429"
+    },
+    {
+      "operator": "Alesh",
+      "slug": "alesh",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Alesh.png",
+      "status": "HTTP 429"
+    },
+    {
+      "operator": "Arclight",
+      "slug": "arclight",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Arclight.png",
+      "status": "HTTP 429"
+    },
+    {
+      "operator": "Avywenna",
+      "slug": "avywenna",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Avywenna.png",
+      "status": "HTTP 429"
+    },
+    {
+      "operator": "Da Pan",
+      "slug": "da-pan",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Da_Pan.png",
+      "status": "HTTP 429"
+    },
+    {
+      "operator": "Snowshine",
+      "slug": "snowshine",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Snowshine.png",
+      "status": "HTTP 429"
+    },
+    {
+      "operator": "Wulfgard",
+      "slug": "wulfgard",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Wulfgard.png",
+      "status": "HTTP 429"
+    },
+    {
+      "operator": "Xaihi",
+      "slug": "xaihi",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Xaihi.png",
+      "status": "HTTP 429"
+    },
+    {
+      "operator": "Akekuri",
+      "slug": "akekuri",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Akekuri.png",
+      "status": "HTTP 429"
+    },
+    {
+      "operator": "Antal",
+      "slug": "antal",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Antal.png",
+      "status": "HTTP 429"
+    },
+    {
+      "operator": "Catcher",
+      "slug": "catcher",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Catcher.png",
+      "status": "HTTP 429"
+    },
+    {
+      "operator": "Estella",
+      "slug": "estella",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Estella.png",
+      "status": "HTTP 429"
+    },
+    {
+      "operator": "Fluorite",
+      "slug": "fluorite",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Fluorite.png",
+      "status": "HTTP 404"
+    }
+  ]
+}
