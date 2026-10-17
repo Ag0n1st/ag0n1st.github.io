@@ -4,6 +4,7 @@ on:
     branches: [feature/endfield-nav-speedruns-countdown-artworks-20261017]
     paths:
       - .github/workflows/probe-operator-artworks.yml
+      - scripts/endfield/probe-operator-artworks.py
   workflow_dispatch:
 permissions:
   contents: read

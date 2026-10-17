@@ -21,6 +21,9 @@ def sample_http(url):
 
 async def main():
  print("WIKI_HTTP_SAMPLES")
+ with urlopen(Request("https://endfield.gryphline.com/en-us/operator",headers={"User-Agent":"Mozilla/5.0"}),timeout=30) as resp:
+  raw=resp.read().decode("utf-8","replace")
+ print("OFFICIAL_RAW_HTML",json.dumps({"length":len(raw),"jsspsi":raw.count("jsspsi"),"media":raw.count("_next/static/media/"),"samples":re.findall(r".{0,100}jsspsi.{0,160}",raw)[:6]},ensure_ascii=False))
  for f in ["Ember.png","Ember Splash Art.png"]:
   canon=f.replace(" ","_")
   md5=hashlib.md5(canon.encode()).hexdigest()
@@ -55,5 +58,23 @@ async def main():
   from collections import Counter
   print("OFFICIAL_PAGE_SUMMARY",json.dumps({"title":data["title"],"images":len(data["images"]),"names":len(data["operatorsPresent"]),"matched":dict(Counter(x["operator"] for x in data["images"] if x["operator"]))}))
   print("OFFICIAL_PAGE_IMAGE_SAMPLES",json.dumps(data["images"][:70],ensure_ascii=False))
+  styles=await page.evaluate("""(names)=>{
+    let all=[...document.querySelectorAll('*')],results=[];
+    for(const el of all){
+      const computed=getComputedStyle(el);
+      const urls=[computed.backgroundImage,el.getAttribute('style')||'',el.getAttribute('data-src')||''];
+      for(const url of urls){
+        if(url && (url.includes('media/') || url.includes('.png') || url.includes('.webp'))){
+          const txt=(el.innerText||'').replace(/\\s+/g,' ').slice(0,150);
+          const self=(el.outerHTML||'').slice(0,240);
+          results.push({tag:el.tagName,cls:String(el.className||'').slice(0,90),txt,url:url.slice(0,270),self});
+          break;
+        }
+      }
+      if(results.length>=125)break;
+    }
+    return {elements:all.length,results};
+  }""",OPERATORS)
+  print("OFFICIAL_COMPUTED_STYLES",json.dumps(styles,ensure_ascii=False)[:18500])
   await browser.close()
 asyncio.run(main())
