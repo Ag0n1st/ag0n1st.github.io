@@ -323,7 +323,8 @@ h1 { margin: 27px 0 17px; font-size: clamp(56px, 6.3vw, 82px); line-height: .95;
 .main-nav a[href="/nte/"],.main-nav a[href="/en/nte/"],.main-nav a[href="/about/"],.main-nav a[href="/en/about/"]{color:#91849b;text-decoration:underline dotted #665873 1px;text-underline-offset:5px}
 /* Illustrated guide cards: optional local, transparent background, text stays legible. */
 .guide-teaser-card{position:relative;isolation:isolate}
-.guide-teaser-art{position:absolute;z-index:-1;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% 28%;opacity:.20;filter:saturate(.9)}
+.guide-teaser-art{position:absolute;z-index:0;pointer-events:none;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% 28%;opacity:.20;filter:saturate(.9)}
+.guide-teaser-card:has(.guide-teaser-art) .guide-teaser-link{position:relative;z-index:1}
 .guide-teaser-card:has(.guide-teaser-art){background:linear-gradient(90deg,#101014ee,#131019db 58%,#11121985)}
 .guide-teaser-card:has(.guide-teaser-art) .guide-teaser-copy p{color:#e0dbe5;text-shadow:0 1px 7px #000c}
 .guide-teaser-card:has(.guide-teaser-art) .guide-teaser-copy h3{text-shadow:0 2px 9px #000e}
