@@ -112,10 +112,10 @@ test("local v2 stores explicit deselections and persists player level/factory; l
  assert.match(controller,/unselectedGearBlueprintIds:\[\.\.\.unselectedBlueprintIds\]/);
  assert.match(controller,/lockedAreaIds:\[\.\.\.lockedAreaIds\]/);
  assert.match(controller,/\[1,2\]\.includes\(saved\.version\)/);
- assert.match(controller,/applyMaxPresetranslateUi\(\);\s*try\{/);
+ assert.match(controller,/applyMaxPreset\(\);\s*try\{/);
  assert.match(controller,/level\?\.addEventListener\("change",\(\)=>\{saveStoryProgress\(\);updateConfig\(\);\}\)/);
  assert.match(controller,/factory\?\.addEventListener\("change",\(\)=>\{saveStoryProgress\(\);updateConfig\(\);\}\)/);
- assert.match(controller,/resetProgress\?\.addEventListener\("click",\(\)=>\{[\s\S]*?applyMaxPresetranslateUi\(\)/);
+ assert.match(controller,/resetProgress\?\.addEventListener\("click",\(\)=>\{[\s\S]*?applyMaxPreset\(\)/);
  assert.match(controller,/if\(!unselectedBlueprintIds\.has\(id\)\)ownedBlueprintIds\.add\(id\)/);
 });
 
@@ -164,15 +164,15 @@ test("both preset buttons appear next to each other within the collapsed Finder"
 test("explicit minimal preset persists across reloads and operator changes without turning on new Gear",()=>{
  const controller=readFileSync("src/components/operator/OperatorGuide.astro","utf8");
  assert.match(controller,/let selectionMode:"max"\|"min"="max"/);
- assert.match(controller,/function applyMinPresetranslateUi\(\)\{\s*selectionMode="min"/);
- assert.match(controller,/getMinBuildFinderPresetranslateUi\(/);
- assert.match(controller,/if\(hasMinimalPreset\)applyMinPresetranslateUi\(\)/);
+ assert.match(controller,/function applyMinPreset\(\)\{\s*selectionMode="min"/);
+ assert.match(controller,/getMinBuildFinderPreset\(/);
+ assert.match(controller,/if\(hasMinimalPreset\)applyMinPreset\(\)/);
  assert.match(controller,/selectedAreaIds:selectionMode==="min"/);
  assert.match(controller,/selectedGearBlueprintIds:selectionMode==="min"\?\[\.\.\.selectedBlueprintIds\]/);
  assert.match(controller,/for\(const id of allGearIds\(\)\)\s*if\(selectedBlueprintIds\.has\(id\)\)ownedBlueprintIds\.add\(id\)/);
  assert.match(controller,/if\(selectionMode==="min"\)\{\s*if\(input\.checked\)selectedBlueprintIds\.add\(gearId\)/);
- assert.match(controller,/minProgress\?\.addEventListener\("click",\(\)=>\{\s*applyMinPresetranslateUi\(\);\s*saveStoryProgress\(\);\s*updateConfig\(\)/);
- assert.match(controller,/resetProgress\?\.addEventListener\("click",\(\)=>\{[\s\S]*?applyMaxPresetranslateUi\(\)/);
+ assert.match(controller,/minProgress\?\.addEventListener\("click",\(\)=>\{\s*applyMinPreset\(\);\s*saveStoryProgress\(\);\s*updateConfig\(\)/);
+ assert.match(controller,/resetProgress\?\.addEventListener\("click",\(\)=>\{[\s\S]*?applyMaxPreset\(\)/);
  assert.match(controller,/restoreStoryProgress\(\);/);
  assert.match(controller,/\[1,2\]\.includes\(saved\.version\)/);
  assert.match(controller,/saved\.selectionMode==="min"/);
