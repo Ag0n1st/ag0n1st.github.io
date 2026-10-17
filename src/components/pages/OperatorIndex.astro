@@ -1,20 +1,18 @@
 ---
-import { getCollection } from "astro:content";
+import { getOperatorsByRelease } from "../../lib/content/guideFeed";
 import { getImportedOperator } from "../../lib/endfield/operatorData";
 import { getOperatorImageUrl } from "../../lib/endfield/operatorAssets";
 import EndfieldPlaceholder from "../../layouts/EndfieldPlaceholder.astro";
 import "../../styles/operator-guides.css";
 
 // Published guides and explicitly enabled previews appear automatically.
-const entries = await getCollection("operator-guides", ({ data }) =>
-  data.status === "published" || data.status === "preview"
-);
+const entries=await getOperatorsByRelease();
 const operators = entries.map(entry => ({
   name: entry.data.displayName ?? entry.data.operator.split("-").map(part => part[0].toUpperCase() + part.slice(1)).join(" "),
   slug: entry.data.operator,
   preview: entry.data.status === "preview",
   game: getImportedOperator(entry.data.operator)?.operator,
-})).sort((a,b) => a.name.localeCompare(b.name, "de"));
+}));
 
 
 interface Props {lang?:"de"|"en"}
