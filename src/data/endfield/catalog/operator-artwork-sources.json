@@ -7,254 +7,582 @@
     {
       "operator": "Si",
       "slug": "si",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Si.png",
-      "status": "HTTP 404"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/si/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Si_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 133734,
+      "sha256": "166cfd69880b2c478748232862de7dc9d2cf4d4d43777f7291505c91f21a709e"
     },
     {
       "operator": "Argent Flow",
       "slug": "argent-flow",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Argent_Flow.png",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Argent_Flow_Banner.png",
       "status": "HTTP 404"
     },
     {
       "operator": "Endministrator",
       "slug": "endministrator",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Endministrator.png",
-      "status": "unsupported-artwork-shape",
-      "sourceSize": [
-        1115,
-        1181
-      ]
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Endministrator_Banner.png",
+      "status": "HTTP 404"
     },
     {
       "operator": "Perlica",
       "slug": "perlica",
       "variant": "wiki-infobox-header",
       "path": "/public/images/endfield/operators/perlica/banner.webp",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Perlica.png",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Perlica_Banner.png",
       "status": "cached",
       "sourceSize": [
-        1350,
-        1064
+        900,
+        352
       ],
       "size": [
-        1120,
-        883
+        900,
+        352
       ],
-      "bytes": 105430,
-      "sha256": "0a6e00273ba8a7f23553f4461e36ce38526a11da6104196790626234ee4e819d"
+      "bytes": 71520,
+      "sha256": "82681cd302fbd5928b78d79c0b17a91848dc9ea584beb85137399f1cf67a52a0"
     },
     {
       "operator": "Chen Qianyu",
       "slug": "chen-qianyu",
       "variant": "wiki-infobox-header",
       "path": "/public/images/endfield/operators/chen-qianyu/banner.webp",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Chen_Qianyu.png",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Chen_Qianyu_Banner.png",
       "status": "cached",
       "sourceSize": [
-        1248,
-        1065
+        900,
+        352
       ],
       "size": [
-        1120,
-        956
+        900,
+        352
       ],
-      "bytes": 116350,
-      "sha256": "ab1e954f5235a56d642366ce44d2f9654e006c3ca440146de72e54bf8ffa2708"
+      "bytes": 58208,
+      "sha256": "1fbef049a9877d033a581f2e7d2e56d3559b9e06bbf1ea0592149e8fa2fc7543"
     },
     {
       "operator": "Typhoeus",
       "slug": "typhoeus",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Typhoeus.png",
-      "status": "HTTP 404"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/typhoeus/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Typhoeus_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 95654,
+      "sha256": "a9ca81583224550b58c283241232c2a371f55c495478ff4fd8a77c9760cab6d7"
     },
     {
       "operator": "Purrchena",
       "slug": "purrchena",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Purrchena.png",
-      "status": "HTTP 404"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/purrchena/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Purrchena_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 66594,
+      "sha256": "938ac3a25ef93adcf939806a151527a0ce2f4e2d81171d7907fec27279e384a6"
     },
     {
       "operator": "Arcane",
       "slug": "arcane",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Arcane.png",
-      "status": "HTTP 404"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/arcane/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Arcane_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 84408,
+      "sha256": "df7ca07ea2eed7337f3233c334ccb44b54bf52df0ca8867a80ee605ee2fa10ca"
     },
     {
       "operator": "Liino",
       "slug": "liino",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Liino.png",
-      "status": "HTTP 404"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/liino/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Liino_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 103502,
+      "sha256": "33ec078fc7f93e0f0e93d35dcfad5cbf678592f7518455a681f740fd64113c93"
     },
     {
       "operator": "Mi Fu",
       "slug": "mi-fu",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Mi_Fu.png",
-      "status": "HTTP 404"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/mi-fu/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Mi_Fu_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 83598,
+      "sha256": "1ae63604143cb0b59d434ceec569ce9a0a05546f8f9c241fa868355d0cb4b5a1"
     },
     {
       "operator": "Camille",
       "slug": "camille",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Camille.png",
-      "status": "HTTP 404"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/camille/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Camille_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 99540,
+      "sha256": "f7b742fda8d265218422dd3e781279f3ca95c584e450b9ea0a36269588227510"
     },
     {
       "operator": "Zhuang Fangyi",
       "slug": "zhuang-fangyi",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Zhuang_Fangyi.png",
-      "status": "unsupported-artwork-shape",
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/zhuang-fangyi/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Zhuang_Fangyi_Banner.png",
+      "status": "cached",
       "sourceSize": [
-        152,
-        212
-      ]
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 59214,
+      "sha256": "2ce46867c0fa2d85c55756600e7284fdfb5ff9ce2c2f9dc123d49807c6729421"
     },
     {
       "operator": "Tangtang",
       "slug": "tangtang",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Tangtang.png",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Tangtang_Banner.png",
       "status": "unsupported-artwork-shape",
       "sourceSize": [
-        152,
-        212
+        874,
+        349
       ]
     },
     {
       "operator": "Rossi",
       "slug": "rossi",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Rossi.png",
-      "status": "HTTP 404"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/rossi/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Rossi_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 65346,
+      "sha256": "39ef093ceff08cbc35652807575e688077524a98e53bb48165b8288449f80321"
     },
     {
       "operator": "Laevatain",
       "slug": "laevatain",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Laevatain.png",
-      "status": "HTTP 404"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/laevatain/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Laevatain_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 62688,
+      "sha256": "cb3888ba0fc24e63898281c96f588e847eef2d9c4427303144e81aa9bfd32abb"
     },
     {
       "operator": "Yvonne",
       "slug": "yvonne",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Yvonne.png",
-      "status": "HTTP 404"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/yvonne/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Yvonne_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 69792,
+      "sha256": "7e9de61bd3c5160c598978c69b2e8b2989a62fa2ea545a42a115da335a91d702"
     },
     {
       "operator": "Gilberta",
       "slug": "gilberta",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Gilberta.png",
-      "status": "HTTP 404"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/gilberta/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Gilberta_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 93368,
+      "sha256": "d1370b9a3555d953ed7c9a988b5ce368faf4c5bc3e3e1644d73ba041e2f286dc"
     },
     {
       "operator": "Ardelia",
       "slug": "ardelia",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Ardelia.png",
-      "status": "HTTP 404"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/ardelia/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Ardelia_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 82636,
+      "sha256": "45882727bcf76708f0c4caec6c005e774b3135347f40ac0f178d01be80fc7230"
     },
     {
       "operator": "Ember",
       "slug": "ember",
       "variant": "wiki-infobox-header",
       "path": "/public/images/endfield/operators/ember/banner.webp",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Ember.png",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Ember_Banner.png",
       "status": "cached",
       "sourceSize": [
-        1076,
-        966
+        900,
+        352
       ],
       "size": [
-        1076,
-        966
+        900,
+        352
       ],
-      "bytes": 133712,
-      "sha256": "2bcc058a3d93bf6d3b1f41acb27251e61558663e98a579d240280499f2ec3aac"
+      "bytes": 85072,
+      "sha256": "6922ede22c9cec552b3d09e9c9e3e9699514ea3ba1e9a2ec25047a8aac199b4f"
     },
     {
       "operator": "Last Rite",
       "slug": "last-rite",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Last_Rite.png",
-      "status": "HTTP 404"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/last-rite/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Last_Rite_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 131210,
+      "sha256": "8a138985913098b296e7b66ab5b99a972c9d7a2c4928e8de9932423590631aef"
     },
     {
       "operator": "Lifeng",
       "slug": "lifeng",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Lifeng.png",
-      "status": "HTTP 404"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/lifeng/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Lifeng_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 50940,
+      "sha256": "725fc70fd3816648633e07dff472327c88222bec9cb49deefbe3aad41339615e"
     },
     {
       "operator": "Pogranichnik",
       "slug": "pogranichnik",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Pogranichnik.png",
-      "status": "HTTP 429"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/pogranichnik/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Pogranichnik_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 74788,
+      "sha256": "c8d140c11433a8d3f46e57a697f5034336b9c68fe24671be7bf8f3c7e5884f7c"
     },
     {
       "operator": "Alesh",
       "slug": "alesh",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Alesh.png",
-      "status": "HTTP 429"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/alesh/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Alesh_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 64742,
+      "sha256": "2b08e1ed7d5e57f192b4029ed19e6d239c24cfcc091803677d466c6955d93898"
     },
     {
       "operator": "Arclight",
       "slug": "arclight",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Arclight.png",
-      "status": "HTTP 429"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/arclight/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Arclight_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 46830,
+      "sha256": "87f124cefba2016f5c57af43a73c8914d4d04647478a8a845e1c8a9b9726c135"
     },
     {
       "operator": "Avywenna",
       "slug": "avywenna",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Avywenna.png",
-      "status": "HTTP 429"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/avywenna/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Avywenna_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 72878,
+      "sha256": "44576b2f3f9fcc3ffcc4ecdd1849c409346bc0a7d1f61400bd226ba3a4f9e76d"
     },
     {
       "operator": "Da Pan",
       "slug": "da-pan",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Da_Pan.png",
-      "status": "HTTP 429"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/da-pan/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Da_Pan_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 36716,
+      "sha256": "eb121b2291bff3128418b5af0a50de9f875ae5076dd95051605aa1a39deaab97"
     },
     {
       "operator": "Snowshine",
       "slug": "snowshine",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Snowshine.png",
-      "status": "HTTP 429"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/snowshine/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Snowshine_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 75640,
+      "sha256": "a3c78ad095d45b5c2add9ff0e699e41f887881e2f8c99d5e52bcfd85e476a8fe"
     },
     {
       "operator": "Wulfgard",
       "slug": "wulfgard",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Wulfgard.png",
-      "status": "HTTP 429"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/wulfgard/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Wulfgard_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 46284,
+      "sha256": "9a0e84ed0ac70e1ff2666c925ae56dae33fec9856514f8cdc7a49e9d83485b2d"
     },
     {
       "operator": "Xaihi",
       "slug": "xaihi",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Xaihi.png",
-      "status": "HTTP 429"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/xaihi/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Xaihi_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 87232,
+      "sha256": "7844346c6b08d3dda5f809de62387a7fede5df0cfb7f8153dba1b13bca1b9434"
     },
     {
       "operator": "Akekuri",
       "slug": "akekuri",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Akekuri.png",
-      "status": "HTTP 429"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/akekuri/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Akekuri_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 57054,
+      "sha256": "0c295fc5735b0b6f3e9c118be106f8ad2dd62ca4e8aaaa5482ca26c9f9c67570"
     },
     {
       "operator": "Antal",
       "slug": "antal",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Antal.png",
-      "status": "HTTP 429"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/antal/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Antal_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 34062,
+      "sha256": "d6e20100d79cdb237bd5de8b6da1733267e5f2bee8af17c921889ea685d2c2d6"
     },
     {
       "operator": "Catcher",
       "slug": "catcher",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Catcher.png",
-      "status": "HTTP 429"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/catcher/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Catcher_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 43106,
+      "sha256": "a44acb5765ead3026a0766f8f2a724e60bb2fc391dc5fffe88c834bc13e8e698"
     },
     {
       "operator": "Estella",
       "slug": "estella",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Estella.png",
-      "status": "HTTP 429"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/estella/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Estella_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 39264,
+      "sha256": "f3431e7827750cebde3b5293b560116c42d4e5be696320288aacb6f838c4e5ee"
     },
     {
       "operator": "Fluorite",
       "slug": "fluorite",
-      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Fluorite.png",
-      "status": "HTTP 404"
+      "variant": "wiki-infobox-header",
+      "path": "/public/images/endfield/operators/fluorite/banner.webp",
+      "source": "https://endfield.wiki.gg/wiki/Special:Redirect/file/Fluorite_Banner.png",
+      "status": "cached",
+      "sourceSize": [
+        900,
+        352
+      ],
+      "size": [
+        900,
+        352
+      ],
+      "bytes": 47414,
+      "sha256": "1cf74c45f16f7523cc9c3e7b1f380734f885f96bf2b91c122f1931e06a9005fa"
     }
   ]
 }
