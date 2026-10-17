@@ -400,7 +400,7 @@
         "showcases": []
       },
       "conclusion": {
-        "verdict": "Liino is a generally strong support for a broad range of accounts. Her healing, SP utility and Electric/Nature Amp make her particularly valuable when her Ultimate aligns with your team's main damage phase.",
+        "verdict": "Liino is a strong general pull recommendation and a valuable support for almost any account. Her Ultimate is particularly effective at amplifying Electric and Nature teams, while the very long-lasting, general ATK Boost from her Battle Skill also makes her attractive in many other team compositions. Once her Battle Skill is active, she can support the team mostly passively, without requiring complex coordination with other abilities.",
         "recommendation": "recommended",
         "recommendedFor": [
           "Generally a strong option for almost every player.",
@@ -444,7 +444,7 @@
         "partners": []
       },
       "operatorKit": {
-        "playstyle": "Typhi’s entire gameplay revolves around two resources: Signs and Hunting Arrows. The Hunting Arrows are their ammunition for power shots, while signs are converted into new Hunting Arrows in a 2:1 ratio via their combo skill. A maximum of eight signs and four hunting arrows are possible. At the highest level of her combat talent loot checklist, she begins with four signs; Outside of combat, their Hunting Arrows fill up again. Start a fight with four Hunting Arrowsn if possible. With her Battle Skill (100 SP) Typhi goes into the hovering and can carry out five air attacks. If an attack consumes a hunting arrow, it becomes an energy shot and forces a Nature Burst on hit – even without a previous nature stack. When an airstrike hits an enemy with nature attachment, it consumes a stack and gives a sign and twelve ultimate energy. The Nature Burst generated in this way gives a further sign via loot checklist; An energy shot at an opponent with an existing nature stack can thus deliver two signs. The Nature Burst of this hit also receives the bonus for a consumed stack. With active control, the fifth air attack always counts as a final strike and as an energy shot, but does not consume a hunting arrow. When reaching eight signs, the combo skill can be activated: It exchanges the signs for four Hunting Arrows, resets Typhi’s air attack sequence, and creates a barrage line in which enemies are slowed down, continuously suffer natural damage, and receive increased nature burst damage. The maximum combo cooldown improvement is 19 seconds; It is therefore not an arbitrarily repeatable reset within a single short sequence. Their Ultimate consumes 200 energy, immediately gives two Hunting Arrows, puts them back into the hovering, resets the air strikes and adds one hail of arrows per hit; The fifth hail of arrows is strengthened. This is a strong additional window, but the core of their damage remains the repeated triggering and amplification of Nature Bursten through well-prepared energy shots. Therefore, prepare nature stacks before the damage window, do not waste battle skill and combo too early and plan for SP generation between the hovering phases. In hovering, Typhi receives a protective barrier with up to 30% damage reduction thanks to her second combat talent. A hit can break them; At the highest talent level, it can only be reactivated after 18 seconds. Therefore, watch out for enemy attacks and use Dodge Cancels after the normal Final Strike and after landing to continue the attack sequence faster."
+        "playstyle": "Typhi’s entire gameplay revolves around two resources: Signs and Hunting Arrows. The Hunting Arrows are their ammunition for power shots, while signs are converted into new Hunting Arrows in a 2:1 ratio via their combo skill. A maximum of eight signs and four hunting arrows are possible. At the highest level of her combat talent loot checklist, she begins with four signs; Outside of combat, their Hunting Arrows fill up again. Start a fight with four Hunting Arrows if possible. With her Battle Skill (100 SP) Typhi goes into the hovering and can carry out five air attacks. If an attack consumes a hunting arrow, it becomes an energy shot and forces a Nature Burst on hit – even without a previous nature stack. When an airstrike hits an enemy with nature attachment, it consumes a stack and gives a sign and twelve ultimate energy. The Nature Burst generated in this way gives a further sign via loot checklist; An energy shot at an opponent with an existing nature stack can thus deliver two signs. The Nature Burst of this hit also receives the bonus for a consumed stack. With active control, the fifth air attack always counts as a final strike and as an energy shot, but does not consume a hunting arrow. When reaching eight signs, the combo skill can be activated: It exchanges the signs for four Hunting Arrows, resets Typhi’s air attack sequence, and creates a barrage line in which enemies are slowed down, continuously suffer natural damage, and receive increased nature burst damage. The maximum combo cooldown improvement is 19 seconds; It is therefore not an arbitrarily repeatable reset within a single short sequence. Their Ultimate consumes 200 energy, immediately gives two Hunting Arrows, puts them back into the hovering, resets the air strikes and adds one hail of arrows per hit; The fifth hail of arrows is strengthened. This is a strong additional window, but the core of their damage remains the repeated triggering and amplification of Nature Bursts through well-prepared energy shots. Therefore, prepare nature stacks before the damage window, do not waste battle skill and combo too early and plan for SP generation between the hovering phases. In hovering, Typhi receives a protective barrier with up to 30% damage reduction thanks to her second combat talent. A hit can break them; At the highest talent level, it can only be reactivated after 18 seconds. Therefore, watch out for enemy attacks and use Dodge Cancels after the normal Final Strike and after landing to continue the attack sequence faster."
       },
       "skills": {
         "priority": {
@@ -465,15 +465,15 @@
           }
         },
         "active": {
-          "basic": "The normal Basic Attack includes five nature hits. The Final Strike gives 17 staggers and is especially important outside of hovering for SP regeneration. After the Final Strike, set a Dodge Cancel if necessary to shorten its long final animation. The main source of damage is not the elevation of normal basic attack; Invest here last.",
-          "battle": "Highest priority and long term M3. The Battle Skill starts the hovering for 100 SP with up to five air attacks against a maximum of two targets. Hunting Arrows intensify air strikes into energy shots and trigger Nature Bursten. If the energy shot hits existing nature stacks, they are consumed and the explosion damage increases. Each nature attachment thus consumed also provides one sign and twelve ultimate energy. The last air attack counts without ammunition as Power Shot and Final Strike. Especially the values of the Nature Burst multipliers increase with the skill levels.",
-          "combo": "Second priority and also M3 as a long-term goal. Eight signs trigger Rampant Thorns: They make four Hunting Arrows, reset the air attack sequence and create a barrage series. This field slows down opponents and increases their sustained nature burst damage. On M3, the cooldown drops to 19 seconds. In the rotation, combine the renewed air attack window with already prepared nature stacks; The combo reset alone does not generate them.",
-          "ultimate": "Prioritize behind battle and combo. With 200 Ultimate energy, Call of Ice Mountain activates a strong kick-off hit, two additional Hunting Arrows, the hovering reset and five subsequent arrows. The fifth hail of arrows is particularly strong. For an optimized damage burst, the Battle Skill can be useful directly in front of it to activate the effect of the signature weapon in time. The Ultimate is an extension of the energy shot rotation, but not the reason why Typhi reaches its highest nature bursts."
+          "basic": "Typhoeus's normal Basic Attack consists of five Nature DMG hits. The Final Strike deals 17 Stagger and is particularly important for restoring SP when she is not Hovering. If necessary, use a Dodge Cancel after the Final Strike to shorten its long ending animation. Her normal Basic Attack is not the primary source of damage, so level it last.",
+          "battle": "Top priority and an eventual M3 target. Piercing Arrows of the Woods initiates Hovering for 100 SP, allowing up to five aerial attacks against up to two targets. Hunting Arrows empower these attacks and trigger Nature Bursts. A Burst consumes existing Nature Infliction stacks on the target, increasing its damage; each consumed stack also grants one Sign and 12 Ultimate Energy. The fifth aerial attack also counts as a Power Shot and Final Strike even without ammunition. Skill upgrades are particularly valuable for the Nature Burst multipliers.",
+          "combo": "Second priority and an eventual M3 target. At eight Signs, Rampant Thorns restores four Hunting Arrows, resets the aerial attack sequence and creates a barrage zone that slows enemies and increases their sustained Nature Burst damage. At M3, its cooldown falls to 19 seconds. Line up the renewed aerial attack window with prepared Nature Infliction stacks: the Combo Skill reset alone does not create those stacks.",
+          "ultimate": "Level after the Battle Skill and Combo Skill. At 200 Ultimate Energy, Call of Ice Mountain deals a strong initial hit, provides two Hunting Arrows, resets Hovering and grants five more aerial attacks. The fifth barrage is particularly powerful. In optimized damage windows, using her Battle Skill shortly beforehand can trigger her signature weapon effect in time. The Ultimate extends her empowered-shot rotation; it is not the only reason her Nature Bursts deal so much damage."
         },
         "combatTalents": [
           {
             "talentId": "prey-checklist",
-            "evaluation": "The most important basic talent for the complete rotation: Nature Bursten provide signs that are converted into Hunting Arrows. At the third talent level, Typhi starts with four signs instead of just one, and the attack amplified by Hunting Arrowsn gets a factor of 1.6. With enemies exploding at the same time, the nature burst trigger counts according to the official text only once for the sign generation."
+            "evaluation": "The most important basic talent for the complete rotation: Nature Bursts provide signs that are converted into Hunting Arrows. At the third talent level, Typhi starts with four signs instead of just one, and the attack amplified by Hunting Arrows gets a factor of 1.6. With enemies exploding at the same time, the nature burst trigger counts according to the official text only once for the sign generation."
           },
           {
             "talentId": "huntress-s-focus",
@@ -496,7 +496,7 @@
           {
             "weaponId": "1175",
             "category": "bis",
-            "evaluation": "Umbra of Frigid Eventide is by far her most appropriate weapon. In addition to Agility and ATK, Typhi gets 15 seconds of Arts intensity and four Windform stacks when using the Battle Skill. The subsequent Nature Bursten through energy shots consume these stacks and increase their further Arts damage values. Therefore, especially for boss rotations, place the battle skill immediately before the planned hovering and ultimate burst."
+            "evaluation": "Umbra of Frigid Eventide is by far her most appropriate weapon. In addition to Agility and ATK, Typhi gets 15 seconds of Arts intensity and four Windform stacks when using the Battle Skill. The subsequent Nature Bursts through energy shots consume these stacks and increase their further Arts damage values. Therefore, especially for boss rotations, place the battle skill immediately before the planned hovering and ultimate burst."
           },
           {
             "weaponId": "1177",
@@ -618,7 +618,7 @@
             ],
             "availableFromLevel": 70,
             "teamContext": "The general standard for most boss and multi-goal battles; also in the Nefarith and Echo rotations shown a robust choice.",
-            "evaluation": "Deep Wall (Deep Rampart) is tailor-made for Typhis Nature Bursten: three set parts provide arts intensity and matching damage reinforcements. The LYNX Slab as the fourth part brings a wider value for its entire damage rotation. Base attacks, air strikes, combo, ultimate and nature bursts thus benefit in different proportions. Exactly this setup is the standard recommendation, not just a theoretical DPS tip.",
+            "evaluation": "Deep Wall (Deep Rampart) is tailor-made for Typhis Nature Bursts: three set parts provide arts intensity and matching damage reinforcements. The LYNX Slab as the fourth part brings a wider value for its entire damage rotation. Base attacks, air strikes, combo, ultimate and nature bursts thus benefit in different proportions. Exactly this setup is the standard recommendation, not just a theoretical DPS tip.",
             "setBonusNotes": "3x Deep Rampart for the set bonus; 1x LYNX Slab as Off-Piece. No second set effect by a single LYNX part.",
             "craftingNotes": "Armor, gloves, a Comms and a LYNX Slab require four manufactured parts. Reaching level 70 does not automatically confirm possession of the templates; The build finder checks blueprints, region, components and levels separately."
           },
@@ -755,7 +755,7 @@
           },
           {
             "level": 5,
-            "evaluation": "In addition to P1, the biggest striking power spike: The Ultimate gives an additional hunting arrow, its own damage increases by 20 percent and Nature Bursten through energy shots get the factor 1.1. This improves the entire central energy shot loop. Additional copies remain optional.",
+            "evaluation": "In addition to P1, the biggest striking power spike: The Ultimate gives an additional hunting arrow, its own damage increases by 20 percent and Nature Bursts through energy shots get the factor 1.1. This improves the entire central energy shot loop. Additional copies remain optional.",
             "increaseOverPreviousPercent": 6.5,
             "comparisonConditions": "Datafield character profile Typhoeus, scenario \"Teams with energy needs\", retrieved 10/16/2026; only incremental gain over P4 (not cumulative over P0). Team rotation and spreadsheet model parameters were not independently recalculated.",
             "sourceNote": "Datafield"
@@ -764,7 +764,7 @@
         "comparisons": [
           {
             "id": "no-extra-ultimate-energy",
-            "title": "Teams ohne zusätzlichen Ultimate-Energiebedarf",
+            "title": "Teams without additional Ultimate Energy requirements",
             "sourceNote": "Datafield",
             "snapshotDate": "2026-10-16",
             "comparisonConditions": "Datafield character profile Typhoeus, alternative rider \"Teams without energy needs\", as of 16.10.2026. Any indication is the increase from the immediate previous potential, not a cumulative P0 increase.",
@@ -839,7 +839,7 @@
                 "note": "With Arcane as Xiranit wearer and Liino: Qingbo Light Armor, Hot Work Hands PPE and twice Qingbo Cask. Signature Dreams of the Starry Beach.",
                 "alternatives": [
                   {
-                    "title": "Nur ohne anderen Xiranit-Nutzer",
+                    "title": "Only when no other teammate uses Eternal Xiranite",
                     "items": [
                       "1134",
                       "332",
@@ -849,7 +849,7 @@
                     "note": "Four parts if no other operator takes over the Xiranit bonus."
                   },
                   {
-                    "title": "Mit Xiranit-Nutzer, aber ohne Liino",
+                    "title": "With an existing Xiranite user, but without Liino",
                     "items": [
                       "328",
                       "775",
@@ -875,7 +875,7 @@
                 "note": "With Arcane as Xiranit user and additional Ultimate energy requirements: Light Armor, Hands, two LYNX Slabs. Prefer Bedazzling Night Debut, Golden Age is the Battle Pass alternative.",
                 "alternatives": [
                   {
-                    "title": "Mit Xiranit-Nutzer, ohne zusätzlichen Ultimate-Energiebedarf",
+                    "title": "With an existing Xiranite user and no additional Ultimate Energy needs",
                     "items": [
                       "1126",
                       "1129",
@@ -885,7 +885,7 @@
                     "note": "Rift Trekker Light Armor and Hands plus two LYNX Slabs for maximum Will and Ultimate amplification."
                   },
                   {
-                    "title": "Nur ohne anderen Xiranit-Nutzer",
+                    "title": "Only when no other teammate uses Eternal Xiranite",
                     "items": [
                       "1134",
                       "1138",
@@ -938,7 +938,7 @@
                 "note": "Stanza of Memorials for the largest possible Typhoeus buff. Qingbo Light Armor, Hot Work Gloves and two Qingbo Casks for combo cooldown and electrification.",
                 "alternatives": [
                   {
-                    "title": "Mehr eigener Schaden bei vollem Elektrifikation-Effekt",
+                    "title": "More personal damage with full Electrification uptime",
                     "items": [
                       "353",
                       "775",
@@ -964,7 +964,7 @@
                 "note": "With Arcane as Xiranit user and additional Ultimate energy requirements: Light Armor, Hands, two LYNX Slabs. Prefer Bedazzling Night Debut, Golden Age is the Battle Pass alternative.",
                 "alternatives": [
                   {
-                    "title": "Mit Xiranit-Nutzer, ohne zusätzlichen Ultimate-Energiebedarf",
+                    "title": "With an existing Xiranite user and no additional Ultimate Energy needs",
                     "items": [
                       "1126",
                       "1129",
@@ -974,7 +974,7 @@
                     "note": "Rift Trekker Light Armor and Hands plus two LYNX Slabs for maximum Will and Ultimate amplification."
                   },
                   {
-                    "title": "Nur ohne anderen Xiranit-Nutzer",
+                    "title": "Only when no other teammate uses Eternal Xiranite",
                     "items": [
                       "1134",
                       "1138",
@@ -1032,7 +1032,7 @@
                 "note": "With Arcane as Xiranit user and additional Ultimate energy requirements: Light Armor, Hands, two LYNX Slabs. Prefer Bedazzling Night Debut, Golden Age is the Battle Pass alternative.",
                 "alternatives": [
                   {
-                    "title": "Mit Xiranit-Nutzer, ohne zusätzlichen Ultimate-Energiebedarf",
+                    "title": "With an existing Xiranite user and no additional Ultimate Energy needs",
                     "items": [
                       "1126",
                       "1129",
@@ -1042,7 +1042,7 @@
                     "note": "Rift Trekker Light Armor and Hands plus two LYNX Slabs for maximum Will and Ultimate amplification."
                   },
                   {
-                    "title": "Nur ohne anderen Xiranit-Nutzer",
+                    "title": "Only when no other teammate uses Eternal Xiranite",
                     "items": [
                       "1134",
                       "1138",
@@ -1066,7 +1066,7 @@
               "liino"
             ],
             "buildId": "deep-rampart-lynx",
-            "note": "Rhodagn Nuke build-up from my Mobalytics guide: First Liino’s Ultimate (ATK + nature amplification), then let Arcane’s Battle Skill hit so delayed that Gilberta’s combo can be triggered on electrification. Do not use Arcanes combo at first. Typhi's Final Strike is followed by Typhi's Ultimate, Gilberta's Ultimate and then tuned Nature Bursten and Hunting Arrows; Arcanes Combo serves the necessary tumble and signs timing. Gilberta’s Swordmancer tumbler equipment is the documented variant for this.",
+            "note": "Rhodagn Nuke build-up from my Mobalytics guide: First Liino’s Ultimate (ATK + nature amplification), then let Arcane’s Battle Skill hit so delayed that Gilberta’s combo can be triggered on electrification. Do not use Arcanes combo at first. Typhi's Final Strike is followed by Typhi's Ultimate, Gilberta's Ultimate and then tuned Nature Bursts and Hunting Arrows; Arcanes Combo serves the necessary tumble and signs timing. Gilberta’s Swordmancer tumbler equipment is the documented variant for this.",
             "memberGear": [
               {
                 "member": "arcane",
@@ -1098,7 +1098,7 @@
                 "note": "Tumble focus from my Rhodagn Nuke showcase: Eternal Xiranite Armor, Swordmancer TAC Gauntlets T1 and two NAV Beacons. Delivery Guaranteed is preferred.",
                 "alternatives": [
                   {
-                    "title": "Technik-Intensität",
+                    "title": "Technique Intensity",
                     "items": [
                       "328",
                       "775",
@@ -1108,7 +1108,7 @@
                     "note": "Hot Work Gloves and two Power Cartridges."
                   },
                   {
-                    "title": "Nur ohne weiteren Xiranit-Nutzer",
+                    "title": "Only when no other teammate uses Eternal Xiranite",
                     "items": [
                       "328",
                       "332",
@@ -1134,7 +1134,7 @@
                 "note": "With Arcane as Xiranit user and additional Ultimate energy requirements: Light Armor, Hands, two LYNX Slabs. Prefer Bedazzling Night Debut, Golden Age is the Battle Pass alternative.",
                 "alternatives": [
                   {
-                    "title": "Mit Xiranit-Nutzer, ohne zusätzlichen Ultimate-Energiebedarf",
+                    "title": "With an existing Xiranite user and no additional Ultimate Energy needs",
                     "items": [
                       "1126",
                       "1129",
@@ -1144,7 +1144,7 @@
                     "note": "Rift Trekker Light Armor and Hands plus two LYNX Slabs for maximum Will and Ultimate amplification."
                   },
                   {
-                    "title": "Nur ohne anderen Xiranit-Nutzer",
+                    "title": "Only when no other teammate uses Eternal Xiranite",
                     "items": [
                       "1134",
                       "1138",
@@ -1215,7 +1215,7 @@
                 "note": "Xiranit variant, if no one else wears this set; Delivery Guaranteed is preferred.",
                 "alternatives": [
                   {
-                    "title": "Taumel-Fokus (Rhodagn-Nuke)",
+                    "title": "Stagger-focused setup (Rhodagn burst)",
                     "items": [
                       "328",
                       "874",
@@ -1225,7 +1225,7 @@
                     "note": "Stagger and timing of the Nuke window."
                   },
                   {
-                    "title": "Technik-Intensität",
+                    "title": "Technique Intensity",
                     "items": [
                       "328",
                       "775",
@@ -1308,7 +1308,7 @@
                 "note": "With Arcane as Xiranit carrier, but without Liino: Eternal Xiranite Armor plus Hot Work for technical intensity.",
                 "alternatives": [
                   {
-                    "title": "Nur ohne weiteren Xiranit-Nutzer",
+                    "title": "Only when no other teammate uses Eternal Xiranite",
                     "items": [
                       "1134",
                       "332",
@@ -1318,7 +1318,7 @@
                     "note": "Eternal Xiranite Light Armor, Gloves T1 and two Auxiliary Arms; only with a different team build."
                   },
                   {
-                    "title": "Mit Xiranit-Nutzer und Liino",
+                    "title": "With an existing Xiranite user and Liino",
                     "items": [
                       "881",
                       "1131",
@@ -1344,7 +1344,7 @@
                 "note": "Technology intensity in the team with Arcane: Eternal Xiranite Armor, Hot Work Gloves, two Hot Work Power Cartridges.",
                 "alternatives": [
                   {
-                    "title": "Taumel-Fokus (Rhodagn-Nuke)",
+                    "title": "Stagger-focused setup (Rhodagn burst)",
                     "items": [
                       "328",
                       "874",
@@ -1354,7 +1354,7 @@
                     "note": "Stagger and timing of the Nuke window."
                   },
                   {
-                    "title": "Nur ohne weiteren Xiranit-Nutzer",
+                    "title": "Only when no other teammate uses Eternal Xiranite",
                     "items": [
                       "328",
                       "332",
@@ -1407,7 +1407,7 @@
                 "note": "Stanza of Memorials for the largest possible Typhoeus buff. Qingbo Light Armor, Hot Work Gloves and two Qingbo Casks for combo cooldown and electrification.",
                 "alternatives": [
                   {
-                    "title": "Mehr eigener Schaden bei vollem Elektrifikation-Effekt",
+                    "title": "More personal damage with full Electrification uptime",
                     "items": [
                       "353",
                       "775",
@@ -1433,7 +1433,7 @@
                 "note": "Technology intensity in the team with Arcane: Eternal Xiranite Armor, Hot Work Gloves, two Hot Work Power Cartridges.",
                 "alternatives": [
                   {
-                    "title": "Taumel-Fokus (Rhodagn-Nuke)",
+                    "title": "Stagger-focused setup (Rhodagn burst)",
                     "items": [
                       "328",
                       "874",
@@ -1443,7 +1443,7 @@
                     "note": "Stagger and timing of the Nuke window."
                   },
                   {
-                    "title": "Nur ohne weiteren Xiranit-Nutzer",
+                    "title": "Only when no other teammate uses Eternal Xiranite",
                     "items": [
                       "328",
                       "332",
@@ -1467,7 +1467,7 @@
             "type": "trial",
             "url": "https://www.youtube.com/watch?v=wNVJkGzkfMg&t=974s",
             "description": "Combat practice team with Typhi, Arcane, Fluorite and Antal. Here the core of energy shots, signs, combo reset and Final Strike SP can be followed particularly clearly.",
-            "rotationAndTips": "Position yourself behind the most robust opponent and mark it with Antal. Start with the prepared Hunting Arrowsn in the Battle Skill until eight signs are ready. Timings of team skills tune to Typhi’s combo so that their new energy shots can immediately consume nature stacks. After that, win back SP via Final Strikes; Dodge Cancels after Final Strike and Landing shorten idle times. For the second burst, trigger team buffs first, then put Typhi's Battle Skill immediately before their Ultimate because of the signature weapon buff. With newly collected signs, start the combo and use the extended air attack window."
+            "rotationAndTips": "Position yourself behind the most robust opponent and mark it with Antal. Start with the prepared Hunting Arrows in the Battle Skill until eight signs are ready. Timings of team skills tune to Typhi’s combo so that their new energy shots can immediately consume nature stacks. After that, win back SP via Final Strikes; Dodge Cancels after Final Strike and Landing shorten idle times. For the second burst, trigger team buffs first, then put Typhi's Battle Skill immediately before their Ultimate because of the signature weapon buff. With newly collected signs, start the combo and use the extended air attack window."
           },
           {
             "id": "echos-zwei-gegner",
@@ -1503,7 +1503,7 @@
         ]
       },
       "conclusion": {
-        "verdict": "Typhoeus delivers impressive Nature Burst damage but has a narrower team fit than many other main DPS operators. She is most rewarding when you can provide consistent Nature Infliction, maintain SP and execute aerial sequences without interruption.",
+        "verdict": "Typhoeus is a strong and unusually enjoyable Nature main DPS with impressive bursts from her empowered aerial shots and particularly strong damage against two targets. However, she requires a carefully prepared rotation, reliable Nature Infliction stacks and sufficient SP. If your account already has several well-built main DPS operators, Typhoeus is more of a luxury than a necessity.",
         "recommendation": "optional",
         "pullAdvice": "If you are already well positioned with main DPS operators and pull resources are scarce, you can in good conscience skip Typhi and save for missing roles or future operators. Your signature weapon is a particularly large part of the potential investment. But if you like their hovering and the complex nature burst rotation, you get an independent, very satisfying cause of damage.",
         "recommendedFor": [
@@ -1597,10 +1597,10 @@
           }
         },
         "active": {
-          "basic": "Creating urge is Si’s five-part Cryo-Basic Attack with 18 staggers on the final attack when actively controlled. It is useful in the main DPS build for field time and SP win. However, the level priority depends on how often you control it yourself: For core rotation, combo and battle skill are crucial first.",
-          "battle": "Dimension of Brush Art is the control and storage tool of your kit. It attaches Artful Intent and Cryo or, in the case of a heat operator, Heat Infliction stacks to position 1. Initial Stroke costs 15 SP and extracts the inksoul; Final Stroke is free and can trigger the final explosion prematurely. Allow the team enough time to transfer damage and effects to goal and soul before completing. Bring support to M3 first.",
-          "combo": "Vision is the most important source of damage in a DPS game. The combo triggers when consuming or absorbing cryo/Heat Infliction stacks. The more stacks are removed from an opponent, the stronger the Ink Lung hits. The data known since release confirms the core of the combo focus. For Main DPS, this is my first upgrade priority; simultaneously time battle skills of other team members on the 3 type 50 set bonus.",
-          "ultimate": "Forbidden spoiler calls the giant Ink Lung, causing Cryo DMG and granting the team cryo and heat amplification at the same time. Proxy's Patronage then reduces the cooldown duration of the combo from Team Position 01. Support is Battle Skill M3 > Ultimate M3 > Combo M3 > Basic Attack Level 1–9 (optional). DPS is Combo M3 > Battle Skill M3 > Basic Attack M3 ≥ Ultimate M3. The number of meaningful Ultimate uses depends on your own energy efficiency and fighting time."
+          "basic": "Artistic Urge is Si's five-hit Cryo Basic Attack. When Si is the controlled operator, the final hit contributes 18 Stagger. It is useful for field time and SP recovery in a main DPS build. How highly you level it depends on how often you actually control her; for the core rotation, Combo Skill and Battle Skill come first.",
+          "battle": "Brushwork Realm is Si's control and damage-storage tool. The initial cast applies Artful Intent and either Cryo Infliction or, if a Heat operator occupies Team Position 01, Heat Infliction. Initial Stroke costs 15 SP and extracts an Inksoul; Final Stroke costs no SP and can trigger the finishing explosion early. Leave enough time for attacks and effects to be transferred to the linked enemy before recalling the Inksoul. In a support build, prioritize getting this Battle Skill to M3.",
+          "combo": "Fully Envisioned is Si's primary personal damage source when played as a main DPS. It triggers when Cryo or Heat Infliction stacks are consumed or absorbed. The Ink Lung deals Cryo DMG based on the highest number of stacks removed from a single target. For a main DPS build, level this skill first. Time other team members' Battle Skills carefully to make use of the three-piece Type 50 set bonus.",
+          "ultimate": "No One Spoils the Fun summons an enormous Ink Lung, deals Cryo DMG and grants the entire team Cryo Amp and Heat Amp. Proxy's Patronage then shortens the Combo Skill cooldown of the operator in Team Position 01. As a support, prioritize Battle Skill M3 > Ultimate M3 > Combo Skill M3 > Basic Attack Lv. 1–9 (optional). As main DPS, prioritize Combo Skill M3 > Battle Skill M3 > Basic Attack M3 ≥ Ultimate M3. How frequently you can use the Ultimate depends on your Ultimate Energy efficiency and fight duration."
         },
         "combatTalents": [
           {
@@ -2485,7 +2485,7 @@
         "showcases": []
       },
       "conclusion": {
-        "verdict": "Si is an unusually flexible Cryo Supporter who can also deal substantial personal damage. Her defining strengths are damage storage, Inksoul target control and team-wide Cryo/Heat Amp, not merely one large Combo Skill hit. Her basics are approachable; optimizing SP, reactions and team position demands more planning.",
+        "verdict": "Since her release, Si has proven to be an exceptionally versatile Cryo Supporter who can also serve as a main DPS or sub DPS. My marked Meta teams cover Yvonne, Last Rite, Laevatain and Rossi, as well as Si in the main DPS role. Her strength is not limited to personal Combo Skill damage: control through Inksoul and Artful Intent, alongside buffs for both Cryo and Heat, is equally important. Her basic mechanics are accessible, but optimizing SP timing, reaction windows and team order makes her more demanding.",
         "recommendation": "recommended",
         "pullAdvice": "For accounts with a cryo or heat focus, Si is a particularly interesting addition. Thanks to high flexibility, it can fill various team roles and also enable its own DPS lineup. Jade vessel and Type 50 set are my preferred investment direction, but the new item IDs and the first independent rotation comparisons are not fully confirmed shortly after release. If you only follow maximum own burst numbers, you should compare the final fine tuning with established calculations and your own SP rotation.",
         "recommendedFor": [
