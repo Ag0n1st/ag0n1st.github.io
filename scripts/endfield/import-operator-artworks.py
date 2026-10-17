@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cache only the specifically named public wiki infobox art for official operator roster.
+"""Cache wiki operator header BANNERS (900x352), not square splash art or portrait PNG.
 No account data, external image hotlinking, approximate asset/ID matching, or overwrites.
 """
 import hashlib, io, json, os, re, time
@@ -18,7 +18,7 @@ BASE=Path("public/images/endfield/operators")
 MANIFEST=Path("src/data/endfield/catalog/operator-artwork-sources.json")
 LIMIT_PER_SOURCE=7_000_000
 def url_for(name):
-    return "https://endfield.wiki.gg/wiki/Special:Redirect/file/"+quote(name.replace(" ","_")+".png")
+    return "https://endfield.wiki.gg/wiki/Special:Redirect/file/"+quote(name.replace(" ","_")+"_Banner.png")
 def slugify(name):
     return re.sub(r"[^a-z0-9]+","-",name.lower()).strip("-")
 def fetch_image(url):
@@ -45,10 +45,6 @@ def main():
         slug=slugify(name)
         source=url_for(name)
         output=BASE/slug/"banner.webp"
-        if output.exists():
-            records.append({"operator":name,"slug":slug,"variant":"wiki-infobox-header","path":"/"+str(output),"source":source,"status":"already-present","bytes":output.stat().st_size})
-            print("SKIP",slug,"already present")
-            continue
         data,status=fetch_image(source)
         if data is None:
             records.append({"operator":name,"slug":slug,"source":source,"status":status})
@@ -58,7 +54,7 @@ def main():
             with Image.open(io.BytesIO(data)) as photo:
                 photo.load()
                 w,h=photo.size
-                if photo.format not in ("PNG","JPEG","WEBP") or w<400 or h<350 or w>6000 or h>6000 or w/h<1.02:
+                if photo.format not in ("PNG","JPEG","WEBP") or w<400 or h<350 or w>6000 or h>6000 or w/h<2.0:
                     records.append({"operator":name,"slug":slug,"source":source,"status":"unsupported-artwork-shape","sourceSize":[w,h]})
                     print("REJECTED",slug,w,h)
                     continue
@@ -84,7 +80,7 @@ def main():
         except (UnidentifiedImageError,OSError,ValueError) as e:
             records.append({"operator":name,"slug":slug,"source":source,"status":"invalid-file"})
             print("INVALID",slug,type(e).__name__)
-        time.sleep(.15)
+        time.sleep(1.35)
     MANIFEST.parent.mkdir(parents=True,exist_ok=True)
     MANIFEST.write_text(json.dumps({"schemaVersion":1,"sourceType":"community-mediawiki-image",
       "verifiedAt":"2026-10-17","rights":"Game imagery belongs to the respective rightsholders; refer to the individual Wiki file page for attribution and licence.",
