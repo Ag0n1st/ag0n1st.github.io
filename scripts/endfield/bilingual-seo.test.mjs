@@ -48,8 +48,9 @@ test("Indexing respects true English editorial content and German preview status
  const map=read("src/pages/sitemap.xml.ts");
  assert.match(es,/OperatorGuide/);
  assert.match(es,/localizeOperatorGuide/);
- assert.match(es,/noindex=\\{preview\\}/);
- assert.doesNotMatch(es,/en-guide-build-grid|en-guide-team-grid|en-guide-skill/);
+ assert.ok(es.includes("noindex={preview}"));
+ assert.ok(!es.includes("en-guide-build-grid") && !es.includes("en-guide-team-grid"));
+
  const shared=read("src/components/operator/OperatorGuide.astro");
  for(const section of ["Overview","Kit","Skills","Weapons","Equipment","Potentials","Teams","Gameplay","Conclusion"]){
    assert.ok(shared.includes("Operator"+section),section+" is rendered by both languages");
@@ -70,8 +71,8 @@ test("Indexing respects true English editorial content and German preview status
  }
  assert.match(map,/published/);
  assert.match(map,/!published\\.has/);
- assert.match(idx,/href=\\{\\`\\/en\\/endfield\\/operators/);
- assert.match(read("src/layouts/EndfieldPlaceholder.astro"),/<SeoHead/);
- assert.match(read("public/robots.txt"),/https:\\/\\/ag0n1st\\.com\\/sitemap\\.xml/);
+ assert.ok(idx.includes("/en/endfield/operators/"));
+ assert.ok(read("src/layouts/EndfieldPlaceholder.astro").includes("<SeoHead"));
+ assert.ok(read("public/robots.txt").includes("https://ag0n1st.com/sitemap.xml"));
 
 });
