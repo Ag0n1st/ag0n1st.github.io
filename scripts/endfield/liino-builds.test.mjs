@@ -125,8 +125,8 @@ test("the shared equipment framework places responsive Meta Builds before the Fi
   assert.match(schema,/metaSummary: z\.string\(\)\.trim\(\)\.max\(280\)/);
   assert.match(schema,/Meta-Builds benötigen eine kurze Beschreibung/);
   assert.match(section,/const metaBuilds=officialBuilds\.filter\(build=>build\.meta===true\)/);
-  assert.ok(section.indexOf(">Meta Builds</h3>")>=0 &&
-    section.indexOf(">Meta Builds</h3>") <
+  assert.ok(section.indexOf('{t("Meta Builds")}')>=0 &&
+    section.indexOf('{t("Meta Builds")}') <
     section.indexOf('<details class="op-divided op-build-finder-accordion" id="build-finder">'),
     "Meta overview must appear above the closed detailed finder");
   assert.ok(section.includes('<summary class="op-build-finder-toggle">') &&
