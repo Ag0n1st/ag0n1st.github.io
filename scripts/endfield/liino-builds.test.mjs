@@ -121,16 +121,16 @@ test("the shared equipment framework places responsive Meta Builds before the Fi
   const schema=readFileSync("src/content/operatorGuideSchema.ts","utf8");
   const template=readFileSync("src/content/operator-guides/_template.md","utf8");
   const controller=readFileSync("src/components/operator/OperatorGuide.astro","utf8");
-  assert.match(schema,/meta: z\.boolean\(\)\.default\(false\)/);
+  assert.match(schema,/meta: z\.boolean\(\)\.defaultranslateUi\(false\)/);
   assert.match(schema,/metaSummary: z\.string\(\)\.trim\(\)\.max\(280\)/);
   assert.match(schema,/Meta-Builds benötigen eine kurze Beschreibung/);
   assert.match(section,/const metaBuilds=officialBuilds\.filter\(build=>build\.meta===true\)/);
-  assert.ok(section.indexOf('{t("Meta Builds")}')>=0 &&
-    section.indexOf('{t("Meta Builds")}') <
+  assert.ok(section.indexOf('{translateUi("Meta Builds")}')>=0 &&
+    section.indexOf('{translateUi("Meta Builds")}') <
     section.indexOf('<details class="op-divided op-build-finder-accordion" id="build-finder">'),
     "Meta overview must appear above the closed detailed finder");
   assert.ok(section.includes('<summary class="op-build-finder-toggle">') &&
-    section.includes('<strong>{t("Build-Finder")}</strong>'),
+    section.includes('<strong>{translateUi("Build-Finder")}</strong>'),
     "Finder title must be the native disclosure summary");
   assert.match(section,/href="#build-finder" data-select-build=\{build\.id\}/,
     "Card CTA must select the corresponding real finder build");
