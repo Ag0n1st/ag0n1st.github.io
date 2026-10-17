@@ -19,3 +19,12 @@ for url in urls:
     for token in ["lockupViewModel", "playlistVideoRenderer", "playlistPanelVideoRenderer", "publishedTimeText", "lockupMetadataViewModel", "videoInfo", "contentId", "dateText", "playlistHeaderRenderer"]:
      print("TOKEN",token,"COUNT",data.count(token),"SNIPPET",data[data.find(token)-110:data.find(token)+720] if token in data else "")
  except Exception as e:print({"url":url,"error":str(e)[:250]})
+
+
+for video in ["qSIktISsLPQ","uixHyNlbwAQ","Zw8B2F2nJP8"]:
+ for u in ["https://www.youtube.com/watch?v="+video,"https://www.youtube.com/results?search_query="+video]:
+  try:
+   with urllib.request.urlopen(urllib.request.Request(u,headers={"User-Agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36","Accept-Language":"en-US,en;q=0.9"}),timeout=13) as h:
+    text=h.read(2_500_000).decode("utf-8","replace")
+    print("VIDEO_META",{"id":video,"url":u,"status":h.status,"length":len(text),"title":re.findall(r"<title>([^<]+)</title>",text)[:1],"publishDate":re.findall(r'"publishDate":"([^"]+)"',text)[:2],"datePublished":re.findall(r'"datePublished":"([^"]+)"',text)[:2],"uploadDate":re.findall(r'"uploadDate":"([^"]+)"',text)[:2],"publishedTimeTextCount":text.count("publishedTimeText"),"videoRendererCount":text.count("videoRenderer")})
+  except Exception as e:print("VIDEO_META_ERROR",video,u,str(e)[:160])
