@@ -1,0 +1,140 @@
+---
+import "../../styles/global.css";
+import SeoHead from "../i18n/SeoHead.astro";
+import LanguageSwitch from "../i18n/LanguageSwitch.astro";
+import "../../styles/i18n.css";
+import EndfieldNav from "../EndfieldNav.astro";
+
+interface Props {lang?:"de"|"en"}
+const {lang="de"}=Astro.props;
+const l=(de:string,en:string)=>lang==="en"?en:de;
+const paths:Record<string,string>={
+"/":"/en/","/endfield/":"/en/endfield/","/nte/":"/en/nte/","/about/":"/en/about/",
+"/endfield/operatoren/":"/en/endfield/operators/","/endfield/fabrik/":"/en/endfield/factory/",
+"/endfield/rekrutierung/":"/en/endfield/recruitment/","/endfield/veredelung/":"/en/endfield/refinement/",
+"/endfield/essenzen/":"/en/endfield/essences/","/endfield/speedruns/":"/en/endfield/speedruns/",
+"/endfield/checkliste/":"/en/endfield/checklist/","/endfield/countdown/":"/en/endfield/countdown/"
+};
+const href=(de:string)=>lang==="en"?paths[de]??de:de;
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#09090d" />
+    <link rel="icon" type="image/svg+xml" href="/images/ag0n1st-logo.svg" />
+    <SeoHead path={Astro.url.pathname} lang={lang} title="Arknights: Endfield — Ag0n1st" description={l("Arknights: Endfield Guides von Ag0n1st – Charaktere, Skills, Builds, Speedruns und Tools.","English Arknights: Endfield guides by Ag0n1st – operators, skills, builds, speedruns and tools.")} />
+    <title>Arknights: Endfield — Ag0n1st</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href={href("/")} aria-label={l("Ag0n1st – Startseite","Ag0n1st Homepage")}>
+        <img class="wordmark-logo" src="/images/ag0n1st-logo.svg" alt="" aria-hidden="true" />
+        <span>Ag0n1st</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label={l("Menü öffnen","Open Menu")} aria-expanded="false" aria-controls="main-navigation"><span></span><span></span><span></span></button>
+
+      <nav class="main-nav" id="main-navigation" aria-label={l("Hauptnavigation","Main Navigation")}>
+        <a href={href("/endfield/")} aria-current="page">Arknights: Endfield</a>
+        <a href={href("/nte/")}>Neverness to Everness</a>
+        <a href={href("/about/")}>About Me</a>
+        <LanguageSwitch path={Astro.url.pathname} lang={lang} />
+      </nav>
+
+      <a class="header-cta" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">
+        Twitch <span aria-hidden="true">↗</span>
+      </a>
+    </header>
+
+    <EndfieldNav active="overview" lang={lang} />
+
+    <main class="endfield-page">
+      <section class="endfield-intro section-wrap">
+        <span class="section-kicker">ARKNIGHTS: ENDFIELD · AG0N1ST</span>
+        <h1>{l("Alles für deinen","Everything for Your")}<br /><span class="endfield-heading-accent">{l("nächsten Fortschritt","Next Step Forward")}</span><span class="title-period">.</span></h1>
+        <p class="endfield-lead">{l("Operator-Guides, verständliche System-Erklärungen und praktische Tools – aufgebaut auf meinen Videos und ergänzt um Informationen, die du schnell wiederfinden möchtest.","Operator guides, clear system explanations and practical tools based on my videos, complemented by information you can easily look up.")}</p>
+        <div class="endfield-intro-actions">
+          <a class="button button-primary" href={href("/endfield/operatoren/")}>Operatoren entdecken <span aria-hidden="true">↗</span></a>
+          <a class="button button-secondary" href={href("/endfield/countdown/")}>Zum Patch-Countdown <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <section class="endfield-section section-wrap">
+        <div class="endfield-section-heading"><div><span class="section-kicker">{l("01 / OPERATOREN","01 / OPERATORS")}</span><h2>{l("Operator-Guides","Operator Guides")}<span class="title-period">.</span></h2></div><span class="endfield-section-note">{l("Builds · Mechaniken · Teams","Builds · Mechanics · Teams")}</span></div>
+        <p class="endfield-section-copy">{l("Finde den passenden Guide für deinen Operator – von den wichtigsten Mechaniken bis hin zu Builds und Team-Synergien.","Find the right guide for your operator, covering everything from core mechanics to builds and team synergies.")}</p>
+        <a class="endfield-feature-link" href={href("/endfield/operatoren/")}><span><strong>{l("Alle Operatoren","All Operators")}</strong><small>{l("Zur Operatoren-Übersicht","Operator Overview")}</small></span><span class="endfield-link-arrow" aria-hidden="true">↗</span></a>
+      </section>
+      <section class="endfield-section section-wrap">
+        <div class="endfield-section-heading"><div><span class="section-kicker">{l("02 / FABRIK","02 / FACTORY")}</span><h2>{l("Fabrik Guides","Factory Guides")}<span class="title-period">.</span></h2></div><span class="endfield-section-note">{l("System · Blueprints · Optimierung","Systems · Blueprints · Optimization")}</span></div>
+        <p class="endfield-section-copy">{l("Ein Bereich für verständliche Fabrik-Erklärungen und nachbaubare Lösungen. Dieser Teil wird nach und nach ergänzt.","A place for approachable factory explanations and easy-to-copy solutions. More content will be added over time.")}</p>
+        <a class="endfield-feature-link" href={href("/endfield/fabrik/")}><span><strong>{l("Fabrik-Bereich","Factory Section")}</strong><small>{l("Guides und Blueprints","Guides & Blueprints")}</small></span><span class="endfield-link-arrow" aria-hidden="true">↗</span></a>
+      </section>
+      <section class="endfield-section section-wrap">
+        <div class="endfield-section-heading"><div><span class="section-kicker">{l("03 / REKRUTIERUNG","03 / RECRUITMENT")}</span><h2>{l("Rekrutierung verstehen","Understanding Recruitment")}<span class="title-period">.</span></h2></div></div>
+        <p class="endfield-section-copy">{l("Die wichtigsten Grundlagen und Entscheidungen des Rekrutierungssystems verständlich erklärt – mit ergänzendem Video-Guide.","The key principles and decisions of the recruitment system explained clearly, supported by a video guide.")}</p>
+        <a class="endfield-feature-link" href={href("/endfield/rekrutierung/")}><span><strong>{l("Rekrutierungs-Guide","Recruitment Guide")}</strong><small>{l("System-Erklärung und Tipps","System Explanation & Tips")}</small></span><span class="endfield-link-arrow" aria-hidden="true">↗</span></a>
+      </section>
+      <section class="endfield-section section-wrap">
+        <div class="endfield-section-heading"><div><span class="section-kicker">{l("04 / VEREDELUNG","04 / REFINEMENT")}</span><h2>{l("Mehr aus deiner Ausrüstung holen","Get More from Your Equipment")}<span class="title-period">.</span></h2></div></div>
+        <p class="endfield-section-copy">{l("Eine zentrale Anlaufstelle, um die Veredelung zu verstehen und ihre Möglichkeiten gezielt zu nutzen.","Learn how refinement works and make the most of its possibilities.")}</p>
+        <a class="endfield-feature-link" href={href("/endfield/veredelung/")}><span><strong>{l("Veredelungs-Guide","Refinement Guide")}</strong><small>{l("Mechaniken und sinnvolle Nutzung","Mechanics & Practical Applications")}</small></span><span class="endfield-link-arrow" aria-hidden="true">↗</span></a>
+      </section>
+      <section class="endfield-section section-wrap">
+        <div class="endfield-section-heading"><div><span class="section-kicker">{l("05 / ESSENZEN","05 / ESSENCES")}</span><h2>{l("Essenz-System im Überblick","Essence System Overview")}<span class="title-period">.</span></h2></div></div>
+        <p class="endfield-section-copy">{l("Die wichtigsten Informationen zum Essenz-System an einem Ort, damit du relevante Details später schnell nachschlagen kannst.","The essentials of the Essence system in one place, ready whenever you need a quick reference.")}</p>
+        <a class="endfield-feature-link" href={href("/endfield/essenzen/")}><span><strong>{l("Essenz-Guide","Essence Guide")}</strong><small>{l("Grundlagen und Tipps","Basics & Tips")}</small></span><span class="endfield-link-arrow" aria-hidden="true">↗</span></a>
+      </section>
+      <section class="endfield-section section-wrap">
+        <div class="endfield-section-heading"><div><span class="section-kicker">{l("06 / SPEEDRUNS","06 / SPEEDRUNS")}</span><h2>{l("Meine Speedruns","My Speedruns")}<span class="title-period">.</span></h2></div><span class="endfield-section-note">{l("YouTube-Videos","YouTube Videos")}</span></div>
+        <p class="endfield-section-copy">{l("Bosses und Herausforderungen so schnell wie möglich – eine Sammlung meiner eigenen Runs. Keine Community-Rangliste, sondern meine Runs an einem Ort.","My own boss speedruns and challenges in one place—not a community leaderboard.")}</p>
+        <a class="endfield-feature-link" href={href("/endfield/speedruns/")}><span><strong>{l("Alle Speedruns","All Speedruns")}</strong><small>{l("Videos und Playlist","Videos & Playlists")}</small></span><span class="endfield-link-arrow" aria-hidden="true">↗</span></a>
+      </section>
+      <section class="endfield-section section-wrap">
+        <div class="endfield-section-heading"><div><span class="section-kicker">{l("07 / CHECKLISTE","07 / CHECKLIST")}</span><h2>{l("Den Überblick behalten","Stay on Top of Everything")}<span class="title-period">.</span></h2></div></div>
+        <p class="endfield-section-copy">{l("Eine praktische tägliche Checkliste, deren Fortschritt lokal in deinem Browser gespeichert wird – ohne Login und ohne Benutzerkonto.","A handy daily checklist that stores your progress locally in your browser—no login or account required.")}</p>
+        <a class="endfield-feature-link" href={href("/endfield/checkliste/")}><span><strong>{l("Checkliste öffnen","Open Checklist")}</strong><small>{l("Deine Aufgaben abhaken","Check Off Your Tasks")}</small></span><span class="endfield-link-arrow" aria-hidden="true">↗</span></a>
+      </section>
+      <section class="endfield-section section-wrap endfield-countdown-teaser">
+        <div class="endfield-section-heading"><div><span class="section-kicker">{l("08 / PATCH-COUNTDOWN","08 / PATCH COUNTDOWN")}</span><h2>{l("Das nächste Update rückt näher","The Next Update Is Coming")}<span class="title-period">.</span></h2></div></div>
+        <p class="endfield-section-copy">{l("Der Countdown bis zur nächsten Version – sobald der offizielle Release-Zeitpunkt feststeht.","A countdown to the next version once the official release time has been confirmed.")}</p>
+        <a class="endfield-feature-link" href={href("/endfield/countdown/")}><span><strong>{l("Zum Patch-Countdown","Patch Countdown")}</strong><small>{l("Release-Zeit live verfolgen","Track the Release Date")}</small></span><span class="endfield-link-arrow" aria-hidden="true">↗</span></a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <nav class="social-links" aria-label="Social Media">
+        <a href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer" aria-label="Twitch">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2 1 6v15h5v3h4l3-3h4l6-6V2H4Zm17 12-4 4h-5l-3 3v-3H5V4h16v10ZM10 7h2v6h-2V7Zm5 0h2v6h-2V7Z"/></svg>
+        </a>
+        <a href="https://youtube.com/@Ag0n1st" target="_blank" rel="noreferrer" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.1a3 3 0 0 0-2.1-2.1C19 4.5 12 4.5 12 4.5s-7 0-8.9.5A3 3 0 0 0 1 7.1 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.9A3 3 0 0 0 3.1 19c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.5 12a31 31 0 0 0-.5-4.9ZM9.5 15.5v-7l6 3.5-6 3.5Z"/></svg>
+        </a>
+        <a href="https://linktr.ee/Ag0n1st" target="_blank" rel="noreferrer" aria-label="Alle Socials">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3ZM5 5h6v2H7v10h10v-4h2v6H5V5Z"/></svg>
+        </a>
+      </nav>
+      <a class="footer-wordmark" href={href("/")} aria-label="Ag0n1st Startseite"><img class="wordmark-logo" src="/images/ag0n1st-logo.svg" alt="Ag0n1st Logo" /></a>
+      <span class="copyright">© 2025 Ag0n1st. All rights reserved.</span>
+    </footer>
+    <script>
+      const menuButton = document.querySelector(".menu-toggle");
+      const mainNav = document.querySelector(".main-nav");
+      menuButton?.addEventListener("click", () => {
+        const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+        menuButton.setAttribute("aria-expanded", String(!isOpen));
+        menuButton.setAttribute("aria-label", isOpen ? "Menü öffnen" : "Menü schließen");
+        mainNav?.classList.toggle("is-open", !isOpen);
+      });
+      mainNav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
+        menuButton?.setAttribute("aria-expanded", "false");
+        menuButton?.setAttribute("aria-label", "Menü öffnen");
+        mainNav?.classList.remove("is-open");
+      }));
+    </script>
+  </body>
+</html>
