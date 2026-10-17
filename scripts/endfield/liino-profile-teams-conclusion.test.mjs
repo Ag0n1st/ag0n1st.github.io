@@ -63,7 +63,7 @@ test("Gameplay is explicitly pending without fictional preview videos",()=>{
  const gameplay=yamlSection("gameplay","conclusion");
  assert.match(gameplay,/pending: true/);
  assert.match(gameplay,/showcases: \[\]/);
- assert.match(schema,/pending: z\.boolean\(\)\.defaultranslateUi\(false\)/);
+ assert.match(schema,/pending: z\.boolean\(\)\.default\(false\)/);
  assert.match(model,/guide\.gameplay\.pending \? \[\] :/);
  assert.match(gameplayView,/guide\.gameplay\.pending \? <>/);
  assert.match(gameplayView,/op-gameplay-pending-label/);
