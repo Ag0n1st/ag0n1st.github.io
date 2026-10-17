@@ -1,6 +1,70 @@
 ---
-import EndfieldPlaceholder from "../../../layouts/EndfieldPlaceholder.astro";
+import "../../../styles/global.css";
+import SeoHead from "../../../components/i18n/SeoHead.astro";
+import LanguageSwitch from "../../../components/i18n/LanguageSwitch.astro";
+import "../../../styles/i18n.css";
 ---
-<EndfieldPlaceholder title="Neverness to Everness – Ag0n1st" kicker="NEVERNESS TO EVERNESS" active="none" lang="en" description="Neverness to Everness coverage from Ag0n1st: guides, gameplay and progression content.">
- <main class="placeholder-page"><section class="placeholder-card"><span class="section-kicker">NEVERNESS TO EVERNESS</span><h1>More to come<span class="title-period">.</span></h1><p>I plan to add more Neverness to Everness content here, including gameplay, updates, tips and character guides.</p><a class="back-home" href="/en/">← Back to the English homepage</a></section></main>
-</EndfieldPlaceholder>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#09090d" />
+    <link rel="icon" type="image/svg+xml" href="/images/ag0n1st-logo.svg" />
+    <SeoHead path={Astro.url.pathname} lang="en" title="Coming Soon — Ag0n1st" description="You will find videos, updates, progression tips and more Neverness to Everness content here soon." />
+    <title>Neverness to Everness — Ag0n1st</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="/en/" aria-label="Ag0n1st – Startseite">
+        <img class="wordmark-logo" src="/images/ag0n1st-logo.svg" alt="" aria-hidden="true" />
+        <span>Ag0n1st</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Open Menu" aria-expanded="false" aria-controls="main-navigation"><span></span><span></span><span></span></button>
+
+      <nav class="main-nav" id="main-navigation" aria-label="Main Navigation">
+        <a href="/en/endfield/">Arknights: Endfield</a>
+        <a href="/en/nte/">Neverness to Everness</a>
+        <a href="/en/about/">About Me</a>
+        <LanguageSwitch path={Astro.url.pathname} lang="en" />
+      </nav>
+
+      <a class="header-cta" href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer">
+        Twitch <span aria-hidden="true">↗</span>
+      </a>
+    </header>
+    <main class="placeholder-page"><section class="placeholder-card"><span class="section-kicker">NEVERNESS TO EVERNESS</span><h1>Coming Soon<span class="title-period">.</span></h1><p>You will find videos, updates, progression tips and more Neverness to Everness content here soon.</p><a class="back-home" href="/en/">← Back to Home</a></section></main>
+    <footer class="site-footer">
+      <nav class="social-links" aria-label="Social Media">
+        <a href="https://twitch.tv/Ag0n1st" target="_blank" rel="noreferrer" aria-label="Twitch">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2 1 6v15h5v3h4l3-3h4l6-6V2H4Zm17 12-4 4h-5l-3 3v-3H5V4h16v10ZM10 7h2v6h-2V7Zm5 0h2v6h-2V7Z"/></svg>
+        </a>
+        <a href="https://youtube.com/@Ag0n1st" target="_blank" rel="noreferrer" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.1a3 3 0 0 0-2.1-2.1C19 4.5 12 4.5 12 4.5s-7 0-8.9.5A3 3 0 0 0 1 7.1 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.9A3 3 0 0 0 3.1 19c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.5 12a31 31 0 0 0-.5-4.9ZM9.5 15.5v-7l6 3.5-6 3.5Z"/></svg>
+        </a>
+        <a href="https://linktr.ee/Ag0n1st" target="_blank" rel="noreferrer" aria-label="Alle Socials">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3ZM5 5h6v2H7v10h10v-4h2v6H5V5Z"/></svg>
+        </a>
+      </nav>
+      <a class="footer-wordmark" href="/en/" aria-label="Ag0n1st Startseite"><img class="wordmark-logo" src="/images/ag0n1st-logo.svg" alt="Ag0n1st Logo" /></a>
+      <span class="copyright">© 2025 Ag0n1st. All rights reserved.</span>
+    </footer>
+
+    <script>
+      const menuToggle = document.querySelector(".menu-toggle");
+      const mainNav = document.querySelector("#main-navigation");
+      function setMenuOpen(open) {
+        if (!menuToggle || !mainNav) return;
+        menuToggle.setAttribute("aria-expanded", String(open));
+        menuToggle.setAttribute("aria-label", open ? "Close Menu" : "Open Menu");
+        mainNav.classList.toggle("is-open", open);
+      }
+      menuToggle?.addEventListener("click", () => setMenuOpen(menuToggle.getAttribute("aria-expanded") !== "true"));
+      mainNav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenuOpen(false)));
+    </script>
+  </body>
+</html>
