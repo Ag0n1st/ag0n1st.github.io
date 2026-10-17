@@ -100,6 +100,8 @@ export const GUIDE_UI_EN={
   "Relative Leistung": "Relative Performance",
   "Potenzialübersicht": "Potential Overview",
   "Potenzialvergleich": "Potential Comparison",
+  "Splashart (Rekrutierung)": "Splash Art (Recruitment)",
+  "Artwork anzeigen": "Show Artwork",
   "Offizieller Effekt": "Official Effect",
   "Freundlicher Hinweis": "Friendly Reminder",
   "Teamrolle & Synergien": "Team Role & Synergies",

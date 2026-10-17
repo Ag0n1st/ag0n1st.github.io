@@ -17,7 +17,7 @@ const parts=[{id:"days",title:l("Tage","Days"),value:initial[0]},{id:"hours",tit
   <main class="endfield-utility-page section-wrap">
     <span class="section-kicker">ARKNIGHTS: ENDFIELD · v{patch.version}</span>
     <h1>{l("Ende der aktuellen Version","Current Version Ends")}<span class="title-period">.</span></h1>
-    <p class="endfield-utility-intro">{patch.name} · {l("Voraussichtlicher Termin","Estimated end date")}</p>
+    <p class="endfield-utility-intro">{patch.name} · {patch.status==="confirmed"?l("Bestätigter Termin","Confirmed end date"):l("Voraussichtlicher Termin","Estimated end date")}</p>
     <div class="version-countdown" data-version-countdown data-ends-at={patch.endsAt} role="timer" aria-label={l("Restlaufzeit bis zum Versionsende","Time remaining in this version")}>
       {parts.map((part,index)=><>
         {index>0 && <span class="countdown-separator" aria-hidden="true">·</span>}
@@ -31,7 +31,7 @@ const parts=[{id:"days",title:l("Tage","Days"),value:initial[0]},{id:"hours",tit
     </div>
     <p class="countdown-accessible" data-countdown-readable aria-live="off"></p>
     <p class="countdown-ends"><strong>{l("Voraussichtliches Ende","Estimated end")}:</strong> <time datetime={patch.endsAt}>{humanDate}</time></p>
-    <p class="countdown-source">{l("Die Laufzeit stammt aus dem Community-Versionskalender; ein offizieller Wartungstermin für die nächste Version ist noch nicht bestätigt.","This time comes from the community version calendar; official maintenance timing for the next update is not yet confirmed.")} <a href={patch.sourceUrl} target="_blank" rel="noreferrer">{l("Quelle ansehen","View source")} ↗</a></p>
+    <p class="countdown-source">{l(patch.sourceLabelDe,patch.sourceLabelEn)}</p>
     <p class="countdown-ended" data-countdown-ended hidden>{l("Das errechnete Ende ist erreicht. Ein neuer Termin wird erst nach Bestätigung eingetragen.","The estimated end has passed. A new time will only appear after verification.")}</p>
   </main>
 </EndfieldPlaceholder>

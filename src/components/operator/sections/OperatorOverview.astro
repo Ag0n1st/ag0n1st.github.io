@@ -7,6 +7,8 @@ interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
 const translateUi=(value:string)=>guideText(model.lang,value);
 const { guide, operatorName, preview, gameData, extraData, trTerm, skillImage, slotLabels, slotIcons, priority, priorityOrder, priorityComparisons, shownWeapons, featuredBuild, videoEmbed, profilePartners, ratingRows, ratingValues, getOperatorImageUrl } = model;
+const profileBanner=getOperatorImageUrl(guide.operator,"banner") ?? getOperatorImageUrl(guide.operator,"illustration",gameData?.operator.illustrationUrl);
+const bannerIsLocal=Boolean(getOperatorImageUrl(guide.operator,"banner"));
 const overviewWeapons=shownWeapons.map(w=>({
   ...w,official:resolveOfficialItem(w.name,"Weapons"),
 }));
@@ -21,11 +23,11 @@ import { guideText } from "../../../lib/i18n/guideUi";
           <div class="op-two op-profile-grid">
             <article class="op-cardlet op-profile-card">
               <div class="op-profile-art">
-                {gameData?.operator.illustrationUrl
-                  ? <img src={getOperatorImageUrl(guide.operator,"illustration",gameData.operator.illustrationUrl)} loading="lazy" decoding="async" alt={"Offizielles Operator-Artwork: "+operatorName} />
+                {profileBanner
+                  ? <img src={profileBanner} loading="lazy" decoding="async" alt={(model.lang==="en"?"Operator banner: ":"Operator-Banner: ")+operatorName} />
                   : <span>{translateUi("[Horizontales Operator-Artwork]")}</span>}
               </div>
-              {gameData?.operator.illustrationUrl && <span class="op-media-credit">Artwork: SKPORT Wiki · Originalquelle</span>}
+              {profileBanner && <span class="op-media-credit">{bannerIsLocal?"Artwork: Endfield Talos Wiki":"Artwork: SKPORT Wiki"}</span>}
               <h3>{operatorName}</h3>
               <div class="op-chip-row">
                 <span class="op-chip is-pink">{gameData ? gameData.operator.rarity + "★" : "[Seltenheit]"}</span>

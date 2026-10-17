@@ -451,3 +451,10 @@
 .op-team-gear-variant{padding:10px;border:1px solid #494153;border-radius:9px}
 .op-team-gear-variant>strong{display:block;font-size:11px;margin-bottom:10px}
 .op-team-gear-variant>p{font-size:10px!important;margin:8px 0 0}
+
+/* Official vertical operator art in guide index; recruitment splash stays in Potentials. */
+.op-card-art{overflow:hidden}
+.op-card-art .op-card-cover{object-fit:contain;object-position:center bottom;max-height:320px;padding:8px 8px 0;filter:drop-shadow(0 9px 18px #0008)}
+.op-profile-art{min-height:0;aspect-ratio:900/352;background:linear-gradient(130deg,#1c1b26,#16131d);border:1px solid #453a4a}
+.op-profile-art img{width:100%;height:100%;max-height:none;object-fit:cover;object-position:center;filter:none}
+.op-recruitment-splash{display:block;width:100%;max-width:100%;height:auto;max-height:none;object-fit:contain;border-radius:10px;background:#101017;border:1px solid #39313f}
