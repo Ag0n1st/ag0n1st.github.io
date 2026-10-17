@@ -101,7 +101,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
               </div>
             </div>
             <details class="op-details op-story-areas" id="op-story-areas-panel">
-              <summary>{t("Einzelne Gebiete auswählen")}<span id="op-story-area-counter">0 ausgewählt</span></summary>
+              <summary>{t("Einzelne Gebiete auswählen")}<span id="op-story-area-counter">{model.lang==="en"?"0 selected":"0 ausgewählt"}</span></summary>
               <div class="op-story-areas-body">
                 {storyAreaRegistry.regions.map(region=>
                   <fieldset class="op-story-area-group" data-story-region-group={region.id}>
@@ -120,12 +120,12 @@ import { guideText } from "../../../lib/i18n/guideUi";
             <details class="op-details op-story-extra">
               <summary>{t("Weitere Fortschritte · Autoritätslevel und Wuling-Warenumverteilung")}</summary>
               <div class="op-two op-story-extra-fields">
-                <label>Autoritätslevel (max. {MAX_AUTHORITY_LEVEL})
+                <label>{model.lang==="en"?"Authority Level (max. ":"Autoritätslevel (max. "}{MAX_AUTHORITY_LEVEL})
                   <input class="op-select" id="op-authority-level" type="number" min="0" max={MAX_AUTHORITY_LEVEL} step="1" placeholder={t("Nicht angegeben")} inputmode="numeric" />
                 </label>
                 <label>{t("Wuling-Warenumverteilung")}<select class="op-select" id="op-stock-level">
                     <option value="">{t("Nicht angegeben")}</option>
-                    {[0,1,2,3].map(stage=><option value={stage}>Stufe {stage}</option>)}
+                    {[0,1,2,3].map(stage=><option value={stage}>{t("Stufe")} {stage}</option>)}
                   </select>
                 </label>
               </div>
@@ -148,7 +148,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
           <div class="op-divided">
           <h3>{t("Empfohlene Ausrüstung")}</h3>
           {officialBuilds.length ? <>
-            <p id="op-build-empty" class="op-notice" hidden>Kein Build ist für deine bisherigen Angaben vollständig verfügbar. Ändere den Fortschritt, bestätige die eigenen Blaupausen oder aktiviere die Anzeige gesperrter Builds.</p>
+            <p id="op-build-empty" class="op-notice" hidden>{model.lang==="en"?"No build is fully available for your selected progress. Adjust your progress, confirm the blueprints you own, or display locked builds.":"Kein Build ist für deine bisherigen Angaben vollständig verfügbar. Ändere den Fortschritt, bestätige die eigenen Blaupausen oder aktiviere die Anzeige gesperrter Builds."}</p>
             <div class="op-pills" aria-label="Build auswählen">{officialBuilds.map((b,i)=><button type="button" class="op-pill-button" data-build-button={b.id} data-build-requirements={JSON.stringify(b.requirements)} aria-pressed={i===0?"true":"false"}>{b.title}<span class="op-build-button-status" data-build-status-label></span></button>)}</div>
             {officialBuilds.map((b,i)=><div class="op-build-panel op-cardlet" data-build-panel={b.id} hidden={i!==0}>
               <div class="op-subtitle"><h3 style="margin:0">{b.title}</h3><span class="op-chip">{roleLabels[b.role]}</span></div>
@@ -156,11 +156,11 @@ import { guideText } from "../../../lib/i18n/guideUi";
               {b.availableFromLevel && <p><strong>{t("Ab Level:")}</strong> {b.availableFromLevel}</p>}
               <p class="op-body-copy">
                 <strong>{t("Benötigte Komponente:")}</strong>{" "}
-                {b.requirements.requiredComponent==="starter" ? "Grundmaterialien (vor Amethyst)" :
+                {b.requirements.requiredComponent==="starter" ? model.lang==="en"?"Basic materials (before Amethyst)":"Grundmaterialien (vor Amethyst)" :
                   b.requirements.requiredComponent ? <>
                     <img class="op-factory-inline-icon" src={`/images/endfield/materials/${FACTORY_COMPONENT_STAGES.find(stage=>stage.id===b.requirements.requiredComponent)?.itemId}.webp`} alt="" width="26" height="26" loading="lazy" />
                     {FACTORY_LABELS[b.requirements.requiredComponent]}
-                  </> : "Herstellungsrezept noch nicht zugeordnet"}
+                  </> : model.lang==="en"?"Crafting recipe not yet assigned":"Herstellungsrezept noch nicht zugeordnet"}
               </p>
               {b.storyUnlock && <p class="op-body-copy"><strong>{t("Redaktioneller Story-Hinweis:")}</strong> {b.storyUnlock}</p>}
               <p class="op-body-copy" data-build-reason aria-live="polite">{t("Story- und Blaupausenstatus wird geprüft …")}</p>
@@ -181,22 +181,22 @@ import { guideText } from "../../../lib/i18n/guideUi";
                   <tbody>{b.parts.map(part=><tr>
   <td>{part.catalog?.name??part.reference}</td>
   <td>{part.detail?.status==="verified" ? <>
-    <div class="op-muted">Level {part.detail.level??"?"} · {part.detail.gearSlot??"Ausrüstung"}</div>
+    <div class="op-muted">Level {part.detail.level??"?"} · {part.detail.gearSlot??t("Ausrüstung")}</div>
     {(part.detail.stats[0]?.tables[0]?.rows??[]).map(row=><div>{row.cells[0]}: {row.cells[1]}</div>)}
-    {part.detail.setEffect&&<details class="op-details"><summary>{part.detail.setName} – Setbonus</summary><p class="op-body-copy">{part.detail.setEffect}</p></details>}
+    {part.detail.setEffect&&<details class="op-details"><summary>{part.detail.setName} – {model.lang==="en"?"Set Bonus":"Setbonus"}</summary><p class="op-body-copy">{part.detail.setEffect}</p></details>}
     {part.detail.acquisitionNotes?.length>0&&<p class="op-body-copy"><strong>{t("Offizielle Blaupausen-Erwerbsart:")}</strong> {part.detail.acquisitionNotes.join(" · ")}</p>}
     {part.blueprint && (part.blueprint.kind==="template-crate" || part.blueprint.precision==="disputed") && <details class="op-details">
-      <summary>Blaupausen-Fundort · {
-        part.blueprint.precision==="verified"?"persönlich geprüft":
-        part.blueprint.precision==="specific-item"?"einzelnes Rüstungsteil (Community)":
-        part.blueprint.precision==="disputed"?"Quellen widersprechen sich":
-        "Set-Hinweis (Community)"
+      <summary>{model.lang==="en"?"Blueprint Location":"Blaupausen-Fundort"} · {
+        part.blueprint.precision==="verified"?(model.lang==="en"?"Verified Personally":"persönlich geprüft"):
+        part.blueprint.precision==="specific-item"?(model.lang==="en"?"Specific Gear Piece (Community)":"einzelnes Rüstungsteil (Community)"):
+        part.blueprint.precision==="disputed"?(model.lang==="en"?"Conflicting Sources":"Quellen widersprechen sich"):
+        (model.lang==="en"?"Set Information (Community)":"Set-Hinweis (Community)")
       }</summary>
       <div class="op-details-body">
         {part.blueprint.areas.length>0 && <p class="op-body-copy">
-          <strong>{part.blueprint.precision==="verified"?"Bestätigtes Gebiet":
-            part.blueprint.precision==="specific-item"?"Recherchiertes Fundgebiet":
-            "In den Quellen genannte Gebiete"}:</strong>{" "}
+          <strong>{part.blueprint.precision==="verified"?(model.lang==="en"?"Verified Area":"Bestätigtes Gebiet"):
+            part.blueprint.precision==="specific-item"?(model.lang==="en"?"Researched Location":"Recherchiertes Fundgebiet"):
+            (model.lang==="en"?"Areas Cited by Sources":"In den Quellen genannte Gebiete")}:</strong>{" "}
           {part.blueprint.areas.map(x=>x.name).join(", ")}
         </p>}
         {part.blueprint.precision==="disputed" &&
@@ -206,7 +206,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
         {part.blueprint.precision==="set-family" &&
           <p class="op-muted">{t("Nur Set-Hinweis: Die Fundorte sind noch nicht den konkreten Rüstungsteilen zugeordnet.")}</p>}
         <p class="op-muted">{part.blueprint.note}</p>
-        {part.blueprint.claims.map(x=><p class="op-body-copy">Quelle / Kiste: {x.landmark}</p>)}
+        {part.blueprint.claims.map(x=><p class="op-body-copy">{t("Quelle / Kiste:")} {x.landmark}</p>)}
         {part.blueprint.sources.length>0 && <p class="op-body-copy">
           <strong>{t("Quellen:")}</strong>{" "}
           {part.blueprint.sources.map((x,i)=><span>{i>0?" · ":""}<a href={x.url} target="_blank" rel="noopener noreferrer">{x.title}</a></span>)}
@@ -223,7 +223,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
   </> : <span class="op-muted">{t("Offizielle Werte noch nicht vollständig verfügbar")}</span>}</td>
   <td>{part.detail?.standardRecipe?.materials?.length ?
     <MaterialCosts items={part.detail.standardRecipe.materials} /> :
-    <span class="op-muted">{part.detail?.recipeStatus==="needs-review"?"Rezept muss geprüft werden":"Standardrezept nicht dokumentiert"}</span>}
+    <span class="op-muted">{part.detail?.recipeStatus==="needs-review"?(model.lang==="en"?"Recipe Needs Verification":"Rezept muss geprüft werden"):(model.lang==="en"?"Standard Recipe Not Documented":"Standardrezept nicht dokumentiert")}</span>}
   </td>
 </tr>)}</tbody>
                 </table></div>
