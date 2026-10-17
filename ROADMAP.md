@@ -1848,6 +1848,7 @@ Alle 109 Endfield-Unit-Tests und die beiden Budgetchecks erfolgreich. Desktop 14
 
 | Datum | Entscheidung | Begründung / Folgewirkung |
 | --- | --- | --- |
+| 17.10.2026 | **Fabrik wird primär ein geführter, spielstandsabhängiger Fortschritts-Guide; die weitere Arbeit ist auf unbestimmte Zeit verschoben.** | Redaktionelle Blaupausenbibliothek nur ergänzend; keine Fabrik-Coding-/Layout-/Datenschema-Arbeit ohne neue ausdrückliche Freigabe. Vollständiger Forschungs- und Konzeptstand: [docs/endfield-factory-concept.md](docs/endfield-factory-concept.md). |
 | Oktober 2026 | Astro + GitHub Pages, primär `main`, statische Daten statt Login-CMS | Günstig, kontrollierbar, Textdateien unabhängig pflegbar. |
 | Oktober 2026 | Deutsch zuerst; Magenta/Cyan, Geist; keine automatischen Website-Bilder im Chat | Einheitliche CI und klare Autorisierung von Assets. |
 | Oktober 2026 | „Operatoren“ statt „Charaktere“ | Einheitliche Endfield-Begrifflichkeit und URLs. |
