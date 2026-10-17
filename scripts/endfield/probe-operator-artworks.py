@@ -21,7 +21,7 @@ def sample_http(url):
 
 async def main():
  print("WIKI_HTTP_SAMPLES")
- for person in ["Si","Liino","Typhoeus","Ember"]:
+ for person in ["Si","Liino","Typhoeus","Ember","Argent Flow","Endministrator","Tangtang"]:
   target="https://endfield.wiki.gg/wiki/"+person
   try:
    with urlopen(Request(target,headers={"User-Agent":"Mozilla/5.0 (compatible; Ag0n1stGuidePortal/1.0)"}),timeout=22) as reply:html=reply.read().decode("utf-8","replace")
