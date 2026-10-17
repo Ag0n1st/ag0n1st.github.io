@@ -37,3 +37,19 @@
 .en-guide-faq p{font-size:13px;color:#d2c9d7;line-height:1.7}
 .en-guide-faq details+details{border-top:1px solid #39333f}
 @media(max-width:680px){.en-guide-columns,.en-guide-build-grid,.en-guide-team-grid{grid-template-columns:1fr}.en-guide-gear .op-mini-art{height:55px}}
+
+/* Language selector: a button-height control, never the full nav flex height. */
+.main-nav .language-switch,.site-header .language-switch{
+  align-self:center!important;
+  height:34px!important;min-height:34px;max-height:34px;
+  box-sizing:border-box;flex:0 0 auto;
+  padding:0 10px;
+  border-radius:9px;
+  margin-left:10px;
+}
+@media(max-width:760px){
+  .main-nav .language-switch,.site-header .language-switch{
+    height:32px!important;min-height:32px;max-height:32px;
+    padding:0 9px;margin-left:0;
+  }
+}

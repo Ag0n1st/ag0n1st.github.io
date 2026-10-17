@@ -4,12 +4,14 @@ import MaterialCosts from "../../endfield/MaterialCosts.astro";
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
+const translateUi=(value:string)=>guideText(model.lang,value);
 const { guide, gameData, extraData, trTerm, trMetric, trReq, trPromotion, localized } = model;
+import { guideText } from "../../../lib/i18n/guideUi";
 ---
 <section class="op-section" id="operator-kit">
-        <h2>Operator Kit</h2>
+        <h2>{translateUi("Operator Kit")}</h2>
         <div class="op-divided">
-          <h3>Operator-Profil & Spielweise</h3>
+          <h3>{translateUi("Operator-Profil & Spielweise")}</h3>
           <div class="op-info-grid">{[
               ["Klasse",trTerm(gameData?.operator.class)],["Element",trTerm(gameData?.operator.element)],
               ["Fraktion",gameData?.operator.faction],["Hauptattribut",trTerm(extraData?.attributes.mainAttribute)],
@@ -18,29 +20,29 @@ const { guide, gameData, extraData, trTerm, trMetric, trReq, trPromotion, locali
           <p class="op-muted op-body-copy">{guide.operatorKit.playstyle || "[Spielweise und Grundlagen folgen]"}</p>
         </div>
         <details class="op-divided op-guide-accordion" data-guide-disclosure="attribute-progression">
-          <summary class="op-guide-accordion-summary"><h3>Attributentwicklung</h3><span class="op-guide-accordion-hint">Levelwerte anzeigen</span></summary>
+          <summary class="op-guide-accordion-summary"><h3>{translateUi("Attributentwicklung")}</h3><span class="op-guide-accordion-hint">{translateUi("Levelwerte anzeigen")}</span></summary>
           <div class="op-guide-accordion-content">
           {extraData ? <>
-            <p class="op-section-intro">Originalwerte der englischen SKPORT-Wiki für die dort angegebenen Levelstufen. Dies sind keine Ausrüstungslevel.</p>
+            <p class="op-section-intro">{translateUi("Originalwerte der englischen SKPORT-Wiki für die dort angegebenen Levelstufen. Dies sind keine Ausrüstungslevel.")}</p>
             <div class="op-table-wrap"><table class="op-table op-progression-table">
-              <thead><tr><th>Attribut</th>{extraData.attributes.levels.map(level=><th>{level}</th>)}</tr></thead>
+              <thead><tr><th>{translateUi("Attribut")}</th>{extraData.attributes.levels.map(level=><th>{level}</th>)}</tr></thead>
               <tbody>{extraData.attributes.metrics.map(metric=><tr><th scope="row" title={metric.name}>{trMetric(metric.name.replace(/ \((Main|Secondary)\)/,""))}{metric.name.includes("(Main)") ? " ★" : metric.name.includes("(Secondary)") ? " ☆" : ""}</th>{metric.values.map(value=><td>{value}</td>)}</tr>)}</tbody>
             </table></div>
-            <details class="op-details"><summary>Materialkosten nach Operator-Level</summary>
+            <details class="op-details"><summary>{translateUi("Materialkosten nach Operator-Level")}</summary>
               <div class="op-details-body op-table-wrap"><table class="op-table">
-                <thead><tr><th>Operator-Level</th><th>Materialien laut Wiki</th></tr></thead>
+                <thead><tr><th>{translateUi("Operator-Level")}</th><th>{translateUi("Materialien laut Wiki")}</th></tr></thead>
                 <tbody>{extraData.attributes.levelCosts.map(row=><tr><td>{row.level}</td><td><MaterialCosts items={row.items} translatedNames={localized?.materials} fallbackNames={extraData.materials} /></td></tr>)}</tbody>
               </table></div>
             </details>
-          </> : <p class="op-placeholder">[Attributwerte werden nach dem SKPORT-Import angezeigt]</p>}
+          </> : <p class="op-placeholder">{translateUi("[Attributwerte werden nach dem SKPORT-Import angezeigt]")}</p>}
           </div>
         </details>
         <details class="op-divided op-guide-accordion" data-guide-disclosure="operator-promotions">
-          <summary class="op-guide-accordion-summary"><h3>Operator-Aufstieg & Freischaltungen</h3><span class="op-guide-accordion-hint">Aufstiege anzeigen</span></summary>
+          <summary class="op-guide-accordion-summary"><h3>{translateUi("Operator-Aufstieg & Freischaltungen")}</h3><span class="op-guide-accordion-hint">{translateUi("Aufstiege anzeigen")}</span></summary>
           <div class="op-guide-accordion-content">
-          <p class="op-section-intro">Promotion und Outfitting sind unterschiedliche Freischaltungen. Die Levelangaben entsprechen den offiziellen Operator-Meilensteinen.</p>
+          <p class="op-section-intro">{translateUi("Promotion und Outfitting sind unterschiedliche Freischaltungen. Die Levelangaben entsprechen den offiziellen Operator-Meilensteinen.")}</p>
           <div class="op-table-wrap"><table class="op-table op-progression-table">
-            <thead><tr><th>Aufstieg</th><th>Freischaltung</th><th>Voraussetzung</th><th>Materialien</th></tr></thead>
+            <thead><tr><th>{translateUi("Aufstieg")}</th><th>{translateUi("Freischaltung")}</th><th>{translateUi("Voraussetzung")}</th><th>{translateUi("Materialien")}</th></tr></thead>
             <tbody>{extraData ? extraData.promotions.map(p=><tr>
               <td><strong>{trPromotion(p.name)?.name ?? p.name}</strong></td><td>{trPromotion(p.name)?.effect ?? p.effect}</td><td>{trReq(p.requirement)}</td>
               <td><MaterialCosts items={p.cost} translatedNames={localized?.materials} fallbackNames={extraData?.materials} /></td>

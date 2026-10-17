@@ -1,0 +1,54 @@
+---
+import { getCollection } from "astro:content";
+import { getImportedOperator } from "../../lib/endfield/operatorData";
+import { getOperatorImageUrl } from "../../lib/endfield/operatorAssets";
+import EndfieldPlaceholder from "../../layouts/EndfieldPlaceholder.astro";
+import "../../styles/operator-guides.css";
+
+// Published guides and explicitly enabled previews appear automatically.
+const entries = await getCollection("operator-guides", ({ data }) =>
+  data.status === "published" || data.status === "preview"
+);
+const operators = entries.map(entry => ({
+  name: entry.data.displayName ?? entry.data.operator.split("-").map(part => part[0].toUpperCase() + part.slice(1)).join(" "),
+  slug: entry.data.operator,
+  preview: entry.data.status === "preview",
+  game: getImportedOperator(entry.data.operator)?.operator,
+})).sort((a,b) => a.name.localeCompare(b.name, "de"));
+
+
+interface Props {lang?:"de"|"en"}
+const {lang="de"}=Astro.props;
+const isEn=lang==="en";
+const l=(de:string,en:string)=>isEn?en:de;
+---
+<EndfieldPlaceholder title={l("Operatoren","Operators")} kicker={l("ARKNIGHTS: ENDFIELD · OPERATOREN","ARKNIGHTS: ENDFIELD · OPERATORS")} active="operators" lang={lang} description={l("Operatoren und meine Charakter-Guides auf einen Blick.","Operators and my detailed character guides at a glance.")}>
+  <main class="op-page section-wrap">
+    <span class="op-eyebrow">ARKNIGHTS: ENDFIELD / GUIDES</span>
+    <h1 class="op-page-heading">{l("Operatoren","Operators")}<span class="title-period">.</span></h1>
+    <p class="op-muted op-page-intro">{l("Wähle einen Operator aus, um seinen Guide mit Builds, Fertigkeiten, Teams und Gameplay zu öffnen.","Select an operator to read the full guide with equipment builds, skills, teams and gameplay.")}</p>
+    <div class="op-grid" aria-label={l("Operatoren","Operators")}>
+      {operators.map((operator) => (
+        <a class="op-card" href={isEn?`/en/endfield/operators/${operator.slug}/`:`/endfield/operatoren/${operator.slug}/`} aria-label={isEn?`Open ${operator.name} guide in English`:`Guide für ${operator.name} öffnen`}>
+          <div class="op-card-art">
+            {operator.game?.coverUrl
+              ? <img class="op-card-cover" src={getOperatorImageUrl(operator.slug,"cover",operator.game.coverUrl)} loading="lazy" decoding="async" alt={l("Offizielles SKPORT-Porträt: ","Official SKPORT portrait: ")+operator.name}/>
+              : <span class="op-image-placeholder">{l("[Operator-Grafik]","[Operator artwork]")}<br />{operator.name}</span>}
+          </div>
+          <div class="op-card-info">
+            <h2>{operator.name}</h2>
+            <div class="op-chip-row">
+              <span class="op-chip is-pink">{operator.game ? operator.game.rarity + "★" : l("[Seltenheit]","[Rarity]")}</span>
+              <span class="op-chip">{operator.game?.class || l("[Klasse]","[Class]")}</span>
+              <span class="op-chip">{operator.game?.element || l("[Element]","[Element]")}</span>
+              <span class="op-chip">{operator.game?.weaponType || l("[Waffentyp]","[Weapon type]")}</span>
+              {operator.preview && <span class="op-chip is-accent">{l("Layout-Vorschau","Layout Preview")}</span>}
+            </div>
+            <div class="op-card-bottom"><span>{l("Operator-Guide ansehen","View Operator Guide")}</span><span aria-hidden="true">↗</span></div>
+          </div>
+        </a>
+      ))}
+    </div>
+    {operators.length === 0 && <p class="op-muted">{l("Noch keine veröffentlichten Operator-Guides vorhanden.","No published operator guides are currently available.")}</p>}
+  </main>
+</EndfieldPlaceholder>

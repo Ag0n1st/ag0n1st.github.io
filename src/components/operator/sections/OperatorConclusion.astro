@@ -3,24 +3,26 @@ import type { OperatorGuideModel } from "../../../lib/endfield/operatorGuideMode
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
+const translateUi=(s:string)=>guideText(model.lang,s);
 const { guide, operatorName, pullLabels } = model;
+import { guideText } from "../../../lib/i18n/guideUi";
 ---
 <section class="op-section" id="fazit">
         <div class="op-conclusion-header">
-          <h2>Fazit</h2>
+          <h2>{translateUi("Fazit")}</h2>
           {guide.conclusion.recommendation==="recommended"
-            ? <span class="op-pull-recommendation-badge"><span aria-hidden="true">✓</span> Empfehlung</span>
+            ? <span class="op-pull-recommendation-badge"><span aria-hidden="true">✓</span>{translateUi("Empfehlung")}</span>
             : guide.conclusion.recommendation
               ? <span class="op-chip is-accent">{pullLabels[guide.conclusion.recommendation]}</span>
               : null}
         </div>
         {(guide.conclusion.verdict || guide.conclusion.pullAdvice)
           ? <p class="op-conclusion-lead">{guide.conclusion.verdict || guide.conclusion.pullAdvice}</p>
-          : <p class="op-placeholder">[Fazit folgt]</p>}
-        {guide.conclusion.closingNote && <div class="op-divided"><h3>Abschließende Einschätzung</h3><p class="op-muted op-body-copy">{guide.conclusion.closingNote}</p></div>}
+          : <p class="op-placeholder">{translateUi("[Fazit folgt]")}</p>}
+        {guide.conclusion.closingNote && <div class="op-divided"><h3>{translateUi("Abschließende Einschätzung")}</h3><p class="op-muted op-body-copy">{guide.conclusion.closingNote}</p></div>}
         <slot />
         <div class="op-two op-conclusion-audiences">
-          <div class="op-cardlet"><h3>✓ Für wen lohnt es sich?</h3>{guide.conclusion.recommendedFor.length ? guide.conclusion.recommendedFor.map(s=><p class="op-body-copy">{s}</p>) : <p class="op-placeholder">[Empfehlungen folgen]</p>}</div>
-          <div class="op-cardlet"><h3>− Wer kann verzichten?</h3>{guide.conclusion.skipIf.length ? guide.conclusion.skipIf.map(s=><p class="op-body-copy">{s}</p>) : <p class="op-placeholder">[Einschätzung folgt]</p>}</div>
+          <div class="op-cardlet"><h3>{translateUi("✓ Für wen lohnt es sich?")}</h3>{guide.conclusion.recommendedFor.length ? guide.conclusion.recommendedFor.map(s=><p class="op-body-copy">{s}</p>) : <p class="op-placeholder">{translateUi("[Empfehlungen folgen]")}</p>}</div>
+          <div class="op-cardlet"><h3>{translateUi("− Wer kann verzichten?")}</h3>{guide.conclusion.skipIf.length ? guide.conclusion.skipIf.map(s=><p class="op-body-copy">{s}</p>) : <p class="op-placeholder">{translateUi("[Einschätzung folgt]")}</p>}</div>
         </div>
       </section>

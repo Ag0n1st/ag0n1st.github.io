@@ -19,9 +19,10 @@ export interface OperatorGuideProps {
   gameData?: ImportedOperator;
   extraData?: ImportedOperatorExtras;
   localized?: OperatorLocale;
+  lang?: "de" | "en";
 }
 
-export function createOperatorGuideModel({ guide, operatorName, preview = false, gameData, extraData, localized }: OperatorGuideProps) {
+export function createOperatorGuideModel({ guide, operatorName, preview = false, gameData, extraData, localized, lang = "de" }: OperatorGuideProps) {
 const trTerm = (word?: string) => word ? localized?.operatorTerms[word] ?? word : "";
 const trMetric = (name:string) => localized?.metricLabels[name] ?? name;
 const trReq = (req:string) => localized?.requirementLabels[req] ?? req;
@@ -39,7 +40,7 @@ const otherTalents = extraData?.talents.filter(t => t.category === "other") ?? [
 function formatCost(items: ImportedItemCost[]):string {
   if (!items?.length) return "–";
   return items.map(item => (localized?.materials[item.id] ?? extraData?.materials[item.id]?.name ?? "Item "+item.id) +
-    " × " + item.count.toLocaleString("de-DE")).join(" · ");
+    " × " + item.count.toLocaleString(lang==="en"?"en-US":"de-DE")).join(" · ");
 }
 
 const gameSkills = gameData?.skills ?? [];
@@ -49,8 +50,10 @@ const skillImage = (slot: string) =>
 const defaultSkillRank = 8; // Rank 9, never a guide skill-priority recommendation.
 
 
-const missing = "[Noch keine Angaben]";
-const slotLabels: Record<string,string> = {
+const missing = lang==="en"?"[Not specified yet]":"[Noch keine Angaben]";
+const slotLabels: Record<string,string> = lang==="en"?{
+  basic:"Basic Attack",battle:"Battle Skill",combo:"Combo Skill",ultimate:"Ultimate"
+}:{
   basic: "Basis-Angriff", battle: "Kampffertigkeit",
   combo: "Kombofertigkeit", ultimate: "Ultimative Fertigkeit"
 };
@@ -66,17 +69,17 @@ const weaponLabels: Record<string,string> = {
 };
 const roleLabels: Record<string,string> = {
   "main-dps":"Main DPS","sub-dps":"Sub DPS",support:"Support",
-  hybrid:"Hybrid",control:"Control",other:"Weitere Rolle"
+  hybrid:"Hybrid",control:"Control",other:lang==="en"?"Other":"Weitere Rolle"
 };
 const stageLabels: Record<string,string> = {
   early:"Early Game",mid:"Mid Game",late:"Late Game",endgame:"Endgame"
 };
 const showcaseTypeLabels: Record<string,string> = {
-  trial:"Trial Run",boss:"Bosskampf",speedrun:"Speedrun",other:"Gameplay"
+  trial:"Trial Run",boss:lang==="en"?"Boss fight":"Bosskampf",speedrun:"Speedrun",other:"Gameplay"
 };
 const pullLabels: Record<string,string> = {
-  recommended:"Klare Empfehlung",conditional:"Situationsabhängig",
-  optional:"Eher verzichtbar"
+  recommended:lang==="en"?"Strong recommendation":"Klare Empfehlung",conditional:lang==="en"?"Situational":"Situationsabhängig",
+  optional:lang==="en"?"Optional":"Eher verzichtbar"
 };
 
 const weapons = guide.weapons.recommendations.map((w,i) => ({
@@ -184,7 +187,19 @@ const ratingValues={
   // documented provisional editorial score rather than hiding accessibility.
   accessibility:metaAccessibility?.score ?? guide.overview.ratings.accessibility,
 };
-const ratingRows = [
+const ratingRows = lang==="en"?[
+  ["Beginner friendliness","beginnerFriendliness","How easy is the operator to play reliably? More bars mean easier."],
+  ["Flexibility","flexibility","How easily does the operator fit into different teams?"],
+  ["Accessibility","accessibility",metaAccessibility
+    ? "Automatically determined from the earliest fully verified Meta build (level "+
+      metaAccessibility.requiredLevel+" / "+metaAccessibility.phase+"). Check blueprint ownership separately."
+    : guide.overview.accessibilityNote
+      ? guide.overview.accessibilityNote
+      : realMetaBuilds.length
+        ? "Meta build requirements are not fully verified yet."
+        : "No verified Meta builds available for automatic classification."]
+] as const:[
+
   ["Einsteigerfreundlichkeit","beginnerFriendliness","Wie einfach lässt sich der Operator sicher spielen? Mehr Balken = leichter."],
   ["Flexibilität","flexibility","Wie leicht lässt sich der Operator in Teams einbauen?"],
   ["Zugänglichkeit","accessibility",metaAccessibility
@@ -200,7 +215,7 @@ const ratingRows = [
 const potentialByLevel = new Map(guide.potentials.entries.map(p=>[p.level,p]));
 
   return {
-    guide, operatorName, preview, gameData, extraData, localized, trTerm, trMetric, trReq, trTalent, trPotential, trPromotion, officialPotentials, combatTalents, shipTalents, attributeNodes, otherTalents, formatCost, gameSkills, importedBySlot, skillImage, defaultSkillRank, missing, slotLabels, slotIcons, priority, supportPriority, priorityOrder, priorityComparisons, weaponLabels, roleLabels, stageLabels, showcaseTypeLabels, pullLabels, weapons, demoWeapons, shownWeapons, demoBuilds, builds, featuredBuild, demoTeams, metaTeams, extraTeams, teamRoles, displayTeamMember, teamMemberCard, profilePartners, demoShowcases, showcases, selectedShowcaseIndex, youtubeEmbed, videoEmbed, ratingRows, ratingValues, metaAccessibility, potentialByLevel, getOperatorImageUrl
+    guide, operatorName, preview, gameData, extraData, localized, lang, trTerm, trMetric, trReq, trTalent, trPotential, trPromotion, officialPotentials, combatTalents, shipTalents, attributeNodes, otherTalents, formatCost, gameSkills, importedBySlot, skillImage, defaultSkillRank, missing, slotLabels, slotIcons, priority, supportPriority, priorityOrder, priorityComparisons, weaponLabels, roleLabels, stageLabels, showcaseTypeLabels, pullLabels, weapons, demoWeapons, shownWeapons, demoBuilds, builds, featuredBuild, demoTeams, metaTeams, extraTeams, teamRoles, displayTeamMember, teamMemberCard, profilePartners, demoShowcases, showcases, selectedShowcaseIndex, youtubeEmbed, videoEmbed, ratingRows, ratingValues, metaAccessibility, potentialByLevel, getOperatorImageUrl
   };
 }
 

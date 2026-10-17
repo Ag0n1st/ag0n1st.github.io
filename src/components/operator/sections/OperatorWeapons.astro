@@ -8,6 +8,7 @@ import type { DetailTable } from "../../../lib/endfield/equipmentDetails";
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
+const translateUi=(value:string)=>guideText(model.lang,value);
 const { guide, weapons, shownWeapons } = model;
 
 const officialWeapons=shownWeapons.map(w=>{
@@ -36,22 +37,23 @@ function tuningValue(row:DetailTable["rows"][number]|undefined){
   const after=[cells[3],cells[4]].filter(value=>value && value!=="None").join(" · ");
   return after ? before+" → "+after : before||"–";
 }
+import { guideText } from "../../../lib/i18n/guideUi";
 ---
 <section class="op-section" id="waffen">
-  <h2>Waffen</h2>
+  <h2>{translateUi("Waffen")}</h2>
   <div class="op-divided">
-    <h3>Waffenempfehlungen</h3>
+    <h3>{translateUi("Waffenempfehlungen")}</h3>
     {officialWeapons.length ? <div class="op-two">{officialWeapons.map(w=><article class="op-cardlet">
       <div class="op-line">
         <div class="op-mini-art">{w.item ? <ItemIcon id={w.item.id}/> : <span aria-hidden="true">–</span>}</div>
         <div class="op-line-label"><span class="op-chip">{w.label}</span><strong>{w.item?.name??w.name}</strong></div>
       </div>
       {w.evaluation && <p class="op-body-copy">{w.evaluation}</p>}
-    </article>)}</div> : <p class="op-muted">Keine Waffenempfehlungen eingetragen.</p>}
+    </article>)}</div> : <p class="op-muted">{translateUi("Keine Waffenempfehlungen eingetragen.")}</p>}
     {guide.weapons.generalNotes && <p class="op-body-copy">{guide.weapons.generalNotes}</p>}
   </div>
   <details class="op-divided op-guide-accordion" data-guide-disclosure="weapon-details">
-    <summary class="op-guide-accordion-summary"><h3>Waffendetails</h3><span class="op-guide-accordion-hint">Details anzeigen</span></summary>
+    <summary class="op-guide-accordion-summary"><h3>{translateUi("Waffendetails")}</h3><span class="op-guide-accordion-hint">{translateUi("Details anzeigen")}</span></summary>
     <div class="op-guide-accordion-content">
       {officialWeapons.length ? <>
         <div class="op-pills" aria-label="Waffe auswählen">
@@ -63,10 +65,10 @@ function tuningValue(row:DetailTable["rows"][number]|undefined){
             <div class="op-line-label"><strong>{w.item?.name??w.name}</strong><span class="op-muted">{w.label}</span></div>
           </div>
           {w.data?.status==="verified" ? <>
-            <h4 class="op-weapon-subtitle">Basiswerte und maximale Werte</h4>
+            <h4 class="op-weapon-subtitle">{translateUi("Basiswerte und maximale Werte")}</h4>
             {w.attributeRows.length>0 && <div class="op-table-wrap">
               <table class="op-table op-weapon-attributes-table">
-                <thead><tr><th scope="col">Attribut</th><th scope="col">Startwert</th><th scope="col">Maximalwert</th></tr></thead>
+                <thead><tr><th scope="col">{translateUi("Attribut")}</th><th scope="col">{translateUi("Startwert")}</th><th scope="col">{translateUi("Maximalwert")}</th></tr></thead>
                 <tbody>{w.attributeRows.map(row=><tr>
                   <th scope="row">{row.cells[0]}</th>
                   <td>{row.cells[1]}{row.cells[2] && <small class="op-weapon-rank">{row.cells[2]}</small>}</td>
@@ -87,20 +89,20 @@ function tuningValue(row:DetailTable["rows"][number]|undefined){
                 </div>
               </div>
             </div>}
-            {w.evaluation && <p class="op-body-copy op-weapon-evaluation"><strong>Einordnung</strong><br />{w.evaluation}</p>}
+            {w.evaluation && <p class="op-body-copy op-weapon-evaluation"><strong>{translateUi("Einordnung")}</strong><br />{w.evaluation}</p>}
             <details class="op-details op-weapon-detailed-stats">
-              <summary>Tuning-Stufen, Rangwerte und Waffenpotenziale</summary>
+              <summary>{translateUi("Tuning-Stufen, Rangwerte und Waffenpotenziale")}</summary>
               <div class="op-details-body">
                 {w.tuningStages.length>0 && <div class="op-weapon-data-group">
-                  <h4>Tuning-Stufen & Materialkosten</h4>
+                  <h4>{translateUi("Tuning-Stufen & Materialkosten")}</h4>
                   <div class="op-table-wrap">
                     <table class="op-table op-weapon-tuning-table">
                       <thead><tr>
-                        <th scope="col">Stufe</th>
-                        <th scope="col">Basis-ANG</th>
+                        <th scope="col">{translateUi("Stufe")}</th>
+                        <th scope="col">{translateUi("Basis-ANG")}</th>
                         <th scope="col">{w.tuningStages[0]?.rows[1]?.cells[0]||"Attribut 1"}</th>
                         <th scope="col">{w.tuningStages[0]?.rows[2]?.cells[0]||"Attribut 2"}</th>
-                        <th scope="col">Materialien</th>
+                        <th scope="col">{translateUi("Materialien")}</th>
                       </tr></thead>
                       <tbody>{w.tuningStages.map(stage=><tr>
                         <th scope="row">{stage.label}</th>
@@ -113,7 +115,7 @@ function tuningValue(row:DetailTable["rows"][number]|undefined){
                       </tr>)}</tbody>
                     </table>
                   </div>
-                  <p class="op-muted op-weapon-data-note">Materialien gelten für den Übergang auf die jeweilige Tuning-Stufe. Die Anfangs- und Endwert-Zeilen haben keine separaten Tuning-Kosten.</p>
+                  <p class="op-muted op-weapon-data-note">{translateUi("Materialien gelten für den Übergang auf die jeweilige Tuning-Stufe. Die Anfangs- und Endwert-Zeilen haben keine separaten Tuning-Kosten.")}</p>
                 </div>}
                 {[
                   {title:"Waffenwerte nach Rang",tabs:w.data.details},
@@ -134,13 +136,13 @@ function tuningValue(row:DetailTable["rows"][number]|undefined){
                 <p class="op-muted op-weapon-source">Quelle: SKPORT-Wiki · Datenstand {w.data.source.snapshot}</p>
               </div>
             </details>
-          </> : <p class="op-muted">Für diese Waffe liegen noch keine vollständig geprüften SKPORT-Detailwerte vor.</p>}
+          </> : <p class="op-muted">{translateUi("Für diese Waffe liegen noch keine vollständig geprüften SKPORT-Detailwerte vor.")}</p>}
         </article>)}
       </> : <p class="op-muted">Noch keine Waffendaten hinterlegt.</p>}
     </div>
   </details>
   <details class="op-divided op-guide-accordion" data-guide-disclosure="weapon-comparison">
-    <summary class="op-guide-accordion-summary"><h3>Waffenvergleich</h3><span class="op-guide-accordion-hint">Vergleich anzeigen</span></summary>
+    <summary class="op-guide-accordion-summary"><h3>{translateUi("Waffenvergleich")}</h3><span class="op-guide-accordion-hint">{translateUi("Vergleich anzeigen")}</span></summary>
     <div class="op-guide-accordion-content">
       {guide.weapons.comparisons.length>0 ?
         <div class="op-comparison-scenarios">
@@ -149,7 +151,7 @@ function tuningValue(row:DetailTable["rows"][number]|undefined){
               <h4>{scenario.title}</h4>
               <p class="op-muted">Referenz: {resolveOfficialItem(scenario.referenceWeaponId,"Weapons")?.name??scenario.referenceWeaponId} R{scenario.referenceRank} = 100,0 %</p>
               <div class="op-table-wrap"><table class="op-table">
-                <thead><tr><th>Waffe</th><th>Rang</th><th>Relative Leistung</th></tr></thead>
+                <thead><tr><th>{translateUi("Waffe")}</th><th>{translateUi("Rang")}</th><th>{translateUi("Relative Leistung")}</th></tr></thead>
                 <tbody>{scenario.entries.map(entry=><tr>
                   <td>{resolveOfficialItem(entry.weaponId,"Weapons")?.name??entry.weaponId}</td>
                   <td>R{entry.rank}</td>
@@ -161,13 +163,13 @@ function tuningValue(row:DetailTable["rows"][number]|undefined){
         </div> :
         weapons.some(w=>w.performancePercent!==undefined) ?
           <div class="op-table-wrap"><table class="op-table">
-            <thead><tr><th>Waffe</th><th>Relative Leistung</th></tr></thead>
+            <thead><tr><th>{translateUi("Waffe")}</th><th>{translateUi("Relative Leistung")}</th></tr></thead>
             <tbody>{weapons.filter(w=>w.performancePercent!==undefined).map(w=><tr>
               <td>{resolveOfficialItem(w.name,"Weapons")?.name??w.name}</td>
               <td>{w.performancePercent} %</td>
             </tr>)}</tbody>
           </table><small class="op-data-source-note">Quelle: {weapons.find(w=>w.source)?.source??"nicht angegeben"}</small></div> :
-          <p class="op-muted">Noch keine belastbaren Waffenvergleichswerte vorhanden.</p>}
+          <p class="op-muted">{translateUi("Noch keine belastbaren Waffenvergleichswerte vorhanden.")}</p>}
     </div>
   </details>
 </section>

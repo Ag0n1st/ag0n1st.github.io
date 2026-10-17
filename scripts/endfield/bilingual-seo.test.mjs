@@ -9,7 +9,7 @@ test("English language uses the public domain and stable, paired URLs without al
  assert.equal(englishPath("/endfield/operatoren/si/"),"/en/endfield/operators/si/");
  assert.equal(germanPath("/en/endfield/operators/si/"),"/endfield/operatoren/si/");
  assert.equal(availableCounterpart("/en/endfield/operators/si/","en"),"/endfield/operatoren/si/");
- assert.equal(englishPath("/endfield/fabrik/"),null,"Do not pretend untranslated functional pages have equivalents");
+ assert.equal(englishPath("/endfield/fabrik/"),"/en/endfield/factory/","Every tab needs its own EN page");
  for(const [de,en] of Object.entries(EN_PAGES)){
   const a=alternateLinks(de),b=alternateLinks(en);
   assert.deepEqual(a,b,"hreflang must be reciprocal");
@@ -44,16 +44,35 @@ test("All three English editorial guides are real English content keyed to the o
 });
 test("Indexing respects true English editorial content and German preview status",()=>{
  const es=read("src/pages/en/endfield/operators/[slug].astro");
- const idx=read("src/pages/en/endfield/operators/index.astro");
+ const idx=read("src/components/pages/OperatorIndex.astro");
  const map=read("src/pages/sitemap.xml.ts");
- assert.match(es,/getCollection\("operator-guides"/);
- assert.match(es,/noindex=\{!published\}/);
- assert.match(es,/original\?\.description/);
- assert.match(es,/getEndfieldItem/);
- assert.match(es,/guide\.teams\.meta/);
+ assert.match(es,/OperatorGuide/);
+ assert.match(es,/localizeOperatorGuide/);
+ assert.ok(es.includes("noindex={preview}"));
+ assert.ok(!es.includes("en-guide-build-grid") && !es.includes("en-guide-team-grid"));
+
+ const shared=read("src/components/operator/OperatorGuide.astro");
+ for(const section of ["Overview","Kit","Skills","Weapons","Equipment","Potentials","Teams","Gameplay","Conclusion"]){
+   assert.ok(shared.includes("Operator"+section),section+" is rendered by both languages");
+ }
+ const data=JSON.parse(read("src/data/i18n/en-guide-content.json"));
+ const originals={"si":{meta:6,extra:37},"typhoeus":{meta:4,extra:5},"liino":{meta:2,extra:3}};
+ for(const slug of ["si","typhoeus","liino"]){
+   const g=data.guides[slug];
+   assert.ok(g.operatorKit.playstyle.length>250);
+   assert.equal(g.skills.active.basic.length>40,true);
+   assert.ok(g.equipment.builds.length>=6);
+   assert.ok(g.teams.meta.length>=2);
+   assert.ok(g.conclusion.verdict.length>90);
+   assert.ok(g.overview.summary.length>100);
+ }
+ for(const file of ["factory","recruitment","refinement","essences","speedruns","checklist","countdown"]){
+   assert.ok(existsSync("src/pages/en/endfield/"+file+"/index.astro"));
+ }
  assert.match(map,/published/);
- assert.match(map,/!published\.has/);
- assert.match(idx,/href=\{\`\/en\/endfield\/operators/);
- assert.match(read("src/layouts/EndfieldPlaceholder.astro"),/<SeoHead/);
- assert.match(read("public/robots.txt"),/https:\/\/ag0n1st\.com\/sitemap\.xml/);
+ assert.ok(map.includes("!published.has"));
+ assert.ok(idx.includes("/en/endfield/operators/"));
+ assert.ok(read("src/layouts/EndfieldPlaceholder.astro").includes("<SeoHead"));
+ assert.ok(read("public/robots.txt").includes("https://ag0n1st.com/sitemap.xml"));
+
 });

@@ -13,16 +13,19 @@ import OperatorConclusion from "./sections/OperatorConclusion.astro";
 
 interface Props extends OperatorGuideProps {}
 const model = createOperatorGuideModel(Astro.props);
-const { guide, operatorName, preview, localized } = model;
+const translateUi=(value:string)=>guideText(model.lang,value);
+const { guide, operatorName, preview, localized, gameData } = model;
+const isEnglish=model.lang==="en";
+import { guideText } from "../../lib/i18n/guideUi";
 ---
 <main class="op-page section-wrap">
-  <nav class="op-breadcrumb" aria-label="Brotkrumennavigation">
-    <a href="/endfield/">Endfield</a><span aria-hidden="true">›</span>
-    <a href="/endfield/operatoren/">Operatoren</a><span aria-hidden="true">›</span>
+  <nav class="op-breadcrumb" aria-label={isEnglish?"Breadcrumb":"Brotkrumennavigation"}>
+    <a href={isEnglish?"/en/endfield/":"/endfield/"}>Endfield</a><span aria-hidden="true">›</span>
+    <a href={isEnglish?"/en/endfield/operators/":"/endfield/operatoren/"}>{translateUi("Operatoren")}</a><span aria-hidden="true">›</span>
     <span aria-current="page">{operatorName}</span>
   </nav>
-  {preview && <div class="op-notice op-preview-banner" role="status">Layout-Vorschau: Für {operatorName} sind noch nicht alle Daten eingepflegt. Eckige Klammern kennzeichnen Platzhalter.</div>}
-  {localized && <p class="op-muted op-locale-note">SKPORT-Datenstand: {localized.sourceSnapshot}</p>}
+  {preview && <div class="op-notice op-preview-banner" role="status">{isEnglish?"Layout preview: Some details for "+operatorName+" are still being added. Square brackets indicate placeholders.":"Layout-Vorschau: Für "+operatorName+" sind noch nicht alle Daten eingepflegt. Eckige Klammern kennzeichnen Platzhalter."}</div>}
+  {(localized || (isEnglish && gameData?.source?.snapshot)) && <p class="op-muted op-locale-note">{translateUi("SKPORT-Datenstand:")} {localized?.sourceSnapshot??gameData?.source?.snapshot}</p>}
   <div class="op-guide">
     <div class="op-guide-content">
       <OperatorOverview model={model} />
@@ -37,10 +40,10 @@ const { guide, operatorName, preview, localized } = model;
     </div>
 
     <nav class="op-guide-toc" aria-label="Guide-Inhaltsverzeichnis">
-      <strong>Guide-Inhalt</strong>
+      <strong>{translateUi("Guide-Inhalt")}</strong>
       <div class="op-guide-toc-links">{[
-        ["uebersicht","1. Übersicht"],["operator-kit","2. Operator Kit"],["fertigkeiten","3. Fertigkeiten"],["waffen","4. Waffen"],
-        ["ausruestung","5. Ausrüstung"],["potenziale","6. Potenziale"],["teams","7. Teams"],["gameplay","8. Gameplay"],["fazit","9. Fazit"]
+        ["uebersicht",isEnglish?"1. Overview":"1. Übersicht"],["operator-kit","2. Operator Kit"],["fertigkeiten",isEnglish?"3. Skills":"3. Fertigkeiten"],["waffen",isEnglish?"4. Weapons":"4. Waffen"],
+        ["ausruestung",isEnglish?"5. Equipment":"5. Ausrüstung"],["potenziale",isEnglish?"6. Potentials":"6. Potenziale"],["teams","7. Teams"],["gameplay","8. Gameplay"],["fazit",isEnglish?"9. Conclusion":"9. Fazit"]
       ].map(([id,label],i)=><a href={"#"+id} aria-current={i===0?"location":undefined}>{label}</a>)}</div>
     </nav>
   </div>
@@ -49,6 +52,8 @@ const { guide, operatorName, preview, localized } = model;
   import { evaluateBuildAvailability, FACTORY_COMPONENT_STAGES, DEFAULT_FACTORY_COMPONENT } from "../../lib/endfield/buildFinder.mjs";
   import { STORY_BUILD_STATUSES, MAX_AUTHORITY_LEVEL, validAuthorityLevel } from "../../lib/endfield/buildStoryProgress.mjs";
   import { getMaxBuildFinderPreset, getMinBuildFinderPreset } from "../../lib/endfield/buildFinderDefaults.mjs";
+  const isEn=document.documentElement.lang==="en";
+  const msg=(de:string,en:string)=>isEn?en:de;
   // A single rank selector controls all displayed headline values in its skill.
   document.querySelectorAll<HTMLSelectElement>("[data-skill-rank]").forEach(select => {
     select.addEventListener("change", () => {
@@ -195,9 +200,14 @@ const { guide, operatorName, preview, localized } = model;
   const unselectedBlueprintIds=new Set<string>();
   const lockedAreaIds=new Set<string>();
   const statusText:Record<string,string>={
-    available:"Passend", "level-locked":"Level zu niedrig",
-    "component-locked":"Komponente fehlt", ...STORY_BUILD_STATUSES,
-    unverified:"Rezept/Daten ungeklärt"
+    available:msg("Passend","Available"), "level-locked":msg("Level zu niedrig","Level Too Low"),
+    "component-locked":msg("Komponente fehlt","Missing Component"), ...STORY_BUILD_STATUSES,
+    "region-locked":msg("Region fehlt","Region Locked"),
+    "area-unconfirmed":msg("Gebiet nicht bestätigt","Area Unconfirmed"),
+    "acquisition-locked":msg("Freischaltung fehlt","Not Unlocked"),
+    "blueprint-unconfirmed":msg("Blaupause nicht bestätigt","Blueprint Unconfirmed"),
+    "story-unverified":msg("Story/Fundort ungeklärt","Story/Location Unverified"),
+    unverified:msg("Rezept/Daten ungeklärt","Recipe/Data Unverified")
   };
   const allGearIds=()=>[...new Set(blueprintCheckboxes
     .filter(input=>!input.disabled && /^\d+$/.test(input.dataset.blueprintOwned||""))
@@ -351,12 +361,12 @@ const { guide, operatorName, preview, localized } = model;
       factoryIcon.alt=component.label;factoryIcon.title=component.label;
     }
     const progress=storySelection();
-    const regionLabel=region?.selectedOptions[0]?.textContent?.trim()||"Nicht festgelegt";
+    const regionLabel=region?.selectedOptions[0]?.textContent?.trim()||msg("Nicht festgelegt","Not Set");
     const count=areaCheckboxes.filter(x=>x.checked && x.dataset.areaRegion===region?.value).length;
-    if(areaCounter)areaCounter.textContent=count+" freigeschaltet";
+    if(areaCounter)areaCounter.textContent=count+msg(" freigeschaltet"," unlocked");
     regionGroups.forEach(group=>group.hidden=group.dataset.storyRegionGroup!==region?.value);
     if(config)config.textContent="Lv. "+level.value+" · "+(component?.label||"")+
-      " · "+(component?.phase||"")+" · Story: "+regionLabel+" ("+count+" Gebiete)";
+      " · "+(component?.phase||"")+" · Story: "+regionLabel+" ("+count+msg(" Gebiete"," areas")+")";
     const statuses=buildButtons.map(button=>{
       let requirement=null;
       try{requirement=JSON.parse(button.dataset.buildRequirements||"null");}catch{}
@@ -375,8 +385,8 @@ const { guide, operatorName, preview, localized } = model;
       if(reason){
         const checked=result.parts?.filter((part:{status:string})=>part.status==="available").length??0;
         reason.textContent=result.status==="available"
-          ?"Alle vier Blaupausen sind in deiner Auswahl aktiviert; Level und Komponenten reichen aus. (Kein Kontonachweis.)"
-          :(result.reason+" · "+checked+"/4 Blaupausen als erhalten markiert.");
+          ?msg("Alle vier Blaupausen sind in deiner Auswahl aktiviert; Level und Komponenten reichen aus. (Kein Kontonachweis.)","All four blueprints are selected; level and components are sufficient. (Not verified against your account.)")
+          :(isEn?statusText[result.status]+" · "+checked+"/4 blueprints marked as owned.":result.reason+" · "+checked+"/4 Blaupausen als erhalten markiert.");
       }
       return result.status;
     });
@@ -386,8 +396,8 @@ const { guide, operatorName, preview, localized } = model;
     ].includes(x)).length;
     const locked=statuses.length-available-uncertain;
     if(buildResult)buildResult.textContent=statuses.length
-      ?available+" passend · "+locked+" gesperrt · "+uncertain+" noch nicht bestätigt"
-      :"Noch keine redaktionellen Ausrüstungs-Builds hinterlegt.";
+      ?available+msg(" passend · "," available · ")+locked+msg(" gesperrt · "," locked · ")+uncertain+msg(" noch nicht bestätigt"," unverified")
+      :msg("Noch keine redaktionellen Ausrüstungs-Builds hinterlegt.","No Editorial Gear Builds Added Yet.");
     const visible=buildButtons.filter(button=>!button.hidden);
     if(buildEmpty)buildEmpty.hidden=visible.length>0;
     const previous=visible.find(button=>button.getAttribute("aria-pressed")==="true");

@@ -80,16 +80,16 @@ test("preset uses only passed valid Gear IDs and never invents empty/unknown sel
 test("equipment uses a CLOSED native disclosure for all heavy filters and detail builds",()=>{
  const equipment=readFileSync("src/components/operator/sections/OperatorEquipment.astro","utf8");
  const start=equipment.indexOf('<details class="op-divided op-build-finder-accordion" id="build-finder">');
- const meta=equipment.indexOf(">Meta Builds</h3>");
+ const meta=equipment.indexOf('{translateUi("Meta Builds")}');
  const filters=equipment.indexOf('id="op-level"');
- const details=equipment.indexOf(">Empfohlene Ausrüstung</h3>");
- const progression=equipment.indexOf(">Ausrüstungsprogression</h3>");
+ const details=equipment.indexOf('{translateUi("Empfohlene Ausrüstung")}');
+ const progression=equipment.indexOf('{translateUi("Ausrüstungsprogression")}');
  const end=equipment.indexOf("</details>\n      </section>",start);
  assert.ok(meta>=0&&meta<start);
  assert.ok(start>=0&&start<filters&&filters<details&&details<progression&&progression<end);
  assert.doesNotMatch(equipment.slice(start,start+110),/\sopen(?:\s|>)/);
  assert.match(equipment.slice(start,start+400),/<summary class="op-build-finder-toggle">/);
- assert.match(equipment,/id="op-progress-reset">Maximal-Vorauswahl wiederherstellen/);
+ assert.ok(equipment.includes('id="op-progress-reset">{translateUi("Maximal-Vorauswahl wiederherstellen (Anpassungen löschen)")}'));
  assert.match(equipment,/Blaupausen-Auswahl \(bei Maximal-Vorauswahl alle aktiv\)/);
  assert.match(equipment,/kein automatischer Abgleich mit deinem Spielkonto/);
 });

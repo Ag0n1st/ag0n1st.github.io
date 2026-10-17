@@ -1,0 +1,2505 @@
+{
+  "schemaVersion": 1,
+  "source": "local Argos Translate de-en neural draft; manual QA required",
+  "guides": {
+    "liino": {
+      "operator": "liino",
+      "overview": {
+        "summary": "Liino is a 6★ Electric Supporter wielding a Polearm. Her kit combines team healing, ATK bonuses, SP refunds and Electric/Nature amplification. Her gameplay revolves around two stances and setting up a strong Ultimate buff window for the rest of the squad.",
+        "featuredBuildId": "ultimate-fokus",
+        "traits": [
+          "HP Treatment",
+          "Amp"
+        ],
+        "strengths": [
+          "Strong amplification and team-wide utility.",
+          "SP recovery through her talent and Combo Skill interactions.",
+          "Versatile support across numerous team compositions.",
+          "Straightforward gameplay without highly technical execution."
+        ],
+        "weaknesses": [
+          "Her signature weapon is particularly important for achieving maximum team amplification.",
+          "Golden Age is a viable Battle Pass option but noticeably weaker as a dedicated buff weapon."
+        ],
+        "partners": [],
+        "ratings": {
+          "difficulty": 1,
+          "flexibility": 4
+        }
+      },
+      "operatorKit": {
+        "playstyle": "Liino supports her team through two successive stances. Dazzling Focus costs 25 SP and activates Vocalist Stance for up to 60 seconds. While active, the team gains an ATK Boost (10% at M3), allies in range receive ongoing HP Treatment, and nearby enemies are periodically hit with additional Electric DMG. When an Arts Reaction is applied or consumed during the stance, Liino's Combo Skill, Delightful Harmonics, heals the controlled operator, restores 20 Ultimate Energy and keeps Vocalist Stance active. Her combat talent, Starry Boost of 1st Magnitude, can then refund up to 10 SP on the next Electric or Nature Battle Skill used within 30 seconds at the highest talent rank.\n\nDawnstar Concerto costs 160 Ultimate Energy and activates the stronger Cosmovoice Stance for 15 seconds, granting an ATK Boost and Electric Amp / Nature Amp that further scale with Liino's Will. It also heals allies in range, deals Electric DMG and applies Electrification across a large area. The normal end of Cosmovoice Stance releases a final beat with triple damage and healing. Using Liino's Battle Skill again while either stance is active ends the stance prematurely; this also prevents Cosmovoice's normal finishing effect. Align her Ultimate with your team's most important damage window and avoid ending her stance by accident."
+      },
+      "skills": {
+        "priority": {
+          "order": [
+            "ultimate",
+            "battle",
+            "combo",
+            "basic"
+          ],
+          "comparisons": [
+            ">",
+            ">=",
+            ">"
+          ],
+          "targetLevels": {
+            "ultimate": "M3",
+            "battle": "M3",
+            "combo": "M3",
+            "basic": "1"
+          }
+        },
+        "active": {
+          "basic": "Leave at level 1. Liino takes on the role of a supporter here; Additional levels in the Basic Attack do not significantly benefit their team reinforcement, SP refund and Ultimate rotation.",
+          "battle": "M3 is the goal because the Battle Skill grants 10% ATK bonus to the team. Their amplification values increase with the skill levels. Between this skill and the combo skill, the investment order is flexible, as both are aimed at M3.",
+          "combo": "Also on M3. The cooldown drops from 10 to 8 seconds according to official skill data. The more frequently Liino can trigger her combo skill through matching arts reactions, the more often she receives the constant 20 Ultimate energy and the more often her combat talent can refund a subsequent electric or nature battle skill with up to 10 SP after the combo. The SP comes from the talent, not directly from the combo itself.",
+          "ultimate": "Highest priority, M3. Liino’s strongest team benefit is the Will-scale electro/nature amplification of Ultimate. On M3, the additional amp reaches 0.04% per will point, with a maximum contribution of 60% from Will. The actual gain achieved depends on the desired value."
+        },
+        "combatTalents": [],
+        "shipTalents": []
+      },
+      "weapons": {
+        "recommendations": [
+          {
+            "weaponId": "1046",
+            "category": "bis",
+            "evaluation": "Liino's best-in-slot rod weapon. Bedazzling Night debut combines Will for their Ultimate amp with an additional ATK amplification for team members treated by Liino."
+          },
+          {
+            "weaponId": "1044",
+            "category": "bp",
+            "evaluation": "Golden Age is the Battle Pass option. She delivers Will as well as Arts damage amplification through Liino’s healing combo skill. Their modeled performance depends on the team."
+          },
+          {
+            "weaponId": "75",
+            "category": "alternative",
+            "evaluation": "JET is the alternative rod weapon for Liino. It delivers its own damage and attribute effects instead of replacing the specific Team ATK effect of its BiS weapon."
+          },
+          {
+            "weaponId": "97",
+            "category": "f2p",
+            "evaluation": "Cohesive Traction is the F2P option. It has suitable will values, but its weapon effect is more focused on own electric/combo skills damage than on additional direct team reinforcement."
+          }
+        ],
+        "comparisons": [
+          {
+            "id": "zhuang-perlica-arclight",
+            "title": "Zhuang Perlica Arclight Team",
+            "sourcePageType": "character-profile",
+            "sourceNote": "Datafield",
+            "snapshotDate": "2026-10-16",
+            "referenceWeaponId": "1046",
+            "referenceRank": 4,
+            "comparisonConditions": "Datafield Character Profile Liino, Team Scenario Zhuang Perlica Arclight Team, recorded on 16.10.2026. 100% corresponds to Bedazzling Night Debut R4 in the same scenario. Team rotation, equipment, potentials and other model parameters were not independently compared with the calculation sheet.",
+            "entries": [
+              {
+                "weaponId": "1046",
+                "rank": 9,
+                "performancePercent": 112.1
+              },
+              {
+                "weaponId": "1046",
+                "rank": 4,
+                "performancePercent": 100
+              },
+              {
+                "weaponId": "1044",
+                "rank": 9,
+                "performancePercent": 85
+              },
+              {
+                "weaponId": "75",
+                "rank": 9,
+                "performancePercent": 84.7
+              },
+              {
+                "weaponId": "75",
+                "rank": 4,
+                "performancePercent": 83.5
+              },
+              {
+                "weaponId": "1044",
+                "rank": 4,
+                "performancePercent": 83.4
+              },
+              {
+                "weaponId": "97",
+                "rank": 9,
+                "performancePercent": 81.3
+              }
+            ]
+          },
+          {
+            "id": "arcane-tt-xaihi",
+            "title": "Arcane TT Xaihi Team",
+            "sourcePageType": "character-profile",
+            "sourceNote": "Datafield",
+            "snapshotDate": "2026-10-16",
+            "referenceWeaponId": "1046",
+            "referenceRank": 4,
+            "comparisonConditions": "Datafield character profile Liino, team scenario Arcane TT Xaihi Team, recorded on 16.10.2026. 100% corresponds to Bedazzling Night Debut R4 in the same scenario. Team rotation, equipment, potentials and other model parameters were not independently compared with the calculation sheet.",
+            "entries": [
+              {
+                "weaponId": "1046",
+                "rank": 9,
+                "performancePercent": 110.3
+              },
+              {
+                "weaponId": "1046",
+                "rank": 4,
+                "performancePercent": 100
+              },
+              {
+                "weaponId": "1044",
+                "rank": 9,
+                "performancePercent": 91.6
+              },
+              {
+                "weaponId": "1044",
+                "rank": 4,
+                "performancePercent": 89.5
+              },
+              {
+                "weaponId": "75",
+                "rank": 9,
+                "performancePercent": 89
+              },
+              {
+                "weaponId": "97",
+                "rank": 9,
+                "performancePercent": 81.3
+              }
+            ]
+          }
+        ]
+      },
+      "equipment": {
+        "builds": [
+          {
+            "id": "ultimate-fokus",
+            "meta": true,
+            "metaSummary": "High Ultimate energy gain with Eternal Xiranite team reinforcement for regular Ultimate rotations.",
+            "title": "Build A – Ultimate Focus",
+            "role": "support",
+            "items": [
+              "1134",
+              "1138",
+              "1236",
+              "365"
+            ],
+            "availableFromLevel": 70,
+            "teamContext": "For rotations in which Liino should reliably build her Ultimate and use it for team reinforcement.",
+            "evaluation": "Focus on Ultimate Energy and Will with three parts Eternal Xiranite and a LYNX Slab. The Eternal Xiranite bonus increases the damage to the other team members as soon as Liino grants a boost (amp) via their Ultimate. Actual energy availability depends on the number of triggered combo skills and team rotation.",
+            "setBonusNotes": "3x Eternal Xiranite: After applying an amp/protection/vulnerability/weakening effect +16% damage to other team members (15 seconds, non-stackable). 1x LYNX: no LYNX set bonus."
+          },
+          {
+            "id": "balanced",
+            "meta": true,
+            "metaSummary": "Balanced variant with LYNX healing and damage reduction as well as additional main attribute values.",
+            "title": "Build B – Balanced",
+            "role": "support",
+            "items": [
+              "1134",
+              "1133",
+              "365",
+              "365"
+            ],
+            "availableFromLevel": 70,
+            "teamContext": "Balanced team support with emphasis on healing, stability and will.",
+            "evaluation": "The balanced version combines three LYNX parts with Eternal Xiranite Light Armor as an off-piece. The LYNX set bonus improves healing performance and reduces the damage suffered by the treated team member after treatment. Two LYNX Slabs provide additional main attribute values; The ultimate energy gain is lower than in Build A and must match the actual rotation.",
+            "setBonusNotes": "3x LYNX: +20 % treatment efficiency; After healing, the target receives damage reduction for 10 seconds (15%, with overhealing 30%; non-stackable). 1x Eternal Xiranite: no Eternal-Xiranite set bonus."
+          },
+          {
+            "id": "will-fokus",
+            "meta": true,
+            "metaSummary": "Maximizes Will for Liino’s Ultimate Amp; ideal with Ultimate already loaded and no second Ultimate bet.",
+            "title": "Build C – Will Focus",
+            "role": "support",
+            "items": [
+              "1126",
+              "1129",
+              "365",
+              "365"
+            ],
+            "availableFromLevel": 70,
+            "teamContext": "Situational, when Liino starts the fight with an already charged Ultimate and does not need a second Ultimate within the intended rotation.",
+            "evaluation": "This build maximizes Liino’s Will and thus her willpower-dependent electro/nature amplification through Ultimate. Rift Trekker Light Armor and Rift Trekker Hands deliver high direct will values; the two LYNX Slabs complement main attributes. Ultimate energy gain and a set bonus of 3 are deliberately waived. Outside of the described use case, do not present as the best universal rotation or as a second ultimate build.",
+            "setBonusNotes": "2x LYNX and two set-free Rift Trekker parts: no set bonus active. The individual Will and Main attribute values are in focus."
+          },
+          {
+            "id": "level-60",
+            "title": "Build D – Level 60",
+            "role": "support",
+            "items": [
+              "1117",
+              "1123",
+              "1120",
+              "1120"
+            ],
+            "availableFromLevel": 60,
+            "teamContext": "Wuling progression with as much ultimate energy gain as possible instead of an additional healing kit.",
+            "storyUnlock": "The AIC fieldwork templates will be available with Wuling story progress, according to official data; the possession of each part must be confirmed separately.",
+            "evaluation": "Four parts of AIC Fieldwork, including twice AIC Fieldwork Ember. Instead of an AIC Fieldwork Power Bank, a second Ember is used: Additional ultimate energy gain is more important here than the healing bonus. Both embers can be made from the same template.",
+            "setBonusNotes": "3x AIC Fieldwork: +20% own damage, 10% damage reduction and +10% ultimate energy gain. The fourth set part does not trigger a second 3 bonus."
+          },
+          {
+            "id": "level-50",
+            "title": "Build E – Level 50",
+            "role": "support",
+            "items": [
+              "279",
+              "331",
+              "335",
+              "335"
+            ],
+            "availableFromLevel": 50,
+            "teamContext": "Cryston progression with Will and support.",
+            "storyUnlock": "The four parts used come from authority rewards (required reward levels 28, 33 and 38); the templates must have been actually collected.",
+            "evaluation": "An Aburrey Light Armor T1 and three Mordvolt Resistant parts, including twice Mordvolt Resistant Battery T1. The 3 bonus increases Will; the additional treatment effect is bound to less than 50% own LP and is not permanently active.",
+            "setBonusNotes": "3x Mordvolt Resistant: +50 Will. Under 50% own LP: +30% treatment effect. No Aburrey set bonus."
+          },
+          {
+            "id": "level-36",
+            "title": "Build F – Level 36",
+            "role": "support",
+            "items": [
+              "274",
+              "278",
+              "284",
+              "284"
+            ],
+            "availableFromLevel": 36,
+            "teamContext": "Early ferrium progression with Will and treatment.",
+            "storyUnlock": "The templates used come from authority rewards (required reward levels 17, 19 and 23); the templates must have been actually collected.",
+            "evaluation": "Mordvolt Resistant Vest and Gloves, plus two Mordvolt Resistant Batteries. The double battery uses the same blueprint, but requires two copies. The conditional healing effect of the set only works with less than 50% own LP.",
+            "setBonusNotes": "3x Mordvolt Resistant: +50 Will. Under 50% own LP: +30% treatment effect. The fourth set part does not double the bonus."
+          }
+        ],
+        "progression": [
+          {
+            "stage": "early",
+            "note": "Level 36: Mordvolt Resistant with ferrium and authority rewards up to level 23."
+          },
+          {
+            "stage": "mid",
+            "note": "Level 50: Cryston build with three Mordvolt resistant parts and Aburrey as an off-piece."
+          },
+          {
+            "stage": "late",
+            "note": "Level 60: AIC Fieldwork with Xiranit and two Embers for higher ultimate energy gain."
+          },
+          {
+            "stage": "endgame",
+            "note": "Level 70: Ultimate Focus, Balanced or Situational Will Focus depending on team and rotation."
+          }
+        ],
+        "generalNotes": "Double kit IDs mean two copies made, but only one unlockable blueprint. Level, factory component, region, area and the actual confirmed master ownership are independently checked in the build finder."
+      },
+      "potentials": {
+        "entries": [
+          {
+            "level": 1,
+            "increaseOverPreviousPercent": 3.2,
+            "comparisonConditions": "Datafield Character Profile Liino, Potentials (DPS Increase), additional calculated profit over P0 (previous level for P1). Detailed team and rotation assumptions are not independently matched with the original spreadsheet.",
+            "sourceNote": "Datafield"
+          },
+          {
+            "level": 2,
+            "increaseOverPreviousPercent": 0.7,
+            "comparisonConditions": "Datafield Character Profile Liino, Potentials (DPS Increase); additional calculated profit versus P1, not cumulative versus P0. Model parameters are not independently matched.",
+            "sourceNote": "Datafield"
+          },
+          {
+            "level": 3,
+            "increaseOverPreviousPercent": 0.8,
+            "comparisonConditions": "Datafield Character Profile Liino, Potentials (DPS Increase); additional calculated profit versus P2, not cumulatively versus P0. Model parameters are not independently matched.",
+            "sourceNote": "Datafield"
+          },
+          {
+            "level": 4,
+            "increaseOverPreviousPercent": 0,
+            "comparisonConditions": "Datafield Character Profile Liino, Potentials (DPS Increase); Additional calculated profit over P3, not cumulatively over P0. Model parameters are not independently matched.",
+            "sourceNote": "Datafield"
+          },
+          {
+            "level": 5,
+            "increaseOverPreviousPercent": 4.7,
+            "comparisonConditions": "Datafield Character Profile Liino, Potentials (DPS Increase); additional calculated profit versus P4, not cumulatively versus P0. Model parameters are not independently matched.",
+            "sourceNote": "Datafield"
+          }
+        ]
+      },
+      "teams": {
+        "introduction": "Liino takes on the support role in every compilation shown here. Electric and nature teams in particular benefit from their Ultimate, while the long-lasting general ATK bonus of their Battle Skill also enables other team compositions.",
+        "roles": [
+          "support"
+        ],
+        "meta": [
+          {
+            "id": "zhuang-meta",
+            "title": "Zhuang Fangyi",
+            "role": "support",
+            "members": [
+              "zhuang-fangyi",
+              "perlica",
+              "arclight",
+              "liino"
+            ]
+          },
+          {
+            "id": "arcane-meta",
+            "title": "Arcane",
+            "role": "support",
+            "members": [
+              "arcane",
+              "tangtang",
+              "xaihi",
+              "liino"
+            ]
+          }
+        ],
+        "more": [
+          {
+            "id": "zhuang-arcane",
+            "title": "Zhuang Fangyi · Arcane",
+            "role": "support",
+            "members": [
+              "zhuang-fangyi",
+              "perlica",
+              "arcane",
+              "liino"
+            ]
+          },
+          {
+            "id": "arcane-snowshine",
+            "title": "Arcane · Snowshine",
+            "role": "support",
+            "members": [
+              "arcane",
+              "snowshine",
+              "xaihi",
+              "liino"
+            ]
+          },
+          {
+            "id": "arcane-estella",
+            "title": "Arcane · Estella",
+            "role": "support",
+            "members": [
+              "arcane",
+              "estella",
+              "xaihi",
+              "liino"
+            ]
+          }
+        ]
+      },
+      "gameplay": {
+        "pending": true,
+        "showcases": []
+      },
+      "conclusion": {
+        "verdict": "Liino is a strong general pull recommendation and a valuable support for almost any account. Her Ultimate is particularly effective at amplifying Electric and Nature teams, while the very long-lasting, general ATK Boost from her Battle Skill also makes her attractive in many other team compositions. Once her Battle Skill is active, she can support the team mostly passively, without requiring complex coordination with other abilities.",
+        "recommendation": "recommended",
+        "recommendedFor": [
+          "Generally a strong option for almost every player.",
+          "Especially helpful when prioritizing Electric or Nature teams.",
+          "Also useful in many other team compositions beyond the examples listed."
+        ],
+        "skipIf": [
+          "Check your existing roster first. If there is genuinely no support slot she improves, skipping is reasonable."
+        ]
+      },
+      "guideVideo": {
+        "title": "Liino – German-language video guide",
+        "url": "https://www.youtube.com/watch?v=F1sx8IuOIK4"
+      }
+    },
+    "typhoeus": {
+      "operator": "typhoeus",
+      "overview": {
+        "summary": "Typhoeus (Typhi) is a 6★ Nature Striker using an Arts Unit and playing as an active main DPS. Her strongest attacks are empowered aerial shots that trigger Nature Bursts. Nature Infliction stacks prepared by her teammates increase that damage and generate Signs for additional Hunting Arrows. She can hit two enemies at once, but her rotation, positioning and SP economy are demanding.",
+        "traits": [
+          "Damage Dealer",
+          "Arts Burst"
+        ],
+        "strengths": [
+          "High Nature Burst damage through empowered aerial shots, especially when Nature Infliction stacks are prepared.",
+          "Targets up to two enemies at once while Hovering.",
+          "Both her Combo Skill and Ultimate can reset aerial attack attempts and extend the rotation.",
+          "Strong synergy with Arcane or Fluorite as a reliable Nature Infliction source."
+        ],
+        "weaknesses": [
+          "Very limited team flexibility: reliable Nature Infliction setup generally requires Arcane or Fluorite.",
+          "Her Battle Skill costs 100 SP and her Ultimate can require 200 energy; Final Strikes and SP timing matter.",
+          "Being interrupted while Hovering loses valuable empowered shots; the protective barrier can break.",
+          "Her signature weapon has a substantial advantage over alternatives."
+        ],
+        "ratings": {
+          "difficulty": 5,
+          "flexibility": 1
+        },
+        "featuredBuildId": "deep-rampart-lynx",
+        "partners": []
+      },
+      "operatorKit": {
+        "playstyle": "Typhi’s entire gameplay revolves around two resources: Signs and Hunting Arrows. The Hunting Arrows are their ammunition for power shots, while signs are converted into new Hunting Arrows in a 2:1 ratio via their combo skill. A maximum of eight signs and four hunting arrows are possible. At the highest level of her combat talent loot checklist, she begins with four signs; Outside of combat, their Hunting Arrows fill up again. Start a fight with four Hunting Arrows if possible. With her Battle Skill (100 SP) Typhi goes into the hovering and can carry out five air attacks. If an attack consumes a hunting arrow, it becomes an energy shot and forces a Nature Burst on hit – even without a previous nature stack. When an airstrike hits an enemy with nature attachment, it consumes a stack and gives a sign and twelve ultimate energy. The Nature Burst generated in this way gives a further sign via loot checklist; An energy shot at an opponent with an existing nature stack can thus deliver two signs. The Nature Burst of this hit also receives the bonus for a consumed stack. With active control, the fifth air attack always counts as a final strike and as an energy shot, but does not consume a hunting arrow. When reaching eight signs, the combo skill can be activated: It exchanges the signs for four Hunting Arrows, resets Typhi’s air attack sequence, and creates a barrage line in which enemies are slowed down, continuously suffer natural damage, and receive increased nature burst damage. The maximum combo cooldown improvement is 19 seconds; It is therefore not an arbitrarily repeatable reset within a single short sequence. Their Ultimate consumes 200 energy, immediately gives two Hunting Arrows, puts them back into the hovering, resets the air strikes and adds one hail of arrows per hit; The fifth hail of arrows is strengthened. This is a strong additional window, but the core of their damage remains the repeated triggering and amplification of Nature Bursts through well-prepared energy shots. Therefore, prepare nature stacks before the damage window, do not waste battle skill and combo too early and plan for SP generation between the hovering phases. In hovering, Typhi receives a protective barrier with up to 30% damage reduction thanks to her second combat talent. A hit can break them; At the highest talent level, it can only be reactivated after 18 seconds. Therefore, watch out for enemy attacks and use Dodge Cancels after the normal Final Strike and after landing to continue the attack sequence faster."
+      },
+      "skills": {
+        "priority": {
+          "order": [
+            "battle",
+            "combo",
+            "ultimate",
+            "basic"
+          ],
+          "comparisons": [
+            ">",
+            ">",
+            "="
+          ],
+          "targetLevels": {
+            "battle": "M3",
+            "combo": "M3"
+          }
+        },
+        "active": {
+          "basic": "Typhoeus's normal Basic Attack consists of five Nature DMG hits. The Final Strike deals 17 Stagger and is particularly important for restoring SP when she is not Hovering. If necessary, use a Dodge Cancel after the Final Strike to shorten its long ending animation. Her normal Basic Attack is not the primary source of damage, so level it last.",
+          "battle": "Top priority and an eventual M3 target. Piercing Arrows of the Woods initiates Hovering for 100 SP, allowing up to five aerial attacks against up to two targets. Hunting Arrows empower these attacks and trigger Nature Bursts. A Burst consumes existing Nature Infliction stacks on the target, increasing its damage; each consumed stack also grants one Sign and 12 Ultimate Energy. The fifth aerial attack also counts as a Power Shot and Final Strike even without ammunition. Skill upgrades are particularly valuable for the Nature Burst multipliers.",
+          "combo": "Second priority and an eventual M3 target. At eight Signs, Rampant Thorns restores four Hunting Arrows, resets the aerial attack sequence and creates a barrage zone that slows enemies and increases their sustained Nature Burst damage. At M3, its cooldown falls to 19 seconds. Line up the renewed aerial attack window with prepared Nature Infliction stacks: the Combo Skill reset alone does not create those stacks.",
+          "ultimate": "Level after the Battle Skill and Combo Skill. At 200 Ultimate Energy, Call of Ice Mountain deals a strong initial hit, provides two Hunting Arrows, resets Hovering and grants five more aerial attacks. The fifth barrage is particularly powerful. In optimized damage windows, using her Battle Skill shortly beforehand can trigger her signature weapon effect in time. The Ultimate extends her empowered-shot rotation; it is not the only reason her Nature Bursts deal so much damage."
+        },
+        "combatTalents": [
+          {
+            "talentId": "prey-checklist",
+            "evaluation": "The most important basic talent for the complete rotation: Nature Bursts provide signs that are converted into Hunting Arrows. At the third talent level, Typhi starts with four signs instead of just one, and the attack amplified by Hunting Arrows gets a factor of 1.6. With enemies exploding at the same time, the nature burst trigger counts according to the official text only once for the sign generation."
+          },
+          {
+            "talentId": "huntress-s-focus",
+            "evaluation": "The protective barrier helps to play the hovering completely. At the highest talent level: 30% less damage as long as the barrier lasts and 18 seconds reactivation time after it is broken. It is not permanent interruption protection."
+          }
+        ],
+        "shipTalents": [
+          {
+            "talentId": "lithic-murmurs",
+            "evaluation": "Growth rate of rare minerals in the growth chamber. irrelevant for combat rotation; The actual values and unlock levels are from the official Talents table."
+          },
+          {
+            "talentId": "life-in-the-spores",
+            "evaluation": "Increases the growth of fungal material in the growth chamber. An economic/base bonus, not a reason for a particular team composition."
+          }
+        ]
+      },
+      "weapons": {
+        "recommendations": [
+          {
+            "weaponId": "1175",
+            "category": "bis",
+            "evaluation": "Umbra of Frigid Eventide is by far her most appropriate weapon. In addition to Agility and ATK, Typhi gets 15 seconds of Arts intensity and four Windform stacks when using the Battle Skill. The subsequent Nature Bursts through energy shots consume these stacks and increase their further Arts damage values. Therefore, especially for boss rotations, place the battle skill immediately before the planned hovering and ultimate burst."
+          },
+          {
+            "weaponId": "1177",
+            "category": "bp",
+            "evaluation": "Suffering's End is the meaningful battle pass alternative. The properties fit significantly better with a nature DPS scaling on agility than many older arts units. However, it lacks the signature weapon’s custom-made windform buffs; it is an alternative, not an equivalent BiS option."
+          },
+          {
+            "weaponId": "47",
+            "category": "alternative",
+            "evaluation": "Detonation Unit is theoretically playable as an emergency solution. However, their effect is not as precisely matched to Hunting Arrows and Nature Bursts as the Signature weapon or Suffering's End. Only consider if the two better weapons are not available."
+          }
+        ],
+        "comparisons": [
+          {
+            "id": "ardelia-arcane-liino",
+            "title": "Ardelia Arcane Liino Team",
+            "sourcePageType": "character-profile",
+            "sourceNote": "Datafield",
+            "snapshotDate": "2026-10-16",
+            "referenceWeaponId": "1175",
+            "referenceRank": 4,
+            "comparisonConditions": "Datafield character profile Typhoeus, rider \"Ardelia Arcane Liino\", recorded on 16.10.2026. 100% correspond to Umbra of Frigid Eventide R4 in exactly this scenario. Rotation, weapon/team ranks, potentials and other model parameters were not independently matched with the linked original spreadsheet.",
+            "entries": [
+              {
+                "weaponId": "1175",
+                "rank": 9,
+                "performancePercent": 124.7
+              },
+              {
+                "weaponId": "1175",
+                "rank": 4,
+                "performancePercent": 100
+              },
+              {
+                "weaponId": "1177",
+                "rank": 9,
+                "performancePercent": 84.3
+              },
+              {
+                "weaponId": "47",
+                "rank": 9,
+                "performancePercent": 78.1
+              },
+              {
+                "weaponId": "1177",
+                "rank": 4,
+                "performancePercent": 77
+              },
+              {
+                "weaponId": "47",
+                "rank": 4,
+                "performancePercent": 72.2
+              },
+              {
+                "weaponId": "65",
+                "rank": 9,
+                "performancePercent": 69
+              },
+              {
+                "weaponId": "65",
+                "rank": 4,
+                "performancePercent": 66.3
+              }
+            ]
+          },
+          {
+            "id": "no-liino-less-atk",
+            "title": "Without Liino · fewer ATK buffs",
+            "sourcePageType": "character-profile",
+            "sourceNote": "Datafield",
+            "snapshotDate": "2026-10-16",
+            "referenceWeaponId": "1175",
+            "referenceRank": 4,
+            "comparisonConditions": "Datafield character profile Typhoeus, rider \"Non Liino Teams - LESS ATK -\", recorded on 16.10.2026. 100% correspond to Umbra of Frigid Eventide R4 in exactly this different team model. Do not mix with the percentages of the Liino scenario.",
+            "entries": [
+              {
+                "weaponId": "1175",
+                "rank": 9,
+                "performancePercent": 123.3
+              },
+              {
+                "weaponId": "1175",
+                "rank": 4,
+                "performancePercent": 100
+              },
+              {
+                "weaponId": "1177",
+                "rank": 9,
+                "performancePercent": 79.3
+              },
+              {
+                "weaponId": "47",
+                "rank": 9,
+                "performancePercent": 77.5
+              },
+              {
+                "weaponId": "1177",
+                "rank": 4,
+                "performancePercent": 73.7
+              }
+            ]
+          }
+        ],
+        "generalNotes": "For Typhi, the right weapon is particularly relevant because a large part of its damage is directly caused by the nature bursts of energy shots. The general recommendations are independent of weapon rank; The complete, locally imported values and tuning material costs of each weapon are in the fold-up weapon details. The relative percentages in weapon comparison come from two separately tested tabs of the Datafield Character Profile; they apply only to their team and rotation assumptions and are not universal DPS distances."
+      },
+      "equipment": {
+        "builds": [
+          {
+            "id": "deep-rampart-lynx",
+            "title": "Build A – Deep Rampart + LYNX Slab",
+            "role": "main-dps",
+            "meta": true,
+            "metaSummary": "Standard endgame: three parts Deep Rampart for Arts damage and intensity, plus LYNX Slab for more agility and general damage.",
+            "items": [
+              "1239",
+              "1238",
+              "1240",
+              "365"
+            ],
+            "availableFromLevel": 70,
+            "teamContext": "The general standard for most boss and multi-goal battles; also in the Nefarith and Echo rotations shown a robust choice.",
+            "evaluation": "Deep Wall (Deep Rampart) is tailor-made for Typhis Nature Bursts: three set parts provide arts intensity and matching damage reinforcements. The LYNX Slab as the fourth part brings a wider value for its entire damage rotation. Base attacks, air strikes, combo, ultimate and nature bursts thus benefit in different proportions. Exactly this setup is the standard recommendation, not just a theoretical DPS tip.",
+            "setBonusNotes": "3x Deep Rampart for the set bonus; 1x LYNX Slab as Off-Piece. No second set effect by a single LYNX part.",
+            "craftingNotes": "Armor, gloves, a Comms and a LYNX Slab require four manufactured parts. Reaching level 70 does not automatically confirm possession of the templates; The build finder checks blueprints, region, components and levels separately."
+          },
+          {
+            "id": "deep-rampart-double-comms",
+            "title": "Build B – Deep Rampart with second Comms",
+            "role": "main-dps",
+            "meta": true,
+            "metaSummary": "For particularly large Nature Burst numbers: second Deep Rampart Comms instead of LYNX Slab, with a narrower focus on Arts explosions.",
+            "items": [
+              "1239",
+              "1238",
+              "1240",
+              "1240"
+            ],
+            "availableFromLevel": 70,
+            "teamContext": "For showcases where maximum individual nature burst values are more important than universally slightly higher total damage.",
+            "evaluation": "Instead of the LYNX Slab, a second Deep Rampart Comms can be used. This comparison is not a blanket performance jump: The nature bursts can be stronger, while the LYNX variant usually performs better outside of these explosions (normal hits, air strikes, combo and ultimate). In the original 1:1 counterpart, the total distances were small. Decide if you want larger burst numbers or the more balanced standard damage.",
+            "setBonusNotes": "Furthermore, only the 3 set bonus of Deep Rampart; the fourth part does not trigger a second set bonus.",
+            "craftingNotes": "Two manufactured comms need two items, but the same unlocked blueprint; The finder counts possession and manufacture accordingly."
+          },
+          {
+            "id": "deep-rampart-ultimate",
+            "title": "Build C – More Ultimate Energy with LYNX Cuirass",
+            "role": "main-dps",
+            "meta": false,
+            "items": [
+              "1132",
+              "1238",
+              "1240",
+              "1240"
+            ],
+            "availableFromLevel": 70,
+            "teamContext": "Special rotation with increased demand for Ultimate energy. Only use if an important Ultimate window actually enables earlier.",
+            "evaluation": "The conditional Ultimate Energy variant from my Mobalytics Guide uses LYNX Cuirass T1, Deep Rampart Gauntlets and twice Deep Rampart Comms. It deliberately dispenses with the Deep Rampart Armor part of the general standard build and is not a blanket recommendation for every fight. The decisive factor is whether the concrete rotation requires additional ultimate energy. The alternative is not only because of the 200 energy automatically above the standard.",
+            "setBonusNotes": "Two Deep Rampart Comms and Deep Rampart Gauntlets activate the three parts of the set. LYNX Cuirass T1 is the off-piece.",
+            "craftingNotes": "Both comms must be produced as two separate parts. Check construction plan ownership, materials and actual story availability separately."
+          },
+          {
+            "id": "level-60",
+            "title": "Build D – Level 60 · AIC Fieldwork Assault",
+            "role": "main-dps",
+            "items": [
+              "1244",
+              "1243",
+              "1242",
+              "1120"
+            ],
+            "availableFromLevel": 60,
+            "teamContext": "Transition to Wuling as soon as the corresponding concrete templates are actually activated.",
+            "evaluation": "AIC Fieldwork Assault Armor, Assault Gloves and Assault Push Knife combine main attributes with arts intensity. The AIC Fieldwork Ember complements Ultimate Energy Profit. Thus, the set supports the combination of agility, nature bursts and repeated air phases until Deep Rampart is reachable.",
+            "craftingNotes": "Item IDs and Level 60 are from the official equipment catalogue. Story and building plan ownership does not derive from the level."
+          },
+          {
+            "id": "level-50",
+            "title": "Build E – Level 50 · Roving MSGR",
+            "role": "main-dps",
+            "items": [
+              "316",
+              "317",
+              "319",
+              "320"
+            ],
+            "availableFromLevel": 50,
+            "teamContext": "Medium progress with focus on agility.",
+            "evaluation": "The roving MSGR combination of jacket, fists, flashlight and gyro puts agility at the forefront. This fits directly with Typhi’s main attributes and is a clean intermediate stage before the Arts intensity of later Gear.",
+            "craftingNotes": "All four parts and their level limits are verified from the official item catalogue."
+          },
+          {
+            "id": "level-36",
+            "title": "Build F – Level 36 · Roving MSGR",
+            "role": "main-dps",
+            "items": [
+              "247",
+              "248",
+              "249",
+              "251"
+            ],
+            "availableFromLevel": 36,
+            "teamContext": "Early ferrium progression as long as later sets cannot be built.",
+            "evaluation": "Four parts Roving MSGR with direct focus on Agility: Jacket, Fists, Flashlight and Gyro. This allows you to improve Typhi’s main attributes without requiring an endgame blueprint. This is a traceable transition build, not a claim about highest endgame DPS.",
+            "craftingNotes": "The actual four blueprints must be marked as available manually in the Build-Finder."
+          }
+        ],
+        "progression": [
+          {
+            "stage": "early",
+            "note": "Level 36: Roving MSGR with ferrium as an early agility build. Check the story/authority releases of the four templates individually."
+          },
+          {
+            "stage": "mid",
+            "note": "Level 50: Roving MSGR of the higher level for more agility. Until then, use existing, suitable armor rather than blindly waste materials."
+          },
+          {
+            "stage": "late",
+            "note": "Level 60: AIC Fieldwork Assault for Main Attributes and Arts Intensity Ember for additional ultimate energy potential."
+          },
+          {
+            "stage": "endgame",
+            "note": "Level 70: Deep Rampart + LYNX Slab standard; Deep Rampart Comms ×2 for explosion numbers, Energy-Off-Piece only for proven rotation needs."
+          }
+        ],
+        "generalNotes": "The comparison between LYNX Slab and the second Deep Rampart Comms describes different damage centers, no guaranteed overall DPS distances. Team member equipment is shown separately in the team section as a foldable example. The availability of all templates is always dependent on your story progress and their actual ownership."
+      },
+      "potentials": {
+        "entries": [
+          {
+            "level": 1,
+            "evaluation": "A particularly strong first potential: 18% more ATK in hovering and 20% more air attack damage. The protective barrier also reacts three seconds earlier. Attractive because the ATK bonus also supports Typhis Nature Bursts. Still not a must.",
+            "increaseOverPreviousPercent": 8.8,
+            "comparisonConditions": "Datafield Character Profile Typhoeus, Scenario \"Teams with energy needs\", retrieved 10/16/2026; only incremental gain over P0 (not cumulative over P0). Team rotation and spreadsheet model parameters were not independently recalculated.",
+            "sourceNote": "Datafield"
+          },
+          {
+            "level": 2,
+            "evaluation": "Solid direct growth in agility and arts intensity. Useful for the main damage, but less noticeable than P1 and P5.",
+            "increaseOverPreviousPercent": 4.5,
+            "comparisonConditions": "Datafield Character Profile Typhoeus, Scenario \"Teams with energy needs\", retrieved 16.10.2026; only incremental gain over P1 (not cumulative over P0). Team rotation and spreadsheet model parameters were not independently recalculated.",
+            "sourceNote": "Datafield"
+          },
+          {
+            "level": 3,
+            "evaluation": "The Combo Skill cools two seconds faster and opponents in the barrage suffer another six percent Nature Burst damage. The benefit depends on the timing and on whether the shorter cooldown in the concrete rotation becomes relevant at all.",
+            "increaseOverPreviousPercent": 0.8,
+            "comparisonConditions": "Datafield Character Profile Typhoeus, scenario \"Teams with energy needs\", retrieved 10/16/2026; only incremental gain over P2 (not cumulative over P0). Team rotation and spreadsheet model parameters were not independently recalculated.",
+            "sourceNote": "Datafield"
+          },
+          {
+            "level": 4,
+            "evaluation": "Reduces the high 200 Ultimate energy costs by 15 percent. Especially interesting for teams who otherwise just fail at another Ultimate window. No blanket guaranteed second Ultimate bet.",
+            "increaseOverPreviousPercent": 8.3,
+            "comparisonConditions": "Datafield Character Profile Typhoeus, Scenario \"Teams with energy needs\", retrieved 10/16/2026; only incremental gain over P3 (not cumulative over P0). Team rotation and spreadsheet model parameters were not independently recalculated.",
+            "sourceNote": "Datafield"
+          },
+          {
+            "level": 5,
+            "evaluation": "In addition to P1, the biggest striking power spike: The Ultimate gives an additional hunting arrow, its own damage increases by 20 percent and Nature Bursts through energy shots get the factor 1.1. This improves the entire central energy shot loop. Additional copies remain optional.",
+            "increaseOverPreviousPercent": 6.5,
+            "comparisonConditions": "Datafield character profile Typhoeus, scenario \"Teams with energy needs\", retrieved 10/16/2026; only incremental gain over P4 (not cumulative over P0). Team rotation and spreadsheet model parameters were not independently recalculated.",
+            "sourceNote": "Datafield"
+          }
+        ],
+        "comparisons": [
+          {
+            "id": "no-extra-ultimate-energy",
+            "title": "Teams without additional Ultimate Energy requirements",
+            "sourceNote": "Datafield",
+            "snapshotDate": "2026-10-16",
+            "comparisonConditions": "Datafield character profile Typhoeus, alternative rider \"Teams without energy needs\", as of 16.10.2026. Any indication is the increase from the immediate previous potential, not a cumulative P0 increase.",
+            "entries": [
+              {
+                "level": 1,
+                "increaseOverPreviousPercent": 6.6
+              },
+              {
+                "level": 2,
+                "increaseOverPreviousPercent": 4.3
+              },
+              {
+                "level": 3,
+                "increaseOverPreviousPercent": 1
+              },
+              {
+                "level": 4,
+                "increaseOverPreviousPercent": 0
+              },
+              {
+                "level": 5,
+                "increaseOverPreviousPercent": 5.2
+              }
+            ]
+          }
+        ]
+      },
+      "teams": {
+        "introduction": "Typhi should always be played with at least one team member who can reliably build up nature stacks. Arcane in the Will variant is the strongest and most flexible partner: nature attachments, grouping and matching buffs combine to form a meaningful burst rotation. In the Will build, Arcane should reach at least 640 Will after the original game example to exhaust their relevant buffs. Fluorite is the particularly good alternative if arcane is missing or additional nature stacks are needed. The remaining two slots should buff, heal or enable reactions as much as possible without blocking Typhi’s tight SP budget. Ardelia and Perlica can trigger suitable reactions for Liino's combo; Gilberta is an alternative with group support, Xaihi strengthens nature teams. Antal and Purrchena bring situational possibilities. Prepare nature stacks for all teams before power shots and actively reclaim the 100 SP for the Battle Skill with Final Strikes.",
+        "roles": [
+          "main-dps"
+        ],
+        "meta": [
+          {
+            "id": "arcane-ardelia-liino",
+            "title": "Arcane · Ardelia · Liino",
+            "role": "main-dps",
+            "members": [
+              "typhoeus",
+              "arcane",
+              "ardelia",
+              "liino"
+            ],
+            "buildId": "deep-rampart-lynx",
+            "evaluation": "The central premium support core: Arcane delivers nature stacks and buffs, Ardelia can use combo corrosion without additional SP and supports the technical response for Liino. Liino brings team ATK, nature amp and healing. Time enemy stacks and combo windows so that Typhi’s energy shots benefit.",
+            "memberGear": [
+              {
+                "member": "arcane",
+                "weaponId": "1045",
+                "weaponAlternatives": [
+                  "47",
+                  "1043"
+                ],
+                "items": [
+                  "1134",
+                  "1137",
+                  "1136",
+                  "1136"
+                ],
+                "note": "Will form, at least 640 Will. Type 42: Solemn Phalanx is the main recommendation; Detonation Unit can be triggered by repeated Nature Inflictions. The PDF expressly prefers both Bracing Slabs for this team."
+              },
+              {
+                "member": "ardelia",
+                "weaponId": "49",
+                "items": [
+                  "881",
+                  "1131",
+                  "876",
+                  "876"
+                ],
+                "note": "With Arcane as Xiranit wearer and Liino: Qingbo Light Armor, Hot Work Hands PPE and twice Qingbo Cask. Signature Dreams of the Starry Beach.",
+                "alternatives": [
+                  {
+                    "title": "Only when no other teammate uses Eternal Xiranite",
+                    "items": [
+                      "1134",
+                      "332",
+                      "337",
+                      "337"
+                    ],
+                    "note": "Four parts if no other operator takes over the Xiranit bonus."
+                  },
+                  {
+                    "title": "With an existing Xiranite user, but without Liino",
+                    "items": [
+                      "328",
+                      "775",
+                      "286",
+                      "286"
+                    ],
+                    "note": "Hot work focus in alternative teams without Liino."
+                  }
+                ]
+              },
+              {
+                "member": "liino",
+                "weaponId": "1046",
+                "weaponAlternatives": [
+                  "1044"
+                ],
+                "items": [
+                  "1134",
+                  "1138",
+                  "365",
+                  "365"
+                ],
+                "note": "With Arcane as Xiranit user and additional Ultimate energy requirements: Light Armor, Hands, two LYNX Slabs. Prefer Bedazzling Night Debut, Golden Age is the Battle Pass alternative.",
+                "alternatives": [
+                  {
+                    "title": "With an existing Xiranite user and no additional Ultimate Energy needs",
+                    "items": [
+                      "1126",
+                      "1129",
+                      "365",
+                      "365"
+                    ],
+                    "note": "Rift Trekker Light Armor and Hands plus two LYNX Slabs for maximum Will and Ultimate amplification."
+                  },
+                  {
+                    "title": "Only when no other teammate uses Eternal Xiranite",
+                    "items": [
+                      "1134",
+                      "1138",
+                      "337",
+                      "365"
+                    ],
+                    "note": "Light Armor, Hands, Auxiliary Arm and LYNX Slab – only if Arcane does not actually play Xiranit in the team."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "arcane-perlica-liino",
+            "title": "Arcane · Perlica · Liino",
+            "role": "main-dps",
+            "members": [
+              "typhoeus",
+              "arcane",
+              "perlica",
+              "liino"
+            ],
+            "buildId": "deep-rampart-lynx",
+            "evaluation": "Alternative premium rotation for clear technology reaction triggers. Perlica’s combo triggers electrification at a target and enables Liino’s combo; Arcane provides nature stacks in parallel. Team members should burden Typhi’s SP budget as little as possible.",
+            "memberGear": [
+              {
+                "member": "arcane",
+                "weaponId": "1045",
+                "weaponAlternatives": [
+                  "47",
+                  "1043"
+                ],
+                "items": [
+                  "1134",
+                  "1137",
+                  "1136",
+                  "1136"
+                ],
+                "note": "Will form, at least 640 Will. Type 42: Solemn Phalanx is the main recommendation; Detonation Unit can be triggered by repeated Nature Inflictions. The PDF expressly prefers both Bracing Slabs for this team."
+              },
+              {
+                "member": "perlica",
+                "weaponId": "94",
+                "items": [
+                  "881",
+                  "775",
+                  "876",
+                  "876"
+                ],
+                "note": "Stanza of Memorials for the largest possible Typhoeus buff. Qingbo Light Armor, Hot Work Gloves and two Qingbo Casks for combo cooldown and electrification.",
+                "alternatives": [
+                  {
+                    "title": "More personal damage with full Electrification uptime",
+                    "items": [
+                      "353",
+                      "775",
+                      "338",
+                      "338"
+                    ],
+                    "note": "Pulser Labs Disruptor Suit, Hot Work Gloves, twice Pulser Labs Calibrator."
+                  }
+                ]
+              },
+              {
+                "member": "liino",
+                "weaponId": "1046",
+                "weaponAlternatives": [
+                  "1044"
+                ],
+                "items": [
+                  "1134",
+                  "1138",
+                  "365",
+                  "365"
+                ],
+                "note": "With Arcane as Xiranit user and additional Ultimate energy requirements: Light Armor, Hands, two LYNX Slabs. Prefer Bedazzling Night Debut, Golden Age is the Battle Pass alternative.",
+                "alternatives": [
+                  {
+                    "title": "With an existing Xiranite user and no additional Ultimate Energy needs",
+                    "items": [
+                      "1126",
+                      "1129",
+                      "365",
+                      "365"
+                    ],
+                    "note": "Rift Trekker Light Armor and Hands plus two LYNX Slabs for maximum Will and Ultimate amplification."
+                  },
+                  {
+                    "title": "Only when no other teammate uses Eternal Xiranite",
+                    "items": [
+                      "1134",
+                      "1138",
+                      "337",
+                      "365"
+                    ],
+                    "note": "Light Armor, Hands, Auxiliary Arm and LYNX Slab – only if Arcane does not actually play Xiranit in the team."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "more": [
+          {
+            "id": "arcane-xaihi-liino",
+            "title": "Arcane · Xaihi · Liino",
+            "role": "main-dps",
+            "members": [
+              "typhoeus",
+              "arcane",
+              "xaihi",
+              "liino"
+            ],
+            "buildId": "deep-rampart-lynx",
+            "note": "Nefarith showcase core: Arcane for nature stacks, Xaihi for the prepared buff window and Liino for ATK/Amp. Especially strong with a precisely planned rotation.",
+            "memberGear": [
+              {
+                "member": "arcane",
+                "weaponId": "1045",
+                "weaponAlternatives": [
+                  "47",
+                  "1043"
+                ],
+                "items": [
+                  "1134",
+                  "1137",
+                  "1136",
+                  "1136"
+                ],
+                "note": "Will form, at least 640 Will. Type 42: Solemn Phalanx is the main recommendation; Detonation Unit can be triggered by repeated Nature Inflictions. The PDF expressly prefers both Bracing Slabs for this team."
+              },
+              {
+                "member": "liino",
+                "weaponId": "1046",
+                "weaponAlternatives": [
+                  "1044"
+                ],
+                "items": [
+                  "1134",
+                  "1138",
+                  "365",
+                  "365"
+                ],
+                "note": "With Arcane as Xiranit user and additional Ultimate energy requirements: Light Armor, Hands, two LYNX Slabs. Prefer Bedazzling Night Debut, Golden Age is the Battle Pass alternative.",
+                "alternatives": [
+                  {
+                    "title": "With an existing Xiranite user and no additional Ultimate Energy needs",
+                    "items": [
+                      "1126",
+                      "1129",
+                      "365",
+                      "365"
+                    ],
+                    "note": "Rift Trekker Light Armor and Hands plus two LYNX Slabs for maximum Will and Ultimate amplification."
+                  },
+                  {
+                    "title": "Only when no other teammate uses Eternal Xiranite",
+                    "items": [
+                      "1134",
+                      "1138",
+                      "337",
+                      "365"
+                    ],
+                    "note": "Light Armor, Hands, Auxiliary Arm and LYNX Slab – only if Arcane does not actually play Xiranit in the team."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "arcane-gilberta-liino",
+            "title": "Arcane · Gilberta · Liino",
+            "role": "main-dps",
+            "members": [
+              "typhoeus",
+              "arcane",
+              "gilberta",
+              "liino"
+            ],
+            "buildId": "deep-rampart-lynx",
+            "note": "Rhodagn Nuke build-up from my Mobalytics guide: First Liino’s Ultimate (ATK + nature amplification), then let Arcane’s Battle Skill hit so delayed that Gilberta’s combo can be triggered on electrification. Do not use Arcanes combo at first. Typhi's Final Strike is followed by Typhi's Ultimate, Gilberta's Ultimate and then tuned Nature Bursts and Hunting Arrows; Arcanes Combo serves the necessary tumble and signs timing. Gilberta’s Swordmancer tumbler equipment is the documented variant for this.",
+            "memberGear": [
+              {
+                "member": "arcane",
+                "weaponId": "1045",
+                "weaponAlternatives": [
+                  "47",
+                  "1043"
+                ],
+                "items": [
+                  "1134",
+                  "1137",
+                  "1136",
+                  "1136"
+                ],
+                "note": "Will form, at least 640 Will. Type 42: Solemn Phalanx is the main recommendation; Detonation Unit can be triggered by repeated Nature Inflictions. The PDF expressly prefers both Bracing Slabs for this team."
+              },
+              {
+                "member": "gilberta",
+                "weaponId": "79",
+                "weaponAlternatives": [
+                  "47"
+                ],
+                "items": [
+                  "328",
+                  "874",
+                  "793",
+                  "793"
+                ],
+                "note": "Tumble focus from my Rhodagn Nuke showcase: Eternal Xiranite Armor, Swordmancer TAC Gauntlets T1 and two NAV Beacons. Delivery Guaranteed is preferred.",
+                "alternatives": [
+                  {
+                    "title": "Technique Intensity",
+                    "items": [
+                      "328",
+                      "775",
+                      "286",
+                      "286"
+                    ],
+                    "note": "Hot Work Gloves and two Power Cartridges."
+                  },
+                  {
+                    "title": "Only when no other teammate uses Eternal Xiranite",
+                    "items": [
+                      "328",
+                      "332",
+                      "337",
+                      "337"
+                    ],
+                    "note": "Eternal Xiranite Armor, Gloves T1 and twice Auxiliary Arm."
+                  }
+                ]
+              },
+              {
+                "member": "liino",
+                "weaponId": "1046",
+                "weaponAlternatives": [
+                  "1044"
+                ],
+                "items": [
+                  "1134",
+                  "1138",
+                  "365",
+                  "365"
+                ],
+                "note": "With Arcane as Xiranit user and additional Ultimate energy requirements: Light Armor, Hands, two LYNX Slabs. Prefer Bedazzling Night Debut, Golden Age is the Battle Pass alternative.",
+                "alternatives": [
+                  {
+                    "title": "With an existing Xiranite user and no additional Ultimate Energy needs",
+                    "items": [
+                      "1126",
+                      "1129",
+                      "365",
+                      "365"
+                    ],
+                    "note": "Rift Trekker Light Armor and Hands plus two LYNX Slabs for maximum Will and Ultimate amplification."
+                  },
+                  {
+                    "title": "Only when no other teammate uses Eternal Xiranite",
+                    "items": [
+                      "1134",
+                      "1138",
+                      "337",
+                      "365"
+                    ],
+                    "note": "Light Armor, Hands, Auxiliary Arm and LYNX Slab – only if Arcane does not actually play Xiranit in the team."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "trial-nature-stacks",
+            "title": "Arcane · Fluorite · Antal",
+            "role": "main-dps",
+            "members": [
+              "typhoeus",
+              "arcane",
+              "fluorite",
+              "antal"
+            ],
+            "buildId": "deep-rampart-lynx",
+            "note": "Combat practice team from the video guide: Arcane and Fluorite provide many nature stacks. Antal marks a target; Its set/ultimate timing can prepare buff windows for Typhi's energy shots. Antal Xiranit equipment used in the demo run.",
+            "memberGear": [
+              {
+                "member": "arcane",
+                "weaponId": "1045",
+                "weaponAlternatives": [
+                  "47",
+                  "1043"
+                ],
+                "items": [
+                  "1134",
+                  "1137",
+                  "1136",
+                  "1136"
+                ],
+                "note": "Will form, at least 640 Will. Type 42: Solemn Phalanx is the main recommendation; Detonation Unit can be triggered by repeated Nature Inflictions. The PDF expressly prefers both Bracing Slabs for this team."
+              }
+            ]
+          },
+          {
+            "id": "fluorite-gilberta-xaihi",
+            "title": "Fluorite · Gilberta · Xaihi",
+            "role": "main-dps",
+            "members": [
+              "typhoeus",
+              "fluorite",
+              "gilberta",
+              "xaihi"
+            ],
+            "buildId": "deep-rampart-lynx",
+            "note": "Well-playable alternative without Arcane. Fluorite provides nature stacks, Gilberta supports grouping and reactions, Xaihi contributes more nature buffs. The SP balance must match your rotation.",
+            "memberGear": [
+              {
+                "member": "gilberta",
+                "weaponId": "79",
+                "weaponAlternatives": [
+                  "47"
+                ],
+                "items": [
+                  "328",
+                  "332",
+                  "337",
+                  "337"
+                ],
+                "note": "Xiranit variant, if no one else wears this set; Delivery Guaranteed is preferred.",
+                "alternatives": [
+                  {
+                    "title": "Stagger-focused setup (Rhodagn burst)",
+                    "items": [
+                      "328",
+                      "874",
+                      "793",
+                      "793"
+                    ],
+                    "note": "Stagger and timing of the Nuke window."
+                  },
+                  {
+                    "title": "Technique Intensity",
+                    "items": [
+                      "328",
+                      "775",
+                      "286",
+                      "286"
+                    ],
+                    "note": "Hot Work Gloves and two Power Cartridges."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "arcane-fluorite-purrchena",
+            "title": "Arcane · Fluorite · Purrchena",
+            "role": "main-dps",
+            "members": [
+              "typhoeus",
+              "arcane",
+              "fluorite",
+              "purrchena"
+            ],
+            "buildId": "deep-rampart-double-comms",
+            "note": "Nature stack focus with additional defensiveness. Purrchena can block enemy attacks so that Typhi can play her hovering as completely as possible.",
+            "memberGear": [
+              {
+                "member": "arcane",
+                "weaponId": "1045",
+                "weaponAlternatives": [
+                  "47",
+                  "1043"
+                ],
+                "items": [
+                  "1134",
+                  "1137",
+                  "1136",
+                  "1136"
+                ],
+                "note": "Will form, at least 640 Will. Type 42: Solemn Phalanx is the main recommendation; Detonation Unit can be triggered by repeated Nature Inflictions. The PDF expressly prefers both Bracing Slabs for this team."
+              }
+            ]
+          },
+          {
+            "id": "arcane-ardelia-gilberta",
+            "title": "Arcane · Ardelia · Gilberta",
+            "role": "main-dps",
+            "members": [
+              "typhoeus",
+              "arcane",
+              "ardelia",
+              "gilberta"
+            ],
+            "buildId": "deep-rampart-lynx",
+            "note": "Alternative from my Mobalytics Guide: Ardelia’s corrosion activates Gilberta’s combo, which brings additional technique receptivity. Without Liino, their SP recovery will be eliminated; The rotation must be planned accordingly.",
+            "memberGear": [
+              {
+                "member": "arcane",
+                "weaponId": "1045",
+                "weaponAlternatives": [
+                  "47",
+                  "1043"
+                ],
+                "items": [
+                  "1134",
+                  "1137",
+                  "1136",
+                  "1136"
+                ],
+                "note": "Will form, at least 640 Will. Type 42: Solemn Phalanx is the main recommendation; Detonation Unit can be triggered by repeated Nature Inflictions. The PDF expressly prefers both Bracing Slabs for this team."
+              },
+              {
+                "member": "ardelia",
+                "weaponId": "49",
+                "items": [
+                  "328",
+                  "775",
+                  "286",
+                  "286"
+                ],
+                "note": "With Arcane as Xiranit carrier, but without Liino: Eternal Xiranite Armor plus Hot Work for technical intensity.",
+                "alternatives": [
+                  {
+                    "title": "Only when no other teammate uses Eternal Xiranite",
+                    "items": [
+                      "1134",
+                      "332",
+                      "337",
+                      "337"
+                    ],
+                    "note": "Eternal Xiranite Light Armor, Gloves T1 and two Auxiliary Arms; only with a different team build."
+                  },
+                  {
+                    "title": "With an existing Xiranite user and Liino",
+                    "items": [
+                      "881",
+                      "1131",
+                      "876",
+                      "876"
+                    ],
+                    "note": "Qingbo/Hot Work in the variant with Liino."
+                  }
+                ]
+              },
+              {
+                "member": "gilberta",
+                "weaponId": "79",
+                "weaponAlternatives": [
+                  "47"
+                ],
+                "items": [
+                  "328",
+                  "775",
+                  "286",
+                  "286"
+                ],
+                "note": "Technology intensity in the team with Arcane: Eternal Xiranite Armor, Hot Work Gloves, two Hot Work Power Cartridges.",
+                "alternatives": [
+                  {
+                    "title": "Stagger-focused setup (Rhodagn burst)",
+                    "items": [
+                      "328",
+                      "874",
+                      "793",
+                      "793"
+                    ],
+                    "note": "Stagger and timing of the Nuke window."
+                  },
+                  {
+                    "title": "Only when no other teammate uses Eternal Xiranite",
+                    "items": [
+                      "328",
+                      "332",
+                      "337",
+                      "337"
+                    ],
+                    "note": "Eternal Xiranite Armor, Gloves T1 and twice Auxiliary Arm."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "arcane-perlica-gilberta",
+            "title": "Arcane · Perlica · Gilberta",
+            "role": "main-dps",
+            "members": [
+              "typhoeus",
+              "arcane",
+              "perlica",
+              "gilberta"
+            ],
+            "buildId": "deep-rampart-lynx",
+            "note": "Alternative without Liino: Perlica’s electrification triggers Gilberta’s combo. Arcane supplies Nature Inflictions and the Will-Buff. Without Liino’s combo, pay particular attention to the SP budget.",
+            "memberGear": [
+              {
+                "member": "arcane",
+                "weaponId": "1045",
+                "weaponAlternatives": [
+                  "47",
+                  "1043"
+                ],
+                "items": [
+                  "1134",
+                  "1137",
+                  "1136",
+                  "1136"
+                ],
+                "note": "Will form, at least 640 Will. Type 42: Solemn Phalanx is the main recommendation; Detonation Unit can be triggered by repeated Nature Inflictions. The PDF expressly prefers both Bracing Slabs for this team."
+              },
+              {
+                "member": "perlica",
+                "weaponId": "94",
+                "items": [
+                  "881",
+                  "775",
+                  "876",
+                  "876"
+                ],
+                "note": "Stanza of Memorials for the largest possible Typhoeus buff. Qingbo Light Armor, Hot Work Gloves and two Qingbo Casks for combo cooldown and electrification.",
+                "alternatives": [
+                  {
+                    "title": "More personal damage with full Electrification uptime",
+                    "items": [
+                      "353",
+                      "775",
+                      "338",
+                      "338"
+                    ],
+                    "note": "Pulser Labs Disruptor Suit, Hot Work Gloves, twice Pulser Labs Calibrator."
+                  }
+                ]
+              },
+              {
+                "member": "gilberta",
+                "weaponId": "79",
+                "weaponAlternatives": [
+                  "47"
+                ],
+                "items": [
+                  "328",
+                  "775",
+                  "286",
+                  "286"
+                ],
+                "note": "Technology intensity in the team with Arcane: Eternal Xiranite Armor, Hot Work Gloves, two Hot Work Power Cartridges.",
+                "alternatives": [
+                  {
+                    "title": "Stagger-focused setup (Rhodagn burst)",
+                    "items": [
+                      "328",
+                      "874",
+                      "793",
+                      "793"
+                    ],
+                    "note": "Stagger and timing of the Nuke window."
+                  },
+                  {
+                    "title": "Only when no other teammate uses Eternal Xiranite",
+                    "items": [
+                      "328",
+                      "332",
+                      "337",
+                      "337"
+                    ],
+                    "note": "Eternal Xiranite Armor, Gloves T1 and twice Auxiliary Arm."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gameplay": {
+        "pending": false,
+        "showcases": [
+          {
+            "id": "trial-erlaeutert",
+            "title": "Trial – nature stacks and SP rotation",
+            "type": "trial",
+            "url": "https://www.youtube.com/watch?v=wNVJkGzkfMg&t=974s",
+            "description": "Combat practice team with Typhi, Arcane, Fluorite and Antal. Here the core of energy shots, signs, combo reset and Final Strike SP can be followed particularly clearly.",
+            "rotationAndTips": "Position yourself behind the most robust opponent and mark it with Antal. Start with the prepared Hunting Arrows in the Battle Skill until eight signs are ready. Timings of team skills tune to Typhi’s combo so that their new energy shots can immediately consume nature stacks. After that, win back SP via Final Strikes; Dodge Cancels after Final Strike and Landing shorten idle times. For the second burst, trigger team buffs first, then put Typhi's Battle Skill immediately before their Ultimate because of the signature weapon buff. With newly collected signs, start the combo and use the extended air attack window."
+          },
+          {
+            "id": "echos-zwei-gegner",
+            "title": "Echoes of War – Two Objectives",
+            "type": "other",
+            "url": "https://www.youtube.com/watch?v=wNVJkGzkfMg&t=1218s",
+            "description": "Two-opponent scenario with Arcane, Ardelia and Liino. Particularly well suited to understanding Typhi’s multi-target attacks and corrosion from natural bursts.",
+            "rotationAndTips": "Start with Liino’s Battle Skill for the Team Buff, group the first targets with Arcane and use Typhi’s existing Hunting Arrows. Before the next energy shots, Ardelia’s combo time on the opponents to install corrosion. Liino’s combo helps get back the necessary SP for the next battle skill. Arcane provides more nature stacks in the hovering. Dodge Cancels after airborne landing and Final Strike save time between the two waves."
+          },
+          {
+            "id": "nefarith-guide",
+            "title": "Nefarith – commented rotation",
+            "type": "boss",
+            "url": "https://www.youtube.com/watch?v=wNVJkGzkfMg&t=1338s",
+            "description": "Full explanation of the Nefarith speed run with team, buff and interrupt timing. The separately published runtime is available in the next showcase.",
+            "rotationAndTips": "Prepare buff windows with Xaihi’s Ultimate, Arcane and Liino’s Battle Skill. Typhi then activates the Battle Skill to take the weapon buff with him, using energy shots and the combo reset. In phase two, really avoid the dragon cry and use Final Strikes with Dodge Cancels for SP. Arcanes Battle Skill to time critical interrupt window; Then use Buffs, Nature Stacks, Typhi’s Battle Skill, Arcane Combo and Ultimate in close order. The speed run shown depends on the situation of critical hits."
+          },
+          {
+            "id": "nefarith-p0",
+            "title": "Nefarith – P0 No Food Speedrun",
+            "type": "speedrun",
+            "featured": true,
+            "url": "https://www.youtube.com/watch?v=Zw8B2F2nJP8",
+            "description": "Stand-alone 0:39 run against Nefarith with Typhoeus P0 and without buff food. For the exact execution and the required critical hits, use the annotated video guide."
+          },
+          {
+            "id": "rhodagn-p0",
+            "title": "Rhodagn – P0 Showcase",
+            "type": "boss",
+            "url": "https://www.youtube.com/watch?v=uixHyNlbwAQ",
+            "description": "Separate Rhodagn Speedrun with Typhi P0. Unlike the Nefarith Run, the video is explicitly designated as a GMS Food Run; Therefore, do not compare maturities without the same conditions."
+          }
+        ]
+      },
+      "conclusion": {
+        "verdict": "Typhoeus is a strong and unusually enjoyable Nature main DPS with impressive bursts from her empowered aerial shots and particularly strong damage against two targets. However, she requires a carefully prepared rotation, reliable Nature Infliction stacks and sufficient SP. If your account already has several well-built main DPS operators, Typhoeus is more of a luxury than a necessity.",
+        "recommendation": "optional",
+        "pullAdvice": "If you are already well positioned with main DPS operators and pull resources are scarce, you can in good conscience skip Typhi and save for missing roles or future operators. Your signature weapon is a particularly large part of the potential investment. But if you like their hovering and the complex nature burst rotation, you get an independent, very satisfying cause of damage.",
+        "recommendedFor": [
+          "Players who specifically need a nature-main DPS and can reliably prepare nature stacks.",
+          "Accounts with Arcane or Fluorite and suitable supporters such as Liino, Ardelia, Perlica or Xaihi.",
+          "Players who enjoy challenging air attack rotations, precise buff windows and animation cancels.",
+          "Multi-target battles with two opponents against whom their air strikes work particularly well."
+        ],
+        "skipIf": [
+          "You already have several invested main DPS operators and need supports more urgently.",
+          "You prefer an uncomplicated rotation without Hunting Arrow, Sign and SP management.",
+          "You cannot supply reliable Nature Infliction or appropriate buff windows."
+        ],
+        "closingNote": "Potentials are nice to have, but never a prerequisite for a functioning P0 rotation. Especially P1 and P5 are strong additives; A new versatile operator can still bring more to your account in the long term. The original September 2026 savings assessment for Si was explicitly a time-bound banner recommendation and is not to be understood as a current release forecast."
+      },
+      "guideVideo": {
+        "title": "Typhoeus – German-language video guide",
+        "url": "https://www.youtube.com/watch?v=wNVJkGzkfMg"
+      }
+    },
+    "si": {
+      "operator": "si",
+      "overview": {
+        "summary": "Si is a 6★ Cryo Supporter wielding a Greatsword. Her flexible kit allows her to serve as a Combo Skill-focused main DPS, a secondary damage dealer, or a support for Cryo and Heat teams. Artful Intent stores damage taken by an enemy; Inksoul lets your team hit a linked target, while her Ultimate grants Cryo Amp and Heat Amp to the entire team. Getting the most out of her depends on Team Position 01, precise timing and careful SP management.",
+        "traits": [
+          "Amp",
+          "Damage Dealer",
+          "Cryo Infliction"
+        ],
+        "strengths": [
+          "Strong personal Cryo Combo Skill damage, crowd control, damage storage, and team-wide Cryo/Heat Amp in one flexible kit.",
+          "Fits numerous Cryo and Heat teams while also supporting her own main-DPS rotation.",
+          "Inksoul transfers hits and effects to the original target, especially useful when enemies move frequently.",
+          "Her talent reduces the Combo Skill cooldown of the operator in Team Position 01 after her Ultimate.",
+          "Can apply Cryo Infliction or Heat Infliction depending on the element of the operator in Team Position 01."
+        ],
+        "weaknesses": [
+          "Optimizing the Battle Skill sequence, stored damage and Inksoul timing takes practice.",
+          "Her strongest new v1.6 gear becomes accessible only late in story progression.",
+          "Many of her highest-ceiling team compositions rely on limited operators."
+        ],
+        "ratings": {
+          "difficulty": 3,
+          "flexibility": 5,
+          "accessibility": 1
+        },
+        "accessibilityNote": "The optimal Type 50 equipment parts are only available with the new story and the new area.",
+        "featuredBuildId": "si-balanced",
+        "partners": []
+      },
+      "operatorKit": {
+        "playstyle": "Si's kit revolves around Artful Intent and Inksoul. Her initial Battle Skill, Brushwork Realm, deals Cryo DMG, applies Immobilization and Artful Intent, and adds Cryo Infliction. If the operator in Team Position 01 is a Heat operator, the infliction instead becomes Heat Infliction. Artful Intent records a portion of the damage its target takes; when the effect expires, it deals Fixed DMG equal to the stored damage.\n\nAfter the initial cast, the Battle Skill becomes Initial Stroke (15 SP), which extracts an Inksoul from the marked enemy. Hits and effects applied to the Inksoul also affect its original target. This is particularly useful against moving enemies, because you can concentrate attacks on the Inksoul instead. Final Stroke costs no SP and returns the Inksoul to its host, ending the effect early and triggering the finishing burst. Timing matters: finishing the window too early means less recorded damage.\n\nHer Combo Skill, Fully Envisioned, triggers when an enemy's Cryo Infliction or Heat Infliction is consumed or absorbed. The summoned Ink Lung deals Cryo DMG based on the highest number of Arts Infliction stacks consumed or absorbed from a single target. Prepare those stacks and the reaction window deliberately rather than triggering the Combo Skill at random.\n\nSi's Ultimate, No One Spoils the Fun, deals Cryo DMG and temporarily grants the entire team Cryo Amp and Heat Amp. Proxy's Patronage also temporarily reduces the Combo Skill cooldown of the operator in Team Position 01 after the Ultimate. This makes her a flexible support as well as a Combo Skill-focused main DPS. For damage-focused rotations, prioritize deliberate Combo Skill setups; for support rotations, align her Ultimate with an ally's most important damage window. Before each rotation, check the element in Team Position 01, your available SP, and when to recall the Inksoul."
+      },
+      "skills": {
+        "priority": {
+          "order": [
+            "combo",
+            "battle",
+            "basic",
+            "ultimate"
+          ],
+          "comparisons": [
+            ">",
+            ">",
+            ">="
+          ],
+          "targetLevels": {
+            "basic": "M3",
+            "battle": "M3",
+            "combo": "M3",
+            "ultimate": "M3"
+          }
+        },
+        "supportPriority": {
+          "order": [
+            "battle",
+            "ultimate",
+            "combo",
+            "basic"
+          ],
+          "comparisons": [
+            ">",
+            ">",
+            ">"
+          ],
+          "targetLevels": {
+            "basic": "Lv 1–9 (optional)",
+            "battle": "M3",
+            "combo": "M3",
+            "ultimate": "M3"
+          }
+        },
+        "active": {
+          "basic": "Artistic Urge is Si's five-hit Cryo Basic Attack. When Si is the controlled operator, the final hit contributes 18 Stagger. It is useful for field time and SP recovery in a main DPS build. How highly you level it depends on how often you actually control her; for the core rotation, Combo Skill and Battle Skill come first.",
+          "battle": "Brushwork Realm is Si's control and damage-storage tool. The initial cast applies Artful Intent and either Cryo Infliction or, if a Heat operator occupies Team Position 01, Heat Infliction. Initial Stroke costs 15 SP and extracts an Inksoul; Final Stroke costs no SP and can trigger the finishing explosion early. Leave enough time for attacks and effects to be transferred to the linked enemy before recalling the Inksoul. In a support build, prioritize getting this Battle Skill to M3.",
+          "combo": "Fully Envisioned is Si's primary personal damage source when played as a main DPS. It triggers when Cryo or Heat Infliction stacks are consumed or absorbed. The Ink Lung deals Cryo DMG based on the highest number of stacks removed from a single target. For a main DPS build, level this skill first. Time other team members' Battle Skills carefully to make use of the three-piece Type 50 set bonus.",
+          "ultimate": "No One Spoils the Fun summons an enormous Ink Lung, deals Cryo DMG and grants the entire team Cryo Amp and Heat Amp. Proxy's Patronage then shortens the Combo Skill cooldown of the operator in Team Position 01. As a support, prioritize Battle Skill M3 > Ultimate M3 > Combo Skill M3 > Basic Attack Lv. 1–9 (optional). As main DPS, prioritize Combo Skill M3 > Battle Skill M3 > Basic Attack M3 ≥ Ultimate M3. How frequently you can use the Ultimate depends on your Ultimate Energy efficiency and fight duration."
+        },
+        "combatTalents": [
+          {
+            "talentId": "proxy-s-patronage",
+            "evaluation": "Central Support Talent: After Sis Ultimate, the cooldown of the operator’s combo skill to Team Position 01 is reduced by 10 or 20 seconds. The decisive factors are team order and timing of deployment; can also affect Si itself if it occupies position 1."
+          },
+          {
+            "talentId": "unsoiled-brush",
+            "evaluation": "If an inksoul disappears, all allied operators receive 15 or 30% haste for five seconds. The free Final Stroke is thus not only the end burst, but also an important team buff timing."
+          }
+        ],
+        "shipTalents": [
+          {
+            "talentId": "ware-is-the-geist",
+            "evaluation": "Improves the provision of information in the reception room; has no direct significance for Si's combat rotation. Later stages further increase effectiveness."
+          },
+          {
+            "talentId": "ink-spirit-aide",
+            "evaluation": "Slow down the mood decrease of operators in the reception room. It is a base effect, not a fight buff."
+          }
+        ]
+      },
+      "weapons": {
+        "recommendations": [
+          {
+            "weaponId": "1280",
+            "category": "bis",
+            "evaluation": "Jade Vessel is valuable as a signature weapon for both Si’s personal cryo/combo damage window and control. After being unable to move, it increases damage to the target and then strengthens the next combo skill; This makes it fit directly with the brushstroke/Inksouln kit."
+          },
+          {
+            "weaponId": "1281",
+            "category": "bp",
+            "evaluation": "Long Heritage is a cheaper alternative with matching Intellect/Cryo values. Since release, it has been classified as a Protocol Pass weapon, therefore it is not to be issued as unconditionally free of charge. For specific performance intervals, the Datafield model reference counts."
+          },
+          {
+            "weaponId": "70",
+            "category": "alternative",
+            "evaluation": "Khravengger is an alternative run by the official wiki as a suitable large sword option and is designated by Datafield in Si-Main DPS simulations. For the Ultimate reinforcement and the exact team role, jade vessel is still the more specific recommendation."
+          }
+        ],
+        "comparisons": [
+          {
+            "id": "si-main-dps",
+            "title": "Main DPS · Datafield-Charakterprofil",
+            "sourcePageType": "character-profile",
+            "sourceNote": "Datafield",
+            "snapshotDate": "2026-10-16",
+            "referenceWeaponId": "1280",
+            "referenceRank": 4,
+            "comparisonConditions": "Publicly rendered Datafield Character Profile Si, Reiter Main DPS, as of 16.10.2026. Jade Vessel R4 = 100% within this specific model. It is not a universal game DPS and the original spreadsheet has not been independently recalculated.",
+            "entries": [
+              {
+                "weaponId": "1280",
+                "rank": 9,
+                "performancePercent": 114.5
+              },
+              {
+                "weaponId": "1280",
+                "rank": 4,
+                "performancePercent": 100
+              },
+              {
+                "weaponId": "70",
+                "rank": 9,
+                "performancePercent": 96.1
+              },
+              {
+                "weaponId": "70",
+                "rank": 4,
+                "performancePercent": 91
+              },
+              {
+                "weaponId": "1281",
+                "rank": 9,
+                "performancePercent": 90.5
+              },
+              {
+                "weaponId": "1281",
+                "rank": 4,
+                "performancePercent": 86.8
+              }
+            ]
+          }
+        ],
+        "generalNotes": "For Si, the right weapon is particularly relevant and as a Main DPS it also benefits greatly from its signature weapon. The general recommendations are independent of weapon rank; The complete, locally imported values and tuning material costs of each weapon are in the fold-up weapon details. Datafield percentages apply only to the named main DPS scenario."
+      },
+      "equipment": {
+        "builds": [
+          {
+            "id": "si-balanced",
+            "title": "Type 50 Yinglung · Balanced",
+            "role": "main-dps",
+            "meta": true,
+            "metaTag": "balanced",
+            "metaSummary": "Three new Type 50 parts with Redeemer Seal: Combo damage and Intellect are retained, while additional Ultimate efficiency allows for more regular buff windows.",
+            "items": [
+              "type-50-yinglung-soft-armor",
+              "type-50-yinglung-gauntlets",
+              "type-50-yinglung-beacon",
+              "349"
+            ],
+            "availableFromLevel": 70,
+            "teamContext": "Standard recommendation for main DPS and flexible DPS/support rotations if the Ultimate is to fit reliably into important damage windows.",
+            "evaluation": "Three Type 50 Yinglung parts deliver the strong combo set bonus. The Redeemer Seal complements Intellect and Ultimate efficiency as an independent off-piece. As a result, the personal combo damage remains strong, while the Ultimate can be more easily integrated into the team rotation. Ideal if their Ultimate would not be available in time without this additional energy efficiency.",
+            "setBonusNotes": "3x Type 50 Yinglung: ATK +15% and up to three Yinglung’s Edge stacks with Battle Skills from any team member. Off-Piece: Redeemer Seal (Intellect and Ultimate Efficiency).",
+            "craftingNotes": "The new Type 50 parts still require clearly verified numerical SKPORT item and blueprint IDs. The build finder remains at \"unchecked\" until then; The Redeemer Seal has the official item ID 349."
+          },
+          {
+            "id": "si-main",
+            "title": "Type 50 Yinglung · Max. DMG",
+            "role": "main-dps",
+            "meta": true,
+            "metaTag": "max-dmg",
+            "metaSummary": "Three new Type 50 parts and LYNX Slab for maximum own combo damage, if the Ultimate is reliable even without additional energy off-piece.",
+            "items": [
+              "type-50-yinglung-soft-armor",
+              "type-50-yinglung-gauntlets",
+              "type-50-yinglung-beacon",
+              "365"
+            ],
+            "availableFromLevel": 70,
+            "teamContext": "Main DPS and Sub DPS, especially when other team members use the necessary battle skills for Yinglung's Edge.",
+            "evaluation": "For maximum own combo damage, three new Type-50-Yinglung parts are combined with LYNX Slab. The three-way bonus delivers ATK +15% and stacks up to 60% bonus to the next combo skill after team members have used their battle skills. Especially strong if the Ultimate is available on time without additional energy efficiency.",
+            "setBonusNotes": "3x Type 50 Yinglung: ATK +15 %, one stack of Yinglung's Edge up to a maximum of three per stack of Si's next combo skill. LYNX Slab as Off-Piece.",
+            "craftingNotes": "The three Type 50 parts released on October 15th do not yet have uniquely assigned numerical IDs in our current SKPORT catalogue. Images/names are from the community wiki; the build finder therefore explicitly identifies production and blueprints as unconfirmed instead of pretending them as available."
+          },
+          {
+            "id": "si-energy",
+            "title": "Type 50 · Alternative with Ultimate Energy",
+            "role": "sub-dps",
+            "meta": false,
+            "items": [
+              "type-50-yinglung-soft-armor",
+              "type-50-yinglung-gauntlets",
+              "type-50-yinglung-beacon",
+              "334"
+            ],
+            "availableFromLevel": 70,
+            "teamContext": "If the Ultimate in your actual rotation does not return in time for the team buff.",
+            "evaluation": "The three Type 50 parts are retained for combo damage, a Xiranit Power Core replaces the LYNX-Off-Piece as a situational option. Only use if this makes a relevant Ultimate bet possible in time; Otherwise, the LYNX standard setup remains. This is not a claim that this variant is generally stronger.",
+            "setBonusNotes": "3x Type 50 Yinglung remains active; Eternal Xiranite part in the off-slot does not activate its own second set bonus without further parts.",
+            "craftingNotes": "Treat Type 50 recipes/blueprint IDs for the new parts as unconfirmed until official SKPORT verification."
+          },
+          {
+            "id": "si-maximum-combo",
+            "title": "Combo Focus · Two Type-50 Beacons",
+            "role": "main-dps",
+            "meta": false,
+            "items": [
+              "type-50-yinglung-soft-armor",
+              "eternal-xiranite-channeling-gloves",
+              "type-50-yinglung-beacon",
+              "type-50-yinglung-beacon"
+            ],
+            "availableFromLevel": 70,
+            "teamContext": "Experimental maximization of own ink-lung damage according to known release values; Not the default meta setup.",
+            "evaluation": "Independent early calculations compare the combo bonus of two Type 50 beacons to an Eternal Xiranite channelling gloves-off piece. This combination is particularly interesting for main DPS scenarios, when all three Yinglung's Edge stacks are reliably created before the combo. It remains an experimental alternative to the two meta-builds.",
+            "setBonusNotes": "Soft Armor + two beacons = three Type-50 parts. Channeling gloves remain a single off-piece.",
+            "craftingNotes": "New Wiki items without officially numerically confirmed SKPORT IDs; the finder does not automatically check the existence of the blueprints."
+          },
+          {
+            "id": "si-support-xiranite",
+            "title": "Support · Eternal Xiranite 1.6",
+            "role": "support",
+            "meta": true,
+            "metaTag": "max-buffs",
+            "metaSummary": "Situational support build for maximum team buffs when no one else takes on the Eternal Xiranite set bonus. Type 50 is likely to be stronger in most situations.",
+            "items": [
+              "eternal-xiranite-overalls",
+              "eternal-xiranite-channeling-gloves",
+              "eternal-xiranite-rangefinder",
+              "334"
+            ],
+            "availableFromLevel": 70,
+            "teamContext": "Only if no other operator already provides the relevant Eternal Xiranite set bonus.",
+            "evaluation": "The new Eternal Xiranite set is a niche alternative for teams where no other operator provides the relevant set bonus and the Buff role is paramount. The Type 50 Yinglung set is expected to do more in most situations; The Xiranit variant is therefore only worthwhile with a suitable team construction and clear buff advantages.",
+            "setBonusNotes": "The Xiranit 3 bonus can usually not be stacked several times in a team; First check the existing support equipment.",
+            "craftingNotes": "New 1.6 Xiranit items provisionally with wiki names and local WebP. Official item IDs/blueprint purchase add separately."
+          },
+          {
+            "id": "si-early-access",
+            "title": "Type 50 Yinglung · Early Access",
+            "role": "main-dps",
+            "meta": true,
+            "metaTag": "early-access",
+            "metaSummary": "Early achievable Type 50 triple bonus without the new v1.6 parts: Redeemer Armor, older Yinglung Gloves and twice Yinglung Knife T1. Ideal as a transition to the full 1.6 set.",
+            "items": [
+              "796",
+              "411",
+              "342",
+              "342"
+            ],
+            "availableFromLevel": 70,
+            "teamContext": "Level 70 transition, as long as the new Type 50 equipment parts from version 1.6 are not yet unlocked.",
+            "evaluation": "Redeemer Armor delivers a lot of intellect and ultimate efficiency. The older Type 50 Yinglung Gloves contribute combo skills damage and some intellect, but have agility instead of strength as main attributes. Both Type 50 Yinglung Knife T1s complement Intellect, Strength and General Skill Damage. With a total of three Type 50 parts, the full Yinglung’s Edge three-way bonus is retained. This setup is a transitional solution and not a replacement for the better new v1.6 parts.",
+            "setBonusNotes": "3 × Type 50 Yinglung: ATK +15 %; Battle Skills from the team generate up to three Yinglung’s Edge stacks for the next combo skill. Redeemer Armor as Off-Piece with Intellect and Ultimate efficiency.",
+            "craftingNotes": "All four item IDs are included in the existing official SKPORT catalogue. Early availability does not automatically mean that all required blueprints are already unlocked in their own game."
+          },
+          {
+            "id": "si-level60",
+            "title": "Level 60 · AIC Fieldwork",
+            "role": "main-dps",
+            "meta": false,
+            "items": [
+              "1116",
+              "1122",
+              "1120",
+              "1120"
+            ],
+            "availableFromLevel": 60,
+            "teamContext": "Preliminary progression configuration as long as new Level 70 parts are not yet available.",
+            "evaluation": "The AIC fieldwork set provides primary and secondary attributes as well as usable general values at an early stage. For Si, the focus is on Intellect and Strength. The two Ember kits support a preliminary setup; Concrete skill and ultimate energy utilization depends on available equipment and combo rotation.",
+            "setBonusNotes": "Transition to Type-50 or Xiranit equipment; No claimed endgame DPS comparison."
+          },
+          {
+            "id": "si-level50",
+            "title": "Level 50 · Mordvolt Insulation",
+            "role": "main-dps",
+            "meta": false,
+            "items": [
+              "322",
+              "323",
+              "327",
+              "291"
+            ],
+            "availableFromLevel": 50,
+            "teamContext": "Transition build for Cryo DMG and own combo window before the level 60/70 sets.",
+            "evaluation": "Three Murdervolt insulation parts improve intellect and amplify art damage as long as Si remains above 80% LP. The Aburrey Flashlight complements Intellect, Strength and Ultimate efficiency. The variant uses real Level 50 equipment without already requiring access to the new 1.6 story equipment.",
+            "setBonusNotes": "3× Mordvolt Insulation: +50 Intellect; over 80% LP of increased art damage. Off-Piece: Aburrey Flashlight for Intellect, Strength and Ultimate Efficiency.",
+            "craftingNotes": "Check activation and blueprint ownership in the build finder with your own progress; No Level 50 DPS ranking is claimed."
+          },
+          {
+            "id": "si-level36",
+            "title": "Level 36 · Mordvolt Insulation",
+            "role": "main-dps",
+            "meta": false,
+            "items": [
+              "256",
+              "259",
+              "266",
+              "262"
+            ],
+            "availableFromLevel": 36,
+            "teamContext": "Early cryo/combo progression before Level 50 equipment is accessible.",
+            "evaluation": "The Mordvolt insulation vest combines Intellect and Strength, the gloves complement other Intellect. Wrench and Wrench T1 strengthen attack and Cryo DMG, respectively. Already with three parts the Mordvolt set bonus is active. In battle, watch for enough LP for the additional art damage bonus.",
+            "setBonusNotes": "3x Mordvolt Insulation: +50 Intellect and additional art damage above 80% LP.",
+            "craftingNotes": "Only parts from the existing official Level-36 catalogue; the concrete blueprint release continues to depend on your own score."
+          }
+        ],
+        "progression": [
+          {
+            "stage": "early",
+            "note": "From level 36, Si can enter the cryo and combo focus with Mordvolt Insulation. Prioritize Strength and Intellect on the available parts; Check blueprints in the finder beforehand."
+          },
+          {
+            "stage": "mid",
+            "note": "Level 50: further expand with Mordvolt Insulation and Aburrey Flashlight. Starting at Level 60, AIC Fieldwork is another transitional solution."
+          },
+          {
+            "stage": "late",
+            "note": "Level 70: Before unlocking the new v1.6 gear, Early Access with Redeemer Armor and three older Yinglung parts is a full transition build. Once the new area and the corresponding story unlocks are reached, aim for three new Type 50 parts. Redeemer Seal for balanced rotations, LYNX Slab for maximum own damage."
+          },
+          {
+            "stage": "endgame",
+            "note": "The new version 1.6 Type-50-Yinglung-Set is Sis Go-to-Set. With Redeemer Seal it is balanced, with LYNX Slab aimed at maximum own combo damage. Eternal Xiranite remains a highly situational niche alternative if the set bonus is still missing in the team."
+          }
+        ],
+        "generalNotes": "16.10.2026: The three new Type 50 parts and several new Xiranit parts are in the current Talos/Release Wiki, but are not yet clearly linked to numerical item IDs and manufacturing recipes in the previously imported SKPORT catalogue. These builds are real editorial recommendations, not fully proven blueprints. The build finder gives the status “unchecked” instead of outputting an invented activation."
+      },
+      "potentials": {
+        "entries": [
+          {
+            "level": 1,
+            "evaluation": "The extended motion inability and the higher damage memory value increase Si's control and burst window. Especially useful for moving targets, but not necessary for the Inksoul to work.",
+            "increaseOverPreviousPercent": 5.6,
+            "comparisonConditions": "Datafield Character Profile Si, Reiter DPS Potentials, 16.10.2026. Each value is only the relative gain from the immediately preceding stage and applies exclusively to the modeled DPS scenario.",
+            "sourceNote": "Datafield"
+          },
+          {
+            "level": 2,
+            "evaluation": "An additional ATK buff for Si after the combo; the altitude grows with consumed or absorbed cumulations of a single target. Especially attractive for their own DPS role.",
+            "increaseOverPreviousPercent": 6.2,
+            "comparisonConditions": "Datafield Character Profile Si, Reiter DPS Potentials, 16.10.2026. Each value is only the relative gain from the immediately preceding stage and applies exclusively to the modeled DPS scenario.",
+            "sourceNote": "Datafield"
+          },
+          {
+            "level": 3,
+            "evaluation": "Increases damage AND cryo/heat amplification of their Ultimate to 1.2 times. Also relevant for team support, not only for personal DPS.",
+            "increaseOverPreviousPercent": 3.6,
+            "comparisonConditions": "Datafield Character Profile Si, Reiter DPS Potentials, 16.10.2026. Each value is only the relative gain from the immediately preceding stage and applies exclusively to the modeled DPS scenario.",
+            "sourceNote": "Datafield"
+          },
+          {
+            "level": 4,
+            "evaluation": "Ultimate costs 15% less energy. The benefit depends crucially on whether you achieve an earlier or additional bet within the actual rotation.",
+            "increaseOverPreviousPercent": 2.8,
+            "comparisonConditions": "Datafield Character Profile Si, Reiter DPS Potentials, 16.10.2026. Each value is only the relative gain from the immediately preceding stage and applies exclusively to the modeled DPS scenario.",
+            "sourceNote": "Datafield"
+          },
+          {
+            "level": 5,
+            "evaluation": "The combo gets 15% more damage, two seconds less cooldown and counts another infliction stack when triggered. As a result, P5 also reinforces the bonus of P2; particularly interesting for main DPS.",
+            "increaseOverPreviousPercent": 9.3,
+            "comparisonConditions": "Datafield Character Profile Si, Reiter DPS Potentials, 16.10.2026. Each value is only the relative gain from the immediately preceding stage and applies exclusively to the modeled DPS scenario.",
+            "sourceNote": "Datafield"
+          }
+        ]
+      },
+      "teams": {
+        "introduction": "Si can be used flexibly in Cryo and Heat teams or even play as Main DPS. A heat operator at Team Position 01 changes their applied cumulation to heat. Crucial are the consumption of this cumulation for the combo, the timing of the Inksoul and the Ultimate amplification. The other team members influence SP economy and reaction chains.",
+        "roles": [
+          "support",
+          "sub-dps",
+          "main-dps"
+        ],
+        "meta": [
+          {
+            "id": "yvonne-1",
+            "title": "Yvonne Main DPS",
+            "role": "support",
+            "members": [
+              "yvonne",
+              "tangtang",
+              "xaihi",
+              "si"
+            ],
+            "buildId": "si-main",
+            "evaluation": "Cryo Team: Si takes the goal with artistic intent, prepares Cryo Infliction stacks and can support team rotation with cryo reinforcement. Tangtang complements the cryo rotation. Adapt sequence and buff window to your own rotation."
+          },
+          {
+            "id": "last-rite-10",
+            "title": "Last Rite Main DPS",
+            "role": "support",
+            "members": [
+              "last-rite",
+              "tangtang",
+              "xaihi",
+              "si"
+            ],
+            "buildId": "si-main",
+            "evaluation": "Cryo Team: Si takes the goal with artistic intent, prepares Cryo Infliction stacks and can support team rotation with cryo reinforcement. Tangtang complements the cryo rotation. Adapt sequence and buff window to your own rotation."
+          },
+          {
+            "id": "laevatain-16",
+            "title": "Laevatain Main DPS",
+            "role": "support",
+            "members": [
+              "laevatain",
+              "wulfgard",
+              "camille",
+              "si"
+            ],
+            "buildId": "si-support-xiranite",
+            "evaluation": "Heat lineup: Laevatain at position 1 activates Sis Heat Infliction stacks; Ultimate supports with heat amplification. The actual SP balance and skill sequence must be adjusted to your score. Adapt sequence and buff window to your own rotation."
+          },
+          {
+            "id": "rossi-25",
+            "title": "Rossi Main DPS",
+            "role": "support",
+            "members": [
+              "rossi",
+              "mi-fu",
+              "gilberta",
+              "si"
+            ],
+            "buildId": "si-main",
+            "evaluation": "Rossi compilation: Si serves as a flexible additional source of damage and allows additional hit windows using the Inksoul. Gilberta’s timing and the order of the combo skills must be noted. Adapt sequence and buff window to your own rotation."
+          },
+          {
+            "id": "si-34",
+            "title": "Si Main DPS",
+            "role": "main-dps",
+            "members": [
+              "si",
+              "tangtang",
+              "arcane",
+              "xaihi"
+            ],
+            "buildId": "si-main",
+            "evaluation": "Si himself leads the team: Cryo Infliction stacks, inksoul and own combo damage windows are the focus. Arcane offers additional reaction and buff windows. Adapt sequence and buff window to your own rotation."
+          },
+          {
+            "id": "si-35",
+            "title": "Si Main DPS (2)",
+            "role": "main-dps",
+            "members": [
+              "si",
+              "tangtang",
+              "arcane",
+              "gilberta"
+            ],
+            "buildId": "si-main",
+            "evaluation": "Si himself leads the team: Cryo Infliction stacks, inksoul and own combo damage windows are the focus. Arcane offers additional reaction and buff windows. Adapt sequence and buff window to your own rotation."
+          }
+        ],
+        "more": [
+          {
+            "id": "yvonne-2",
+            "title": "Yvonne · Arcane · Xaihi",
+            "role": "support",
+            "members": [
+              "yvonne",
+              "arcane",
+              "xaihi",
+              "si"
+            ],
+            "buildId": "si-main",
+            "note": "Cryo Team: Si takes the goal with artistic intent, prepares Cryo Infliction stacks and can support team rotation with cryo reinforcement. Arcane offers additional reaction and buff windows. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "yvonne-3",
+            "title": "Yvonne · Tangtang · Arcane",
+            "role": "support",
+            "members": [
+              "yvonne",
+              "tangtang",
+              "arcane",
+              "si"
+            ],
+            "buildId": "si-main",
+            "note": "Cryo Team: Si takes the goal with artistic intent, prepares Cryo Infliction stacks and can support team rotation with cryo reinforcement. Arcane offers additional reaction and buff windows. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "yvonne-4",
+            "title": "Yvonne · Snowshine · Alesh",
+            "role": "support",
+            "members": [
+              "yvonne",
+              "snowshine",
+              "alesh",
+              "si"
+            ],
+            "buildId": "si-main",
+            "note": "Cryo Team: Si takes the goal with artistic intent, prepares Cryo Infliction stacks and can support team rotation with cryo reinforcement. The actual SP balance and skill sequence must be adjusted to your score. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "yvonne-5",
+            "title": "Yvonne · Perlica · Alesh",
+            "role": "support",
+            "members": [
+              "yvonne",
+              "perlica",
+              "alesh",
+              "si"
+            ],
+            "buildId": "si-main",
+            "note": "Cryo Team: Si takes the goal with artistic intent, prepares Cryo Infliction stacks and can support team rotation with cryo reinforcement. The actual SP balance and skill sequence must be adjusted to your score. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "yvonne-6",
+            "title": "Yvonne · Snowshine · Perlica",
+            "role": "support",
+            "members": [
+              "yvonne",
+              "snowshine",
+              "perlica",
+              "si"
+            ],
+            "buildId": "si-main",
+            "note": "Cryo Team: Si takes the goal with artistic intent, prepares Cryo Infliction stacks and can support team rotation with cryo reinforcement. The actual SP balance and skill sequence must be adjusted to your score. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "yvonne-7",
+            "title": "Yvonne · Arcane · Fluorite",
+            "role": "support",
+            "members": [
+              "yvonne",
+              "arcane",
+              "fluorite",
+              "si"
+            ],
+            "buildId": "si-main",
+            "note": "Cryo Team: Si takes the goal with artistic intent, prepares Cryo Infliction stacks and can support team rotation with cryo reinforcement. Arcane offers additional reaction and buff windows. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "yvonne-8",
+            "title": "Yvonne · Arcane · Gilberta",
+            "role": "support",
+            "members": [
+              "yvonne",
+              "arcane",
+              "gilberta",
+              "si"
+            ],
+            "buildId": "si-main",
+            "note": "Cryo Team: Si takes the goal with artistic intent, prepares Cryo Infliction stacks and can support team rotation with cryo reinforcement. Arcane offers additional reaction and buff windows. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "yvonne-9",
+            "title": "Yvonne · Arcane · Purrchena",
+            "role": "support",
+            "members": [
+              "yvonne",
+              "arcane",
+              "purrchena",
+              "si"
+            ],
+            "buildId": "si-main",
+            "note": "Cryo Team: Si takes the goal with artistic intent, prepares Cryo Infliction stacks and can support team rotation with cryo reinforcement. Arcane offers additional reaction and buff windows. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "last-rite-11",
+            "title": "Last Rite · Arcane · Xaihi",
+            "role": "support",
+            "members": [
+              "last-rite",
+              "arcane",
+              "xaihi",
+              "si"
+            ],
+            "buildId": "si-main",
+            "note": "Cryo Team: Si takes the goal with artistic intent, prepares Cryo Infliction stacks and can support team rotation with cryo reinforcement. Arcane offers additional reaction and buff windows. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "last-rite-12",
+            "title": "Last Rite · Tangtang · Arcane",
+            "role": "support",
+            "members": [
+              "last-rite",
+              "tangtang",
+              "arcane",
+              "si"
+            ],
+            "buildId": "si-main",
+            "note": "Cryo Team: Si takes the goal with artistic intent, prepares Cryo Infliction stacks and can support team rotation with cryo reinforcement. Arcane offers additional reaction and buff windows. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "last-rite-13",
+            "title": "Last Rite · Snowshine · Alesh",
+            "role": "support",
+            "members": [
+              "last-rite",
+              "snowshine",
+              "alesh",
+              "si"
+            ],
+            "buildId": "si-main",
+            "note": "Cryo Team: Si takes the goal with artistic intent, prepares Cryo Infliction stacks and can support team rotation with cryo reinforcement. The actual SP balance and skill sequence must be adjusted to your score. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "last-rite-14",
+            "title": "Last Rite · Perlica · Alesh",
+            "role": "support",
+            "members": [
+              "last-rite",
+              "perlica",
+              "alesh",
+              "si"
+            ],
+            "buildId": "si-main",
+            "note": "Cryo Team: Si takes the goal with artistic intent, prepares Cryo Infliction stacks and can support team rotation with cryo reinforcement. The actual SP balance and skill sequence must be adjusted to your score. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "last-rite-15",
+            "title": "Last Rite · Snowshine · Perlica",
+            "role": "support",
+            "members": [
+              "last-rite",
+              "snowshine",
+              "perlica",
+              "si"
+            ],
+            "buildId": "si-main",
+            "note": "Cryo Team: Si takes the goal with artistic intent, prepares Cryo Infliction stacks and can support team rotation with cryo reinforcement. The actual SP balance and skill sequence must be adjusted to your score. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "laevatain-17",
+            "title": "Laevatain · Akekuri · Camille",
+            "role": "support",
+            "members": [
+              "laevatain",
+              "akekuri",
+              "camille",
+              "si"
+            ],
+            "buildId": "si-support-xiranite",
+            "note": "Heat lineup: Laevatain at position 1 activates Sis Heat Infliction stacks; Ultimate supports with heat amplification. The actual SP balance and skill sequence must be adjusted to your score. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "laevatain-18",
+            "title": "Laevatain · Ardelia · Camille",
+            "role": "support",
+            "members": [
+              "laevatain",
+              "ardelia",
+              "camille",
+              "si"
+            ],
+            "buildId": "si-support-xiranite",
+            "note": "Heat lineup: Laevatain at position 1 activates Sis Heat Infliction stacks; Ultimate supports with heat amplification. The actual SP balance and skill sequence must be adjusted to your score. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "laevatain-19",
+            "title": "Laevatain · Antal · Camille",
+            "role": "support",
+            "members": [
+              "laevatain",
+              "antal",
+              "camille",
+              "si"
+            ],
+            "buildId": "si-support-xiranite",
+            "note": "Heat lineup: Laevatain at position 1 activates Sis Heat Infliction stacks; Ultimate supports with heat amplification. The actual SP balance and skill sequence must be adjusted to your score. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "laevatain-20",
+            "title": "Laevatain · Wulfgard · Akekuri",
+            "role": "support",
+            "members": [
+              "laevatain",
+              "wulfgard",
+              "akekuri",
+              "si"
+            ],
+            "buildId": "si-support-xiranite",
+            "note": "Heat lineup: Laevatain at position 1 activates Sis Heat Infliction stacks; Ultimate supports with heat amplification. The actual SP balance and skill sequence must be adjusted to your score. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "laevatain-21",
+            "title": "Laevatain · Antal · Akekuri",
+            "role": "support",
+            "members": [
+              "laevatain",
+              "antal",
+              "akekuri",
+              "si"
+            ],
+            "buildId": "si-support-xiranite",
+            "note": "Heat lineup: Laevatain at position 1 activates Sis Heat Infliction stacks; Ultimate supports with heat amplification. The actual SP balance and skill sequence must be adjusted to your score. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "laevatain-22",
+            "title": "Laevatain · Antal · Ardelia",
+            "role": "support",
+            "members": [
+              "laevatain",
+              "antal",
+              "ardelia",
+              "si"
+            ],
+            "buildId": "si-support-xiranite",
+            "note": "Heat lineup: Laevatain at position 1 activates Sis Heat Infliction stacks; Ultimate supports with heat amplification. The actual SP balance and skill sequence must be adjusted to your score. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "laevatain-23",
+            "title": "Laevatain · Wulfgard · Ardelia",
+            "role": "support",
+            "members": [
+              "laevatain",
+              "wulfgard",
+              "ardelia",
+              "si"
+            ],
+            "buildId": "si-support-xiranite",
+            "note": "Heat lineup: Laevatain at position 1 activates Sis Heat Infliction stacks; Ultimate supports with heat amplification. The actual SP balance and skill sequence must be adjusted to your score. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "laevatain-24",
+            "title": "Laevatain · Wulfgard · Perlica",
+            "role": "support",
+            "members": [
+              "laevatain",
+              "wulfgard",
+              "perlica",
+              "si"
+            ],
+            "buildId": "si-support-xiranite",
+            "note": "Heat lineup: Laevatain at position 1 activates Sis Heat Infliction stacks; Ultimate supports with heat amplification. The actual SP balance and skill sequence must be adjusted to your score. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "rossi-26",
+            "title": "Rossi · Mi Fu · Camille",
+            "role": "support",
+            "members": [
+              "rossi",
+              "mi-fu",
+              "camille",
+              "si"
+            ],
+            "buildId": "si-main",
+            "note": "Rossi compilation: Si serves as a flexible additional source of damage and allows additional hit windows using the Inksoul. The actual SP balance and skill sequence must be adjusted to your score. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "rossi-27",
+            "title": "Rossi · Mi Fu · Pogranichnik",
+            "role": "support",
+            "members": [
+              "rossi",
+              "mi-fu",
+              "pogranichnik",
+              "si"
+            ],
+            "buildId": "si-main",
+            "note": "Rossi compilation: Si serves as a flexible additional source of damage and allows additional hit windows using the Inksoul. The actual SP balance and skill sequence must be adjusted to your score. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "rossi-28",
+            "title": "Rossi · Endministrator · Gilberta",
+            "role": "support",
+            "members": [
+              "rossi",
+              "endministrator",
+              "gilberta",
+              "si"
+            ],
+            "buildId": "si-main",
+            "note": "Rossi compilation: Si serves as a flexible additional source of damage and allows additional hit windows using the Inksoul. Gilberta’s timing and the order of the combo skills must be noted. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "rossi-29",
+            "title": "Rossi · Endministrator · Camille",
+            "role": "support",
+            "members": [
+              "rossi",
+              "endministrator",
+              "camille",
+              "si"
+            ],
+            "buildId": "si-main",
+            "note": "Rossi compilation: Si serves as a flexible additional source of damage and allows additional hit windows using the Inksoul. The actual SP balance and skill sequence must be adjusted to your score. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "rossi-30",
+            "title": "Rossi · Endministrator · Pogranichnik",
+            "role": "support",
+            "members": [
+              "rossi",
+              "endministrator",
+              "pogranichnik",
+              "si"
+            ],
+            "buildId": "si-main",
+            "note": "Rossi compilation: Si serves as a flexible additional source of damage and allows additional hit windows using the Inksoul. The actual SP balance and skill sequence must be adjusted to your score. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "rossi-31",
+            "title": "Rossi · Chen Qianyu · Pogranichnik",
+            "role": "support",
+            "members": [
+              "rossi",
+              "chen-qianyu",
+              "pogranichnik",
+              "si"
+            ],
+            "buildId": "si-main",
+            "note": "Rossi compilation: Si serves as a flexible additional source of damage and allows additional hit windows using the Inksoul. The actual SP balance and skill sequence must be adjusted to your score. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "rossi-32",
+            "title": "Rossi · Lifeng · Pogranichnik",
+            "role": "support",
+            "members": [
+              "rossi",
+              "lifeng",
+              "pogranichnik",
+              "si"
+            ],
+            "buildId": "si-main",
+            "note": "Rossi compilation: Si serves as a flexible additional source of damage and allows additional hit windows using the Inksoul. The actual SP balance and skill sequence must be adjusted to your score. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "rossi-33",
+            "title": "Rossi · Chen Qianyu · Lifeng",
+            "role": "support",
+            "members": [
+              "rossi",
+              "chen-qianyu",
+              "lifeng",
+              "si"
+            ],
+            "buildId": "si-main",
+            "note": "Rossi compilation: Si serves as a flexible additional source of damage and allows additional hit windows using the Inksoul. The actual SP balance and skill sequence must be adjusted to your score. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "si-36",
+            "title": "Tangtang · Alesh · Xaihi",
+            "role": "main-dps",
+            "members": [
+              "si",
+              "tangtang",
+              "alesh",
+              "xaihi"
+            ],
+            "buildId": "si-main",
+            "note": "Si himself leads the team: Cryo Infliction stacks, inksoul and own combo damage windows are the focus. Tangtang complements the cryo rotation. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "si-37",
+            "title": "Tangtang · Perlica · Xaihi",
+            "role": "main-dps",
+            "members": [
+              "si",
+              "tangtang",
+              "perlica",
+              "xaihi"
+            ],
+            "buildId": "si-main",
+            "note": "Si himself leads the team: Cryo Infliction stacks, inksoul and own combo damage windows are the focus. Tangtang complements the cryo rotation. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "si-38",
+            "title": "Arcane · Alesh · Xaihi",
+            "role": "main-dps",
+            "members": [
+              "si",
+              "arcane",
+              "alesh",
+              "xaihi"
+            ],
+            "buildId": "si-main",
+            "note": "Si himself leads the team: Cryo Infliction stacks, inksoul and own combo damage windows are the focus. Arcane offers additional reaction and buff windows. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "si-39",
+            "title": "Arcane · Alesh · Gilberta",
+            "role": "main-dps",
+            "members": [
+              "si",
+              "arcane",
+              "alesh",
+              "gilberta"
+            ],
+            "buildId": "si-main",
+            "note": "Si himself leads the team: Cryo Infliction stacks, inksoul and own combo damage windows are the focus. Arcane offers additional reaction and buff windows. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "si-40",
+            "title": "Arcane · Perlica · Gilberta",
+            "role": "main-dps",
+            "members": [
+              "si",
+              "arcane",
+              "perlica",
+              "gilberta"
+            ],
+            "buildId": "si-main",
+            "note": "Si himself leads the team: Cryo Infliction stacks, inksoul and own combo damage windows are the focus. Arcane offers additional reaction and buff windows. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "si-41",
+            "title": "Tangtang · Alesh · Gilberta",
+            "role": "main-dps",
+            "members": [
+              "si",
+              "tangtang",
+              "alesh",
+              "gilberta"
+            ],
+            "buildId": "si-main",
+            "note": "Si himself leads the team: Cryo Infliction stacks, inksoul and own combo damage windows are the focus. Tangtang complements the cryo rotation. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "si-42",
+            "title": "Tangtang · Perlica · Gilberta",
+            "role": "main-dps",
+            "members": [
+              "si",
+              "tangtang",
+              "perlica",
+              "gilberta"
+            ],
+            "buildId": "si-main",
+            "note": "Si himself leads the team: Cryo Infliction stacks, inksoul and own combo damage windows are the focus. Tangtang complements the cryo rotation. Another possible team combination, whose SP and combo timing depends on the use."
+          },
+          {
+            "id": "si-43",
+            "title": "Snowshine · Perlica · Gilberta",
+            "role": "main-dps",
+            "members": [
+              "si",
+              "snowshine",
+              "perlica",
+              "gilberta"
+            ],
+            "buildId": "si-main",
+            "note": "Si himself leads the team: Cryo Infliction stacks, inksoul and own combo damage windows are the focus. Gilberta’s timing and the order of the combo skills must be noted. Another possible team combination, whose SP and combo timing depends on the use."
+          }
+        ]
+      },
+      "gameplay": {
+        "pending": true,
+        "showcases": []
+      },
+      "conclusion": {
+        "verdict": "Since her release, Si has proven to be an exceptionally versatile Cryo Supporter who can also serve as a main DPS or sub DPS. My marked Meta teams cover Yvonne, Last Rite, Laevatain and Rossi, as well as Si in the main DPS role. Her strength is not limited to personal Combo Skill damage: control through Inksoul and Artful Intent, alongside buffs for both Cryo and Heat, is equally important. Her basic mechanics are accessible, but optimizing SP timing, reaction windows and team order makes her more demanding.",
+        "recommendation": "recommended",
+        "pullAdvice": "For accounts with a cryo or heat focus, Si is a particularly interesting addition. Thanks to high flexibility, it can fill various team roles and also enable its own DPS lineup. Jade vessel and Type 50 set are my preferred investment direction, but the new item IDs and the first independent rotation comparisons are not fully confirmed shortly after release. If you only follow maximum own burst numbers, you should compare the final fine tuning with established calculations and your own SP rotation.",
+        "recommendedFor": [
+          "Yvonne and Last Rite teams that benefit from additional Cryo Infliction and Cryo Amp.",
+          "Laevatain teams using Heat Infliction through Team Position 01.",
+          "Players who want to build Si as a Combo Skill-oriented main DPS."
+        ],
+        "skipIf": [
+          "You have no use for Cryo/Heat amplification and cannot obtain her new gear set."
+        ]
+      },
+      "guideVideo": {
+        "title": "Si – ausführlicher Videoguide in Vorbereitung"
+      }
+    }
+  }
+}

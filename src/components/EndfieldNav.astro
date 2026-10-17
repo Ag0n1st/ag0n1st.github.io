@@ -15,15 +15,20 @@ const isEn=lang==="en";
 const items=isEn?itemsDe.map(item=>({
  ...item,
  label:({"overview":"Overview","operators":"Operators","factory":"Factory","recruitment":"Recruitment","refinement":"Refinement","essences":"Essences","speedruns":"Speedruns","checklist":"Checklist","countdown":"Countdown"} as Record<string,string>)[item.key]??item.label,
- href:item.key==="overview"?"/en/endfield/":item.key==="operators"?"/en/endfield/operators/":item.href,
- untranslated:!["overview","operators"].includes(item.key)
+ href:({
+  overview:"/en/endfield/",operators:"/en/endfield/operators/",factory:"/en/endfield/factory/",
+  recruitment:"/en/endfield/recruitment/",refinement:"/en/endfield/refinement/",
+  essences:"/en/endfield/essences/",speedruns:"/en/endfield/speedruns/",
+  checklist:"/en/endfield/checklist/",countdown:"/en/endfield/countdown/"
+ } as Record<string,string>)[item.key],
+ untranslated:false
 })):itemsDe.map(item=>({...item,untranslated:false}));
 ---
 <nav class="endfield-nav" aria-label="Arknights: Endfield Navigation">
   <div class="endfield-nav-inner">
     {items.map((item) => (
       <a href={item.href} class:list={["endfield-nav-link", { "is-active": active === item.key }]} aria-current={active === item.key ? "page" : undefined}>
-        {item.label}{item.untranslated?" (DE)":""}
+        {item.label}
       </a>
     ))}
   </div>
