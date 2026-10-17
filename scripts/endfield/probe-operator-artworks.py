@@ -76,5 +76,31 @@ async def main():
     return {elements:all.length,results};
   }""",OPERATORS)
   print("OFFICIAL_COMPUTED_STYLES",json.dumps(styles,ensure_ascii=False)[:18500])
+  card_info=await page.evaluate("""()=>{
+    return [...document.querySelectorAll('[class*="OperatorItem_operatorItem__"]')].map((card,i)=>({
+      i,label:(card.innerText||'').replace(/\\s+/g,' ').slice(0,90),
+      key:card.querySelector('[class*="OperatorItem_image__"]')?.getAttribute("data-key"),
+      url:card.querySelector('[class*="OperatorItem_image__"]')?.style.backgroundImage
+    }));
+  }""")
+  print("OFFICIAL_ALL_CARDS",json.dumps(card_info,ensure_ascii=False))
+  await page.evaluate("""()=>document.querySelector('[class*="OperatorItem_operatorItem__"]')?.click()""")
+  await page.wait_for_timeout(1000)
+  detail=await page.evaluate("""()=>{
+    const result=[];
+    for(const e of document.querySelectorAll('*')){
+      const style=getComputedStyle(e).backgroundImage;
+      const attr=e.getAttribute('style')||'';
+      for(const s of [style,attr]){
+        if(s.includes('jsspsi')&&s.includes('png')){
+          result.push({cls:String(e.className||'').slice(0,120),url:s.slice(0,320),
+            text:(e.parentElement?.innerText||'').slice(0,120)});
+          break;
+        }
+      }
+    }
+    return result;
+  }""")
+  print("OFFICIAL_SI_AFTER_CLICK",json.dumps(detail,ensure_ascii=False))
   await browser.close()
 asyncio.run(main())
