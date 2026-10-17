@@ -90,8 +90,8 @@ test("conclusion gives a finalized recommendation and keeps skip criteria person
  assert.doesNotMatch(read("src/components/operator/sections/OperatorPotentials.astro"),/>Pull-Empfehlung<\/h3>/);
 });
 
-test("editorial changes do not alter approved builds, skill priority, Datafield models or preview status",()=>{
- assert.match(guide,/^status: preview$/m);
+test("editorial approval preserves approved builds, skill priority and Datafield models",()=>{
+ assert.match(guide,/^status: published$/m);
  assert.match(guide,/order: \[ultimate, battle, combo, basic\]/);
  assert.match(guide,/comparisons: \[">", ">=", ">"\]/);
  for(const label of ["ultimate-fokus","balanced","will-fokus","level-60","level-50","level-36"])
