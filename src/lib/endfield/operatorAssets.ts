@@ -5,7 +5,7 @@ import { join } from "node:path";
 // fallback; all published HTML remains fully static and requires no database.
 export function getOperatorImageUrl(
   slug: string,
-  asset: "cover" | "illustration" | "skill-basic" | "skill-battle" | "skill-combo" | "skill-ultimate" | "potential-1" | "potential-3" | "potential-5",
+  asset: "cover" | "illustration" | "banner" | "official-portrait" | "official-icon" | "skill-basic" | "skill-battle" | "skill-combo" | "skill-ultimate" | "potential-1" | "potential-3" | "potential-5",
   publicRemoteUrl?: string
 ): string | undefined {
   if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) return publicRemoteUrl;

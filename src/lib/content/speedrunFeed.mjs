@@ -1,5 +1,5 @@
 import {SPEEDRUN_PLAYLIST_ID,SPEEDRUN_VIDEO_LIMIT} from "../../data/endfield/speedrunPlaylist.mjs";
-const validId=id=>/^(?:PL|UU|OLAK5uy_)[A-Za-z0-9_-]{12,}$/.test(id);
+const validId=id=>/^(?:PL|UU|OLAK5uy_)[A-Za-z0-9_-]{8,}$/.test(id);
 const decodeXml=value=>value.replace(/&#(x[\da-f]+|\d+);|&(amp|lt|gt|quot|apos);/gi, (match,n,s)=>{
   if(n){const code=Number(n[0].toLowerCase()==="x"?parseInt(n.slice(1),16):n);return Number.isFinite(code)&&code>0&&code<=0x10ffff?String.fromCodePoint(code):match;}
   return {amp:"&",lt:"<",gt:">",quot:'"',apos:"'"}[s.toLowerCase()]??match;

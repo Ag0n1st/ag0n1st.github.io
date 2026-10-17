@@ -126,7 +126,7 @@ const teamMemberCard = (slug:string) => {
   const name = displayTeamMember(slug);
   return {
     name,
-    image: getOperatorImageUrl(slug,"cover",official?.operator.coverUrl) ?? findOperatorCatalogItem(slug)?.iconPath ?? undefined,
+    image: getOperatorImageUrl(slug,"official-icon") ?? getOperatorImageUrl(slug,"cover",official?.operator.coverUrl) ?? findOperatorCatalogItem(slug)?.iconPath ?? undefined,
     initials:name.split(" ").map(part=>part[0]??"").join("").slice(0,2).toUpperCase()
   };
 };

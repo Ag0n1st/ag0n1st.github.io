@@ -7,6 +7,7 @@ const translateUi=(value:string)=>guideText(model.lang,value);
 const { guide, gameData, localized, trPotential, officialPotentials, potentialByLevel, getOperatorImageUrl } = model;
 const wikiGalleryUrl="https://endfield.wiki.gg/wiki/"+encodeURIComponent(gameData?.operator.name??guide.displayName??guide.operator)+"/Gallery";
 const alternatePotentialModels=guide.potentials.comparisons??[];
+const recruitmentSplash=getOperatorImageUrl(guide.operator,"illustration",gameData?.operator.illustrationUrl);
 const percent=(value:number|undefined)=>value===undefined?"–":value.toLocaleString("de-DE",{minimumFractionDigits:1,maximumFractionDigits:1})+" %";
 import { guideText } from "../../../lib/i18n/guideUi";
 ---
@@ -57,4 +58,10 @@ import { guideText } from "../../../lib/i18n/guideUi";
           {alternatePotentialModels.map(scenario=><small class="op-data-source-note">{scenario.title}: {scenario.sourceNote} ({scenario.snapshotDate??"ohne Stichtag"}). Ebenfalls Werte gegenüber der jeweiligen Vorstufe; kein addierter P0-Vergleich.</small>)}
           </div>
         </details>
+        {recruitmentSplash && <details class="op-divided op-guide-accordion" data-guide-disclosure="recruitment-splash">
+          <summary class="op-guide-accordion-summary"><h3>{translateUi("Splashart (Rekrutierung)")}</h3><span class="op-guide-accordion-hint">{translateUi("Artwork anzeigen")}</span></summary>
+          <div class="op-guide-accordion-content">
+            <img class="op-recruitment-splash" src={recruitmentSplash} alt={(model.lang==="en"?"Recruitment splash art: ":"Rekrutierungs-Splashart: ")+(gameData?.operator.name??guide.displayName??guide.operator)} loading="lazy" decoding="async" />
+          </div>
+        </details>}
       </section>
