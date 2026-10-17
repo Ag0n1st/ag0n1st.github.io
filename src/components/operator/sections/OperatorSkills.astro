@@ -37,7 +37,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
                   <div class="op-mini-art">{skillImage(key) ? <img class="op-skill-icon" src={skillImage(key)} loading="lazy" decoding="async" alt="" /> : slotIcons[key]}</div>
                   <div class="op-line-label"><span class="op-chip">{slotLabels[key]}</span><strong>{official?.name || "[Offizieller Skillname]"}</strong></div>
                 </div>
-                {official && <p class="op-muted" style="font-size:11px;margin:9px 0">SKPORT Wiki · Datenstand {gameData?.source.snapshot} · Original: {gameData?.source.language.toUpperCase()}{localized ? " · Deutsche redaktionelle Übersetzung" : ""}</p>}
+                {official && <p class="op-muted" style="font-size:11px;margin:9px 0">SKPORT Wiki · {t("Quelle: SKPORT-Wiki · Datenstand")} {gameData?.source.snapshot} · Original: {gameData?.source.language.toUpperCase()}{localized ? " · German editorial translation" : ""}</p>}
                 {(localized?.skills[key]?.description || official?.description) && <div class="op-skill-description op-body-copy">{localized?.skills[key]?.description || official?.description}</div>}
                 {localized && official?.description && <details class="op-details"><summary>{t("Englische Originalbeschreibung anzeigen")}</summary><div class="op-details-body op-body-copy">{official.description}</div></details>}
                 {official && gameData ? <>
