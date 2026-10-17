@@ -1,0 +1,22 @@
+---
+import type {GuideFeedItem} from "../lib/content/guideFeed";
+import {categoryLabel,guideHref,guideTitle,guideSummary} from "../lib/content/guideFeed";
+interface Props{guide:GuideFeedItem;lang:"de"|"en";compact?:boolean}
+const {guide,lang,compact=false}=Astro.props;
+const label=categoryLabel(guide.category,lang);
+const title=guideTitle(guide,lang);
+const summary=guideSummary(guide,lang);
+---
+<article class:list={["guide-teaser-card",{ "is-compact":compact }]}>
+  <a class="guide-teaser-link" href={guideHref(guide,lang)} aria-label={(lang==="en"?"Open guide: ":"Guide öffnen: ")+title}>
+    <div class="guide-teaser-copy">
+      <span class="guide-teaser-overline">{guide.game==="endfield"?"ARKNIGHTS: ENDFIELD":guide.game.toUpperCase()}</span>
+      <h3>{title}</h3>
+      <p>{summary}</p>
+      <span class="guide-teaser-action">{lang==="en"?"Read Guide":"Guide öffnen"} <span aria-hidden="true">↗</span></span>
+    </div>
+    <span class="guide-teaser-category" aria-label={lang==="en"?"Guide category: "+label:"Guide-Kategorie: "+label}>
+      <span>{label}</span>
+    </span>
+  </a>
+</article>
