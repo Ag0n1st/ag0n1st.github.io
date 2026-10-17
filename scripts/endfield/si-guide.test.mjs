@@ -146,7 +146,7 @@ test("Si early builds, main meta labels and direct editorial voice stay consiste
   assert.doesNotMatch(guide,/  closingNote:/);
   assert.match(guide,/Du hast keine Nutzung für Kryo-\/Hitze-Verstärkung/);
   const op=readFileSync("src/components/operator/OperatorGuide.astro","utf8");
-  assert.match(op,/\{translateUi\("SKPORT-Datenstand:"\)\} \{localized.sourceSnapshot\}/);
+  assert.ok(op.includes('{translateUi("SKPORT-Datenstand:")}') && op.includes("localized?.sourceSnapshot??gameData?.source?.snapshot"));
   assert.doesNotMatch(op,/localized.terminologyNote/);
   const teams=readFileSync("src/components/operator/sections/OperatorTeams.astro","utf8");
   assert.match(teams,/teamMemberCard\(member\)/);
