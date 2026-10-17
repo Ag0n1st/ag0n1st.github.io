@@ -22,6 +22,10 @@ const extraData=getImportedOperatorExtras(guide.operator);
 const operatorName=guide.displayName ?? guide.operator;
 const preview=guide.status==="preview";
 const {Content}=await render(entry);
+const translatedArticleTail:Record<string,string>={
+  typhoeus:"In every encounter, Nature Infliction stacks, Hunting Arrows and SP management matter much more than simply pressing more skills. Mastering these three resources lets Typhoeus reach her potential even without additional potentials.",
+  si:"Si combines strong personal Cryo Combo Skill damage with flexible support for Cryo and Heat teams."
+};
 ---
 <EndfieldPlaceholder
   title={operatorName+" Guide – Builds, Skills, Weapons & Teams"}
@@ -41,7 +45,6 @@ const {Content}=await render(entry);
     lang="en"
     preview={preview}
   >
-    {/* No German article body on the English translation. The source
-        markdown file remains the only content-editing source for German. */}
+    {translatedArticleTail[guide.operator] && <p class="op-body-copy">{translatedArticleTail[guide.operator]}</p>}
   </OperatorGuide>
 </EndfieldPlaceholder>
