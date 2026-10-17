@@ -43,7 +43,7 @@ import { guideText } from "../../lib/i18n/guideUi";
       <strong>{translateUi("Guide-Inhalt")}</strong>
       <div class="op-guide-toc-links">{[
         ["uebersicht",isEnglish?"1. Overview":"1. Übersicht"],["operator-kit","2. Operator Kit"],["fertigkeiten",isEnglish?"3. Skills":"3. Fertigkeiten"],["waffen",isEnglish?"4. Weapons":"4. Waffen"],
-        ["ausruestung",isEnglish?"5. Equipment":"5. Ausrüstung"],["potenziale",isEnglish?"6. Potentials":"6. Potenziale"],["teams","7. Teams"],["gameplay","8. Gameplay"],["fazit",isEnglish?"9. Conclusion":"9. Fazit"]
+        ["ausruestung",isEnglish?"5. Gear":"5. Ausrüstung"],["potenziale",isEnglish?"6. Potentials":"6. Potenziale"],["teams","7. Teams"],["gameplay","8. Gameplay"],["fazit",isEnglish?"9. Conclusion":"9. Fazit"]
       ].map(([id,label],i)=><a href={"#"+id} aria-current={i===0?"location":undefined}>{label}</a>)}</div>
     </nav>
   </div>
