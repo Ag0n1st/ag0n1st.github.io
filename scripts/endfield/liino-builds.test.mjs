@@ -130,7 +130,7 @@ test("the shared equipment framework places responsive Meta Builds before the Fi
     section.indexOf('<details class="op-divided op-build-finder-accordion" id="build-finder">'),
     "Meta overview must appear above the closed detailed finder");
   assert.ok(section.includes('<summary class="op-build-finder-toggle">') &&
-    section.includes("<strong>Build-Finder</strong>"),
+    section.includes('<strong>{t("Build-Finder")}</strong>'),
     "Finder title must be the native disclosure summary");
   assert.match(section,/href="#build-finder" data-select-build=\{build\.id\}/,
     "Card CTA must select the corresponding real finder build");
