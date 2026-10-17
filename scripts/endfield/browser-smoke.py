@@ -504,52 +504,113 @@ def smoke_si(page, base_url, width):
 
 
 def smoke_i18n(page, base_url, width):
-    label = str(width)+"px English"
-    for route in ["/en/","/en/endfield/","/en/endfield/operators/","/en/about/","/en/nte/"]:
-        resp=page.goto(base_url+route,wait_until="domcontentloaded")
-        verify(resp is not None and resp.status==200,label+": published route "+route)
-        verify(page.locator("html").get_attribute("lang")=="en",label+": English lang "+route)
+    label=str(width)+"px EN parity"
+    en_routes=[
+        "/en/","/en/about/","/en/nte/","/en/endfield/",
+        "/en/endfield/operators/","/en/endfield/factory/",
+        "/en/endfield/recruitment/","/en/endfield/refinement/",
+        "/en/endfield/essences/","/en/endfield/speedruns/",
+        "/en/endfield/checklist/","/en/endfield/countdown/",
+        "/en/endfield/characters/"
+    ]
+    for route in en_routes:
+        r=page.goto(base_url+route,wait_until="domcontentloaded")
+        verify(r and r.status==200,label+": translated route "+route)
+        verify(page.locator("html").get_attribute("lang")=="en",label+": html lang=en "+route)
         verify(page.locator('link[rel="canonical"]').get_attribute("href")=="https://ag0n1st.com"+route,
-               label+": custom-domain canonical "+route)
-        verify(page.locator('link[hreflang="de"]').count()==1 and
-               page.locator('link[hreflang="en"]').count()==1,
-               label+": DE and EN alternates "+route)
+               label+": canonical "+route)
+        verify(page.locator('link[hreflang="de"]').count()==1,
+               label+": reciprocal DE alternate "+route)
+        nav=page.locator(".language-switch")
+        verify(nav.count()==1,label+": language control exists "+route)
+        height=nav.first.evaluate("(el)=>el.getBoundingClientRect().height")
+        verify(27<=height<=37,label+": language control compact button height "+str(height)+" "+route)
+        verify(page.locator('.language-switch a[lang="de"]').count()==1,
+               label+": German counterpart exists "+route)
         check_overflow(page,label+" "+route)
-    page.goto(base_url+"/en/endfield/operators/si/")
+    page.goto(base_url+"/en/endfield/")
+    nav_paths=page.locator(".endfield-nav a").evaluate_all("(a)=>a.map(x=>new URL(x.href).pathname)")
+    verify(len(nav_paths)==9 and all(p.startswith("/en/") for p in nav_paths),
+           label+": all nine Endfield tabs remain English, no DE fallback")
+    verify(page.locator(".endfield-section").count()==8,
+           label+": identical eight-section Endfield homepage layout")
+    page.locator('.endfield-nav a[href="/en/endfield/factory/"]').click()
+    verify(page.url.endswith("/en/endfield/factory/") and
+           page.locator("html").get_attribute("lang")=="en",
+           label+": tab click keeps the selected language")
+    page.goto(base_url+"/en/")
+    verify(page.locator(".hero-card").count()==2 and
+           page.locator(".stream-card").count()==1 and
+           page.locator("#videos").count()==1,
+           label+": original hero / Twitch / YouTube card layout preserved")
+    check_overflow(page,label+" homepage")
+    slug="si"
+    page.goto(base_url+"/en/endfield/operators/"+slug+"/")
     verify(page.locator('meta[property="og:image"]').get_attribute("content")==
-           "https://ag0n1st.com/images/endfield/operators/si/cover.webp" and
-           page.locator('meta[name="twitter:card"]').get_attribute("content")=="summary_large_image",
-           label+": Si social preview uses existing local cover with English article metadata")
-    verify("Brushwork Realm" in page.locator("#skills").inner_text() and
-           "Fully Envisioned" in page.locator("#skills").inner_text() and
-           page.locator("#skills .en-guide-skill").count()==4,
-           label+": authoritative original English Si skills")
-    verify(page.locator("#builds .en-guide-build").count()==4 and
-           page.locator("#teams .en-guide-team-grid article").count()==6,
-           label+": all 4 Si meta builds and 6 meta teams in English")
+           "https://ag0n1st.com/images/endfield/operators/si/cover.webp",
+           label+": official local Si share preview preserved")
+    section_ids=["uebersicht","operator-kit","fertigkeiten","waffen","ausruestung",
+                 "potenziale","teams","gameplay","fazit"]
+    verify(all(page.locator("#"+sid).count()==1 for sid in section_ids),
+           label+": same nine guide components and section anchors as German")
+    verify(page.locator(".op-guide-toc").count()==1 and
+           page.locator(".op-profile-grid").count()==1,
+           label+": same TOC and profile card layout")
+    verify(page.locator("#ausruestung .op-meta-build-grid .op-meta-build-card").count()==4,
+           label+": four original Si meta build cards")
+    verify(page.locator("#ausruestung [data-build-button]").count()==9,
+           label+": nine original Si equipment builds including progression")
+    verify(page.locator("#teams .op-meta-team-heading").count()==6,
+           label+": six original Si meta teams")
+    more=page.locator('#teams details[data-guide-disclosure="team-options"]')
+    more.evaluate("el=>el.open=true")
+    verify(page.locator("#teams [data-team-role]").count()==37,
+           label+": all 37 original Si additional teams")
+    skill=page.locator('#fertigkeiten details[data-guide-disclosure="skill-details"]')
+    skill.evaluate("el=>el.open=true")
+    verify("Brushwork Realm" in page.locator("#fertigkeiten").inner_text() and
+           "Fully Envisioned" in page.locator("#fertigkeiten").inner_text(),
+           label+": original English SKPORT skill names")
+    verify(page.locator("#fertigkeiten .op-skill-description").count()==4,
+           label+": all four official English skill descriptions")
+    finder=page.locator("#build-finder")
+    verify(finder.get_attribute("open") is None,label+": same initially closed Build Finder")
+    finder.evaluate("el=>el.open=true")
+    verify(page.locator("#op-level").input_value()=="70",
+           label+": same functional default max-level preset")
+    page.locator('#ausruestung [data-build-button="si-early-access"]').click()
+    verify(page.locator('[data-build-panel="si-early-access"]').is_visible(),
+           label+": selecting translated equipment build works")
+    verify("Available" in page.locator("#op-build-results").inner_text() or
+           "available" in page.locator("#op-build-results").inner_text() or
+           "locked" in page.locator("#op-build-results").inner_text(),
+           label+": dynamic Build Finder status is English")
+    check_overflow(page,label+" Si all sections")
     verify(page.locator('.language-switch a[lang="de"]').get_attribute("href")==
-           "/endfield/operatoren/si/",label+": English Si links to German Si")
-    check_overflow(page,label+" Si")
+           "/endfield/operatoren/si/",
+           label+": Si language switch preserves operator")
     page.goto(base_url+"/endfield/operatoren/si/")
     verify(page.locator('.language-switch a[lang="en"]').get_attribute("href")==
-           "/en/endfield/operators/si/",label+": German Si links to English Si")
-    check_overflow(page,label+" German Si")
+           "/en/endfield/operators/si/",
+           label+": German original links to identical English guide")
     page.goto(base_url+"/en/endfield/operators/typhoeus/")
-    verify("Nature Burst" in page.locator("body").inner_text() and
-           page.locator("#skills .en-guide-skill").count()==4,
-           label+": Typhoeus has English mechanic guide and skill texts")
+    verify(page.locator("#fertigkeiten").count()==1 and
+           page.locator("#ausruestung").count()==1 and
+           page.locator("#potenziale").count()==1,
+           label+": complete Typhoeus nine-section guide parity")
     check_overflow(page,label+" Typhoeus")
     page.goto(base_url+"/en/endfield/operators/liino/")
     verify(page.locator('meta[name="robots"]').get_attribute("content")=="noindex,follow",
-           label+": unfinished Liino preview is noindex")
-    verify(page.locator('link[hreflang="en"]').count()==0,
-           label+": no alternates advertised for preview")
+           label+": incomplete Liino preview remains noindex")
+    verify(page.locator("#build-finder").count()==1,
+           label+": even preview Liino retains full native Build Finder")
     check_overflow(page,label+" Liino")
     sitemap=page.request.get(base_url+"/sitemap.xml")
     verify(sitemap.status==200 and
            "<loc>https://ag0n1st.com/en/endfield/operators/si/</loc>" in sitemap.text() and
            "https://ag0n1st.com/en/endfield/operators/liino/" not in sitemap.text(),
-           label+": SEO sitemap publishes translated guides but excludes previews")
+           label+": correct sitemap and preview indexing")
+
 
 def main():
     if not (DIST / "index.html").is_file():
