@@ -1,10 +1,9 @@
 ---
-# Öffentliche Vorschau: Sechs Ausrüstungs-Builds und die Skill-Priorität
-# wurden vom Creator festgelegt. Weitere redaktionelle Bereiche bleiben unfertig.
+# Guide nach redaktioneller Abnahme veröffentlicht; optionale neue Gameplay-Videos folgen später.
 # Eigene Texte und Builds beim Spieldatenimport niemals überschreiben.
 operator: liino
 displayName: Liino
-status: preview
+status: published
 updatedAt: 2026-10-16
 listing:
   releaseDate: 2026-08-09
