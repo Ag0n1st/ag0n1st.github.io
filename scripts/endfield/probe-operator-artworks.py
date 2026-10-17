@@ -21,6 +21,16 @@ def sample_http(url):
 
 async def main():
  print("WIKI_HTTP_SAMPLES")
+ for person in ["Si","Liino","Typhoeus","Ember"]:
+  target="https://endfield.wiki.gg/wiki/"+person
+  try:
+   with urlopen(Request(target,headers={"User-Agent":"Mozilla/5.0 (compatible; Ag0n1stGuidePortal/1.0)"}),timeout=22) as reply:html=reply.read().decode("utf-8","replace")
+   meta=re.findall(r'<meta[^>]*(?:og:image|twitter:image)[^>]*>',html,re.I)[:3]
+   infobox=re.findall(r'<img[^>]*>',html)
+   infobox=[tag[:420] for tag in infobox if ('/'+person.lower() in tag.lower() or person.lower() in tag.lower() or "infobox" in tag.lower())][:10]
+   print("WIKI_PAGE_IMAGES",json.dumps({"person":person,"htmlChars":len(html),"meta":meta,"images":infobox},ensure_ascii=False))
+  except Exception as e:print("WIKI_PAGE_IMAGES_ERROR",person,type(e).__name__)
+
  with urlopen(Request("https://endfield.gryphline.com/en-us/operator",headers={"User-Agent":"Mozilla/5.0"}),timeout=30) as resp:
   raw=resp.read().decode("utf-8","replace")
  print("OFFICIAL_RAW_HTML",json.dumps({"length":len(raw),"jsspsi":raw.count("jsspsi"),"media":raw.count("_next/static/media/"),"samples":re.findall(r".{0,100}jsspsi.{0,160}",raw)[:6]},ensure_ascii=False))
