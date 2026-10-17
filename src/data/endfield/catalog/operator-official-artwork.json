@@ -1,0 +1,906 @@
+{
+  "schemaVersion": 1,
+  "sourceType": "official-GRYPHLINE-public-assets",
+  "verifiedAt": "2026-10-17",
+  "notes": "The official card image and detail icon are different assets; Endministrator has two separately keyed variants.",
+  "items": [
+    {
+      "operator": "Si",
+      "slug": "si",
+      "siteKey": "jsspsi",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/si/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/jsspsi.19ec05d9.png",
+          "status": "already-present",
+          "bytes": 52034
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/si/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/jsspsi.0a31758c.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "47f6e866d894c5c8bbd907debf19c4b9c3e9cd7ccfc3ac3a7bc92280671c968e",
+          "bytes": 8770
+        }
+      }
+    },
+    {
+      "operator": "Argent Flow",
+      "slug": "argent-flow",
+      "siteKey": "minghe",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/argent-flow/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/minghe.372272bd.png",
+          "status": "already-present",
+          "bytes": 47252
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/argent-flow/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/minghe.d65390b1.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "fe59adc9e676baba13b6f8943e82bcce24518dcb71b3ccbd3329b667811b56a8",
+          "bytes": 9738
+        }
+      }
+    },
+    {
+      "operator": "Endministrator",
+      "slug": "endministrator-2",
+      "siteKey": "endministrator2",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/endministrator-2/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/endministrator2.5ccb44a8.png",
+          "status": "already-present",
+          "bytes": 31434
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/endministrator-2/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/endministrator2.f0bbf4fa.png",
+          "status": "already-present",
+          "bytes": 7298
+        }
+      }
+    },
+    {
+      "operator": "Endministrator",
+      "slug": "endministrator-1",
+      "siteKey": "endministrator1",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/endministrator-1/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/endministrator1.c391b13d.png",
+          "status": "already-present",
+          "bytes": 33410
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/endministrator-1/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/endministrator1.3efd4769.png",
+          "status": "already-present",
+          "bytes": 7242
+        }
+      }
+    },
+    {
+      "operator": "Perlica",
+      "slug": "perlica",
+      "siteKey": "perlica",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/perlica/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/prelica.d0bbdb53.png",
+          "status": "already-present",
+          "bytes": 36544
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/perlica/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/perlica.871dcf57.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "92577a505156683435bf429e952e8c9e888ed1f6adf7cd1f6816d60a6c63b4a8",
+          "bytes": 6972
+        }
+      }
+    },
+    {
+      "operator": "Chen Qianyu",
+      "slug": "chen-qianyu",
+      "siteKey": "chen",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/chen-qianyu/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/chen.b0afd1ba.png",
+          "status": "already-present",
+          "bytes": 33738
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/chen-qianyu/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/chen.5c7b5e46.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "da5e230d08a396c347be3304ea4aeea137e421f931822629ea1b862769191998",
+          "bytes": 8028
+        }
+      }
+    },
+    {
+      "operator": "Typhoeus",
+      "slug": "typhoeus",
+      "siteKey": "typhoea",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/typhoeus/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/typhoea.87cfb4cd.png",
+          "status": "already-present",
+          "bytes": 45886
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/typhoeus/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/typhoea.c68596a8.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "c4e4d1d37337b2d8b09c99d350380d731a9811cd83a9e72f96706957cbc217f8",
+          "bytes": 7704
+        }
+      }
+    },
+    {
+      "operator": "Purrchena",
+      "slug": "purrchena",
+      "siteKey": "purrche",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/purrchena/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/purrche.d6659019.png",
+          "status": "already-present",
+          "bytes": 26794
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/purrchena/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/purrche.d14c39f4.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "0ed6343cd9b72d8d21306dfa834bb2e2c4f178e5216b8acd51c8f8799011097c",
+          "bytes": 5028
+        }
+      }
+    },
+    {
+      "operator": "Arcane",
+      "slug": "arcane",
+      "siteKey": "lizhiyan",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/arcane/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/lizhiyan.7ada7b83.png",
+          "status": "already-present",
+          "bytes": 41488
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/arcane/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/lizhiyan.9b1b7f82.png",
+          "status": "already-present",
+          "bytes": 7858
+        }
+      }
+    },
+    {
+      "operator": "Liino",
+      "slug": "liino",
+      "siteKey": "liino",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/liino/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/liino.8d027d2a.png",
+          "status": "already-present",
+          "bytes": 47964
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/liino/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/liino.f1730ac7.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "f933b46b532f1868314e715bcceb7cb5e58a6c1519aae47b600846c53608704d",
+          "bytes": 9258
+        }
+      }
+    },
+    {
+      "operator": "Mi Fu",
+      "slug": "mi-fu",
+      "siteKey": "mifu",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/mi-fu/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/mifu.e1d79970.png",
+          "status": "already-present",
+          "bytes": 45994
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/mi-fu/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/mifu.02645cad.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "92110200916b6add5a17e0f6dfc6df7bb82039f3833c6694028d78af4cc05d4e",
+          "bytes": 8404
+        }
+      }
+    },
+    {
+      "operator": "Camille",
+      "slug": "camille",
+      "siteKey": "camille",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/camille/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/camille.a26b2443.png",
+          "status": "already-present",
+          "bytes": 31324
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/camille/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/camille.5f50680f.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "270ae7a45bdbf7405bfa37a9450b4e4d0e35e6e604f9ec7977b07cbc55819bc3",
+          "bytes": 7812
+        }
+      }
+    },
+    {
+      "operator": "Zhuang Fangyi",
+      "slug": "zhuang-fangyi",
+      "siteKey": "zhuangfy",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/zhuang-fangyi/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/zhuangfy.50a608b8.png",
+          "status": "already-present",
+          "bytes": 37510
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/zhuang-fangyi/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/zhuangfy.4369b1a5.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "d5e11bae423f3c968f15f13e5afcf252b26b38a99bef7454c1b33e14edd58ca5",
+          "bytes": 7904
+        }
+      }
+    },
+    {
+      "operator": "Tangtang",
+      "slug": "tangtang",
+      "siteKey": "tangtang",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/tangtang/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/tangtang.b5cd99e9.png",
+          "status": "already-present",
+          "bytes": 33880
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/tangtang/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/tangtang.049b8a47.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "d95801b1444fa44cbc640ff9b5c44ac55157a59a344c00d33a354be440015fe2",
+          "bytes": 10076
+        }
+      }
+    },
+    {
+      "operator": "Rossi",
+      "slug": "rossi",
+      "siteKey": "rossi",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/rossi/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/rossi.c58b721b.png",
+          "status": "already-present",
+          "bytes": 36336
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/rossi/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/rossi.4431f348.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "acb1285ce2382dec2c6c44a6c2dd8cd3f663cd8d40ee75c00b17df1c1d778477",
+          "bytes": 9356
+        }
+      }
+    },
+    {
+      "operator": "Laevatain",
+      "slug": "laevatain",
+      "siteKey": "laevatain",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/laevatain/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/laevatain.edd103d4.png",
+          "status": "already-present",
+          "bytes": 38342
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/laevatain/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/laevatain.20075757.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "99f6ee2fb8f19d053271ba4869c6ded7f54cbfc539f2a90cd53f7ec6d0ed9951",
+          "bytes": 8798
+        }
+      }
+    },
+    {
+      "operator": "Yvonne",
+      "slug": "yvonne",
+      "siteKey": "yvonne",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/yvonne/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/yvonne.9695c304.png",
+          "status": "already-present",
+          "bytes": 40288
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/yvonne/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/yvonne.c93412e1.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "e994cfa6cf2513a977513e6ee6a399c153ce1c085caffa3ad67b98719ac2dc9f",
+          "bytes": 7788
+        }
+      }
+    },
+    {
+      "operator": "Gilberta",
+      "slug": "gilberta",
+      "siteKey": "gilberta",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/gilberta/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/gilberta.724f3503.png",
+          "status": "already-present",
+          "bytes": 43894
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/gilberta/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/gilberta.07ff3560.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "2cc090e0b9d16e6956a59dcac109d640d4a538bcea8de5a4e7756d85fea46012",
+          "bytes": 8212
+        }
+      }
+    },
+    {
+      "operator": "Ardelia",
+      "slug": "ardelia",
+      "siteKey": "ardelia",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/ardelia/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/ardelia.565c75af.png",
+          "status": "already-present",
+          "bytes": 40900
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/ardelia/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/ardelia.b46cd31c.png",
+          "status": "already-present",
+          "bytes": 7948
+        }
+      }
+    },
+    {
+      "operator": "Ember",
+      "slug": "ember",
+      "siteKey": "ember",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/ember/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/ember.6391acf9.png",
+          "status": "already-present",
+          "bytes": 40402
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/ember/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/ember.235ca9f1.png",
+          "status": "already-present",
+          "bytes": 8412
+        }
+      }
+    },
+    {
+      "operator": "Last Rite",
+      "slug": "last-rite",
+      "siteKey": "lastrite",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/last-rite/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/lastrite.3860f541.png",
+          "status": "already-present",
+          "bytes": 47202
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/last-rite/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/lastrite.8560c002.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "7e8e05db1177c7a038dbeeab9cbcbe133f1be198134083bd7545d4146311910a",
+          "bytes": 8224
+        }
+      }
+    },
+    {
+      "operator": "Lifeng",
+      "slug": "lifeng",
+      "siteKey": "lifeng",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/lifeng/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/lifeng.ef41bc3a.png",
+          "status": "already-present",
+          "bytes": 31222
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/lifeng/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/lifeng.41ae5d06.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "c40e6b139966ce2ae16e8b1a2ab0dac9907adef685f67927d17b1fc26bdafb6f",
+          "bytes": 8050
+        }
+      }
+    },
+    {
+      "operator": "Pogranichnik",
+      "slug": "pogranichnik",
+      "siteKey": "pogranichnik",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/pogranichnik/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/pogranichnik.80f2ddbb.png",
+          "status": "already-present",
+          "bytes": 37562
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/pogranichnik/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/pogranichnik.73f7bcf6.png",
+          "status": "already-present",
+          "bytes": 7778
+        }
+      }
+    },
+    {
+      "operator": "Alesh",
+      "slug": "alesh",
+      "siteKey": "alesh",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/alesh/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/alesh.d7f457d2.png",
+          "status": "already-present",
+          "bytes": 36748
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/alesh/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/alesh.ca99268b.png",
+          "status": "already-present",
+          "bytes": 7942
+        }
+      }
+    },
+    {
+      "operator": "Arclight",
+      "slug": "arclight",
+      "siteKey": "arclight",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/arclight/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/arclight.e31580d7.png",
+          "status": "already-present",
+          "bytes": 30524
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/arclight/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/arclight.0b402b3e.png",
+          "status": "already-present",
+          "bytes": 8032
+        }
+      }
+    },
+    {
+      "operator": "Avywenna",
+      "slug": "avywenna",
+      "siteKey": "avywenna",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/avywenna/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/avywenna.2a592659.png",
+          "status": "already-present",
+          "bytes": 33098
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/avywenna/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/avywenna.36c72367.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "aa82c8835c7a2bb15a9e47ad8ff2279d51365ae17c5c8a4a19ea8d2fa4a62e92",
+          "bytes": 7608
+        }
+      }
+    },
+    {
+      "operator": "Da Pan",
+      "slug": "da-pan",
+      "siteKey": "dapan",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/da-pan/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/dapan.7cdb6a4e.png",
+          "status": "already-present",
+          "bytes": 19994
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/da-pan/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/dapan.7b5afdec.png",
+          "status": "already-present",
+          "bytes": 5796
+        }
+      }
+    },
+    {
+      "operator": "Snowshine",
+      "slug": "snowshine",
+      "siteKey": "snowshine",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/snowshine/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/snowshine.bb2c0bdc.png",
+          "status": "already-present",
+          "bytes": 29704
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/snowshine/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/snowshine.844ed0a4.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "4ed2efb4a04a30f6185506b02c5a024eda9961a16b79d5423e911722c6d5075c",
+          "bytes": 8098
+        }
+      }
+    },
+    {
+      "operator": "Wulfgard",
+      "slug": "wulfgard",
+      "siteKey": "wulfgard",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/wulfgard/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/wulfgard.609a252f.png",
+          "status": "already-present",
+          "bytes": 31516
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/wulfgard/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/wulfgard.b9d580b2.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "933458912d9b9c61d14299b34bd4de4c97f7007c2ef31d4ac2388150c5b4dc15",
+          "bytes": 7664
+        }
+      }
+    },
+    {
+      "operator": "Xaihi",
+      "slug": "xaihi",
+      "siteKey": "xaihi",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/xaihi/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/xaihi.9ba3eb36.png",
+          "status": "already-present",
+          "bytes": 39764
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/xaihi/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/xaihi.9c949014.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "e9a09d2f90522705e02630888303d51e2fb0bb3a5aa012c9de27a0d93d9bfc67",
+          "bytes": 7828
+        }
+      }
+    },
+    {
+      "operator": "Akekuri",
+      "slug": "akekuri",
+      "siteKey": "akekuri",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/akekuri/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/akekuri.3603d013.png",
+          "status": "already-present",
+          "bytes": 35322
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/akekuri/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/akekuri.3df4a3dc.png",
+          "status": "already-present",
+          "bytes": 7488
+        }
+      }
+    },
+    {
+      "operator": "Antal",
+      "slug": "antal",
+      "siteKey": "antal",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/antal/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/antal.763c87e4.png",
+          "status": "already-present",
+          "bytes": 28262
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/antal/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/antal.78d45318.png",
+          "status": "already-present",
+          "bytes": 7042
+        }
+      }
+    },
+    {
+      "operator": "Catcher",
+      "slug": "catcher",
+      "siteKey": "catcher",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/catcher/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/catcher.bc6bcfaa.png",
+          "status": "already-present",
+          "bytes": 27270
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/catcher/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/catcher.68b395f9.png",
+          "status": "already-present",
+          "bytes": 7446
+        }
+      }
+    },
+    {
+      "operator": "Estella",
+      "slug": "estella",
+      "siteKey": "estella",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/estella/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/estella.38c423af.png",
+          "status": "already-present",
+          "bytes": 23030
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/estella/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/estella.b761d517.png",
+          "status": "already-present",
+          "bytes": 5666
+        }
+      }
+    },
+    {
+      "operator": "Fluorite",
+      "slug": "fluorite",
+      "siteKey": "fluorite",
+      "sourcePage": "https://endfield.gryphline.com/en-us/operator",
+      "assets": {
+        "official-portrait": {
+          "path": "/images/endfield/operators/fluorite/official-portrait.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/fluorite.5a8add29.png",
+          "status": "already-present",
+          "bytes": 30536
+        },
+        "official-icon": {
+          "path": "/images/endfield/operators/fluorite/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/fluorite.b83d45cf.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "8577a3de15003af99902b3145bf9e532415099d87fa4d4fe8c72f063152014b2",
+          "bytes": 7556
+        }
+      }
+    }
+  ]
+}

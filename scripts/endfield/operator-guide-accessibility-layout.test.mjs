@@ -128,5 +128,5 @@ test("no cumulative potential metric, no standalone pull subsection in schema or
  assert.doesNotMatch(template,/increaseOverP0Percent:\s*\d/);
  assert.match(template,/conclusion\.pullAdvice/);
  assert.match(schema,/conclusion: z\.object/);
- assert.match(guide,/^status: preview$/m);
+ assert.match(guide,/^status: published$/m);
 });

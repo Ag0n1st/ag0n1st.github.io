@@ -1,0 +1,42 @@
+---
+import EndfieldPlaceholder from "../../layouts/EndfieldPlaceholder.astro";
+import {getSpeedrunVideos} from "../../lib/content/speedrunFeed.mjs";
+interface Props{lang?:"de"|"en"}
+const {lang="de"}=Astro.props;
+const l=(de:string,en:string)=>lang==="en"?en:de;
+const {playlist,videos,status}=await getSpeedrunVideos();
+---
+<EndfieldPlaceholder title="Speedruns" kicker="ARKNIGHTS: ENDFIELD · SPEEDRUNS" active="speedruns" lang={lang} description={l("Meine eigenen Arknights: Endfield Speedruns.","My own Arknights: Endfield speedruns.")}>
+  <main class="endfield-utility-page section-wrap">
+    <span class="section-kicker">ARKNIGHTS: ENDFIELD · SPEEDRUNS</span>
+    <h1>{l("Meine Speedruns","My Speedruns")}<span class="title-period">.</span></h1>
+    <p class="endfield-utility-intro">{l("Alle veröffentlichten Runs aus meiner Playlist im Überblick. Die Videos öffnen direkt auf YouTube.","My published runs from the playlist. Each video links directly to YouTube.")}</p>
+    {videos.length>0?<div class="videos-grid" aria-label={l("Speedrun-Videos","Speedrun videos")}>
+      {videos.map(video=><a class="video-card" href={video.href} target="_blank" rel="noreferrer">
+        <div class="video-thumb"><img src={video.thumbnail} alt="" loading="lazy" /><span class="play-button" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z"/></svg></span></div>
+        <div class="video-meta"><h3>{video.title}</h3><time datetime={video.published||undefined} data-relative-time={video.published||undefined}>{video.published?new Intl.DateTimeFormat(lang==="en"?"en-GB":"de-DE",{dateStyle:"medium"}).format(new Date(video.published)):""}</time></div>
+      </a>)}
+    </div>:<div class="videos-empty"><span class="empty-play" aria-hidden="true">▶</span><div><h3>{status==="not-configured"?l("Die Speedrun-Playlist wird noch verknüpft.","The speedrun playlist has not been connected yet."):l("Aktuell sind keine Playlist-Videos verfügbar.","No playlist videos are available right now.")}</h3><p>{l("Sobald die Playlist verbunden ist, erscheinen neue Speedruns beim nächsten Website-Update automatisch.","Once connected, new runs will appear automatically with the next website build.")}</p></div></div>}
+    {playlist&&<p class="endfield-utility-link"><a href={playlist} target="_blank" rel="noreferrer">{l("Ganze Playlist auf YouTube","Full Playlist on YouTube")} ↗</a></p>}
+  </main>
+</EndfieldPlaceholder>
+<script>
+  const english=document.documentElement.lang==="en";
+  function relative(date:string){
+    const ms=Date.parse(date);
+    if(!Number.isFinite(ms))return "";
+    const diff=Math.max(0,Math.floor((Date.now()-ms)/60000));
+    const durations:[[number,string,string],[number,string,string],[number,string,string],[number,string,string],[number,string,string]]=[
+      [525600,"Jahren","years"],[43200,"Monaten","months"],[10080,"Wochen","weeks"],[1440,"Tagen","days"],[60,"Stunden","hours"]
+    ];
+    if(diff<60)return english?(diff<1?"just now":`${diff} minutes ago`):(diff<1?"gerade eben":`vor ${diff} Minuten`);
+    for(const [unit,de,en] of durations){if(diff>=unit){const n=Math.floor(diff/unit);return english?`${n} ${en} ago`:`vor ${n} ${de}`;}}
+    return "";
+  }
+  document.querySelectorAll<HTMLElement>("[data-relative-time]").forEach(time=>{
+    const date=time.dataset.relativeTime;
+    if(!date)return;
+    const tick=()=>{time.textContent=relative(date)};
+    tick();window.setInterval(tick,60_000);
+  });
+</script>

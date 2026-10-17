@@ -35,11 +35,11 @@ function declaredLiinoBuilds(){
    });
 }
 
-test("creator-approved Liino guide keeps all six exact combinations, names and level labels",()=>{
+test("published Liino guide keeps all six exact combinations, names and level labels",()=>{
  const actual=declaredLiinoBuilds();
  assert.equal(actual.length,6);
  assert.deepEqual(actual,expected.map(({id,title,items,level})=>({id,title,items,level})));
- assert.match(guide,/^status: preview$/m,"Unfinished other guide sections stay preview");
+ assert.match(guide,/^status: published$/m,"Editorially approved Liino guide must be published");
  assert.match(guide,/^  featuredBuildId: ultimate-fokus$/m);
  assert.match(guide,/keine zweite Ultimate/i);
  assert.match(guide,/zweite(?:r|n)? Ember/);
@@ -166,7 +166,7 @@ test("creator-approved Liino skill priority uses the exact four level targets an
  assert.match(text,/^    combo: >-\n[\s\S]*?10 auf 8 Sekunden/m);
  assert.match(text,/Die FP stammen aus dem Talent, nicht unmittelbar aus der Kombo selbst/);
  assert.match(text,/^    basic: >-\n      Auf Stufe 1 belassen\./m);
- assert.match(text,/^status: preview$/m,"Other P2 areas must remain in preview");
+ assert.match(text,/^status: published$/m,"Approved Liino guide must be published");
 });
 
 test("SKPORT Liino data supports the creator-approved battle and combo M3 reasoning",()=>{

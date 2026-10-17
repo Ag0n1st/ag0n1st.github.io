@@ -73,7 +73,7 @@ test("Liino's actual YouTube guide is embedded in overview without changing pend
   assert.match(overview, /allowfullscreen/);
   assert.match(model, /https:\/\/www\.youtube-nocookie\.com\/embed\//);
   assert.match(guide, /^gameplay:\n[\s\S]*?  pending: true\n  showcases: \[\]/m);
-  assert.match(guide, /^status: preview$/m);
+  assert.match(guide, /^status: published$/m);
 });
 
 test("Published editorial prose never refers to its author in the third person", () => {

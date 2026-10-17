@@ -1,0 +1,62 @@
+---
+import EndfieldPlaceholder from "../../layouts/EndfieldPlaceholder.astro";
+import {CURRENT_VERSION as patch} from "../../data/endfield/versionCountdown.mjs";
+interface Props { lang?: "de"|"en" }
+const {lang="de"}=Astro.props;
+const en=lang==="en";
+const l=(de:string,enValue:string)=>en?enValue:de;
+const finishDate=new Date(patch.endsAt);
+const humanDate=new Intl.DateTimeFormat(en?"en-GB":"de-DE",{
+  timeZone:patch.zone,year:"numeric",month:"long",day:"numeric",hour:"2-digit",minute:"2-digit",timeZoneName:"short"
+}).format(finishDate);
+const remaining=Math.max(0,Math.ceil((finishDate.getTime()-Date.now())/60000));
+const initial=[Math.floor(remaining/1440),Math.floor(remaining%1440/60),remaining%60].map(n=>String(n).padStart(2,"0"));
+const parts=[{id:"days",title:l("Tage","Days"),value:initial[0]},{id:"hours",title:l("Stunden","Hours"),value:initial[1]},{id:"minutes",title:l("Minuten","Minutes"),value:initial[2]}];
+---
+<EndfieldPlaceholder title={l("Versions-Countdown","Version Countdown")} kicker="ARKNIGHTS: ENDFIELD · COUNTDOWN" active="countdown" lang={lang} description={l("Aktuelle Laufzeit der Spielversion","Current game version timeline")}>
+  <main class="endfield-utility-page section-wrap">
+    <span class="section-kicker">ARKNIGHTS: ENDFIELD · v{patch.version}</span>
+    <h1>{l("Ende der aktuellen Version","Current Version Ends")}<span class="title-period">.</span></h1>
+    <p class="endfield-utility-intro">{patch.name} · {l("Voraussichtlicher Termin","Estimated end date")}</p>
+    <div class="version-countdown" data-version-countdown data-ends-at={patch.endsAt} role="timer" aria-label={l("Restlaufzeit bis zum Versionsende","Time remaining in this version")}>
+      {parts.map((part,index)=><>
+        {index>0 && <span class="countdown-separator" aria-hidden="true">·</span>}
+        <div class="countdown-unit" data-countdown-unit={part.id} aria-label={part.title}>
+          <div class="countdown-digits" aria-hidden="true">
+            {part.value.slice(-2).split("").map((digit,i)=><span class="countdown-digit" data-digit={i}>{digit}</span>)}
+          </div>
+          <span class="countdown-unit-label">{part.title}</span>
+        </div>
+      </>)}
+    </div>
+    <p class="countdown-accessible" data-countdown-readable aria-live="off"></p>
+    <p class="countdown-ends"><strong>{l("Voraussichtliches Ende","Estimated end")}:</strong> <time datetime={patch.endsAt}>{humanDate}</time></p>
+    <p class="countdown-source">{l("Die Laufzeit stammt aus dem Community-Versionskalender; ein offizieller Wartungstermin für die nächste Version ist noch nicht bestätigt.","This time comes from the community version calendar; official maintenance timing for the next update is not yet confirmed.")} <a href={patch.sourceUrl} target="_blank" rel="noreferrer">{l("Quelle ansehen","View source")} ↗</a></p>
+    <p class="countdown-ended" data-countdown-ended hidden>{l("Das errechnete Ende ist erreicht. Ein neuer Termin wird erst nach Bestätigung eingetragen.","The estimated end has passed. A new time will only appear after verification.")}</p>
+  </main>
+</EndfieldPlaceholder>
+<script>
+  const counter=document.querySelector<HTMLElement>("[data-version-countdown]");
+  if(counter){
+    const end=Date.parse(counter.dataset.endsAt??"");
+    const names=["days","hours","minutes"];
+    const readable=document.querySelector<HTMLElement>("[data-countdown-readable]");
+    const ended=document.querySelector<HTMLElement>("[data-countdown-ended]");
+    function tick(){
+      const ms=Number.isFinite(end)?Math.max(0,end-Date.now()):0;
+      const total=Math.ceil(ms/60_000);
+      const values=[Math.floor(total/1440),Math.floor(total%1440/60),total%60];
+      for(let i=0;i<3;i++){
+        const chars=String(values[i]).padStart(2,"0").slice(-2);
+        counter?.querySelectorAll<HTMLElement>(`[data-countdown-unit="${names[i]}"] [data-digit]`).forEach((digit,n)=>digit.textContent=chars[n]);
+      }
+      if(readable){
+        const en=document.documentElement.lang==="en";
+        readable.textContent=en?`${values[0]} days, ${values[1]} hours and ${values[2]} minutes remaining`:`Noch ${values[0]} Tage, ${values[1]} Stunden und ${values[2]} Minuten`;
+      }
+      if(ended)ended.hidden=ms>0;
+    }
+    tick();
+    window.setInterval(tick,30_000);
+  }
+</script>

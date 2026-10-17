@@ -1,4 +1,6 @@
 ---
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import type {GuideFeedItem} from "../lib/content/guideFeed";
 import {categoryLabel,guideHref,guideTitle,guideSummary} from "../lib/content/guideFeed";
 interface Props{guide:GuideFeedItem;lang:"de"|"en";compact?:boolean}
@@ -6,8 +8,16 @@ const {guide,lang,compact=false}=Astro.props;
 const label=categoryLabel(guide.category,lang);
 const title=guideTitle(guide,lang);
 const summary=guideSummary(guide,lang);
+const portraitSlug=guide.id.startsWith("operator-")?guide.id.slice("operator-".length):"";
+const portraitBase=portraitSlug && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(portraitSlug)
+  ?"/images/endfield/operators/"+portraitSlug+"/":null;
+const portrait=portraitBase
+  ?(["banner.webp","cover.webp"].find(name=>existsSync(join(process.cwd(),"public",portraitBase.slice(1),name))))
+  :undefined;
+const backgroundImage=portrait&&portraitBase?portraitBase+portrait:undefined;
 ---
 <article class:list={["guide-teaser-card",{ "is-compact":compact }]}>
+  {backgroundImage && <img class="guide-teaser-art" src={backgroundImage} alt="" loading="lazy" decoding="async" aria-hidden="true" />}
   <a class="guide-teaser-link" href={guideHref(guide,lang)} aria-label={(lang==="en"?"Open guide: ":"Guide öffnen: ")+title}>
     <div class="guide-teaser-copy">
       <span class="guide-teaser-overline">{guide.game==="endfield"?"ARKNIGHTS: ENDFIELD":guide.game.toUpperCase()}</span>
