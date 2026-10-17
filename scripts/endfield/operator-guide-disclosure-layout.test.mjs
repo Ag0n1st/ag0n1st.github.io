@@ -58,7 +58,7 @@ test("meta team labels are separate pills and only Meta is accented",()=>{
 
 test("Fazit has one lead, badge aligned to headline and two audience cards",()=>{
   const s=sections.conclusion;
-  assert.equal((s.match(/<h2>\{t\("Fazit"\)\}<\/h2>/g)||[]).length,1);
+  assert.equal((s.match(/<h2>\{translateUi\("Fazit"\)\}<\/h2>/g)||[]).length,1);
   assert.match(s,/class="op-conclusion-header"/);
   assert.match(s,/class="op-pull-recommendation-badge"/);
   assert.match(s,/class="op-conclusion-lead"/);
