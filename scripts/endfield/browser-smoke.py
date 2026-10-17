@@ -612,7 +612,7 @@ def smoke_i18n(page, base_url, width):
         first=cards.first.locator(".guide-teaser-category")
         square=first.evaluate("(el)=>({w:el.getBoundingClientRect().width,h:el.getBoundingClientRect().height})")
         verify(abs(square["w"]-square["h"])<1,label+": category badge is square in "+locale)
-        verify(("Charakter" if locale=="de" else "Character") in first.inner_text(),
+        verify(("Charakter" if locale=="de" else "Character") in (first.text_content() or ""),
                label+": category uses Character naming in "+locale)
         page.goto(base_url+prefix+"/endfield/")
         guide_cards=page.locator(".endfield-guide-teasers .guide-teaser-card")
