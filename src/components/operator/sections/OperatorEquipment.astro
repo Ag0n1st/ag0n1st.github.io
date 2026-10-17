@@ -11,7 +11,7 @@ import { MAX_AUTHORITY_LEVEL } from "../../../lib/endfield/buildStoryProgress.mj
 
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
-const t=(value:string)=>guideText(model.lang,value);
+const translateUi=(value:string)=>guideText(model.lang,value);
 const { guide, missing, roleLabels, stageLabels, builds, preview } = model;
 const officialBuilds=builds.map(build=>{
  const parts=build.items.map(reference=>{
@@ -34,9 +34,9 @@ const metaBuilds=officialBuilds.filter(build=>build.meta===true);
 import { guideText } from "../../../lib/i18n/guideUi";
 ---
 <section class="op-section" id="ausruestung">
-        <h2>{t("Ausrüstung")}</h2>
+        <h2>{translateUi("Ausrüstung")}</h2>
         {metaBuilds.length>0 && <div class="op-divided" aria-labelledby="op-meta-builds-title">
-          <h3 id="op-meta-builds-title">{t("Meta Builds")}</h3>
+          <h3 id="op-meta-builds-title">{translateUi("Meta Builds")}</h3>
           <div class="op-meta-build-grid">
             {metaBuilds.map(build=><article class="op-cardlet op-meta-build-card">
               <div class="op-subtitle">
@@ -53,25 +53,25 @@ import { guideText } from "../../../lib/i18n/guideUi";
                 </div>)}
               </div>
               <p class="op-meta-build-summary">{build.metaSummary}</p>
-              {build.parts.some(part=>!part.detail || part.detail.status!=="verified") && <p class="op-muted op-body-copy">{t("Neue Ausrüstung: Gegenstände und Bilder vorläufig aus der aktuellen Wiki; SKPORT-Item-IDs, Rezepte und Verfügbarkeit noch nicht vollständig bestätigt.")}</p>}
-              <a class="op-link op-meta-build-link" href="#build-finder" data-select-build={build.id}>{t("Details im Build-Finder ansehen ↗")}</a>
+              {build.parts.some(part=>!part.detail || part.detail.status!=="verified") && <p class="op-muted op-body-copy">{translateUi("Neue Ausrüstung: Gegenstände und Bilder vorläufig aus der aktuellen Wiki; SKPORT-Item-IDs, Rezepte und Verfügbarkeit noch nicht vollständig bestätigt.")}</p>}
+              <a class="op-link op-meta-build-link" href="#build-finder" data-select-build={build.id}>{translateUi("Details im Build-Finder ansehen ↗")}</a>
             </article>)}
           </div>
-          <p class="op-muted op-meta-build-hint">{t("Weitere Informationen zu Werten, Seteffekten, Herstellung und Freischaltungen sowie alle Progressions-Builds findest du im Build-Finder weiter unten.")}</p>
+          <p class="op-muted op-meta-build-hint">{translateUi("Weitere Informationen zu Werten, Seteffekten, Herstellung und Freischaltungen sowie alle Progressions-Builds findest du im Build-Finder weiter unten.")}</p>
         </div>}
         <details class="op-divided op-build-finder-accordion" id="build-finder">
           <summary class="op-build-finder-toggle">
-            <span class="op-build-finder-title"><strong>{t("Build-Finder")}</strong><small>{t("Ausführliche Builds, Filter und Herstellung anzeigen")}</small></span>
+            <span class="op-build-finder-title"><strong>{translateUi("Build-Finder")}</strong><small>{translateUi("Ausführliche Builds, Filter und Herstellung anzeigen")}</small></span>
             <span class="op-build-finder-chevron" aria-hidden="true">⌄</span>
           </summary>
           <div class="op-build-finder-content">
-            <p class="op-section-intro">{t("Der Finder startet mit maximalem Fortschritt und allen verfügbaren Blaupausen als Vorauswahl. Passe Level, Fabrikkomponente, Region, Gebiete und Vorlagen an deinen tatsächlichen Spielstand an. Jede Auswahl ist unabhängig und kein automatischer Abgleich mit deinem Spielkonto.")}</p>
+            <p class="op-section-intro">{translateUi("Der Finder startet mit maximalem Fortschritt und allen verfügbaren Blaupausen als Vorauswahl. Passe Level, Fabrikkomponente, Region, Gebiete und Vorlagen an deinen tatsächlichen Spielstand an. Jede Auswahl ist unabhängig und kein automatischer Abgleich mit deinem Spielkonto.")}</p>
           <div class="op-two">
-            <label class="op-cardlet" style="font-size:12px">{t("Operator- / Ausrüstungslevel")}<select class="op-select" id="op-level">
+            <label class="op-cardlet" style="font-size:12px">{translateUi("Operator- / Ausrüstungslevel")}<select class="op-select" id="op-level">
                 {[70,60,50,36,28,20,10].map(value=><option value={value} selected={value===70}>Level {value}</option>)}
               </select>
             </label>
-            <label class="op-cardlet" style="font-size:12px">{t("Fabrikfortschritt · höchste herstellbare Komponente")}<span class="op-factory-select-row">
+            <label class="op-cardlet" style="font-size:12px">{translateUi("Fabrikfortschritt · höchste herstellbare Komponente")}<span class="op-factory-select-row">
                 <img id="op-factory-icon" src={`/images/endfield/materials/${FACTORY_COMPONENT_STAGES.at(-1)?.itemId}.webp`} alt="" width="34" height="34" loading="lazy" />
                 <select class="op-select" id="op-factory">
                   {["Early-Game","Mid-Game","End-Game"].map(phase=>
@@ -89,19 +89,19 @@ import { guideText } from "../../../lib/i18n/guideUi";
           </div>
           <div class="op-story-filter">
             <div class="op-two">
-              <label class="op-cardlet op-story-region-label">{t("Story-Fortschritt · erreichte Region")}<select class="op-select" id="op-story-region">
-                  <option value="">{t("Nicht festgelegt")}</option>
+              <label class="op-cardlet op-story-region-label">{translateUi("Story-Fortschritt · erreichte Region")}<select class="op-select" id="op-story-region">
+                  <option value="">{translateUi("Nicht festgelegt")}</option>
                   {storyAreaRegistry.regions.map(region=>
                     <option value={region.id}>{region.displayNameDe}</option>)}
                 </select>
               </label>
               <div class="op-cardlet op-story-help">
-                <strong>{t("Freigeschaltete Gebiete")}</strong>
-                <p class="op-muted">{t("Standardmäßig gelten für den Vergleich alle bekannten Gebiete als freigeschaltet. Deaktiviere die Gebiete, die du in deinem eigenen Spielstand noch nicht erreicht hast.")}</p>
+                <strong>{translateUi("Freigeschaltete Gebiete")}</strong>
+                <p class="op-muted">{translateUi("Standardmäßig gelten für den Vergleich alle bekannten Gebiete als freigeschaltet. Deaktiviere die Gebiete, die du in deinem eigenen Spielstand noch nicht erreicht hast.")}</p>
               </div>
             </div>
             <details class="op-details op-story-areas" id="op-story-areas-panel">
-              <summary>{t("Einzelne Gebiete auswählen")}<span id="op-story-area-counter">{model.lang==="en"?"0 selected":"0 ausgewählt"}</span></summary>
+              <summary>{translateUi("Einzelne Gebiete auswählen")}<span id="op-story-area-counter">{model.lang==="en"?"0 selected":"0 ausgewählt"}</span></summary>
               <div class="op-story-areas-body">
                 {storyAreaRegistry.regions.map(region=>
                   <fieldset class="op-story-area-group" data-story-region-group={region.id}>
@@ -114,77 +114,77 @@ import { guideText } from "../../../lib/i18n/guideUi";
                         </label>)}
                     </div>
                   </fieldset>)}
-                <p class="op-muted">{t("Die Maximal-Vorauswahl ist eine Annahme, kein Nachweis über Story-Quests oder Blaupausenkisten. Einzelne Gebiete können auch unabhängig vom Hauptkapitel freigeschaltet sein.")}</p>
+                <p class="op-muted">{translateUi("Die Maximal-Vorauswahl ist eine Annahme, kein Nachweis über Story-Quests oder Blaupausenkisten. Einzelne Gebiete können auch unabhängig vom Hauptkapitel freigeschaltet sein.")}</p>
               </div>
             </details>
             <details class="op-details op-story-extra">
-              <summary>{t("Weitere Fortschritte · Autoritätslevel und Wuling-Warenumverteilung")}</summary>
+              <summary>{translateUi("Weitere Fortschritte · Autoritätslevel und Wuling-Warenumverteilung")}</summary>
               <div class="op-two op-story-extra-fields">
                 <label>{model.lang==="en"?"Authority Level (max. ":"Autoritätslevel (max. "}{MAX_AUTHORITY_LEVEL})
-                  <input class="op-select" id="op-authority-level" type="number" min="0" max={MAX_AUTHORITY_LEVEL} step="1" placeholder={t("Nicht angegeben")} inputmode="numeric" />
+                  <input class="op-select" id="op-authority-level" type="number" min="0" max={MAX_AUTHORITY_LEVEL} step="1" placeholder={translateUi("Nicht angegeben")} inputmode="numeric" />
                 </label>
-                <label>{t("Wuling-Warenumverteilung")}<select class="op-select" id="op-stock-level">
-                    <option value="">{t("Nicht angegeben")}</option>
-                    {[0,1,2,3].map(stage=><option value={stage}>{t("Stufe")} {stage}</option>)}
+                <label>{translateUi("Wuling-Warenumverteilung")}<select class="op-select" id="op-stock-level">
+                    <option value="">{translateUi("Nicht angegeben")}</option>
+                    {[0,1,2,3].map(stage=><option value={stage}>{translateUi("Stufe")} {stage}</option>)}
                   </select>
                 </label>
               </div>
-              <p class="op-muted">{t("Maximalwerte werden nur als Startannahme gesetzt. Dein tatsächliches Autoritätslevel und deine Warenumverteilungsstufe können darunter liegen.")}</p>
+              <p class="op-muted">{translateUi("Maximalwerte werden nur als Startannahme gesetzt. Dein tatsächliches Autoritätslevel und deine Warenumverteilungsstufe können darunter liegen.")}</p>
             </details>
           </div>
-          <div class="op-notice" style="margin-top:12px">{t("Ausgewählt:")}<strong id="op-build-config">Lv. 70 · Pyrrolit-Komponente · End-Game</strong>
-            <p class="op-build-progress-status" id="op-build-results" role="status" aria-live="polite">{t("Prüfe vorhandene Guide-Builds …")}</p>
+          <div class="op-notice" style="margin-top:12px">{translateUi("Ausgewählt:")}<strong id="op-build-config">Lv. 70 · Pyrrolit-Komponente · End-Game</strong>
+            <p class="op-build-progress-status" id="op-build-results" role="status" aria-live="polite">{translateUi("Prüfe vorhandene Guide-Builds …")}</p>
             <label class="op-build-show-all">
-              <input id="op-build-show-all" type="checkbox" checked />{t("Auch noch gesperrte oder ungeprüfte Builds anzeigen")}</label>
+              <input id="op-build-show-all" type="checkbox" checked />{translateUi("Auch noch gesperrte oder ungeprüfte Builds anzeigen")}</label>
           </div>
-          <p class="op-muted">{t("Für neue Besucher gilt weiterhin die")}<strong>{t("Maximal-Vorauswahl")}</strong>{t(": Alle hier angebotenen Gear-Blaupausen und Freischaltungen werden zum Vergleich als verfügbar")}<strong>{t("angenommen")}</strong>{t(", nicht als realer Besitz bestätigt. Mit der Minimal-Vorauswahl kannst du stattdessen bei null anfangen und nur deinen eigenen Fortschritt auswählen. Deine Einstellungen bleiben ausschließlich in diesem Browser gespeichert.")}</p>
+          <p class="op-muted">{translateUi("Für neue Besucher gilt weiterhin die")}<strong>{translateUi("Maximal-Vorauswahl")}</strong>{translateUi(": Alle hier angebotenen Gear-Blaupausen und Freischaltungen werden zum Vergleich als verfügbar")}<strong>{translateUi("angenommen")}</strong>{translateUi(", nicht als realer Besitz bestätigt. Mit der Minimal-Vorauswahl kannst du stattdessen bei null anfangen und nur deinen eigenen Fortschritt auswählen. Deine Einstellungen bleiben ausschließlich in diesem Browser gespeichert.")}</p>
           <div class="op-progress-preset-actions" role="group" aria-label="Fortschritts-Vorauswahl">
-            <button class="op-progress-reset op-progress-preset-button" type="button" id="op-progress-reset">{t("Maximal-Vorauswahl wiederherstellen (Anpassungen löschen)")}</button>
-            <button class="op-progress-preset-button op-progress-preset-min" type="button" id="op-progress-min">{t("Minimal-Vorauswahl einstellen (für neue Spieler)")}</button>
+            <button class="op-progress-reset op-progress-preset-button" type="button" id="op-progress-reset">{translateUi("Maximal-Vorauswahl wiederherstellen (Anpassungen löschen)")}</button>
+            <button class="op-progress-preset-button op-progress-preset-min" type="button" id="op-progress-min">{translateUi("Minimal-Vorauswahl einstellen (für neue Spieler)")}</button>
           </div>
-          <div class="op-notice op-gear-disclaimer" style="margin-top:12px"><strong>{t("Hinweis zur Ausrüstung:")}</strong>{t("Achtet bei der Ausrüstung grundsätzlich darauf, Ausrüstungsteile zu nutzen, die das Haupt- und Sekundärattribut des jeweiligen Operators erhöhen. Das gilt besonders für Builds auf niedrigeren Leveln.")}</div>
+          <div class="op-notice op-gear-disclaimer" style="margin-top:12px"><strong>{translateUi("Hinweis zur Ausrüstung:")}</strong>{translateUi("Achtet bei der Ausrüstung grundsätzlich darauf, Ausrüstungsteile zu nutzen, die das Haupt- und Sekundärattribut des jeweiligen Operators erhöhen. Das gilt besonders für Builds auf niedrigeren Leveln.")}</div>
           {guide.equipment.generalNotes && <p class="op-body-copy">{guide.equipment.generalNotes}</p>}
           </div>
           <div class="op-divided">
-          <h3>{t("Empfohlene Ausrüstung")}</h3>
+          <h3>{translateUi("Empfohlene Ausrüstung")}</h3>
           {officialBuilds.length ? <>
             <p id="op-build-empty" class="op-notice" hidden>{model.lang==="en"?"No build is fully available for your selected progress. Adjust your progress, confirm the blueprints you own, or display locked builds.":"Kein Build ist für deine bisherigen Angaben vollständig verfügbar. Ändere den Fortschritt, bestätige die eigenen Blaupausen oder aktiviere die Anzeige gesperrter Builds."}</p>
             <div class="op-pills" aria-label="Build auswählen">{officialBuilds.map((b,i)=><button type="button" class="op-pill-button" data-build-button={b.id} data-build-requirements={JSON.stringify(b.requirements)} aria-pressed={i===0?"true":"false"}>{b.title}<span class="op-build-button-status" data-build-status-label></span></button>)}</div>
             {officialBuilds.map((b,i)=><div class="op-build-panel op-cardlet" data-build-panel={b.id} hidden={i!==0}>
               <div class="op-subtitle"><h3 style="margin:0">{b.title}</h3><span class="op-chip">{roleLabels[b.role]}</span></div>
               <div class="op-gear-parts">{b.parts.map(part=><div class="op-gear-part"><div class="op-mini-art"><ItemIcon id={part.catalog?.id??part.reference} /></div><small>{part.catalog?.name??part.reference}</small></div>)}</div>
-              {b.availableFromLevel && <p><strong>{t("Ab Level:")}</strong> {b.availableFromLevel}</p>}
+              {b.availableFromLevel && <p><strong>{translateUi("Ab Level:")}</strong> {b.availableFromLevel}</p>}
               <p class="op-body-copy">
-                <strong>{t("Benötigte Komponente:")}</strong>{" "}
+                <strong>{translateUi("Benötigte Komponente:")}</strong>{" "}
                 {b.requirements.requiredComponent==="starter" ? model.lang==="en"?"Basic materials (before Amethyst)":"Grundmaterialien (vor Amethyst)" :
                   b.requirements.requiredComponent ? <>
                     <img class="op-factory-inline-icon" src={`/images/endfield/materials/${FACTORY_COMPONENT_STAGES.find(stage=>stage.id===b.requirements.requiredComponent)?.itemId}.webp`} alt="" width="26" height="26" loading="lazy" />
                     {FACTORY_LABELS[b.requirements.requiredComponent]}
                   </> : model.lang==="en"?"Crafting recipe not yet assigned":"Herstellungsrezept noch nicht zugeordnet"}
               </p>
-              {b.storyUnlock && <p class="op-body-copy"><strong>{t("Redaktioneller Story-Hinweis:")}</strong> {b.storyUnlock}</p>}
-              <p class="op-body-copy" data-build-reason aria-live="polite">{t("Story- und Blaupausenstatus wird geprüft …")}</p>
+              {b.storyUnlock && <p class="op-body-copy"><strong>{translateUi("Redaktioneller Story-Hinweis:")}</strong> {b.storyUnlock}</p>}
+              <p class="op-body-copy" data-build-reason aria-live="polite">{translateUi("Story- und Blaupausenstatus wird geprüft …")}</p>
               <fieldset class="op-blueprint-checklist">
-                <legend>{t("Blaupausen-Auswahl (bei Maximal-Vorauswahl alle aktiv)")}</legend>
+                <legend>{translateUi("Blaupausen-Auswahl (bei Maximal-Vorauswahl alle aktiv)")}</legend>
                 {b.parts.map(part=><label class="op-blueprint-check">
                   <input type="checkbox" data-blueprint-owned={part.catalog?.id??part.reference}
                     disabled={!part.catalog || !part.detail || part.detail.status!=="verified"} />
                   <span>{part.catalog?.name??part.reference}</span>
                 </label>)}
-                <p class="op-muted">{t("Alle Vorlagen sind zum Vergleich anfangs vorausgewählt. Entferne Häkchen bei Blaupausen, die dir tatsächlich fehlen. Gleiche Gear-IDs werden über alle Builds und Operatoren gemeinsam ausgewertet.")}</p>
+                <p class="op-muted">{translateUi("Alle Vorlagen sind zum Vergleich anfangs vorausgewählt. Entferne Häkchen bei Blaupausen, die dir tatsächlich fehlen. Gleiche Gear-IDs werden über alle Builds und Operatoren gemeinsam ausgewertet.")}</p>
               </fieldset>
-              {b.teamContext && <p class="op-body-copy"><strong>{t("Einsatzbereich:")}</strong> {b.teamContext}</p>}
-              {b.setBonusNotes && <p class="op-body-copy"><strong>{t("Seteffekte:")}</strong> {b.setBonusNotes}</p>}
-              <p class="op-body-copy"><strong>{t("Bewertung:")}</strong> {b.evaluation || missing}</p>
-              <details class="op-details"><summary>{t("Werte, Herstellung & Freischaltungen")}</summary><div class="op-details-body">
-                <div class="op-table-wrap"><table class="op-table"><thead><tr><th>{t("Ausrüstungsteil")}</th><th>{t("Attribute")}</th><th>{t("Materialien")}</th></tr></thead>
+              {b.teamContext && <p class="op-body-copy"><strong>{translateUi("Einsatzbereich:")}</strong> {b.teamContext}</p>}
+              {b.setBonusNotes && <p class="op-body-copy"><strong>{translateUi("Seteffekte:")}</strong> {b.setBonusNotes}</p>}
+              <p class="op-body-copy"><strong>{translateUi("Bewertung:")}</strong> {b.evaluation || missing}</p>
+              <details class="op-details"><summary>{translateUi("Werte, Herstellung & Freischaltungen")}</summary><div class="op-details-body">
+                <div class="op-table-wrap"><table class="op-table"><thead><tr><th>{translateUi("Ausrüstungsteil")}</th><th>{translateUi("Attribute")}</th><th>{translateUi("Materialien")}</th></tr></thead>
                   <tbody>{b.parts.map(part=><tr>
   <td>{part.catalog?.name??part.reference}</td>
   <td>{part.detail?.status==="verified" ? <>
     <div class="op-muted">Level {part.detail.level??"?"} · {part.detail.gearSlot??t("Ausrüstung")}</div>
     {(part.detail.stats[0]?.tables[0]?.rows??[]).map(row=><div>{row.cells[0]}: {row.cells[1]}</div>)}
     {part.detail.setEffect&&<details class="op-details"><summary>{part.detail.setName} – {model.lang==="en"?"Set Bonus":"Setbonus"}</summary><p class="op-body-copy">{part.detail.setEffect}</p></details>}
-    {part.detail.acquisitionNotes?.length>0&&<p class="op-body-copy"><strong>{t("Offizielle Blaupausen-Erwerbsart:")}</strong> {part.detail.acquisitionNotes.join(" · ")}</p>}
+    {part.detail.acquisitionNotes?.length>0&&<p class="op-body-copy"><strong>{translateUi("Offizielle Blaupausen-Erwerbsart:")}</strong> {part.detail.acquisitionNotes.join(" · ")}</p>}
     {part.blueprint && (part.blueprint.kind==="template-crate" || part.blueprint.precision==="disputed") && <details class="op-details">
       <summary>{model.lang==="en"?"Blueprint Location":"Blaupausen-Fundort"} · {
         part.blueprint.precision==="verified"?(model.lang==="en"?"Verified Personally":"persönlich geprüft"):
@@ -200,27 +200,27 @@ import { guideText } from "../../../lib/i18n/guideUi";
           {part.blueprint.areas.map(x=>x.name).join(", ")}
         </p>}
         {part.blueprint.precision==="disputed" &&
-          <p class="op-muted"><strong>{t("Quellenkonflikt:")}</strong>{t("Die Community-Quellen oder die offizielle SKPORT-Erwerbsart weichen voneinander ab. Bitte beide Originalquellen prüfen; keine der Kisten ist für dieses Teil als endgültig bestätigt markiert.")}</p>}
+          <p class="op-muted"><strong>{translateUi("Quellenkonflikt:")}</strong>{translateUi("Die Community-Quellen oder die offizielle SKPORT-Erwerbsart weichen voneinander ab. Bitte beide Originalquellen prüfen; keine der Kisten ist für dieses Teil als endgültig bestätigt markiert.")}</p>}
         {part.blueprint.precision==="specific-item" &&
-          <p class="op-muted">{t("Die Fundortangabe bezieht sich ausdrücklich auf dieses Rüstungsteil, nicht lediglich auf sein Set. Die genaue SKPORT-Marker-ID und ob du die Blaupause bereits besitzt, sind noch nicht bestätigt.")}</p>}
+          <p class="op-muted">{translateUi("Die Fundortangabe bezieht sich ausdrücklich auf dieses Rüstungsteil, nicht lediglich auf sein Set. Die genaue SKPORT-Marker-ID und ob du die Blaupause bereits besitzt, sind noch nicht bestätigt.")}</p>}
         {part.blueprint.precision==="set-family" &&
-          <p class="op-muted">{t("Nur Set-Hinweis: Die Fundorte sind noch nicht den konkreten Rüstungsteilen zugeordnet.")}</p>}
+          <p class="op-muted">{translateUi("Nur Set-Hinweis: Die Fundorte sind noch nicht den konkreten Rüstungsteilen zugeordnet.")}</p>}
         <p class="op-muted">{part.blueprint.note}</p>
-        {part.blueprint.claims.map(x=><p class="op-body-copy">{t("Quelle / Kiste:")} {x.landmark}</p>)}
+        {part.blueprint.claims.map(x=><p class="op-body-copy">{translateUi("Quelle / Kiste:")} {x.landmark}</p>)}
         {part.blueprint.sources.length>0 && <p class="op-body-copy">
-          <strong>{t("Quellen:")}</strong>{" "}
+          <strong>{translateUi("Quellen:")}</strong>{" "}
           {part.blueprint.sources.map((x,i)=><span>{i>0?" · ":""}<a href={x.url} target="_blank" rel="noopener noreferrer">{x.title}</a></span>)}
         </p>}
         {part.blueprint.areas.length===0 && part.blueprint.sources.length===0 &&
-          <p class="op-muted">{t("Noch kein belastbarer Fundort; persönliche Überprüfung erforderlich.")}</p>}
+          <p class="op-muted">{translateUi("Noch kein belastbarer Fundort; persönliche Überprüfung erforderlich.")}</p>}
       </div>
     </details>}
-    {part.detail.artificing.length>0&&<details class="op-details"><summary>{t("Veredelungswerte")}</summary>
+    {part.detail.artificing.length>0&&<details class="op-details"><summary>{translateUi("Veredelungswerte")}</summary>
       {part.detail.artificing.flatMap(tab=>tab.tables).map(table=><table class="op-table">
         <thead><tr>{table.columns.map(value=><th>{value}</th>)}</tr></thead>
         <tbody>{table.rows.map(row=><tr>{row.cells.map(v=><td>{v}</td>)}</tr>)}</tbody></table>)}
     </details>}
-  </> : <span class="op-muted">{t("Offizielle Werte noch nicht vollständig verfügbar")}</span>}</td>
+  </> : <span class="op-muted">{translateUi("Offizielle Werte noch nicht vollständig verfügbar")}</span>}</td>
   <td>{part.detail?.standardRecipe?.materials?.length ?
     <MaterialCosts items={part.detail.standardRecipe.materials} /> :
     <span class="op-muted">{part.detail?.recipeStatus==="needs-review"?(model.lang==="en"?"Recipe Needs Verification":"Rezept muss geprüft werden"):(model.lang==="en"?"Standard Recipe Not Documented":"Standardrezept nicht dokumentiert")}</span>}
@@ -230,12 +230,12 @@ import { guideText } from "../../../lib/i18n/guideUi";
                 {b.craftingNotes && <p class="op-body-copy">{b.craftingNotes}</p>}
               </div></details>
             </div>)}
-          </> : <p class="op-placeholder">{t("[Noch keine Ausrüstungs-Builds]")}</p>}
+          </> : <p class="op-placeholder">{translateUi("[Noch keine Ausrüstungs-Builds]")}</p>}
         </div>
-        <div class="op-divided"><h3>{t("Ausrüstungsprogression")}</h3>
+        <div class="op-divided"><h3>{translateUi("Ausrüstungsprogression")}</h3>
           {guide.equipment.progression.length ?
             <div class="op-mini-list">{guide.equipment.progression.map((p,i)=><div class="op-cardlet"><strong>{i+1}. {stageLabels[p.stage]}</strong><p class="op-body-copy">{p.note}</p></div>)}</div> :
-            <p class="op-placeholder">{t("[Progressionsübersicht nach Story und Fabrik folgt]")}</p>}
+            <p class="op-placeholder">{translateUi("[Progressionsübersicht nach Story und Fabrik folgt]")}</p>}
         </div>
           </div>
         </details>
