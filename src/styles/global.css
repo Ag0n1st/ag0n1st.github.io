@@ -328,3 +328,24 @@ h1 { margin: 27px 0 17px; font-size: clamp(56px, 6.3vw, 82px); line-height: .95;
 .guide-teaser-card:has(.guide-teaser-art) .guide-teaser-copy p{color:#e0dbe5;text-shadow:0 1px 7px #000c}
 .guide-teaser-card:has(.guide-teaser-art) .guide-teaser-copy h3{text-shadow:0 2px 9px #000e}
 .guide-teaser-card:has(.guide-teaser-art) .guide-teaser-category{background:rgba(18,15,23,.88)}
+
+/* Endfield utility pages: intentionally reuse global cards and fonts. */
+.endfield-utility-page{min-height:calc(100vh - 280px);padding-top:clamp(36px,6vw,75px);padding-bottom:clamp(65px,8vw,110px)}
+.endfield-utility-page h1{font-size:clamp(32px,5vw,58px);letter-spacing:-.055em;line-height:1.15;margin:18px 0}
+.endfield-utility-intro{font-size:14px;line-height:1.75;color:var(--muted);margin:0 0 35px;max-width:740px}
+.endfield-utility-link{margin-top:22px;font-size:12px;font-weight:var(--font-bold);color:var(--cyan)}
+.endfield-utility-page .videos-empty{max-width:760px}
+.version-countdown{display:flex;align-items:center;justify-content:flex-start;gap:clamp(4px,1vw,15px);margin:28px 0 20px;flex-wrap:nowrap}
+.countdown-unit{min-width:0}
+.countdown-digits{display:flex;gap:clamp(3px,.65vw,9px)}
+.countdown-digit{display:grid;place-items:center;min-width:clamp(36px,8vw,75px);height:clamp(63px,11vw,110px);border:1px solid #403249;border-radius:11px;background:linear-gradient(160deg,#251b2b,#11141b);color:#f7f3fc;font-weight:700;font-size:clamp(33px,6vw,66px);font-variant-numeric:tabular-nums;font-feature-settings:"tnum";line-height:1}
+.countdown-unit-label{display:block;margin-top:13px;text-align:center;font-size:12px;color:#bcb1c6}
+.countdown-separator{align-self:flex-start;margin-top:clamp(19px,3vw,31px);font-size:28px;font-weight:700;color:var(--pink)}
+.countdown-ends{margin:34px 0 11px;font-size:14px;line-height:1.6}
+.countdown-ends time{color:var(--cyan)}
+.countdown-source{max-width:700px;color:var(--muted);font-size:12px;line-height:1.8}
+.countdown-source a{color:var(--cyan);text-decoration:underline;text-underline-offset:3px}
+.countdown-ended{font-size:13px;color:#f0ba96}
+.countdown-ended[hidden]{display:none}
+.countdown-accessible{position:absolute;width:1px;height:1px;clip:rect(0,0,0,0);overflow:hidden;white-space:nowrap}
+@media(max-width:420px){.version-countdown{gap:4px}.countdown-digit{min-width:clamp(32px,8.4vw,37px);height:60px;font-size:31px;border-radius:7px}.countdown-separator{font-size:20px;margin-top:21px}.countdown-unit-label{font-size:10px}}
