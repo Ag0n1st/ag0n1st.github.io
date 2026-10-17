@@ -664,6 +664,29 @@ def smoke_i18n(page, base_url, width):
     verify(page.url.endswith("/endfield/fabrik/"),
            label+": German language selection remains stable after navigation")
     page.evaluate("() => localStorage.removeItem('ag0n1st:site-language')")
+    # The two new utility pages must preserve parity, scroll safety and exact digit structure.
+    for lang, route in (("de","/endfield/countdown/"),("en","/en/endfield/countdown/")):
+        page.goto(base_url+route)
+        verify(page.locator("html").get_attribute("lang")==lang and
+               page.locator("[data-version-countdown] .countdown-digit").count()==6,
+               label+": "+lang+" six-digit current-version countdown uses the shared layout")
+        verify(page.locator("[data-countdown-ended][hidden]").count()==1 and
+               page.locator(".countdown-source a[href*='endfield.wiki.gg']").count()==1,
+               label+": "+lang+" has a non-expired estimated date with traceable source")
+        check_overflow(page,label+" "+lang+" countdown")
+        links=page.locator(".endfield-nav-link").all_text_contents()
+        flat=[x.strip().replace("·","") for x in links]
+        verify(len(flat)==10 and
+               flat.index("Tierlist" if lang=="de" else "Tier List") == flat.index("Checkliste" if lang=="de" else "Checklist")+1 and
+               flat.index("Countdown") == flat.index("Tierlist" if lang=="de" else "Tier List")+1,
+               label+": "+lang+" Tierlist appears after Checklist and before Countdown")
+    for lang,route in (("de","/endfield/speedruns/"),("en","/en/endfield/speedruns/")):
+        page.goto(base_url+route)
+        verify(page.locator("html").get_attribute("lang")==lang and
+               page.locator("main.endfield-utility-page").count()==1 and
+               page.locator(".videos-empty").count()==1,
+               label+": "+lang+" speedrun area shows honest unconfigured playlist instead of dummy runs")
+        check_overflow(page,label+" "+lang+" speedruns")
     sitemap=page.request.get(base_url+"/sitemap.xml")
     verify(sitemap.status==200 and
            "<loc>https://ag0n1st.com/en/endfield/operators/si/</loc>" in sitemap.text() and
