@@ -51,6 +51,8 @@ import { guideText } from "../../lib/i18n/guideUi";
   import { evaluateBuildAvailability, FACTORY_COMPONENT_STAGES, DEFAULT_FACTORY_COMPONENT } from "../../lib/endfield/buildFinder.mjs";
   import { STORY_BUILD_STATUSES, MAX_AUTHORITY_LEVEL, validAuthorityLevel } from "../../lib/endfield/buildStoryProgress.mjs";
   import { getMaxBuildFinderPreset, getMinBuildFinderPreset } from "../../lib/endfield/buildFinderDefaults.mjs";
+  const isEn=document.documentElement.lang==="en";
+  const msg=(de:string,en:string)=>isEn?en:de;
   // A single rank selector controls all displayed headline values in its skill.
   document.querySelectorAll<HTMLSelectElement>("[data-skill-rank]").forEach(select => {
     select.addEventListener("change", () => {
@@ -197,9 +199,14 @@ import { guideText } from "../../lib/i18n/guideUi";
   const unselectedBlueprintIds=new Set<string>();
   const lockedAreaIds=new Set<string>();
   const statusText:Record<string,string>={
-    available:"Passend", "level-locked":"Level zu niedrig",
-    "component-locked":"Komponente fehlt", ...STORY_BUILD_STATUSES,
-    unverified:"Rezept/Daten ungeklärt"
+    available:msg("Passend","Available"), "level-locked":msg("Level zu niedrig","Level Too Low"),
+    "component-locked":msg("Komponente fehlt","Missing Component"), ...STORY_BUILD_STATUSES,
+    "region-locked":msg("Region fehlt","Region Locked"),
+    "area-unconfirmed":msg("Gebiet nicht bestätigt","Area Unconfirmed"),
+    "acquisition-locked":msg("Freischaltung fehlt","Not Unlocked"),
+    "blueprint-unconfirmed":msg("Blaupause nicht bestätigt","Blueprint Unconfirmed"),
+    "story-unverified":msg("Story/Fundort ungeklärt","Story/Location Unverified"),
+    unverified:msg("Rezept/Daten ungeklärt","Recipe/Data Unverified")
   };
   const allGearIds=()=>[...new Set(blueprintCheckboxes
     .filter(input=>!input.disabled && /^\d+$/.test(input.dataset.blueprintOwned||""))
@@ -353,12 +360,12 @@ import { guideText } from "../../lib/i18n/guideUi";
       factoryIcon.alt=component.label;factoryIcon.title=component.label;
     }
     const progress=storySelection();
-    const regionLabel=region?.selectedOptions[0]?.textContent?.trim()||"Nicht festgelegt";
+    const regionLabel=region?.selectedOptions[0]?.textContent?.trim()||msg("Nicht festgelegt","Not Set");
     const count=areaCheckboxes.filter(x=>x.checked && x.dataset.areaRegion===region?.value).length;
-    if(areaCounter)areaCounter.textContent=count+" freigeschaltet";
+    if(areaCounter)areaCounter.textContent=count+msg(" freigeschaltet"," unlocked");
     regionGroups.forEach(group=>group.hidden=group.dataset.storyRegionGroup!==region?.value);
     if(config)config.textContent="Lv. "+level.value+" · "+(component?.label||"")+
-      " · "+(component?.phase||"")+" · Story: "+regionLabel+" ("+count+" Gebiete)";
+      " · "+(component?.phase||"")+" · Story: "+regionLabel+" ("+count+msg(" Gebiete"," areas")+")";
     const statuses=buildButtons.map(button=>{
       let requirement=null;
       try{requirement=JSON.parse(button.dataset.buildRequirements||"null");}catch{}
@@ -377,8 +384,8 @@ import { guideText } from "../../lib/i18n/guideUi";
       if(reason){
         const checked=result.parts?.filter((part:{status:string})=>part.status==="available").length??0;
         reason.textContent=result.status==="available"
-          ?"Alle vier Blaupausen sind in deiner Auswahl aktiviert; Level und Komponenten reichen aus. (Kein Kontonachweis.)"
-          :(result.reason+" · "+checked+"/4 Blaupausen als erhalten markiert.");
+          ?msg("Alle vier Blaupausen sind in deiner Auswahl aktiviert; Level und Komponenten reichen aus. (Kein Kontonachweis.)","All four blueprints are selected; level and components are sufficient. (Not verified against your account.)")
+          :(isEn?statusText[result.status]+" · "+checked+"/4 blueprints marked as owned.":result.reason+" · "+checked+"/4 Blaupausen als erhalten markiert.");
       }
       return result.status;
     });
@@ -388,8 +395,8 @@ import { guideText } from "../../lib/i18n/guideUi";
     ].includes(x)).length;
     const locked=statuses.length-available-uncertain;
     if(buildResult)buildResult.textContent=statuses.length
-      ?available+" passend · "+locked+" gesperrt · "+uncertain+" noch nicht bestätigt"
-      :"Noch keine redaktionellen Ausrüstungs-Builds hinterlegt.";
+      ?available+msg(" passend · "," available · ")+locked+msg(" gesperrt · "," locked · ")+uncertain+msg(" noch nicht bestätigt"," unverified")
+      :msg("Noch keine redaktionellen Ausrüstungs-Builds hinterlegt.","No Editorial Gear Builds Added Yet.");
     const visible=buildButtons.filter(button=>!button.hidden);
     if(buildEmpty)buildEmpty.hidden=visible.length>0;
     const previous=visible.find(button=>button.getAttribute("aria-pressed")==="true");
