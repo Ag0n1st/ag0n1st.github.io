@@ -17,8 +17,19 @@
           "bytes": 52034
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/si/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/jsspsi.0a31758c.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "47f6e866d894c5c8bbd907debf19c4b9c3e9cd7ccfc3ac3a7bc92280671c968e",
+          "bytes": 8770
         }
       }
     },
@@ -35,8 +46,19 @@
           "bytes": 47252
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/argent-flow/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/minghe.d65390b1.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "fe59adc9e676baba13b6f8943e82bcce24518dcb71b3ccbd3329b667811b56a8",
+          "bytes": 9738
         }
       }
     },
@@ -55,16 +77,7 @@
         "official-icon": {
           "path": "/images/endfield/operators/endministrator-2/official-icon.webp",
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/endministrator2.f0bbf4fa.png",
-          "status": "cached",
-          "size": [
-            119,
-            120
-          ],
-          "sourceSize": [
-            119,
-            120
-          ],
-          "sha256": "0765c447126906ddfb1985d8e6be89428dbeb8b936ca7b9aafc3f39f75e198d3",
+          "status": "already-present",
           "bytes": 7298
         }
       }
@@ -84,16 +97,7 @@
         "official-icon": {
           "path": "/images/endfield/operators/endministrator-1/official-icon.webp",
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/endministrator1.3efd4769.png",
-          "status": "cached",
-          "size": [
-            120,
-            120
-          ],
-          "sourceSize": [
-            120,
-            120
-          ],
-          "sha256": "5f897daa5d37d9494097a849f3283cf6806d6a5bae6218ebb95f2ede17e707b5",
+          "status": "already-present",
           "bytes": 7242
         }
       }
@@ -111,8 +115,19 @@
           "bytes": 36544
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/perlica/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/perlica.871dcf57.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "92577a505156683435bf429e952e8c9e888ed1f6adf7cd1f6816d60a6c63b4a8",
+          "bytes": 6972
         }
       }
     },
@@ -129,8 +144,19 @@
           "bytes": 33738
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/chen-qianyu/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/chen.5c7b5e46.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "da5e230d08a396c347be3304ea4aeea137e421f931822629ea1b862769191998",
+          "bytes": 8028
         }
       }
     },
@@ -147,8 +173,19 @@
           "bytes": 45886
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/typhoeus/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/typhoea.c68596a8.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "c4e4d1d37337b2d8b09c99d350380d731a9811cd83a9e72f96706957cbc217f8",
+          "bytes": 7704
         }
       }
     },
@@ -165,8 +202,19 @@
           "bytes": 26794
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/purrchena/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/purrche.d14c39f4.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "0ed6343cd9b72d8d21306dfa834bb2e2c4f178e5216b8acd51c8f8799011097c",
+          "bytes": 5028
         }
       }
     },
@@ -185,16 +233,7 @@
         "official-icon": {
           "path": "/images/endfield/operators/arcane/official-icon.webp",
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/lizhiyan.9b1b7f82.png",
-          "status": "cached",
-          "size": [
-            120,
-            120
-          ],
-          "sourceSize": [
-            120,
-            120
-          ],
-          "sha256": "4ce657732deef4ab6f0ea4c9288afc992e15cb42fbcafe1756d611085b66997b",
+          "status": "already-present",
           "bytes": 7858
         }
       }
@@ -212,8 +251,19 @@
           "bytes": 47964
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/liino/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/liino.f1730ac7.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "f933b46b532f1868314e715bcceb7cb5e58a6c1519aae47b600846c53608704d",
+          "bytes": 9258
         }
       }
     },
@@ -230,8 +280,19 @@
           "bytes": 45994
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/mi-fu/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/mifu.02645cad.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "92110200916b6add5a17e0f6dfc6df7bb82039f3833c6694028d78af4cc05d4e",
+          "bytes": 8404
         }
       }
     },
@@ -248,8 +309,19 @@
           "bytes": 31324
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/camille/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/camille.5f50680f.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "270ae7a45bdbf7405bfa37a9450b4e4d0e35e6e604f9ec7977b07cbc55819bc3",
+          "bytes": 7812
         }
       }
     },
@@ -266,8 +338,19 @@
           "bytes": 37510
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/zhuang-fangyi/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/zhuangfy.4369b1a5.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "d5e11bae423f3c968f15f13e5afcf252b26b38a99bef7454c1b33e14edd58ca5",
+          "bytes": 7904
         }
       }
     },
@@ -284,8 +367,19 @@
           "bytes": 33880
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/tangtang/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/tangtang.049b8a47.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "d95801b1444fa44cbc640ff9b5c44ac55157a59a344c00d33a354be440015fe2",
+          "bytes": 10076
         }
       }
     },
@@ -302,8 +396,19 @@
           "bytes": 36336
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/rossi/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/rossi.4431f348.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "acb1285ce2382dec2c6c44a6c2dd8cd3f663cd8d40ee75c00b17df1c1d778477",
+          "bytes": 9356
         }
       }
     },
@@ -320,8 +425,19 @@
           "bytes": 38342
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/laevatain/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/laevatain.20075757.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "99f6ee2fb8f19d053271ba4869c6ded7f54cbfc539f2a90cd53f7ec6d0ed9951",
+          "bytes": 8798
         }
       }
     },
@@ -338,8 +454,19 @@
           "bytes": 40288
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/yvonne/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/yvonne.c93412e1.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "e994cfa6cf2513a977513e6ee6a399c153ce1c085caffa3ad67b98719ac2dc9f",
+          "bytes": 7788
         }
       }
     },
@@ -356,8 +483,19 @@
           "bytes": 43894
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/gilberta/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/gilberta.07ff3560.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "2cc090e0b9d16e6956a59dcac109d640d4a538bcea8de5a4e7756d85fea46012",
+          "bytes": 8212
         }
       }
     },
@@ -376,16 +514,7 @@
         "official-icon": {
           "path": "/images/endfield/operators/ardelia/official-icon.webp",
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/ardelia.b46cd31c.png",
-          "status": "cached",
-          "size": [
-            120,
-            120
-          ],
-          "sourceSize": [
-            120,
-            120
-          ],
-          "sha256": "2767a58ff00f916c207cbfc80ec6fdd14cd7cf48fbb7b74e5ff61f2e9ea4b6ff",
+          "status": "already-present",
           "bytes": 7948
         }
       }
@@ -405,16 +534,7 @@
         "official-icon": {
           "path": "/images/endfield/operators/ember/official-icon.webp",
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/ember.235ca9f1.png",
-          "status": "cached",
-          "size": [
-            120,
-            120
-          ],
-          "sourceSize": [
-            120,
-            120
-          ],
-          "sha256": "5b1849f85630c210d7e58dfa9010cea29e98955fa45c4f81e51f9b3a91565397",
+          "status": "already-present",
           "bytes": 8412
         }
       }
@@ -432,8 +552,19 @@
           "bytes": 47202
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/last-rite/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/lastrite.8560c002.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "7e8e05db1177c7a038dbeeab9cbcbe133f1be198134083bd7545d4146311910a",
+          "bytes": 8224
         }
       }
     },
@@ -450,8 +581,19 @@
           "bytes": 31222
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/lifeng/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/lifeng.41ae5d06.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "c40e6b139966ce2ae16e8b1a2ab0dac9907adef685f67927d17b1fc26bdafb6f",
+          "bytes": 8050
         }
       }
     },
@@ -470,16 +612,7 @@
         "official-icon": {
           "path": "/images/endfield/operators/pogranichnik/official-icon.webp",
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/pogranichnik.73f7bcf6.png",
-          "status": "cached",
-          "size": [
-            118,
-            120
-          ],
-          "sourceSize": [
-            118,
-            120
-          ],
-          "sha256": "514623f196f89fb0608112284e7c0077989b9aa3f6f9a9757fc6cf3fab42f57c",
+          "status": "already-present",
           "bytes": 7778
         }
       }
@@ -499,16 +632,7 @@
         "official-icon": {
           "path": "/images/endfield/operators/alesh/official-icon.webp",
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/alesh.ca99268b.png",
-          "status": "cached",
-          "size": [
-            120,
-            120
-          ],
-          "sourceSize": [
-            120,
-            120
-          ],
-          "sha256": "75f38c4d7b6e38a29e54ac4cb43a5026be61d6e8ce09222b0912c848a43b68ac",
+          "status": "already-present",
           "bytes": 7942
         }
       }
@@ -528,16 +652,7 @@
         "official-icon": {
           "path": "/images/endfield/operators/arclight/official-icon.webp",
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/arclight.0b402b3e.png",
-          "status": "cached",
-          "size": [
-            120,
-            120
-          ],
-          "sourceSize": [
-            120,
-            120
-          ],
-          "sha256": "86e10a7ac36d37e9d3e2fbf04dd80fe8be379f5743938294b155fb43ff3c3ebe",
+          "status": "already-present",
           "bytes": 8032
         }
       }
@@ -555,8 +670,19 @@
           "bytes": 33098
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/avywenna/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/avywenna.36c72367.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "aa82c8835c7a2bb15a9e47ad8ff2279d51365ae17c5c8a4a19ea8d2fa4a62e92",
+          "bytes": 7608
         }
       }
     },
@@ -575,16 +701,7 @@
         "official-icon": {
           "path": "/images/endfield/operators/da-pan/official-icon.webp",
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/dapan.7b5afdec.png",
-          "status": "cached",
-          "size": [
-            120,
-            117
-          ],
-          "sourceSize": [
-            120,
-            117
-          ],
-          "sha256": "5b81d8d1cf66ffacd231c6fb90fa67d1664ef49fec0f756f1414405873708809",
+          "status": "already-present",
           "bytes": 5796
         }
       }
@@ -602,8 +719,19 @@
           "bytes": 29704
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/snowshine/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/snowshine.844ed0a4.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "4ed2efb4a04a30f6185506b02c5a024eda9961a16b79d5423e911722c6d5075c",
+          "bytes": 8098
         }
       }
     },
@@ -620,8 +748,19 @@
           "bytes": 31516
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/wulfgard/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/wulfgard.b9d580b2.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "933458912d9b9c61d14299b34bd4de4c97f7007c2ef31d4ac2388150c5b4dc15",
+          "bytes": 7664
         }
       }
     },
@@ -638,8 +777,19 @@
           "bytes": 39764
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/xaihi/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/xaihi.9c949014.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "e9a09d2f90522705e02630888303d51e2fb0bb3a5aa012c9de27a0d93d9bfc67",
+          "bytes": 7828
         }
       }
     },
@@ -678,16 +828,7 @@
         "official-icon": {
           "path": "/images/endfield/operators/antal/official-icon.webp",
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/antal.78d45318.png",
-          "status": "cached",
-          "size": [
-            120,
-            120
-          ],
-          "sourceSize": [
-            120,
-            120
-          ],
-          "sha256": "64ac7fd19246e1eed04248b792ee36224768adaff68118abf29feb8d44d1404a",
+          "status": "already-present",
           "bytes": 7042
         }
       }
@@ -707,16 +848,7 @@
         "official-icon": {
           "path": "/images/endfield/operators/catcher/official-icon.webp",
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/catcher.68b395f9.png",
-          "status": "cached",
-          "size": [
-            119,
-            120
-          ],
-          "sourceSize": [
-            119,
-            120
-          ],
-          "sha256": "90db7aa4503883dc559e849638b81e30499bac264ef22f967a0c33ed1ba25680",
+          "status": "already-present",
           "bytes": 7446
         }
       }
@@ -736,16 +868,7 @@
         "official-icon": {
           "path": "/images/endfield/operators/estella/official-icon.webp",
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/estella.b761d517.png",
-          "status": "cached",
-          "size": [
-            111,
-            120
-          ],
-          "sourceSize": [
-            111,
-            120
-          ],
-          "sha256": "4250a004ecc0977c68ac098d3135eacbbc7d2f316b31336110f6ed4545c29257",
+          "status": "already-present",
           "bytes": 5666
         }
       }
@@ -763,8 +886,19 @@
           "bytes": 30536
         },
         "official-icon": {
-          "status": "unverified",
-          "reason": "No unique matching detail icon on current official page"
+          "path": "/images/endfield/operators/fluorite/official-icon.webp",
+          "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/fluorite.b83d45cf.png",
+          "status": "cached",
+          "size": [
+            120,
+            120
+          ],
+          "sourceSize": [
+            120,
+            120
+          ],
+          "sha256": "8577a3de15003af99902b3145bf9e532415099d87fa4d4fe8c72f063152014b2",
+          "bytes": 7556
         }
       }
     }
