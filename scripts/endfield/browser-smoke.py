@@ -641,10 +641,10 @@ def smoke_i18n(page, base_url, width):
            label+": complete Typhoeus nine-section guide parity")
     check_overflow(page,label+" Typhoeus")
     page.goto(base_url+"/en/endfield/operators/liino/")
-    verify(page.locator('meta[name="robots"]').get_attribute("content")=="noindex,follow",
-           label+": incomplete Liino preview remains noindex")
+    verify(page.locator('meta[name="robots"][content*="noindex"]').count()==0,
+           label+": editor-approved published Liino is indexable")
     verify(page.locator("#build-finder").count()==1,
-           label+": even preview Liino retains full native Build Finder")
+           label+": published Liino retains full native Build Finder")
     check_overflow(page,label+" Liino")
     # Global language preference survives new navigation and direct DE URL visits.
     page.goto(base_url+"/en/endfield/factory/")
