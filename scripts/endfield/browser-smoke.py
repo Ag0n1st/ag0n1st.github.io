@@ -608,6 +608,24 @@ def smoke_i18n(page, base_url, width):
     verify(page.locator("#build-finder").count()==1,
            label+": even preview Liino retains full native Build Finder")
     check_overflow(page,label+" Liino")
+    # Global language preference survives new navigation and direct DE URL visits.
+    page.goto(base_url+"/en/endfield/factory/")
+    page.evaluate("() => localStorage.setItem('ag0n1st:site-language','en')")
+    page.goto(base_url+"/endfield/fabrik/",wait_until="domcontentloaded")
+    page.wait_for_url("**/en/endfield/factory/")
+    verify(page.locator("html").get_attribute("lang")=="en",
+           label+": global English preference persists across a direct German URL")
+    if width<=760:
+        page.locator(".menu-toggle").click()
+    page.locator('.language-switch a[lang="de"]').click()
+    page.wait_for_url("**/endfield/fabrik/")
+    verify(page.locator("html").get_attribute("lang")=="de" and
+           page.evaluate("() => localStorage.getItem('ag0n1st:site-language')")=="de",
+           label+": manually returning to German updates saved language preference")
+    page.goto(base_url+"/endfield/fabrik/")
+    verify(page.url.endswith("/endfield/fabrik/"),
+           label+": German language selection remains stable after navigation")
+    page.evaluate("() => localStorage.removeItem('ag0n1st:site-language')")
     sitemap=page.request.get(base_url+"/sitemap.xml")
     verify(sitemap.status==200 and
            "<loc>https://ag0n1st.com/en/endfield/operators/si/</loc>" in sitemap.text() and
