@@ -153,19 +153,19 @@
     "attributes": {
       "Agility": {
         "en": "Agility",
-        "de": "Beweglichkeit"
+        "de": "Agility"
       },
       "Intellect": {
         "en": "Intellect",
-        "de": "Intelligenz"
+        "de": "Intellect"
       },
       "Strength": {
         "en": "Strength",
-        "de": "Stärke"
+        "de": "Strength"
       },
       "Will": {
         "en": "Will",
-        "de": "Wille"
+        "de": "Will"
       }
     },
     "elements": {
@@ -219,7 +219,7 @@
     "standardTerms": {
       "Agility": {
         "en": "Agility",
-        "de": "Beweglichkeit"
+        "de": "Agility"
       },
       "Arts": {
         "en": "Arts",
@@ -351,7 +351,7 @@
       },
       "Intellect": {
         "en": "Intellect",
-        "de": "Intelligenz"
+        "de": "Intellect"
       },
       "Main DPS": {
         "en": "Main DPS",
@@ -407,7 +407,7 @@
       },
       "Strength": {
         "en": "Strength",
-        "de": "Stärke"
+        "de": "Strength"
       },
       "Sub DPS": {
         "en": "Sub DPS",
@@ -443,7 +443,7 @@
       },
       "Will": {
         "en": "Will",
-        "de": "Wille"
+        "de": "Will"
       }
     },
     "combatEffects": {
