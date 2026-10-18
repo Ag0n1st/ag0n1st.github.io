@@ -96,7 +96,7 @@ test("overview uses actual ItemIcon and resolved SKPORT names in weapons AND fou
  assert.match(overview,/resolveOfficialItem\(w\.name,"Weapons"\)/);
  assert.match(overview,/resolveOfficialItem\(reference,"Gear"\)/);
  assert.match(overview,/<ItemIcon id=\{w\.official\.id\} lang=\{model\.lang\}\/>/);
- assert.match(overview,/<ItemIcon id=\{part\.official\?\.id\?\?part\.reference\} lang=\{model\.lang\} \/>/);
+ assert.ok(overview.includes("<ItemIcon id={part.official?.id??part.reference} lang={model.lang}/>"));
  assert.match(overview,/trItemName\(w\.official\?\.id\?\?w\.name,/);
  assert.match(overview,/trItemName\(part\.official\?\.id\?\?part\.reference,/);
  assert.doesNotMatch(overview,/\{featuredBuild\.items\.map\(item=/);
