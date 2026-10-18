@@ -1130,7 +1130,28 @@
           "de": "Dawnstar Concerto"
         }
       },
-      "talents": {}
+      "talents": {
+        "stalwart": {
+          "en": "Stalwart",
+          "de": "Stalwart"
+        },
+        "idol-zone": {
+          "en": "Idol Zone",
+          "de": "Idol Zone"
+        },
+        "starry-boost-of-1st-magnitude": {
+          "en": "Starry Boost of 1st Magnitude",
+          "de": "Starry Boost of 1st Magnitude"
+        },
+        "idol-passion": {
+          "en": "Idol Passion",
+          "de": "Idol Passion"
+        },
+        "stage-vibe-that-lingers": {
+          "en": "Stage Vibe That Lingers",
+          "de": "Stage Vibe That Lingers"
+        }
+      }
     },
     "mi-fu": {
       "operator": "Mi Fu",
@@ -1268,7 +1289,28 @@
           "de": "Spielverderber verboten"
         }
       },
-      "talents": {}
+      "talents": {
+        "keen-mind": {
+          "en": "Keen Mind",
+          "de": "Keen Mind"
+        },
+        "proxy-s-patronage": {
+          "en": "Proxy's Patronage",
+          "de": "Proxy's Patronage"
+        },
+        "unsoiled-brush": {
+          "en": "Unsoiled Brush",
+          "de": "Unsoiled Brush"
+        },
+        "ware-is-the-geist": {
+          "en": "Ware is the Geist",
+          "de": "Ware is the Geist"
+        },
+        "ink-spirit-aide": {
+          "en": "Ink Spirit Aide",
+          "de": "Ink Spirit Aide"
+        }
+      }
     },
     "snowshine": {
       "operator": "Snowshine",
@@ -1337,7 +1379,28 @@
           "de": "Call of Ice Mountain"
         }
       },
-      "talents": {}
+      "talents": {
+        "skirmisher": {
+          "en": "Skirmisher",
+          "de": "Skirmisher"
+        },
+        "prey-checklist": {
+          "en": "Prey Checklist",
+          "de": "Prey Checklist"
+        },
+        "huntress-s-focus": {
+          "en": "Huntress's Focus",
+          "de": "Huntress's Focus"
+        },
+        "lithic-murmurs": {
+          "en": "Lithic Murmurs",
+          "de": "Lithic Murmurs"
+        },
+        "life-in-the-spores": {
+          "en": "Life in the Spores",
+          "de": "Life in the Spores"
+        }
+      }
     },
     "wulfgard": {
       "operator": "Wulfgard",
