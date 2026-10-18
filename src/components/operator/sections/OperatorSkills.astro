@@ -5,7 +5,7 @@ import MaterialCosts from "../../endfield/MaterialCosts.astro";
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
 const translateUi=(value:string)=>guideText(model.lang,value);
-const { guide, preview, gameData, extraData, localized, trMetric, trReq, trTalent, combatTalents, shipTalents, attributeNodes, otherTalents, importedBySlot, skillImage, defaultSkillRank, slotLabels, slotIcons, priority, supportPriority, priorityOrder, priorityComparisons } = model;
+const { guide, preview, gameData, extraData, localized, trMetric, trReq, trTalent, trSkillName, trTalentName, combatTalents, shipTalents, attributeNodes, otherTalents, importedBySlot, skillImage, defaultSkillRank, slotLabels, slotIcons, priority, supportPriority, priorityOrder, priorityComparisons } = model;
 const prioritySets = [
   {label:supportPriority?"DPS":"",priority,order:priorityOrder,comparisons:priorityComparisons},
   ...(supportPriority ? [{label:"Support",priority:supportPriority,order:supportPriority.order,comparisons:supportPriority.comparisons}] : [])
@@ -35,7 +35,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
               return <article class="op-cardlet">
                 <div class="op-line">
                   <div class="op-mini-art">{skillImage(key) ? <img class="op-skill-icon" src={skillImage(key)} loading="lazy" decoding="async" alt="" /> : slotIcons[key]}</div>
-                  <div class="op-line-label"><span class="op-chip">{slotLabels[key]}</span><strong>{official?.name || "[Offizieller Skillname]"}</strong></div>
+                  <div class="op-line-label"><span class="op-chip">{slotLabels[key]}</span><strong>{trSkillName(key,official?.name) || "[Offizieller Skillname]"}</strong></div>
                 </div>
                 {official && <p class="op-muted" style="font-size:11px;margin:9px 0">SKPORT Wiki · {translateUi("Quelle: SKPORT-Wiki · Datenstand")} {gameData?.source.snapshot} · Original: {gameData?.source.language.toUpperCase()}{localized ? " · German editorial translation" : ""}</p>}
                 {(localized?.skills[key]?.description || official?.description) && <div class="op-skill-description op-body-copy">{localized?.skills[key]?.description || official?.description}</div>}
@@ -68,7 +68,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
                         <h4 style="margin:17px 0 8px">{translateUi("Materialkosten der einzelnen Skillstufen")}</h4>
                         <div class="op-table-wrap"><table class="op-table">
                           <thead><tr><th>{translateUi("Skillstufe")}</th><th>{translateUi("Materialien")}</th></tr></thead>
-                          <tbody>{official.upgradeCosts.map(level=><tr><td>{level.rank}</td><td><MaterialCosts items={level.items} translatedNames={localized?.materials} fallbackNames={extraData?.materials} /></td></tr>)}</tbody>
+                          <tbody>{official.upgradeCosts.map(level=><tr><td>{level.rank}</td><td><MaterialCosts items={level.items} translatedNames={localized?.materials} fallbackNames={extraData?.materials} lang={model.lang} /></td></tr>)}</tbody>
                         </table></div>
                         <p class="op-muted" style="font-size:11px;margin-top:10px">{translateUi("Quelle: SKPORT-Wiki. Einzelkosten je Stufe, keine aufsummierten Kosten.")}</p>
                       </> : <p class="op-muted" style="font-size:11px;margin-top:10px">{translateUi("Materialkosten folgen nach Zuordnung ihrer Item-IDs.")}</p>}
@@ -88,7 +88,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
           <h3>{title}</h3>
           {talentLevels.length ? <div class="op-two">
             {talentLevels.map(t=><article class="op-cardlet">
-                <div class="op-line"><div class="op-mini-art">[Icon]</div><strong>{localized?.talents[t.id]?.name || t.name}</strong></div>
+                <div class="op-line"><div class="op-mini-art">[Icon]</div><strong>{trTalentName(t.id,model.lang==="de"?localized?.talents[t.id]?.name??t.name:t.name)}</strong></div>
                 <p class="op-muted" style="font-size:11px">{localized ? "SKPORT · deutsche Übersetzung" : "SKPORT Original · Englisch"}</p>
                 <p class="op-body-copy">{trTalent(t.id,t.levels.length-1,t.levels.at(-1)?.effect || "")}</p>
                 {(talentCategory === "combat" || talentCategory === "ship") && guide.skills[talentCategory === "combat" ? "combatTalents" : "shipTalents"].find(guideTalent => guideTalent.talentId === t.id)?.evaluation &&
@@ -98,7 +98,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
                     <thead><tr><th>{translateUi("Stufe")}</th><th>{translateUi("Offizieller Effekt")}</th><th>{translateUi("Voraussetzungen")}</th><th>{translateUi("Materialien")}</th></tr></thead>
                     <tbody>{t.levels.map((level,i)=><tr>
                       <td>{level.name}</td><td class="op-body-copy">{trTalent(t.id,i,level.effect)}</td>
-                      <td>{level.requirements.map(trReq).join(" · ") || "–"}</td><td><MaterialCosts items={level.cost} translatedNames={localized?.materials} fallbackNames={extraData?.materials} /></td>
+                      <td>{level.requirements.map(trReq).join(" · ") || "–"}</td><td><MaterialCosts items={level.cost} translatedNames={localized?.materials} fallbackNames={extraData?.materials} lang={model.lang} /></td>
                     </tr>)}</tbody>
                   </table></div>
                 </details>

@@ -74,6 +74,13 @@ def smoke(page, base_url, width):
            label + ": positive ease rating replaces negative difficulty heading")
     verify(page.locator("#uebersicht .op-rating").first.locator(".op-meter i.active").count() == 5,
            label + ": Liino difficulty 1 renders five beginner-friendliness bars")
+    gradient = page.locator("#uebersicht .op-rating").first.locator(".op-meter i.active").evaluate_all(
+        "(bars)=>bars.map(el=>({image:getComputedStyle(el).backgroundImage,position:getComputedStyle(el).backgroundPositionX}))"
+    )
+    verify(len(gradient)==5 and all("gradient" in g["image"] for g in gradient)
+           and gradient[0]["position"] != gradient[4]["position"],
+           label+": each rating bar reveals a fixed position of ONE magenta-to-cyan scale")
+
     verify(page.locator("#operator-kit").get_by_text("Ressourcen & Verfügbarkeit").count() == 0,
            label + ": obsolete resources block removed")
     verify(page.locator("#operator-kit").get_by_text("Liino unterstützt ihr Team").count() == 1,
@@ -616,6 +623,21 @@ def smoke_i18n(page, base_url, width):
     for locale,prefix in [("de",""),("en","/en")]:
         home=prefix+"/"
         page.goto(base_url+home)
+        social_links=page.locator("footer .social-links a").evaluate_all(
+            "(els)=>els.map(el=>({name:el.getAttribute('aria-label'),href:el.getAttribute('href'),hasIcon:!!el.querySelector('svg path')}))"
+        )
+        expected_socials=[
+            ("Twitch","https://www.twitch.tv/ag0n1st"),
+            ("YouTube","https://www.youtube.com/@Ag0n1st"),
+            ("TikTok","https://www.tiktok.com/@ag0n1st"),
+            ("Instagram","https://www.instagram.com/ag0n1st/"),
+            ("X","https://x.com/Ag0n1st"),
+            ("Discord","https://discord.gg/v2h9KKT")
+        ]
+        verify([(x["name"],x["href"]) for x in social_links]==expected_socials
+               and all(x["hasIcon"] for x in social_links),
+               label+": "+locale+" global footer contains six correct social logos in owner order")
+        check_overflow(page,label+" "+locale+" homepage with six footer icons")
         cards=page.locator("#beitraege .guide-teaser-card")
         verify(cards.count()==3,label+": "+locale+" homepage contains three newest guides")
         hrefs=cards.locator("a.guide-teaser-link").evaluate_all("(els)=>els.map(el=>new URL(el.href).pathname)")
@@ -630,6 +652,12 @@ def smoke_i18n(page, base_url, width):
         verify(first.locator("svg.guide-category-icon").count()==1 and
                ("Charakter" if locale=="de" else "Character") in (first.get_attribute("aria-label") or ""),
                label+": category uses Character naming in "+locale)
+        page.goto(base_url+("/en/endfield/operators/" if locale=="en" else "/endfield/operatoren/"))
+        elements=page.locator(".op-grid .op-element-chip")
+        verify(elements.count()>=3 and elements.first.get_attribute("data-element") in ("cryo","electric","nature"),
+               label+": "+locale+" operator index elements have source-keyed colored chips")
+        verify("rgb" in elements.first.evaluate("(el)=>getComputedStyle(el).color"),
+               label+": "+locale+" element colors are applied through the shared stylesheet")
         page.goto(base_url+prefix+"/endfield/")
         guide_cards=page.locator(".endfield-guide-teasers .guide-teaser-card")
         verify(guide_cards.count()==3,label+": "+locale+" Endfield overview lists three guides")

@@ -365,3 +365,13 @@ h1 { margin: 27px 0 17px; font-size: clamp(56px, 6.3vw, 82px); line-height: .95;
 /* Global placeholder destinations are marked without increasing header height. */
 .main-nav a[href="/nte/"],.main-nav a[href="/en/nte/"],.main-nav a[href="/about/"],.main-nav a[href="/en/about/"]{text-decoration:none!important;padding-top:33px;padding-bottom:23px}
 .main-nav a[href="/nte/"]::before,.main-nav a[href="/en/nte/"]::before,.main-nav a[href="/about/"]::before,.main-nav a[href="/en/about/"]::before{position:absolute;content:"🔧";font-size:10px;line-height:1;top:16px;left:50%;transform:translateX(-50%)}
+
+/* Six ordered socials from the single shared SocialLinks component. Keep the
+   center logo and copyright from colliding with the icons on narrow screens. */
+.social-links a{flex:0 0 34px}
+@media(max-width:880px){
+  .site-footer{grid-template-columns:minmax(0,1fr);justify-items:center;gap:13px;text-align:center;padding:22px 16px}
+  .site-footer .social-links{justify-content:center;flex-wrap:wrap;max-width:100%}
+  .site-footer .footer-wordmark,.site-footer .copyright{justify-self:center;text-align:center}
+}
+@media(max-width:360px){.site-footer .social-links{gap:6px}.social-links a{width:32px;height:32px;flex-basis:32px}}

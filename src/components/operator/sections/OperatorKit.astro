@@ -15,7 +15,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
           <div class="op-info-grid">{[
               ["Klasse",trTerm(gameData?.operator.class)],["Element",trTerm(gameData?.operator.element)],
               ["Fraktion",gameData?.operator.faction],["Hauptattribut",trTerm(extraData?.attributes.mainAttribute)],
-              ["Sekundärattribut",trTerm(extraData?.attributes.secondaryAttribute)],["Waffentyp",gameData?.operator.weaponType]
+              ["Sekundärattribut",trTerm(extraData?.attributes.secondaryAttribute)],["Waffentyp",trTerm(gameData?.operator.weaponType)]
             ].map(([label,value])=><div class="op-info-field"><small>{label}</small><strong>{value || "[Spieldaten folgen]"}</strong></div>)}</div>
           <p class="op-muted op-body-copy">{guide.operatorKit.playstyle || "[Spielweise und Grundlagen folgen]"}</p>
         </div>
@@ -31,7 +31,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
             <details class="op-details"><summary>{translateUi("Materialkosten nach Operator-Level")}</summary>
               <div class="op-details-body op-table-wrap"><table class="op-table">
                 <thead><tr><th>{translateUi("Operator-Level")}</th><th>{translateUi("Materialien laut Wiki")}</th></tr></thead>
-                <tbody>{extraData.attributes.levelCosts.map(row=><tr><td>{row.level}</td><td><MaterialCosts items={row.items} translatedNames={localized?.materials} fallbackNames={extraData.materials} /></td></tr>)}</tbody>
+                <tbody>{extraData.attributes.levelCosts.map(row=><tr><td>{row.level}</td><td><MaterialCosts items={row.items} translatedNames={localized?.materials} fallbackNames={extraData.materials} lang={model.lang} /></td></tr>)}</tbody>
               </table></div>
             </details>
           </> : <p class="op-placeholder">{translateUi("[Attributwerte werden nach dem SKPORT-Import angezeigt]")}</p>}
@@ -45,7 +45,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
             <thead><tr><th>{translateUi("Aufstieg")}</th><th>{translateUi("Freischaltung")}</th><th>{translateUi("Voraussetzung")}</th><th>{translateUi("Materialien")}</th></tr></thead>
             <tbody>{extraData ? extraData.promotions.map(p=><tr>
               <td><strong>{trPromotion(p.name)?.name ?? p.name}</strong></td><td>{trPromotion(p.name)?.effect ?? p.effect}</td><td>{trReq(p.requirement)}</td>
-              <td><MaterialCosts items={p.cost} translatedNames={localized?.materials} fallbackNames={extraData?.materials} /></td>
+              <td><MaterialCosts items={p.cost} translatedNames={localized?.materials} fallbackNames={extraData?.materials} lang={model.lang} /></td>
             </tr>) : [1,2,3,4,5].map(n=><tr><td>[Stufe {n}]</td><td>[Freischaltung]</td><td>[Level/Story]</td><td>[Materialien]</td></tr>)}</tbody>
           </table></div>
           </div>

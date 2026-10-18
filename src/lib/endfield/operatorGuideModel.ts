@@ -8,6 +8,7 @@ import { getOfficialGear } from "./equipmentDetails";
 import { getBuildRequirements } from "./buildFinder.mjs";
 import { metaAccessibilityFromRequirements } from "./metaAccessibility.mjs";
 import { getMetaPartnerIds } from "./metaPartners.mjs";
+import {gameTerm,gameItemName,gameSkillName,gameTalentName} from "./terminology";
 
 // Shared presentation data for all nine guide sections.
 // Source values and editorial recommendations remain separate.
@@ -23,9 +24,12 @@ export interface OperatorGuideProps {
 }
 
 export function createOperatorGuideModel({ guide, operatorName, preview = false, gameData, extraData, localized, lang = "de" }: OperatorGuideProps) {
-const trTerm = (word?: string) => word ? localized?.operatorTerms[word] ?? word : "";
-const trMetric = (name:string) => localized?.metricLabels[name] ?? name;
-const trReq = (req:string) => localized?.requirementLabels[req] ?? req;
+const trTerm=(word?:string)=>gameTerm(word,lang,word?(lang==="de"?localized?.operatorTerms[word]??word:word):undefined);
+const trItemName=(id:string|number,fallback?:string)=>gameItemName(id,lang,fallback);
+const trSkillName=(slot:string,english?:string)=>gameSkillName(guide.operator,slot,lang,lang==="de"?localized?.skills[slot]?.name??english:english);
+const trTalentName=(id:string,english?:string)=>gameTalentName(guide.operator,id,lang,english);
+const trMetric=(name:string)=>gameTerm(name,lang,lang==="de"?localized?.metricLabels[name]??name:name);
+const trReq=(req:string)=>gameTerm(req,lang,lang==="de"?localized?.requirementLabels[req]??req:req);
 const trTalent = (id:string,index:number,english:string) =>
   localized?.talents[id]?.levelEffects[index] ?? english;
 const trPotential = (level:number,english:string) =>
@@ -39,7 +43,7 @@ const attributeNodes = extraData?.talents.filter(t => t.category === "attribute"
 const otherTalents = extraData?.talents.filter(t => t.category === "other") ?? [];
 function formatCost(items: ImportedItemCost[]):string {
   if (!items?.length) return "–";
-  return items.map(item => (localized?.materials[item.id] ?? extraData?.materials[item.id]?.name ?? "Item "+item.id) +
+  return items.map(item => (trItemName(item.id,lang==="de"?localized?.materials[item.id]??extraData?.materials[item.id]?.name:extraData?.materials[item.id]?.name)) +
     " × " + item.count.toLocaleString(lang==="en"?"en-US":"de-DE")).join(" · ");
 }
 
@@ -51,12 +55,7 @@ const defaultSkillRank = 8; // Rank 9, never a guide skill-priority recommendati
 
 
 const missing = lang==="en"?"[Not specified yet]":"[Noch keine Angaben]";
-const slotLabels: Record<string,string> = lang==="en"?{
-  basic:"Basic Attack",battle:"Battle Skill",combo:"Combo Skill",ultimate:"Ultimate"
-}:{
-  basic: "Basis-Angriff", battle: "Kampffertigkeit",
-  combo: "Kombofertigkeit", ultimate: "Ultimative Fertigkeit"
-};
+const slotLabels:Record<string,string>=Object.fromEntries([["basic","Basic Attack"],["battle","Battle Skill"],["combo","Combo Skill"],["ultimate","Ultimate"]].map(([slot,name])=>[slot,gameTerm(name,lang)]));
 const slotIcons: Record<string,string> = {
   basic: "BA", battle: "KF", combo: "KO", ultimate: "ULT"
 };
@@ -64,9 +63,7 @@ const priority = guide.skills.priority;
 const supportPriority = guide.skills.supportPriority;
 const priorityOrder = priority?.order ?? ["basic","battle","combo","ultimate"];
 const priorityComparisons = priority?.comparisons ?? ["·","·","·"];
-const weaponLabels: Record<string,string> = {
-  bis:"Best in Slot",bp:"Battle Pass",f2p:"F2P",alternative:"Alternative"
-};
+const weaponLabels:Record<string,string>={bis:gameTerm("Best in Slot",lang),bp:gameTerm("Battle Pass",lang),f2p:gameTerm("F2P",lang),alternative:gameTerm("Alternative",lang)};
 const roleLabels: Record<string,string> = {
   "main-dps":"Main DPS","sub-dps":"Sub DPS",support:"Support",
   hybrid:"Hybrid",control:"Control",other:lang==="en"?"Other":"Weitere Rolle"
@@ -215,7 +212,7 @@ const ratingRows = lang==="en"?[
 const potentialByLevel = new Map(guide.potentials.entries.map(p=>[p.level,p]));
 
   return {
-    guide, operatorName, preview, gameData, extraData, localized, lang, trTerm, trMetric, trReq, trTalent, trPotential, trPromotion, officialPotentials, combatTalents, shipTalents, attributeNodes, otherTalents, formatCost, gameSkills, importedBySlot, skillImage, defaultSkillRank, missing, slotLabels, slotIcons, priority, supportPriority, priorityOrder, priorityComparisons, weaponLabels, roleLabels, stageLabels, showcaseTypeLabels, pullLabels, weapons, demoWeapons, shownWeapons, demoBuilds, builds, featuredBuild, demoTeams, metaTeams, extraTeams, teamRoles, displayTeamMember, teamMemberCard, profilePartners, demoShowcases, showcases, selectedShowcaseIndex, youtubeEmbed, videoEmbed, ratingRows, ratingValues, metaAccessibility, potentialByLevel, getOperatorImageUrl
+    guide, operatorName, preview, gameData, extraData, localized, lang, trTerm, trItemName, trSkillName, trTalentName, trMetric, trReq, trTalent, trPotential, trPromotion, officialPotentials, combatTalents, shipTalents, attributeNodes, otherTalents, formatCost, gameSkills, importedBySlot, skillImage, defaultSkillRank, missing, slotLabels, slotIcons, priority, supportPriority, priorityOrder, priorityComparisons, weaponLabels, roleLabels, stageLabels, showcaseTypeLabels, pullLabels, weapons, demoWeapons, shownWeapons, demoBuilds, builds, featuredBuild, demoTeams, metaTeams, extraTeams, teamRoles, displayTeamMember, teamMemberCard, profilePartners, demoShowcases, showcases, selectedShowcaseIndex, youtubeEmbed, videoEmbed, ratingRows, ratingValues, metaAccessibility, potentialByLevel, getOperatorImageUrl
   };
 }
 

@@ -6,7 +6,7 @@ import { resolveOfficialItem } from "../../../lib/endfield/itemCatalog";
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
 const translateUi=(value:string)=>guideText(model.lang,value);
-const { guide, operatorName, preview, gameData, extraData, trTerm, skillImage, slotLabels, slotIcons, priority, priorityOrder, priorityComparisons, shownWeapons, featuredBuild, videoEmbed, profilePartners, ratingRows, ratingValues, getOperatorImageUrl } = model;
+const { guide, operatorName, preview, gameData, extraData, trTerm, skillImage, slotLabels, slotIcons, priority, priorityOrder, priorityComparisons, shownWeapons, featuredBuild, videoEmbed, profilePartners, ratingRows, ratingValues, trItemName, getOperatorImageUrl } = model;
 const profileBanner=getOperatorImageUrl(guide.operator,"banner") ?? getOperatorImageUrl(guide.operator,"illustration",gameData?.operator.illustrationUrl);
 const bannerIsLocal=Boolean(getOperatorImageUrl(guide.operator,"banner"));
 const overviewWeapons=shownWeapons.map(w=>({
@@ -33,13 +33,13 @@ import { guideText } from "../../../lib/i18n/guideUi";
                 <span class="op-chip is-pink">{gameData ? gameData.operator.rarity + "★" : "[Seltenheit]"}</span>
                 <span class="op-chip">{trTerm(gameData?.operator.class) || "[Klasse]"}</span>
                 <span class="op-chip">{trTerm(gameData?.operator.element) || "[Element]"}</span>
-                <span class="op-chip">{gameData?.operator.weaponType || "[Waffentyp]"}</span>
+                <span class="op-chip">{trTerm(gameData?.operator.weaponType) || "[Waffentyp]"}</span>
               </div>
               {(guide.overview.traits.length>0 || preview) && <>
                 <p>{translateUi("Traits")}</p>
                 <div class="op-chip-row">
                   {guide.overview.traits.length>0
-                    ? guide.overview.traits.map(trait=><span class="op-chip">{trait}</span>)
+                    ? guide.overview.traits.map(trait=><span class="op-chip">{trTerm(trait)}</span>)
                     : <span class="op-chip">{translateUi("[Traits noch nicht eingetragen]")}</span>}
                 </div>
               </>}
@@ -71,16 +71,16 @@ import { guideText } from "../../../lib/i18n/guideUi";
               <h3>{translateUi("Waffen")}</h3>
               {overviewWeapons.length ? <div class="op-quick-weapon-grid">{overviewWeapons.map(w=>
                 <div class="op-quick-weapon-item">
-                  <div class="op-mini-art">{w.official ? <ItemIcon id={w.official.id}/> : <span aria-hidden="true">–</span>}</div>
+                  <div class="op-mini-art">{w.official ? <ItemIcon id={w.official.id} lang={model.lang}/> : <span aria-hidden="true">–</span>}</div>
                   <span class="op-chip">{w.label}</span>
-                  <strong>{w.official?.name??w.name}</strong>
+                  <strong>{trItemName(w.official?.id??w.name,w.official?.name??w.name)}</strong>
                 </div>
               )}</div> : <p class="op-muted">{translateUi("Keine Waffenempfehlungen eingetragen.")}</p>}
             </article>
             <div class="op-two op-quick-stats">
               <article class="op-cardlet">
                 <h3>{translateUi("Ausrüstung")} · {featuredBuild ? featuredBuild.title : "Meta Set"}</h3>
-                {featuredBuild ? <div class="op-gear-parts">{overviewGear.map(part=><div class="op-gear-part"><div class="op-mini-art"><ItemIcon id={part.official?.id??part.reference} /></div><small>{part.official?.name??part.reference}</small></div>)}</div> : <p class="op-placeholder">{translateUi("[Noch kein Ausrüstungs-Build]")}</p>}
+                {featuredBuild ? <div class="op-gear-parts">{overviewGear.map(part=><div class="op-gear-part"><div class="op-mini-art"><ItemIcon id={part.official?.id??part.reference} lang={model.lang}/></div><small>{trItemName(part.official?.id??part.reference,part.official?.name??part.reference)}</small></div>)}</div> : <p class="op-placeholder">{translateUi("[Noch kein Ausrüstungs-Build]")}</p>}
               </article>
               <article class="op-cardlet">
                 <h3>{translateUi("Skill-Priorität")}{guide.skills.supportPriority ? " · DPS" : ""}</h3>
@@ -117,7 +117,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
             const score=ratingValues[key];
             return <div class="op-rating">
               <div class="op-rating-header"><span>{label}</span><span>{score === undefined ? "–" : score} / 5</span></div>
-              <div class="op-meter">{[1,2,3,4,5].map(n=><i class:list={{active:score!==undefined && n<=score}}></i>)}</div>
+              <div class="op-meter">{[1,2,3,4,5].map(n=><i style={`--meter-step:${n}`} class:list={{active:score!==undefined && n<=score}}></i>)}</div>
               <p>{description}</p>
             </div>;
           })}

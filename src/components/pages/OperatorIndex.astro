@@ -3,6 +3,7 @@ import { getOperatorsByRelease } from "../../lib/content/guideFeed";
 import { getImportedOperator } from "../../lib/endfield/operatorData";
 import { getOperatorImageUrl } from "../../lib/endfield/operatorAssets";
 import EndfieldPlaceholder from "../../layouts/EndfieldPlaceholder.astro";
+import {gameTerm} from "../../lib/endfield/terminology";
 import "../../styles/operator-guides.css";
 
 // Published guides and explicitly enabled previews appear automatically.
@@ -37,9 +38,9 @@ const l=(de:string,en:string)=>isEn?en:de;
             <h2>{operator.name}</h2>
             <div class="op-chip-row">
               <span class="op-chip is-pink">{operator.game ? operator.game.rarity + "★" : l("[Seltenheit]","[Rarity]")}</span>
-              <span class="op-chip">{operator.game?.class || l("[Klasse]","[Class]")}</span>
-              <span class="op-chip">{operator.game?.element || l("[Element]","[Element]")}</span>
-              <span class="op-chip">{operator.game?.weaponType || l("[Waffentyp]","[Weapon type]")}</span>
+              <span class="op-chip">{gameTerm(operator.game?.class,lang) || l("[Klasse]","[Class]")}</span>
+              <span class="op-chip op-element-chip" data-element={operator.game?.element?.toLowerCase()}>{gameTerm(operator.game?.element,lang) || l("[Element]","[Element]")}</span>
+              <span class="op-chip">{gameTerm(operator.game?.weaponType,lang) || l("[Waffentyp]","[Weapon type]")}</span>
               {operator.preview && <span class="op-chip is-accent">{l("Layout-Vorschau","Layout Preview")}</span>}
             </div>
             <div class="op-card-bottom"><span>{l("Operator-Guide ansehen","View Operator Guide")}</span><span aria-hidden="true">↗</span></div>

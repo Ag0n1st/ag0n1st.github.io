@@ -32,7 +32,7 @@ test("Liino profile has exact English trait terms, four strengths and two creato
  assert.match(weakness,/Golden Age \(BP\)/);
  assert.match(schema,/traits: z\.array\(/);
  assert.match(profile,/guide\.overview\.traits\.map\(trait=>/);
- assert.match(profile,/\{trait\}/);
+ assert.match(profile,/\{trTerm\(trait\)\}/);
 });
 
 test("two showcased meta teams and three additional teams, all with Liino as support",()=>{

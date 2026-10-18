@@ -1,0 +1,6115 @@
+{
+  "schemaVersion": 1,
+  "guide": "Editable Endfield game terminology only. Change de and/or en values. Editorial prose, guide summaries, numeric game data, and official source descriptions are NOT mass-translated. Items keyed by immutable SKPORT ID; operator skill names keyed by operator slug and skill slot. Empty skill slots mean official data has NOT been imported yet: do not invent names.",
+  "categories": {
+    "classes": {
+      "Caster": {
+        "en": "Caster",
+        "de": "Caster"
+      },
+      "Defender": {
+        "en": "Defender",
+        "de": "Defender"
+      },
+      "Guard": {
+        "en": "Guard",
+        "de": "Guard"
+      },
+      "Striker": {
+        "en": "Striker",
+        "de": "Striker"
+      },
+      "Supporter": {
+        "en": "Supporter",
+        "de": "Supporter"
+      },
+      "Vanguard": {
+        "en": "Vanguard",
+        "de": "Vanguard"
+      }
+    },
+    "traits": {
+      "Amp": {
+        "en": "Amp",
+        "de": "Amp"
+      },
+      "Arts Burst": {
+        "en": "Arts Burst",
+        "de": "Arts Burst"
+      },
+      "Arts Susc.": {
+        "en": "Arts Susc.",
+        "de": "Arts Susc."
+      },
+      "Arts Susceptibility": {
+        "en": "Arts Susceptibility",
+        "de": "Arts Susceptibility"
+      },
+      "Breach": {
+        "en": "Breach",
+        "de": "Breach"
+      },
+      "Combust": {
+        "en": "Combust",
+        "de": "Combust"
+      },
+      "Corrode": {
+        "en": "Corrode",
+        "de": "Corrode"
+      },
+      "Crit": {
+        "en": "Crit",
+        "de": "Crit"
+      },
+      "Crowd Control": {
+        "en": "Crowd Control",
+        "de": "Crowd Control"
+      },
+      "Crush": {
+        "en": "Crush",
+        "de": "Crush"
+      },
+      "Cryo Infliction": {
+        "en": "Cryo Infliction",
+        "de": "Cryo Infliction"
+      },
+      "Damage Dealer": {
+        "en": "Damage Dealer",
+        "de": "Damage Dealer"
+      },
+      "Electric Infliction": {
+        "en": "Electric Infliction",
+        "de": "Electric Infliction"
+      },
+      "Electrify": {
+        "en": "Electrify",
+        "de": "Electrify"
+      },
+      "Electro Infliction": {
+        "en": "Electro Infliction",
+        "de": "Electro Infliction"
+      },
+      "Heat Infliction": {
+        "en": "Heat Infliction",
+        "de": "Heat Infliction"
+      },
+      "HP Treatment": {
+        "en": "HP Treatment",
+        "de": "HP Treatment"
+      },
+      "Knock Down": {
+        "en": "Knock Down",
+        "de": "Knock Down"
+      },
+      "Lift": {
+        "en": "Lift",
+        "de": "Lift"
+      },
+      "Link": {
+        "en": "Link",
+        "de": "Link"
+      },
+      "Nature Infliction": {
+        "en": "Nature Infliction",
+        "de": "Nature Infliction"
+      },
+      "PHY Susc.": {
+        "en": "PHY Susc.",
+        "de": "PHY Susc."
+      },
+      "Physical Susceptibility": {
+        "en": "Physical Susceptibility",
+        "de": "Physical Susceptibility"
+      },
+      "Protect": {
+        "en": "Protect",
+        "de": "Protect"
+      },
+      "Shield": {
+        "en": "Shield",
+        "de": "Shield"
+      },
+      "Solidify": {
+        "en": "Solidify",
+        "de": "Solidify"
+      },
+      "SP Recovery": {
+        "en": "SP Recovery",
+        "de": "SP Recovery"
+      },
+      "Stagger": {
+        "en": "Stagger",
+        "de": "Stagger"
+      },
+      "Susceptibility": {
+        "en": "Susceptibility",
+        "de": "Susceptibility"
+      },
+      "Weakness": {
+        "en": "Weakness",
+        "de": "Weakness"
+      }
+    },
+    "attributes": {
+      "Agility": {
+        "en": "Agility",
+        "de": "Agility"
+      },
+      "Intellect": {
+        "en": "Intellect",
+        "de": "Intellect"
+      },
+      "Strength": {
+        "en": "Strength",
+        "de": "Strength"
+      },
+      "Will": {
+        "en": "Will",
+        "de": "Will"
+      }
+    },
+    "elements": {
+      "Cryo": {
+        "en": "Cryo",
+        "de": "Cryo"
+      },
+      "Electric": {
+        "en": "Electric",
+        "de": "Electric"
+      },
+      "Electro": {
+        "en": "Electro",
+        "de": "Electro"
+      },
+      "Heat": {
+        "en": "Heat",
+        "de": "Heat"
+      },
+      "Nature": {
+        "en": "Nature",
+        "de": "Nature"
+      },
+      "Physical": {
+        "en": "Physical",
+        "de": "Physical"
+      }
+    },
+    "weaponTypes": {
+      "Arts Unit": {
+        "en": "Arts Unit",
+        "de": "Arts Unit"
+      },
+      "Greatsword": {
+        "en": "Greatsword",
+        "de": "Greatsword"
+      },
+      "Handcannon": {
+        "en": "Handcannon",
+        "de": "Handcannon"
+      },
+      "Polearm": {
+        "en": "Polearm",
+        "de": "Polearm"
+      },
+      "Sword": {
+        "en": "Sword",
+        "de": "Sword"
+      }
+    },
+    "standardTerms": {
+      "Agility": {
+        "en": "Agility",
+        "de": "Agility"
+      },
+      "Arts": {
+        "en": "Arts",
+        "de": "Arts"
+      },
+      "Ascension": {
+        "en": "Ascension",
+        "de": "Ascension"
+      },
+      "ATK": {
+        "en": "ATK",
+        "de": "ATK"
+      },
+      "Base ATK": {
+        "en": "Base ATK",
+        "de": "Base ATK"
+      },
+      "Base HP": {
+        "en": "Base HP",
+        "de": "Base HP"
+      },
+      "Base Skill": {
+        "en": "Base Skill",
+        "de": "Base Skill"
+      },
+      "Base Talent": {
+        "en": "Base Talent",
+        "de": "Base Talent"
+      },
+      "Basic ATK": {
+        "en": "Basic ATK",
+        "de": "Basic ATK"
+      },
+      "Basic Attack": {
+        "en": "Basic Attack",
+        "de": "Basis-Angriff"
+      },
+      "Battle Pass": {
+        "en": "Battle Pass",
+        "de": "Battle Pass"
+      },
+      "Battle Skill": {
+        "en": "Battle Skill",
+        "de": "Kampffertigkeit"
+      },
+      "Best in Slot": {
+        "en": "Best in Slot",
+        "de": "Best in Slot"
+      },
+      "Combat Talent": {
+        "en": "Combat Talent",
+        "de": "Combat Talent"
+      },
+      "Combo Skill": {
+        "en": "Combo Skill",
+        "de": "Kombofertigkeit"
+      },
+      "Control": {
+        "en": "Control",
+        "de": "Control"
+      },
+      "Cooldown": {
+        "en": "Cooldown",
+        "de": "Cooldown"
+      },
+      "Crit DMG": {
+        "en": "Crit DMG",
+        "de": "Crit DMG"
+      },
+      "Crit Rate": {
+        "en": "Crit Rate",
+        "de": "Crit Rate"
+      },
+      "Dive Attack": {
+        "en": "Dive Attack",
+        "de": "Dive Attack"
+      },
+      "DMG": {
+        "en": "DMG",
+        "de": "DMG"
+      },
+      "Dodge": {
+        "en": "Dodge",
+        "de": "Dodge"
+      },
+      "Elite": {
+        "en": "Elite",
+        "de": "Elite"
+      },
+      "Energy": {
+        "en": "Energy",
+        "de": "Energy"
+      },
+      "Equipment": {
+        "en": "Equipment",
+        "de": "Equipment"
+      },
+      "F2P": {
+        "en": "F2P",
+        "de": "F2P"
+      },
+      "Final Strike": {
+        "en": "Final Strike",
+        "de": "Final Strike"
+      },
+      "Finisher": {
+        "en": "Finisher",
+        "de": "Finisher"
+      },
+      "Gear": {
+        "en": "Gear",
+        "de": "Gear"
+      },
+      "Gearing": {
+        "en": "Gearing",
+        "de": "Gearing"
+      },
+      "Healing": {
+        "en": "Healing",
+        "de": "Healing"
+      },
+      "HP": {
+        "en": "HP",
+        "de": "HP"
+      },
+      "Hybrid": {
+        "en": "Hybrid",
+        "de": "Hybrid"
+      },
+      "Intellect": {
+        "en": "Intellect",
+        "de": "Intellect"
+      },
+      "Main DPS": {
+        "en": "Main DPS",
+        "de": "Main DPS"
+      },
+      "Mastery": {
+        "en": "Mastery",
+        "de": "Mastery"
+      },
+      "Operator": {
+        "en": "Operator",
+        "de": "Operator"
+      },
+      "Outfitting": {
+        "en": "Outfitting",
+        "de": "Outfitting"
+      },
+      "Potential": {
+        "en": "Potential",
+        "de": "Potential"
+      },
+      "Promotion": {
+        "en": "Promotion",
+        "de": "Promotion"
+      },
+      "Rank": {
+        "en": "Rank",
+        "de": "Rank"
+      },
+      "Skill Level": {
+        "en": "Skill Level",
+        "de": "Skill Level"
+      },
+      "Skill Points": {
+        "en": "Skill Points",
+        "de": "Skill Points"
+      },
+      "Skill Points (SP)": {
+        "en": "Skill Points (SP)",
+        "de": "Skill Points (SP)"
+      },
+      "Skill Rank": {
+        "en": "Skill Rank",
+        "de": "Skill Rank"
+      },
+      "SP": {
+        "en": "SP",
+        "de": "SP"
+      },
+      "SP Cost": {
+        "en": "SP Cost",
+        "de": "SP Cost"
+      },
+      "Strength": {
+        "en": "Strength",
+        "de": "Strength"
+      },
+      "Sub DPS": {
+        "en": "Sub DPS",
+        "de": "Sub DPS"
+      },
+      "Support": {
+        "en": "Support",
+        "de": "Support"
+      },
+      "Talent": {
+        "en": "Talent",
+        "de": "Talent"
+      },
+      "Trust": {
+        "en": "Trust",
+        "de": "Trust"
+      },
+      "Tuning": {
+        "en": "Tuning",
+        "de": "Tuning"
+      },
+      "Ultimate": {
+        "en": "Ultimate",
+        "de": "Ultimative Fertigkeit"
+      },
+      "Ultimate Energy": {
+        "en": "Ultimate Energy",
+        "de": "Ultimate Energy"
+      },
+      "Weapon": {
+        "en": "Weapon",
+        "de": "Weapon"
+      },
+      "Will": {
+        "en": "Will",
+        "de": "Will"
+      }
+    },
+    "combatEffects": {
+      "Amp": {
+        "en": "Amp",
+        "de": "Amp"
+      },
+      "Arts Infliction": {
+        "en": "Arts Infliction",
+        "de": "Arts Infliction"
+      },
+      "Arts Reaction": {
+        "en": "Arts Reaction",
+        "de": "Arts Reaction"
+      },
+      "Arts Susceptibility": {
+        "en": "Arts Susceptibility",
+        "de": "Arts Susceptibility"
+      },
+      "Breach": {
+        "en": "Breach",
+        "de": "Breach"
+      },
+      "Burning": {
+        "en": "Burning",
+        "de": "Burning"
+      },
+      "Combustion": {
+        "en": "Combustion",
+        "de": "Combustion"
+      },
+      "Corrosion": {
+        "en": "Corrosion",
+        "de": "Corrosion"
+      },
+      "Crush": {
+        "en": "Crush",
+        "de": "Crush"
+      },
+      "Cryo Burst": {
+        "en": "Cryo Burst",
+        "de": "Cryo Burst"
+      },
+      "Cryo DMG": {
+        "en": "Cryo DMG",
+        "de": "Cryo DMG"
+      },
+      "Cryo Infliction": {
+        "en": "Cryo Infliction",
+        "de": "Cryo Infliction"
+      },
+      "Dispel": {
+        "en": "Dispel",
+        "de": "Dispel"
+      },
+      "Electric Burst": {
+        "en": "Electric Burst",
+        "de": "Electric Burst"
+      },
+      "Electric DMG": {
+        "en": "Electric DMG",
+        "de": "Electric DMG"
+      },
+      "Electric Infliction": {
+        "en": "Electric Infliction",
+        "de": "Electric Infliction"
+      },
+      "Electrification": {
+        "en": "Electrification",
+        "de": "Electrification"
+      },
+      "Electro Burst": {
+        "en": "Electro Burst",
+        "de": "Electro Burst"
+      },
+      "Electro Infliction": {
+        "en": "Electro Infliction",
+        "de": "Electro Infliction"
+      },
+      "Hast": {
+        "en": "Hast",
+        "de": "Hast"
+      },
+      "Haste": {
+        "en": "Haste",
+        "de": "Haste"
+      },
+      "Heat Burst": {
+        "en": "Heat Burst",
+        "de": "Heat Burst"
+      },
+      "Heat DMG": {
+        "en": "Heat DMG",
+        "de": "Heat DMG"
+      },
+      "Heat Infliction": {
+        "en": "Heat Infliction",
+        "de": "Heat Infliction"
+      },
+      "Knock Down": {
+        "en": "Knock Down",
+        "de": "Knock Down"
+      },
+      "Lift": {
+        "en": "Lift",
+        "de": "Lift"
+      },
+      "Link": {
+        "en": "Link",
+        "de": "Link"
+      },
+      "Nature Burst": {
+        "en": "Nature Burst",
+        "de": "Nature Burst"
+      },
+      "Nature DMG": {
+        "en": "Nature DMG",
+        "de": "Nature DMG"
+      },
+      "Nature Infliction": {
+        "en": "Nature Infliction",
+        "de": "Nature Infliction"
+      },
+      "Physical DMG": {
+        "en": "Physical DMG",
+        "de": "Physical DMG"
+      },
+      "Physical Status": {
+        "en": "Physical Status",
+        "de": "Physical Status"
+      },
+      "Physical Susceptibility": {
+        "en": "Physical Susceptibility",
+        "de": "Physical Susceptibility"
+      },
+      "Protect": {
+        "en": "Protect",
+        "de": "Protect"
+      },
+      "Shield": {
+        "en": "Shield",
+        "de": "Shield"
+      },
+      "Slow": {
+        "en": "Slow",
+        "de": "Slow"
+      },
+      "Solidification": {
+        "en": "Solidification",
+        "de": "Solidification"
+      },
+      "SP Recovery": {
+        "en": "SP Recovery",
+        "de": "SP Recovery"
+      },
+      "SP Return": {
+        "en": "SP Return",
+        "de": "SP Return"
+      },
+      "Stagger": {
+        "en": "Stagger",
+        "de": "Stagger"
+      },
+      "Stun": {
+        "en": "Stun",
+        "de": "Stun"
+      },
+      "Susceptible": {
+        "en": "Susceptible",
+        "de": "Susceptible"
+      },
+      "Vulnerable": {
+        "en": "Vulnerable",
+        "de": "Vulnerable"
+      },
+      "Weakness": {
+        "en": "Weakness",
+        "de": "Weakness"
+      }
+    }
+  },
+  "operatorSkills": {
+    "akekuri": {
+      "operator": "Akekuri",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "alesh": {
+      "operator": "Alesh",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "antal": {
+      "operator": "Antal",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "arcane": {
+      "operator": "Arcane",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "arclight": {
+      "operator": "Arclight",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "ardelia": {
+      "operator": "Ardelia",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "argent-flow": {
+      "operator": "Argent Flow",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "avywenna": {
+      "operator": "Avywenna",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "camille": {
+      "operator": "Camille",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "catcher": {
+      "operator": "Catcher",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "chen-qianyu": {
+      "operator": "Chen Qianyu",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "da-pan": {
+      "operator": "Da Pan",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "ember": {
+      "operator": "Ember",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "endministrator-f": {
+      "operator": "Endministrator (F)",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "endministrator-m": {
+      "operator": "Endministrator (M)",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "estella": {
+      "operator": "Estella",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "fluorite": {
+      "operator": "Fluorite",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "gilberta": {
+      "operator": "Gilberta",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "laevatain": {
+      "operator": "Laevatain",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "last-rite": {
+      "operator": "Last Rite",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "lifeng": {
+      "operator": "Lifeng",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "liino": {
+      "operator": "Liino",
+      "source": "SKPORT imported operator snapshot",
+      "skills": {
+        "basic": {
+          "en": "Starry Heart Throb",
+          "de": "Starry Heart Throb"
+        },
+        "battle": {
+          "en": "Dazzling Focus",
+          "de": "Dazzling Focus"
+        },
+        "combo": {
+          "en": "Delightful Harmonics",
+          "de": "Delightful Harmonics"
+        },
+        "ultimate": {
+          "en": "Dawnstar Concerto",
+          "de": "Dawnstar Concerto"
+        }
+      },
+      "talents": {
+        "stalwart": {
+          "en": "Stalwart",
+          "de": "Stalwart"
+        },
+        "idol-zone": {
+          "en": "Idol Zone",
+          "de": "Idol Zone"
+        },
+        "starry-boost-of-1st-magnitude": {
+          "en": "Starry Boost of 1st Magnitude",
+          "de": "Starry Boost of 1st Magnitude"
+        },
+        "idol-passion": {
+          "en": "Idol Passion",
+          "de": "Idol Passion"
+        },
+        "stage-vibe-that-lingers": {
+          "en": "Stage Vibe That Lingers",
+          "de": "Stage Vibe That Lingers"
+        }
+      }
+    },
+    "mi-fu": {
+      "operator": "Mi Fu",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "perlica": {
+      "operator": "Perlica",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "pogranichnik": {
+      "operator": "Pogranichnik",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "purrchena": {
+      "operator": "Purrchena",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "rossi": {
+      "operator": "Rossi",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "si": {
+      "operator": "Si",
+      "source": "SKPORT imported operator snapshot",
+      "skills": {
+        "basic": {
+          "en": "Artistic Urge",
+          "de": "Schaffensdrang"
+        },
+        "battle": {
+          "en": "Brushwork Realm",
+          "de": "Dimension der Pinselkunst"
+        },
+        "combo": {
+          "en": "Fully Envisioned",
+          "de": "Vision vor Auge"
+        },
+        "ultimate": {
+          "en": "No One Spoils the Fun",
+          "de": "Spielverderber verboten"
+        }
+      },
+      "talents": {
+        "keen-mind": {
+          "en": "Keen Mind",
+          "de": "Keen Mind"
+        },
+        "proxy-s-patronage": {
+          "en": "Proxy's Patronage",
+          "de": "Proxy's Patronage"
+        },
+        "unsoiled-brush": {
+          "en": "Unsoiled Brush",
+          "de": "Unsoiled Brush"
+        },
+        "ware-is-the-geist": {
+          "en": "Ware is the Geist",
+          "de": "Ware is the Geist"
+        },
+        "ink-spirit-aide": {
+          "en": "Ink Spirit Aide",
+          "de": "Ink Spirit Aide"
+        }
+      }
+    },
+    "snowshine": {
+      "operator": "Snowshine",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "tangtang": {
+      "operator": "Tangtang",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "typhoeus": {
+      "operator": "Typhoeus",
+      "source": "SKPORT imported operator snapshot",
+      "skills": {
+        "basic": {
+          "en": "Wildlands Huntress",
+          "de": "Wildlands Huntress"
+        },
+        "battle": {
+          "en": "Piercing Arrows of the Woods",
+          "de": "Piercing Arrows of the Woods"
+        },
+        "combo": {
+          "en": "Rampant Thorns",
+          "de": "Rampant Thorns"
+        },
+        "ultimate": {
+          "en": "Call of Ice Mountain",
+          "de": "Call of Ice Mountain"
+        }
+      },
+      "talents": {
+        "skirmisher": {
+          "en": "Skirmisher",
+          "de": "Skirmisher"
+        },
+        "prey-checklist": {
+          "en": "Prey Checklist",
+          "de": "Prey Checklist"
+        },
+        "huntress-s-focus": {
+          "en": "Huntress's Focus",
+          "de": "Huntress's Focus"
+        },
+        "lithic-murmurs": {
+          "en": "Lithic Murmurs",
+          "de": "Lithic Murmurs"
+        },
+        "life-in-the-spores": {
+          "en": "Life in the Spores",
+          "de": "Life in the Spores"
+        }
+      }
+    },
+    "wulfgard": {
+      "operator": "Wulfgard",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "xaihi": {
+      "operator": "Xaihi",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "yvonne": {
+      "operator": "Yvonne",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    },
+    "zhuang-fangyi": {
+      "operator": "Zhuang Fangyi",
+      "source": "catalog-index-only",
+      "skills": {
+        "basic": {
+          "en": "",
+          "de": ""
+        },
+        "battle": {
+          "en": "",
+          "de": ""
+        },
+        "combo": {
+          "en": "",
+          "de": ""
+        },
+        "ultimate": {
+          "en": "",
+          "de": ""
+        }
+      },
+      "talents": {}
+    }
+  },
+  "itemsById": {
+    "26": {
+      "category": "Item Files",
+      "en": "Rhodes Island Special Ration",
+      "de": "Rhodes Island Special Ration"
+    },
+    "27": {
+      "category": "Valuables Stash",
+      "en": "Chestnut Honey",
+      "de": "Chestnut Honey"
+    },
+    "28": {
+      "category": "Valuables Stash",
+      "en": "Fine Nodule [L]",
+      "de": "Fine Nodule [L]"
+    },
+    "29": {
+      "category": "Valuables Stash",
+      "en": "Rare Nodule [L]",
+      "de": "Rare Nodule [L]"
+    },
+    "30": {
+      "category": "Valuables Stash",
+      "en": "Rare Nodule [M]",
+      "de": "Rare Nodule [M]"
+    },
+    "31": {
+      "category": "Valuables Stash",
+      "en": "Rare Nodule [S]",
+      "de": "Rare Nodule [S]"
+    },
+    "32": {
+      "category": "Valuables Stash",
+      "en": "Emergency Sanity Concentrate",
+      "de": "Emergency Sanity Concentrate"
+    },
+    "33": {
+      "category": "Valuables Stash",
+      "en": "Emergency Sanity Booster",
+      "de": "Emergency Sanity Booster"
+    },
+    "34": {
+      "category": "Valuables Stash",
+      "en": "Keen Wuling Detector",
+      "de": "Keen Wuling Detector"
+    },
+    "35": {
+      "category": "Valuables Stash",
+      "en": "Keen Wuling Compass",
+      "de": "Keen Wuling Compass"
+    },
+    "36": {
+      "category": "Valuables Stash",
+      "en": "Keen Valley Detector",
+      "de": "Keen Valley Detector"
+    },
+    "37": {
+      "category": "Weapons",
+      "en": "Forgeborn Scathe",
+      "de": "Forgeborn Scathe"
+    },
+    "38": {
+      "category": "Weapons",
+      "en": "Tarr 11",
+      "de": "Tarr 11"
+    },
+    "39": {
+      "category": "Weapons",
+      "en": "Peco 5",
+      "de": "Peco 5"
+    },
+    "40": {
+      "category": "Weapons",
+      "en": "Jiminy 12",
+      "de": "Jiminy 12"
+    },
+    "41": {
+      "category": "Weapons",
+      "en": "Opero 77",
+      "de": "Opero 77"
+    },
+    "42": {
+      "category": "Weapons",
+      "en": "Darhoff 7",
+      "de": "Darhoff 7"
+    },
+    "43": {
+      "category": "Weapons",
+      "en": "Finchaser 3.0",
+      "de": "Finchaser 3.0"
+    },
+    "44": {
+      "category": "Weapons",
+      "en": "Industry 0.1",
+      "de": "Industry 0.1"
+    },
+    "45": {
+      "category": "Weapons",
+      "en": "Former Finery",
+      "de": "Former Finery"
+    },
+    "46": {
+      "category": "Weapons",
+      "en": "Clannibal",
+      "de": "Clannibal"
+    },
+    "47": {
+      "category": "Weapons",
+      "en": "Detonation Unit",
+      "de": "Detonation Unit"
+    },
+    "48": {
+      "category": "Weapons",
+      "en": "White Night Nova",
+      "de": "White Night Nova"
+    },
+    "49": {
+      "category": "Weapons",
+      "en": "Dreams of the Starry Beach",
+      "de": "Dreams of the Starry Beach"
+    },
+    "50": {
+      "category": "Weapons",
+      "en": "Quencher",
+      "de": "Quencher"
+    },
+    "51": {
+      "category": "Weapons",
+      "en": "Aggeloslayer",
+      "de": "Aggeloslayer"
+    },
+    "52": {
+      "category": "Weapons",
+      "en": "Fluorescent Roc",
+      "de": "Fluorescent Roc"
+    },
+    "53": {
+      "category": "Weapons",
+      "en": "Hypernova Auto",
+      "de": "Hypernova Auto"
+    },
+    "54": {
+      "category": "Weapons",
+      "en": "Prominent Edge",
+      "de": "Prominent Edge"
+    },
+    "55": {
+      "category": "Weapons",
+      "en": "Pathfinder's Beacon",
+      "de": "Pathfinder's Beacon"
+    },
+    "56": {
+      "category": "Weapons",
+      "en": "Howling Guard",
+      "de": "Howling Guard"
+    },
+    "57": {
+      "category": "Weapons",
+      "en": "Long Road",
+      "de": "Long Road"
+    },
+    "58": {
+      "category": "Weapons",
+      "en": "Wave Tide",
+      "de": "Wave Tide"
+    },
+    "59": {
+      "category": "Weapons",
+      "en": "Opus: The Living",
+      "de": "Opus: The Living"
+    },
+    "60": {
+      "category": "Weapons",
+      "en": "Seeker of Dark Lung",
+      "de": "Seeker of Dark Lung"
+    },
+    "61": {
+      "category": "Weapons",
+      "en": "Grand Vision",
+      "de": "Grand Vision"
+    },
+    "62": {
+      "category": "Weapons",
+      "en": "Never Rest",
+      "de": "Never Rest"
+    },
+    "63": {
+      "category": "Weapons",
+      "en": "Oblivion",
+      "de": "Oblivion"
+    },
+    "64": {
+      "category": "Weapons",
+      "en": "Chivalric Virtues",
+      "de": "Chivalric Virtues"
+    },
+    "65": {
+      "category": "Weapons",
+      "en": "Opus: Etch Figure",
+      "de": "Opus: Etch Figure"
+    },
+    "66": {
+      "category": "Weapons",
+      "en": "Thunderberge",
+      "de": "Thunderberge"
+    },
+    "67": {
+      "category": "Weapons",
+      "en": "Navigator",
+      "de": "Navigator"
+    },
+    "68": {
+      "category": "Weapons",
+      "en": "Mountain Bearer",
+      "de": "Mountain Bearer"
+    },
+    "69": {
+      "category": "Weapons",
+      "en": "Umbral Torch",
+      "de": "Umbral Torch"
+    },
+    "70": {
+      "category": "Weapons",
+      "en": "Khravengger",
+      "de": "Khravengger"
+    },
+    "71": {
+      "category": "Weapons",
+      "en": "Rapid Ascent",
+      "de": "Rapid Ascent"
+    },
+    "72": {
+      "category": "Weapons",
+      "en": "Eminent Repute",
+      "de": "Eminent Repute"
+    },
+    "73": {
+      "category": "Weapons",
+      "en": "Exemplar",
+      "de": "Exemplar"
+    },
+    "74": {
+      "category": "Weapons",
+      "en": "Sundered Prince",
+      "de": "Sundered Prince"
+    },
+    "75": {
+      "category": "Weapons",
+      "en": "JET",
+      "de": "JET"
+    },
+    "76": {
+      "category": "Weapons",
+      "en": "Wedge",
+      "de": "Wedge"
+    },
+    "77": {
+      "category": "Weapons",
+      "en": "Valiant",
+      "de": "Valiant"
+    },
+    "78": {
+      "category": "Weapons",
+      "en": "Thermite Cutter",
+      "de": "Thermite Cutter"
+    },
+    "79": {
+      "category": "Weapons",
+      "en": "Delivery Guaranteed",
+      "de": "Delivery Guaranteed"
+    },
+    "80": {
+      "category": "Weapons",
+      "en": "Artzy Tyrannical",
+      "de": "Artzy Tyrannical"
+    },
+    "81": {
+      "category": "Weapons",
+      "en": "OBJ Edge of Lightness",
+      "de": "OBJ Edge of Lightness"
+    },
+    "82": {
+      "category": "Weapons",
+      "en": "Finishing Call",
+      "de": "Finishing Call"
+    },
+    "83": {
+      "category": "Weapons",
+      "en": "Aspirant",
+      "de": "Aspirant"
+    },
+    "84": {
+      "category": "Weapons",
+      "en": "Ancient Canal",
+      "de": "Ancient Canal"
+    },
+    "85": {
+      "category": "Weapons",
+      "en": "Sundering Steel",
+      "de": "Sundering Steel"
+    },
+    "86": {
+      "category": "Weapons",
+      "en": "OBJ Heavy Burden",
+      "de": "OBJ Heavy Burden"
+    },
+    "87": {
+      "category": "Weapons",
+      "en": "OBJ Velocitous",
+      "de": "OBJ Velocitous"
+    },
+    "88": {
+      "category": "Weapons",
+      "en": "Fortmaker",
+      "de": "Fortmaker"
+    },
+    "89": {
+      "category": "Weapons",
+      "en": "Rational Farewell",
+      "de": "Rational Farewell"
+    },
+    "90": {
+      "category": "Weapons",
+      "en": "Wild Wanderer",
+      "de": "Wild Wanderer"
+    },
+    "91": {
+      "category": "Weapons",
+      "en": "OBJ Razorhorn",
+      "de": "OBJ Razorhorn"
+    },
+    "92": {
+      "category": "Weapons",
+      "en": "Twelve Questions",
+      "de": "Twelve Questions"
+    },
+    "93": {
+      "category": "Weapons",
+      "en": "Chimeric Justice",
+      "de": "Chimeric Justice"
+    },
+    "94": {
+      "category": "Weapons",
+      "en": "Stanza of Memorials",
+      "de": "Stanza of Memorials"
+    },
+    "95": {
+      "category": "Weapons",
+      "en": "OBJ Arts Identifier",
+      "de": "OBJ Arts Identifier"
+    },
+    "96": {
+      "category": "Weapons",
+      "en": "Monaihe",
+      "de": "Monaihe"
+    },
+    "97": {
+      "category": "Weapons",
+      "en": "Cohesive Traction",
+      "de": "Cohesive Traction"
+    },
+    "98": {
+      "category": "Weapons",
+      "en": "Freedom to Proselytize",
+      "de": "Freedom to Proselytize"
+    },
+    "99": {
+      "category": "Item Files",
+      "en": "D96 Steel Sample 4",
+      "de": "D96 Steel Sample 4"
+    },
+    "100": {
+      "category": "Item Files",
+      "en": "Elementary Combat Record",
+      "de": "Elementary Combat Record"
+    },
+    "101": {
+      "category": "Item Files",
+      "en": "Intermediate Combat Record",
+      "de": "Intermediate Combat Record"
+    },
+    "102": {
+      "category": "Item Files",
+      "en": "Advanced Combat Record",
+      "de": "Advanced Combat Record"
+    },
+    "103": {
+      "category": "Item Files",
+      "en": "Triphasic Nanoflake",
+      "de": "Triphasic Nanoflake"
+    },
+    "104": {
+      "category": "Item Files",
+      "en": "Quadrant Fitting Fluid",
+      "de": "Quadrant Fitting Fluid"
+    },
+    "105": {
+      "category": "Item Files",
+      "en": "Elementary Cognitive Carrier",
+      "de": "Elementary Cognitive Carrier"
+    },
+    "106": {
+      "category": "Item Files",
+      "en": "Advanced Cognitive Carrier",
+      "de": "Advanced Cognitive Carrier"
+    },
+    "107": {
+      "category": "Item Files",
+      "en": "Protodisk",
+      "de": "Protodisk"
+    },
+    "108": {
+      "category": "Item Files",
+      "en": "Protoset",
+      "de": "Protoset"
+    },
+    "109": {
+      "category": "Item Files",
+      "en": "Protoprism",
+      "de": "Protoprism"
+    },
+    "110": {
+      "category": "Item Files",
+      "en": "Protohedron",
+      "de": "Protohedron"
+    },
+    "111": {
+      "category": "Item Files",
+      "en": "Metadiastima Photoemission Tube",
+      "de": "Metadiastima Photoemission Tube"
+    },
+    "112": {
+      "category": "Item Files",
+      "en": "Tachyon Screening Lattice",
+      "de": "Tachyon Screening Lattice"
+    },
+    "113": {
+      "category": "Item Files",
+      "en": "Wulingstone Seed",
+      "de": "Wulingstone Seed"
+    },
+    "114": {
+      "category": "Item Files",
+      "en": "Mark of Perseverance",
+      "de": "Mark of Perseverance"
+    },
+    "115": {
+      "category": "Item Files",
+      "en": "Wulingstone",
+      "de": "Wulingstone"
+    },
+    "116": {
+      "category": "Item Files",
+      "en": "Arms Inspector",
+      "de": "Arms Inspector"
+    },
+    "117": {
+      "category": "Item Files",
+      "en": "False Aggela Tuber",
+      "de": "False Aggela Tuber"
+    },
+    "118": {
+      "category": "Item Files",
+      "en": "Arms INSP Kit",
+      "de": "Arms INSP Kit"
+    },
+    "119": {
+      "category": "Item Files",
+      "en": "False Aggela",
+      "de": "False Aggela"
+    },
+    "120": {
+      "category": "Item Files",
+      "en": "Arms INSP Set",
+      "de": "Arms INSP Set"
+    },
+    "121": {
+      "category": "Item Files",
+      "en": "Cosmagaric Mycelia",
+      "de": "Cosmagaric Mycelia"
+    },
+    "122": {
+      "category": "Item Files",
+      "en": "Cast Die",
+      "de": "Cast Die"
+    },
+    "123": {
+      "category": "Item Files",
+      "en": "Cosmagaric",
+      "de": "Cosmagaric"
+    },
+    "124": {
+      "category": "Item Files",
+      "en": "Heavy Cast Die",
+      "de": "Heavy Cast Die"
+    },
+    "125": {
+      "category": "Item Files",
+      "en": "Igneosite Seed",
+      "de": "Igneosite Seed"
+    },
+    "126": {
+      "category": "Item Files",
+      "en": "Coolant Gel",
+      "de": "Coolant Gel"
+    },
+    "127": {
+      "category": "Item Files",
+      "en": "Igneosite",
+      "de": "Igneosite"
+    },
+    "128": {
+      "category": "Item Files",
+      "en": "Pink Bolete",
+      "de": "Pink Bolete"
+    },
+    "129": {
+      "category": "Item Files",
+      "en": "Blighted Jadeleaf Tuber",
+      "de": "Blighted Jadeleaf Tuber"
+    },
+    "130": {
+      "category": "Item Files",
+      "en": "Pink Bolete Mycelia",
+      "de": "Pink Bolete Mycelia"
+    },
+    "131": {
+      "category": "Item Files",
+      "en": "Blighted Jadeleaf",
+      "de": "Blighted Jadeleaf"
+    },
+    "132": {
+      "category": "Item Files",
+      "en": "Bloodcap Mycelia",
+      "de": "Bloodcap Mycelia"
+    },
+    "133": {
+      "category": "Item Files",
+      "en": "Red Bolete",
+      "de": "Red Bolete"
+    },
+    "134": {
+      "category": "Item Files",
+      "en": "Bloodcap",
+      "de": "Bloodcap"
+    },
+    "135": {
+      "category": "Item Files",
+      "en": "Red Bolete Mycelia",
+      "de": "Red Bolete Mycelia"
+    },
+    "136": {
+      "category": "Item Files",
+      "en": "Umbronyx Seed",
+      "de": "Umbronyx Seed"
+    },
+    "137": {
+      "category": "Item Files",
+      "en": "Ruby Bolete",
+      "de": "Ruby Bolete"
+    },
+    "138": {
+      "category": "Item Files",
+      "en": "Umbronyx",
+      "de": "Umbronyx"
+    },
+    "139": {
+      "category": "Item Files",
+      "en": "Ruby Bolete Mycelia",
+      "de": "Ruby Bolete Mycelia"
+    },
+    "140": {
+      "category": "Item Files",
+      "en": "Auronyx Seed",
+      "de": "Auronyx Seed"
+    },
+    "141": {
+      "category": "Item Files",
+      "en": "Kalkodendra",
+      "de": "Kalkodendra"
+    },
+    "142": {
+      "category": "Item Files",
+      "en": "Auronyx",
+      "de": "Auronyx"
+    },
+    "143": {
+      "category": "Item Files",
+      "en": "Kalkonyx Seed",
+      "de": "Kalkonyx Seed"
+    },
+    "144": {
+      "category": "Item Files",
+      "en": "Kalkodendra Tuber",
+      "de": "Kalkodendra Tuber"
+    },
+    "145": {
+      "category": "Item Files",
+      "en": "Kalkonyx",
+      "de": "Kalkonyx"
+    },
+    "146": {
+      "category": "Item Files",
+      "en": "Vitrodendra",
+      "de": "Vitrodendra"
+    },
+    "147": {
+      "category": "Item Files",
+      "en": "Chrysodendra",
+      "de": "Chrysodendra"
+    },
+    "148": {
+      "category": "Item Files",
+      "en": "Vitrodendra Tuber",
+      "de": "Vitrodendra Tuber"
+    },
+    "149": {
+      "category": "Item Files",
+      "en": "Chrysodendra Tuber",
+      "de": "Chrysodendra Tuber"
+    },
+    "206": {
+      "category": "Gear",
+      "en": "Basic Armor",
+      "de": "Basic Armor"
+    },
+    "208": {
+      "category": "Gear",
+      "en": "Basic PPE",
+      "de": "Basic PPE"
+    },
+    "211": {
+      "category": "Gear",
+      "en": "Basic Gauntlets",
+      "de": "Basic Gauntlets"
+    },
+    "213": {
+      "category": "Gear",
+      "en": "Basic Gloves",
+      "de": "Basic Gloves"
+    },
+    "216": {
+      "category": "Gear",
+      "en": "Miner Armor",
+      "de": "Miner Armor"
+    },
+    "218": {
+      "category": "Gear",
+      "en": "Miner Overalls",
+      "de": "Miner Overalls"
+    },
+    "219": {
+      "category": "Gear",
+      "en": "Miner Gauntlets",
+      "de": "Miner Gauntlets"
+    },
+    "220": {
+      "category": "Gear",
+      "en": "Miner Gloves",
+      "de": "Miner Gloves"
+    },
+    "221": {
+      "category": "Gear",
+      "en": "Emergency Comm",
+      "de": "Emergency Comm"
+    },
+    "222": {
+      "category": "Gear",
+      "en": "Emergency Compression Core",
+      "de": "Emergency Compression Core"
+    },
+    "223": {
+      "category": "Gear",
+      "en": "Prototype Heavy Armor",
+      "de": "Prototype Heavy Armor"
+    },
+    "224": {
+      "category": "Gear",
+      "en": "Prototype Heavy Armor T1",
+      "de": "Prototype Heavy Armor T1"
+    },
+    "225": {
+      "category": "Gear",
+      "en": "Miner Vest",
+      "de": "Miner Vest"
+    },
+    "226": {
+      "category": "Gear",
+      "en": "Miner Cleansuit",
+      "de": "Miner Cleansuit"
+    },
+    "227": {
+      "category": "Gear",
+      "en": "Miner Wrists",
+      "de": "Miner Wrists"
+    },
+    "228": {
+      "category": "Gear",
+      "en": "Miner Fists",
+      "de": "Miner Fists"
+    },
+    "229": {
+      "category": "Gear",
+      "en": "AIC Heavy Armor",
+      "de": "AIC Heavy Armor"
+    },
+    "230": {
+      "category": "Gear",
+      "en": "AIC Gauntlets",
+      "de": "AIC Gauntlets"
+    },
+    "231": {
+      "category": "Gear",
+      "en": "AIC Heavy Plate",
+      "de": "AIC Heavy Plate"
+    },
+    "232": {
+      "category": "Gear",
+      "en": "AIC Alloy Plate",
+      "de": "AIC Alloy Plate"
+    },
+    "233": {
+      "category": "Gear",
+      "en": "AIC Light Armor",
+      "de": "AIC Light Armor"
+    },
+    "234": {
+      "category": "Gear",
+      "en": "AIC Tactical Gloves",
+      "de": "AIC Tactical Gloves"
+    },
+    "235": {
+      "category": "Gear",
+      "en": "AIC Light Plate",
+      "de": "AIC Light Plate"
+    },
+    "236": {
+      "category": "Gear",
+      "en": "AIC Ceramic Plate",
+      "de": "AIC Ceramic Plate"
+    },
+    "237": {
+      "category": "Gear",
+      "en": "Miner Gauntlets T1",
+      "de": "Miner Gauntlets T1"
+    },
+    "238": {
+      "category": "Gear",
+      "en": "Miner Gloves T1",
+      "de": "Miner Gloves T1"
+    },
+    "239": {
+      "category": "Gear",
+      "en": "Miner Turbine",
+      "de": "Miner Turbine"
+    },
+    "240": {
+      "category": "Gear",
+      "en": "Miner Drive Wheel",
+      "de": "Miner Drive Wheel"
+    },
+    "241": {
+      "category": "Gear",
+      "en": "Miner Compression Core",
+      "de": "Miner Compression Core"
+    },
+    "242": {
+      "category": "Gear",
+      "en": "Miner Comm",
+      "de": "Miner Comm"
+    },
+    "243": {
+      "category": "Gear",
+      "en": "Armored MSGR Jacket",
+      "de": "Armored MSGR Jacket"
+    },
+    "244": {
+      "category": "Gear",
+      "en": "Armored MSGR Gloves",
+      "de": "Armored MSGR Gloves"
+    },
+    "245": {
+      "category": "Gear",
+      "en": "Armored MSGR Flashlight",
+      "de": "Armored MSGR Flashlight"
+    },
+    "246": {
+      "category": "Gear",
+      "en": "Armored MSGR Gyro",
+      "de": "Armored MSGR Gyro"
+    },
+    "247": {
+      "category": "Gear",
+      "en": "Roving MSGR Jacket",
+      "de": "Roving MSGR Jacket"
+    },
+    "248": {
+      "category": "Gear",
+      "en": "Roving MSGR Fists",
+      "de": "Roving MSGR Fists"
+    },
+    "249": {
+      "category": "Gear",
+      "en": "Roving MSGR Flashlight",
+      "de": "Roving MSGR Flashlight"
+    },
+    "250": {
+      "category": "Gear",
+      "en": "MI Security Push Knife T1",
+      "de": "MI Security Push Knife T1"
+    },
+    "251": {
+      "category": "Gear",
+      "en": "Roving MSGR Gyro",
+      "de": "Roving MSGR Gyro"
+    },
+    "252": {
+      "category": "Gear",
+      "en": "MI Security Push Knife",
+      "de": "MI Security Push Knife"
+    },
+    "253": {
+      "category": "Gear",
+      "en": "Miner Armor T1",
+      "de": "Miner Armor T1"
+    },
+    "254": {
+      "category": "Gear",
+      "en": "MI Security Toolkit",
+      "de": "MI Security Toolkit"
+    },
+    "255": {
+      "category": "Gear",
+      "en": "Miner Overalls T1",
+      "de": "Miner Overalls T1"
+    },
+    "256": {
+      "category": "Gear",
+      "en": "Mordvolt Insulation Vest",
+      "de": "Mordvolt Insulation Vest"
+    },
+    "257": {
+      "category": "Gear",
+      "en": "MI Security Scope",
+      "de": "MI Security Scope"
+    },
+    "258": {
+      "category": "Gear",
+      "en": "Miner Gloves T2",
+      "de": "Miner Gloves T2"
+    },
+    "259": {
+      "category": "Gear",
+      "en": "Mordvolt Insulation Gloves",
+      "de": "Mordvolt Insulation Gloves"
+    },
+    "260": {
+      "category": "Gear",
+      "en": "Miner Fists T1",
+      "de": "Miner Fists T1"
+    },
+    "261": {
+      "category": "Gear",
+      "en": "MI Security Armband",
+      "de": "MI Security Armband"
+    },
+    "262": {
+      "category": "Gear",
+      "en": "Mordvolt Insulation Wrench",
+      "de": "Mordvolt Insulation Wrench"
+    },
+    "263": {
+      "category": "Gear",
+      "en": "Miner Turbine T1",
+      "de": "Miner Turbine T1"
+    },
+    "264": {
+      "category": "Gear",
+      "en": "MI Security Hands PPE T1",
+      "de": "MI Security Hands PPE T1"
+    },
+    "265": {
+      "category": "Gear",
+      "en": "Miner Drive Wheel T1",
+      "de": "Miner Drive Wheel T1"
+    },
+    "266": {
+      "category": "Gear",
+      "en": "Mordvolt Insulation Wrench T1",
+      "de": "Mordvolt Insulation Wrench T1"
+    },
+    "267": {
+      "category": "Gear",
+      "en": "MI Security Hands PPE",
+      "de": "MI Security Hands PPE"
+    },
+    "268": {
+      "category": "Gear",
+      "en": "Miner Compression Core T1",
+      "de": "Miner Compression Core T1"
+    },
+    "269": {
+      "category": "Gear",
+      "en": "Mordvolt Insulation Battery",
+      "de": "Mordvolt Insulation Battery"
+    },
+    "270": {
+      "category": "Gear",
+      "en": "Miner Comm T1",
+      "de": "Miner Comm T1"
+    },
+    "271": {
+      "category": "Gear",
+      "en": "MI Security Gloves",
+      "de": "MI Security Gloves"
+    },
+    "272": {
+      "category": "Gear",
+      "en": "Aburrey Heavy Armor",
+      "de": "Aburrey Heavy Armor"
+    },
+    "273": {
+      "category": "Gear",
+      "en": "MI Security Overalls T2",
+      "de": "MI Security Overalls T2"
+    },
+    "274": {
+      "category": "Gear",
+      "en": "Mordvolt Resistant Vest",
+      "de": "Mordvolt Resistant Vest"
+    },
+    "275": {
+      "category": "Gear",
+      "en": "Aburrey Heavy Armor T1",
+      "de": "Aburrey Heavy Armor T1"
+    },
+    "276": {
+      "category": "Gear",
+      "en": "Aburrey Light Armor",
+      "de": "Aburrey Light Armor"
+    },
+    "277": {
+      "category": "Gear",
+      "en": "MI Security Overalls T1",
+      "de": "MI Security Overalls T1"
+    },
+    "278": {
+      "category": "Gear",
+      "en": "Mordvolt Resistant Gloves",
+      "de": "Mordvolt Resistant Gloves"
+    },
+    "279": {
+      "category": "Gear",
+      "en": "Aburrey Light Armor T1",
+      "de": "Aburrey Light Armor T1"
+    },
+    "280": {
+      "category": "Gear",
+      "en": "MI Security Overalls",
+      "de": "MI Security Overalls"
+    },
+    "281": {
+      "category": "Gear",
+      "en": "Mordvolt Resistant Wrench",
+      "de": "Mordvolt Resistant Wrench"
+    },
+    "282": {
+      "category": "Gear",
+      "en": "Aburrey Gauntlets",
+      "de": "Aburrey Gauntlets"
+    },
+    "283": {
+      "category": "Gear",
+      "en": "MI Security Armor",
+      "de": "MI Security Armor"
+    },
+    "284": {
+      "category": "Gear",
+      "en": "Mordvolt Resistant Battery",
+      "de": "Mordvolt Resistant Battery"
+    },
+    "285": {
+      "category": "Gear",
+      "en": "Aburrey Auditory Chip",
+      "de": "Aburrey Auditory Chip"
+    },
+    "286": {
+      "category": "Gear",
+      "en": "Hot Work Power Cartridge",
+      "de": "Hot Work Power Cartridge"
+    },
+    "287": {
+      "category": "Gear",
+      "en": "Aburrey UV Lamp",
+      "de": "Aburrey UV Lamp"
+    },
+    "288": {
+      "category": "Gear",
+      "en": "Hot Work Pyrometer",
+      "de": "Hot Work Pyrometer"
+    },
+    "289": {
+      "category": "Gear",
+      "en": "Aburrey Auditory Chip T1",
+      "de": "Aburrey Auditory Chip T1"
+    },
+    "290": {
+      "category": "Gear",
+      "en": "Hot Work Power Bank",
+      "de": "Hot Work Power Bank"
+    },
+    "291": {
+      "category": "Gear",
+      "en": "Aburrey Flashlight",
+      "de": "Aburrey Flashlight"
+    },
+    "292": {
+      "category": "Gear",
+      "en": "Hot Work Gauntlets T1",
+      "de": "Hot Work Gauntlets T1"
+    },
+    "293": {
+      "category": "Gear",
+      "en": "Aburrey Sensor Chip",
+      "de": "Aburrey Sensor Chip"
+    },
+    "294": {
+      "category": "Gear",
+      "en": "Hot Work Gauntlets",
+      "de": "Hot Work Gauntlets"
+    },
+    "295": {
+      "category": "Gear",
+      "en": "Aburrey Sensor Chip T1",
+      "de": "Aburrey Sensor Chip T1"
+    },
+    "296": {
+      "category": "Gear",
+      "en": "Hot Work Exoskeleton",
+      "de": "Hot Work Exoskeleton"
+    },
+    "297": {
+      "category": "Gear",
+      "en": "Catastrophe Heavy Armor",
+      "de": "Catastrophe Heavy Armor"
+    },
+    "298": {
+      "category": "Gear",
+      "en": "Frontiers Extra O2 Tube",
+      "de": "Frontiers Extra O2 Tube"
+    },
+    "299": {
+      "category": "Gear",
+      "en": "Catastrophe Heavy Armor T1",
+      "de": "Catastrophe Heavy Armor T1"
+    },
+    "300": {
+      "category": "Gear",
+      "en": "Frontiers Comm T1",
+      "de": "Frontiers Comm T1"
+    },
+    "301": {
+      "category": "Gear",
+      "en": "Catastrophe Gloves",
+      "de": "Catastrophe Gloves"
+    },
+    "302": {
+      "category": "Gear",
+      "en": "Frontiers Comm",
+      "de": "Frontiers Comm"
+    },
+    "303": {
+      "category": "Gear",
+      "en": "Catastrophe Gauze Cartridge",
+      "de": "Catastrophe Gauze Cartridge"
+    },
+    "304": {
+      "category": "Gear",
+      "en": "Frontiers Blight RES Gloves",
+      "de": "Frontiers Blight RES Gloves"
+    },
+    "305": {
+      "category": "Gear",
+      "en": "Catastrophe Gauze Cartridge T1",
+      "de": "Catastrophe Gauze Cartridge T1"
+    },
+    "306": {
+      "category": "Gear",
+      "en": "Frontiers Armor T3",
+      "de": "Frontiers Armor T3"
+    },
+    "307": {
+      "category": "Gear",
+      "en": "Catastrophe Filter",
+      "de": "Catastrophe Filter"
+    },
+    "308": {
+      "category": "Gear",
+      "en": "Frontiers Armor T2",
+      "de": "Frontiers Armor T2"
+    },
+    "309": {
+      "category": "Gear",
+      "en": "Armored MSGR Jacket T1",
+      "de": "Armored MSGR Jacket T1"
+    },
+    "310": {
+      "category": "Gear",
+      "en": "Frontiers Armor T1",
+      "de": "Frontiers Armor T1"
+    },
+    "311": {
+      "category": "Gear",
+      "en": "Armored MSGR Gloves T2",
+      "de": "Armored MSGR Gloves T2"
+    },
+    "312": {
+      "category": "Gear",
+      "en": "Frontiers Armor",
+      "de": "Frontiers Armor"
+    },
+    "313": {
+      "category": "Gear",
+      "en": "Armored MSGR Gloves T1",
+      "de": "Armored MSGR Gloves T1"
+    },
+    "314": {
+      "category": "Gear",
+      "en": "Armored MSGR Flashlight T1",
+      "de": "Armored MSGR Flashlight T1"
+    },
+    "315": {
+      "category": "Gear",
+      "en": "Armored MSGR Gyro T1",
+      "de": "Armored MSGR Gyro T1"
+    },
+    "316": {
+      "category": "Gear",
+      "en": "Roving MSGR Jacket T1",
+      "de": "Roving MSGR Jacket T1"
+    },
+    "317": {
+      "category": "Gear",
+      "en": "Roving MSGR Fists T1",
+      "de": "Roving MSGR Fists T1"
+    },
+    "318": {
+      "category": "Gear",
+      "en": "Roving MSGR Flashlight T2",
+      "de": "Roving MSGR Flashlight T2"
+    },
+    "319": {
+      "category": "Gear",
+      "en": "Roving MSGR Flashlight T1",
+      "de": "Roving MSGR Flashlight T1"
+    },
+    "320": {
+      "category": "Gear",
+      "en": "Roving MSGR Gyro T1",
+      "de": "Roving MSGR Gyro T1"
+    },
+    "321": {
+      "category": "Gear",
+      "en": "Mordvolt Insulation Vest T2",
+      "de": "Mordvolt Insulation Vest T2"
+    },
+    "322": {
+      "category": "Gear",
+      "en": "Mordvolt Insulation Vest T1",
+      "de": "Mordvolt Insulation Vest T1"
+    },
+    "323": {
+      "category": "Gear",
+      "en": "Mordvolt Insulation Gloves T1",
+      "de": "Mordvolt Insulation Gloves T1"
+    },
+    "324": {
+      "category": "Gear",
+      "en": "Mordvolt Insulation Wrench T2",
+      "de": "Mordvolt Insulation Wrench T2"
+    },
+    "325": {
+      "category": "Gear",
+      "en": "Hanging River O2 Tube",
+      "de": "Hanging River O2 Tube"
+    },
+    "326": {
+      "category": "Gear",
+      "en": "Turbid Cutting Torch",
+      "de": "Turbid Cutting Torch"
+    },
+    "327": {
+      "category": "Gear",
+      "en": "Mordvolt Insulation Battery T1",
+      "de": "Mordvolt Insulation Battery T1"
+    },
+    "328": {
+      "category": "Gear",
+      "en": "Eternal Xiranite Armor",
+      "de": "Eternal Xiranite Armor"
+    },
+    "329": {
+      "category": "Gear",
+      "en": "Mordvolt Resistant Vest T1",
+      "de": "Mordvolt Resistant Vest T1"
+    },
+    "330": {
+      "category": "Gear",
+      "en": "Eternal Xiranite Gloves",
+      "de": "Eternal Xiranite Gloves"
+    },
+    "331": {
+      "category": "Gear",
+      "en": "Mordvolt Resistant Gloves T1",
+      "de": "Mordvolt Resistant Gloves T1"
+    },
+    "332": {
+      "category": "Gear",
+      "en": "Eternal Xiranite Gloves T1",
+      "de": "Eternal Xiranite Gloves T1"
+    },
+    "333": {
+      "category": "Gear",
+      "en": "Mordvolt Resistant Wrench T1",
+      "de": "Mordvolt Resistant Wrench T1"
+    },
+    "334": {
+      "category": "Gear",
+      "en": "Eternal Xiranite Power Core",
+      "de": "Eternal Xiranite Power Core"
+    },
+    "335": {
+      "category": "Gear",
+      "en": "Mordvolt Resistant Battery T1",
+      "de": "Mordvolt Resistant Battery T1"
+    },
+    "336": {
+      "category": "Gear",
+      "en": "Eternal Xiranite Power Core T1",
+      "de": "Eternal Xiranite Power Core T1"
+    },
+    "337": {
+      "category": "Gear",
+      "en": "Eternal Xiranite Auxiliary Arm",
+      "de": "Eternal Xiranite Auxiliary Arm"
+    },
+    "338": {
+      "category": "Gear",
+      "en": "Pulser Labs Calibrator",
+      "de": "Pulser Labs Calibrator"
+    },
+    "339": {
+      "category": "Gear",
+      "en": "Tide Surge Gauntlets",
+      "de": "Tide Surge Gauntlets"
+    },
+    "340": {
+      "category": "Gear",
+      "en": "Tide Fall Light Armor",
+      "de": "Tide Fall Light Armor"
+    },
+    "341": {
+      "category": "Gear",
+      "en": "Pulser Labs Gloves",
+      "de": "Pulser Labs Gloves"
+    },
+    "342": {
+      "category": "Gear",
+      "en": "Type 50 Yinglung Knife T1",
+      "de": "Type 50 Yinglung Knife T1"
+    },
+    "343": {
+      "category": "Gear",
+      "en": "Type 50 Yinglung Knife",
+      "de": "Type 50 Yinglung Knife"
+    },
+    "344": {
+      "category": "Gear",
+      "en": "Type 50 Yinglung Radar",
+      "de": "Type 50 Yinglung Radar"
+    },
+    "345": {
+      "category": "Gear",
+      "en": "Type 50 Yinglung Gloves T1",
+      "de": "Type 50 Yinglung Gloves T1"
+    },
+    "346": {
+      "category": "Weapons",
+      "en": "Glorious Memory",
+      "de": "Glorious Memory"
+    },
+    "347": {
+      "category": "Gear",
+      "en": "Type 50 Yinglung Light Armor",
+      "de": "Type 50 Yinglung Light Armor"
+    },
+    "348": {
+      "category": "Gear",
+      "en": "Redeemer Seal T1",
+      "de": "Redeemer Seal T1"
+    },
+    "349": {
+      "category": "Gear",
+      "en": "Redeemer Seal",
+      "de": "Redeemer Seal"
+    },
+    "350": {
+      "category": "Gear",
+      "en": "Redeemer Tag T1",
+      "de": "Redeemer Tag T1"
+    },
+    "351": {
+      "category": "Gear",
+      "en": "Redeemer Tag",
+      "de": "Redeemer Tag"
+    },
+    "352": {
+      "category": "Gear",
+      "en": "Type 50 Yinglung Heavy Armor",
+      "de": "Type 50 Yinglung Heavy Armor"
+    },
+    "353": {
+      "category": "Gear",
+      "en": "Pulser Labs Disruptor Suit",
+      "de": "Pulser Labs Disruptor Suit"
+    },
+    "354": {
+      "category": "Gear",
+      "en": "Bonekrusha Figurine T1",
+      "de": "Bonekrusha Figurine T1"
+    },
+    "355": {
+      "category": "Gear",
+      "en": "Swordmancer Heavy Armor",
+      "de": "Swordmancer Heavy Armor"
+    },
+    "356": {
+      "category": "Gear",
+      "en": "Swordmancer TAC Gloves",
+      "de": "Swordmancer TAC Gloves"
+    },
+    "357": {
+      "category": "Gear",
+      "en": "Swordmancer TAC Gauntlets",
+      "de": "Swordmancer TAC Gauntlets"
+    },
+    "358": {
+      "category": "Gear",
+      "en": "Swordmancer Flint",
+      "de": "Swordmancer Flint"
+    },
+    "359": {
+      "category": "Gear",
+      "en": "LYNX Heavy Armor",
+      "de": "LYNX Heavy Armor"
+    },
+    "360": {
+      "category": "Gear",
+      "en": "LYNX Cuirass",
+      "de": "LYNX Cuirass"
+    },
+    "361": {
+      "category": "Gear",
+      "en": "LYNX Gloves",
+      "de": "LYNX Gloves"
+    },
+    "362": {
+      "category": "Gear",
+      "en": "LYNX Gauntlets",
+      "de": "LYNX Gauntlets"
+    },
+    "363": {
+      "category": "Gear",
+      "en": "LYNX Connector",
+      "de": "LYNX Connector"
+    },
+    "364": {
+      "category": "Gear",
+      "en": "LYNX Connector T1",
+      "de": "LYNX Connector T1"
+    },
+    "365": {
+      "category": "Gear",
+      "en": "LYNX Slab",
+      "de": "LYNX Slab"
+    },
+    "366": {
+      "category": "Gear",
+      "en": "LYNX Aegis Injector",
+      "de": "LYNX Aegis Injector"
+    },
+    "367": {
+      "category": "Gear",
+      "en": "Æthertech Plating",
+      "de": "Æthertech Plating"
+    },
+    "368": {
+      "category": "Gear",
+      "en": "Æthertech Gloves",
+      "de": "Æthertech Gloves"
+    },
+    "369": {
+      "category": "Gear",
+      "en": "Æthertech Analysis Band",
+      "de": "Æthertech Analysis Band"
+    },
+    "370": {
+      "category": "Gear",
+      "en": "Æthertech Stabilizer",
+      "de": "Æthertech Stabilizer"
+    },
+    "371": {
+      "category": "Gear",
+      "en": "Bonekrusha Heavy Armor",
+      "de": "Bonekrusha Heavy Armor"
+    },
+    "372": {
+      "category": "Gear",
+      "en": "Bonekrusha Heavy Armor T1",
+      "de": "Bonekrusha Heavy Armor T1"
+    },
+    "373": {
+      "category": "Gear",
+      "en": "Bonekrusha Poncho",
+      "de": "Bonekrusha Poncho"
+    },
+    "374": {
+      "category": "Gear",
+      "en": "Bonekrusha Poncho T1",
+      "de": "Bonekrusha Poncho T1"
+    },
+    "375": {
+      "category": "Gear",
+      "en": "Bonekrusha Mask",
+      "de": "Bonekrusha Mask"
+    },
+    "376": {
+      "category": "Gear",
+      "en": "Bonekrusha Mask T1",
+      "de": "Bonekrusha Mask T1"
+    },
+    "377": {
+      "category": "Gear",
+      "en": "Bonekrusha Figurine",
+      "de": "Bonekrusha Figurine"
+    },
+    "411": {
+      "category": "Gear",
+      "en": "Type 50 Yinglung Gloves",
+      "de": "Type 50 Yinglung Gloves"
+    },
+    "432": {
+      "category": "Item Files",
+      "en": "Valley Engraving Permit",
+      "de": "Valley Engraving Permit"
+    },
+    "433": {
+      "category": "Item Files",
+      "en": "Wuling Engraving Permit",
+      "de": "Wuling Engraving Permit"
+    },
+    "434": {
+      "category": "Item Files",
+      "en": "Glowbug",
+      "de": "Glowbug"
+    },
+    "435": {
+      "category": "Item Files",
+      "en": "Scorchbug",
+      "de": "Scorchbug"
+    },
+    "436": {
+      "category": "Item Files",
+      "en": "Burdo-Muck",
+      "de": "Burdo-Muck"
+    },
+    "437": {
+      "category": "Item Files",
+      "en": "Hard Aggagrit",
+      "de": "Hard Aggagrit"
+    },
+    "438": {
+      "category": "Item Files",
+      "en": "Energized Aggagrit",
+      "de": "Energized Aggagrit"
+    },
+    "439": {
+      "category": "Item Files",
+      "en": "Powdered Grass Seed",
+      "de": "Powdered Grass Seed"
+    },
+    "440": {
+      "category": "Item Files",
+      "en": "Pungent Jerky",
+      "de": "Pungent Jerky"
+    },
+    "441": {
+      "category": "Item Files",
+      "en": "Young Bamboo Shoot",
+      "de": "Young Bamboo Shoot"
+    },
+    "442": {
+      "category": "Item Files",
+      "en": "Fillet",
+      "de": "Fillet"
+    },
+    "443": {
+      "category": "Item Files",
+      "en": "Slug Meat",
+      "de": "Slug Meat"
+    },
+    "444": {
+      "category": "Item Files",
+      "en": "Bitter Flour",
+      "de": "Bitter Flour"
+    },
+    "445": {
+      "category": "Item Files",
+      "en": "Hollow Aggagrit",
+      "de": "Hollow Aggagrit"
+    },
+    "446": {
+      "category": "Item Files",
+      "en": "Resilient Water",
+      "de": "Resilient Water"
+    },
+    "447": {
+      "category": "Item Files",
+      "en": "Natural Sparkling Water",
+      "de": "Natural Sparkling Water"
+    },
+    "448": {
+      "category": "Item Files",
+      "en": "Waterlamp Glowbulb",
+      "de": "Waterlamp Glowbulb"
+    },
+    "449": {
+      "category": "Item Files",
+      "en": "Nidwyrm Whiskers",
+      "de": "Nidwyrm Whiskers"
+    },
+    "450": {
+      "category": "Item Files",
+      "en": "Cartilage Bit",
+      "de": "Cartilage Bit"
+    },
+    "451": {
+      "category": "Item Files",
+      "en": "Chromatic Lipids",
+      "de": "Chromatic Lipids"
+    },
+    "452": {
+      "category": "Item Files",
+      "en": "Black Treacle",
+      "de": "Black Treacle"
+    },
+    "453": {
+      "category": "Item Files",
+      "en": "Quillbeast Liver",
+      "de": "Quillbeast Liver"
+    },
+    "454": {
+      "category": "Item Files",
+      "en": "Shattered Axe Blade",
+      "de": "Shattered Axe Blade"
+    },
+    "455": {
+      "category": "Item Files",
+      "en": "Haze-Soaked Ballista",
+      "de": "Haze-Soaked Ballista"
+    },
+    "456": {
+      "category": "Item Files",
+      "en": "Conductive Effigy Stone",
+      "de": "Conductive Effigy Stone"
+    },
+    "457": {
+      "category": "Item Files",
+      "en": "Axehorn",
+      "de": "Axehorn"
+    },
+    "458": {
+      "category": "Item Files",
+      "en": "Rakerbeast Longfur",
+      "de": "Rakerbeast Longfur"
+    },
+    "459": {
+      "category": "Item Files",
+      "en": "Natural Chrysopolis Ingot",
+      "de": "Natural Chrysopolis Ingot"
+    },
+    "460": {
+      "category": "Item Files",
+      "en": "Originium Ore",
+      "de": "Originium Ore"
+    },
+    "461": {
+      "category": "Item Files",
+      "en": "Amethyst Ore",
+      "de": "Amethyst Ore"
+    },
+    "462": {
+      "category": "Item Files",
+      "en": "Ferrium Ore",
+      "de": "Ferrium Ore"
+    },
+    "463": {
+      "category": "Item Files",
+      "en": "Buckflower",
+      "de": "Buckflower"
+    },
+    "464": {
+      "category": "Item Files",
+      "en": "Buckflower Seed",
+      "de": "Buckflower Seed"
+    },
+    "465": {
+      "category": "Item Files",
+      "en": "Citrome",
+      "de": "Citrome"
+    },
+    "466": {
+      "category": "Item Files",
+      "en": "Citrome Seed",
+      "de": "Citrome Seed"
+    },
+    "467": {
+      "category": "Item Files",
+      "en": "Sandleaf",
+      "de": "Sandleaf"
+    },
+    "468": {
+      "category": "Item Files",
+      "en": "Sandleaf Seed",
+      "de": "Sandleaf Seed"
+    },
+    "469": {
+      "category": "Item Files",
+      "en": "Aketine",
+      "de": "Aketine"
+    },
+    "470": {
+      "category": "Item Files",
+      "en": "Aketine Seed",
+      "de": "Aketine Seed"
+    },
+    "471": {
+      "category": "Item Files",
+      "en": "Jincao",
+      "de": "Jincao"
+    },
+    "472": {
+      "category": "Item Files",
+      "en": "Jincao Seed",
+      "de": "Jincao Seed"
+    },
+    "473": {
+      "category": "Item Files",
+      "en": "Yazhen",
+      "de": "Yazhen"
+    },
+    "474": {
+      "category": "Item Files",
+      "en": "Yazhen Seeds",
+      "de": "Yazhen Seeds"
+    },
+    "475": {
+      "category": "Item Files",
+      "en": "Wood",
+      "de": "Wood"
+    },
+    "476": {
+      "category": "Item Files",
+      "en": "Clean Water",
+      "de": "Clean Water"
+    },
+    "477": {
+      "category": "Item Files",
+      "en": "Firebuckle",
+      "de": "Firebuckle"
+    },
+    "478": {
+      "category": "Item Files",
+      "en": "Umbraline",
+      "de": "Umbraline"
+    },
+    "479": {
+      "category": "Item Files",
+      "en": "Fluffed Jincao",
+      "de": "Fluffed Jincao"
+    },
+    "480": {
+      "category": "Item Files",
+      "en": "Thorny Yazhen",
+      "de": "Thorny Yazhen"
+    },
+    "481": {
+      "category": "Item Files",
+      "en": "Reed Rye",
+      "de": "Reed Rye"
+    },
+    "482": {
+      "category": "Item Files",
+      "en": "Tartpepper",
+      "de": "Tartpepper"
+    },
+    "483": {
+      "category": "Item Files",
+      "en": "Redjade Ginseng",
+      "de": "Redjade Ginseng"
+    },
+    "484": {
+      "category": "Item Files",
+      "en": "Amber Rice",
+      "de": "Amber Rice"
+    },
+    "485": {
+      "category": "Item Files",
+      "en": "Reed Rye Seeds",
+      "de": "Reed Rye Seeds"
+    },
+    "486": {
+      "category": "Item Files",
+      "en": "Tartpepper Seeds",
+      "de": "Tartpepper Seeds"
+    },
+    "487": {
+      "category": "Item Files",
+      "en": "Redjade Ginseng Seeds",
+      "de": "Redjade Ginseng Seeds"
+    },
+    "488": {
+      "category": "Item Files",
+      "en": "Amber Rice Seeds",
+      "de": "Amber Rice Seeds"
+    },
+    "489": {
+      "category": "Item Files",
+      "en": "Jincao Solution",
+      "de": "Jincao Solution"
+    },
+    "490": {
+      "category": "Item Files",
+      "en": "Yazhen Solution",
+      "de": "Yazhen Solution"
+    },
+    "491": {
+      "category": "Item Files",
+      "en": "Liquid Xiranite",
+      "de": "Liquid Xiranite"
+    },
+    "492": {
+      "category": "Item Files",
+      "en": "Carbon",
+      "de": "Carbon"
+    },
+    "493": {
+      "category": "Item Files",
+      "en": "Origocrust",
+      "de": "Origocrust"
+    },
+    "494": {
+      "category": "Item Files",
+      "en": "Amethyst Fiber",
+      "de": "Amethyst Fiber"
+    },
+    "495": {
+      "category": "Item Files",
+      "en": "Ferrium",
+      "de": "Ferrium"
+    },
+    "497": {
+      "category": "Item Files",
+      "en": "Stabilized Carbon",
+      "de": "Stabilized Carbon"
+    },
+    "498": {
+      "category": "Item Files",
+      "en": "Packed Origocrust",
+      "de": "Packed Origocrust"
+    },
+    "499": {
+      "category": "Item Files",
+      "en": "Cryston Fiber",
+      "de": "Cryston Fiber"
+    },
+    "500": {
+      "category": "Item Files",
+      "en": "Steel",
+      "de": "Steel"
+    },
+    "501": {
+      "category": "Item Files",
+      "en": "Bumper-Rich",
+      "de": "Bumper-Rich"
+    },
+    "502": {
+      "category": "Item Files",
+      "en": "Xiranite",
+      "de": "Xiranite"
+    },
+    "503": {
+      "category": "Item Files",
+      "en": "Carbon Powder",
+      "de": "Carbon Powder"
+    },
+    "504": {
+      "category": "Item Files",
+      "en": "Originium Powder",
+      "de": "Originium Powder"
+    },
+    "505": {
+      "category": "Item Files",
+      "en": "Origocrust Powder",
+      "de": "Origocrust Powder"
+    },
+    "506": {
+      "category": "Item Files",
+      "en": "Amethyst Powder",
+      "de": "Amethyst Powder"
+    },
+    "507": {
+      "category": "Item Files",
+      "en": "Ferrium Powder",
+      "de": "Ferrium Powder"
+    },
+    "508": {
+      "category": "Item Files",
+      "en": "Sandleaf Powder",
+      "de": "Sandleaf Powder"
+    },
+    "509": {
+      "category": "Item Files",
+      "en": "Aketine Powder",
+      "de": "Aketine Powder"
+    },
+    "510": {
+      "category": "Item Files",
+      "en": "Ground Buckflower Powder",
+      "de": "Ground Buckflower Powder"
+    },
+    "511": {
+      "category": "Item Files",
+      "en": "Ground Citrome Powder",
+      "de": "Ground Citrome Powder"
+    },
+    "512": {
+      "category": "Item Files",
+      "en": "Dense Carbon Powder",
+      "de": "Dense Carbon Powder"
+    },
+    "513": {
+      "category": "Item Files",
+      "en": "Dense Originium Powder",
+      "de": "Dense Originium Powder"
+    },
+    "514": {
+      "category": "Item Files",
+      "en": "Dense Origocrust Powder",
+      "de": "Dense Origocrust Powder"
+    },
+    "515": {
+      "category": "Item Files",
+      "en": "Cryston Powder",
+      "de": "Cryston Powder"
+    },
+    "516": {
+      "category": "Item Files",
+      "en": "Dense Ferrium Powder",
+      "de": "Dense Ferrium Powder"
+    },
+    "517": {
+      "category": "Item Files",
+      "en": "Amethyst Bottle",
+      "de": "Amethyst Bottle"
+    },
+    "518": {
+      "category": "Item Files",
+      "en": "Ferrium Bottle",
+      "de": "Ferrium Bottle"
+    },
+    "519": {
+      "category": "Item Files",
+      "en": "Cryston Bottle",
+      "de": "Cryston Bottle"
+    },
+    "520": {
+      "category": "Item Files",
+      "en": "Steel Bottle",
+      "de": "Steel Bottle"
+    },
+    "521": {
+      "category": "Item Files",
+      "en": "Amethyst Part",
+      "de": "Amethyst Part"
+    },
+    "522": {
+      "category": "Item Files",
+      "en": "Ferrium Part",
+      "de": "Ferrium Part"
+    },
+    "523": {
+      "category": "Item Files",
+      "en": "Cryston Part",
+      "de": "Cryston Part"
+    },
+    "524": {
+      "category": "Item Files",
+      "en": "Steel Part",
+      "de": "Steel Part"
+    },
+    "525": {
+      "category": "Item Files",
+      "en": "Amethyst Component",
+      "de": "Amethyst Component"
+    },
+    "526": {
+      "category": "Item Files",
+      "en": "Ferrium Component",
+      "de": "Ferrium Component"
+    },
+    "527": {
+      "category": "Item Files",
+      "en": "Cryston Component",
+      "de": "Cryston Component"
+    },
+    "528": {
+      "category": "Item Files",
+      "en": "Xiranite Component",
+      "de": "Xiranite Component"
+    },
+    "529": {
+      "category": "Item Files",
+      "en": "LC Valley Battery",
+      "de": "LC Valley Battery"
+    },
+    "530": {
+      "category": "Item Files",
+      "en": "SC Valley Battery",
+      "de": "SC Valley Battery"
+    },
+    "531": {
+      "category": "Item Files",
+      "en": "HC Valley Battery",
+      "de": "HC Valley Battery"
+    },
+    "532": {
+      "category": "Item Files",
+      "en": "LC Wuling Battery",
+      "de": "LC Wuling Battery"
+    },
+    "533": {
+      "category": "Item Files",
+      "en": "Industrial Explosive",
+      "de": "Industrial Explosive"
+    },
+    "534": {
+      "category": "Item Files",
+      "en": "Buckflower Powder",
+      "de": "Buckflower Powder"
+    },
+    "535": {
+      "category": "Item Files",
+      "en": "Citrome Powder",
+      "de": "Citrome Powder"
+    },
+    "536": {
+      "category": "Item Files",
+      "en": "Jincao Powder",
+      "de": "Jincao Powder"
+    },
+    "537": {
+      "category": "Item Files",
+      "en": "Yazhen Powder",
+      "de": "Yazhen Powder"
+    },
+    "538": {
+      "category": "Item Files",
+      "en": "Firebuckle Powder",
+      "de": "Firebuckle Powder"
+    },
+    "539": {
+      "category": "Item Files",
+      "en": "Citromix",
+      "de": "Citromix"
+    },
+    "540": {
+      "category": "Item Files",
+      "en": "Fluffed Jincao Powder",
+      "de": "Fluffed Jincao Powder"
+    },
+    "541": {
+      "category": "Item Files",
+      "en": "Thorny Yazhen Powder",
+      "de": "Thorny Yazhen Powder"
+    },
+    "542": {
+      "category": "Item Files",
+      "en": "Buck Capsule [C]",
+      "de": "Buck Capsule [C]"
+    },
+    "543": {
+      "category": "Item Files",
+      "en": "Buck Capsule [B]",
+      "de": "Buck Capsule [B]"
+    },
+    "544": {
+      "category": "Item Files",
+      "en": "Canned Citrome [C]",
+      "de": "Canned Citrome [C]"
+    },
+    "545": {
+      "category": "Item Files",
+      "en": "Canned Citrome [B]",
+      "de": "Canned Citrome [B]"
+    },
+    "546": {
+      "category": "Item Files",
+      "en": "Jincao Drink",
+      "de": "Jincao Drink"
+    },
+    "547": {
+      "category": "Item Files",
+      "en": "Yazhen Syringe [C]",
+      "de": "Yazhen Syringe [C]"
+    },
+    "548": {
+      "category": "Item Files",
+      "en": "Buck Capsule [A]",
+      "de": "Buck Capsule [A]"
+    },
+    "549": {
+      "category": "Item Files",
+      "en": "Canned Citrome [A]",
+      "de": "Canned Citrome [A]"
+    },
+    "550": {
+      "category": "Item Files",
+      "en": "Buckpill [S]",
+      "de": "Buckpill [S]"
+    },
+    "551": {
+      "category": "Item Files",
+      "en": "Buckpill [L]",
+      "de": "Buckpill [L]"
+    },
+    "552": {
+      "category": "Item Files",
+      "en": "Citromix [S]",
+      "de": "Citromix [S]"
+    },
+    "553": {
+      "category": "Item Files",
+      "en": "Citromix [L]",
+      "de": "Citromix [L]"
+    },
+    "554": {
+      "category": "Item Files",
+      "en": "Jincao Tisane",
+      "de": "Jincao Tisane"
+    },
+    "555": {
+      "category": "Item Files",
+      "en": "Yazhen Spray [S]",
+      "de": "Yazhen Spray [S]"
+    },
+    "556": {
+      "category": "Item Files",
+      "en": "Buckpill [Rf.]",
+      "de": "Buckpill [Rf.]"
+    },
+    "557": {
+      "category": "Item Files",
+      "en": "Citromix [Rf.]",
+      "de": "Citromix [Rf.]"
+    },
+    "558": {
+      "category": "Item Files",
+      "en": "Jincao Infusion",
+      "de": "Jincao Infusion"
+    },
+    "559": {
+      "category": "Item Files",
+      "en": "Yazhen Spray [L]",
+      "de": "Yazhen Spray [L]"
+    },
+    "560": {
+      "category": "Item Files",
+      "en": "Arts Vial",
+      "de": "Arts Vial"
+    },
+    "561": {
+      "category": "Item Files",
+      "en": "Kunst Vial",
+      "de": "Kunst Vial"
+    },
+    "562": {
+      "category": "Item Files",
+      "en": "Perplexing Medication",
+      "de": "Perplexing Medication"
+    },
+    "563": {
+      "category": "Item Files",
+      "en": "Arts Tube",
+      "de": "Arts Tube"
+    },
+    "564": {
+      "category": "Item Files",
+      "en": "Kunst Tube",
+      "de": "Kunst Tube"
+    },
+    "565": {
+      "category": "Item Files",
+      "en": "Meaty Buckflower Stew",
+      "de": "Meaty Buckflower Stew"
+    },
+    "566": {
+      "category": "Item Files",
+      "en": "Handmade Weirdrop",
+      "de": "Handmade Weirdrop"
+    },
+    "567": {
+      "category": "Item Files",
+      "en": "Seš'qa Style Fillet",
+      "de": "Seš'qa Style Fillet"
+    },
+    "568": {
+      "category": "Item Files",
+      "en": "Instant Bone Soup",
+      "de": "Instant Bone Soup"
+    },
+    "569": {
+      "category": "Item Files",
+      "en": "Stew Meeting",
+      "de": "Stew Meeting"
+    },
+    "570": {
+      "category": "Item Files",
+      "en": "Mini Honey Slugpudding",
+      "de": "Mini Honey Slugpudding"
+    },
+    "571": {
+      "category": "Item Files",
+      "en": "Sod-Turning Meat Soup",
+      "de": "Sod-Turning Meat Soup"
+    },
+    "572": {
+      "category": "Item Files",
+      "en": "Jakub's Legacy",
+      "de": "Jakub's Legacy"
+    },
+    "573": {
+      "category": "Item Files",
+      "en": "Cartilage Tack",
+      "de": "Cartilage Tack"
+    },
+    "574": {
+      "category": "Item Files",
+      "en": "Edible Denstack",
+      "de": "Edible Denstack"
+    },
+    "575": {
+      "category": "Item Files",
+      "en": "Hazefyre Blossom",
+      "de": "Hazefyre Blossom"
+    },
+    "576": {
+      "category": "Item Files",
+      "en": "Old Man John's Burger",
+      "de": "Old Man John's Burger"
+    },
+    "577": {
+      "category": "Item Files",
+      "en": "Cosmo-Melto Jelly",
+      "de": "Cosmo-Melto Jelly"
+    },
+    "578": {
+      "category": "Item Files",
+      "en": "Mystery Soda",
+      "de": "Mystery Soda"
+    },
+    "579": {
+      "category": "Item Files",
+      "en": "Mini Sugar Painting",
+      "de": "Mini Sugar Painting"
+    },
+    "580": {
+      "category": "Item Files",
+      "en": "Superhot Slug Gratin",
+      "de": "Superhot Slug Gratin"
+    },
+    "581": {
+      "category": "Item Files",
+      "en": "Secret Stimulating Tisane",
+      "de": "Secret Stimulating Tisane"
+    },
+    "582": {
+      "category": "Item Files",
+      "en": "Simple Pain Relief Salve",
+      "de": "Simple Pain Relief Salve"
+    },
+    "583": {
+      "category": "Item Files",
+      "en": "Bizarro Chili",
+      "de": "Bizarro Chili"
+    },
+    "584": {
+      "category": "Item Files",
+      "en": "Fortifying Infusion",
+      "de": "Fortifying Infusion"
+    },
+    "585": {
+      "category": "Item Files",
+      "en": "Garden Fried Rice",
+      "de": "Garden Fried Rice"
+    },
+    "586": {
+      "category": "Item Files",
+      "en": "Hub Emergency Ration",
+      "de": "Hub Emergency Ration"
+    },
+    "587": {
+      "category": "Item Files",
+      "en": "Superhot Fruit Preserves",
+      "de": "Superhot Fruit Preserves"
+    },
+    "588": {
+      "category": "Item Files",
+      "en": "Pulled Slug Meat",
+      "de": "Pulled Slug Meat"
+    },
+    "589": {
+      "category": "Item Files",
+      "en": "Chubby Lung Jellied Greens",
+      "de": "Chubby Lung Jellied Greens"
+    },
+    "590": {
+      "category": "Item Files",
+      "en": "Pan-Fried Double Crisp",
+      "de": "Pan-Fried Double Crisp"
+    },
+    "591": {
+      "category": "Item Files",
+      "en": "Wuling Flame-Boyance",
+      "de": "Wuling Flame-Boyance"
+    },
+    "592": {
+      "category": "Item Files",
+      "en": "Simmered Xiranite Ball",
+      "de": "Simmered Xiranite Ball"
+    },
+    "593": {
+      "category": "Item Files",
+      "en": "Valley Pie",
+      "de": "Valley Pie"
+    },
+    "594": {
+      "category": "Item Files",
+      "en": "Meat Stir-Fry",
+      "de": "Meat Stir-Fry"
+    },
+    "595": {
+      "category": "Item Files",
+      "en": "Ginseng Meat Stew",
+      "de": "Ginseng Meat Stew"
+    },
+    "596": {
+      "category": "Item Files",
+      "en": "Wuling Fried Rice",
+      "de": "Wuling Fried Rice"
+    },
+    "597": {
+      "category": "Item Files",
+      "en": "Aerospace Material I",
+      "de": "Aerospace Material I"
+    },
+    "598": {
+      "category": "Item Files",
+      "en": "Aerospace Material II",
+      "de": "Aerospace Material II"
+    },
+    "599": {
+      "category": "Item Files",
+      "en": "Basic AIC Index",
+      "de": "Basic AIC Index"
+    },
+    "600": {
+      "category": "Item Files",
+      "en": "Wuling AIC Index",
+      "de": "Wuling AIC Index"
+    },
+    "601": {
+      "category": "Item Files",
+      "en": "Valley Stock Bill",
+      "de": "Valley Stock Bill"
+    },
+    "602": {
+      "category": "Item Files",
+      "en": "Wuling Stock Bill",
+      "de": "Wuling Stock Bill"
+    },
+    "603": {
+      "category": "Item Files",
+      "en": "Basic Expansion Core",
+      "de": "Basic Expansion Core"
+    },
+    "604": {
+      "category": "Item Files",
+      "en": "Wuling Expansion Core",
+      "de": "Wuling Expansion Core"
+    },
+    "605": {
+      "category": "Item Files",
+      "en": "Algorithm Expansion Chip",
+      "de": "Algorithm Expansion Chip"
+    },
+    "606": {
+      "category": "Item Files",
+      "en": "Aurylene Camera",
+      "de": "Aurylene Camera"
+    },
+    "607": {
+      "category": "Item Files",
+      "en": "Cosmic Gate Puzzle",
+      "de": "Cosmic Gate Puzzle"
+    },
+    "608": {
+      "category": "Item Files",
+      "en": "Surfing Festival Ticket",
+      "de": "Surfing Festival Ticket"
+    },
+    "609": {
+      "category": "Item Files",
+      "en": "Breeze of Kjersch",
+      "de": "Breeze of Kjersch"
+    },
+    "610": {
+      "category": "Item Files",
+      "en": "Tidestone Specimen",
+      "de": "Tidestone Specimen"
+    },
+    "611": {
+      "category": "Item Files",
+      "en": "Simonch Shawl",
+      "de": "Simonch Shawl"
+    },
+    "612": {
+      "category": "Item Files",
+      "en": "Frontiers Watch",
+      "de": "Frontiers Watch"
+    },
+    "613": {
+      "category": "Item Files",
+      "en": "Eureka Teabox",
+      "de": "Eureka Teabox"
+    },
+    "614": {
+      "category": "Item Files",
+      "en": "Yinglung Dumbbells",
+      "de": "Yinglung Dumbbells"
+    },
+    "616": {
+      "category": "Valuables Stash",
+      "en": "Pogranichnik's Token",
+      "de": "Pogranichnik's Token"
+    },
+    "617": {
+      "category": "Valuables Stash",
+      "en": "Last Rite's Token",
+      "de": "Last Rite's Token"
+    },
+    "618": {
+      "category": "Valuables Stash",
+      "en": "Ardelia's Token",
+      "de": "Ardelia's Token"
+    },
+    "619": {
+      "category": "Valuables Stash",
+      "en": "Alesh's Token",
+      "de": "Alesh's Token"
+    },
+    "620": {
+      "category": "Valuables Stash",
+      "en": "Antal's Token",
+      "de": "Antal's Token"
+    },
+    "621": {
+      "category": "Valuables Stash",
+      "en": "Fluorite's Token",
+      "de": "Fluorite's Token"
+    },
+    "622": {
+      "category": "Valuables Stash",
+      "en": "Estella's Token",
+      "de": "Estella's Token"
+    },
+    "623": {
+      "category": "Valuables Stash",
+      "en": "Catcher's Token",
+      "de": "Catcher's Token"
+    },
+    "624": {
+      "category": "Valuables Stash",
+      "en": "Akekuri's Token",
+      "de": "Akekuri's Token"
+    },
+    "625": {
+      "category": "Valuables Stash",
+      "en": "Da Pan's Token",
+      "de": "Da Pan's Token"
+    },
+    "626": {
+      "category": "Valuables Stash",
+      "en": "Yvonne's Token",
+      "de": "Yvonne's Token"
+    },
+    "627": {
+      "category": "Valuables Stash",
+      "en": "Laevatain's Token",
+      "de": "Laevatain's Token"
+    },
+    "628": {
+      "category": "Valuables Stash",
+      "en": "Lifeng's Token",
+      "de": "Lifeng's Token"
+    },
+    "629": {
+      "category": "Valuables Stash",
+      "en": "Snowshine's Token",
+      "de": "Snowshine's Token"
+    },
+    "630": {
+      "category": "Valuables Stash",
+      "en": "Gilberta's Token",
+      "de": "Gilberta's Token"
+    },
+    "631": {
+      "category": "Valuables Stash",
+      "en": "Xaihi's Token",
+      "de": "Xaihi's Token"
+    },
+    "632": {
+      "category": "Valuables Stash",
+      "en": "Ember's Token",
+      "de": "Ember's Token"
+    },
+    "633": {
+      "category": "Valuables Stash",
+      "en": "Arclight's Token",
+      "de": "Arclight's Token"
+    },
+    "634": {
+      "category": "Valuables Stash",
+      "en": "Wulfgard's Token",
+      "de": "Wulfgard's Token"
+    },
+    "635": {
+      "category": "Valuables Stash",
+      "en": "Chen Qianyu's Token",
+      "de": "Chen Qianyu's Token"
+    },
+    "636": {
+      "category": "Valuables Stash",
+      "en": "Perlica's Token",
+      "de": "Perlica's Token"
+    },
+    "637": {
+      "category": "Valuables Stash",
+      "en": "Endministrator's Token",
+      "de": "Endministrator's Token"
+    },
+    "638": {
+      "category": "Valuables Stash",
+      "en": "Keen Valley Compass",
+      "de": "Keen Valley Compass"
+    },
+    "639": {
+      "category": "Valuables Stash",
+      "en": "Avywenna's Token",
+      "de": "Avywenna's Token"
+    },
+    "640": {
+      "category": "Valuables Stash",
+      "en": "Sanity Syrup",
+      "de": "Sanity Syrup"
+    },
+    "641": {
+      "category": "Valuables Stash",
+      "en": "Sanity Extractor",
+      "de": "Sanity Extractor"
+    },
+    "642": {
+      "category": "Valuables Stash",
+      "en": "T-Creds",
+      "de": "T-Creds"
+    },
+    "643": {
+      "category": "Valuables Stash",
+      "en": "Seasalt Ice Cream",
+      "de": "Seasalt Ice Cream"
+    },
+    "644": {
+      "category": "Valuables Stash",
+      "en": "Strawberry Crepe",
+      "de": "Strawberry Crepe"
+    },
+    "645": {
+      "category": "Valuables Stash",
+      "en": "Oroberyl",
+      "de": "Oroberyl"
+    },
+    "646": {
+      "category": "Valuables Stash",
+      "en": "New Horizons Weapon Supply",
+      "de": "New Horizons Weapon Supply"
+    },
+    "647": {
+      "category": "Valuables Stash",
+      "en": "Curated Weapon Supply",
+      "de": "Curated Weapon Supply"
+    },
+    "648": {
+      "category": "Valuables Stash",
+      "en": "Origeometry",
+      "de": "Origeometry"
+    },
+    "649": {
+      "category": "Valuables Stash",
+      "en": "Arms OC: Smelting Forge",
+      "de": "Arms OC: Smelting Forge"
+    },
+    "650": {
+      "category": "Valuables Stash",
+      "en": "Headhunting Dossier",
+      "de": "Headhunting Dossier"
+    },
+    "651": {
+      "category": "Valuables Stash",
+      "en": "Messenger Express 10×Permit",
+      "de": "Messenger Express 10×Permit"
+    },
+    "652": {
+      "category": "Valuables Stash",
+      "en": "Spectral Splendor 10×Permit",
+      "de": "Spectral Splendor 10×Permit"
+    },
+    "653": {
+      "category": "Valuables Stash",
+      "en": "Sanity Usage Permit",
+      "de": "Sanity Usage Permit"
+    },
+    "654": {
+      "category": "Valuables Stash",
+      "en": "Firewalker's Trail 10×Permit",
+      "de": "Firewalker's Trail 10×Permit"
+    },
+    "655": {
+      "category": "Valuables Stash",
+      "en": "Messenger Express HH Permit",
+      "de": "Messenger Express HH Permit"
+    },
+    "656": {
+      "category": "Valuables Stash",
+      "en": "Spectral Splendor HH Permit",
+      "de": "Spectral Splendor HH Permit"
+    },
+    "657": {
+      "category": "Valuables Stash",
+      "en": "Bond Quota",
+      "de": "Bond Quota"
+    },
+    "658": {
+      "category": "Valuables Stash",
+      "en": "Firewalker's Trail HH Permit",
+      "de": "Firewalker's Trail HH Permit"
+    },
+    "659": {
+      "category": "Valuables Stash",
+      "en": "Chartered HH-10×Permit",
+      "de": "Chartered HH-10×Permit"
+    },
+    "660": {
+      "category": "Valuables Stash",
+      "en": "AIC Quota",
+      "de": "AIC Quota"
+    },
+    "661": {
+      "category": "Valuables Stash",
+      "en": "New Horizons HH-10×Permit",
+      "de": "New Horizons HH-10×Permit"
+    },
+    "662": {
+      "category": "Valuables Stash",
+      "en": "Chartered HH Permit",
+      "de": "Chartered HH Permit"
+    },
+    "663": {
+      "category": "Valuables Stash",
+      "en": "Basic HH Permit",
+      "de": "Basic HH Permit"
+    },
+    "683": {
+      "category": "Valuables Stash",
+      "en": "Arsenal Ticket",
+      "de": "Arsenal Ticket"
+    },
+    "684": {
+      "category": "Valuables Stash",
+      "en": "Endpoint Quota",
+      "de": "Endpoint Quota"
+    },
+    "685": {
+      "category": "Item Files",
+      "en": "Siegeknuckles Gauntlets",
+      "de": "Siegeknuckles Gauntlets"
+    },
+    "693": {
+      "category": "Valuables Stash",
+      "en": "Sanity Essence",
+      "de": "Sanity Essence"
+    },
+    "694": {
+      "category": "Valuables Stash",
+      "en": "Designation Selection Permit",
+      "de": "Designation Selection Permit"
+    },
+    "695": {
+      "category": "Valuables Stash",
+      "en": "Pass Application: Customized",
+      "de": "Pass Application: Customized"
+    },
+    "696": {
+      "category": "Valuables Stash",
+      "en": "Pass Application: Originium",
+      "de": "Pass Application: Originium"
+    },
+    "697": {
+      "category": "Valuables Stash",
+      "en": "Pass EXP",
+      "de": "Pass EXP"
+    },
+    "699": {
+      "category": "Valuables Stash",
+      "en": "Exchange Crate-o-Surprise [M]",
+      "de": "Exchange Crate-o-Surprise [M]"
+    },
+    "700": {
+      "category": "Valuables Stash",
+      "en": "Exchange Crate-o-Surprise [L]",
+      "de": "Exchange Crate-o-Surprise [L]"
+    },
+    "701": {
+      "category": "Valuables Stash",
+      "en": "Credits",
+      "de": "Credits"
+    },
+    "704": {
+      "category": "Valuables Stash",
+      "en": "Common Nodule [S]",
+      "de": "Common Nodule [S]"
+    },
+    "705": {
+      "category": "Valuables Stash",
+      "en": "Malformed Nodule [S]",
+      "de": "Malformed Nodule [S]"
+    },
+    "706": {
+      "category": "Valuables Stash",
+      "en": "Malformed Nodule [L]",
+      "de": "Malformed Nodule [L]"
+    },
+    "707": {
+      "category": "Valuables Stash",
+      "en": "Fine Nodule [M]",
+      "de": "Fine Nodule [M]"
+    },
+    "708": {
+      "category": "Valuables Stash",
+      "en": "Malformed Nodule [M]",
+      "de": "Malformed Nodule [M]"
+    },
+    "709": {
+      "category": "Valuables Stash",
+      "en": "Common Nodule [M]",
+      "de": "Common Nodule [M]"
+    },
+    "710": {
+      "category": "Valuables Stash",
+      "en": "Rough Nodule [M]",
+      "de": "Rough Nodule [M]"
+    },
+    "711": {
+      "category": "Valuables Stash",
+      "en": "Rough Nodule [L]",
+      "de": "Rough Nodule [L]"
+    },
+    "712": {
+      "category": "Valuables Stash",
+      "en": "Rough Nodule [S]",
+      "de": "Rough Nodule [S]"
+    },
+    "713": {
+      "category": "Valuables Stash",
+      "en": "Common Nodule [L]",
+      "de": "Common Nodule [L]"
+    },
+    "714": {
+      "category": "Valuables Stash",
+      "en": "Fine Nodule [S]",
+      "de": "Fine Nodule [S]"
+    },
+    "715": {
+      "category": "Valuables Stash",
+      "en": "Specimen: Blighted Armorscale",
+      "de": "Specimen: Blighted Armorscale"
+    },
+    "716": {
+      "category": "Valuables Stash",
+      "en": "Crystal-Embedded Fragment",
+      "de": "Crystal-Embedded Fragment"
+    },
+    "717": {
+      "category": "Valuables Stash",
+      "en": "Classified: The Pack",
+      "de": "Classified: The Pack"
+    },
+    "718": {
+      "category": "Valuables Stash",
+      "en": "Gold Statuette: Wulfgard",
+      "de": "Gold Statuette: Wulfgard"
+    },
+    "719": {
+      "category": "Valuables Stash",
+      "en": "Specimen: DELTA Aggelos",
+      "de": "Specimen: DELTA Aggelos"
+    },
+    "720": {
+      "category": "Valuables Stash",
+      "en": "Rust Fragment",
+      "de": "Rust Fragment"
+    },
+    "721": {
+      "category": "Valuables Stash",
+      "en": "Mask Fragment",
+      "de": "Mask Fragment"
+    },
+    "722": {
+      "category": "Valuables Stash",
+      "en": "Refractorite Fragment",
+      "de": "Refractorite Fragment"
+    },
+    "723": {
+      "category": "Valuables Stash",
+      "en": "Axe Armor Fragment",
+      "de": "Axe Armor Fragment"
+    },
+    "724": {
+      "category": "Valuables Stash",
+      "en": "Amberite Fragment",
+      "de": "Amberite Fragment"
+    },
+    "725": {
+      "category": "Valuables Stash",
+      "en": "Connect-and-Win: Luck",
+      "de": "Connect-and-Win: Luck"
+    },
+    "726": {
+      "category": "Valuables Stash",
+      "en": "Springfest Pastry (Joy)",
+      "de": "Springfest Pastry (Joy)"
+    },
+    "727": {
+      "category": "Valuables Stash",
+      "en": "Connect-and-Win: Auspice",
+      "de": "Connect-and-Win: Auspice"
+    },
+    "728": {
+      "category": "Valuables Stash",
+      "en": "Springfest Pastry (Fortune)",
+      "de": "Springfest Pastry (Fortune)"
+    },
+    "729": {
+      "category": "Valuables Stash",
+      "en": "Springfest Pastry (Wealth)",
+      "de": "Springfest Pastry (Wealth)"
+    },
+    "730": {
+      "category": "Item Files",
+      "en": "Garden Stir-Fry",
+      "de": "Garden Stir-Fry"
+    },
+    "731": {
+      "category": "Item Files",
+      "en": "Bamboo Sprouts and Meat",
+      "de": "Bamboo Sprouts and Meat"
+    },
+    "732": {
+      "category": "Weapons",
+      "en": "Brigand's Calling",
+      "de": "Brigand's Calling"
+    },
+    "733": {
+      "category": "Weapons",
+      "en": "Lupine Scarlet",
+      "de": "Lupine Scarlet"
+    },
+    "734": {
+      "category": "Weapons",
+      "en": "Home Longing",
+      "de": "Home Longing"
+    },
+    "742": {
+      "category": "Item Files",
+      "en": "Cuprium Ore",
+      "de": "Cuprium Ore"
+    },
+    "743": {
+      "category": "Item Files",
+      "en": "Cuprium",
+      "de": "Cuprium"
+    },
+    "744": {
+      "category": "Item Files",
+      "en": "Cuprium Powder",
+      "de": "Cuprium Powder"
+    },
+    "745": {
+      "category": "Item Files",
+      "en": "Cuprium Bottle",
+      "de": "Cuprium Bottle"
+    },
+    "746": {
+      "category": "Item Files",
+      "en": "Cuprium Part",
+      "de": "Cuprium Part"
+    },
+    "747": {
+      "category": "Item Files",
+      "en": "Cuprium Component",
+      "de": "Cuprium Component"
+    },
+    "752": {
+      "category": "Valuables Stash",
+      "en": "Mr. Rammu",
+      "de": "Mr. Rammu"
+    },
+    "753": {
+      "category": "Item Files",
+      "en": "Grovenymph Pupa",
+      "de": "Grovenymph Pupa"
+    },
+    "754": {
+      "category": "Item Files",
+      "en": "Qingbo Bamboo Chimes",
+      "de": "Qingbo Bamboo Chimes"
+    },
+    "755": {
+      "category": "Item Files",
+      "en": "Xircon",
+      "de": "Xircon"
+    },
+    "756": {
+      "category": "Item Files",
+      "en": "Xircon Effluent",
+      "de": "Xircon Effluent"
+    },
+    "757": {
+      "category": "Item Files",
+      "en": "Sewage",
+      "de": "Sewage"
+    },
+    "758": {
+      "category": "Item Files",
+      "en": "SC Wuling Battery",
+      "de": "SC Wuling Battery"
+    },
+    "759": {
+      "category": "Item Files",
+      "en": "Yazhen Syringe [A]",
+      "de": "Yazhen Syringe [A]"
+    },
+    "760": {
+      "category": "Item Files",
+      "en": "Master Pan's Egg Pudding",
+      "de": "Master Pan's Egg Pudding"
+    },
+    "761": {
+      "category": "Item Files",
+      "en": "Woven Aggelos",
+      "de": "Woven Aggelos"
+    },
+    "762": {
+      "category": "Item Files",
+      "en": "Scrimshaw of the Pack",
+      "de": "Scrimshaw of the Pack"
+    },
+    "766": {
+      "category": "Item Files",
+      "en": "Jincao Tea",
+      "de": "Jincao Tea"
+    },
+    "767": {
+      "category": "Gear",
+      "en": "Type 50 Yinglung Radar T1",
+      "de": "Type 50 Yinglung Radar T1"
+    },
+    "768": {
+      "category": "Gear",
+      "en": "Type 50 Yinglung Radar T2",
+      "de": "Type 50 Yinglung Radar T2"
+    },
+    "769": {
+      "category": "Gear",
+      "en": "Type 50 Yinglung Heavy Armor T1",
+      "de": "Type 50 Yinglung Heavy Armor T1"
+    },
+    "770": {
+      "category": "Gear",
+      "en": "Type 50 Yinglung Heavy Armor T2",
+      "de": "Type 50 Yinglung Heavy Armor T2"
+    },
+    "771": {
+      "category": "Gear",
+      "en": "MI Security Scope T1",
+      "de": "MI Security Scope T1"
+    },
+    "772": {
+      "category": "Gear",
+      "en": "MI Security Gloves T1",
+      "de": "MI Security Gloves T1"
+    },
+    "773": {
+      "category": "Gear",
+      "en": "MI Security Armor T1",
+      "de": "MI Security Armor T1"
+    },
+    "775": {
+      "category": "Gear",
+      "en": "Hot Work Gloves",
+      "de": "Hot Work Gloves"
+    },
+    "776": {
+      "category": "Gear",
+      "en": "Hot Work Exo-Rig",
+      "de": "Hot Work Exo-Rig"
+    },
+    "777": {
+      "category": "Gear",
+      "en": "Frontiers O2 Tube",
+      "de": "Frontiers O2 Tube"
+    },
+    "778": {
+      "category": "Gear",
+      "en": "Frontiers Protection Suit",
+      "de": "Frontiers Protection Suit"
+    },
+    "779": {
+      "category": "Gear",
+      "en": "Frontiers Analyzer",
+      "de": "Frontiers Analyzer"
+    },
+    "780": {
+      "category": "Gear",
+      "en": "Frontiers Fiber Gloves",
+      "de": "Frontiers Fiber Gloves"
+    },
+    "781": {
+      "category": "Gear",
+      "en": "Pulser Labs Invasion Core",
+      "de": "Pulser Labs Invasion Core"
+    },
+    "782": {
+      "category": "Gear",
+      "en": "Pulser Labs Probe",
+      "de": "Pulser Labs Probe"
+    },
+    "783": {
+      "category": "Gear",
+      "en": "Bonekrusha Mask T2",
+      "de": "Bonekrusha Mask T2"
+    },
+    "784": {
+      "category": "Gear",
+      "en": "Bonekrusha Wristband",
+      "de": "Bonekrusha Wristband"
+    },
+    "785": {
+      "category": "Gear",
+      "en": "Bonekrusha Wristband T1",
+      "de": "Bonekrusha Wristband T1"
+    },
+    "786": {
+      "category": "Gear",
+      "en": "Bonekrusha Heavy Armor T2",
+      "de": "Bonekrusha Heavy Armor T2"
+    },
+    "787": {
+      "category": "Gear",
+      "en": "Æthertech Watch",
+      "de": "Æthertech Watch"
+    },
+    "788": {
+      "category": "Gear",
+      "en": "Æthertech Stabilizer T1",
+      "de": "Æthertech Stabilizer T1"
+    },
+    "789": {
+      "category": "Gear",
+      "en": "Æthertech Light Gloves",
+      "de": "Æthertech Light Gloves"
+    },
+    "790": {
+      "category": "Gear",
+      "en": "LYNX Connector T2",
+      "de": "LYNX Connector T2"
+    },
+    "791": {
+      "category": "Gear",
+      "en": "Swordmancer Light Armor",
+      "de": "Swordmancer Light Armor"
+    },
+    "792": {
+      "category": "Gear",
+      "en": "Swordmancer Micro Filter",
+      "de": "Swordmancer Micro Filter"
+    },
+    "793": {
+      "category": "Gear",
+      "en": "Swordmancer NAV Beacon",
+      "de": "Swordmancer NAV Beacon"
+    },
+    "794": {
+      "category": "Gear",
+      "en": "Redeemer Hands",
+      "de": "Redeemer Hands"
+    },
+    "795": {
+      "category": "Gear",
+      "en": "Redeemer Gloves",
+      "de": "Redeemer Gloves"
+    },
+    "796": {
+      "category": "Gear",
+      "en": "Redeemer Armor",
+      "de": "Redeemer Armor"
+    },
+    "797": {
+      "category": "Gear",
+      "en": "Redeemer Plates",
+      "de": "Redeemer Plates"
+    },
+    "798": {
+      "category": "Item Files",
+      "en": "Inert Xircon Effluent",
+      "de": "Inert Xircon Effluent"
+    },
+    "806": {
+      "category": "Valuables Stash",
+      "en": "Pearl of the Pack HH Permit",
+      "de": "Pearl of the Pack HH Permit"
+    },
+    "807": {
+      "category": "Valuables Stash",
+      "en": "Pearl of the Pack 10×Permit",
+      "de": "Pearl of the Pack 10×Permit"
+    },
+    "808": {
+      "category": "Valuables Stash",
+      "en": "Rossi's Token",
+      "de": "Rossi's Token"
+    },
+    "816": {
+      "category": "Item Files",
+      "en": "Protocolized Weapon Pattern",
+      "de": "Protocolized Weapon Pattern"
+    },
+    "817": {
+      "category": "Valuables Stash",
+      "en": "Tangtang's Token",
+      "de": "Tangtang's Token"
+    },
+    "818": {
+      "category": "Valuables Stash",
+      "en": "Gently Flows Qingbo HH Permit",
+      "de": "Gently Flows Qingbo HH Permit"
+    },
+    "819": {
+      "category": "Valuables Stash",
+      "en": "Gently Flows Qingbo 10×Permit",
+      "de": "Gently Flows Qingbo 10×Permit"
+    },
+    "820": {
+      "category": "Valuables Stash",
+      "en": "Weapon Supply: Dark Currents",
+      "de": "Weapon Supply: Dark Currents"
+    },
+    "821": {
+      "category": "Valuables Stash",
+      "en": "Arms OC: Budding Anew",
+      "de": "Arms OC: Budding Anew"
+    },
+    "822": {
+      "category": "Valuables Stash",
+      "en": "Apple Slices",
+      "de": "Apple Slices"
+    },
+    "823": {
+      "category": "Valuables Stash",
+      "en": "Dried Fin",
+      "de": "Dried Fin"
+    },
+    "824": {
+      "category": "Valuables Stash",
+      "en": "Valley Multi-Line Engraving Kit",
+      "de": "Valley Multi-Line Engraving Kit"
+    },
+    "825": {
+      "category": "Valuables Stash",
+      "en": "Gold Statuette: Yvonne",
+      "de": "Gold Statuette: Yvonne"
+    },
+    "826": {
+      "category": "Valuables Stash",
+      "en": "Classified: Giant Weaponry",
+      "de": "Classified: Giant Weaponry"
+    },
+    "827": {
+      "category": "Valuables Stash",
+      "en": "Tubular Fragment",
+      "de": "Tubular Fragment"
+    },
+    "839": {
+      "category": "Weapons",
+      "en": "Lone Barge",
+      "de": "Lone Barge"
+    },
+    "840": {
+      "category": "Weapons",
+      "en": "Flickers in the Mist",
+      "de": "Flickers in the Mist"
+    },
+    "843": {
+      "category": "Item Files",
+      "en": "Chubby Lung Fangxing Memorabilia",
+      "de": "Chubby Lung Fangxing Memorabilia"
+    },
+    "844": {
+      "category": "Item Files",
+      "en": "Hetonite Component",
+      "de": "Hetonite Component"
+    },
+    "845": {
+      "category": "Item Files",
+      "en": "Hetonite Part",
+      "de": "Hetonite Part"
+    },
+    "846": {
+      "category": "Item Files",
+      "en": "Echoing Remedy",
+      "de": "Echoing Remedy"
+    },
+    "847": {
+      "category": "Item Files",
+      "en": "Hetonite Solution",
+      "de": "Hetonite Solution"
+    },
+    "848": {
+      "category": "Item Files",
+      "en": "Cuprium Solution",
+      "de": "Cuprium Solution"
+    },
+    "849": {
+      "category": "Item Files",
+      "en": "Liquid Heavy Xiranite",
+      "de": "Liquid Heavy Xiranite"
+    },
+    "850": {
+      "category": "Item Files",
+      "en": "Heavy Xiranite",
+      "de": "Heavy Xiranite"
+    },
+    "851": {
+      "category": "Item Files",
+      "en": "Hetonite Bottle",
+      "de": "Hetonite Bottle"
+    },
+    "852": {
+      "category": "Item Files",
+      "en": "Hetonite",
+      "de": "Hetonite"
+    },
+    "853": {
+      "category": "Item Files",
+      "en": "Precipitation Acid",
+      "de": "Precipitation Acid"
+    },
+    "854": {
+      "category": "Item Files",
+      "en": "Echoing Dust",
+      "de": "Echoing Dust"
+    },
+    "869": {
+      "category": "Gear",
+      "en": "Frontiers Extra O2 Tube T1",
+      "de": "Frontiers Extra O2 Tube T1"
+    },
+    "870": {
+      "category": "Gear",
+      "en": "Frontiers Fiber Gloves T1",
+      "de": "Frontiers Fiber Gloves T1"
+    },
+    "871": {
+      "category": "Gear",
+      "en": "Bonekrusha Figurine T2",
+      "de": "Bonekrusha Figurine T2"
+    },
+    "872": {
+      "category": "Gear",
+      "en": "Bonekrusha Gloves",
+      "de": "Bonekrusha Gloves"
+    },
+    "873": {
+      "category": "Gear",
+      "en": "Swordmancer Dagger",
+      "de": "Swordmancer Dagger"
+    },
+    "874": {
+      "category": "Gear",
+      "en": "Swordmancer TAC Gauntlets T1",
+      "de": "Swordmancer TAC Gauntlets T1"
+    },
+    "875": {
+      "category": "Gear",
+      "en": "Swordmancer Heavy Armor T1",
+      "de": "Swordmancer Heavy Armor T1"
+    },
+    "876": {
+      "category": "Gear",
+      "en": "Qingbo Cask",
+      "de": "Qingbo Cask"
+    },
+    "877": {
+      "category": "Gear",
+      "en": "Qingbo Positioning Kit",
+      "de": "Qingbo Positioning Kit"
+    },
+    "878": {
+      "category": "Gear",
+      "en": "Qingbo Bamboo Cutter",
+      "de": "Qingbo Bamboo Cutter"
+    },
+    "879": {
+      "category": "Gear",
+      "en": "Qingbo Gloves",
+      "de": "Qingbo Gloves"
+    },
+    "880": {
+      "category": "Gear",
+      "en": "Qingbo Gauntlets",
+      "de": "Qingbo Gauntlets"
+    },
+    "881": {
+      "category": "Gear",
+      "en": "Qingbo Light Armor",
+      "de": "Qingbo Light Armor"
+    },
+    "882": {
+      "category": "Gear",
+      "en": "Qingbo Heavy Armor",
+      "de": "Qingbo Heavy Armor"
+    },
+    "883": {
+      "category": "Gear",
+      "en": "Xiranflow Baton",
+      "de": "Xiranflow Baton"
+    },
+    "884": {
+      "category": "Gear",
+      "en": "Xiranflow Gloves",
+      "de": "Xiranflow Gloves"
+    },
+    "885": {
+      "category": "Gear",
+      "en": "Xiranflow Light Armor",
+      "de": "Xiranflow Light Armor"
+    },
+    "886": {
+      "category": "Valuables Stash",
+      "en": "Blitz of Verdance HH Permit",
+      "de": "Blitz of Verdance HH Permit"
+    },
+    "887": {
+      "category": "Valuables Stash",
+      "en": "Cycling Crate-o-Surprise [M]",
+      "de": "Cycling Crate-o-Surprise [M]"
+    },
+    "888": {
+      "category": "Valuables Stash",
+      "en": "Cycling Crate-o-Surprise [L]",
+      "de": "Cycling Crate-o-Surprise [L]"
+    },
+    "889": {
+      "category": "Valuables Stash",
+      "en": "Weapon Supply: Wrothful Tide",
+      "de": "Weapon Supply: Wrothful Tide"
+    },
+    "890": {
+      "category": "Valuables Stash",
+      "en": "Arms OC: Drifting Raft",
+      "de": "Arms OC: Drifting Raft"
+    },
+    "891": {
+      "category": "Valuables Stash",
+      "en": "Wholly-Braised Sprout [can]",
+      "de": "Wholly-Braised Sprout [can]"
+    },
+    "892": {
+      "category": "Valuables Stash",
+      "en": "Zhuang Fangyi's Token",
+      "de": "Zhuang Fangyi's Token"
+    },
+    "893": {
+      "category": "Valuables Stash",
+      "en": "Deluxe Chubby Lung",
+      "de": "Deluxe Chubby Lung"
+    },
+    "895": {
+      "category": "Valuables Stash",
+      "en": "Gold Statuette: Chen Qianyu",
+      "de": "Gold Statuette: Chen Qianyu"
+    },
+    "896": {
+      "category": "Valuables Stash",
+      "en": "Classified: Aggelos Rotreed",
+      "de": "Classified: Aggelos Rotreed"
+    },
+    "897": {
+      "category": "Valuables Stash",
+      "en": "Gold Statuette: Bigfowl",
+      "de": "Gold Statuette: Bigfowl"
+    },
+    "898": {
+      "category": "Valuables Stash",
+      "en": "Specimen: Bread",
+      "de": "Specimen: Bread"
+    },
+    "899": {
+      "category": "Valuables Stash",
+      "en": "Classified: Meat-Packing Plant",
+      "de": "Classified: Meat-Packing Plant"
+    },
+    "900": {
+      "category": "Valuables Stash",
+      "en": "Gold Statuette: Tata",
+      "de": "Gold Statuette: Tata"
+    },
+    "901": {
+      "category": "Valuables Stash",
+      "en": "Classified: Aburrey",
+      "de": "Classified: Aburrey"
+    },
+    "902": {
+      "category": "Valuables Stash",
+      "en": "Specimen: Originium Branch",
+      "de": "Specimen: Originium Branch"
+    },
+    "903": {
+      "category": "Valuables Stash",
+      "en": "Detonation Unit Fragment",
+      "de": "Detonation Unit Fragment"
+    },
+    "904": {
+      "category": "Valuables Stash",
+      "en": "Arc 2000 Model",
+      "de": "Arc 2000 Model"
+    },
+    "905": {
+      "category": "Valuables Stash",
+      "en": "Champion Drill Crawler",
+      "de": "Champion Drill Crawler"
+    },
+    "906": {
+      "category": "Valuables Stash",
+      "en": "Bonsai of Life",
+      "de": "Bonsai of Life"
+    },
+    "907": {
+      "category": "Valuables Stash",
+      "en": "Tianshi Pillar Model",
+      "de": "Tianshi Pillar Model"
+    },
+    "908": {
+      "category": "Valuables Stash",
+      "en": "Arms OC: Graffiti",
+      "de": "Arms OC: Graffiti"
+    },
+    "909": {
+      "category": "Valuables Stash",
+      "en": "Arms OC: Express Delivery",
+      "de": "Arms OC: Express Delivery"
+    },
+    "910": {
+      "category": "Valuables Stash",
+      "en": "Arms OC: Scarlet Pearl",
+      "de": "Arms OC: Scarlet Pearl"
+    },
+    "911": {
+      "category": "Valuables Stash",
+      "en": "Arms OC: Cosmic Voice",
+      "de": "Arms OC: Cosmic Voice"
+    },
+    "912": {
+      "category": "Valuables Stash",
+      "en": "Arms OC: Far Expedition",
+      "de": "Arms OC: Far Expedition"
+    },
+    "913": {
+      "category": "Valuables Stash",
+      "en": "Arms OC: Thunderous Peal",
+      "de": "Arms OC: Thunderous Peal"
+    },
+    "914": {
+      "category": "Valuables Stash",
+      "en": "Arms OC: Solid Ice",
+      "de": "Arms OC: Solid Ice"
+    },
+    "915": {
+      "category": "Valuables Stash",
+      "en": "Arms OC: Rising Mount",
+      "de": "Arms OC: Rising Mount"
+    },
+    "916": {
+      "category": "Valuables Stash",
+      "en": "Orbital Wings",
+      "de": "Orbital Wings"
+    },
+    "917": {
+      "category": "Valuables Stash",
+      "en": "Qiming Station Model",
+      "de": "Qiming Station Model"
+    },
+    "918": {
+      "category": "Valuables Stash",
+      "en": "Xiranite Gourd Sample",
+      "de": "Xiranite Gourd Sample"
+    },
+    "919": {
+      "category": "Valuables Stash",
+      "en": "Fruits of Altruism Certs",
+      "de": "Fruits of Altruism Certs"
+    },
+    "920": {
+      "category": "Item Files",
+      "en": "Xiranite Gourd",
+      "de": "Xiranite Gourd"
+    },
+    "921": {
+      "category": "Item Files",
+      "en": "Experimental Xiranite Part",
+      "de": "Experimental Xiranite Part"
+    },
+    "922": {
+      "category": "Item Files",
+      "en": "Experimental Xiranite Bottle",
+      "de": "Experimental Xiranite Bottle"
+    },
+    "923": {
+      "category": "Valuables Stash",
+      "en": "Precious Nodule [S]",
+      "de": "Precious Nodule [S]"
+    },
+    "924": {
+      "category": "Valuables Stash",
+      "en": "Precious Nodule [M]",
+      "de": "Precious Nodule [M]"
+    },
+    "925": {
+      "category": "Valuables Stash",
+      "en": "Precious Nodule [L]",
+      "de": "Precious Nodule [L]"
+    },
+    "926": {
+      "category": "Valuables Stash",
+      "en": "Sparkling Nodule [S]",
+      "de": "Sparkling Nodule [S]"
+    },
+    "927": {
+      "category": "Valuables Stash",
+      "en": "Sparkling Nodule [M]",
+      "de": "Sparkling Nodule [M]"
+    },
+    "928": {
+      "category": "Valuables Stash",
+      "en": "Sparkling Nodule [L]",
+      "de": "Sparkling Nodule [L]"
+    },
+    "929": {
+      "category": "Valuables Stash",
+      "en": "Classified: Security Bureau Staff",
+      "de": "Classified: Security Bureau Staff"
+    },
+    "930": {
+      "category": "Valuables Stash",
+      "en": "Classified: Rhodagn",
+      "de": "Classified: Rhodagn"
+    },
+    "931": {
+      "category": "Valuables Stash",
+      "en": "Gold Statuette: Old Bombtail",
+      "de": "Gold Statuette: Old Bombtail"
+    },
+    "932": {
+      "category": "Valuables Stash",
+      "en": "Gold Statuette: Perlica",
+      "de": "Gold Statuette: Perlica"
+    },
+    "933": {
+      "category": "Valuables Stash",
+      "en": "Specimen: Tube Professor",
+      "de": "Specimen: Tube Professor"
+    },
+    "934": {
+      "category": "Valuables Stash",
+      "en": "Specimen: Arts Unit",
+      "de": "Specimen: Arts Unit"
+    },
+    "935": {
+      "category": "Valuables Stash",
+      "en": "Specimen: Bonekrusher Dolls",
+      "de": "Specimen: Bonekrusher Dolls"
+    },
+    "936": {
+      "category": "Valuables Stash",
+      "en": "Scorching Hot Bolt Fragment",
+      "de": "Scorching Hot Bolt Fragment"
+    },
+    "937": {
+      "category": "Valuables Stash",
+      "en": "Densolite Fragment",
+      "de": "Densolite Fragment"
+    },
+    "938": {
+      "category": "Valuables Stash",
+      "en": "Unbreachable Crystal Fragment",
+      "de": "Unbreachable Crystal Fragment"
+    },
+    "939": {
+      "category": "Valuables Stash",
+      "en": "Tactical Equipment Fragment",
+      "de": "Tactical Equipment Fragment"
+    },
+    "940": {
+      "category": "Valuables Stash",
+      "en": "Aberrant Hazefyre Fragment",
+      "de": "Aberrant Hazefyre Fragment"
+    },
+    "941": {
+      "category": "Item Files",
+      "en": "Xiranite Jade Gourd",
+      "de": "Xiranite Jade Gourd"
+    },
+    "942": {
+      "category": "Item Files",
+      "en": "Experimental Xiran-Hue Atomizer",
+      "de": "Experimental Xiran-Hue Atomizer"
+    },
+    "943": {
+      "category": "Item Files",
+      "en": "Experimental Heavy Xiranite Part",
+      "de": "Experimental Heavy Xiranite Part"
+    },
+    "944": {
+      "category": "Item Files",
+      "en": "Experimental Heavy Xiranite Bottle",
+      "de": "Experimental Heavy Xiranite Bottle"
+    },
+    "945": {
+      "category": "Valuables Stash",
+      "en": "Xiranite Jade Gourd Sample",
+      "de": "Xiranite Jade Gourd Sample"
+    },
+    "989": {
+      "category": "Item Files",
+      "en": "Howlerbeast Braid",
+      "de": "Howlerbeast Braid"
+    },
+    "991": {
+      "category": "Valuables Stash",
+      "en": "Companions Figurine",
+      "de": "Companions Figurine"
+    },
+    "992": {
+      "category": "Valuables Stash",
+      "en": "Shimmering Moment Token Supply",
+      "de": "Shimmering Moment Token Supply"
+    },
+    "993": {
+      "category": "Valuables Stash",
+      "en": "Shimmering Moment Designation Permit",
+      "de": "Shimmering Moment Designation Permit"
+    },
+    "994": {
+      "category": "Valuables Stash",
+      "en": "Shimmering Moment HH Permit",
+      "de": "Shimmering Moment HH Permit"
+    },
+    "997": {
+      "category": "Valuables Stash",
+      "en": "Operational EXP",
+      "de": "Operational EXP"
+    },
+    "998": {
+      "category": "Valuables Stash",
+      "en": "Aurylene Crystal",
+      "de": "Aurylene Crystal"
+    },
+    "999": {
+      "category": "Weapons",
+      "en": "Beacon of Duty",
+      "de": "Beacon of Duty"
+    },
+    "1000": {
+      "category": "Weapons",
+      "en": "Phantom Pain",
+      "de": "Phantom Pain"
+    },
+    "1001": {
+      "category": "Weapons",
+      "en": "Amaranthine Tassel",
+      "de": "Amaranthine Tassel"
+    },
+    "1004": {
+      "category": "Item Files",
+      "en": "Fin-n-Chips",
+      "de": "Fin-n-Chips"
+    },
+    "1005": {
+      "category": "Item Files",
+      "en": "Bizarro Cupcake",
+      "de": "Bizarro Cupcake"
+    },
+    "1006": {
+      "category": "Item Files",
+      "en": "Tian's Braised Meat Noodles",
+      "de": "Tian's Braised Meat Noodles"
+    },
+    "1007": {
+      "category": "Item Files",
+      "en": "Rind-Flavored Sprouts",
+      "de": "Rind-Flavored Sprouts"
+    },
+    "1008": {
+      "category": "Item Files",
+      "en": "Century Rind",
+      "de": "Century Rind"
+    },
+    "1009": {
+      "category": "Item Files",
+      "en": "Caudal Goldscales",
+      "de": "Caudal Goldscales"
+    },
+    "1010": {
+      "category": "Valuables Stash",
+      "en": "Piece of a Mini Stone Statue",
+      "de": "Piece of a Mini Stone Statue"
+    },
+    "1011": {
+      "category": "Valuables Stash",
+      "en": "Mi Fu's Token",
+      "de": "Mi Fu's Token"
+    },
+    "1012": {
+      "category": "Valuables Stash",
+      "en": "One with Her Fists HH Permit",
+      "de": "One with Her Fists HH Permit"
+    },
+    "1013": {
+      "category": "Valuables Stash",
+      "en": "Arms OC: Scarlet Knot",
+      "de": "Arms OC: Scarlet Knot"
+    },
+    "1014": {
+      "category": "Valuables Stash",
+      "en": "Weapon Supply: Viridian Mont",
+      "de": "Weapon Supply: Viridian Mont"
+    },
+    "1015": {
+      "category": "Valuables Stash",
+      "en": "Lungclaw Ultra-E",
+      "de": "Lungclaw Ultra-E"
+    },
+    "1016": {
+      "category": "Valuables Stash",
+      "en": "Devil's Licorice Drops",
+      "de": "Devil's Licorice Drops"
+    },
+    "1019": {
+      "category": "Gear",
+      "en": "Qingbo Positioning Kit T1",
+      "de": "Qingbo Positioning Kit T1"
+    },
+    "1020": {
+      "category": "Gear",
+      "en": "Swordmancer Fiber Armor",
+      "de": "Swordmancer Fiber Armor"
+    },
+    "1021": {
+      "category": "Gear",
+      "en": "Grizzled Edge Push Knife T1",
+      "de": "Grizzled Edge Push Knife T1"
+    },
+    "1022": {
+      "category": "Gear",
+      "en": "Grizzled Edge Push Knife",
+      "de": "Grizzled Edge Push Knife"
+    },
+    "1023": {
+      "category": "Gear",
+      "en": "Grizzled Edge Gauntlets T1",
+      "de": "Grizzled Edge Gauntlets T1"
+    },
+    "1024": {
+      "category": "Gear",
+      "en": "Grizzled Edge Gauntlets",
+      "de": "Grizzled Edge Gauntlets"
+    },
+    "1025": {
+      "category": "Gear",
+      "en": "Grizzled Edge Armor T1",
+      "de": "Grizzled Edge Armor T1"
+    },
+    "1026": {
+      "category": "Gear",
+      "en": "Grizzled Edge Armor",
+      "de": "Grizzled Edge Armor"
+    },
+    "1030": {
+      "category": "Valuables Stash",
+      "en": "Vitrified Coin",
+      "de": "Vitrified Coin"
+    },
+    "1031": {
+      "category": "Item Files",
+      "en": "Instant Vintage",
+      "de": "Instant Vintage"
+    },
+    "1032": {
+      "category": "Weapons",
+      "en": "Blessing of Lustrous Carmine",
+      "de": "Blessing of Lustrous Carmine"
+    },
+    "1036": {
+      "category": "Valuables Stash",
+      "en": "Peacekeeper's Nocturne HH Permit",
+      "de": "Peacekeeper's Nocturne HH Permit"
+    },
+    "1037": {
+      "category": "Valuables Stash",
+      "en": "Arms OC: Crimson Hued",
+      "de": "Arms OC: Crimson Hued"
+    },
+    "1038": {
+      "category": "Valuables Stash",
+      "en": "Camille's Token",
+      "de": "Camille's Token"
+    },
+    "1042": {
+      "category": "Weapons",
+      "en": "Farsight",
+      "de": "Farsight"
+    },
+    "1043": {
+      "category": "Weapons",
+      "en": "Junction Point",
+      "de": "Junction Point"
+    },
+    "1044": {
+      "category": "Weapons",
+      "en": "Golden Age",
+      "de": "Golden Age"
+    },
+    "1045": {
+      "category": "Weapons",
+      "en": "Type 42: Solemn Phalanx",
+      "de": "Type 42: Solemn Phalanx"
+    },
+    "1046": {
+      "category": "Weapons",
+      "en": "Bedazzling Night Debut",
+      "de": "Bedazzling Night Debut"
+    },
+    "1048": {
+      "category": "Item Files",
+      "en": "Talos Cap",
+      "de": "Talos Cap"
+    },
+    "1049": {
+      "category": "Item Files",
+      "en": "Crimson Spearleaf",
+      "de": "Crimson Spearleaf"
+    },
+    "1050": {
+      "category": "Item Files",
+      "en": "Protocolith",
+      "de": "Protocolith"
+    },
+    "1051": {
+      "category": "Item Files",
+      "en": "Fowlbeast Paper Kite",
+      "de": "Fowlbeast Paper Kite"
+    },
+    "1052": {
+      "category": "Item Files",
+      "en": "Der Schwingende Gentleman Classical Album",
+      "de": "Der Schwingende Gentleman Classical Album"
+    },
+    "1053": {
+      "category": "Item Files",
+      "en": "Ruin-Purger Remedy",
+      "de": "Ruin-Purger Remedy"
+    },
+    "1054": {
+      "category": "Item Files",
+      "en": "Stonehold Remedy",
+      "de": "Stonehold Remedy"
+    },
+    "1055": {
+      "category": "Item Files",
+      "en": "Aero-Salvager I",
+      "de": "Aero-Salvager I"
+    },
+    "1056": {
+      "category": "Item Files",
+      "en": "Aero-Salvager II",
+      "de": "Aero-Salvager II"
+    },
+    "1057": {
+      "category": "Item Files",
+      "en": "Aero-Salvager III",
+      "de": "Aero-Salvager III"
+    },
+    "1058": {
+      "category": "Item Files",
+      "en": "Xiranite Nexus",
+      "de": "Xiranite Nexus"
+    },
+    "1059": {
+      "category": "Item Files",
+      "en": "Xiranite Nexus XC-I",
+      "de": "Xiranite Nexus XC-I"
+    },
+    "1060": {
+      "category": "Item Files",
+      "en": "Xiranite Nexus XC-II",
+      "de": "Xiranite Nexus XC-II"
+    },
+    "1061": {
+      "category": "Item Files",
+      "en": "Blight Miasma Scanner Plugin",
+      "de": "Blight Miasma Scanner Plugin"
+    },
+    "1062": {
+      "category": "Item Files",
+      "en": "Inergen",
+      "de": "Inergen"
+    },
+    "1063": {
+      "category": "Item Files",
+      "en": "Xiragen",
+      "de": "Xiragen"
+    },
+    "1064": {
+      "category": "Item Files",
+      "en": "Pyrrolite",
+      "de": "Pyrrolite"
+    },
+    "1065": {
+      "category": "Item Files",
+      "en": "Pyrrolite Part",
+      "de": "Pyrrolite Part"
+    },
+    "1066": {
+      "category": "Item Files",
+      "en": "Cuprium Canister",
+      "de": "Cuprium Canister"
+    },
+    "1067": {
+      "category": "Item Files",
+      "en": "Pyrrolite Component",
+      "de": "Pyrrolite Component"
+    },
+    "1068": {
+      "category": "Item Files",
+      "en": "Acridgen",
+      "de": "Acridgen"
+    },
+    "1069": {
+      "category": "Item Files",
+      "en": "Cuprium Gas",
+      "de": "Cuprium Gas"
+    },
+    "1070": {
+      "category": "Item Files",
+      "en": "Hetonite Gas",
+      "de": "Hetonite Gas"
+    },
+    "1071": {
+      "category": "Item Files",
+      "en": "Pyrrolite Gas",
+      "de": "Pyrrolite Gas"
+    },
+    "1072": {
+      "category": "Item Files",
+      "en": "Aquagen",
+      "de": "Aquagen"
+    },
+    "1073": {
+      "category": "Item Files",
+      "en": "Heavy Xiragen",
+      "de": "Heavy Xiragen"
+    },
+    "1074": {
+      "category": "Item Files",
+      "en": "Separator Core",
+      "de": "Separator Core"
+    },
+    "1075": {
+      "category": "Item Files",
+      "en": "Shadow Dew",
+      "de": "Shadow Dew"
+    },
+    "1076": {
+      "category": "Item Files",
+      "en": "Glaive Fragment",
+      "de": "Glaive Fragment"
+    },
+    "1077": {
+      "category": "Item Files",
+      "en": "Blightshade Bezoar",
+      "de": "Blightshade Bezoar"
+    },
+    "1087": {
+      "category": "Valuables Stash",
+      "en": "Weapon Supply: Awakening",
+      "de": "Weapon Supply: Awakening"
+    },
+    "1088": {
+      "category": "Valuables Stash",
+      "en": "Arms OC: Smelting Fire",
+      "de": "Arms OC: Smelting Fire"
+    },
+    "1089": {
+      "category": "Valuables Stash",
+      "en": "Arms OC: Swift Walker",
+      "de": "Arms OC: Swift Walker"
+    },
+    "1091": {
+      "category": "Item Files",
+      "en": "Crimson Spearleaf Tuber",
+      "de": "Crimson Spearleaf Tuber"
+    },
+    "1092": {
+      "category": "Item Files",
+      "en": "Talos Cap Mycelia",
+      "de": "Talos Cap Mycelia"
+    },
+    "1093": {
+      "category": "Item Files",
+      "en": "Protocolith Seed",
+      "de": "Protocolith Seed"
+    },
+    "1094": {
+      "category": "Valuables Stash",
+      "en": "Gaze North to the Rift HH Permit",
+      "de": "Gaze North to the Rift HH Permit"
+    },
+    "1095": {
+      "category": "Valuables Stash",
+      "en": "Year 1 Birthday Cake",
+      "de": "Year 1 Birthday Cake"
+    },
+    "1096": {
+      "category": "Valuables Stash",
+      "en": "Handmade Star Candy",
+      "de": "Handmade Star Candy"
+    },
+    "1097": {
+      "category": "Valuables Stash",
+      "en": "Osmanthus Rice Cake",
+      "de": "Osmanthus Rice Cake"
+    },
+    "1098": {
+      "category": "Valuables Stash",
+      "en": "Weapon Supply: Blighted Sea",
+      "de": "Weapon Supply: Blighted Sea"
+    },
+    "1099": {
+      "category": "Valuables Stash",
+      "en": "Arms OC: Military Grade",
+      "de": "Arms OC: Military Grade"
+    },
+    "1100": {
+      "category": "Valuables Stash",
+      "en": "Arsenal Defense Crate α: Rift Vigile",
+      "de": "Arsenal Defense Crate α: Rift Vigile"
+    },
+    "1101": {
+      "category": "Valuables Stash",
+      "en": "Arsenal Defense Crate β: Rift Vigile",
+      "de": "Arsenal Defense Crate β: Rift Vigile"
+    },
+    "1102": {
+      "category": "Valuables Stash",
+      "en": "Talosite",
+      "de": "Talosite"
+    },
+    "1103": {
+      "category": "Valuables Stash",
+      "en": "ID Info Update Card",
+      "de": "ID Info Update Card"
+    },
+    "1104": {
+      "category": "Valuables Stash",
+      "en": "Wuling Talosite Probe",
+      "de": "Wuling Talosite Probe"
+    },
+    "1105": {
+      "category": "Valuables Stash",
+      "en": "Dichromo-Light",
+      "de": "Dichromo-Light"
+    },
+    "1106": {
+      "category": "Valuables Stash",
+      "en": "Arcane's Token",
+      "de": "Arcane's Token"
+    },
+    "1116": {
+      "category": "Gear",
+      "en": "AIC Fieldwork Armor",
+      "de": "AIC Fieldwork Armor"
+    },
+    "1117": {
+      "category": "Gear",
+      "en": "AIC Fieldwork Plate",
+      "de": "AIC Fieldwork Plate"
+    },
+    "1118": {
+      "category": "Gear",
+      "en": "AIC Fieldwork Vest",
+      "de": "AIC Fieldwork Vest"
+    },
+    "1119": {
+      "category": "Gear",
+      "en": "AIC Fieldwork Machete",
+      "de": "AIC Fieldwork Machete"
+    },
+    "1120": {
+      "category": "Gear",
+      "en": "AIC Fieldwork Ember",
+      "de": "AIC Fieldwork Ember"
+    },
+    "1121": {
+      "category": "Gear",
+      "en": "AIC Fieldwork Flashlight",
+      "de": "AIC Fieldwork Flashlight"
+    },
+    "1122": {
+      "category": "Gear",
+      "en": "AIC Fieldwork Gloves",
+      "de": "AIC Fieldwork Gloves"
+    },
+    "1123": {
+      "category": "Gear",
+      "en": "AIC Fieldwork Hands",
+      "de": "AIC Fieldwork Hands"
+    },
+    "1124": {
+      "category": "Gear",
+      "en": "AIC Fieldwork Wraps",
+      "de": "AIC Fieldwork Wraps"
+    },
+    "1125": {
+      "category": "Gear",
+      "en": "Rift Trekker Heavy Armor",
+      "de": "Rift Trekker Heavy Armor"
+    },
+    "1126": {
+      "category": "Gear",
+      "en": "Rift Trekker Light Armor",
+      "de": "Rift Trekker Light Armor"
+    },
+    "1127": {
+      "category": "Gear",
+      "en": "Rift Trekker Armor Slab",
+      "de": "Rift Trekker Armor Slab"
+    },
+    "1128": {
+      "category": "Gear",
+      "en": "Rift Trekker Gloves",
+      "de": "Rift Trekker Gloves"
+    },
+    "1129": {
+      "category": "Gear",
+      "en": "Rift Trekker Hands",
+      "de": "Rift Trekker Hands"
+    },
+    "1130": {
+      "category": "Gear",
+      "en": "Hot Work Insulation Slab",
+      "de": "Hot Work Insulation Slab"
+    },
+    "1131": {
+      "category": "Gear",
+      "en": "Hot Work Hands PPE",
+      "de": "Hot Work Hands PPE"
+    },
+    "1132": {
+      "category": "Gear",
+      "en": "LYNX Cuirass T1",
+      "de": "LYNX Cuirass T1"
+    },
+    "1133": {
+      "category": "Gear",
+      "en": "LYNX Gauntlets T1",
+      "de": "LYNX Gauntlets T1"
+    },
+    "1134": {
+      "category": "Gear",
+      "en": "Eternal Xiranite Light Armor",
+      "de": "Eternal Xiranite Light Armor"
+    },
+    "1135": {
+      "category": "Gear",
+      "en": "Eternal Xiranite Light Armor T1",
+      "de": "Eternal Xiranite Light Armor T1"
+    },
+    "1136": {
+      "category": "Gear",
+      "en": "Eternal Xiranite Bracing Slab",
+      "de": "Eternal Xiranite Bracing Slab"
+    },
+    "1137": {
+      "category": "Gear",
+      "en": "Eternal Xiranite Wraps",
+      "de": "Eternal Xiranite Wraps"
+    },
+    "1138": {
+      "category": "Gear",
+      "en": "Eternal Xiranite Hands",
+      "de": "Eternal Xiranite Hands"
+    },
+    "1143": {
+      "category": "Valuables Stash",
+      "en": "Sanity",
+      "de": "Sanity"
+    },
+    "1154": {
+      "category": "Valuables Stash",
+      "en": "Wuling Artificing Catalyst",
+      "de": "Wuling Artificing Catalyst"
+    },
+    "1159": {
+      "category": "Valuables Stash",
+      "en": "Bedazzling Dawnstar HH Permit",
+      "de": "Bedazzling Dawnstar HH Permit"
+    },
+    "1160": {
+      "category": "Valuables Stash",
+      "en": "Arms OC: Bedazzled",
+      "de": "Arms OC: Bedazzled"
+    },
+    "1161": {
+      "category": "Valuables Stash",
+      "en": "Arsenal Defense Crate α: Dawnstar",
+      "de": "Arsenal Defense Crate α: Dawnstar"
+    },
+    "1162": {
+      "category": "Valuables Stash",
+      "en": "Liino's Token",
+      "de": "Liino's Token"
+    },
+    "1175": {
+      "category": "Weapons",
+      "en": "Umbra of Frigid Eventide",
+      "de": "Umbra of Frigid Eventide"
+    },
+    "1176": {
+      "category": "Weapons",
+      "en": "Dessert Moment",
+      "de": "Dessert Moment"
+    },
+    "1177": {
+      "category": "Weapons",
+      "en": "Suffering's End",
+      "de": "Suffering's End"
+    },
+    "1207": {
+      "category": "Item Files",
+      "en": "Sear-Toasted Liver",
+      "de": "Sear-Toasted Liver"
+    },
+    "1208": {
+      "category": "Item Files",
+      "en": "Speed Booster [S]",
+      "de": "Speed Booster [S]"
+    },
+    "1209": {
+      "category": "Item Files",
+      "en": "Speed Booster [L]",
+      "de": "Speed Booster [L]"
+    },
+    "1210": {
+      "category": "Item Files",
+      "en": "Speed Booster [M]",
+      "de": "Speed Booster [M]"
+    },
+    "1211": {
+      "category": "Item Files",
+      "en": "Slug Sprig",
+      "de": "Slug Sprig"
+    },
+    "1212": {
+      "category": "Item Files",
+      "en": "Tender Moss",
+      "de": "Tender Moss"
+    },
+    "1213": {
+      "category": "Item Files",
+      "en": "Myrkwood Berry Preserve",
+      "de": "Myrkwood Berry Preserve"
+    },
+    "1214": {
+      "category": "Item Files",
+      "en": "Miracle Cake",
+      "de": "Miracle Cake"
+    },
+    "1215": {
+      "category": "Valuables Stash",
+      "en": "Weapon Supply: Gloomwald",
+      "de": "Weapon Supply: Gloomwald"
+    },
+    "1216": {
+      "category": "Valuables Stash",
+      "en": "Arsenal Defense Crate α: Winter Hunt",
+      "de": "Arsenal Defense Crate α: Winter Hunt"
+    },
+    "1217": {
+      "category": "Valuables Stash",
+      "en": "Arms OC: Deep Cold",
+      "de": "Arms OC: Deep Cold"
+    },
+    "1218": {
+      "category": "Valuables Stash",
+      "en": "Fletched Irontip HH Permit",
+      "de": "Fletched Irontip HH Permit"
+    },
+    "1219": {
+      "category": "Valuables Stash",
+      "en": "Andre's Brow Feathers",
+      "de": "Andre's Brow Feathers"
+    },
+    "1220": {
+      "category": "Valuables Stash",
+      "en": "Dreamcatcher",
+      "de": "Dreamcatcher"
+    },
+    "1221": {
+      "category": "Valuables Stash",
+      "en": "Feathers Packed in a Snowball",
+      "de": "Feathers Packed in a Snowball"
+    },
+    "1222": {
+      "category": "Valuables Stash",
+      "en": "Snowpriestess's Notes",
+      "de": "Snowpriestess's Notes"
+    },
+    "1223": {
+      "category": "Valuables Stash",
+      "en": "Typhoeus's Token",
+      "de": "Typhoeus's Token"
+    },
+    "1224": {
+      "category": "Valuables Stash",
+      "en": "Samivegric Salted Fin",
+      "de": "Samivegric Salted Fin"
+    },
+    "1232": {
+      "category": "Gear",
+      "en": "Deepsink Gloves",
+      "de": "Deepsink Gloves"
+    },
+    "1233": {
+      "category": "Gear",
+      "en": "Wave Swell Heavy Armor",
+      "de": "Wave Swell Heavy Armor"
+    },
+    "1234": {
+      "category": "Gear",
+      "en": "Turbid Cutting Torch T1",
+      "de": "Turbid Cutting Torch T1"
+    },
+    "1235": {
+      "category": "Gear",
+      "en": "Tide Fall Light Armor T1",
+      "de": "Tide Fall Light Armor T1"
+    },
+    "1236": {
+      "category": "Gear",
+      "en": "Eternal Xiranite Bracing Slab T1",
+      "de": "Eternal Xiranite Bracing Slab T1"
+    },
+    "1237": {
+      "category": "Gear",
+      "en": "Eternal Xiranite Heavy Slab",
+      "de": "Eternal Xiranite Heavy Slab"
+    },
+    "1238": {
+      "category": "Gear",
+      "en": "Deep Rampart Gauntlets",
+      "de": "Deep Rampart Gauntlets"
+    },
+    "1239": {
+      "category": "Gear",
+      "en": "Deep Rampart Armor",
+      "de": "Deep Rampart Armor"
+    },
+    "1240": {
+      "category": "Gear",
+      "en": "Deep Rampart Comms",
+      "de": "Deep Rampart Comms"
+    },
+    "1241": {
+      "category": "Gear",
+      "en": "AIC Fieldwork Power Bank",
+      "de": "AIC Fieldwork Power Bank"
+    },
+    "1242": {
+      "category": "Gear",
+      "en": "AIC Fieldwork Assault Push Knife",
+      "de": "AIC Fieldwork Assault Push Knife"
+    },
+    "1243": {
+      "category": "Gear",
+      "en": "AIC Fieldwork Assault Gloves",
+      "de": "AIC Fieldwork Assault Gloves"
+    },
+    "1244": {
+      "category": "Gear",
+      "en": "AIC Fieldwork Assault Armor",
+      "de": "AIC Fieldwork Assault Armor"
+    },
+    "1245": {
+      "category": "Gear",
+      "en": "AIC Fieldwork Medic Gloves",
+      "de": "AIC Fieldwork Medic Gloves"
+    },
+    "1246": {
+      "category": "Gear",
+      "en": "AIC Fieldwork Medic Armor",
+      "de": "AIC Fieldwork Medic Armor"
+    },
+    "1247": {
+      "category": "Item Files",
+      "en": "Rime Tip",
+      "de": "Rime Tip"
+    },
+    "1248": {
+      "category": "Item Files",
+      "en": "Flaming Resin",
+      "de": "Flaming Resin"
+    },
+    "1249": {
+      "category": "Item Files",
+      "en": "Dawnbreaker",
+      "de": "Dawnbreaker"
+    },
+    "1250": {
+      "category": "Item Files",
+      "en": "Beastly Rage",
+      "de": "Beastly Rage"
+    },
+    "1251": {
+      "category": "Item Files",
+      "en": "Persistent Echo",
+      "de": "Persistent Echo"
+    },
+    "1252": {
+      "category": "Valuables Stash",
+      "en": "Sample: Xiranite Chubby Lung",
+      "de": "Sample: Xiranite Chubby Lung"
+    },
+    "1253": {
+      "category": "Valuables Stash",
+      "en": "Sample: Heavy Xiranite Chubby Lung",
+      "de": "Sample: Heavy Xiranite Chubby Lung"
+    },
+    "1254": {
+      "category": "Valuables Stash",
+      "en": "Fruits of Altruism Certs",
+      "de": "Fruits of Altruism Certs"
+    },
+    "1255": {
+      "category": "Item Files",
+      "en": "Proto Xiranite",
+      "de": "Proto Xiranite"
+    },
+    "1256": {
+      "category": "Item Files",
+      "en": "Proto Xiran-Cuprium Gas",
+      "de": "Proto Xiran-Cuprium Gas"
+    },
+    "1257": {
+      "category": "Item Files",
+      "en": "Proto Xiran-Cuprium",
+      "de": "Proto Xiran-Cuprium"
+    },
+    "1258": {
+      "category": "Item Files",
+      "en": "Proto Xiran-Cuprium Part",
+      "de": "Proto Xiran-Cuprium Part"
+    },
+    "1259": {
+      "category": "Item Files",
+      "en": "Proto Xiran-Cuprium Frame",
+      "de": "Proto Xiran-Cuprium Frame"
+    },
+    "1260": {
+      "category": "Item Files",
+      "en": "Proto Heavy Xiranite",
+      "de": "Proto Heavy Xiranite"
+    },
+    "1261": {
+      "category": "Item Files",
+      "en": "Proto Cuprium Frame",
+      "de": "Proto Cuprium Frame"
+    },
+    "1262": {
+      "category": "Item Files",
+      "en": "Proto Chubby Lung Shell",
+      "de": "Proto Chubby Lung Shell"
+    },
+    "1263": {
+      "category": "Item Files",
+      "en": "Proto Chubby Lung Heavy Shell",
+      "de": "Proto Chubby Lung Heavy Shell"
+    },
+    "1264": {
+      "category": "Item Files",
+      "en": "Xiranite Chubby Lung",
+      "de": "Xiranite Chubby Lung"
+    },
+    "1265": {
+      "category": "Item Files",
+      "en": "Heavy Xiranite Chubby Lung",
+      "de": "Heavy Xiranite Chubby Lung"
+    },
+    "1268": {
+      "category": "Valuables Stash",
+      "en": "Mini \"Waking Bell\" Souvenir",
+      "de": "Mini \"Waking Bell\" Souvenir"
+    },
+    "1269": {
+      "category": "Valuables Stash",
+      "en": "Replacement Part \"Qian\"",
+      "de": "Replacement Part \"Qian\""
+    },
+    "1270": {
+      "category": "Valuables Stash",
+      "en": "Replacement Part \"Kan\"",
+      "de": "Replacement Part \"Kan\""
+    },
+    "1271": {
+      "category": "Valuables Stash",
+      "en": "Replacement Part \"Xun\"",
+      "de": "Replacement Part \"Xun\""
+    },
+    "1272": {
+      "category": "Valuables Stash",
+      "en": "Replacement Part \"Zhen\"",
+      "de": "Replacement Part \"Zhen\""
+    },
+    "1273": {
+      "category": "Valuables Stash",
+      "en": "Waking Bell Activator",
+      "de": "Waking Bell Activator"
+    },
+    "1274": {
+      "category": "Valuables Stash",
+      "en": "Purrchena's Token",
+      "de": "Purrchena's Token"
+    },
+    "1275": {
+      "category": "Valuables Stash",
+      "en": "Arms OC: Tag Artist",
+      "de": "Arms OC: Tag Artist"
+    },
+    "1276": {
+      "category": "Valuables Stash",
+      "en": "Steeplechaser's Medal",
+      "de": "Steeplechaser's Medal"
+    },
+    "1277": {
+      "category": "Valuables Stash",
+      "en": "Rolling Chubby Lung Energy Drink",
+      "de": "Rolling Chubby Lung Energy Drink"
+    },
+    "1280": {
+      "category": "Weapons",
+      "en": "Jade Vessel",
+      "de": "Jade Vessel"
+    },
+    "1281": {
+      "category": "Weapons",
+      "en": "Long Heritage",
+      "de": "Long Heritage"
+    },
+    "1282": {
+      "category": "Weapons",
+      "en": "Complexed Industry",
+      "de": "Complexed Industry"
+    },
+    "1283": {
+      "category": "Weapons",
+      "en": "Lunar Calling",
+      "de": "Lunar Calling"
+    },
+    "aic-fieldwork-cqb-armor": {
+      "category": "Gear (v1.6 preview)",
+      "en": "AIC Fieldwork CQB Armor",
+      "de": "AIC Fieldwork CQB Armor"
+    },
+    "aic-fieldwork-cqb-gloves": {
+      "category": "Gear (v1.6 preview)",
+      "en": "AIC Fieldwork CQB Gloves",
+      "de": "AIC Fieldwork CQB Gloves"
+    },
+    "aic-fieldwork-cqb-hacksaw": {
+      "category": "Gear (v1.6 preview)",
+      "en": "AIC Fieldwork CQB Hacksaw",
+      "de": "AIC Fieldwork CQB Hacksaw"
+    },
+    "eternal-xiranite-channeling-gloves": {
+      "category": "Gear (v1.6 preview)",
+      "en": "Eternal Xiranite Channeling Gloves",
+      "de": "Eternal Xiranite Channeling Gloves"
+    },
+    "eternal-xiranite-mod-armor": {
+      "category": "Gear (v1.6 preview)",
+      "en": "Eternal Xiranite MOD Armor",
+      "de": "Eternal Xiranite MOD Armor"
+    },
+    "eternal-xiranite-overalls": {
+      "category": "Gear (v1.6 preview)",
+      "en": "Eternal Xiranite Overalls",
+      "de": "Eternal Xiranite Overalls"
+    },
+    "eternal-xiranite-rangefinder": {
+      "category": "Gear (v1.6 preview)",
+      "en": "Eternal Xiranite Rangefinder",
+      "de": "Eternal Xiranite Rangefinder"
+    },
+    "pulser-labs-armor-slab": {
+      "category": "Gear (v1.6 preview)",
+      "en": "Pulser Labs Armor Slab",
+      "de": "Pulser Labs Armor Slab"
+    },
+    "pulser-labs-light-armor": {
+      "category": "Gear (v1.6 preview)",
+      "en": "Pulser Labs Light Armor",
+      "de": "Pulser Labs Light Armor"
+    },
+    "pulser-labs-light-gauntlets": {
+      "category": "Gear (v1.6 preview)",
+      "en": "Pulser Labs Light Gauntlets",
+      "de": "Pulser Labs Light Gauntlets"
+    },
+    "rift-trekker-gauntlets": {
+      "category": "Gear (v1.6 preview)",
+      "en": "Rift Trekker Gauntlets",
+      "de": "Rift Trekker Gauntlets"
+    },
+    "rift-trekker-overalls": {
+      "category": "Gear (v1.6 preview)",
+      "en": "Rift Trekker Overalls",
+      "de": "Rift Trekker Overalls"
+    },
+    "rift-trekker-silver-blade": {
+      "category": "Gear (v1.6 preview)",
+      "en": "Rift Trekker Silver Blade",
+      "de": "Rift Trekker Silver Blade"
+    },
+    "rift-trekker-steel-armor": {
+      "category": "Gear (v1.6 preview)",
+      "en": "Rift Trekker Steel Armor",
+      "de": "Rift Trekker Steel Armor"
+    },
+    "rift-trekker-wraps": {
+      "category": "Gear (v1.6 preview)",
+      "en": "Rift Trekker Wraps",
+      "de": "Rift Trekker Wraps"
+    },
+    "type-50-yinglung-beacon": {
+      "category": "Gear (v1.6 preview)",
+      "en": "Type 50 Yinglung Beacon",
+      "de": "Type 50 Yinglung Beacon"
+    },
+    "type-50-yinglung-gauntlets": {
+      "category": "Gear (v1.6 preview)",
+      "en": "Type 50 Yinglung Gauntlets",
+      "de": "Type 50 Yinglung Gauntlets"
+    },
+    "type-50-yinglung-soft-armor": {
+      "category": "Gear (v1.6 preview)",
+      "en": "Type 50 Yinglung Soft Armor",
+      "de": "Type 50 Yinglung Soft Armor"
+    }
+  }
+}

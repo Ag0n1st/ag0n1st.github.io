@@ -12,7 +12,7 @@ import { MAX_AUTHORITY_LEVEL } from "../../../lib/endfield/buildStoryProgress.mj
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
 const translateUi=(value:string)=>guideText(model.lang,value);
-const { guide, missing, roleLabels, stageLabels, builds, preview } = model;
+const { guide, missing, roleLabels, stageLabels, builds, preview, trItemName } = model;
 const officialBuilds=builds.map(build=>{
  const parts=build.items.map(reference=>{
    const catalog=resolveOfficialItem(reference,"Gear");
@@ -48,8 +48,8 @@ import { guideText } from "../../../lib/i18n/guideUi";
               </div>
               <div class="op-meta-build-parts" aria-label={`Ausrüstung: ${build.title}`}>
                 {build.parts.map(part=><div class="op-meta-build-part">
-                  <div class="op-mini-art"><ItemIcon id={part.catalog?.id??part.reference} /></div>
-                  <small>{part.catalog?.name??part.reference}</small>
+                  <div class="op-mini-art"><ItemIcon id={part.catalog?.id??part.reference} lang={model.lang} /></div>
+                  <small>{trItemName(part.catalog?.id??part.reference,part.catalog?.name??part.reference)}</small>
                 </div>)}
               </div>
               <p class="op-meta-build-summary">{build.metaSummary}</p>
@@ -151,7 +151,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
             <div class="op-pills" aria-label="Build auswählen">{officialBuilds.map((b,i)=><button type="button" class="op-pill-button" data-build-button={b.id} data-build-requirements={JSON.stringify(b.requirements)} aria-pressed={i===0?"true":"false"}>{b.title}<span class="op-build-button-status" data-build-status-label></span></button>)}</div>
             {officialBuilds.map((b,i)=><div class="op-build-panel op-cardlet" data-build-panel={b.id} hidden={i!==0}>
               <div class="op-subtitle"><h3 style="margin:0">{b.title}</h3><span class="op-chip">{roleLabels[b.role]}</span></div>
-              <div class="op-gear-parts">{b.parts.map(part=><div class="op-gear-part"><div class="op-mini-art"><ItemIcon id={part.catalog?.id??part.reference} /></div><small>{part.catalog?.name??part.reference}</small></div>)}</div>
+              <div class="op-gear-parts">{b.parts.map(part=><div class="op-gear-part"><div class="op-mini-art"><ItemIcon id={part.catalog?.id??part.reference} lang={model.lang} /></div><small>{trItemName(part.catalog?.id??part.reference,part.catalog?.name??part.reference)}</small></div>)}</div>
               {b.availableFromLevel && <p><strong>{translateUi("Ab Level:")}</strong> {b.availableFromLevel}</p>}
               <p class="op-body-copy">
                 <strong>{translateUi("Benötigte Komponente:")}</strong>{" "}
@@ -168,7 +168,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
                 {b.parts.map(part=><label class="op-blueprint-check">
                   <input type="checkbox" data-blueprint-owned={part.catalog?.id??part.reference}
                     disabled={!part.catalog || !part.detail || part.detail.status!=="verified"} />
-                  <span>{part.catalog?.name??part.reference}</span>
+                  <span>{trItemName(part.catalog?.id??part.reference,part.catalog?.name??part.reference)}</span>
                 </label>)}
                 <p class="op-muted">{translateUi("Alle Vorlagen sind zum Vergleich anfangs vorausgewählt. Entferne Häkchen bei Blaupausen, die dir tatsächlich fehlen. Gleiche Gear-IDs werden über alle Builds und Operatoren gemeinsam ausgewertet.")}</p>
               </fieldset>
@@ -178,7 +178,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
               <details class="op-details"><summary>{translateUi("Werte, Herstellung & Freischaltungen")}</summary><div class="op-details-body">
                 <div class="op-table-wrap"><table class="op-table"><thead><tr><th>{translateUi("Ausrüstungsteil")}</th><th>{translateUi("Attribute")}</th><th>{translateUi("Materialien")}</th></tr></thead>
                   <tbody>{b.parts.map(part=><tr>
-  <td>{part.catalog?.name??part.reference}</td>
+  <td>{trItemName(part.catalog?.id??part.reference,part.catalog?.name??part.reference)}</td>
   <td>{part.detail?.status==="verified" ? <>
     <div class="op-muted">Level {part.detail.level??"?"} · {part.detail.gearSlot??translateUi("Ausrüstung")}</div>
     {(part.detail.stats[0]?.tables[0]?.rows??[]).map(row=><div>{row.cells[0]}: {row.cells[1]}</div>)}
@@ -221,7 +221,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
     </details>}
   </> : <span class="op-muted">{translateUi("Offizielle Werte noch nicht vollständig verfügbar")}</span>}</td>
   <td>{part.detail?.standardRecipe?.materials?.length ?
-    <MaterialCosts items={part.detail.standardRecipe.materials} /> :
+    <MaterialCosts items={part.detail.standardRecipe.materials} lang={model.lang} /> :
     <span class="op-muted">{part.detail?.recipeStatus==="needs-review"?(model.lang==="en"?"Recipe Needs Verification":"Rezept muss geprüft werden"):(model.lang==="en"?"Standard Recipe Not Documented":"Standardrezept nicht dokumentiert")}</span>}
   </td>
 </tr>)}</tbody>
