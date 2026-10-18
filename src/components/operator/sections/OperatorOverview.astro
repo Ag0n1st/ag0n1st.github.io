@@ -39,7 +39,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
                 <p>{translateUi("Traits")}</p>
                 <div class="op-chip-row">
                   {guide.overview.traits.length>0
-                    ? guide.overview.traits.map(trait=><span class="op-chip">{trait}</span>)
+                    ? guide.overview.traits.map(trait=><span class="op-chip">{trTerm(trait)}</span>)
                     : <span class="op-chip">{translateUi("[Traits noch nicht eingetragen]")}</span>}
                 </div>
               </>}

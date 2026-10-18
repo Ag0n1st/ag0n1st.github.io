@@ -88,7 +88,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
           <h3>{title}</h3>
           {talentLevels.length ? <div class="op-two">
             {talentLevels.map(t=><article class="op-cardlet">
-                <div class="op-line"><div class="op-mini-art">[Icon]</div><strong>{localized?.talents[t.id]?.name || t.name}</strong></div>
+                <div class="op-line"><div class="op-mini-art">[Icon]</div><strong>{trTalentName(t.id,model.lang==="de"?localized?.talents[t.id]?.name??t.name:t.name)}</strong></div>
                 <p class="op-muted" style="font-size:11px">{localized ? "SKPORT · deutsche Übersetzung" : "SKPORT Original · Englisch"}</p>
                 <p class="op-body-copy">{trTalent(t.id,t.levels.length-1,t.levels.at(-1)?.effect || "")}</p>
                 {(talentCategory === "combat" || talentCategory === "ship") && guide.skills[talentCategory === "combat" ? "combatTalents" : "shipTalents"].find(guideTalent => guideTalent.talentId === t.id)?.evaluation &&

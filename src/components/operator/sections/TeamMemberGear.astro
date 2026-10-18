@@ -1,6 +1,7 @@
 ---
 import ItemIcon from "../../endfield/ItemIcon.astro";
 import {resolveOfficialItem} from "../../../lib/endfield/itemCatalog";
+import {gameItemName} from "../../../lib/endfield/terminology";
 
 interface GearVariant {
   title:string;
@@ -45,19 +46,19 @@ import { guideText } from "../../../lib/i18n/guideUi";
       {resolved.map(row=><div class="op-team-gear-entry">
         <strong>{displayTeamMember(row.member)}</strong>
         {row.weaponId && <div class="op-team-member-weapon">
-          <ItemIcon id={row.weapon?.id??row.weaponId} size="small" />
-          <span><small>{translateUi("Empfohlene Waffe")}{row.weaponRank?" · R"+row.weaponRank:""}</small><strong>{row.weapon?.name??row.weaponId}</strong></span>
+          <ItemIcon id={row.weapon?.id??row.weaponId} size="small" lang={lang} />
+          <span><small>{translateUi("Empfohlene Waffe")}{row.weaponRank?" · R"+row.weaponRank:""}</small><strong>{gameItemName(row.weapon?.id??row.weaponId,lang,row.weapon?.name??row.weaponId)}</strong></span>
         </div>}
         {row.otherWeapons.length>0 && <div class="op-team-member-weapon-options">
           <small class="op-muted">{translateUi("Waffenalternativen")}</small>
           <div class="op-team-weapon-alternatives">{row.otherWeapons.map(w=><span class="op-team-weapon-alternative">
-            <ItemIcon id={w.official?.id??w.id} size="small"/>
-            <small>{w.official?.name??w.id}</small>
+            <ItemIcon id={w.official?.id??w.id} size="small" lang={lang}/>
+            <small>{gameItemName(w.official?.id??w.id,lang,w.official?.name??w.id)}</small>
           </span>)}</div>
         </div>}
         <div class="op-team-gear-parts">{row.parts.map(part=><div class="op-team-gear-part">
-          <ItemIcon id={part.official?.id??part.id} size="small"/>
-          <small>{part.official?.name??part.id}</small>
+          <ItemIcon id={part.official?.id??part.id} size="small" lang={lang}/>
+          <small>{gameItemName(part.official?.id??part.id,lang,part.official?.name??part.id)}</small>
         </div>)}</div>
         {row.note && <p class="op-muted op-body-copy">{row.note}</p>}
         {row.variants.length>0 && <details class="op-details op-team-gear-variants">
@@ -65,8 +66,8 @@ import { guideText } from "../../../lib/i18n/guideUi";
           <div class="op-details-body">{row.variants.map(variant=><div class="op-team-gear-variant">
             <strong>{variant.title}</strong>
             <div class="op-team-gear-parts">{variant.parts.map(part=><div class="op-team-gear-part">
-              <ItemIcon id={part.official?.id??part.id} size="small"/>
-              <small>{part.official?.name??part.id}</small>
+              <ItemIcon id={part.official?.id??part.id} size="small" lang={lang}/>
+              <small>{gameItemName(part.official?.id??part.id,lang,part.official?.name??part.id)}</small>
             </div>)}</div>
             {variant.note && <p class="op-muted op-body-copy">{variant.note}</p>}
           </div>)}</div>
