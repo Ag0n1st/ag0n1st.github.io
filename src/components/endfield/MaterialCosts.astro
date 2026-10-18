@@ -1,16 +1,18 @@
 ---
 import type { ImportedItemCost } from "../../lib/endfield/operatorData";
 import { getEndfieldItem } from "../../lib/endfield/itemCatalog";
+import {gameItemName} from "../../lib/endfield/terminology";
 interface Props {
   items: ImportedItemCost[];
   translatedNames?: Record<string,string>;
   fallbackNames?: Record<string,{name:string}>;
+  lang?: "de"|"en";
 }
-const {items,translatedNames={},fallbackNames={}}=Astro.props;
+const {items,translatedNames={},fallbackNames={},lang="de"}=Astro.props;
 const entries=(items??[]).map(row=>{
   const official=getEndfieldItem(row.id);
   return {id:row.id,
-    name:translatedNames[row.id]??official?.name??fallbackNames[row.id]?.name??("Item "+row.id),
+    name:gameItemName(row.id,lang,lang==="de"?translatedNames[row.id]??official?.name??fallbackNames[row.id]?.name:official?.name??fallbackNames[row.id]?.name),
     image:official?.iconPath??null,
     count:row.count};
 });
@@ -23,7 +25,7 @@ const entries=(items??[]).map(row=>{
         {item.image ?
           <img src={item.image} alt="" width="34" height="34" loading="lazy" decoding="async" /> :
           <span class="op-resource-fallback">{item.name}</span>}
-        <span class="op-resource-count" aria-hidden="true">×{item.count.toLocaleString("de-DE")}</span>
+        <span class="op-resource-count" aria-hidden="true">×{item.count.toLocaleString(lang==="en"?"en-US":"de-DE")}</span>
       </span>
     )}
   </span> :

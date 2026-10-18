@@ -1,13 +1,15 @@
 ---
 import { getEndfieldItem } from "../../lib/endfield/itemCatalog";
+import {gameItemName} from "../../lib/endfield/terminology";
 interface Props {
   id: string | number;
   label?: string;
   size?: "small" | "normal";
+  lang?: "de"|"en";
 }
-const {id,label,size="normal"}=Astro.props;
+const {id,label,size="normal",lang="de"}=Astro.props;
 const item=getEndfieldItem(id);
-const name=label||item?.name||String(id);
+const name=gameItemName(id,lang,label||item?.name||String(id));
 ---
 {item?.iconPath ?
   <img class:list={["op-catalog-icon",{"op-catalog-icon-sm":size==="small"}]}

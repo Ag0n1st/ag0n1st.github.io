@@ -9,7 +9,7 @@ import type { DetailTable } from "../../../lib/endfield/equipmentDetails";
 interface Props { model: OperatorGuideModel }
 const { model } = Astro.props;
 const translateUi=(value:string)=>guideText(model.lang,value);
-const { guide, weapons, shownWeapons } = model;
+const { guide, weapons, shownWeapons, trItemName } = model;
 
 const officialWeapons=shownWeapons.map(w=>{
   const item=resolveOfficialItem(w.name,"Weapons");
@@ -45,8 +45,8 @@ import { guideText } from "../../../lib/i18n/guideUi";
     <h3>{translateUi("Waffenempfehlungen")}</h3>
     {officialWeapons.length ? <div class="op-two">{officialWeapons.map(w=><article class="op-cardlet">
       <div class="op-line">
-        <div class="op-mini-art">{w.item ? <ItemIcon id={w.item.id}/> : <span aria-hidden="true">–</span>}</div>
-        <div class="op-line-label"><span class="op-chip">{w.label}</span><strong>{w.item?.name??w.name}</strong></div>
+        <div class="op-mini-art">{w.item ? <ItemIcon id={w.item.id} lang={model.lang}/> : <span aria-hidden="true">–</span>}</div>
+        <div class="op-line-label"><span class="op-chip">{w.label}</span><strong>{trItemName(w.item?.id??w.name,w.item?.name??w.name)}</strong></div>
       </div>
       {w.evaluation && <p class="op-body-copy">{w.evaluation}</p>}
     </article>)}</div> : <p class="op-muted">{translateUi("Keine Waffenempfehlungen eingetragen.")}</p>}
@@ -57,12 +57,12 @@ import { guideText } from "../../../lib/i18n/guideUi";
     <div class="op-guide-accordion-content">
       {officialWeapons.length ? <>
         <div class="op-pills" aria-label="Waffe auswählen">
-          {officialWeapons.map((w,i)=><button class="op-pill-button" type="button" data-weapon-button={w.id} aria-pressed={i===0?"true":"false"}>{w.label}{officialWeapons.filter(x=>x.label===w.label).length>1 ? " · "+(w.item?.name??w.name) : ""}</button>)}
+          {officialWeapons.map((w,i)=><button class="op-pill-button" type="button" data-weapon-button={w.id} aria-pressed={i===0?"true":"false"}>{w.label}{officialWeapons.filter(x=>x.label===w.label).length>1 ? " · "+(trItemName(w.item?.id??w.name,w.item?.name??w.name)) : ""}</button>)}
         </div>
         {officialWeapons.map((w,i)=><article class="op-weapon-panel op-cardlet" data-weapon-panel={w.id} hidden={i!==0}>
           <div class="op-line op-weapon-panel-heading">
-            <div class="op-mini-art">{w.item ? <ItemIcon id={w.item.id}/> : <span aria-hidden="true">–</span>}</div>
-            <div class="op-line-label"><strong>{w.item?.name??w.name}</strong><span class="op-muted">{w.label}</span></div>
+            <div class="op-mini-art">{w.item ? <ItemIcon id={w.item.id} lang={model.lang}/> : <span aria-hidden="true">–</span>}</div>
+            <div class="op-line-label"><strong>{trItemName(w.item?.id??w.name,w.item?.name??w.name)}</strong><span class="op-muted">{w.label}</span></div>
           </div>
           {w.data?.status==="verified" ? <>
             <h4 class="op-weapon-subtitle">{translateUi("Basiswerte und maximale Werte")}</h4>
@@ -110,7 +110,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
                         <td>{tuningValue(stage.rows[1])}</td>
                         <td>{tuningValue(stage.rows[2])}</td>
                         <td class="op-weapon-material-cell">
-                          {stage.costs.length ? <MaterialCosts items={stage.costs}/> : <span class="op-muted">–</span>}
+                          {stage.costs.length ? <MaterialCosts lang={model.lang} items={stage.costs}/> : <span class="op-muted">–</span>}
                         </td>
                       </tr>)}</tbody>
                     </table>
