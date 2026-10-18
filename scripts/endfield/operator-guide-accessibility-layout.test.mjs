@@ -95,10 +95,10 @@ test("creator Liino Meta A/B/C are all official Pyrrolite endgame builds => acce
 test("overview uses actual ItemIcon and resolved SKPORT names in weapons AND four featured gear slots",()=>{
  assert.match(overview,/resolveOfficialItem\(w\.name,"Weapons"\)/);
  assert.match(overview,/resolveOfficialItem\(reference,"Gear"\)/);
- assert.match(overview,/<ItemIcon id=\{w\.official\.id\}\/>/);
- assert.match(overview,/<ItemIcon id=\{part\.official\?\.id\?\?part\.reference\} \//);
- assert.match(overview,/\{w\.official\?\.name\?\?w\.name\}/);
- assert.match(overview,/\{part\.official\?\.name\?\?part\.reference\}/);
+ assert.match(overview,/<ItemIcon id=\\{w\\.official\\.id\\} lang=\\{model\\.lang\\}\\/>/);
+ assert.match(overview,/<ItemIcon id=\\{part\\.official\\?\\.id\\?\\?part\\.reference\\} lang=\\{model\\.lang\\} \\/>/);
+ assert.match(overview,/trItemName\\(w\\.official\\?\\.id\\?\\?w\\.name,/);
+ assert.match(overview,/trItemName\\(part\\.official\\?\\.id\\?\\?part\\.reference,/);
  assert.doesNotMatch(overview,/\{featuredBuild\.items\.map\(item=/);
 });
 

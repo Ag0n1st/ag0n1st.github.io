@@ -88,7 +88,7 @@ test("all footers use exactly one shared set of six social logos and ordered use
  const ordered=["https://www.twitch.tv/ag0n1st","https://www.youtube.com/@Ag0n1st","https://www.tiktok.com/@ag0n1st","https://www.instagram.com/ag0n1st/","https://x.com/Ag0n1st","https://discord.gg/v2h9KKT"];
  let last=-1;
  for(const url of ordered){const index=component.indexOf(url);assert.ok(index>last,url);last=index;}
- assert.equal((component.match(/\{name:/g)||[]).length,0);
+ assert.equal((component.match(/\{name:/g)||[]).length,6);
  for(const layout of ["src/components/pages/HomePage.astro","src/layouts/EndfieldPlaceholder.astro"]){
   const content=read(layout);
   assert.match(content,/<SocialLinks \/>/);
