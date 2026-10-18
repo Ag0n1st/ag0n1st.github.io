@@ -117,7 +117,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
             const score=ratingValues[key];
             return <div class="op-rating">
               <div class="op-rating-header"><span>{label}</span><span>{score === undefined ? "–" : score} / 5</span></div>
-              <div class="op-meter">{[1,2,3,4,5].map(n=><i class:list={{active:score!==undefined && n<=score}}></i>)}</div>
+              <div class="op-meter">{[1,2,3,4,5].map(n=><i style={`--meter-step:${n}`} class:list={{active:score!==undefined && n<=score}}></i>)}</div>
               <p>{description}</p>
             </div>;
           })}

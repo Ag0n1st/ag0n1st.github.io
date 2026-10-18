@@ -477,3 +477,13 @@
   height:100%;
   object-fit:contain;
 }
+
+/* Fixed five-slice full-width gradient: each active bar reveals its own
+   position, rather than restarting the pink-to-cyan scale. 4 gaps × 4px. */
+.op-meter i.active{background-image:linear-gradient(90deg,var(--pink),var(--cyan));background-repeat:no-repeat;background-size:calc(500% + 16px) 100%;background-position:calc((var(--meter-step) - 1) * 25%) 0}
+.op-chip.op-element-chip{font-weight:700}
+.op-element-chip[data-element="electric"],.op-element-chip[data-element="electro"]{color:#c0a4ff;border-color:#8560d0;background:rgba(151,108,225,.13)}
+.op-element-chip[data-element="cryo"]{color:#91e3ff;border-color:#52aacc;background:rgba(83,186,225,.12)}
+.op-element-chip[data-element="heat"]{color:#ffae82;border-color:#d87c48;background:rgba(239,112,55,.12)}
+.op-element-chip[data-element="nature"]{color:#b6e39b;border-color:#72af68;background:rgba(112,190,98,.12)}
+.op-element-chip[data-element="physical"]{color:#efcfba;border-color:#c9a082;background:rgba(185,149,125,.12)}

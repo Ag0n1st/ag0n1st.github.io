@@ -204,6 +204,8 @@ export const GUIDE_UI_EN={
   "SKPORT · deutsche Übersetzung": "SKPORT · German Translation",
   "SKPORT Original · Englisch": "SKPORT Original · English"
 };
+import {gameTerm} from "../endfield/terminology";
 export function guideText(lang:"de"|"en",de:string):string{
- return lang==="en"?(GUIDE_UI_EN as Record<string,string>)[de]??de:de;
+ const current=lang==="en"?(GUIDE_UI_EN as Record<string,string>)[de]??de:de;
+ return gameTerm(de,lang,current);
 }
