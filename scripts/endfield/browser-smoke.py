@@ -652,7 +652,7 @@ def smoke_i18n(page, base_url, width):
         verify(first.locator("svg.guide-category-icon").count()==1 and
                ("Charakter" if locale=="de" else "Character") in (first.get_attribute("aria-label") or ""),
                label+": category uses Character naming in "+locale)
-        page.goto(base_url+("en/endfield/operators/" if locale=="en" else "endfield/operatoren/"))
+        page.goto(base_url+("/en/endfield/operators/" if locale=="en" else "/endfield/operatoren/"))
         elements=page.locator(".op-grid .op-element-chip")
         verify(elements.count()>=3 and elements.first.get_attribute("data-element") in ("cryo","electric","nature"),
                label+": "+locale+" operator index elements have source-keyed colored chips")
