@@ -590,3 +590,13 @@
 .op-item-detail-table-scroll td{background:#211f29;white-space:pre-line}
 .op-item-detail-section .op-resource-list{min-width:0}
 @media(max-width:680px){.op-item-hover-panel{width:min(420px,calc(100vw - 16px));max-height:70dvh}.op-item-detail-card{padding:12px}.op-item-detail-header strong{font-size:13px}}
+
+/* Si dual matrix view; existing item-card, table and full-size dialog remain untouched. */
+.op-matrix-tabs{display:flex;gap:8px;align-items:center;margin:8px 0 16px;padding:4px;border:1px solid #514357;border-radius:12px;background:#211b29;width:max-content;max-width:100%}
+.op-matrix-tab{border:1px solid transparent;border-radius:9px;background:transparent;color:#bdb1c6;padding:9px 20px;min-width:110px;min-height:40px;cursor:pointer;font:inherit;font-size:12px;letter-spacing:.05em;font-weight:800}
+.op-matrix-tab[aria-selected="true"]{border-color:#cc5595;background:#4c2648;color:#fff;box-shadow:inset 0 0 0 1px #753f71}
+.op-matrix-tab:hover{color:#fff;background:#41304b}
+.op-matrix-tab:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.op-matrix-view[hidden]{display:none!important}
+.op-matrix-source-note{font-size:10px;margin:12px 0 0;line-height:1.5}
+@media(max-width:680px){.op-matrix-tabs{width:100%;box-sizing:border-box}.op-matrix-tab{flex:1 1 50%;min-width:0;padding-inline:8px}}
