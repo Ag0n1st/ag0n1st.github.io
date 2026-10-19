@@ -272,13 +272,21 @@ import { guideText } from "../../../lib/i18n/guideUi";
                     <tbody>{view.rows.map(row=><tr>
                       <th scope="row">{row.label}</th>
                       {view.metrics.map(metric=><td>{row.values[metric.id]??"—"}</td>)}
-                      {([row.weaponId,row.armorId,row.glovesId,row.kit1Id,row.kit2Id] as const).map(id=><td class="op-matrix-gear-cell">
-                        {id ? <ItemIcon id={id} lang={model.lang} size="small" /> : <span aria-label={model.lang==="en"?"Not specified":"Nicht angegeben"}>—</span>}
+                      {([row.weaponId,row.armorId,row.glovesId,row.kit1Id,row.kit2Id] as const).map((id,slotIndex)=><td class="op-matrix-gear-cell">
+                        {id ? slotIndex===0 && row.weaponPotential && row.weaponTuning ?
+                          <div class="op-matrix-weapon-tile" data-matrix-weapon-potential={row.weaponPotential} data-matrix-weapon-tuning={row.weaponTuning}>
+                            <ItemIcon id={id} lang={model.lang} size="small" />
+                            <span class:list={["op-matrix-weapon-label","op-matrix-weapon-potential",{ "is-p5":row.weaponPotential==="P5" }]}>{row.weaponPotential}</span>
+                            <span class:list={["op-matrix-weapon-label","op-matrix-weapon-tuning",{ "is-p5":row.weaponPotential==="P5" }]}>{row.weaponTuning}</span>
+                          </div> :
+                          <ItemIcon id={id} lang={model.lang} size="small" /> :
+                          <span aria-label={model.lang==="en"?"Not specified":"Nicht angegeben"}>—</span>}
                       </td>)}
                     </tr>)}{view.rows.length===0 && <tr class="op-matrix-empty-row"><td colspan={view.metrics.length+6}>{model.lang==="en"?"No verified operator-specific setups have been added yet.":"Noch keine geprüften operatorspezifischen Rüstungssetups eingetragen."}</td></tr>}</tbody>
                   </table>
                 </div>
-                {guide.operator==="si" && <p class="op-muted op-body-copy op-matrix-source-note">{model.lang==="en"?"ATK shows the total value. CS.DMG and ULT.gain are gear bonuses only (including +0%), independent of the operator's base stats.":"ATK zeigt den Gesamtwert. CS.DMG und ULT.gain sind reine Ausrüstungsboni (auch +0 %), unabhängig von den Grundwerten des Operators."}</p>}
+                {guide.operator==="si" && <p class="op-muted op-body-copy op-matrix-source-note">{model.lang==="en"?"All figures are calculated for Si at P0 and Jade Vessel at P0 (9/9/4). ATK shows the total value; CS.DMG and ULT.gain are gear bonuses only (including +0%), excluding the operator's base stats.":"Alle Werte beziehen sich auf Si P0 und Jade Vessel P0 (9/9/4). ATK zeigt den Gesamtwert; CS.DMG und ULT.gain sind reine Ausrüstungsboni (auch +0 %), unabhängig von Sis Grundwerten."}</p>}
+                {guide.operator==="liino" && <p class="op-muted op-body-copy op-matrix-source-note">{model.lang==="en"?"All setups assume Liino at P0. Weapon potential and tuning vary by row: P0 (9/9/4) or P5 (9/9/9), as shown on the weapon card. Missing WILL, ULT Gain and AMP Bonus values have not been calculated and are not zero.":"Alle Setups beziehen sich auf Liino P0. Das Waffenpotenzial und die Aufwertung unterscheiden sich je nach Zeile: P0 (9/9/4) oder P5 (9/9/9), wie auf der Waffen-Card angegeben. Fehlende WILL-, ULT-Gain- und AMP-Bonus-Werte sind noch nicht berechnet und bedeuten nicht null."}</p>}
               </> : <p class="op-muted op-body-copy">{model.lang==="en"?"The comparison matrix is enabled for this operator. Verified, operator-specific setups and metrics will be added here.":"Die Vergleichsmatrix ist für diesen Operator aktiviert. Geprüfte operatorspezifische Setups und Kennzahlen folgen."}</p>}
             </div>)}
             <dialog class="op-matrix-dialog" data-matrix-dialog aria-label={model.lang==="en"?"Full-size Gear Matrix":"Ausrüstungs-Matrix in Großansicht"}>
