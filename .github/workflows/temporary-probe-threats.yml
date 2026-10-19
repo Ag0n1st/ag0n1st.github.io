@@ -1,51 +1,29 @@
-name: Temporary public SKPORT Threat catalog browser probe
+name: Temporary official SKPORT Threats snapshot import
 on:
   push:
-    branches:
-      - feature/endfield-threats-matrix-countdown-pages-20261019
-  workflow_dispatch:
+    branches: [feature/endfield-threats-matrix-countdown-pages-20261019]
 permissions:
-  contents: read
+  contents: write
 jobs:
-  probe:
+  import:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     steps:
-      - name: Install Playwright Chromium
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install importer requirements
         run: |
-          python3 -m pip install -q playwright
+          python3 -m pip install -q playwright pillow
           python3 -m playwright install chromium
-      - name: Read public catalog in browser, no login
-        shell: bash
+      - name: Import 100 percent official public Threats catalog and optimize cover art
+        run: python3 scripts/endfield/import-threats-wiki.py
+      - name: Commit official snapshot and image cache only to working branch
         run: |
-          python3 - <<'PY'
-          import asyncio
-          from playwright.async_api import async_playwright
-          url="https://wiki.skport.com/endfield/catalog?mainTypeId=1&subTypeId=3&filterIds=&header=0"
-          async def main():
-            async with async_playwright() as p:
-              browser=await p.chromium.launch(headless=True,args=['--no-sandbox'])
-              page=await browser.new_page(locale='en-US',viewport={'width':1365,'height':800})
-              async def watch(response):
-                if '/web/v1/wiki/item/catalog' in response.url:
-                  print('CATALOG_FETCH',response.status,response.url[:200])
-                  if response.status==200:
-                    try:
-                      obj=await response.json()
-                      print('CATALOG_SCHEMA',type(obj).__name__,list(obj)[:15] if isinstance(obj,dict) else len(obj))
-                      d=obj.get('data',obj) if isinstance(obj,dict) else obj
-                      print('CATALOG_DATA',type(d).__name__,list(d)[:25] if isinstance(d,dict) else len(d))
-                      print('CATALOG_PREVIEW',repr(str(d)[:2400]))
-                    except Exception as e: print('CATALOG_PARSE_ERROR',repr(e))
-              page.on('response',watch)
-              try:
-                res=await page.goto(url,wait_until='domcontentloaded',timeout=20000)
-                await page.wait_for_timeout(12000)
-                txt=await page.locator('body').inner_text(timeout=10000)
-                print('BROWSER',res.status if res else None,'URL',page.url,'TITLE',await page.title())
-                print('TEXT',repr(txt[:4000]))
-                print('LINKS',repr((await page.locator('a').all_text_contents())[:45]))
-              except Exception as e:print('BROWSER_ERROR',repr(e))
-              await browser.close()
-          asyncio.run(main())
-          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/endfield/catalog/threats.json public/images/endfield/threats/
+          if ! git diff --cached --quiet; then
+            git commit -m "data(endfield): verified SKPORT Threat catalog snapshot and optimized Threat portraits"
+            git push origin HEAD:feature/endfield-threats-matrix-countdown-pages-20261019
+          fi
