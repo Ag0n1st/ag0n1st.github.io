@@ -98,7 +98,7 @@ test("optional closed Gear Matrix lives after Build Finder, Si & Liino enabled, 
   const text=read("src/content/operator-guides/"+slug+".md");
   assert.match(text,/equipment:\n  builds:/);
   assert.match(text,/  matrix:\n    enabled: true/);
-  assert.match(text,/    rows:\\n      - id:/);
+  assert.match(text,/    rows:\n      - id:/);
   const configured=[...text.matchAll(/^      - id: (.+)$/gm)].map(x=>x[1]);
   for(const row of configured)assert.ok(row.length>2);
   assert.match(text,/        values: \{\}/,"No fabricated scenario percentages");
