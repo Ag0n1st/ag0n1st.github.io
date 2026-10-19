@@ -37,8 +37,7 @@ const expectedSupport=[
  ["SUPPORT-ULT-1","5077","+53.8%","+75.9%","eternal-xiranite-overalls","1128","eternal-xiranite-rangefinder","334"],
  ["SUPPORT-ULT-2","5082","+53.8%","+75.4%","796","330","eternal-xiranite-rangefinder","334"],
  ["SUPPORT-ULT-3","5082","+0%","+107.4%","796","330","334","334"],
- ["SUPPORT-ULT-4","5068","+0%","+108.1%","eternal-xiranite-overalls","330","334","349"]
- ,
+ ["SUPPORT-ULT-4","5068","+0%","+108.1%","eternal-xiranite-overalls","330","334","349"],
  ["SUPPORT-ULT-5","5077","+0%","+107.9%","eternal-xiranite-overalls","1128","334","334"]
 ];
 test("Si ships exactly two independent and accessible matrices",()=>{
@@ -62,13 +61,12 @@ test("every Si spreadsheet row and exact column value matches imported setup",()
      const row=found[i],e=expected[i];
      assert.equal(row.label,e[0]);
      assert.match(row.values,new RegExp('atk: "'+e[1]+'"'));
-     assert.match(row.values,new RegExp('cs-dmg: "'+e[2].replace(".","\\.")+'"'));
-     if(e[3]===null)assert.doesNotMatch(row.values,/ult-gain:/,"Missing CSV values must not become 0%");
-     else assert.match(row.values,new RegExp('ult-gain: "'+e[3].replace(".","\\.")+'"'));
+     assert.ok(row.values.includes('cs-dmg: "'+e[2]+'"'),"CS.DMG bonus mismatch for "+row.label);
+     assert.ok(row.values.includes('ult-gain: "'+e[3]+'"'),"ULT.gain bonus mismatch for "+row.label);
      assert.deepEqual([row.weapon,row.armor,row.gloves,row.kit1,row.kit2],["1280",e[4],e[5],e[6],e[7]]);
    }
  }
- assert.equal(support.filter(r=>r.label==="SUPPORT-ULT-4").length,1,"Duplicate original CSV row is deduplicated");
+ assert.equal(support.filter(r=>r.label==="SUPPORT-ULT-4").length,1,"Final CSV labels are unique");
  assert.equal(support.filter(r=>!r.values.includes("ult-gain:")).length,0);
  assert.equal(support.filter(r=>r.label==="SUPPORT-ULT-5").length,1);
  for(const row of [...dps,...support]){
