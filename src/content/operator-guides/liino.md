@@ -300,36 +300,103 @@ equipment:
   matrix:
     enabled: true
     metrics:
-      - {id: primary-attribute, labelDe: "WIL", labelEn: "WIL"}
-      - {id: ultimate-gain, labelDe: "ULT Gain", labelEn: "ULT Gain"}
-      - {id: special-bonus, labelDe: "AMP-Bonus", labelEn: "AMP Bonus"}
+      - {id: will, labelDe: "WILL", labelEn: "WILL"}
+      - {id: ult-gain, labelDe: "ULT Gain", labelEn: "ULT Gain"}
+      - {id: amp-bonus, labelDe: "AMP Bonus", labelEn: "AMP Bonus"}
       - {id: weapon-bonus, labelDe: "Waffenbonus", labelEn: "Weapon Bonus"}
       - {id: set-bonus, labelDe: "Setbonus", labelEn: "Set Bonus"}
     rows:
-      - id: ultimate-fokus
-        label: "Build A – Ultimate-Fokus"
-        values: {}
+      - id: signature-p0-max-will
+        label: "Signature (P0) · max. WILL"
+        values: {will: "1320 WILL", ult-gain: "+0%", amp-bonus: "52.8%", weapon-bonus: "(20 s) ATK +5.6 / 11.2 / 16.8 / 22.4%"}
         weaponId: "1046"
-        armorId: "1134"
-        glovesId: "1138"
-        kit1Id: "1236"
-        kit2Id: "365"
-      - id: balanced
-        label: "Build B – Balanced"
-        values: {}
-        weaponId: "1046"
-        armorId: "1134"
-        glovesId: "1133"
-        kit1Id: "365"
-        kit2Id: "365"
-      - id: will-fokus
-        label: "Build C – Wille-Fokus"
-        values: {}
-        weaponId: "1046"
+        weaponPotential: "P0"
+        weaponTuning: "9/9/4"
         armorId: "1126"
         glovesId: "1129"
         kit1Id: "365"
         kit2Id: "365"
+      - id: signature-p0-lynx
+        label: "Signature (P0) · LYNX"
+        values: {will: "1261 WILL", ult-gain: "+42.7%", amp-bonus: "50.44%", weapon-bonus: "(20 s) ATK +5.6 / 11.2 / 16.8 / 22.4%"}
+        weaponId: "1046"
+        weaponPotential: "P0"
+        weaponTuning: "9/9/4"
+        armorId: "1134"
+        glovesId: "1133"
+        kit1Id: "365"
+        kit2Id: "365"
+      - id: signature-p0-xiranite
+        label: "Signature (P0) · Xiranite"
+        values: {will: "1072 WILL", ult-gain: "+74.8%", amp-bonus: "42.88%", weapon-bonus: "(20 s) ATK +5.6 / 11.2 / 16.8 / 22.4%", set-bonus: "DMG dealt +16%"}
+        weaponId: "1046"
+        weaponPotential: "P0"
+        weaponTuning: "9/9/4"
+        armorId: "1134"
+        glovesId: "1138"
+        kit1Id: "1236"
+        kit2Id: "365"
+      - id: bp-p0-max-will
+        label: "BP (P0) · max. WILL"
+        values: {weapon-bonus: "(20 s) DMG dealt +8%"}
+        weaponId: "1044"
+        weaponPotential: "P0"
+        weaponTuning: "9/9/4"
+        armorId: "1126"
+        glovesId: "1129"
+        kit1Id: "365"
+        kit2Id: "365"
+      - id: bp-p0-lynx
+        label: "BP (P0) · LYNX"
+        values: {weapon-bonus: "(20 s) DMG dealt +8%"}
+        weaponId: "1044"
+        weaponPotential: "P0"
+        weaponTuning: "9/9/4"
+        armorId: "1134"
+        glovesId: "1133"
+        kit1Id: "365"
+        kit2Id: "365"
+      - id: bp-p0-xiranite
+        label: "BP (P0) · Xiranite"
+        values: {weapon-bonus: "(20 s) DMG dealt +8%", set-bonus: "DMG dealt +16%"}
+        weaponId: "1044"
+        weaponPotential: "P0"
+        weaponTuning: "9/9/4"
+        armorId: "1134"
+        glovesId: "1138"
+        kit1Id: "1236"
+        kit2Id: "365"
+      - id: bp-p5-max-will
+        label: "BP (P5) · max. WILL"
+        values: {weapon-bonus: "(20 s) DMG dealt +14%"}
+        weaponId: "1044"
+        weaponPotential: "P5"
+        weaponTuning: "9/9/9"
+        armorId: "1126"
+        glovesId: "1129"
+        kit1Id: "365"
+        kit2Id: "365"
+      - id: bp-p5-lynx
+        label: "BP (P5) · LYNX"
+        values: {weapon-bonus: "(20 s) DMG dealt +14%"}
+        weaponId: "1044"
+        weaponPotential: "P5"
+        weaponTuning: "9/9/9"
+        armorId: "1134"
+        glovesId: "1133"
+        kit1Id: "365"
+        kit2Id: "365"
+      - id: bp-p5-xiranite
+        label: "BP (P5) · Xiranite"
+        values: {weapon-bonus: "(20 s) DMG dealt +14%", set-bonus: "DMG dealt +16%"}
+        weaponId: "1044"
+        weaponPotential: "P5"
+        weaponTuning: "9/9/9"
+        armorId: "1134"
+        glovesId: "1138"
+        kit1Id: "1236"
+        kit2Id: "365"
+
 potentials:
   entries:
     - level: 1

@@ -13,7 +13,7 @@ const schema=read("src/content/operatorGuideSchema.ts");
 const catalog=JSON.parse(read("src/data/endfield/catalog/v16-gear.json"));
 function rows(id){
   const part=matrix.split("      - id: "+id+"\n")[1]?.split(/\n      - id: /)[0]??"";
-  return [...part.matchAll(/^          - id: ([\w-]+)\n            label: "([^"]+)"\n            values: \{([^\n]*)\}\n            weaponId: "([^"]+)"\n            armorId: "([^"]+)"\n            glovesId: "([^"]+)"\n            kit1Id: "([^"]+)"\n            kit2Id: "([^"]+)"/gm)].map(x=>({
+  return [...part.matchAll(/^          - id: ([\w-]+)\n            label: "([^"]+)"\n            values: \{([^\n]*)\}\n            weaponId: "([^"]+)"\n            weaponPotential: "P0"\n            weaponTuning: "9\/9\/4"\n            armorId: "([^"]+)"\n            glovesId: "([^"]+)"\n            kit1Id: "([^"]+)"\n            kit2Id: "([^"]+)"/gm)].map(x=>({
     id:x[1],label:x[2],values:x[3],weapon:x[4],armor:x[5],gloves:x[6],kit1:x[7],kit2:x[8]
   }));
 }

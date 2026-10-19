@@ -214,6 +214,8 @@ equipment:
             label: "SUPPORT-DPS-0"
             values: {atk: "6526", cs-dmg: "+125.6%", ult-gain: "+0%"}
             weaponId: "1280"
+            weaponPotential: "P0"
+            weaponTuning: "9/9/4"
             armorId: "type-50-yinglung-soft-armor"
             glovesId: "type-50-yinglung-gloves-v16"
             kit1Id: "type-50-yinglung-beacon"
@@ -222,6 +224,8 @@ equipment:
             label: "SUPPORT-DPS-1"
             values: {atk: "5655", cs-dmg: "+179.4%", ult-gain: "+0%"}
             weaponId: "1280"
+            weaponPotential: "P0"
+            weaponTuning: "9/9/4"
             armorId: "type-50-yinglung-soft-armor"
             glovesId: "type-50-yinglung-gloves-v16"
             kit1Id: "type-50-yinglung-beacon"
@@ -230,6 +234,8 @@ equipment:
             label: "SUPPORT-DPS-2"
             values: {atk: "5673", cs-dmg: "+125.6%", ult-gain: "+33.4%"}
             weaponId: "1280"
+            weaponPotential: "P0"
+            weaponTuning: "9/9/4"
             armorId: "type-50-yinglung-soft-armor"
             glovesId: "type-50-yinglung-gloves-v16"
             kit1Id: "type-50-yinglung-beacon"
@@ -238,6 +244,8 @@ equipment:
             label: "SUPPORT-DPS-3"
             values: {atk: "5683", cs-dmg: "+134.6%", ult-gain: "+27.9%"}
             weaponId: "1280"
+            weaponPotential: "P0"
+            weaponTuning: "9/9/4"
             armorId: "type-50-yinglung-soft-armor"
             glovesId: "1128"
             kit1Id: "type-50-yinglung-beacon"
@@ -246,6 +254,8 @@ equipment:
             label: "SUPPORT-DPS-4"
             values: {atk: "5689", cs-dmg: "+152.5%", ult-gain: "+16.7%"}
             weaponId: "1280"
+            weaponPotential: "P0"
+            weaponTuning: "9/9/4"
             armorId: "796"
             glovesId: "type-50-yinglung-gloves-v16"
             kit1Id: "type-50-yinglung-beacon"
@@ -262,6 +272,8 @@ equipment:
             label: "SUPPORT-DPS-0"
             values: {atk: "5830", cs-dmg: "+125.6%", ult-gain: "+0%"}
             weaponId: "1280"
+            weaponPotential: "P0"
+            weaponTuning: "9/9/4"
             armorId: "eternal-xiranite-mod-armor"
             glovesId: "eternal-xiranite-channeling-gloves"
             kit1Id: "eternal-xiranite-rangefinder"
@@ -270,6 +282,8 @@ equipment:
             label: "SUPPORT-DPS-1"
             values: {atk: "5068", cs-dmg: "+179.4%", ult-gain: "+0%"}
             weaponId: "1280"
+            weaponPotential: "P0"
+            weaponTuning: "9/9/4"
             armorId: "eternal-xiranite-mod-armor"
             glovesId: "eternal-xiranite-channeling-gloves"
             kit1Id: "eternal-xiranite-rangefinder"
@@ -278,6 +292,8 @@ equipment:
             label: "SUPPORT-DPS-2"
             values: {atk: "5068", cs-dmg: "+125.6%", ult-gain: "+33.4%"}
             weaponId: "1280"
+            weaponPotential: "P0"
+            weaponTuning: "9/9/4"
             armorId: "eternal-xiranite-mod-armor"
             glovesId: "eternal-xiranite-channeling-gloves"
             kit1Id: "eternal-xiranite-rangefinder"
@@ -286,6 +302,8 @@ equipment:
             label: "SUPPORT-DPS-3"
             values: {atk: "5077", cs-dmg: "+134.6%", ult-gain: "+27.9%"}
             weaponId: "1280"
+            weaponPotential: "P0"
+            weaponTuning: "9/9/4"
             armorId: "eternal-xiranite-mod-armor"
             glovesId: "1128"
             kit1Id: "eternal-xiranite-rangefinder"
@@ -294,6 +312,8 @@ equipment:
             label: "SUPPORT-DPS-4"
             values: {atk: "5082", cs-dmg: "+152.5%", ult-gain: "+16.7%"}
             weaponId: "1280"
+            weaponPotential: "P0"
+            weaponTuning: "9/9/4"
             armorId: "796"
             glovesId: "eternal-xiranite-channeling-gloves"
             kit1Id: "eternal-xiranite-rangefinder"
@@ -302,6 +322,8 @@ equipment:
             label: "SUPPORT-MIX-1"
             values: {atk: "5077", cs-dmg: "+80.7%", ult-gain: "+59.9%"}
             weaponId: "1280"
+            weaponPotential: "P0"
+            weaponTuning: "9/9/4"
             armorId: "eternal-xiranite-mod-armor"
             glovesId: "1128"
             kit1Id: "eternal-xiranite-rangefinder"
@@ -310,6 +332,8 @@ equipment:
             label: "SUPPORT-MIX-2"
             values: {atk: "5077", cs-dmg: "+107.6%", ult-gain: "+43.9%"}
             weaponId: "1280"
+            weaponPotential: "P0"
+            weaponTuning: "9/9/4"
             armorId: "eternal-xiranite-overalls"
             glovesId: "1128"
             kit1Id: "eternal-xiranite-rangefinder"
@@ -318,6 +342,8 @@ equipment:
             label: "SUPPORT-MIX-3"
             values: {atk: "5082", cs-dmg: "+107.6%", ult-gain: "+43.7%"}
             weaponId: "1280"
+            weaponPotential: "P0"
+            weaponTuning: "9/9/4"
             armorId: "796"
             glovesId: "330"
             kit1Id: "eternal-xiranite-rangefinder"
@@ -326,6 +352,8 @@ equipment:
             label: "SUPPORT-ULT-1"
             values: {atk: "5077", cs-dmg: "+53.8%", ult-gain: "+75.9%"}
             weaponId: "1280"
+            weaponPotential: "P0"
+            weaponTuning: "9/9/4"
             armorId: "eternal-xiranite-overalls"
             glovesId: "1128"
             kit1Id: "eternal-xiranite-rangefinder"
@@ -334,6 +362,8 @@ equipment:
             label: "SUPPORT-ULT-2"
             values: {atk: "5082", cs-dmg: "+53.8%", ult-gain: "+75.4%"}
             weaponId: "1280"
+            weaponPotential: "P0"
+            weaponTuning: "9/9/4"
             armorId: "796"
             glovesId: "330"
             kit1Id: "eternal-xiranite-rangefinder"
@@ -342,6 +372,8 @@ equipment:
             label: "SUPPORT-ULT-3"
             values: {atk: "5082", cs-dmg: "+0%", ult-gain: "+107.4%"}
             weaponId: "1280"
+            weaponPotential: "P0"
+            weaponTuning: "9/9/4"
             armorId: "796"
             glovesId: "330"
             kit1Id: "334"
@@ -350,6 +382,8 @@ equipment:
             label: "SUPPORT-ULT-4"
             values: {atk: "5068", cs-dmg: "+0%", ult-gain: "+108.1%"}
             weaponId: "1280"
+            weaponPotential: "P0"
+            weaponTuning: "9/9/4"
             armorId: "eternal-xiranite-overalls"
             glovesId: "330"
             kit1Id: "334"
@@ -358,6 +392,8 @@ equipment:
             label: "SUPPORT-ULT-5"
             values: {atk: "5077", cs-dmg: "+0%", ult-gain: "+107.9%"}
             weaponId: "1280"
+            weaponPotential: "P0"
+            weaponTuning: "9/9/4"
             armorId: "eternal-xiranite-overalls"
             glovesId: "1128"
             kit1Id: "334"

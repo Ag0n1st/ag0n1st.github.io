@@ -116,8 +116,11 @@ test("optional closed Gear Matrix lives after Build Finder, Si & Liino enabled, 
   assert.match(text,/equipment:\n  builds:/);
   assert.match(text,/  matrix:\n    enabled: true/);
   if(slug==="liino"){
-    assert.match(text,/    rows:\n      - id:/);
-    assert.match(text,/        values: \{\}/,"Liino comparison values remain unverified");
+    assert.match(text,/    rows:\n      - id: signature-p0-max-will/);
+    assert.match(text,/will: "1320 WILL", ult-gain: "\+0%", amp-bonus: "52\.8%"/);
+    assert.match(text,/      - id: bp-p5-xiranite/);
+    assert.match(text,/weaponPotential: "P5"/);
+    assert.match(text,/weaponTuning: "9\/9\/9"/);
   }else{
     assert.match(text,/    variants:\n      - id: dps/);
     assert.match(text,/      - id: support/);

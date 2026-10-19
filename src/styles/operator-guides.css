@@ -600,3 +600,12 @@
 .op-matrix-view[hidden]{display:none!important}
 .op-matrix-source-note{font-size:10px;margin:12px 0 0;line-height:1.5}
 @media(max-width:680px){.op-matrix-tabs{width:100%;box-sizing:border-box}.op-matrix-tab{flex:1 1 50%;min-width:0;padding-inline:8px}}
+
+/* P0/P5 potential and weapon tuning badges, shared by Si and Liino matrices.
+   Badges sit over the weapon image without blocking its hover/focus preview. */
+.op-equipment-matrix .op-matrix-weapon-tile{position:relative;display:flex;align-items:center;justify-content:center;width:86px;height:70px;max-width:100%;margin:auto}
+.op-equipment-matrix .op-matrix-weapon-tile>.op-item-hover-trigger{margin:auto;flex:none}
+.op-matrix-weapon-label{position:absolute;z-index:1;display:inline-flex;align-items:center;justify-content:center;max-width:96%;padding:3px 5px;border:1px solid #77747c;border-radius:6px;background:#3d3c43;color:#ededf0;font-size:10px;font-weight:800;line-height:1.15;white-space:nowrap;pointer-events:none;box-shadow:0 1px 4px #0008}
+.op-matrix-weapon-potential{left:1px;top:1px}
+.op-matrix-weapon-tuning{right:1px;bottom:1px;font-variant-numeric:tabular-nums}
+.op-matrix-weapon-label.is-p5{color:#ffe985;border-color:#9a7f25;background:#3b321a}
