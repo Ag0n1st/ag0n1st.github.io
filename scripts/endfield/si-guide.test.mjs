@@ -84,8 +84,13 @@ test("new 1.6 Si gear keeps source-tagged nonnumeric IDs and must not fake SKPOR
     assert.ok(row.sourcePage.startsWith("https://endfield.wiki.gg/wiki/"));
     if(row.iconPath)assert.ok(existsSync("public"+row.iconPath),row.iconPath);
   }
-  for(const id of ["type-50-yinglung-soft-armor","type-50-yinglung-gloves-v16","type-50-yinglung-beacon"])
+  for(const id of ["type-50-yinglung-soft-armor","type-50-yinglung-beacon"])
     assert.ok(ids.has(id));
+  // The owner-supplied replacement icon is a separate, later catalog addition,
+  // not one of the frozen six original v1.6 references.
+  const fullV16=JSON.parse(readFileSync("src/data/endfield/catalog/v16-gear.json","utf8"));
+  assert.ok(fullV16.items.some(row=>row.id==="type-50-yinglung-gloves-v16"));
+  assert.equal(ids.has("type-50-yinglung-gloves-v16"),false);
   assert.match(guide,/^    - id: "si-balanced"$/m);
   assert.match(guide,/^ +items: \["type-50-yinglung-soft-armor", "type-50-yinglung-gloves-v16", "type-50-yinglung-beacon", "349"\]/m);
   assert.match(guide,/^    - id: "si-main"$/m);
