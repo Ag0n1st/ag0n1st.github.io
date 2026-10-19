@@ -1,6 +1,7 @@
 ---
-import { getEndfieldItem } from "../../lib/endfield/itemCatalog";
+import {getEndfieldItem} from "../../lib/endfield/itemCatalog";
 import {gameItemName} from "../../lib/endfield/terminology";
+import ItemDetailPopup from "./ItemDetailPopup.astro";
 interface Props {
   id: string | number;
   label?: string;
@@ -10,10 +11,25 @@ interface Props {
 const {id,label,size="normal",lang="de"}=Astro.props;
 const item=getEndfieldItem(id);
 const name=gameItemName(id,lang,label||item?.name||String(id));
+const isEquipment=Boolean(item?.categories.some(category=>category==="Gear"||category==="Weapons"));
+const hint=lang==="en"?"Show details for ":"Details anzeigen: ";
 ---
-{item?.iconPath ?
-  <img class:list={["op-catalog-icon",{"op-catalog-icon-sm":size==="small"}]}
-    src={item.iconPath} alt={name} title={name} loading="lazy" decoding="async"
-    width={size==="small"?30:48} height={size==="small"?30:48} /> :
-  <span class="op-catalog-icon-fallback" title={name}>{name}</span>
+{isEquipment ?
+  <span class="op-item-hover-trigger" data-endfield-item-hover data-endfield-item-id={String(id)}
+    tabindex="0" role="button" aria-label={hint+name} aria-haspopup="true">
+    {item?.iconPath ?
+      <img class:list={["op-catalog-icon",{"op-catalog-icon-sm":size==="small"}]}
+        src={item.iconPath} alt="" loading="lazy" decoding="async"
+        width={size==="small"?30:48} height={size==="small"?30:48}/> :
+      <span class="op-catalog-icon-fallback">{name}</span>}
+    <template data-item-popup-template><ItemDetailPopup id={String(id)} lang={lang}/></template>
+  </span> :
+  item?.iconPath ?
+    <img class:list={["op-catalog-icon",{"op-catalog-icon-sm":size==="small"}]}
+      src={item.iconPath} alt={name} title={name} loading="lazy" decoding="async"
+      width={size==="small"?30:48} height={size==="small"?30:48}/> :
+    <span class="op-catalog-icon-fallback" title={name}>{name}</span>
 }
+<script>
+  import "../../lib/endfield/itemTooltipClient";
+</script>

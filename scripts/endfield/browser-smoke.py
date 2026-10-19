@@ -785,6 +785,30 @@ def smoke_i18n(page, base_url, width):
             cells=details.locator(".op-equipment-matrix tbody tr:first-child td:not(.op-matrix-gear-cell)").all_text_contents()
             verify(len(cells)==5 and all(cell.strip()=="—" for cell in cells),
                    label+": "+lang+" "+slug+" unverified matrix percentages remain blank")
+            gear_cell=details.locator(".op-matrix-scroller .op-matrix-gear-cell").nth(1)
+            gear_icon=gear_cell.locator("[data-endfield-item-hover]")
+            verify(gear_icon.count()==1 and gear_icon.get_attribute("tabindex")=="0",
+                   label+": "+lang+" "+slug+" gear icon exposes details on focus")
+            icon_alignment=gear_cell.evaluate("""cell=>{
+                const td=cell.getBoundingClientRect();
+                const trigger=cell.querySelector('[data-endfield-item-hover]').getBoundingClientRect();
+                return Math.abs((td.left+td.right)/2-(trigger.left+trigger.right)/2);
+            }""")
+            verify(icon_alignment<4,label+": "+lang+" "+slug+" gear icons are horizontally centered in their own cells")
+            gear_icon.hover()
+            hover=page.locator(".op-item-hover-panel")
+            hover.wait_for(state="visible")
+            verify(hover.locator(".op-item-detail-header strong").count()==1 and
+                   hover.locator(".op-item-detail-section h4").count()>=0 and
+                   (("Mindestmaterialien" in hover.inner_text()) or ("Minimum crafting" in hover.inner_text()) or
+                    ("keine vollständig geprüften" in hover.inner_text()) or ("Fully verified" in hover.inner_text())),
+                   label+": "+lang+" "+slug+" gear preview reveals official details or clear unverified status")
+            page.keyboard.press("Escape")
+            verify(not hover.is_visible(),label+": "+lang+" "+slug+" Escape closes hover popup")
+            gear_icon.focus()
+            hover.wait_for(state="visible")
+            page.keyboard.press("Escape")
+            verify(not hover.is_visible(),label+": "+lang+" "+slug+" keyboard focus supports preview")
             check_overflow(page,label+" "+lang+" "+slug+" matrix")
             verify(page.locator("#uebersicht .op-element-chip").count()==1,
                    label+": "+lang+" "+slug+" guide profile has element-coloured chip")
@@ -801,6 +825,15 @@ def smoke_i18n(page, base_url, width):
             bounds=dialog.evaluate("(el)=>({width:el.getBoundingClientRect().width,viewport:innerWidth,scroll:el.querySelector('[data-matrix-dialog-content]').scrollWidth,client:el.querySelector('[data-matrix-dialog-content]').clientWidth})")
             verify(bounds["width"]<=bounds["viewport"]+1 and bounds["client"]>0 and bounds["scroll"]>=bounds["client"],
                    label+": "+lang+" "+slug+" dialog remains inside viewport; table scrolls when needed")
+            modal_icon=dialog.locator(".op-matrix-dialog-scroll .op-matrix-gear-cell [data-endfield-item-hover]").first
+            modal_icon.hover()
+            hover.wait_for(state="visible")
+            verify(dialog.locator(".op-item-hover-panel").count()==1 and
+                   hover.locator(".op-item-detail-header strong").count()==1,
+                   label+": "+lang+" "+slug+" weapon hover preview opens above modal matrix without being clipped")
+            page.keyboard.press("Escape")
+            verify(dialog.evaluate("(el)=>el.open") and not hover.is_visible(),
+                   label+": "+lang+" "+slug+" Escape first dismisses popover, not the matrix dialog")
             page.keyboard.press("Escape")
             verify(not dialog.evaluate("(el)=>el.open"),label+": "+lang+" "+slug+" Escape closes matrix")
             check_overflow(page,label+" "+lang+" "+slug+" after matrix dialog")
