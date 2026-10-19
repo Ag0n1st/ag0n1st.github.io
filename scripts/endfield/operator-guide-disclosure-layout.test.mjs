@@ -88,3 +88,11 @@ test("TOC explicit Gameplay navigation is preserved against bottom-of-document s
   assert.match(file(base+"OperatorGameplay.astro"),/id="gameplay"/);
   assert.match(css,/\.op-section\{scroll-margin-top:158px/);
 });
+
+test("SKPORT snapshot is a quiet source note after the guide conclusion in DE and EN",()=>{
+ const source=readFileSync("src/components/operator/OperatorGuide.astro","utf8");
+ const note=source.indexOf('class="op-muted op-locale-note op-locale-note-bottom"');
+ assert.ok(note>source.indexOf("<OperatorConclusion model={model}"),"Source note must follow Fazit");
+ assert.ok(!source.slice(0,source.indexOf('<div class="op-guide">')).includes("SKPORT-Datenstand:"),"Remove the prominent top source note");
+ assert.match(source,/localized\?\.sourceSnapshot\?\?gameData\?\.source\?\.snapshot/);
+});
