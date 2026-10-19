@@ -278,7 +278,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
                     </tr>)}{view.rows.length===0 && <tr class="op-matrix-empty-row"><td colspan={view.metrics.length+6}>{model.lang==="en"?"No verified operator-specific setups have been added yet.":"Noch keine geprüften operatorspezifischen Rüstungssetups eingetragen."}</td></tr>}</tbody>
                   </table>
                 </div>
-                {guide.operator==="si" && <p class="op-muted op-body-copy op-matrix-source-note">{model.lang==="en"?"Values from Si's DPS/SUPPORT spreadsheet. A dash means no value was provided, not 0%.":"Werte aus der Si-DPS-/SUPPORT-Tabelle. Ein Strich bedeutet: kein Wert angegeben, nicht 0 %."}</p>}
+                {guide.operator==="si" && <p class="op-muted op-body-copy op-matrix-source-note">{model.lang==="en"?"ATK shows the total value. CS.DMG and ULT.gain are gear bonuses only (including +0%), independent of the operator's base stats.":"ATK zeigt den Gesamtwert. CS.DMG und ULT.gain sind reine Ausrüstungsboni (auch +0 %), unabhängig von den Grundwerten des Operators."}</p>}
               </> : <p class="op-muted op-body-copy">{model.lang==="en"?"The comparison matrix is enabled for this operator. Verified, operator-specific setups and metrics will be added here.":"Die Vergleichsmatrix ist für diesen Operator aktiviert. Geprüfte operatorspezifische Setups und Kennzahlen folgen."}</p>}
             </div>)}
             <dialog class="op-matrix-dialog" data-matrix-dialog aria-label={model.lang==="en"?"Full-size Gear Matrix":"Ausrüstungs-Matrix in Großansicht"}>
