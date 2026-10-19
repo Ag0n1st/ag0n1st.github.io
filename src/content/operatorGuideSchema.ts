@@ -257,6 +257,23 @@ export const operatorGuideSchema = z.object({
   }).default({}),
 
   equipment: z.object({
+    matrix: z.object({
+      enabled: z.boolean().default(false),
+      // Operator-specific column labels, keeping matrix structure stable.
+      metrics: z.array(z.object({id:identifier,labelDe:z.string().trim().min(1),labelEn:z.string().trim().min(1)}))
+        .max(8).default([]),
+      rows: z.array(z.object({
+        id: identifier,
+        label: z.string().trim().min(1),
+        values: z.record(z.string(),z.string()).default({}),
+        weaponId: identifier.optional(),
+        // One armor, one gloves, two accessories (kit) according to game slots.
+        armorId: identifier.optional(),
+        glovesId: identifier.optional(),
+        kit1Id: identifier.optional(),
+        kit2Id: identifier.optional()
+      })).refine(noDuplicateIds,"Ausrüstungs-Matrix-Reihen müssen eindeutig sein.").default([])
+    }).default({enabled:false,metrics:[],rows:[]}),
     builds: z.array(equipmentBuild)
       .refine(noDuplicateIds, "Ausrüstungs-Build-IDs müssen eindeutig sein.")
       .default([]),

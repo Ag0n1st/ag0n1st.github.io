@@ -297,6 +297,39 @@ equipment:
     Gebiet und der tatsächlich bestätigte Vorlagenbesitz werden im
     Build-Finder unabhängig voneinander geprüft.
 
+  matrix:
+    enabled: true
+    metrics:
+      - {id: primary-attribute, labelDe: "WIL", labelEn: "WIL"}
+      - {id: ultimate-gain, labelDe: "ULT Gain", labelEn: "ULT Gain"}
+      - {id: special-bonus, labelDe: "AMP-Bonus", labelEn: "AMP Bonus"}
+      - {id: weapon-bonus, labelDe: "Waffenbonus", labelEn: "Weapon Bonus"}
+      - {id: set-bonus, labelDe: "Setbonus", labelEn: "Set Bonus"}
+    rows:
+      - id: ultimate-fokus
+        label: "Build A – Ultimate-Fokus"
+        values: {}
+        weaponId: "1046"
+        armorId: "1134"
+        glovesId: "1138"
+        kit1Id: "1236"
+        kit2Id: "365"
+      - id: balanced
+        label: "Build B – Balanced"
+        values: {}
+        weaponId: "1046"
+        armorId: "1134"
+        glovesId: "1133"
+        kit1Id: "365"
+        kit2Id: "365"
+      - id: will-fokus
+        label: "Build C – Wille-Fokus"
+        values: {}
+        weaponId: "1046"
+        armorId: "1126"
+        glovesId: "1129"
+        kit1Id: "365"
+        kit2Id: "365"
 potentials:
   entries:
     - level: 1

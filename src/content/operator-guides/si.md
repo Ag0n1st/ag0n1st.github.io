@@ -199,6 +199,31 @@ equipment:
       note: "Level 70: Vor dem Freischalten der neuen v1.6-Ausrüstung ist Early Access mit Redeemer Armor und drei älteren Yinglung-Teilen ein vollständiger Übergangsbuild. Sobald das neue Gebiet und die entsprechenden Story-Freischaltungen erreicht sind, drei neue Type-50-Teile anstreben. Redeemer Seal für Balanced-Rotationen, LYNX Slab für maximalen eigenen Schaden."
     - stage: "endgame"
       note: "Das mit Version 1.6 neu erschienene Type-50-Yinglung-Set ist Sis Go-to-Set. Mit Redeemer Seal ist es ausgewogen, mit LYNX Slab auf maximalen eigenen Combo-Schaden ausgerichtet. Eternal Xiranite bleibt eine stark situationsabhängige Nischenalternative, wenn der Setbonus im Team noch fehlt."
+  matrix:
+    enabled: true
+    metrics:
+      - {id: primary-attribute, labelDe: "INT", labelEn: "INT"}
+      - {id: ultimate-gain, labelDe: "ULT Gain", labelEn: "ULT Gain"}
+      - {id: special-bonus, labelDe: "Combo-Bonus", labelEn: "Combo Bonus"}
+      - {id: weapon-bonus, labelDe: "Waffenbonus", labelEn: "Weapon Bonus"}
+      - {id: set-bonus, labelDe: "Setbonus", labelEn: "Set Bonus"}
+    rows:
+      - id: si-balanced
+        label: "Type 50 Yinglung · Balanced"
+        values: {}
+        weaponId: "1280"
+        armorId: "type-50-yinglung-soft-armor"
+        glovesId: "type-50-yinglung-gauntlets"
+        kit1Id: "type-50-yinglung-beacon"
+        kit2Id: "349"
+      - id: si-main
+        label: "Type 50 Yinglung · Max. DMG"
+        values: {}
+        weaponId: "1280"
+        armorId: "type-50-yinglung-soft-armor"
+        glovesId: "type-50-yinglung-gauntlets"
+        kit1Id: "type-50-yinglung-beacon"
+        kit2Id: "365"
 potentials:
   entries:
     - level: 1

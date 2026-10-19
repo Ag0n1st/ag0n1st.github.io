@@ -8,7 +8,8 @@ import "../../styles/operator-guides.css";
 
 // Published guides and explicitly enabled previews appear automatically.
 const entries=await getOperatorsByRelease();
-const operators = entries.map(entry => ({
+const operators = entries.map((entry,index) => ({
+  isNew: index===0,
   name: entry.data.displayName ?? entry.data.operator.split("-").map(part => part[0].toUpperCase() + part.slice(1)).join(" "),
   slug: entry.data.operator,
   preview: entry.data.status === "preview",
@@ -30,6 +31,7 @@ const l=(de:string,en:string)=>isEn?en:de;
       {operators.map((operator) => (
         <a class="op-card" href={isEn?`/en/endfield/operators/${operator.slug}/`:`/endfield/operatoren/${operator.slug}/`} aria-label={isEn?`Open ${operator.name} guide in English`:`Guide für ${operator.name} öffnen`}>
           <div class="op-card-art">
+            {operator.isNew && <span class="op-card-new" aria-label={l("Neuster Operator-Guide","Newest operator guide")}>NEW</span>}
             {getOperatorImageUrl(operator.slug,"official-portrait") ?? getOperatorImageUrl(operator.slug,"cover",operator.game?.coverUrl)
               ? <img class="op-card-cover" src={getOperatorImageUrl(operator.slug,"official-portrait") ?? getOperatorImageUrl(operator.slug,"cover",operator.game?.coverUrl)} loading="lazy" decoding="async" alt={l("Operator-Porträt: ","Operator portrait: ")+operator.name}/>
               : <span class="op-image-placeholder">{l("[Operator-Grafik]","[Operator artwork]")}<br />{operator.name}</span>}

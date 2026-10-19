@@ -131,6 +131,10 @@ equipment:
   # - stage: early # early | mid | late | endgame
   #   note: "Frühe Übergangsausrüstung und Freischaltung"
   generalNotes: "" # zusätzlicher eigener Hinweis; Standard-Disclaimer ist bereits eingebaut
+  matrix:
+    enabled: false
+    metrics: []
+    rows: []
 
 # 6. POTENZIALE
 potentials:

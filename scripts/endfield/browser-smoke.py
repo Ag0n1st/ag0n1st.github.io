@@ -556,8 +556,8 @@ def smoke_i18n(page, base_url, width):
         check_overflow(page,label+" "+route)
     page.goto(base_url+"/en/endfield/")
     nav_paths=page.locator(".endfield-nav a").evaluate_all("(a)=>a.map(x=>new URL(x.href).pathname)")
-    verify(len(nav_paths)==10 and all(p.startswith("/en/") for p in nav_paths),
-           label+": all ten Endfield tabs remain English, no DE fallback")
+    verify(len(nav_paths)==12 and all(p.startswith("/en/") for p in nav_paths),
+           label+": all twelve Endfield tabs remain English, no DE fallback")
     verify(page.locator(".endfield-section").count()==9,
            label+": identical nine-section Endfield homepage layout")
     page.locator('.endfield-nav a[href="/en/endfield/factory/"]').click()
@@ -720,10 +720,18 @@ def smoke_i18n(page, base_url, width):
         check_overflow(page,label+" "+lang+" countdown")
         links=page.locator(".endfield-nav-link").all_text_contents()
         flat=[x.strip().replace("·","") for x in links]
-        verify(len(flat)==10 and
+        verify(len(flat)==12 and
                flat.index("Tierlist" if lang=="de" else "Tier List") == flat.index("Checkliste" if lang=="de" else "Checklist")+1 and
                flat.index("Countdown") == flat.index("Tierlist" if lang=="de" else "Tier List")+1,
                label+": "+lang+" Tierlist appears after Checklist and before Countdown")
+        verify(page.locator('a.endfield-nav-link[href="'+("/endfield/leaderboard/" if lang=="de" else "/en/endfield/leaderboard/")+'"] .nav-upcoming-wrench').count()==1 and
+               page.locator('a.endfield-nav-link[href="'+("/endfield/cheatsheets/" if lang=="de" else "/en/endfield/cheatsheets/")+'"] .nav-upcoming-wrench').count()==1,
+               label+": "+lang+" new unfinished navigation tabs show their wrench icons")
+        check=page.locator("[data-version-countdown]").evaluate(
+            "(el)=>({utc:new Date(el.dataset.endsAt).toISOString(),local:el.dataset.endsLocal,hours:(Date.parse(el.dataset.endsAt)-Date.parse('2026-11-25T22:00:00Z'))/3600000})")
+        verify(check["utc"]=="2026-11-25T23:00:00.000Z" and
+               check["local"]=="2026-11-26T00:00:00+01:00" and check["hours"]==1,
+               label+": "+lang+" version timer deadline equals local 00:00 CET instead of 01:00")
     for lang,route in (("de","/endfield/speedruns/"),("en","/en/endfield/speedruns/")):
         page.goto(base_url+route)
         verify(page.locator("html").get_attribute("lang")==lang and
@@ -739,6 +747,44 @@ def smoke_i18n(page, base_url, width):
                page.locator(".videos-grid [data-relative-time]").count()==0,
                label+": "+lang+" speedrun cards intentionally omit release timestamps")
         check_overflow(page,label+" "+lang+" speedruns")
+    for lang,prefix in (("de",""),("en","/en")):
+        page.goto(base_url+prefix+("/endfield/operatoren/" if lang=="de" else "/endfield/operators/"))
+        badges=page.locator(".op-grid .op-card-new")
+        verify(badges.count()==1 and badges.first.inner_text()=="NEW" and
+               page.locator(".op-grid .op-card").first.locator(".op-card-new").count()==1,
+               label+": "+lang+" latest released operator is uniquely marked NEW")
+        check_overflow(page,label+" "+lang+" operator index")
+        for slug in ("si","liino"):
+            route=prefix+("/endfield/operatoren/" if lang=="de" else "/endfield/operators/")+slug+"/"
+            page.goto(base_url+route)
+            details=page.locator('[data-guide-disclosure="equipment-matrix"]')
+            verify(details.count()==1 and details.get_attribute("open") is None,
+                   label+": "+lang+" "+slug+" matrix is enabled and initially collapsed")
+            details.locator("summary").click()
+            verify(details.get_attribute("open") is not None and
+                   details.locator(".op-equipment-matrix thead th img").count()==6 and
+                   details.locator(".op-equipment-matrix tbody tr").count()==(2 if slug=="si" else 3) and
+                   details.locator(".op-matrix-empty-row").count()==0,
+                   label+": "+lang+" "+slug+" matrix shows guide-approved setups and all five gear slots")
+            cells=details.locator(".op-equipment-matrix tbody tr:first-child td:not(.op-matrix-gear-cell)").all_text_contents()
+            verify(len(cells)==5 and all(cell.strip()=="—" for cell in cells),
+                   label+": "+lang+" "+slug+" unverified matrix percentages remain blank")
+            check_overflow(page,label+" "+lang+" "+slug+" matrix")
+        page.goto(base_url+prefix+("/endfield/operatoren/typhoeus/" if lang=="de" else "/endfield/operators/typhoeus/"))
+        verify(page.locator('[data-guide-disclosure="equipment-matrix"]').count()==0,
+               label+": "+lang+" other operators do not render the optional matrix")
+        page.goto(base_url+prefix+"/endfield/leaderboard/")
+        verify(page.locator(".endfield-boss-grid .endfield-boss-card").count()==7 and
+               page.locator(".endfield-stacked-title > span").count()==2,
+               label+": "+lang+" Community Leaderboard has 7 future boss rankings")
+        verify(page.locator('.endfield-boss-card img[src="/images/endfield/operators/si/official-portrait.webp"]').count()==1,
+               label+": "+lang+" provisional Si Boss uses existing official operator portrait")
+        check_overflow(page,label+" "+lang+" leaderboard")
+        page.goto(base_url+prefix+"/endfield/cheatsheets/")
+        verify(page.locator(".endfield-coming-card").count()==3 and
+               all(page.locator("#"+x).count()==1 for x in ("elasticgoods","artificing","bufffood")),
+               label+": "+lang+" three Cheat Sheets topics have cards")
+        check_overflow(page,label+" "+lang+" cheatsheets")
     sitemap=page.request.get(base_url+"/sitemap.xml")
     verify(sitemap.status==200 and
            "<loc>https://ag0n1st.com/en/endfield/operators/si/</loc>" in sitemap.text() and

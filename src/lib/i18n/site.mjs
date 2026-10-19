@@ -12,6 +12,8 @@ export const EN_PAGES=Object.freeze({
   "/endfield/veredelung/":"/en/endfield/refinement/",
   "/endfield/essenzen/":"/en/endfield/essences/",
   "/endfield/speedruns/":"/en/endfield/speedruns/",
+  "/endfield/leaderboard/":"/en/endfield/leaderboard/",
+  "/endfield/cheatsheets/":"/en/endfield/cheatsheets/",
   "/endfield/checkliste/":"/en/endfield/checklist/",
   "/endfield/countdown/":"/en/endfield/countdown/",
   "/endfield/operatoren/si/":"/en/endfield/operators/si/",
