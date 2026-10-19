@@ -177,7 +177,12 @@ weapons:
 equipment:
   matrix:
     enabled: true
-    metrics: []
+    metrics:
+      - {id: primary-attribute, labelDe: "WIL", labelEn: "WIL"}
+      - {id: ultimate-gain, labelDe: "ULT Gain", labelEn: "ULT Gain"}
+      - {id: special-bonus, labelDe: "AMP-Bonus", labelEn: "AMP Bonus"}
+      - {id: weapon-bonus, labelDe: "Waffenbonus", labelEn: "Weapon Bonus"}
+      - {id: set-bonus, labelDe: "Setbonus", labelEn: "Set Bonus"}
     rows: []
   builds:
     - id: ultimate-fokus

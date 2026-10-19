@@ -102,7 +102,12 @@ weapons:
 equipment:
   matrix:
     enabled: true
-    metrics: []
+    metrics:
+      - {id: primary-attribute, labelDe: "INT", labelEn: "INT"}
+      - {id: ultimate-gain, labelDe: "ULT Gain", labelEn: "ULT Gain"}
+      - {id: special-bonus, labelDe: "Combo-Bonus", labelEn: "Combo Bonus"}
+      - {id: weapon-bonus, labelDe: "Waffenbonus", labelEn: "Weapon Bonus"}
+      - {id: set-bonus, labelDe: "Setbonus", labelEn: "Set Bonus"}
     rows: []
   builds:
     - id: "si-balanced"

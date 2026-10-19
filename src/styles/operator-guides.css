@@ -508,3 +508,6 @@
 .op-equipment-matrix td img{width:52px;max-width:100%;height:50px;object-fit:contain}
 .op-equipment-matrix thead th img{width:36px;height:36px;display:block;margin:auto;object-fit:contain}
 .op-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+.op-equipment-matrix .op-matrix-empty-row td{padding:24px 14px;font-weight:400;background:#222129;color:#b9b3c0;white-space:normal}
+.op-equipment-matrix .op-matrix-row-name img{max-width:54px;max-height:58px;width:auto;height:auto;margin:auto;object-fit:contain}
