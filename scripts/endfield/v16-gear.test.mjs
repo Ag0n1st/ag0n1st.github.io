@@ -39,7 +39,7 @@ test("The existing six Si v1.6 references remain source-consistent and use no fa
   }
   const resolver=readFileSync("src/lib/endfield/itemCatalog.ts","utf8");
   assert.match(resolver,/v16-gear\.json/);
-  assert.match(resolver,/v16Gear\.items\.length!==18/);
+  assert.match(resolver,/v16Gear\.items\.length!==19/);
   assert.match(resolver,/an unverified community alias must NEVER replace an official numeric match/);
 });
 
