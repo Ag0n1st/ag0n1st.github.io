@@ -109,7 +109,7 @@ document.addEventListener("click",event=>{
   }else if(panel&&!panel.contains(target))closePopup();
 },true);
 document.addEventListener("keydown",event=>{
-  if(event.key==="Escape"&&panel?.matches(":popover-open")){closePopup();event.stopPropagation();}
+  if(event.key==="Escape"&&panel?.matches(":popover-open")){event.preventDefault();event.stopPropagation();closePopup();}
   if((event.key==="Enter"||event.key===" ")&&event.target instanceof Element){
     const trigger=event.target.closest<HTMLElement>(selector);
     if(trigger){event.preventDefault();if(active===trigger&&panel?.matches(":popover-open"))closePopup();else showPopup(trigger);}
