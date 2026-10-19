@@ -556,3 +556,37 @@
 .op-matrix-dialog-scroll{box-sizing:border-box;max-width:100%;max-height:calc(92dvh - 110px);overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;border:1px solid #39343e;border-radius:12px;background:#242229}
 .op-matrix-dialog-scroll .op-equipment-matrix{width:max-content;min-width:100%;margin:0}
 @media(max-width:680px){.op-matrix-dialog{max-width:98vw;width:98vw;padding:10px}.op-matrix-dialog-scroll{max-height:calc(92dvh - 90px)}.op-matrix-dialog-header{margin-bottom:10px}}
+
+/* Official equipment details on every ItemIcon (index lists, builds, team sets,
+   main matrix and cloned large matrix). The native popover uses browser top layer
+   so ancestor card/table overflow never clips its content. */
+.op-item-hover-trigger{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;max-width:100%;min-width:0;cursor:help;border-radius:8px;outline-offset:3px}
+.op-item-hover-trigger:hover{filter:brightness(1.13)}
+.op-item-hover-trigger:focus-visible{outline:2px solid var(--cyan)}
+.op-equipment-matrix .op-matrix-gear-cell{text-align:center}
+.op-equipment-matrix .op-matrix-gear-cell .op-item-hover-trigger{margin-inline:auto}
+.op-item-hover-panel{box-sizing:border-box;position:fixed;inset:auto;margin:0;padding:0;width:min(480px,calc(100vw - 20px));max-height:min(76dvh,740px);overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;border:1px solid #736286;border-radius:14px;background:#1a1822;color:#f4eef7;box-shadow:0 19px 65px #000e;line-height:1.5;z-index:9999}
+.op-item-hover-panel:focus-visible{outline:2px solid var(--cyan);outline-offset:-3px}
+.op-item-detail-card{padding:15px;font-size:12px}
+.op-item-detail-header{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid #45404f}
+.op-item-detail-header img{flex:0 0 44px;width:44px;height:44px;object-fit:contain}
+.op-item-detail-header>div{flex:1;min-width:0}
+.op-item-detail-header strong{display:block;font-size:15px;line-height:1.35;overflow-wrap:anywhere}
+.op-item-detail-header small{display:block;color:#b6adbf;margin-top:3px;font-size:10px}
+.op-item-detail-close-hint{font-size:9px;color:#b4a5bf;white-space:nowrap;align-self:flex-start}
+.op-item-detail-facts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.op-item-detail-facts span{border:1px solid #474150;padding:4px 8px;border-radius:7px;background:#292331;font-size:10px}
+.op-item-detail-section{padding-top:12px;margin-top:12px;border-top:1px solid #3e3646}
+.op-item-detail-section h4{font-size:12px;line-height:1.4;color:#eeb9e4;margin:0 0 8px}
+.op-item-detail-copy{margin:0;line-height:1.7;white-space:pre-line;overflow-wrap:anywhere}
+.op-item-detail-empty{color:#bab1c4;font-size:11px;line-height:1.65;margin:8px 0}
+.op-item-detail-footnote{font-size:10px;color:#b6adbf;line-height:1.5;margin:7px 0 0}
+.op-item-detail-source{border-top:1px solid #3e3646;padding-top:10px;margin:15px 0 0;color:#b6adbf;font-size:10px}
+.op-item-detail-table-scroll{overflow-x:auto;max-width:100%;margin:8px 0;scrollbar-width:thin}
+.op-item-detail-table-scroll table{border-collapse:separate;border-spacing:0;width:100%;font-size:11px;line-height:1.5}
+.op-item-detail-table-scroll th,.op-item-detail-table-scroll td{border:1px solid #46404e;padding:6px 8px;text-align:left;vertical-align:top;min-width:66px;overflow-wrap:anywhere}
+.op-item-detail-table-scroll thead th{background:#2f2837;color:#f3d4ee;font-weight:700}
+.op-item-detail-table-scroll tbody th{background:#282430;min-width:92px;font-weight:600}
+.op-item-detail-table-scroll td{background:#211f29;white-space:pre-line}
+.op-item-detail-section .op-resource-list{min-width:0}
+@media(max-width:680px){.op-item-hover-panel{width:min(420px,calc(100vw - 16px));max-height:70dvh}.op-item-detail-card{padding:12px}.op-item-detail-header strong{font-size:13px}}
