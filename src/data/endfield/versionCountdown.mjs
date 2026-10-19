@@ -11,7 +11,7 @@ export function parseVersionCountdownMarkdown(source){
   if(!match)throw Error("Invalid countdown metadata: "+line);
   config[match[1]]=match[2]??match[3]??match[4];
  }
- for(const key of ["version","name","endsAt","timeZone","status","sourceLabelDe","sourceLabelEn"]){
+ for(const key of ["version","name","endsAt","timeZone","displayZoneDe","displayZoneEn","status","sourceLabelDe","sourceLabelEn"]){
   if(!config[key])throw Error("Missing countdown metadata: "+key);
  }
  if(!/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d[+-]\d\d:\d\d$/.test(config.endsAt)
