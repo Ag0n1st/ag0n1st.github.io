@@ -765,17 +765,6 @@ def smoke_i18n(page, base_url, width):
                    details.locator(".op-equipment-matrix thead th img").count()==6 and
                    details.locator(".op-matrix-empty-row").count()==1,
                    label+": "+lang+" "+slug+" matrix operator plus five equipment icons and no invented rows")
-            if width<=390 and lang=="de" and slug=="si":
-                print("MATRIX_GEOMETRY",page.evaluate("""()=>
-                    [...document.querySelectorAll('#ausruestung, #equipment-matrix, #equipment-matrix *, .op-guide, .op-guide-content')]
-                    .map(e=>({tag:e.tagName,cl:e.className?.baseVal??e.className,id:e.id,
-                       w:e.getBoundingClientRect().width,x:e.getBoundingClientRect().x,
-                       right:e.getBoundingClientRect().right,scroll:e.scrollWidth,
-                       overflow:getComputedStyle(e).overflowX,
-                       min:getComputedStyle(e).minWidth}))
-                    .filter(e=>e.right>innerWidth+2||e.scroll>e.w+4)
-                    .slice(-25)
-                """),flush=True)
             check_overflow(page,label+" "+lang+" "+slug+" matrix")
         page.goto(base_url+prefix+("/endfield/operatoren/typhoeus/" if lang=="de" else "/endfield/operators/typhoeus/"))
         verify(page.locator('[data-guide-disclosure="equipment-matrix"]').count()==0,

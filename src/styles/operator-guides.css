@@ -538,3 +538,7 @@
   overflow-y:hidden;
   overscroll-behavior-x:contain;
 }
+
+/* Anchor visually hidden column names inside each cell, not at page root:
+   otherwise absolutely positioned sr-only labels increase document.scrollWidth. */
+.op-equipment-matrix thead th{position:relative}
