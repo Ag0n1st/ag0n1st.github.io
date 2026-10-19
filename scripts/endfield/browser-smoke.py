@@ -780,13 +780,35 @@ def smoke_i18n(page, base_url, width):
             active=details.locator('[data-matrix-panel]:not([hidden])')
             verify(details.get_attribute("open") is not None and
                    active.locator(".op-equipment-matrix thead th img").count()==6 and
-                   active.locator(".op-equipment-matrix tbody tr").count()==(5 if slug=="si" else 3) and
+                   active.locator(".op-equipment-matrix tbody tr").count()==(5 if slug=="si" else 9) and
                    active.locator(".op-matrix-empty-row").count()==0,
                    label+": "+lang+" "+slug+" matrix shows guide-approved setups and all five gear slots")
             cells=active.locator(".op-equipment-matrix tbody tr:first-child td:not(.op-matrix-gear-cell)").all_text_contents()
             verify(([x.strip() for x in cells]==["6526","+125.6%","+0%"] if slug=="si" else
-                    len(cells)==5 and all(cell.strip()=="—" for cell in cells)),
+                    [x.strip() for x in cells[:3]]==["1320 WILL","+0%","52.8%"] and len(cells)==5),
                    label+": "+lang+" "+slug+" DPS CSV numbers or Liino unverified cells remain exact")
+            matrix_weapons=active.locator("[data-matrix-weapon-potential]")
+            verify(matrix_weapons.count()==(5 if slug=="si" else 9) and
+                   matrix_weapons.first.get_attribute("data-matrix-weapon-potential")=="P0" and
+                   matrix_weapons.first.get_attribute("data-matrix-weapon-tuning")=="9/9/4" and
+                   matrix_weapons.first.locator(".op-matrix-weapon-potential").inner_text()=="P0" and
+                   matrix_weapons.first.locator(".op-matrix-weapon-tuning").inner_text()=="9/9/4",
+                   label+": "+lang+" "+slug+" P0 and 9/9/4 badges overlay the correct weapon cell")
+            note=active.locator(".op-matrix-source-note").inner_text()
+            verify(("P0" in note) and
+                   (("Jade Vessel" in note) if slug=="si" else ("P5" in note)),
+                   label+": "+lang+" "+slug+" potential assumptions are explained below the matrix")
+            if slug=="liino":
+                p5=active.locator('[data-matrix-weapon-potential="P5"]')
+                verify(p5.count()==3 and all(x=="9/9/9" for x in
+                       p5.locator(".op-matrix-weapon-tuning").all_text_contents()),
+                       label+": "+lang+" Liino P5 Golden Age rows show 9/9/9")
+                verify(all("ffe985" in badge.evaluate("(el)=>getComputedStyle(el).color") or
+                           badge.evaluate("(el)=>getComputedStyle(el).color")=="rgb(255, 233, 133)"
+                           for badge in p5.locator(".op-matrix-weapon-label.is-p5").all()),
+                       label+": "+lang+" P5 badges use yellow emphasis")
+                verify(active.locator(".op-equipment-matrix tbody tr").nth(8).locator("td:not(.op-matrix-gear-cell)").first.inner_text().strip()=="—",
+                       label+": "+lang+" unknown BP P5 metrics are omitted, not invented")
             gear_cell=active.locator(".op-matrix-scroller .op-matrix-gear-cell").nth(1)
             gear_icon=gear_cell.locator("[data-endfield-item-hover]")
             verify(gear_icon.count()==1 and gear_icon.get_attribute("tabindex")=="0",
@@ -822,8 +844,11 @@ def smoke_i18n(page, base_url, width):
             dialog=details.locator("[data-matrix-dialog]")
             dialog.wait_for(state="visible")
             verify(dialog.evaluate("(el)=>el.open") and
-                   dialog.locator(".op-matrix-dialog-scroll .op-equipment-matrix tbody tr").count()==(5 if slug=="si" else 3),
+                   dialog.locator(".op-matrix-dialog-scroll .op-equipment-matrix tbody tr").count()==(5 if slug=="si" else 9),
                    label+": "+lang+" "+slug+" complete matrix is shown in fullscreen dialog")
+            verify(dialog.locator(".op-matrix-weapon-tile").count()==(5 if slug=="si" else 9) and
+                   dialog.locator(".op-matrix-weapon-tuning").first.inner_text()=="9/9/4",
+                   label+": "+lang+" "+slug+" weapon badges survive large-view cloning")
             bounds=dialog.evaluate("(el)=>({width:el.getBoundingClientRect().width,viewport:innerWidth,scroll:el.querySelector('[data-matrix-dialog-content]').scrollWidth,client:el.querySelector('[data-matrix-dialog-content]').clientWidth})")
             verify(bounds["width"]<=bounds["viewport"]+1 and bounds["client"]>0 and bounds["scroll"]>=bounds["client"],
                    label+": "+lang+" "+slug+" dialog remains inside viewport; table scrolls when needed")
