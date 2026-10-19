@@ -759,7 +759,15 @@ def smoke_i18n(page, base_url, width):
             label+": "+lang+" NEW badge must be visible without hover")
         colors=page.locator(".op-grid .op-element-chip").evaluate_all(
             "(els)=>Object.fromEntries(els.filter(el=>['electric','electro','heat'].includes(el.dataset.element)).map(el=>[el.dataset.element,getComputedStyle(el).color]))")
-        verify(colors.get("electric",colors.get("electro"))=="rgb(255, 233, 133)" and colors.get("heat")=="rgb(255, 154, 159)",
+        # The current three published guides have no Heat operator. Probe its style
+        # with a temporary chip, rather than fabricating an operator in the index.
+        heat_color=page.evaluate("""() => {
+            const chip=document.createElement('span');
+            chip.className='op-chip op-element-chip';chip.dataset.element='heat';
+            document.body.appendChild(chip);
+            const color=getComputedStyle(chip).color;chip.remove();return color;
+        }""")
+        verify(colors.get("electric",colors.get("electro"))=="rgb(255, 233, 133)" and heat_color=="rgb(255, 154, 159)",
                label+": "+lang+" Electro yellow and Heat red before hover")
         check_overflow(page,label+" "+lang+" operator index")
         for slug in ("si","liino"):
