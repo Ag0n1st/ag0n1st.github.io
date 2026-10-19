@@ -32,7 +32,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
               <div class="op-chip-row">
                 <span class="op-chip is-pink">{gameData ? gameData.operator.rarity + "★" : "[Seltenheit]"}</span>
                 <span class="op-chip">{trTerm(gameData?.operator.class) || "[Klasse]"}</span>
-                <span class="op-chip">{trTerm(gameData?.operator.element) || "[Element]"}</span>
+                <span class="op-chip op-element-chip" data-element={gameData?.operator.element?.toLowerCase()}>{trTerm(gameData?.operator.element) || "[Element]"}</span>
                 <span class="op-chip">{trTerm(gameData?.operator.weaponType) || "[Waffentyp]"}</span>
               </div>
               {(guide.overview.traits.length>0 || preview) && <>
