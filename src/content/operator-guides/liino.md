@@ -175,15 +175,6 @@ weapons:
         - { weaponId: "97", rank: 9, performancePercent: 81.3 }
 
 equipment:
-  matrix:
-    enabled: true
-    metrics:
-      - {id: primary-attribute, labelDe: "WIL", labelEn: "WIL"}
-      - {id: ultimate-gain, labelDe: "ULT Gain", labelEn: "ULT Gain"}
-      - {id: special-bonus, labelDe: "AMP-Bonus", labelEn: "AMP Bonus"}
-      - {id: weapon-bonus, labelDe: "Waffenbonus", labelEn: "Weapon Bonus"}
-      - {id: set-bonus, labelDe: "Setbonus", labelEn: "Set Bonus"}
-    rows: []
   builds:
     - id: ultimate-fokus
       meta: true
@@ -306,6 +297,15 @@ equipment:
     Gebiet und der tatsächlich bestätigte Vorlagenbesitz werden im
     Build-Finder unabhängig voneinander geprüft.
 
+  matrix:
+    enabled: true
+    metrics:
+      - {id: primary-attribute, labelDe: "WIL", labelEn: "WIL"}
+      - {id: ultimate-gain, labelDe: "ULT Gain", labelEn: "ULT Gain"}
+      - {id: special-bonus, labelDe: "AMP-Bonus", labelEn: "AMP Bonus"}
+      - {id: weapon-bonus, labelDe: "Waffenbonus", labelEn: "Weapon Bonus"}
+      - {id: set-bonus, labelDe: "Setbonus", labelEn: "Set Bonus"}
+    rows: []
 potentials:
   entries:
     - level: 1

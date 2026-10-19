@@ -100,15 +100,6 @@ weapons:
           performancePercent: 86.8
   generalNotes: "Für Si ist die richtige Waffe besonders relevant und sie profitiert als Main DPS auch wieder sehr von ihrer Signature-Waffe. Die allgemeinen Empfehlungen sind unabhängig vom Waffenrang; die vollständigen, lokal importierten Werte und Tuning-Materialkosten jeder Waffe stehen in den aufklappbaren Waffendetails. Datafield-Prozente gelten nur für das benannte Main-DPS-Szenario."
 equipment:
-  matrix:
-    enabled: true
-    metrics:
-      - {id: primary-attribute, labelDe: "INT", labelEn: "INT"}
-      - {id: ultimate-gain, labelDe: "ULT Gain", labelEn: "ULT Gain"}
-      - {id: special-bonus, labelDe: "Combo-Bonus", labelEn: "Combo Bonus"}
-      - {id: weapon-bonus, labelDe: "Waffenbonus", labelEn: "Weapon Bonus"}
-      - {id: set-bonus, labelDe: "Setbonus", labelEn: "Set Bonus"}
-    rows: []
   builds:
     - id: "si-balanced"
       title: "Type 50 Yinglung · Balanced"
@@ -208,6 +199,15 @@ equipment:
       note: "Level 70: Vor dem Freischalten der neuen v1.6-Ausrüstung ist Early Access mit Redeemer Armor und drei älteren Yinglung-Teilen ein vollständiger Übergangsbuild. Sobald das neue Gebiet und die entsprechenden Story-Freischaltungen erreicht sind, drei neue Type-50-Teile anstreben. Redeemer Seal für Balanced-Rotationen, LYNX Slab für maximalen eigenen Schaden."
     - stage: "endgame"
       note: "Das mit Version 1.6 neu erschienene Type-50-Yinglung-Set ist Sis Go-to-Set. Mit Redeemer Seal ist es ausgewogen, mit LYNX Slab auf maximalen eigenen Combo-Schaden ausgerichtet. Eternal Xiranite bleibt eine stark situationsabhängige Nischenalternative, wenn der Setbonus im Team noch fehlt."
+  matrix:
+    enabled: true
+    metrics:
+      - {id: primary-attribute, labelDe: "INT", labelEn: "INT"}
+      - {id: ultimate-gain, labelDe: "ULT Gain", labelEn: "ULT Gain"}
+      - {id: special-bonus, labelDe: "Combo-Bonus", labelEn: "Combo Bonus"}
+      - {id: weapon-bonus, labelDe: "Waffenbonus", labelEn: "Weapon Bonus"}
+      - {id: set-bonus, labelDe: "Setbonus", labelEn: "Set Bonus"}
+    rows: []
 potentials:
   entries:
     - level: 1
