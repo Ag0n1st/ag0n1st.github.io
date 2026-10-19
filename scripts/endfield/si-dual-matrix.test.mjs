@@ -19,11 +19,11 @@ function rows(id){
 }
 const dps=rows("dps"),support=rows("support");
 const expectedDps=[
- ["SUPPORT-DPS-0","6526","+125.6%","+0%","type-50-yinglung-soft-armor","type-50-yinglung-gloves-v16","type-50-yinglung-beacon","365"],
- ["SUPPORT-DPS-1","5655","+179.4%","+0%","type-50-yinglung-soft-armor","type-50-yinglung-gloves-v16","type-50-yinglung-beacon","type-50-yinglung-beacon"],
- ["SUPPORT-DPS-2","5673","+125.6%","+33.4%","type-50-yinglung-soft-armor","type-50-yinglung-gloves-v16","type-50-yinglung-beacon","349"],
- ["SUPPORT-DPS-3","5683","+134.6%","+27.9%","type-50-yinglung-soft-armor","1128","type-50-yinglung-beacon","type-50-yinglung-beacon"],
- ["SUPPORT-DPS-4","5689","+152.5%","+16.7%","796","type-50-yinglung-gloves-v16","type-50-yinglung-beacon","type-50-yinglung-beacon"]
+ ["MAIN-DPS-0","6526","+125.6%","+0%","type-50-yinglung-soft-armor","type-50-yinglung-gloves-v16","type-50-yinglung-beacon","365"],
+ ["MAIN-DPS-1","5655","+179.4%","+0%","type-50-yinglung-soft-armor","type-50-yinglung-gloves-v16","type-50-yinglung-beacon","type-50-yinglung-beacon"],
+ ["MAIN-DPS-2","5673","+125.6%","+33.4%","type-50-yinglung-soft-armor","type-50-yinglung-gloves-v16","type-50-yinglung-beacon","349"],
+ ["MAIN-DPS-3","5683","+134.6%","+27.9%","type-50-yinglung-soft-armor","1128","type-50-yinglung-beacon","type-50-yinglung-beacon"],
+ ["MAIN-DPS-4","5689","+152.5%","+16.7%","796","type-50-yinglung-gloves-v16","type-50-yinglung-beacon","type-50-yinglung-beacon"]
 ];
 const expectedSupport=[
  ["SUPPORT-DPS-0","5830","+125.6%","+0%","eternal-xiranite-mod-armor","eternal-xiranite-channeling-gloves","eternal-xiranite-rangefinder","365"],
@@ -45,6 +45,8 @@ test("Si ships exactly two independent and accessible matrices",()=>{
  assert.match(matrix,/    variants:\n      - id: dps/);
  assert.match(matrix,/      - id: support/);
  assert.deepEqual([dps.length,support.length],[5,13]);
+ assert.deepEqual(dps.map(row=>row.label),["MAIN-DPS-0","MAIN-DPS-1","MAIN-DPS-2","MAIN-DPS-3","MAIN-DPS-4"]);
+ assert.deepEqual(support.slice(0,5).map(row=>row.label),["SUPPORT-DPS-0","SUPPORT-DPS-1","SUPPORT-DPS-2","SUPPORT-DPS-3","SUPPORT-DPS-4"]);
  for(const m of ["ATK","CS.DMG","ULT.gain"])assert.match(matrix,new RegExp('labelEn: "'+m.replace(".","\\.")+'"'));
  for(const label of ["DPS","SUPPORT"])assert.match(component,new RegExp("op-matrix-tab"));
  assert.match(component,/data-matrix-panel/);
