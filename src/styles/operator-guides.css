@@ -487,3 +487,24 @@
 .op-element-chip[data-element="heat"]{color:#ffae82;border-color:#d87c48;background:rgba(239,112,55,.12)}
 .op-element-chip[data-element="nature"]{color:#b6e39b;border-color:#72af68;background:rgba(112,190,98,.12)}
 .op-element-chip[data-element="physical"]{color:#efcfba;border-color:#c9a082;background:rgba(185,149,125,.12)}
+
+// Latest released operator guide card – not tied to an edit timestamp.
+.op-card-art{position:relative}
+.op-card-new{position:absolute;top:12px;right:12px;z-index:2;display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:5px 12px;background:linear-gradient(105deg,#ec4ea8,#9f3bdd);border:1px solid #ffadf2;border-radius:9px;color:#fff;box-shadow:0 4px 16px #0009;font-size:12px;font-weight:700;letter-spacing:.12em;line-height:1}
+// Owner-requested game-element label colors (source element IDs, never translated names).
+.op-element-chip[data-element="electric"],.op-element-chip[data-element="electro"]{color:#ffe985;border-color:#d9b92e;background:rgba(231,193,39,.14)}
+.op-element-chip[data-element="heat"]{color:#ff9a9f;border-color:#e5545b;background:rgba(226,57,72,.14)}
+
+.endfield-nav-link .endfield-nav-text{display:inline-flex;flex-direction:column;align-items:center;line-height:1.15;gap:2px}
+
+/* Horizontally scrollable editable operator-specific equipment matrix. */
+.op-matrix-scroller{max-width:100%;overflow-x:auto;border:1px solid #39343e;border-radius:13px;background:#242229}
+.op-equipment-matrix{width:100%;min-width:700px;border-collapse:separate;border-spacing:4px;table-layout:auto;font-size:12px;line-height:1.35;text-align:center}
+.op-equipment-matrix th,.op-equipment-matrix td{min-width:86px;height:65px;padding:10px 7px;border:1px solid #423e49;background:#37333b;border-radius:12px;vertical-align:middle;overflow-wrap:anywhere}
+.op-equipment-matrix thead th{background:#221f27;color:#fbf7fb;font-weight:700}
+.op-equipment-matrix th.op-matrix-row-name{min-width:115px}
+.op-equipment-matrix tbody th{font-weight:700;background:#302a37}
+.op-equipment-matrix td:has(.op-catalog-icon){background:#28262b}
+.op-equipment-matrix td img{width:52px;max-width:100%;height:50px;object-fit:contain}
+.op-equipment-matrix thead th img{width:36px;height:36px;display:block;margin:auto;object-fit:contain}
+.op-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}

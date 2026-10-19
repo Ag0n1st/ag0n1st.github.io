@@ -31,6 +31,7 @@ const officialBuilds=builds.map(build=>{
 // All operators share this framework: only editorially flagged real builds
 // receive cards; unflagged progression builds remain in the detailed finder.
 const metaBuilds=officialBuilds.filter(build=>build.meta===true);
+const matrix=guide.equipment.matrix;
 import { guideText } from "../../../lib/i18n/guideUi";
 ---
 <section class="op-section" id="ausruestung">
@@ -238,4 +239,33 @@ import { guideText } from "../../../lib/i18n/guideUi";
         </div>
           </div>
         </details>
+        {matrix?.enabled && <details class="op-divided op-guide-accordion op-equipment-matrix-disclosure" data-guide-disclosure="equipment-matrix" id="equipment-matrix">
+          <summary class="op-guide-accordion-summary">
+            <h3>{model.lang==="en"?"Gear Matrix":"Ausrüstungs-Matrix"}</h3>
+            <span class="op-guide-accordion-hint">{model.lang==="en"?"Compare Gear Setups":"Rüstungssetups vergleichen"}</span>
+          </summary>
+          <div class="op-guide-accordion-content">
+            {matrix.rows.length && matrix.metrics.length ?
+              <div class="op-matrix-scroller" role="region" tabindex="0" aria-label={model.lang==="en"?"Gear comparison matrix":"Ausrüstungs-Vergleichsmatrix"}>
+                <table class="op-equipment-matrix">
+                  <thead><tr>
+                    <th scope="col" class="op-matrix-row-name">{model.lang==="en"?"Setup":"Setup"}</th>
+                    {matrix.metrics.map(metric=><th scope="col">{model.lang==="en"?metric.labelEn:metric.labelDe}</th>)}
+                    {(["weapon","armor","gloves","kit1","kit2"] as const).map(slot=><th scope="col">
+                      <img src={"/images/endfield/ui/matrix-"+(slot.startsWith("kit")?"kit":slot==="weapon"?"weapons":slot)+".webp"} alt="" width="34" height="34"/>
+                      <span class="op-sr-only">{slot==="weapon"?"Weapon":slot==="armor"?"Armor":slot==="gloves"?"Gloves":"Kit"}</span>
+                    </th>)}
+                  </tr></thead>
+                  <tbody>{matrix.rows.map(row=><tr>
+                    <th scope="row">{row.label}</th>
+                    {matrix.metrics.map(metric=><td>{row.values[metric.id]??"—"}</td>)}
+                    {([row.weaponId,row.armorId,row.glovesId,row.kit1Id,row.kit2Id] as const).map(id=><td class="op-matrix-gear-cell">
+                      {id ? <ItemIcon id={id} lang={model.lang} size="small" /> : <span aria-label={model.lang==="en"?"Not specified":"Nicht angegeben"}>—</span>}
+                    </td>)}
+                  </tr>)}</tbody>
+                </table>
+              </div>
+            : <p class="op-muted op-body-copy">{model.lang==="en"?"The comparison matrix is enabled for this operator. Verified, operator-specific setups and metrics will be added here; no values are assumed from another character.":"Die Vergleichsmatrix ist für diesen Operator aktiviert. Hier folgen geprüfte, operatorspezifische Rüstungssetups und Kennzahlen; Werte anderer Operatoren werden nicht übernommen."}</p>}
+          </div>
+        </details>}
       </section>

@@ -175,6 +175,10 @@ weapons:
         - { weaponId: "97", rank: 9, performancePercent: 81.3 }
 
 equipment:
+  matrix:
+    enabled: true
+    metrics: []
+    rows: []
   builds:
     - id: ultimate-fokus
       meta: true

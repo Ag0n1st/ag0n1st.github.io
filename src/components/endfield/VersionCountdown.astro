@@ -5,11 +5,11 @@ interface Props { lang?: "de"|"en" }
 const {lang="de"}=Astro.props;
 const en=lang==="en";
 const l=(de:string,enValue:string)=>en?enValue:de;
-const finishDate=new Date(patch.endsAt);
+const finishDate=new Date(patch.endTimestamp);
 const humanDate=new Intl.DateTimeFormat(en?"en-GB":"de-DE",{
   timeZone:patch.zone,year:"numeric",month:"long",day:"numeric",hour:"2-digit",minute:"2-digit",timeZoneName:"short"
 }).format(finishDate);
-const remaining=Math.max(0,Math.ceil((finishDate.getTime()-Date.now())/60000));
+const remaining=Math.max(0,Math.ceil((patch.endTimestamp-Date.now())/60000));
 const initial=[Math.floor(remaining/1440),Math.floor(remaining%1440/60),remaining%60].map(n=>String(n).padStart(2,"0"));
 const parts=[{id:"days",title:l("Tage","Days"),value:initial[0]},{id:"hours",title:l("Stunden","Hours"),value:initial[1]},{id:"minutes",title:l("Minuten","Minutes"),value:initial[2]}];
 ---
@@ -18,7 +18,7 @@ const parts=[{id:"days",title:l("Tage","Days"),value:initial[0]},{id:"hours",tit
     <span class="section-kicker">ARKNIGHTS: ENDFIELD · v{patch.version}</span>
     <h1>{l("Ende der aktuellen Version","Current Version Ends")}<span class="title-period">.</span></h1>
     <p class="endfield-utility-intro">{patch.name} · {patch.status==="confirmed"?l("Bestätigter Termin","Confirmed end date"):l("Voraussichtlicher Termin","Estimated end date")}</p>
-    <div class="version-countdown" data-version-countdown data-ends-at={patch.endsAt} role="timer" aria-label={l("Restlaufzeit bis zum Versionsende","Time remaining in this version")}>
+    <div class="version-countdown" data-version-countdown data-ends-at={patch.endsAtUtc} data-ends-local={patch.endsAt} role="timer" aria-label={l("Restlaufzeit bis zum Versionsende","Time remaining in this version")}>
       {parts.map((part,index)=><>
         {index>0 && <span class="countdown-separator" aria-hidden="true">·</span>}
         <div class="countdown-unit" data-countdown-unit={part.id} aria-label={part.title}>

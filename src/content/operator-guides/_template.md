@@ -107,6 +107,10 @@ weapons:
 
 # 5. AUSRÜSTUNG
 equipment:
+  matrix:
+    enabled: false
+    metrics: []
+    rows: []
   builds: []
   # - id: standard
   #   title: "Standard-Build"

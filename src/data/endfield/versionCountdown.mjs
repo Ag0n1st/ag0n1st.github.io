@@ -21,7 +21,16 @@ export function parseVersionCountdownMarkdown(source){
  if(!["estimated","confirmed"].includes(config.status))throw Error("Invalid countdown status");
  const zoneCheck=new Intl.DateTimeFormat("en-CA",{timeZone:config.timeZone,year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).format(new Date(config.endsAt));
  if(!zoneCheck)throw Error("Invalid local countdown time");
- return Object.freeze({...config,zone:config.timeZone});
+ const utcEndMs=Date.parse(config.endsAt);
+ // Date / browser local offset must never shift this timestamp again.
+ const localParts=new Intl.DateTimeFormat("en-US",{timeZone:config.timeZone,
+  year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",
+  hourCycle:"h23"}).formatToParts(new Date(utcEndMs));
+ const get=type=>localParts.find(part=>part.type===type)?.value;
+ const wallClock=[get("year"),get("month"),get("day")].join("-")+"T"+[get("hour"),get("minute")].join(":");
+ if(wallClock!==config.endsAt.slice(0,16))
+  throw Error("Countdown UTC offset does not match local wall-clock in "+config.timeZone+": "+wallClock);
+ return Object.freeze({...config,zone:config.timeZone,endsAtUtc:new Date(utcEndMs).toISOString(),endTimestamp:utcEndMs});
 }
 export const CURRENT_VERSION=parseVersionCountdownMarkdown(
  readFileSync("src/data/endfield/version-countdown.md","utf8")
