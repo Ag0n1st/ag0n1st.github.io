@@ -104,10 +104,6 @@ weapons:
   #       - { weaponId: "1046", rank: 9, performancePercent: 112.1 }
   # Datafield-Quelle erscheint nur als kleine Fußnote unter dem Vergleich,\n  # Modell-/Rotationsbedingungen bleiben intern als Metadaten gespeichert.
   generalNotes: ""
-  matrix:
-    enabled: false
-    metrics: []
-    rows: []
 
 # 5. AUSRÜSTUNG
 equipment:
@@ -135,6 +131,10 @@ equipment:
   # - stage: early # early | mid | late | endgame
   #   note: "Frühe Übergangsausrüstung und Freischaltung"
   generalNotes: "" # zusätzlicher eigener Hinweis; Standard-Disclaimer ist bereits eingebaut
+  matrix:
+    enabled: false
+    metrics: []
+    rows: []
 
 # 6. POTENZIALE
 potentials:
