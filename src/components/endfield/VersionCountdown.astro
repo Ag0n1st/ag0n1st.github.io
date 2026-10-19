@@ -18,7 +18,7 @@ const parts=[{id:"days",title:l("Tage","Days"),value:initial[0]},{id:"hours",tit
     <span class="section-kicker">ARKNIGHTS: ENDFIELD · v{patch.version}</span>
     <h1>{l("Ende der aktuellen Version","Current Version Ends")}<span class="title-period">.</span></h1>
     <p class="endfield-utility-intro">{patch.name} · {patch.status==="confirmed"?l("Bestätigter Termin","Confirmed end date"):l("Voraussichtlicher Termin","Estimated end date")}</p>
-    <div class="version-countdown" data-version-countdown data-ends-at={patch.endsAt} role="timer" aria-label={l("Restlaufzeit bis zum Versionsende","Time remaining in this version")}>
+    <div class="version-countdown" data-version-countdown data-ends-at={patch.endsAt} data-end-timestamp={finishDate.getTime()} role="timer" aria-label={l("Restlaufzeit bis zum Versionsende","Time remaining in this version")}>
       {parts.map((part,index)=><>
         {index>0 && <span class="countdown-separator" aria-hidden="true">·</span>}
         <div class="countdown-unit" data-countdown-unit={part.id} aria-label={part.title}>
@@ -38,7 +38,9 @@ const parts=[{id:"days",title:l("Tage","Days"),value:initial[0]},{id:"hours",tit
 <script>
   const counter=document.querySelector<HTMLElement>("[data-version-countdown]");
   if(counter){
-    const end=Date.parse(counter.dataset.endsAt??"");
+    // Use the exact absolute UTC instant, not a date string reinterpreted in a client timezone.
+    const end=Number(counter.dataset.endTimestamp);
+    if(!Number.isFinite(end))throw Error("Invalid countdown epoch");
     const names=["days","hours","minutes"];
     const readable=document.querySelector<HTMLElement>("[data-countdown-readable]");
     const ended=document.querySelector<HTMLElement>("[data-countdown-ended]");

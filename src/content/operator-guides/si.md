@@ -100,6 +100,18 @@ weapons:
           performancePercent: 86.8
   generalNotes: "Für Si ist die richtige Waffe besonders relevant und sie profitiert als Main DPS auch wieder sehr von ihrer Signature-Waffe. Die allgemeinen Empfehlungen sind unabhängig vom Waffenrang; die vollständigen, lokal importierten Werte und Tuning-Materialkosten jeder Waffe stehen in den aufklappbaren Waffendetails. Datafield-Prozente gelten nur für das benannte Main-DPS-Szenario."
 equipment:
+  matrix:
+    enabled: true
+    metrics:
+      - { id: "ultimate-gain", labelDe: "ULT Gain", labelEn: "ULT Gain" }
+      - { id: "amp-bonus", labelDe: "AMP Bonus", labelEn: "AMP Bonus" }
+      - { id: "weapon-bonus", labelDe: "Weapon Bonus", labelEn: "Weapon Bonus" }
+      - { id: "set-bonus", labelDe: "Set Bonus", labelEn: "Set Bonus" }
+    rows:
+      - { buildId: "si-balanced", weaponId: "1280", values: {} }
+      - { buildId: "si-main", weaponId: "1280", values: {} }
+      - { buildId: "si-energy", weaponId: "1280", values: {} }
+
   builds:
     - id: "si-balanced"
       title: "Type 50 Yinglung · Balanced"

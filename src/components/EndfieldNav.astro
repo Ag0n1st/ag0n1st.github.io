@@ -7,6 +7,8 @@ const itemsDe = [
   { label: "Veredelung", href: "/endfield/veredelung/", key: "refinement" },
   { label: "Essenzen", href: "/endfield/essenzen/", key: "essences" },
   { label: "Speedruns", href: "/endfield/speedruns/", key: "speedruns" },
+  { label: "Community Leaderboard", href: "/endfield/leaderboard/", key: "leaderboard" },
+  { label: "Cheat Sheets", href: "/endfield/cheatsheets/", key: "cheatsheets" },
   { label: "Checkliste", href: "/endfield/checkliste/", key: "checklist" },
   { label: "Tierlist", href: "/endfield/tierlist/", key: "tierlist" },
   { label: "Countdown", href: "/endfield/countdown/", key: "countdown" },
@@ -14,15 +16,15 @@ const itemsDe = [
 const { active = "overview", lang = "de" } = Astro.props;
 const isEn=lang==="en";
 // A placeholder alone is not a finished feature. Keep this shared for both languages.
-const upcoming=new Set(["factory","recruitment","refinement","essences","checklist","tierlist"]);
+const upcoming=new Set(["factory","recruitment","refinement","essences","checklist","tierlist","leaderboard","cheatsheets"]);
 const items=isEn?itemsDe.map(item=>({
  ...item,
- label:({"overview":"Overview","operators":"Operators","tierlist":"Tier List","factory":"Factory","recruitment":"Recruitment","refinement":"Refinement","essences":"Essences","speedruns":"Speedruns","checklist":"Checklist","countdown":"Countdown"} as Record<string,string>)[item.key]??item.label,
+ label:({"overview":"Overview","operators":"Operators","tierlist":"Tier List","factory":"Factory","recruitment":"Recruitment","refinement":"Refinement","essences":"Essences","speedruns":"Speedruns","checklist":"Checklist","countdown":"Countdown","leaderboard":"Community Leaderboard","cheatsheets":"Cheat Sheets"} as Record<string,string>)[item.key]??item.label,
  href:({
   overview:"/en/endfield/",operators:"/en/endfield/operators/",tierlist:"/en/endfield/tierlist/",factory:"/en/endfield/factory/",
   recruitment:"/en/endfield/recruitment/",refinement:"/en/endfield/refinement/",
   essences:"/en/endfield/essences/",speedruns:"/en/endfield/speedruns/",
-  checklist:"/en/endfield/checklist/",countdown:"/en/endfield/countdown/"
+  checklist:"/en/endfield/checklist/",countdown:"/en/endfield/countdown/",leaderboard:"/en/endfield/leaderboard/",cheatsheets:"/en/endfield/cheatsheets/"
  } as Record<string,string>)[item.key],
  untranslated:false
 })):itemsDe.map(item=>({...item,untranslated:false}));
@@ -32,7 +34,7 @@ const items=isEn?itemsDe.map(item=>({
     {items.map((item) => (
       <a href={item.href} class:list={["endfield-nav-link", { "is-active": active === item.key, "is-upcoming": upcoming.has(item.key) }]} aria-current={active === item.key ? "page" : undefined} title={upcoming.has(item.key)?(isEn?"In progress":"Im Aufbau"):undefined}>
         {upcoming.has(item.key) && <svg class="nav-upcoming-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.94 7.94l-7.43 7.43a2.12 2.12 0 0 1-3-3l7.43-7.43a6 6 0 0 1 7.94-7.94z"/></svg>}
-        <span class="endfield-nav-text">{item.label}</span>
+        {(item.key==="leaderboard"||item.key==="cheatsheets")?<span class="endfield-nav-text nav-two-line"><span>{item.key==="leaderboard"?"Community":"Cheat"}</span><span>{item.key==="leaderboard"?"Leaderboard":"Sheets"}</span></span>:<span class="endfield-nav-text">{item.label}</span>}
       </a>
     ))}
   </div>

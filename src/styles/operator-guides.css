@@ -482,8 +482,26 @@
    position, rather than restarting the pink-to-cyan scale. 4 gaps × 4px. */
 .op-meter i.active{background-image:linear-gradient(90deg,var(--pink),var(--cyan));background-repeat:no-repeat;background-size:calc(500% + 16px) 100%;background-position:calc((var(--meter-step) - 1) * 25%) 0}
 .op-chip.op-element-chip{font-weight:700}
-.op-element-chip[data-element="electric"],.op-element-chip[data-element="electro"]{color:#c0a4ff;border-color:#8560d0;background:rgba(151,108,225,.13)}
+.op-element-chip[data-element="electric"],.op-element-chip[data-element="electro"]{color:#ffe87c;border-color:#d4a63a;background:rgba(255,216,66,.13)}
 .op-element-chip[data-element="cryo"]{color:#91e3ff;border-color:#52aacc;background:rgba(83,186,225,.12)}
-.op-element-chip[data-element="heat"]{color:#ffae82;border-color:#d87c48;background:rgba(239,112,55,.12)}
+.op-element-chip[data-element="heat"]{color:#ff8d91;border-color:#d94857;background:rgba(239,58,76,.13)}
 .op-element-chip[data-element="nature"]{color:#b6e39b;border-color:#72af68;background:rgba(112,190,98,.12)}
 .op-element-chip[data-element="physical"]{color:#efcfba;border-color:#c9a082;background:rgba(185,149,125,.12)}
+
+/* Only the newest released operator directory card is highlighted. */
+.op-card-art{position:relative}
+.op-card-new{position:absolute;right:12px;top:12px;z-index:2;padding:7px 12px;border:1px solid rgba(255,154,210,.62);border-radius:10px;background:linear-gradient(105deg,#c72f89,#f05bd4);color:#fff;font-size:11px;font-weight:800;letter-spacing:.09em;box-shadow:0 3px 16px #0009}
+/* Scrollable native data table, no guessed operator damage numbers. */
+.op-matrix-wrap{overflow:auto;max-width:100%;border:1px solid #403b4c;border-radius:13px;margin-top:14px}
+.op-matrix-table{width:100%;min-width:890px;border-collapse:separate;border-spacing:5px;background:#1e1d23;font-size:12px;line-height:1.3}
+.op-matrix-table th,.op-matrix-table td{padding:10px 8px;text-align:center;min-width:66px;border-radius:10px;background:#35343c;vertical-align:middle}
+.op-matrix-table th{font-weight:700;background:#28262f;color:#f4edf7}
+.op-matrix-table td.metric-cell{background:#3b3151;font-weight:700;color:#fff}
+.op-matrix-table td.metric-unverified{color:#b3aebc;background:#29272f}
+.op-matrix-table .op-matrix-gear{padding:7px 5px;background:#323138}
+.op-matrix-table .op-matrix-gear img{width:57px;height:57px;max-width:100%;object-fit:contain}
+.op-matrix-table .op-matrix-gear small{display:block;font-size:9px;max-width:100px;margin:auto;color:#c7c2cc;overflow-wrap:anywhere}
+.op-matrix-head-icon{height:35px;width:35px;object-fit:contain;margin:auto}
+.op-matrix-setup{min-width:120px;text-align:left!important;max-width:205px;overflow-wrap:anywhere}
+.op-matrix-table tbody tr:hover td{outline:1px solid rgba(101,232,242,.22)}
+.op-matrix-scroll-hint{font-size:11px;color:var(--muted);margin:9px 0}

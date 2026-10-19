@@ -175,6 +175,18 @@ weapons:
         - { weaponId: "97", rank: 9, performancePercent: 81.3 }
 
 equipment:
+  matrix:
+    enabled: true
+    metrics:
+      - { id: "ultimate-gain", labelDe: "ULT Gain", labelEn: "ULT Gain" }
+      - { id: "amp-bonus", labelDe: "AMP Bonus", labelEn: "AMP Bonus" }
+      - { id: "weapon-bonus", labelDe: "Weapon Bonus", labelEn: "Weapon Bonus" }
+      - { id: "set-bonus", labelDe: "Set Bonus", labelEn: "Set Bonus" }
+    rows:
+      - { buildId: "ultimate-fokus", weaponId: "73", values: {} }
+      - { buildId: "balanced", weaponId: "73", values: {} }
+      - { buildId: "will-fokus", weaponId: "73", values: {} }
+
   builds:
     - id: ultimate-fokus
       meta: true

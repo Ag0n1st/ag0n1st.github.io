@@ -375,3 +375,10 @@ h1 { margin: 27px 0 17px; font-size: clamp(56px, 6.3vw, 82px); line-height: .95;
   .site-footer .footer-wordmark,.site-footer .copyright{justify-self:center;text-align:center}
 }
 @media(max-width:360px){.site-footer .social-links{gap:6px}.social-links a{width:32px;height:32px;flex-basis:32px}}
+
+/* Multi-line nav labels use the original wrench above, without visual collision. */
+.endfield-nav-text.nav-two-line{display:inline-flex;flex-direction:column;align-items:center;line-height:1.1;gap:2px;white-space:nowrap;text-align:center}
+.endfield-nav-text.nav-two-line span{display:block}
+.cheatsheets-topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:15px;margin:23px 0}
+.cheatsheets-topic-card{padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+.cheatsheets-topic-card h2{margin:0 0 12px;font-size:21px}.cheatsheets-topic-card p{font-size:13px;color:var(--muted);line-height:1.7}

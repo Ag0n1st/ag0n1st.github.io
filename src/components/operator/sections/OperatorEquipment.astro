@@ -238,4 +238,39 @@ import { guideText } from "../../../lib/i18n/guideUi";
         </div>
           </div>
         </details>
+        {guide.equipment.matrix.enabled && <details class="op-divided op-guide-accordion op-equipment-matrix" data-guide-disclosure="equipment-matrix">
+          <summary class="op-guide-accordion-summary">
+            <h3>{model.lang==="en"?"Gear Matrix":"Ausrüstungs-Matrix"}</h3>
+            <span class="op-guide-accordion-hint">{model.lang==="en"?"Compare loadouts":"Setups vergleichen"}</span>
+          </summary>
+          <div class="op-guide-accordion-content">
+            <p class="op-section-intro">{model.lang==="en"?"The rows list approved guide loadouts. Numeric comparisons will be shown only once measured and verified for this operator; empty cells do not indicate zero.":"Die Zeilen zeigen freigegebene Guide-Setups. Vergleichswerte folgen erst nach einer überprüften operatorbezogenen Berechnung; leere Felder bedeuten nicht null."}</p>
+            <p class="op-matrix-scroll-hint">{model.lang==="en"?"Scroll horizontally to view all gear slots.":"Auf schmalen Bildschirmen horizontal scrollen, um alle Ausrüstungsslots zu sehen."}</p>
+            <div class="op-matrix-wrap" role="region" aria-label={model.lang==="en"?"Gear comparison table":"Ausrüstungs-Vergleichstabelle"} tabindex="0">
+              <table class="op-matrix-table">
+                <thead><tr>
+                  <th scope="col">{model.lang==="en"?"Loadout":"Setup"}</th>
+                  {guide.equipment.matrix.metrics.map(metric=><th scope="col">{model.lang==="en"?metric.labelEn:metric.labelDe}</th>)}
+                  {(["weapons","armor","gloves","kit","kit"] as const).map((type,i)=><th scope="col" aria-label={["Weapon","Armor","Gloves","Gear slot 3","Gear slot 4"][i]}>
+                    <img class="op-matrix-head-icon" src={`/images/endfield/matrix/${type}.webp`} alt="" width="36" height="36"/>
+                  </th>)}
+                </tr></thead>
+                <tbody>{guide.equipment.matrix.rows.map(row=>{
+                  const build=guide.equipment.builds.find(b=>b.id===row.buildId);
+                  const weapon=row.weaponId?resolveOfficialItem(row.weaponId,"Weapons"):undefined;
+                  return build?<tr>
+                    <th scope="row" class="op-matrix-setup">{build.title}</th>
+                    {guide.equipment.matrix.metrics.map(metric=><td class:list={["metric-cell",{ "metric-unverified":!row.values[metric.id] }]}>{row.values[metric.id]||"–"}</td>)}
+                    <td class="op-matrix-gear">{weapon?<><ItemIcon id={weapon.id} lang={model.lang}/><small>{trItemName(weapon.id,weapon.name)}</small></>:"–"}</td>
+                    {build.items.map(itemId=>{
+                      const item=resolveOfficialItem(itemId,"Gear");
+                      return <td class="op-matrix-gear">{item?<><ItemIcon id={item.id} lang={model.lang}/><small>{trItemName(item.id,item.name)}</small></>:"–"}</td>
+                    })}
+                  </tr>:null;
+                })}</tbody>
+              </table>
+            </div>
+            {guide.equipment.matrix.sourceNote && <p class="op-muted">{guide.equipment.matrix.sourceNote}</p>}
+          </div>
+        </details>
       </section>

@@ -257,6 +257,25 @@ export const operatorGuideSchema = z.object({
   }).default({}),
 
   equipment: z.object({
+    matrix: z.object({
+      enabled: z.boolean().default(false),
+      // Metric labels vary with each Operator. Entries may remain empty
+      // until the editor provides independently checked scenario values.
+      metrics: z.array(z.object({
+        id: identifier,
+        labelDe: z.string().trim().min(2).max(75),
+        labelEn: z.string().trim().min(2).max(75),
+      })).max(8).refine(noDuplicateIds).default([]),
+      rows: z.array(z.object({
+        buildId: identifier,
+        weaponId: identifier.optional(),
+        // Each metric ID maps to a verified display value, not a calculated claim.
+        values: z.record(z.string().trim().max(75)).default({}),
+        noteDe: text.optional(),
+        noteEn: text.optional(),
+      })).default([]),
+      sourceNote: text.optional(),
+    }).default({enabled:false,metrics:[],rows:[]}),
     builds: z.array(equipmentBuild)
       .refine(noDuplicateIds, "Ausrüstungs-Build-IDs müssen eindeutig sein.")
       .default([]),

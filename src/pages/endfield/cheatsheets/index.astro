@@ -1,0 +1,7 @@
+---
+import EndfieldPlaceholder from "../../../layouts/EndfieldPlaceholder.astro";
+const topics=[{id:"elasticgoods",title:"Elastic Goods – Best Prices",description:"Preisübersicht für Elastic Goods."},{id:"artificing",title:"Veredelungs-Matrix – Best Matches",description:"Die passenden Ausrüstungswerte bei der Veredelung schneller finden."},{id:"bufffood",title:"Buff Food – Matrix",description:"Vergleich von Bufffood-Boni für Speedruns, insbesondere ANG und Ultimate-Energiegewinn."}];
+---
+<EndfieldPlaceholder title="Cheat Sheets" kicker="ARKNIGHTS: ENDFIELD · CHEAT SHEETS" active="cheatsheets" lang="de" description="Kompakte Cheat Sheets und Vergleichsmatrizen für wichtige Spielsysteme. Die konkreten Inhalte sind in Vorbereitung.">
+  <main class="endfield-utility-page section-wrap"><span class="section-kicker">ARKNIGHTS: ENDFIELD</span><h1>Cheat Sheets<span class="title-period">.</span></h1><p class="endfield-utility-intro">Kompakte Nachschlagewerke zu wichtigen Spielsystemen. Die Inhalte folgen.</p><div class="cheatsheets-topic-grid">{topics.map(topic=><article class="cheatsheets-topic-card" id={topic.id}><h2>{topic.title}</h2><p>{topic.description}</p><span class="op-muted">Im Aufbau</span></article>)}</div></main>
+</EndfieldPlaceholder>
