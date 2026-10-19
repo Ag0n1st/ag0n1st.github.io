@@ -54,7 +54,8 @@ test("popover is a single browser top-layer preview that works in the large matr
   assert.match(css,/\.op-item-hover-panel\{[^}]*position:fixed/);
   assert.match(css,/max-height:min\(76dvh,740px\)/);
   const matrix=read("src/components/operator/sections/OperatorEquipment.astro");
-  assert.match(matrix,/destination\.replaceChildren/,"Large matrix cloning logic stays within shared guide");
+  assert.match(matrix,/data-matrix-dialog-content/);
+  assert.match(read("src/components/operator/OperatorGuide.astro"),/destination\.replaceChildren/);
 });
 
 test("NEW badge remains on newest release until replaced, no timed expiry",()=>{
