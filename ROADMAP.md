@@ -1123,7 +1123,9 @@ Bei Untersuchung **nur die belegten Fälle korrigieren**, nicht auf ganze Sets/R
 
 ---
 
-## 14. HISTORISCHER ÜBERGABEPUNKT: Stand bis 16. OKTOBER 2026 (aktueller Handoff §18.4)
+## 14. AKTUELLER ÜBERGABEPUNKT: fortgeschrieben bis 16. OKTOBER 2026
+
+> **Historischer Stand:** Diese Überschrift bleibt für die bestehende Test-/Navigationsstruktur erhalten; der tatsächlich aktuelle Hand-off steht in §18.4 und im letzten Chronologieeintrag.
 
 ### 14.1 Letzter abgeschlossener Funktionsstand
 
@@ -2181,3 +2183,9 @@ Alle 109 Endfield-Unit-Tests und die beiden Budgetchecks erfolgreich. Desktop 14
 6. **Langfristiges Backlog:** Nach echter Freigabe NTE-Hub, About/SEO und übrige Roadmap-Phasen; **keine Fabrik-Implementierung** ohne explizite Wiederaufnahme.
 
 **Umfang dieses Schritts:** Reiner, differenzierter Handoff-/Roadmap-Abgleich, **keine Änderungen an Website-Komponenten, DE-/EN-Seiten, Game-Datensätzen, Matrixwerten oder Assets**. Ein erfolgreicher Build/Deploy eines ggf. ausgelösten `main`-Docs-Commits ist separat anhand der tatsächlichen Actions-Läufe zu verifizieren; keine neue 159-Test-Serie oder Byte-Neumessung behaupten.
+
+
+### 18.5 CI-Regressionsbefund und unmittelbare Korrektur (19.10.2026)
+
+- Der reine Roadmap-Übernahmecommit [`17e0383c`](https://github.com/Ag0n1st/ag0n1st.github.io/commit/17e0383c7feee4d830e96cbd21d920ce0c7bde55) löste [Pages #39240451051](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/39240451051) aus. Dieser **schlug in Step `Check Endfield import parser` fehl**, obwohl die Website-Dateien unverändert sind: `scripts/endfield/roadmap.test.mjs` fordert wörtlich die historische Kapitelüberschrift `## 14. AKTUELLER ÜBERGABEPUNKT` (159 Tests, **158 bestanden / 1 fehlgeschlagen**). Daher **kein erfolgreicher neuer Pages-Deploy** aus diesem Commit.
+- **Korrektur in der Roadmap:** Die testrelevante originale Überschrift wiederhergestellt und ihren historischen Status als Hinweis direkt darunter angegeben; der aktuelle Handoff bleibt §18.4. Keine fachlichen Texte, UI oder Tests geändert. Den nachfolgenden Actions-Lauf und tatsächlichen Pages-Deploy erst nach Abschluss als erfolgreich nachtragen.
