@@ -120,6 +120,13 @@ document.addEventListener("keydown",event=>{
 },true);
 document.addEventListener("scroll",event=>{
   if(panel&&event.target instanceof Node&&panel.contains(event.target))return;
-  if(active)closePopup();
+  if(!active||!panel)return;
+  // On narrow matrices the browser may scroll the table INTO view in the same
+  // gesture as a hover. Keep the preview attached to that icon instead of
+  // immediately hiding it due to the scroll event that hover itself caused.
+  const rect=active.getBoundingClientRect();
+  if(rect.bottom<0||rect.top>window.innerHeight||rect.right<0||rect.left>window.innerWidth)
+    closePopup();
+  else if(panel.matches(":popover-open"))position(active,panel);
 },true);
 window.addEventListener("resize",closePopup,{passive:true});
