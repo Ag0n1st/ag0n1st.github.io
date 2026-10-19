@@ -84,7 +84,7 @@ test("equipment uses a CLOSED native disclosure for all heavy filters and detail
  const filters=equipment.indexOf('id="op-level"');
  const details=equipment.indexOf('{translateUi("Empfohlene Ausrüstung")}');
  const progression=equipment.indexOf('{translateUi("Ausrüstungsprogression")}');
- const end=equipment.indexOf("</details>\n      </section>",start);
+ const end=equipment.indexOf("{matrix?.enabled &&",start);\n // The closed Finder still fully wraps every filter and detail; the separate\n // optional Gear Matrix now follows it before the equipment section closes.
  assert.ok(meta>=0&&meta<start);
  assert.ok(start>=0&&start<filters&&filters<details&&details<progression&&progression<end);
  assert.doesNotMatch(equipment.slice(start,start+110),/\sopen(?:\s|>)/);
