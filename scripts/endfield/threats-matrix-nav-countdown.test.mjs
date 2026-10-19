@@ -91,13 +91,16 @@ test("optional closed Gear Matrix lives after Build Finder, Si & Liino enabled, 
  const component=read("src/components/operator/sections/OperatorEquipment.astro");
  const schema=read("src/content/operatorGuideSchema.ts");
  assert.match(schema,/matrix: z\.object/);
+ assert.match(schema,/variants: z\.array/);
+ assert.match(component,/data-matrix-tab/);
+ assert.match(component,/data-matrix-panel/);
  assert.match(schema,/enabled: z\.boolean\(\)\.default\(false\)/);
  assert.match(component,/matrix\?\.enabled && <details/);
  assert.match(component,/data-guide-disclosure="equipment-matrix"/);
  assert.ok(component.indexOf('id="equipment-matrix"')>component.indexOf('id="build-finder"'));
- assert.match(component,/matrix\.metrics\.map/);
- assert.match(component,/matrix\.rows\.map/);
- assert.match(component,/matrix\.rows\.length===0/);
+ assert.match(component,/view\.metrics\.map/);
+ assert.match(component,/view\.rows\.map/);
+ assert.match(component,/view\.rows\.length===0/);
  assert.match(component,/data-matrix-expand/);
  assert.match(component,/<dialog class="op-matrix-dialog"/);
  assert.match(component,/data-matrix-dialog-content/);
@@ -112,10 +115,14 @@ test("optional closed Gear Matrix lives after Build Finder, Si & Liino enabled, 
   const text=read("src/content/operator-guides/"+slug+".md");
   assert.match(text,/equipment:\n  builds:/);
   assert.match(text,/  matrix:\n    enabled: true/);
-  assert.match(text,/    rows:\n      - id:/);
-  const configured=[...text.matchAll(/^      - id: (.+)$/gm)].map(x=>x[1]);
-  for(const row of configured)assert.ok(row.length>2);
-  assert.match(text,/        values: \{\}/,"No fabricated scenario percentages");
+  if(slug==="liino"){
+    assert.match(text,/    rows:\n      - id:/);
+    assert.match(text,/        values: \{\}/,"Liino comparison values remain unverified");
+  }else{
+    assert.match(text,/    variants:\n      - id: dps/);
+    assert.match(text,/      - id: support/);
+    assert.match(text,/values: \{atk: "6526", cs-dmg: "125.6%", ult-gain: "0%"\}/);
+  }
  }
  assert.doesNotMatch(read("src/content/operator-guides/typhoeus.md"),/  matrix:\n    enabled: true/);
  assert.match(read("src/content/operator-guides/_template.md"),/  matrix:\n    enabled: false/);
