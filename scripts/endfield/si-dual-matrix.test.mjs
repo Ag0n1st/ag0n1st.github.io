@@ -19,31 +19,33 @@ function rows(id){
 }
 const dps=rows("dps"),support=rows("support");
 const expectedDps=[
- ["SUPPORT-DPS-0","6526","125.6%","0%","type-50-yinglung-soft-armor","type-50-yinglung-gloves-v16","type-50-yinglung-beacon","365"],
- ["SUPPORT-DPS-1","5655","179.4%","0%","type-50-yinglung-soft-armor","type-50-yinglung-gloves-v16","type-50-yinglung-beacon","type-50-yinglung-beacon"],
- ["SUPPORT-DPS-2","5673","125.6%","33.4%","type-50-yinglung-soft-armor","type-50-yinglung-gloves-v16","type-50-yinglung-beacon","349"],
- ["SUPPORT-DPS-3","5683","134.6%","27.9%","type-50-yinglung-soft-armor","1128","type-50-yinglung-beacon","type-50-yinglung-beacon"],
- ["SUPPORT-DPS-4","5689","152.5%","16.7%","796","type-50-yinglung-gloves-v16","type-50-yinglung-beacon","type-50-yinglung-beacon"]
+ ["SUPPORT-DPS-0","6526","+125.6%","+0%","type-50-yinglung-soft-armor","type-50-yinglung-gloves-v16","type-50-yinglung-beacon","365"],
+ ["SUPPORT-DPS-1","5655","+179.4%","+0%","type-50-yinglung-soft-armor","type-50-yinglung-gloves-v16","type-50-yinglung-beacon","type-50-yinglung-beacon"],
+ ["SUPPORT-DPS-2","5673","+125.6%","+33.4%","type-50-yinglung-soft-armor","type-50-yinglung-gloves-v16","type-50-yinglung-beacon","349"],
+ ["SUPPORT-DPS-3","5683","+134.6%","+27.9%","type-50-yinglung-soft-armor","1128","type-50-yinglung-beacon","type-50-yinglung-beacon"],
+ ["SUPPORT-DPS-4","5689","+152.5%","+16.7%","796","type-50-yinglung-gloves-v16","type-50-yinglung-beacon","type-50-yinglung-beacon"]
 ];
 const expectedSupport=[
- ["SUPPORT-DPS-0","5830","125.6%","0%","eternal-xiranite-mod-armor","eternal-xiranite-channeling-gloves","eternal-xiranite-rangefinder","365"],
- ["SUPPORT-DPS-1","5068","179.4%","0%","eternal-xiranite-mod-armor","eternal-xiranite-channeling-gloves","eternal-xiranite-rangefinder","eternal-xiranite-rangefinder"],
- ["SUPPORT-DPS-2","5068","125.6%","33.4%","eternal-xiranite-mod-armor","eternal-xiranite-channeling-gloves","eternal-xiranite-rangefinder","349"],
- ["SUPPORT-DPS-3","5077","134.6%","27.9%","eternal-xiranite-mod-armor","1128","eternal-xiranite-rangefinder","eternal-xiranite-rangefinder"],
- ["SUPPORT-DPS-4","5082","152.5%","16.7%","796","eternal-xiranite-channeling-gloves","eternal-xiranite-rangefinder","eternal-xiranite-rangefinder"],
- ["SUPPORT-MIX-2","5077","80.7%","59.9%","eternal-xiranite-mod-armor","1128","eternal-xiranite-rangefinder","334"],
- ["SUPPORT-MIX-3","5077","107.6%","43.9%","eternal-xiranite-overalls","1128","eternal-xiranite-rangefinder","eternal-xiranite-rangefinder"],
- ["SUPPORT-MIX-4","5082","107.6%","43.7%","796","330","eternal-xiranite-rangefinder","eternal-xiranite-rangefinder"],
- ["SUPPORT-ULT-1","5077","53.8%","75.9%","eternal-xiranite-overalls","1128","eternal-xiranite-rangefinder","334"],
- ["SUPPORT-ULT-2","5082","53.8%","75.4%","796","330","eternal-xiranite-rangefinder","334"],
- ["SUPPORT-ULT-3","5082","0%",null,"796","330","334","334"],
- ["SUPPORT-ULT-4","5068","0%",null,"eternal-xiranite-overalls","330","334","349"]
+ ["SUPPORT-DPS-0","5830","+125.6%","+0%","eternal-xiranite-mod-armor","eternal-xiranite-channeling-gloves","eternal-xiranite-rangefinder","365"],
+ ["SUPPORT-DPS-1","5068","+179.4%","+0%","eternal-xiranite-mod-armor","eternal-xiranite-channeling-gloves","eternal-xiranite-rangefinder","eternal-xiranite-rangefinder"],
+ ["SUPPORT-DPS-2","5068","+125.6%","+33.4%","eternal-xiranite-mod-armor","eternal-xiranite-channeling-gloves","eternal-xiranite-rangefinder","349"],
+ ["SUPPORT-DPS-3","5077","+134.6%","+27.9%","eternal-xiranite-mod-armor","1128","eternal-xiranite-rangefinder","eternal-xiranite-rangefinder"],
+ ["SUPPORT-DPS-4","5082","+152.5%","+16.7%","796","eternal-xiranite-channeling-gloves","eternal-xiranite-rangefinder","eternal-xiranite-rangefinder"],
+ ["SUPPORT-MIX-1","5077","+80.7%","+59.9%","eternal-xiranite-mod-armor","1128","eternal-xiranite-rangefinder","334"],
+ ["SUPPORT-MIX-2","5077","+107.6%","+43.9%","eternal-xiranite-overalls","1128","eternal-xiranite-rangefinder","eternal-xiranite-rangefinder"],
+ ["SUPPORT-MIX-3","5082","+107.6%","+43.7%","796","330","eternal-xiranite-rangefinder","eternal-xiranite-rangefinder"],
+ ["SUPPORT-ULT-1","5077","+53.8%","+75.9%","eternal-xiranite-overalls","1128","eternal-xiranite-rangefinder","334"],
+ ["SUPPORT-ULT-2","5082","+53.8%","+75.4%","796","330","eternal-xiranite-rangefinder","334"],
+ ["SUPPORT-ULT-3","5082","+0%","+107.4%","796","330","334","334"],
+ ["SUPPORT-ULT-4","5068","+0%","+108.1%","eternal-xiranite-overalls","330","334","349"]
+ ,
+ ["SUPPORT-ULT-5","5077","+0%","+107.9%","eternal-xiranite-overalls","1128","334","334"]
 ];
 test("Si ships exactly two independent and accessible matrices",()=>{
  assert.match(schema,/variants: z\.array/);
  assert.match(matrix,/    variants:\n      - id: dps/);
  assert.match(matrix,/      - id: support/);
- assert.deepEqual([dps.length,support.length],[5,12]);
+ assert.deepEqual([dps.length,support.length],[5,13]);
  for(const m of ["ATK","CS.DMG","ULT.gain"])assert.match(matrix,new RegExp('labelEn: "'+m.replace(".","\\.")+'"'));
  for(const label of ["DPS","SUPPORT"])assert.match(component,new RegExp("op-matrix-tab"));
  assert.match(component,/data-matrix-panel/);
@@ -67,7 +69,13 @@ test("every Si spreadsheet row and exact column value matches imported setup",()
    }
  }
  assert.equal(support.filter(r=>r.label==="SUPPORT-ULT-4").length,1,"Duplicate original CSV row is deduplicated");
- assert.equal(support.filter(r=>!r.values.includes("ult-gain:")).length,2);
+ assert.equal(support.filter(r=>!r.values.includes("ult-gain:")).length,0);
+ assert.equal(support.filter(r=>r.label==="SUPPORT-ULT-5").length,1);
+ for(const row of [...dps,...support]){
+   assert.match(row.values,/cs-dmg: "\\+\\d+(?:\\.\\d+)?%"/);
+   assert.match(row.values,/ult-gain: "\\+\\d+(?:\\.\\d+)?%"/);
+   assert.doesNotMatch(row.values,/atk: "\\+/);
+ }
 });
 test("owner supplied v1.6 Type 50 Yinglung Gloves icon stays distinct from old official 411",()=>{
  const gloves=catalog.items.find(x=>x.id==="type-50-yinglung-gloves-v16");
