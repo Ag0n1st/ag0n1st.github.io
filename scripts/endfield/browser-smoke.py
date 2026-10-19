@@ -783,6 +783,10 @@ def smoke_i18n(page, base_url, width):
                    active.locator(".op-equipment-matrix tbody tr").count()==(5 if slug=="si" else 9) and
                    active.locator(".op-matrix-empty-row").count()==0,
                    label+": "+lang+" "+slug+" matrix shows guide-approved setups and all five gear slots")
+            if slug=="si":
+                dps_names=[t.strip() for t in active.locator(".op-equipment-matrix tbody th[scope='row']").all_text_contents()]
+                verify(dps_names==["MAIN-DPS-0","MAIN-DPS-1","MAIN-DPS-2","MAIN-DPS-3","MAIN-DPS-4"],
+                       label+": "+lang+" Si DPS tab contains MAIN-DPS-0 through MAIN-DPS-4")
             cells=active.locator(".op-equipment-matrix tbody tr:first-child td:not(.op-matrix-gear-cell)").all_text_contents()
             verify(([x.strip() for x in cells]==["6526","+125.6%","+0%"] if slug=="si" else
                     [x.strip() for x in cells[:3]]==["1320 WILL","+0%","52.8%"] and len(cells)==5),
@@ -877,6 +881,9 @@ def smoke_i18n(page, base_url, width):
                        tabs.nth(1).get_attribute("aria-selected")=="true" and
                        support.locator(".op-equipment-matrix tbody tr").count()==13,
                        label+": "+lang+" switching to SUPPORT shows 13 distinct setups")
+                support_names=[t.strip() for t in support.locator(".op-equipment-matrix tbody th[scope='row']").all_text_contents()]
+                verify(support_names[:5]==["SUPPORT-DPS-0","SUPPORT-DPS-1","SUPPORT-DPS-2","SUPPORT-DPS-3","SUPPORT-DPS-4"],
+                       label+": "+lang+" Si SUPPORT tab retains original SUPPORT-DPS-0 through SUPPORT-DPS-4")
                 support_first=support.locator(".op-equipment-matrix tbody tr").first
                 verify([x.strip() for x in support_first.locator("td:not(.op-matrix-gear-cell)").all_text_contents()]==["5830","+125.6%","+0%"],
                        label+": "+lang+" SUPPORT matrix uses original CSV data")

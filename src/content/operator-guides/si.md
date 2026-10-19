@@ -211,7 +211,7 @@ equipment:
           - {id: ult-gain, labelDe: "ULT.gain", labelEn: "ULT.gain"}
         rows:
           - id: si-dps-support-dps-0
-            label: "SUPPORT-DPS-0"
+            label: "MAIN-DPS-0"
             values: {atk: "6526", cs-dmg: "+125.6%", ult-gain: "+0%"}
             weaponId: "1280"
             weaponPotential: "P0"
@@ -221,7 +221,7 @@ equipment:
             kit1Id: "type-50-yinglung-beacon"
             kit2Id: "365"
           - id: si-dps-support-dps-1
-            label: "SUPPORT-DPS-1"
+            label: "MAIN-DPS-1"
             values: {atk: "5655", cs-dmg: "+179.4%", ult-gain: "+0%"}
             weaponId: "1280"
             weaponPotential: "P0"
@@ -231,7 +231,7 @@ equipment:
             kit1Id: "type-50-yinglung-beacon"
             kit2Id: "type-50-yinglung-beacon"
           - id: si-dps-support-dps-2
-            label: "SUPPORT-DPS-2"
+            label: "MAIN-DPS-2"
             values: {atk: "5673", cs-dmg: "+125.6%", ult-gain: "+33.4%"}
             weaponId: "1280"
             weaponPotential: "P0"
@@ -241,7 +241,7 @@ equipment:
             kit1Id: "type-50-yinglung-beacon"
             kit2Id: "349"
           - id: si-dps-support-dps-3
-            label: "SUPPORT-DPS-3"
+            label: "MAIN-DPS-3"
             values: {atk: "5683", cs-dmg: "+134.6%", ult-gain: "+27.9%"}
             weaponId: "1280"
             weaponPotential: "P0"
@@ -251,7 +251,7 @@ equipment:
             kit1Id: "type-50-yinglung-beacon"
             kit2Id: "type-50-yinglung-beacon"
           - id: si-dps-support-dps-4
-            label: "SUPPORT-DPS-4"
+            label: "MAIN-DPS-4"
             values: {atk: "5689", cs-dmg: "+152.5%", ult-gain: "+16.7%"}
             weaponId: "1280"
             weaponPotential: "P0"

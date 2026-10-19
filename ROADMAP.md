@@ -2332,3 +2332,12 @@ Alle 109 Endfield-Unit-Tests und die beiden Budgetchecks erfolgreich. Desktop 14
 - Der unmittelbar folgende **nur dokumentarische** `ROADMAP.md`-Commit auf `main` triggert zusätzlich einen Pages-Neubuild; dessen abschließender grüner Status muss separat geprüft werden.
 
 **Nächster Übergabepunkt:** Betreiberseitiges Feedback zum Zellabstand / Potenzialchips und fehlende tatsächliche Golden-Age-Metriken von Liino. Keine Schätzwerte aus Screenshots ableiten; neue Werte erst nach redaktioneller Freigabe ergänzen.
+
+### 18.13 Si-Ausruestungs-Matrix: MAIN-DPS-Namen korrigiert (19.10.2026)
+
+**Redaktioneller Korrekturauftrag:** In Sis aufgeklappter `DPS`-Matrix waren die fuenf Builds irrtuemlich mit `SUPPORT-DPS-0` bis `SUPPORT-DPS-4` beschriftet. **Nur die angezeigten Zeilenbeschriftungen im DPS-Tab** sind nun `MAIN-DPS-0` bis `MAIN-DPS-4`. Interne stabil bleibende Row-IDs, alle ATK-/CS.DMG-/ULT.gain-Werte, Waffen-Gear-IDs, Potential-/Tuning-Badges, Reihenfolge, Dialog, DE/EN und die vollstaendige `SUPPORT`-Matrix mit 13 Zeilen bleiben **unveraendert**.
+
+- `src/content/operator-guides/si.md`: gezielter Ersatz ausschliesslich innerhalb von `matrix.variants[id=dps].rows[*].label`, mit expliziter Inhaltsgleichheitspruefung des SUPPORT-Abschnitts.
+- `scripts/endfield/si-dual-matrix.test.mjs`: erwartete Namen im DPS-Datenvergleich sowie separate Assert-Gruppen fuer `MAIN-DPS-0..4` und unveraenderte `SUPPORT-DPS-0..4`.
+- `scripts/endfield/browser-smoke.py`: sichtbare Matrix-DPS- und SUPPORT-Zeilen in beiden Sprachen, Desktop und Mobil vor und nach dem Umschalten pruefen.
+- **Releaseabnahme bei Anlegen offen:** neuer Feature-Branch `fix-si-dps-matrix-labels-20261019`, Tests/Browser/Budgets und GitHub-Pages-Deployment vor einer erfolgreichen Live-Meldung nachweisen. Fabrik weiterhin pausiert.
