@@ -1,4 +1,4 @@
-name: Temporary public SKPORT Threat catalog probe
+name: Temporary public SKPORT Threat catalog browser probe
 on:
   push:
     branches:
@@ -9,26 +9,35 @@ permissions:
 jobs:
   probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 4
+    timeout-minutes: 5
     steps:
-      - name: Probe publicly accessible official wiki enemy catalog only
+      - name: Install Playwright Chromium
+        run: |
+          python3 -m pip install -q playwright
+          python3 -m playwright install chromium
+      - name: Read public catalog in browser, no login
         shell: bash
         run: |
           python3 - <<'PY'
-          import urllib.request,urllib.error,json
-          urls=[
-            "https://wiki.skport.com/endfield/catalog?mainTypeId=1&subTypeId=3&filterIds=&header=0",
-            "https://zonai.skport.com/web/v1/wiki/item/catalog?typeMainId=1&typeSubId=3",
-            "https://zonai.skport.com/web/v1/wiki/item/catalog?mainTypeId=1&subTypeId=3",
-            "https://zonai.skport.com/web/v1/wiki/item/catalog?typeMainId=1&typeSubId=4",
-            "https://endfield.wiki.gg/wiki/Category:Bosses",
-          ]
-          for url in urls:
-            try:
-              req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0","Origin":"https://wiki.skport.com","Referer":"https://wiki.skport.com/"})
-              with urllib.request.urlopen(req,timeout=10) as r:
-                data=r.read(26000).decode("utf-8","replace")
-                print("CHECK",url,"STATUS",r.status,"LEN",len(data),"BODY",repr(data[:330]))
-            except Exception as exc:
-              print("CHECK",url,"ERROR",repr(exc)[:300])
+          import asyncio
+          from playwright.async_api import async_playwright
+          url="https://wiki.skport.com/endfield/catalog?mainTypeId=1&subTypeId=3&filterIds=&header=0"
+          async def main():
+            async with async_playwright() as p:
+              browser=await p.chromium.launch(headless=True,args=['--no-sandbox'])
+              page=await browser.new_page(locale='en-US',viewport={'width':1365,'height':800})
+              async def watch(response):
+                if any(term in response.url for term in ['wiki/item/catalog','api/wiki','web/v1/wiki','/catalog?']):
+                  print('FETCH',response.status,response.url.split('?')[0][:150])
+              page.on('response',watch)
+              try:
+                res=await page.goto(url,wait_until='domcontentloaded',timeout=20000)
+                await page.wait_for_timeout(12000)
+                txt=await page.locator('body').inner_text(timeout=10000)
+                print('BROWSER',res.status if res else None,'URL',page.url,'TITLE',await page.title())
+                print('TEXT',repr(txt[:4000]))
+                print('LINKS',repr((await page.locator('a').all_text_contents())[:45]))
+              except Exception as e:print('BROWSER_ERROR',repr(e))
+              await browser.close()
+          asyncio.run(main())
           PY
