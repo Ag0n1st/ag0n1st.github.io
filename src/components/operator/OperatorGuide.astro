@@ -53,16 +53,46 @@ import { guideText } from "../../lib/i18n/guideUi";
   import { STORY_BUILD_STATUSES, MAX_AUTHORITY_LEVEL, validAuthorityLevel } from "../../lib/endfield/buildStoryProgress.mjs";
   import { getMaxBuildFinderPreset, getMinBuildFinderPreset } from "../../lib/endfield/buildFinderDefaults.mjs";
   const isEn=document.documentElement.lang==="en";
-  // The full-size comparison lives in a native dialog (browser top layer).
-  const matrixExpand=document.querySelector<HTMLButtonElement>("[data-matrix-expand]");
-  matrixExpand?.addEventListener("click",()=>{
-    const dialog=document.querySelector<HTMLDialogElement>("[data-matrix-dialog]");
-    const original=document.querySelector<HTMLTableElement>(".op-matrix-scroller .op-equipment-matrix");
-    const destination=dialog?.querySelector<HTMLElement>("[data-matrix-dialog-content]");
-    if(!dialog || !original || !destination)return;
-    destination.replaceChildren(original.cloneNode(true));
-    if(!dialog.open)dialog.showModal();
-    destination.focus();
+  // Each matrix variant stays in the normal table design. The fullscreen
+  // dialog always clones only the currently chosen DPS/SUPPORT table.
+  const matrixRoot=document.querySelector<HTMLElement>("[data-guide-disclosure='equipment-matrix']");
+  const matrixTabs=[...document.querySelectorAll<HTMLButtonElement>("[data-matrix-tab]")];
+  const matrixPanels=[...document.querySelectorAll<HTMLElement>("[data-matrix-panel]")];
+  const selectMatrixTab=(id:string,focus=false)=>{
+    for(const tab of matrixTabs){
+      const selected=tab.dataset.matrixTab===id;
+      tab.setAttribute("aria-selected",String(selected));
+      tab.tabIndex=selected?0:-1;
+      if(selected&&focus)tab.focus();
+    }
+    for(const panel of matrixPanels)panel.hidden=panel.dataset.matrixPanel!==id;
+    const dialog=matrixRoot?.querySelector<HTMLDialogElement>("[data-matrix-dialog]");
+    if(dialog?.open)dialog.close();
+  };
+  matrixTabs.forEach((tab,i)=>{
+    tab.addEventListener("click",()=>selectMatrixTab(tab.dataset.matrixTab??""));
+    tab.addEventListener("keydown",event=>{
+      let next=-1;
+      if(event.key==="ArrowRight")next=(i+1)%matrixTabs.length;
+      if(event.key==="ArrowLeft")next=(i-1+matrixTabs.length)%matrixTabs.length;
+      if(event.key==="Home")next=0;
+      if(event.key==="End")next=matrixTabs.length-1;
+      if(next>=0){event.preventDefault();selectMatrixTab(matrixTabs[next].dataset.matrixTab??"",true);}
+    });
+  });
+  matrixRoot?.querySelectorAll<HTMLButtonElement>("[data-matrix-expand]").forEach(button=>{
+    button.addEventListener("click",()=>{
+      const dialog=matrixRoot.querySelector<HTMLDialogElement>("[data-matrix-dialog]");
+      const current=button.closest<HTMLElement>("[data-matrix-panel]");
+      const original=current?.querySelector<HTMLTableElement>(".op-matrix-scroller .op-equipment-matrix");
+      const destination=dialog?.querySelector<HTMLElement>("[data-matrix-dialog-content]");
+      if(!dialog || !original || !destination)return;
+      destination.replaceChildren(original.cloneNode(true));
+      const name=dialog.querySelector<HTMLElement>("[data-matrix-dialog-variant]");
+      if(name)name.textContent=matrixTabs.find(x=>x.dataset.matrixTab===current?.dataset.matrixPanel)?.textContent?.trim()??"";
+      if(!dialog.open)dialog.showModal();
+      destination.focus();
+    });
   });
   const msg=(de:string,en:string)=>isEn?en:de;
   // A single rank selector controls all displayed headline values in its skill.

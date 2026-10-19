@@ -777,15 +777,17 @@ def smoke_i18n(page, base_url, width):
             verify(details.count()==1 and details.get_attribute("open") is None,
                    label+": "+lang+" "+slug+" matrix is enabled and initially collapsed")
             details.locator("summary").click()
+            active=details.locator('[data-matrix-panel]:not([hidden])')
             verify(details.get_attribute("open") is not None and
-                   details.locator(".op-equipment-matrix thead th img").count()==6 and
-                   details.locator(".op-equipment-matrix tbody tr").count()==(2 if slug=="si" else 3) and
-                   details.locator(".op-matrix-empty-row").count()==0,
+                   active.locator(".op-equipment-matrix thead th img").count()==6 and
+                   active.locator(".op-equipment-matrix tbody tr").count()==(5 if slug=="si" else 3) and
+                   active.locator(".op-matrix-empty-row").count()==0,
                    label+": "+lang+" "+slug+" matrix shows guide-approved setups and all five gear slots")
-            cells=details.locator(".op-equipment-matrix tbody tr:first-child td:not(.op-matrix-gear-cell)").all_text_contents()
-            verify(len(cells)==5 and all(cell.strip()=="—" for cell in cells),
-                   label+": "+lang+" "+slug+" unverified matrix percentages remain blank")
-            gear_cell=details.locator(".op-matrix-scroller .op-matrix-gear-cell").nth(1)
+            cells=active.locator(".op-equipment-matrix tbody tr:first-child td:not(.op-matrix-gear-cell)").all_text_contents()
+            verify(([x.strip() for x in cells]==["6526","+125.6%","+0%"] if slug=="si" else
+                    len(cells)==5 and all(cell.strip()=="—" for cell in cells)),
+                   label+": "+lang+" "+slug+" DPS CSV numbers or Liino unverified cells remain exact")
+            gear_cell=active.locator(".op-matrix-scroller .op-matrix-gear-cell").nth(1)
             gear_icon=gear_cell.locator("[data-endfield-item-hover]")
             verify(gear_icon.count()==1 and gear_icon.get_attribute("tabindex")=="0",
                    label+": "+lang+" "+slug+" gear icon exposes details on focus")
@@ -816,11 +818,11 @@ def smoke_i18n(page, base_url, width):
             verify(source_note.count()==1 and source_note.is_visible() and
                    source_note.evaluate("(el)=>el.previousElementSibling?.id==='fazit'"),
                    label+": "+lang+" "+slug+" SKPORT source snapshot comes after Fazit")
-            details.locator("[data-matrix-expand]").click()
+            active.locator("[data-matrix-expand]").click()
             dialog=details.locator("[data-matrix-dialog]")
             dialog.wait_for(state="visible")
             verify(dialog.evaluate("(el)=>el.open") and
-                   dialog.locator(".op-matrix-dialog-scroll .op-equipment-matrix tbody tr").count()==(2 if slug=="si" else 3),
+                   dialog.locator(".op-matrix-dialog-scroll .op-equipment-matrix tbody tr").count()==(5 if slug=="si" else 3),
                    label+": "+lang+" "+slug+" complete matrix is shown in fullscreen dialog")
             bounds=dialog.evaluate("(el)=>({width:el.getBoundingClientRect().width,viewport:innerWidth,scroll:el.querySelector('[data-matrix-dialog-content]').scrollWidth,client:el.querySelector('[data-matrix-dialog-content]').clientWidth})")
             verify(bounds["width"]<=bounds["viewport"]+1 and bounds["client"]>0 and bounds["scroll"]>=bounds["client"],
@@ -836,6 +838,44 @@ def smoke_i18n(page, base_url, width):
                    label+": "+lang+" "+slug+" Escape first dismisses popover, not the matrix dialog")
             page.keyboard.press("Escape")
             verify(not dialog.evaluate("(el)=>el.open"),label+": "+lang+" "+slug+" Escape closes matrix")
+            if slug=="si":
+                tabs=details.locator('[data-matrix-tab]')
+                verify(tabs.count()==2 and tabs.nth(0).inner_text().strip()=="DPS" and
+                       tabs.nth(1).inner_text().strip()=="SUPPORT",
+                       label+": "+lang+" Si has exactly the two requested DPS/SUPPORT tabs")
+                verify(details.locator('[data-matrix-panel="dps"]').is_visible() and
+                       not details.locator('[data-matrix-panel="support"]').is_visible(),
+                       label+": "+lang+" Si starts with DPS only")
+                tabs.nth(1).click()
+                support=details.locator('[data-matrix-panel="support"]')
+                verify(support.is_visible() and not details.locator('[data-matrix-panel="dps"]').is_visible() and
+                       tabs.nth(1).get_attribute("aria-selected")=="true" and
+                       support.locator(".op-equipment-matrix tbody tr").count()==13,
+                       label+": "+lang+" switching to SUPPORT shows 13 distinct setups")
+                support_first=support.locator(".op-equipment-matrix tbody tr").first
+                verify([x.strip() for x in support_first.locator("td:not(.op-matrix-gear-cell)").all_text_contents()]==["5830","+125.6%","+0%"],
+                       label+": "+lang+" SUPPORT matrix uses original CSV data")
+                verify([x.strip() for x in support.locator(".op-equipment-matrix tbody tr").nth(11).locator("td:not(.op-matrix-gear-cell)").all_text_contents()]==["5068","+0%","+108.1%"],
+                       label+": "+lang+" SUPPORT ULT-4 now has explicit +108.1% rather than a missing value")
+                support_last=support.locator(".op-equipment-matrix tbody tr").nth(12)
+                verify("SUPPORT-ULT-5" in support_last.locator('th[scope="row"]').inner_text() and
+                       [x.strip() for x in support_last.locator("td:not(.op-matrix-gear-cell)").all_text_contents()]==["5077","+0%","+107.9%"],
+                       label+": "+lang+" final SUPPORT-ULT-5 is distinct, with signed CSV bonuses")
+                support.locator("[data-matrix-expand]").click()
+                dialog.wait_for(state="visible")
+                verify(dialog.locator(".op-equipment-matrix tbody tr").count()==13 and
+                       "SUPPORT" in dialog.locator("[data-matrix-dialog-variant]").inner_text(),
+                       label+": "+lang+" large matrix follows selected SUPPORT tab")
+                page.keyboard.press("Escape")
+                verify(not dialog.evaluate("(el)=>el.open"),
+                       label+": "+lang+" SUPPORT large view closes normally")
+                tabs.nth(0).focus()
+                page.keyboard.press("ArrowRight")
+                verify(tabs.nth(1).get_attribute("aria-selected")=="true",
+                       label+": "+lang+" tabs support keyboard arrow navigation")
+                tabs.nth(0).click()
+                verify(details.locator('[data-matrix-panel="dps"]').is_visible(),
+                       label+": "+lang+" Si DPS setup restored")
             check_overflow(page,label+" "+lang+" "+slug+" after matrix dialog")
         page.goto(base_url+prefix+("/endfield/operatoren/typhoeus/" if lang=="de" else "/endfield/operators/typhoeus/"))
         verify(page.locator('[data-guide-disclosure="equipment-matrix"]').count()==0,

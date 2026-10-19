@@ -7,7 +7,7 @@
     "snapshot": "2026-10-16",
     "language": "en",
     "verification": "community-item-identity-only",
-    "note": "All 18 v1.6 additions are source-listed. These slug IDs and any internal item_equip codes are NOT official numeric SKPORT IDs; recipes and blueprint unlocks are unverified. Candidate numeric attributes sourced from Endfield Hub remain provisional and must NOT be imported into verified equipment-details.json.",
+    "note": "All 18 v1.6 additions are source-listed. These slug IDs and any internal item_equip codes are NOT official numeric SKPORT IDs; recipes and blueprint unlocks are unverified. Candidate numeric attributes sourced from Endfield Hub remain provisional and must NOT be imported into verified equipment-details.json. One user-supplied v1.6 Type 50 Yinglung Gloves variant has a provisional local image and is distinguished from official pre-v1.6 item 411; no unverified stats have been imported.",
     "communityStatProvider": "Endfield Hub (unofficial)",
     "communityStatUrl": "https://endfieldhub.org/database/gears",
     "communityStatSnapshot": "2026-10-15"
@@ -367,6 +367,23 @@
       "identityStatus": "official-numeric-id-unverified",
       "communityBaseStats": null,
       "communityStatStatus": "source-table-omits-this-exact-name"
+    },
+    {
+      "id": "type-50-yinglung-gloves-v16",
+      "name": "Type 50 Yinglung Gloves (v1.6)",
+      "categories": [
+        "Gear"
+      ],
+      "gearSet": "Type 50 Yinglung",
+      "slot": "Gloves",
+      "iconPath": "/images/endfield/gear/releases/si/type-50-yinglung-gloves-v16.webp",
+      "cacheStatus": "user-provided-icon-official-numeric-id-pending",
+      "coverUrl": null,
+      "sourcePage": "https://endfield.wiki.gg/wiki/Sanctuary_of_Ink",
+      "officialNumericId": null,
+      "identityStatus": "official-numeric-id-unverified",
+      "communityStatStatus": "not-imported-no-official-values",
+      "sourceNote": "User-supplied 2026-10-19 Si matrix and icon; distinct from official earlier Type 50 Yinglung Gloves id 411. Artwork is provisional and recipe, refinement, blueprint remain unknown."
     },
     {
       "id": "type-50-yinglung-beacon",

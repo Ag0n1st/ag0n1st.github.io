@@ -84,17 +84,22 @@ test("new 1.6 Si gear keeps source-tagged nonnumeric IDs and must not fake SKPOR
     assert.ok(row.sourcePage.startsWith("https://endfield.wiki.gg/wiki/"));
     if(row.iconPath)assert.ok(existsSync("public"+row.iconPath),row.iconPath);
   }
-  for(const id of ["type-50-yinglung-soft-armor","type-50-yinglung-gauntlets","type-50-yinglung-beacon"])
+  for(const id of ["type-50-yinglung-soft-armor","type-50-yinglung-beacon"])
     assert.ok(ids.has(id));
+  // The owner-supplied replacement icon is a separate, later catalog addition,
+  // not one of the frozen six original v1.6 references.
+  const fullV16=JSON.parse(readFileSync("src/data/endfield/catalog/v16-gear.json","utf8"));
+  assert.ok(fullV16.items.some(row=>row.id==="type-50-yinglung-gloves-v16"));
+  assert.equal(ids.has("type-50-yinglung-gloves-v16"),false);
   assert.match(guide,/^    - id: "si-balanced"$/m);
-  assert.match(guide,/^ +items: \["type-50-yinglung-soft-armor", "type-50-yinglung-gauntlets", "type-50-yinglung-beacon", "349"\]/m);
+  assert.match(guide,/^ +items: \["type-50-yinglung-soft-armor", "type-50-yinglung-gloves-v16", "type-50-yinglung-beacon", "349"\]/m);
   assert.match(guide,/^    - id: "si-main"$/m);
   assert.match(guide,/metaTag: "balanced"/);
   assert.match(guide,/metaTag: "max-dmg"/);
   assert.match(guide,/metaTag: "max-buffs"/);
   assert.match(guide,/metaTag: "early-access"/);
   assert.match(guide,/items: \["796", "411", "342", "342"\]/);
-  assert.match(guide,/^ +items: \["type-50-yinglung-soft-armor", "type-50-yinglung-gauntlets", "type-50-yinglung-beacon", "365"\]/m);
+  assert.match(guide,/^ +items: \["type-50-yinglung-soft-armor", "type-50-yinglung-gloves-v16", "type-50-yinglung-beacon", "365"\]/m);
   const equipment=readFileSync("src/components/operator/sections/OperatorEquipment.astro","utf8");
   assert.match(equipment,/!part\.detail\s*\|\| part\.detail\.status!==["']verified["']/);
   assert.match(equipment,/disabled=\{!part\.catalog \|\| !part\.detail/);
@@ -167,7 +172,7 @@ test("Si Early Access uses four official SKPORT pieces and three Type-50 set pie
   assert.match(early,/metaTag: "early-access"/);
   assert.match(early,/availableFromLevel: 70/);
   assert.match(early,/items: \["796", "411", "342", "342"\]/);
-  assert.doesNotMatch(early,/type-50-yinglung-gauntlets|SKPORT-ID.*erfunden/);
+  assert.doesNotMatch(early,/type-50-yinglung-gloves-v16|SKPORT-ID.*erfunden/);
   const schema=readFileSync("src/content/operatorGuideSchema.ts","utf8");
   assert.match(schema,/max-buffs", "early-access"/);
 });

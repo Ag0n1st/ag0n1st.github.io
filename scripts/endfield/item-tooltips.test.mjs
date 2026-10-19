@@ -48,6 +48,8 @@ test("popover is a single browser top-layer preview that works in the large matr
   assert.match(client,/pointerover/);
   assert.match(client,/focusin/);
   assert.match(client,/Escape/);
+  assert.match(client,/dismissedByEscape=active/);
+  assert.match(client,/if\(dismissedByEscape===trigger\)return/);
   assert.match(client,/window\.addEventListener\("resize",closePopup/);
   assert.match(css,/\.op-equipment-matrix \.op-matrix-gear-cell\{text-align:center\}/);
   assert.match(css,/\.op-equipment-matrix \.op-matrix-gear-cell \.op-item-hover-trigger\{margin-inline:auto\}/);
