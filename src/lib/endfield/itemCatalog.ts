@@ -12,9 +12,9 @@ export interface EndfieldCatalogItem {
 
 const items=new Map<string,EndfieldCatalogItem>();
 const releaseItems=new Map<string,EndfieldCatalogItem>();
-// All 18 v1.6 community-indexed gear pieces are preview identities. They do
+// 18 community-indexed v1.6 gear pieces plus one user-supplied Gloves variant are provisional preview identities. They do
 // not grant recipe, blueprint or source-verification status in the Build-Finder.
-if(v16Gear.version!=="1.6"||v16Gear.items.length!==18)throw Error("Incomplete v1.6 release gear inventory");
+if(v16Gear.version!=="1.6"||v16Gear.items.length!==19)throw Error("Incomplete v1.6 release gear inventory");
 for(const x of v16Gear.items){
   if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(x.id)||releaseItems.has(x.id))throw Error("Invalid nonnumeric release gear identifier");
   if(x.iconPath&&!/^\/images\/endfield\/gear\/releases\/(?:si|v16)\/[a-z0-9-]+\.webp$/.test(x.iconPath))throw Error("Untrusted version 1.6 release icon path");
