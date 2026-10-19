@@ -25,7 +25,6 @@ import { guideText } from "../../lib/i18n/guideUi";
     <span aria-current="page">{operatorName}</span>
   </nav>
   {preview && <div class="op-notice op-preview-banner" role="status">{isEnglish?"Layout preview: Some details for "+operatorName+" are still being added. Square brackets indicate placeholders.":"Layout-Vorschau: Für "+operatorName+" sind noch nicht alle Daten eingepflegt. Eckige Klammern kennzeichnen Platzhalter."}</div>}
-  {(localized || (isEnglish && gameData?.source?.snapshot)) && <p class="op-muted op-locale-note">{translateUi("SKPORT-Datenstand:")} {localized?.sourceSnapshot??gameData?.source?.snapshot}</p>}
   <div class="op-guide">
     <div class="op-guide-content">
       <OperatorOverview model={model} />
@@ -37,6 +36,7 @@ import { guideText } from "../../lib/i18n/guideUi";
       <OperatorTeams model={model} />
       <OperatorGameplay model={model} />
       <OperatorConclusion model={model} ><slot /></OperatorConclusion>
+      {(localized || (isEnglish && gameData?.source?.snapshot)) && <p class="op-muted op-locale-note op-locale-note-bottom">{translateUi("SKPORT-Datenstand:")} {localized?.sourceSnapshot??gameData?.source?.snapshot}</p>}
     </div>
 
     <nav class="op-guide-toc" aria-label="Guide-Inhaltsverzeichnis">
@@ -53,6 +53,17 @@ import { guideText } from "../../lib/i18n/guideUi";
   import { STORY_BUILD_STATUSES, MAX_AUTHORITY_LEVEL, validAuthorityLevel } from "../../lib/endfield/buildStoryProgress.mjs";
   import { getMaxBuildFinderPreset, getMinBuildFinderPreset } from "../../lib/endfield/buildFinderDefaults.mjs";
   const isEn=document.documentElement.lang==="en";
+  // The full-size comparison lives in a native dialog (browser top layer).
+  const matrixExpand=document.querySelector<HTMLButtonElement>("[data-matrix-expand]");
+  matrixExpand?.addEventListener("click",()=>{
+    const dialog=document.querySelector<HTMLDialogElement>("[data-matrix-dialog]");
+    const original=document.querySelector<HTMLTableElement>(".op-matrix-scroller .op-equipment-matrix");
+    const destination=dialog?.querySelector<HTMLElement>("[data-matrix-dialog-content]");
+    if(!dialog || !original || !destination)return;
+    destination.replaceChildren(original.cloneNode(true));
+    if(!dialog.open)dialog.showModal();
+    destination.focus();
+  });
   const msg=(de:string,en:string)=>isEn?en:de;
   // A single rank selector controls all displayed headline values in its skill.
   document.querySelectorAll<HTMLSelectElement>("[data-skill-rank]").forEach(select => {
