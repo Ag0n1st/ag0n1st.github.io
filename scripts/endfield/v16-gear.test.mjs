@@ -7,15 +7,15 @@ const legacy=read("src/data/endfield/catalog/si-release-gear.json");
 const official=read("src/data/endfield/catalog/items.json");
 const norm=s=>s.toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
 
-test("Version 1.6 complete release inventory has exactly 18 unique gear records across five documented groups",()=>{
+test("Version 1.6 complete release inventory has 19 separate release and owner-supplied gear records across five documented groups",()=>{
   assert.equal(version.version,"1.6");
-  assert.equal(version.items.length,18);
+  assert.equal(version.items.length,19);
   const groups=Object.fromEntries([...new Set(version.items.map(x=>x.gearSet))].map(set=>[
     set,version.items.filter(x=>x.gearSet===set).length
   ]));
-  assert.deepEqual(groups,{"Pulser Labs":3,"Eternal Xiranite":4,"Rift Trekker":5,"Type 50 Yinglung":3,"AIC Fieldwork":3});
+  assert.deepEqual(groups,{"Pulser Labs":3,"Eternal Xiranite":4,"Rift Trekker":5,"Type 50 Yinglung":4,"AIC Fieldwork":3});
   const ids=version.items.map(x=>x.id);
-  assert.equal(new Set(ids).size,18);
+  assert.equal(new Set(ids).size,19);
   for(const row of version.items){
     assert.match(row.id,/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
     assert.equal(row.officialNumericId,null);
@@ -47,7 +47,11 @@ test("Community v1.6 attributes remain separate from official SKPORT detail tabl
   const populated=version.items.filter(x=>x.communityBaseStats);
   assert.equal(populated.length,17);
   const unknown=version.items.filter(x=>!x.communityBaseStats);
-  assert.deepEqual(unknown.map(x=>x.name),["Type 50 Yinglung Gauntlets"]);
+  assert.deepEqual(unknown.map(x=>x.name),["Type 50 Yinglung Gauntlets","Type 50 Yinglung Gloves (v1.6)"]);
+  const gloves=version.items.find(x=>x.id==="type-50-yinglung-gloves-v16");
+  assert.equal(gloves.iconPath,"/images/endfield/gear/releases/si/type-50-yinglung-gloves-v16.webp");
+  assert.equal(gloves.officialNumericId,null);
+  assert.notEqual(gloves.id,"411");
   for(const row of populated){
     const s=row.communityBaseStats;
     assert.equal(s.source,"https://endfieldhub.org/database/gears");
