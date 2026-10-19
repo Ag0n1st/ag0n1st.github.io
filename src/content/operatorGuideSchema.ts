@@ -259,7 +259,7 @@ export const operatorGuideSchema = z.object({
   equipment: z.object({
     matrix: z.object({
       enabled: z.boolean().default(false),
-      // Operator-specific column labels, keeping matrix structure stable.
+      // Existing single matrix remains backward-compatible (Liino and templates).
       metrics: z.array(z.object({id:identifier,labelDe:z.string().trim().min(1),labelEn:z.string().trim().min(1)}))
         .max(8).default([]),
       rows: z.array(z.object({
@@ -267,13 +267,29 @@ export const operatorGuideSchema = z.object({
         label: z.string().trim().min(1),
         values: z.record(z.string(),z.string()).default({}),
         weaponId: identifier.optional(),
-        // One armor, one gloves, two accessories (kit) according to game slots.
         armorId: identifier.optional(),
         glovesId: identifier.optional(),
         kit1Id: identifier.optional(),
         kit2Id: identifier.optional()
-      })).refine(noDuplicateIds,"Ausrüstungs-Matrix-Reihen müssen eindeutig sein.").default([])
-    }).default({enabled:false,metrics:[],rows:[]}),
+      })).refine(noDuplicateIds,"Ausrüstungs-Matrix-Reihen müssen eindeutig sein.").default([]),
+      // Optional independent operator-specific matrices, e.g. Si DPS / SUPPORT.
+      variants: z.array(z.object({
+        id: identifier,
+        labelDe: z.string().trim().min(1),
+        labelEn: z.string().trim().min(1),
+        metrics: z.array(z.object({id:identifier,labelDe:z.string().trim().min(1),labelEn:z.string().trim().min(1)})).min(1).max(8),
+        rows: z.array(z.object({
+          id: identifier,
+          label: z.string().trim().min(1),
+          values: z.record(z.string(),z.string()).default({}),
+          weaponId: identifier.optional(),
+          armorId: identifier.optional(),
+          glovesId: identifier.optional(),
+          kit1Id: identifier.optional(),
+          kit2Id: identifier.optional()
+        })).refine(noDuplicateIds,"Matrix-Varianten-Reihen müssen eindeutig sein.").default([])
+      })).refine(noDuplicateIds,"Matrix-Varianten müssen eindeutig sein.").default([])
+    }).default({enabled:false,metrics:[],rows:[],variants:[]}),
     builds: z.array(equipmentBuild)
       .refine(noDuplicateIds, "Ausrüstungs-Build-IDs müssen eindeutig sein.")
       .default([]),
