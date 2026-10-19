@@ -84,17 +84,17 @@ test("new 1.6 Si gear keeps source-tagged nonnumeric IDs and must not fake SKPOR
     assert.ok(row.sourcePage.startsWith("https://endfield.wiki.gg/wiki/"));
     if(row.iconPath)assert.ok(existsSync("public"+row.iconPath),row.iconPath);
   }
-  for(const id of ["type-50-yinglung-soft-armor","type-50-yinglung-gauntlets","type-50-yinglung-beacon"])
+  for(const id of ["type-50-yinglung-soft-armor","type-50-yinglung-gloves-v16","type-50-yinglung-beacon"])
     assert.ok(ids.has(id));
   assert.match(guide,/^    - id: "si-balanced"$/m);
-  assert.match(guide,/^ +items: \["type-50-yinglung-soft-armor", "type-50-yinglung-gauntlets", "type-50-yinglung-beacon", "349"\]/m);
+  assert.match(guide,/^ +items: \["type-50-yinglung-soft-armor", "type-50-yinglung-gloves-v16", "type-50-yinglung-beacon", "349"\]/m);
   assert.match(guide,/^    - id: "si-main"$/m);
   assert.match(guide,/metaTag: "balanced"/);
   assert.match(guide,/metaTag: "max-dmg"/);
   assert.match(guide,/metaTag: "max-buffs"/);
   assert.match(guide,/metaTag: "early-access"/);
   assert.match(guide,/items: \["796", "411", "342", "342"\]/);
-  assert.match(guide,/^ +items: \["type-50-yinglung-soft-armor", "type-50-yinglung-gauntlets", "type-50-yinglung-beacon", "365"\]/m);
+  assert.match(guide,/^ +items: \["type-50-yinglung-soft-armor", "type-50-yinglung-gloves-v16", "type-50-yinglung-beacon", "365"\]/m);
   const equipment=readFileSync("src/components/operator/sections/OperatorEquipment.astro","utf8");
   assert.match(equipment,/!part\.detail\s*\|\| part\.detail\.status!==["']verified["']/);
   assert.match(equipment,/disabled=\{!part\.catalog \|\| !part\.detail/);
@@ -167,7 +167,7 @@ test("Si Early Access uses four official SKPORT pieces and three Type-50 set pie
   assert.match(early,/metaTag: "early-access"/);
   assert.match(early,/availableFromLevel: 70/);
   assert.match(early,/items: \["796", "411", "342", "342"\]/);
-  assert.doesNotMatch(early,/type-50-yinglung-gauntlets|SKPORT-ID.*erfunden/);
+  assert.doesNotMatch(early,/type-50-yinglung-gloves-v16|SKPORT-ID.*erfunden/);
   const schema=readFileSync("src/content/operatorGuideSchema.ts","utf8");
   assert.match(schema,/max-buffs", "early-access"/);
 });
