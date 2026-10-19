@@ -248,6 +248,11 @@ import { guideText } from "../../../lib/i18n/guideUi";
           <div class="op-guide-accordion-content">
             {matrix.rows.length>0 && matrix.rows.every(row=>Object.keys(row.values).length===0) && <p class="op-muted op-body-copy">{model.lang==="en"?"The setups reflect existing guide recommendations. Comparison values are not yet calculated or verified; dashes do not mean zero.":"Die Setups stammen aus bestehenden Guide-Empfehlungen. Vergleichswerte wurden noch nicht berechnet oder geprüft; Striche bedeuten nicht null."}</p>}
             {matrix.metrics.length>0 ?
+              <>
+              <div class="op-matrix-actions">
+                <p class="op-muted">{model.lang==="en"?"Scroll horizontally to see every column. Open the large view to inspect the full table.":"Seitlich scrollen, um alle Spalten zu sehen. In der Großansicht lässt sich die gesamte Tabelle überblicken."}</p>
+                <button class="op-matrix-expand-button" type="button" data-matrix-expand aria-haspopup="dialog">{model.lang==="en"?"Open large view":"Großansicht öffnen"} ↗</button>
+              </div>
               <div class="op-matrix-scroller" role="region" tabindex="0" aria-label={model.lang==="en"?"Gear comparison matrix":"Ausrüstungs-Vergleichsmatrix"}>
                 <table class="op-equipment-matrix">
                   <thead><tr>
@@ -267,6 +272,13 @@ import { guideText } from "../../../lib/i18n/guideUi";
                   </tr>)}{matrix.rows.length===0 && <tr class="op-matrix-empty-row"><td colspan={matrix.metrics.length+6}>{model.lang==="en"?"No verified operator-specific setups have been added yet.":"Noch keine geprüften operatorspezifischen Rüstungssetups eingetragen."}</td></tr>}</tbody>
                 </table>
               </div>
+              <dialog class="op-matrix-dialog" data-matrix-dialog aria-label={model.lang==="en"?"Full-size Gear Matrix":"Ausrüstungs-Matrix in Großansicht"}>
+                <div class="op-matrix-dialog-header"><strong>{guide.displayName} · {model.lang==="en"?"Gear Matrix":"Ausrüstungs-Matrix"}</strong>
+                  <form method="dialog"><button class="op-matrix-dialog-close" type="submit">{model.lang==="en"?"Close":"Schließen"} ×</button></form>
+                </div>
+                <div class="op-matrix-dialog-scroll" data-matrix-dialog-content role="region" tabindex="0" aria-label={model.lang==="en"?"Scrollable full-size Gear Matrix":"Vollständige Ausrüstungs-Matrix, horizontal scrollbar"}></div>
+              </dialog>
+              </>
             : <p class="op-muted op-body-copy">{model.lang==="en"?"The comparison matrix is enabled for this operator. Verified, operator-specific setups and metrics will be added here; no values are assumed from another character.":"Die Vergleichsmatrix ist für diesen Operator aktiviert. Hier folgen geprüfte, operatorspezifische Rüstungssetups und Kennzahlen; Werte anderer Operatoren werden nicht übernommen."}</p>}
           </div>
         </details>}
