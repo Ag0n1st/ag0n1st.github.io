@@ -556,8 +556,8 @@ def smoke_i18n(page, base_url, width):
         check_overflow(page,label+" "+route)
     page.goto(base_url+"/en/endfield/")
     nav_paths=page.locator(".endfield-nav a").evaluate_all("(a)=>a.map(x=>new URL(x.href).pathname)")
-    verify(len(nav_paths)==10 and all(p.startswith("/en/") for p in nav_paths),
-           label+": all ten Endfield tabs remain English, no DE fallback")
+    verify(len(nav_paths)==12 and all(p.startswith("/en/") for p in nav_paths),
+           label+": all twelve Endfield tabs remain English, no DE fallback")
     verify(page.locator(".endfield-section").count()==9,
            label+": identical nine-section Endfield homepage layout")
     page.locator('.endfield-nav a[href="/en/endfield/factory/"]').click()
