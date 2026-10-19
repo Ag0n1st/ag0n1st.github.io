@@ -107,7 +107,7 @@ equipment:
       meta: true
       metaTag: "balanced"
       metaSummary: "Drei neue Type-50-Teile mit Redeemer Seal: Combo-Schaden und Intellekt bleiben erhalten, während zusätzliche Ultimate-Effizienz regelmäßigere Buff-Fenster ermöglicht."
-      items: ["type-50-yinglung-soft-armor", "type-50-yinglung-gauntlets", "type-50-yinglung-beacon", "349"]
+      items: ["type-50-yinglung-soft-armor", "type-50-yinglung-gloves-v16", "type-50-yinglung-beacon", "349"]
       availableFromLevel: 70
       teamContext: "Standardempfehlung für Main DPS und flexible DPS-/Support-Rotationen, wenn die Ultimate zuverlässig in wichtige Schadensfenster passen soll."
       evaluation: "Drei Type-50-Yinglung-Teile liefern den starken Combo-Setbonus. Das Redeemer Seal ergänzt als unabhängiges Off-Piece Intellekt und Ultimate-Effizienz. Dadurch bleibt der persönliche Combo-Schaden stark, während die Ultimate leichter in die Teamrotation eingebunden werden kann. Ideal, wenn ihre Ultimate ohne diese zusätzliche Energieeffizienz nicht rechtzeitig verfügbar wäre."
@@ -118,7 +118,7 @@ equipment:
       meta: true
       metaTag: "max-dmg"
       metaSummary: "Drei neue Type-50-Teile und LYNX Slab für maximalen eigenen Combo-Schaden, wenn die Ultimate auch ohne zusätzliches Energie-Off-Piece zuverlässig einsatzbereit ist."
-      items: ["type-50-yinglung-soft-armor", "type-50-yinglung-gauntlets", "type-50-yinglung-beacon", "365"]
+      items: ["type-50-yinglung-soft-armor", "type-50-yinglung-gloves-v16", "type-50-yinglung-beacon", "365"]
       availableFromLevel: 70
       teamContext: "Main DPS und Sub DPS, besonders wenn andere Teammitglieder die nötigen Battle Skills für Yinglung's Edge einsetzen."
       evaluation: "Für maximalen eigenen Combo-Schaden werden drei neue Type-50-Yinglung-Teile mit LYNX Slab kombiniert. Der Dreierbonus liefert ANG +15 % und stapelweise bis zu 60 % Bonus auf die nächste Kombofertigkeit, nachdem Teammitglieder ihre Battle Skills verwendet haben. Besonders stark, wenn die Ultimate auch ohne zusätzliche Energieeffizienz rechtzeitig bereitsteht."
@@ -127,7 +127,7 @@ equipment:
       title: "Type 50 · Alternative mit Ultimate-Energie"
       role: "sub-dps"
       meta: false
-      items: ["type-50-yinglung-soft-armor", "type-50-yinglung-gauntlets", "type-50-yinglung-beacon", "334"]
+      items: ["type-50-yinglung-soft-armor", "type-50-yinglung-gloves-v16", "type-50-yinglung-beacon", "334"]
       availableFromLevel: 70
       teamContext: "Wenn die Ultimate in deiner tatsächlichen Rotation sonst nicht rechtzeitig für den Team-Buff zurückkehrt."
       evaluation: "Die drei Type-50-Teile bleiben für Combo-Schaden erhalten, ein Xiranit Power Core ersetzt das LYNX-Off-Piece als situationsabhängige Option. Nur nutzen, wenn dadurch ein relevanter Ultimate-Einsatz rechtzeitig möglich wird; sonst bleibt das LYNX-Standardsetup. Das ist keine Behauptung, diese Variante sei allgemein stärker."
@@ -201,29 +201,160 @@ equipment:
       note: "Das mit Version 1.6 neu erschienene Type-50-Yinglung-Set ist Sis Go-to-Set. Mit Redeemer Seal ist es ausgewogen, mit LYNX Slab auf maximalen eigenen Combo-Schaden ausgerichtet. Eternal Xiranite bleibt eine stark situationsabhängige Nischenalternative, wenn der Setbonus im Team noch fehlt."
   matrix:
     enabled: true
-    metrics:
-      - {id: primary-attribute, labelDe: "INT", labelEn: "INT"}
-      - {id: ultimate-gain, labelDe: "ULT Gain", labelEn: "ULT Gain"}
-      - {id: special-bonus, labelDe: "Combo-Bonus", labelEn: "Combo Bonus"}
-      - {id: weapon-bonus, labelDe: "Waffenbonus", labelEn: "Weapon Bonus"}
-      - {id: set-bonus, labelDe: "Setbonus", labelEn: "Set Bonus"}
-    rows:
-      - id: si-balanced
-        label: "Type 50 Yinglung · Balanced"
-        values: {}
-        weaponId: "1280"
-        armorId: "type-50-yinglung-soft-armor"
-        glovesId: "type-50-yinglung-gauntlets"
-        kit1Id: "type-50-yinglung-beacon"
-        kit2Id: "349"
-      - id: si-main
-        label: "Type 50 Yinglung · Max. DMG"
-        values: {}
-        weaponId: "1280"
-        armorId: "type-50-yinglung-soft-armor"
-        glovesId: "type-50-yinglung-gauntlets"
-        kit1Id: "type-50-yinglung-beacon"
-        kit2Id: "365"
+    variants:
+      - id: dps
+        labelDe: "DPS"
+        labelEn: "DPS"
+        metrics:
+          - {id: atk, labelDe: "ATK", labelEn: "ATK"}
+          - {id: cs-dmg, labelDe: "CS.DMG", labelEn: "CS.DMG"}
+          - {id: ult-gain, labelDe: "ULT.gain", labelEn: "ULT.gain"}
+        rows:
+          - id: si-dps-support-dps-0
+            label: "SUPPORT-DPS-0"
+            values: {atk: "6526", cs-dmg: "125.6%", ult-gain: "0%"}
+            weaponId: "1280"
+            armorId: "type-50-yinglung-soft-armor"
+            glovesId: "type-50-yinglung-gloves-v16"
+            kit1Id: "type-50-yinglung-beacon"
+            kit2Id: "365"
+          - id: si-dps-support-dps-1
+            label: "SUPPORT-DPS-1"
+            values: {atk: "5655", cs-dmg: "179.4%", ult-gain: "0%"}
+            weaponId: "1280"
+            armorId: "type-50-yinglung-soft-armor"
+            glovesId: "type-50-yinglung-gloves-v16"
+            kit1Id: "type-50-yinglung-beacon"
+            kit2Id: "type-50-yinglung-beacon"
+          - id: si-dps-support-dps-2
+            label: "SUPPORT-DPS-2"
+            values: {atk: "5673", cs-dmg: "125.6%", ult-gain: "33.4%"}
+            weaponId: "1280"
+            armorId: "type-50-yinglung-soft-armor"
+            glovesId: "type-50-yinglung-gloves-v16"
+            kit1Id: "type-50-yinglung-beacon"
+            kit2Id: "349"
+          - id: si-dps-support-dps-3
+            label: "SUPPORT-DPS-3"
+            values: {atk: "5683", cs-dmg: "134.6%", ult-gain: "27.9%"}
+            weaponId: "1280"
+            armorId: "type-50-yinglung-soft-armor"
+            glovesId: "1128"
+            kit1Id: "type-50-yinglung-beacon"
+            kit2Id: "type-50-yinglung-beacon"
+          - id: si-dps-support-dps-4
+            label: "SUPPORT-DPS-4"
+            values: {atk: "5689", cs-dmg: "152.5%", ult-gain: "16.7%"}
+            weaponId: "1280"
+            armorId: "796"
+            glovesId: "type-50-yinglung-gloves-v16"
+            kit1Id: "type-50-yinglung-beacon"
+            kit2Id: "type-50-yinglung-beacon"
+      - id: support
+        labelDe: "SUPPORT"
+        labelEn: "SUPPORT"
+        metrics:
+          - {id: atk, labelDe: "ATK", labelEn: "ATK"}
+          - {id: cs-dmg, labelDe: "CS.DMG", labelEn: "CS.DMG"}
+          - {id: ult-gain, labelDe: "ULT.gain", labelEn: "ULT.gain"}
+        rows:
+          - id: si-support-support-dps-0
+            label: "SUPPORT-DPS-0"
+            values: {atk: "5830", cs-dmg: "125.6%", ult-gain: "0%"}
+            weaponId: "1280"
+            armorId: "eternal-xiranite-mod-armor"
+            glovesId: "eternal-xiranite-channeling-gloves"
+            kit1Id: "eternal-xiranite-rangefinder"
+            kit2Id: "365"
+          - id: si-support-support-dps-1
+            label: "SUPPORT-DPS-1"
+            values: {atk: "5068", cs-dmg: "179.4%", ult-gain: "0%"}
+            weaponId: "1280"
+            armorId: "eternal-xiranite-mod-armor"
+            glovesId: "eternal-xiranite-channeling-gloves"
+            kit1Id: "eternal-xiranite-rangefinder"
+            kit2Id: "eternal-xiranite-rangefinder"
+          - id: si-support-support-dps-2
+            label: "SUPPORT-DPS-2"
+            values: {atk: "5068", cs-dmg: "125.6%", ult-gain: "33.4%"}
+            weaponId: "1280"
+            armorId: "eternal-xiranite-mod-armor"
+            glovesId: "eternal-xiranite-channeling-gloves"
+            kit1Id: "eternal-xiranite-rangefinder"
+            kit2Id: "349"
+          - id: si-support-support-dps-3
+            label: "SUPPORT-DPS-3"
+            values: {atk: "5077", cs-dmg: "134.6%", ult-gain: "27.9%"}
+            weaponId: "1280"
+            armorId: "eternal-xiranite-mod-armor"
+            glovesId: "1128"
+            kit1Id: "eternal-xiranite-rangefinder"
+            kit2Id: "eternal-xiranite-rangefinder"
+          - id: si-support-support-dps-4
+            label: "SUPPORT-DPS-4"
+            values: {atk: "5082", cs-dmg: "152.5%", ult-gain: "16.7%"}
+            weaponId: "1280"
+            armorId: "796"
+            glovesId: "eternal-xiranite-channeling-gloves"
+            kit1Id: "eternal-xiranite-rangefinder"
+            kit2Id: "eternal-xiranite-rangefinder"
+          - id: si-support-support-mix-2
+            label: "SUPPORT-MIX-2"
+            values: {atk: "5077", cs-dmg: "80.7%", ult-gain: "59.9%"}
+            weaponId: "1280"
+            armorId: "eternal-xiranite-mod-armor"
+            glovesId: "1128"
+            kit1Id: "eternal-xiranite-rangefinder"
+            kit2Id: "334"
+          - id: si-support-support-mix-3
+            label: "SUPPORT-MIX-3"
+            values: {atk: "5077", cs-dmg: "107.6%", ult-gain: "43.9%"}
+            weaponId: "1280"
+            armorId: "eternal-xiranite-overalls"
+            glovesId: "1128"
+            kit1Id: "eternal-xiranite-rangefinder"
+            kit2Id: "eternal-xiranite-rangefinder"
+          - id: si-support-support-mix-4
+            label: "SUPPORT-MIX-4"
+            values: {atk: "5082", cs-dmg: "107.6%", ult-gain: "43.7%"}
+            weaponId: "1280"
+            armorId: "796"
+            glovesId: "330"
+            kit1Id: "eternal-xiranite-rangefinder"
+            kit2Id: "eternal-xiranite-rangefinder"
+          - id: si-support-support-ult-1
+            label: "SUPPORT-ULT-1"
+            values: {atk: "5077", cs-dmg: "53.8%", ult-gain: "75.9%"}
+            weaponId: "1280"
+            armorId: "eternal-xiranite-overalls"
+            glovesId: "1128"
+            kit1Id: "eternal-xiranite-rangefinder"
+            kit2Id: "334"
+          - id: si-support-support-ult-2
+            label: "SUPPORT-ULT-2"
+            values: {atk: "5082", cs-dmg: "53.8%", ult-gain: "75.4%"}
+            weaponId: "1280"
+            armorId: "796"
+            glovesId: "330"
+            kit1Id: "eternal-xiranite-rangefinder"
+            kit2Id: "334"
+          - id: si-support-support-ult-3
+            label: "SUPPORT-ULT-3"
+            values: {atk: "5082", cs-dmg: "0%"}
+            weaponId: "1280"
+            armorId: "796"
+            glovesId: "330"
+            kit1Id: "334"
+            kit2Id: "334"
+          - id: si-support-support-ult-4
+            label: "SUPPORT-ULT-4"
+            values: {atk: "5068", cs-dmg: "0%"}
+            weaponId: "1280"
+            armorId: "eternal-xiranite-overalls"
+            glovesId: "330"
+            kit1Id: "334"
+            kit2Id: "349"
+
 potentials:
   entries:
     - level: 1
