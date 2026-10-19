@@ -70,9 +70,9 @@ test("every Si spreadsheet row and exact column value matches imported setup",()
  assert.equal(support.filter(r=>!r.values.includes("ult-gain:")).length,0);
  assert.equal(support.filter(r=>r.label==="SUPPORT-ULT-5").length,1);
  for(const row of [...dps,...support]){
-   assert.match(row.values,/cs-dmg: "\\+\\d+(?:\\.\\d+)?%"/);
-   assert.match(row.values,/ult-gain: "\\+\\d+(?:\\.\\d+)?%"/);
-   assert.doesNotMatch(row.values,/atk: "\\+/);
+   assert.match(row.values,/cs-dmg: "\+\d+(?:\.\d+)?%"/);
+   assert.match(row.values,/ult-gain: "\+\d+(?:\.\d+)?%"/);
+   assert.doesNotMatch(row.values,/atk: "\+/);
  }
 });
 test("owner supplied v1.6 Type 50 Yinglung Gloves icon stays distinct from old official 411",()=>{
