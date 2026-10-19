@@ -1,0 +1,29 @@
+---
+import EndfieldPlaceholder from "../../layouts/EndfieldPlaceholder.astro";
+interface Props {lang?:"de"|"en"}
+const {lang="de"}=Astro.props;
+const en=lang==="en";
+const l=(de:string,english:string)=>en?english:de;
+---
+<EndfieldPlaceholder title="Community Leaderboard" kicker="ARKNIGHTS: ENDFIELD · COMMUNITY LEADERBOARD" active="leaderboard" lang={lang} description={l("Community-Ranglisten und zeitlich begrenzte Boss-Challenges.","Community rankings and time-limited boss challenges.")}>
+  <main class="endfield-utility-page section-wrap endfield-coming-tool">
+    <span class="section-kicker">ARKNIGHTS: ENDFIELD · SPEEDRUNS</span>
+    <h1 class="endfield-stacked-title"><span>Community</span><span>Leaderboard<span class="title-period">.</span></span></h1>
+    <p class="endfield-utility-intro">{l("Hier entsteht das Community-Leaderboard für Speedrun-Rankings der aktuellen Bosse.","This is where the community leaderboard for current boss speedruns will appear.")}</p>
+    <div class="endfield-coming-cards">
+      <article class="op-cardlet endfield-coming-card">
+        <h2>{l("Boss-Rankings","Boss Rankings")}</h2>
+        <p>{l("Für jeden Boss werden später geprüfte Community-Zeiten und die verwendeten Regeln aufgeführt. Noch sind keine Zeiten oder Platzierungen veröffentlicht.","Verified community times and run rules will be listed for each boss. No times or rankings have been published yet.")}</p>
+      </article>
+      <article class="op-cardlet endfield-coming-card">
+        <h2>{l("Versions-Events","Version Events")}</h2>
+        <p>{l("Wenn eine neue Version einen Boss einführt, soll es dafür zusätzlich eine zeitlich begrenzte Community-Challenge geben. Bedingungen und Starttermine werden erst nach Festlegung veröffentlicht.","When a new version introduces a boss, there may be a limited-time community challenge. Rules and dates will be announced once confirmed.")}</p>
+      </article>
+      <article class="op-cardlet endfield-coming-card">
+        <h2>{l("Runs einreichen","Submit a Run")}</h2>
+        <p>{l("Die Einreichung ist künftig über meine Discord-Community vorgesehen. Eine verbindliche Einreichungsmaske oder automatische Prüfung ist noch nicht aktiv.","Submissions are planned through my Discord community. No submission form or automatic verification is active yet.")}</p>
+        <a class="op-link" href="https://discord.gg/v2h9KKT" target="_blank" rel="noopener noreferrer">{l("Zur Discord-Community ↗","Visit the Discord community ↗")}</a>
+      </article>
+    </div>
+  </main>
+</EndfieldPlaceholder>
