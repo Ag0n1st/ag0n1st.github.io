@@ -121,7 +121,7 @@ test("optional closed Gear Matrix lives after Build Finder, Si & Liino enabled, 
   }else{
     assert.match(text,/    variants:\n      - id: dps/);
     assert.match(text,/      - id: support/);
-    assert.match(text,/values: \{atk: "6526", cs-dmg: "125.6%", ult-gain: "0%"\}/);
+    assert.match(text,/values: \{atk: "6526", cs-dmg: "\+125.6%", ult-gain: "\+0%"\}/);
   }
  }
  assert.doesNotMatch(read("src/content/operator-guides/typhoeus.md"),/  matrix:\n    enabled: true/);
