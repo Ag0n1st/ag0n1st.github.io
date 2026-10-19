@@ -2341,3 +2341,11 @@ Alle 109 Endfield-Unit-Tests und die beiden Budgetchecks erfolgreich. Desktop 14
 - `scripts/endfield/si-dual-matrix.test.mjs`: erwartete Namen im DPS-Datenvergleich sowie separate Assert-Gruppen fuer `MAIN-DPS-0..4` und unveraenderte `SUPPORT-DPS-0..4`.
 - `scripts/endfield/browser-smoke.py`: sichtbare Matrix-DPS- und SUPPORT-Zeilen in beiden Sprachen, Desktop und Mobil vor und nach dem Umschalten pruefen.
 - **Releaseabnahme bei Anlegen offen:** neuer Feature-Branch `fix-si-dps-matrix-labels-20261019`, Tests/Browser/Budgets und GitHub-Pages-Deployment vor einer erfolgreichen Live-Meldung nachweisen. Fabrik weiterhin pausiert.
+
+### 18.14 Si-MAIN-DPS-Korrektur live – PR #52 (19.10.2026)
+
+**Abnahme und Auslieferung:** Die ausschliesslich redaktionelle Anpassung im `Si (DPS)`-Matrix-Tab ist veröffentlicht: Build-Bezeichnungen `MAIN-DPS-0`, `MAIN-DPS-1`, `MAIN-DPS-2`, `MAIN-DPS-3`, `MAIN-DPS-4`. **Keine** Änderungen an Zeilen-IDs, Zahlenwerten, Waffen-/Gear-Referenzen, P0/9/9/4-Labels, Layout oder am `Si (SUPPORT)`-Matrix-Datenabschnitt. Erhaltene SUPPORT-Builds `SUPPORT-DPS-0..4` und alle übrigen 13 Zeilen. Beide Sprachen werden durch dieselben verifizierten Guide-Daten erzeugt.
+- **CI-Abnahme:** [Workflow #39299743893](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/39299743893) final `completed/success`: **170/170 Node-Tests**, Astro-Build, Chromium-Smokes bei **1440 px und 390 px, DE + EN**, darunter ausdrückliche Prüfergebnisse für `MAIN-DPS-0..4` und `SUPPORT-DPS-0..4`; volle Matrix- und Großansicht-Funktionen unverändert.
+- **Budgets:** Endfield **29.234.447 / 100.000.000 Bytes** (29,23 %), verbleibend 70.765.553 Bytes, 1.320 gezählte Projektdateien. `dist/` **31.085.406 / 1.000.000.000 Bytes** (3,11 %), verbleibend 968.914.594 Bytes, 1.217 Deploy-Dateien.
+- **Squash-Merge:** [PR #52](https://github.com/Ag0n1st/ag0n1st.github.io/pull/52), Merge-Commit `6f3a802db2623dcaf75926cdc5943671871ac609` nach `main`.
+- **Deployment:** [GitHub Pages #39300028914](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/39300028914), **build = completed/success** und **deploy = completed/success**. Zielseiten `https://ag0n1st.com/endfield/operatoren/si/` und `https://ag0n1st.com/en/endfield/operators/si/`. Nur diese Roadmap-Dokumentation löst nachfolgend einen eigenen Pages-Build aus, der separat zu kontrollieren ist.
