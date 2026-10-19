@@ -1,7 +1,7 @@
 # AG0N1ST.COM – PROJEKT-ROADMAP, ENTWICKLUNGSSTAND & KI-ÜBERGABE
 
 > **Zentrale Projektdokumentation / Single Point of Entry.**  
-> **Stand:** 16. Oktober 2026 (Europe/Berlin).  
+> **Stand:** 19. Oktober 2026 (Europe/Berlin); aktueller Hand-off §18.4, ältere Abschnitte bleiben als chronologisches Archiv.  
 > **Projekt:** Ag0n1st – deutschsprachiges Gaming-/Guide-Portal.  
 > **Repository:** https://github.com/Ag0n1st/ag0n1st.github.io  
 > **Produktionswebsite:** https://ag0n1st.com (eigene Domain), alternativ https://ag0n1st.github.io  
@@ -31,7 +31,7 @@
 | Wo liegen persönliche Guide-Texte? | `src/content/operator-guides/<slug>.md`; Vorlage `_template.md`. |
 | Wie heißt der zentrale UI-Bereich? | `src/components/operator/sections/OperatorEquipment.astro`; Browserinteraktionen in `src/components/operator/OperatorGuide.astro`. |
 | Welche Tests? | `npm run test:endfield`, `node scripts/endfield/check-budget.mjs`, `npm run build`. |
-| Was ist aktuell als Nächstes sinnvoll? | **Si v1.6 sichten/freigeben**, danach fehlende numerische SKPORT-IDs, offiziellen Item-Details und Blaupausen-/Rezeptnachweise sicher nachziehen; nie Community-Namen als offizielle IDs ausgeben. Liino, Typhoeus und Si sind bereits online. Details: §14.3t/u und `docs/si-v16-gear-followup-20261016.md`; historisches PDF-Audit: `docs/website-conversation-audit.md`. |
+| Was ist aktuell als Nächstes sinnvoll? | **Übergabe 19.10.2026 (§18.4):** Nach PR #47 zuerst DE/EN-Live-Abnahme der neuen Threats-/Leaderboard-/Cheat-Sheets-/Matrix- und Countdown-Oberflächen. Für Si-/Liino-Matrix erst **operator- und szenariospezifische Vergleichsmethoden, Quellen und Zahlen freigeben**, keine unbestätigten Werte eintragen. Daneben ausstehende Endfield-Seiten, Speedrun-Playlist-ID und Gameplay-Videos nach Priorität. **Fabrik explizit pausiert**. v1.6-Gear-IDs erst bei neuer offizieller SKPORT-Evidenz nachziehen. |
 | Stand Authority? | Obergrenze **60**, inklusive HTML-Feld, gespeicherten Eingaben und Auswertelogik; bei künftiger Erhöhung zentral anpassen. |
 
 **Diese Datei ist kein Ersatz für die Dateien im Repository.** Wo der Code und die Roadmap abweichen, nicht stillschweigend „korrigieren“: Diskrepanz feststellen, Ursache prüfen, dem Nutzer erläutern, dann dokumentiert ändern.
@@ -45,7 +45,7 @@
 - **[OFFEN / PRÜFEN]**: konkrete Unsicherheit, Fehlergefahr oder notwendige Entscheidung.
 - **[NICHT GEPLANT]**: bewusster Ausschluss, außer der Nutzer revidiert die Entscheidung.
 
-Die Kennzeichnungen beziehen sich auf den **Stand vom 15.10.2026**. Alte Abschnitte werden bei Änderungen nicht ungeprüft weiterkopiert.
+Viele historische Statuskennzeichnungen beziehen sich noch auf den **15.–16.10.2026** und sind nicht retroaktiv korrigiert. Für den aktuellen Stand **19.10.2026** gelten die neuesten chronologischen Abschnitte **§17–§18.4** und der tatsächliche GitHub-Code/CI-Status vor alten Abschnitten.
 
 ---
 
@@ -1123,7 +1123,7 @@ Bei Untersuchung **nur die belegten Fälle korrigieren**, nicht auf ganze Sets/R
 
 ---
 
-## 14. AKTUELLER ÜBERGABEPUNKT: fortgeschrieben bis 16. OKTOBER 2026
+## 14. HISTORISCHER ÜBERGABEPUNKT: Stand bis 16. OKTOBER 2026 (aktueller Handoff §18.4)
 
 ### 14.1 Letzter abgeschlossener Funktionsstand
 
@@ -2151,3 +2151,33 @@ Alle 109 Endfield-Unit-Tests und die beiden Budgetchecks erfolgreich. Desktop 14
 - **Abnahme:** [CI #39236659352](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/39236659352) **success** – **159/159 Node-Tests**, Astro-Produktionsbuild, Chromium-Browser-Smoke 1440/390 Pixel mit DE/EN-Matrix/Card/Nav/Countdown, keine Seitenbreiten-Überläufe. Endfield-Arbeitsbaum **29.162.933 / 100.000.000 Byte**, **70.837.067 Byte Reserve**; Pages-`dist/` **27.283.679 / 1.000.000.000 Byte**, **972.716.321 Byte Reserve**.
 - **Produktiv-Deploy:** [Pages #39236900253](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/39236900253) für `143407da` mit `build` und `deploy` **completed/success**.
 - **Editor-Übergabe:** [docs/endfield-threats-matrix-20261019.md](docs/endfield-threats-matrix-20261019.md) für Datengrundlage, Reimport, Matrix-Row-Schema, Assets und Freigabegrenzen. Die **Fabrik bleibt ausdrücklich pausiert** und wurde nicht implementiert.
+
+
+### 18.4 Neuer Chat-Handoff nach vollständig ausgewerteter 101-Seiten-PDF und GitHub-Abgleich (19.10.2026)
+
+**Geltung:** Diese Chronologie ergänzt §18.0–18.3 und ersetzt veraltete Sofortstart-/„Nächste Aufgabe“-Aussagen aus §§0/10/14, soweit sie älteren Ist-Ständen widersprechen. Kein neues Feature ist allein durch diese Übergabe autorisiert.
+
+**Quellen- und Repo-Abgleich:**
+- Vom Nutzer erneut bereitgestellte private PDF `Bisherige Website Konversation(4).pdf` (**101 Seiten**) textuell extrahiert und mit chronologischem Projekt-/Entscheidungsverlauf abgeglichen, besonders den abschließenden Entscheidungen zu Fabrik (pausiert), Terminologie, globalen Footer-Socials, Threats, Gear-Matrizen und Endfield-Tools. Das PDF wird wegen historischer Kontext-/Personaldaten **nicht** in das öffentliche Repository übernommen; ältere PDFs und Zwischenentwürfe sind keine aktuellere Quelle als `main`.
+- GitHub-`main` vor diesem Roadmap-only-Schritt: **`4a2bcff1338a27a2a221ba4746787172b48c3961`** (Dokumentationscommit nach gemergtem PR #47, [Commit](https://github.com/Ag0n1st/ag0n1st.github.io/commit/4a2bcff1338a27a2a221ba4746787172b48c3961)). GitHub-REST-PR-Liste und PR-Suche: **0 offene Pull Requests**; historischer Forschungs-PR #3 wurde zuvor ohne Merge geschlossen.
+- Letzter nachgewiesener produktiver Funktions-Merge ist weiterhin [PR #47](https://github.com/Ag0n1st/ag0n1st.github.io/pull/47), Squash `143407da496a6b906761215f7829e878e4fe5a5b`; seine [CI #39236659352](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/39236659352) bestand **159/159** Node-Tests sowie Astro-/Budget- und Chromium-1440/390px-Prüfungen DE+EN. Sein Pages-Deploy [#39236900253](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/39236900253) war erfolgreich. Für den anschließenden Roadmap-`main`-Commit `4a2bcff` wurde ein zusätzlicher Pages-Lauf [#39237116012](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/39237116012) als `completed/success` abgefragt.
+- Direkte Quellprüfung auf `main`: `src/lib/endfield/threatCatalog.ts` referenziert den offiziellen lokalen Snapshot und provisorische Bossgruppen ohne Runtime-API; `src/content/operatorGuideSchema.ts` hält `equipment.matrix.enabled` standardmäßig auf `false`, lokale Metrik-Labels DE/EN und Setup-Slots; `src/content/operator-guides/{si,liino}.md` aktivieren die Matrix mit **2 bzw. 3** bestehenden Guide-Setups, deren `values: {}` absichtlich **noch keine bestätigten numerischen Vergleichswerte** enthalten; `OperatorEquipment.astro` stellt entsprechend „—“ dar; `EndfieldNav.astro` hat gemeinsame DE-/EN-Routen zu Leaderboard/Cheat Sheets. Ausführliches Fachprotokoll: [docs/endfield-threats-matrix-20261019.md](docs/endfield-threats-matrix-20261019.md).
+- **Letzte tatsächlich gemessene Budgets:** aus PR-#47-CI (nicht neu lokal gemessen) **29.162.933 / 100.000.000 Byte** Endfield und **27.283.679 / 1.000.000.000 Byte** `dist/`; Reserven **70.837.067** bzw. **972.716.321** Byte. Keine zusätzlichen Bilder/Website-Dateien in diesem reinen Roadmap-Update. Bei nächster Code-/Asset-Änderung beide Gates erneut verpflichtend durchführen.
+
+**Erneut ausdrücklich bestätigte, projektweite Regeln (19.10.2026):**
+1. **Entwicklungschat strikt textbasiert:** keine Bilder, grafischen Previews, UI-Visualisierungen oder automatisch erstellten Medien im Chat; Website-Assets als solche bleiben unberührt.
+2. **Jeder Fortschritt und jede Entscheidung in `ROADMAP.md` dokumentieren**, mit genauer Umsetzung, Quelle/Unsicherheit, Test/CI, Bytes, PR/Merge und Pages-Status. Erfolge erst behaupten, wenn belegt.
+3. **Doppelte Sprachen:** Jede Website-Änderung in der deutschen **und** englischen Fassung konsistent implementieren und auf beiden Routen verifizieren. Reine Roadmap-/Entwicklungsdokumentation erzeugt keine zusätzlichen öffentlichen Sprachinhalte.
+4. **Budgets als harte Gates:** max. 100.000.000 Byte Endfield-Dateibaum und 1.000.000.000 Byte gebaute GitHub-Pages-`dist/`; Größen niemals ohne neue Messung als aktuell ausgeben.
+5. **Authentische, direkte Redaktion:** Im öffentlichen Text keine KI-/Backend-Erzählperspektive oder distanzierenden Zuschreibungen wie „vom Creator“, „vom Autor“, „creator-eingeordnet“. Stil/Terminologie DE und EN eigenständig klar formulieren; interne Quellen-/Freigabeprotokolle weiterhin streng führen. Keine erfundenen Bosstats, Meta-Builds, Matrix-Prozente, Ranglisten, Preise oder Blaupausen.
+6. **Fabrik weiterhin ausdrücklich ausgesetzt** (§17.10–17.11); erst auf neuen konkreten Auftrag die gemeinsame Konzeptarbeit wieder aufnehmen, nicht stillschweigend umsetzen.
+
+**Aktueller sachlicher Übergabepunkt / priorisierte nächste Entscheidungsoptionen (nicht stillschweigend starten):**
+1. **P0 Live-QA:** Neue DE-/EN-Seiten Leaderboard/Cheat Sheets und die Si-/Liino-Matrix im echten Browser mit Bedienung, Scroll, Tastatur, 390/1440 px und Countdown prüfen; automatisierte CI wurde bestanden, eigenständige Nutzerabnahme der Inhalte/Layout bleibt offen.
+2. **Operator-Matrix mit belastbarer Fachmethodik:** Für **Si und Liino getrennt** Metrik-Definitionen (Szenario, P-Stufe, Waffe/Rang, Gegner, Team-/Buff-Annahmen, Rotation, Dauer), offizielle/statistische Eingabedaten, Nachweismethode und redaktionelle Vergleichsvarianten freigeben. Erst dann `matrix.rows[].values` eintragen und pro Operator dieselbe Metrik über Setups vergleichen. Bis dahin „—“ behalten.
+3. **P7 Speedruns/Leaderboard:** Der individuelle YouTube-Speedrun-Playlist-`list=`-Wert ist noch nicht freigegeben; die neue **Community-Leaderboard**-Richtung seit PR #47 **überholt ausdrücklich** das ältere „keine Community-Rangliste“-Konzept in §1.4/Phase P7. Vor echter Community-Annahme Eingaberegeln, Bossvarianten, Version-/Eventkategorien, verifizierbare Video-/Zeitnachweise, Moderation und Datenschutz gemeinsam festlegen; keine Daten oder Gewinner erfinden.
+4. **P6 Cheat Sheets / Endfield-Systemseiten:** Mit dem Nutzer entscheiden, ob als Erstes `#ElasticGoods`, `#Artificing` oder `#Bufffood` mit belegten, versionsgebundenen Ingame-Daten ausgearbeitet wird; deutsche und englische Seite gleichzeitig. Bestehende Rekrutierung/Veredelung/Essenzen/Checkliste/Tierlist-Platzhalter separat priorisieren.
+5. **Offizielle Imports:** Si als Boss weiter `provisional`, bis das SKPORT-Wiki selbst einen eindeutigen Threat-Eintrag ausliefert. Alle 18 v1.6-Gear-Previewteile ohne verifizierte numerische IDs/Rezepte nicht zu offiziellen Katalogartikeln erklären; neuer offizieller Snapshot vor Mapping nötig.
+6. **Langfristiges Backlog:** Nach echter Freigabe NTE-Hub, About/SEO und übrige Roadmap-Phasen; **keine Fabrik-Implementierung** ohne explizite Wiederaufnahme.
+
+**Umfang dieses Schritts:** Reiner, differenzierter Handoff-/Roadmap-Abgleich, **keine Änderungen an Website-Komponenten, DE-/EN-Seiten, Game-Datensätzen, Matrixwerten oder Assets**. Ein erfolgreicher Build/Deploy eines ggf. ausgelösten `main`-Docs-Commits ist separat anhand der tatsächlichen Actions-Läufe zu verifizieren; keine neue 159-Test-Serie oder Byte-Neumessung behaupten.
