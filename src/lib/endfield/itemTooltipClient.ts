@@ -5,6 +5,9 @@
 let active:HTMLElement|null=null;
 let panel:HTMLDivElement|null=null;
 let hideHandle:number|undefined;
+// Closing by Escape must not immediately re-open the panel via a synthetic
+// pointerover caused by removing the top-layer popover on the same target.
+let dismissedByEscape:HTMLElement|null=null;
 const selector="[data-endfield-item-hover]";
 
 function clearHide(){
@@ -58,6 +61,7 @@ function ensurePanel(host:HTMLElement):HTMLDivElement{
   return panel;
 }
 function showPopup(trigger:HTMLElement){
+  if(dismissedByEscape===trigger)return;
   clearHide();
   if(active===trigger&&panel?.matches(":popover-open")){
     position(trigger,panel);
@@ -87,13 +91,16 @@ document.addEventListener("pointerout",event=>{
   const target=event.target;
   if(!(target instanceof Element))return;
   const trigger=target.closest<HTMLElement>(selector);
-  if(trigger&&!trigger.contains(event.relatedTarget as Node|null)&&!panel?.contains(event.relatedTarget as Node|null))scheduleHide();
+  if(trigger&&!trigger.contains(event.relatedTarget as Node|null)&&!panel?.contains(event.relatedTarget as Node|null)){
+    if(dismissedByEscape===trigger)dismissedByEscape=null;
+    scheduleHide();
+  }
 },true);
 document.addEventListener("focusin",event=>{
   const target=event.target;
   if(!(target instanceof Element))return;
   const trigger=target.closest<HTMLElement>(selector);
-  if(trigger)showPopup(trigger);
+  if(trigger){dismissedByEscape=null;showPopup(trigger);}
 },true);
 document.addEventListener("focusout",event=>{
   const target=event.target;
@@ -106,13 +113,19 @@ document.addEventListener("click",event=>{
   if(!(target instanceof Element))return;
   const trigger=target.closest<HTMLElement>(selector);
   if(trigger){
+    dismissedByEscape=null;
     event.stopPropagation();
     if(active===trigger&&panel?.matches(":popover-open"))closePopup();
     else showPopup(trigger);
   }else if(panel&&!panel.contains(target))closePopup();
 },true);
 document.addEventListener("keydown",event=>{
-  if(event.key==="Escape"&&panel?.matches(":popover-open")){event.preventDefault();event.stopPropagation();closePopup();}
+  if(event.key==="Escape"&&panel?.matches(":popover-open")){
+    // Keep this icon muted until the cursor leaves or it receives a new
+    // explicit focus/click; otherwise dismissing can trigger another hover.
+    dismissedByEscape=active;
+    event.preventDefault();event.stopPropagation();closePopup();
+  }
   if((event.key==="Enter"||event.key===" ")&&event.target instanceof Element){
     const trigger=event.target.closest<HTMLElement>(selector);
     if(trigger){event.preventDefault();if(active===trigger&&panel?.matches(":popover-open"))closePopup();else showPopup(trigger);}
