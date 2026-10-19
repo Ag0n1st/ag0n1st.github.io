@@ -22,16 +22,19 @@ function scheduleHide(){
 }
 function position(trigger:HTMLElement,popup:HTMLElement){
   const origin=trigger.getBoundingClientRect();
-  const bounds=popup.getBoundingClientRect();
   const margin=10;
+  const spaceBelow=window.innerHeight-origin.bottom-margin-9;
+  const spaceAbove=origin.top-margin-9;
+  // Never cover the hovered icon: otherwise a long data table intercepts
+  // its own hover target (and blocks the next icon in the matrix).
+  const placeBelow=spaceBelow>=spaceAbove;
+  const available=Math.max(64,placeBelow?spaceBelow:spaceAbove);
+  popup.style.maxHeight=Math.min(740,Math.floor(available))+"px";
+  const bounds=popup.getBoundingClientRect();
   const left=Math.max(margin,Math.min(origin.left,window.innerWidth-bounds.width-margin));
-  const below=window.innerHeight-origin.bottom;
-  const above=origin.top;
-  const top=below>=Math.min(bounds.height,260)||below>=above
-    ? Math.max(margin,Math.min(origin.bottom+9,window.innerHeight-bounds.height-margin))
-    : Math.max(margin,origin.top-bounds.height-9);
+  const top=placeBelow?origin.bottom+9:origin.top-bounds.height-9;
   popup.style.left=left+"px";
-  popup.style.top=top+"px";
+  popup.style.top=Math.max(margin,top)+"px";
 }
 function ensurePanel(host:HTMLElement):HTMLDivElement{
   if(!panel){
