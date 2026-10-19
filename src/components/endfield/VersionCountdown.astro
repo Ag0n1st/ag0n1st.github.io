@@ -7,7 +7,7 @@ const en=lang==="en";
 const l=(de:string,enValue:string)=>en?enValue:de;
 const finishDate=new Date(patch.endTimestamp);
 const humanDate=new Intl.DateTimeFormat(en?"en-GB":"de-DE",{
-  timeZone:patch.zone,year:"numeric",month:"long",day:"numeric",hour:"2-digit",minute:"2-digit",timeZoneName:"short"
+  timeZone:patch.zone,year:"numeric",month:"long",day:"numeric",hour:"2-digit",minute:"2-digit"
 }).format(finishDate);
 const remaining=Math.max(0,Math.ceil((patch.endTimestamp-Date.now())/60000));
 const initial=[Math.floor(remaining/1440),Math.floor(remaining%1440/60),remaining%60].map(n=>String(n).padStart(2,"0"));
@@ -30,7 +30,7 @@ const parts=[{id:"days",title:l("Tage","Days"),value:initial[0]},{id:"hours",tit
       </>)}
     </div>
     <p class="countdown-accessible" data-countdown-readable aria-live="off"></p>
-    <p class="countdown-ends"><strong>{l("Voraussichtliches Ende","Estimated end")}:</strong> <time datetime={patch.endsAt}>{humanDate}</time></p>
+    <p class="countdown-ends"><strong>{l("Voraussichtliches Ende","Estimated end")}:</strong> <time datetime={patch.endsAt}>{humanDate} {l(patch.displayZoneDe,patch.displayZoneEn)}</time></p>
     <p class="countdown-source">{l(patch.sourceLabelDe,patch.sourceLabelEn)}</p>
     <p class="countdown-ended" data-countdown-ended hidden>{l("Das errechnete Ende ist erreicht. Ein neuer Termin wird erst nach Bestätigung eingetragen.","The estimated end has passed. A new time will only appear after verification.")}</p>
   </main>

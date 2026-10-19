@@ -82,6 +82,10 @@ test("latest released operator only gets one NEW label, not the latest edit",()=
  assert.match(css,/color:#ffe985/);
  assert.match(css,/data-element="heat"/);
  assert.match(css,/color:#ff9a9f/);
+ assert.match(css,/\.op-card-new\{[^}]*visibility:visible/);
+ assert.doesNotMatch(css,/^\/\/ /m,"Raw JS-style comments must not swallow CSS rules");
+ const overview=read("src/components/operator/sections/OperatorOverview.astro");
+ assert.match(overview,/op-chip op-element-chip" data-element=\{gameData\?\.operator\.element\?\.toLowerCase\(\)\}/);
 });
 test("optional closed Gear Matrix lives after Build Finder, Si & Liino enabled, others hidden",()=>{
  const component=read("src/components/operator/sections/OperatorEquipment.astro");
@@ -94,6 +98,16 @@ test("optional closed Gear Matrix lives after Build Finder, Si & Liino enabled, 
  assert.match(component,/matrix\.metrics\.map/);
  assert.match(component,/matrix\.rows\.map/);
  assert.match(component,/matrix\.rows\.length===0/);
+ assert.match(component,/data-matrix-expand/);
+ assert.match(component,/<dialog class="op-matrix-dialog"/);
+ assert.match(component,/data-matrix-dialog-content/);
+ const sharedGuide=read("src/components/operator/OperatorGuide.astro");
+ assert.match(sharedGuide,/\.showModal\(\)/);
+ assert.match(sharedGuide,/original\.cloneNode\(true\)/);
+ const css=read("src/styles/operator-guides.css");
+ assert.match(css,/\.op-matrix-dialog::backdrop/);
+ assert.match(css,/\.op-matrix-dialog-scroll\{[^}]*overflow:auto/);
+ assert.match(css,/\.op-matrix-dialog-scroll \.op-equipment-matrix\{width:max-content/);
  for(const slug of ["si","liino"]){
   const text=read("src/content/operator-guides/"+slug+".md");
   assert.match(text,/equipment:\n  builds:/);
@@ -113,16 +127,19 @@ test("optional closed Gear Matrix lives after Build Finder, Si & Liino enabled, 
   assert.equal(binary.toString("ascii",8,12),"WEBP");
  }
 });
-test("26 November 2026 00:00 CET is immutable absolute 23:00Z and cannot shift by one hour",()=>{
- assert.equal(CURRENT_VERSION.endsAt,"2026-11-26T00:00:00+01:00");
- assert.equal(CURRENT_VERSION.timeZone,"Europe/Berlin");
- assert.equal(CURRENT_VERSION.endsAtUtc,"2026-11-25T23:00:00.000Z");
- assert.equal(CURRENT_VERSION.endTimestamp,Date.UTC(2026,10,25,23));
- assert.equal((CURRENT_VERSION.endTimestamp-Date.parse("2026-11-25T22:00:00Z"))/3600000,1);
- assert.equal((CURRENT_VERSION.endTimestamp-Date.parse("2026-11-25T23:00:00Z"))/3600000,0);
+test("26 November 2026 00:00 at fixed UTC+2 is 22:00Z, independent of Berlin winter time",()=>{
+ assert.equal(CURRENT_VERSION.endsAt,"2026-11-26T00:00:00+02:00");
+ assert.equal(CURRENT_VERSION.timeZone,"Etc/GMT-2");
+ assert.equal(CURRENT_VERSION.displayZoneDe,"MESZ (UTC+2)");
+ assert.equal(CURRENT_VERSION.displayZoneEn,"CEST (UTC+2)");
+ assert.equal(CURRENT_VERSION.endsAtUtc,"2026-11-25T22:00:00.000Z");
+ assert.equal(CURRENT_VERSION.endTimestamp,Date.UTC(2026,10,25,22));
+ assert.equal((CURRENT_VERSION.endTimestamp-Date.parse("2026-11-25T21:00:00Z"))/3600000,1);
+ assert.equal((CURRENT_VERSION.endTimestamp-Date.parse("2026-11-25T22:00:00Z"))/3600000,0);
  assert.throws(()=>parseVersionCountdownMarkdown(read("src/data/endfield/version-countdown.md")
-     .replace("2026-11-26T00:00:00+01:00","2026-11-26T00:00:00+00:00")),/offset does not match/);
+     .replace("2026-11-26T00:00:00+02:00","2026-11-26T00:00:00+01:00")),/offset does not match/);
  const timer=read("src/components/endfield/VersionCountdown.astro");
  assert.match(timer,/data-ends-at=\{patch\.endsAtUtc\}/);
  assert.match(timer,/data-ends-local=\{patch\.endsAt\}/);
+ assert.match(timer,/l\(patch\.displayZoneDe,patch\.displayZoneEn\)/);
 });

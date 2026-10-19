@@ -728,10 +728,11 @@ def smoke_i18n(page, base_url, width):
                page.locator('a.endfield-nav-link[href="'+("/endfield/cheatsheets/" if lang=="de" else "/en/endfield/cheatsheets/")+'"] .nav-upcoming-wrench').count()==1,
                label+": "+lang+" new unfinished navigation tabs show their wrench icons")
         check=page.locator("[data-version-countdown]").evaluate(
-            "(el)=>({utc:new Date(el.dataset.endsAt).toISOString(),local:el.dataset.endsLocal,hours:(Date.parse(el.dataset.endsAt)-Date.parse('2026-11-25T22:00:00Z'))/3600000})")
-        verify(check["utc"]=="2026-11-25T23:00:00.000Z" and
-               check["local"]=="2026-11-26T00:00:00+01:00" and check["hours"]==1,
-               label+": "+lang+" version timer deadline equals local 00:00 CET instead of 01:00")
+            "(el)=>({utc:new Date(el.dataset.endsAt).toISOString(),local:el.dataset.endsLocal,hours:(Date.parse(el.dataset.endsAt)-Date.parse('2026-11-25T21:00:00Z'))/3600000})")
+        verify(check["utc"]=="2026-11-25T22:00:00.000Z" and
+               check["local"]=="2026-11-26T00:00:00+02:00" and check["hours"]==1 and
+               ("MESZ (UTC+2)" if lang=="de" else "CEST (UTC+2)") in page.locator(".countdown-ends").inner_text(),
+               label+": "+lang+" countdown deadline equals 00:00 at fixed UTC+2")
     for lang,route in (("de","/endfield/speedruns/"),("en","/en/endfield/speedruns/")):
         page.goto(base_url+route)
         verify(page.locator("html").get_attribute("lang")==lang and
@@ -753,6 +754,21 @@ def smoke_i18n(page, base_url, width):
         verify(badges.count()==1 and badges.first.inner_text()=="NEW" and
                page.locator(".op-grid .op-card").first.locator(".op-card-new").count()==1,
                label+": "+lang+" latest released operator is uniquely marked NEW")
+        verify(badges.first.is_visible() and badges.first.evaluate(
+            "(el)=>({opacity:getComputedStyle(el).opacity,visibility:getComputedStyle(el).visibility})")=={"opacity":"1","visibility":"visible"},
+            label+": "+lang+" NEW badge must be visible without hover")
+        colors=page.locator(".op-grid .op-element-chip").evaluate_all(
+            "(els)=>Object.fromEntries(els.filter(el=>['electric','electro','heat'].includes(el.dataset.element)).map(el=>[el.dataset.element,getComputedStyle(el).color]))")
+        # The current three published guides have no Heat operator. Probe its style
+        # with a temporary chip, rather than fabricating an operator in the index.
+        heat_color=page.evaluate("""() => {
+            const chip=document.createElement('span');
+            chip.className='op-chip op-element-chip';chip.dataset.element='heat';
+            document.body.appendChild(chip);
+            const color=getComputedStyle(chip).color;chip.remove();return color;
+        }""")
+        verify(colors.get("electric",colors.get("electro"))=="rgb(255, 233, 133)" and heat_color=="rgb(255, 154, 159)",
+               label+": "+lang+" Electro yellow and Heat red before hover")
         check_overflow(page,label+" "+lang+" operator index")
         for slug in ("si","liino"):
             route=prefix+("/endfield/operatoren/" if lang=="de" else "/endfield/operators/")+slug+"/"
@@ -770,6 +786,24 @@ def smoke_i18n(page, base_url, width):
             verify(len(cells)==5 and all(cell.strip()=="—" for cell in cells),
                    label+": "+lang+" "+slug+" unverified matrix percentages remain blank")
             check_overflow(page,label+" "+lang+" "+slug+" matrix")
+            verify(page.locator("#uebersicht .op-element-chip").count()==1,
+                   label+": "+lang+" "+slug+" guide profile has element-coloured chip")
+            source_note=page.locator(".op-locale-note-bottom")
+            verify(source_note.count()==1 and source_note.is_visible() and
+                   source_note.evaluate("(el)=>el.previousElementSibling?.id==='fazit'"),
+                   label+": "+lang+" "+slug+" SKPORT source snapshot comes after Fazit")
+            details.locator("[data-matrix-expand]").click()
+            dialog=details.locator("[data-matrix-dialog]")
+            dialog.wait_for(state="visible")
+            verify(dialog.evaluate("(el)=>el.open") and
+                   dialog.locator(".op-matrix-dialog-scroll .op-equipment-matrix tbody tr").count()==(2 if slug=="si" else 3),
+                   label+": "+lang+" "+slug+" complete matrix is shown in fullscreen dialog")
+            bounds=dialog.evaluate("(el)=>({width:el.getBoundingClientRect().width,viewport:innerWidth,scroll:el.querySelector('[data-matrix-dialog-content]').scrollWidth,client:el.querySelector('[data-matrix-dialog-content]').clientWidth})")
+            verify(bounds["width"]<=bounds["viewport"]+1 and bounds["client"]>0 and bounds["scroll"]>=bounds["client"],
+                   label+": "+lang+" "+slug+" dialog remains inside viewport; table scrolls when needed")
+            page.keyboard.press("Escape")
+            verify(not dialog.evaluate("(el)=>el.open"),label+": "+lang+" "+slug+" Escape closes matrix")
+            check_overflow(page,label+" "+lang+" "+slug+" after matrix dialog")
         page.goto(base_url+prefix+("/endfield/operatoren/typhoeus/" if lang=="de" else "/endfield/operators/typhoeus/"))
         verify(page.locator('[data-guide-disclosure="equipment-matrix"]').count()==0,
                label+": "+lang+" other operators do not render the optional matrix")

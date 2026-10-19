@@ -6,12 +6,14 @@ import {SPEEDRUN_PLAYLIST_ID} from "../../src/data/endfield/speedrunPlaylist.mjs
 import {parseSpeedrunPlaylist,parseSpeedrunPlaylistPage} from "../../src/lib/content/speedrunFeed.mjs";
 const read=p=>readFileSync(p,"utf8");
 
-test("manual 1.6 Protocol Pass cutoff has editor-friendly Markdown and Berlin midnight",()=>{
+test("manual 1.6 Protocol Pass cutoff has fixed UTC+2 and editor-friendly Markdown",()=>{
  const md=read("src/data/endfield/version-countdown.md");
  assert.match(md,/version: "1[.]6"/);
  assert.equal(CURRENT_VERSION.status,"estimated");
- assert.equal(new Date(CURRENT_VERSION.endsAt).toISOString(),"2026-11-25T23:00:00.000Z");
- assert.equal(new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Berlin",day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"}).format(new Date(CURRENT_VERSION.endsAt)),"26/11/2026, 00:00");
+ assert.equal(new Date(CURRENT_VERSION.endsAt).toISOString(),"2026-11-25T22:00:00.000Z");
+ assert.equal(new Intl.DateTimeFormat("en-GB",{timeZone:"Etc/GMT-2",day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"}).format(new Date(CURRENT_VERSION.endsAt)),"26/11/2026, 00:00");
+ assert.equal(CURRENT_VERSION.displayZoneDe,"MESZ (UTC+2)");
+ assert.equal(CURRENT_VERSION.displayZoneEn,"CEST (UTC+2)");
  assert.match(CURRENT_VERSION.sourceLabelDe,/Protokoll-Pass/);
  assert.match(CURRENT_VERSION.sourceLabelEn,/Protocol Pass/);
  assert.doesNotMatch(read("src/components/endfield/VersionCountdown.astro"),/sourceUrl|Community-Versionskalender/);
