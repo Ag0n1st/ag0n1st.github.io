@@ -207,7 +207,23 @@ equipment:
       - {id: special-bonus, labelDe: "Combo-Bonus", labelEn: "Combo Bonus"}
       - {id: weapon-bonus, labelDe: "Waffenbonus", labelEn: "Weapon Bonus"}
       - {id: set-bonus, labelDe: "Setbonus", labelEn: "Set Bonus"}
-    rows: []
+    rows:
+      - id: si-balanced
+        label: "Type 50 Yinglung · Balanced"
+        values: {}
+        weaponId: "1280"
+        armorId: "type-50-yinglung-soft-armor"
+        glovesId: "type-50-yinglung-gauntlets"
+        kit1Id: "type-50-yinglung-beacon"
+        kit2Id: "349"
+      - id: si-main
+        label: "Type 50 Yinglung · Max. DMG"
+        values: {}
+        weaponId: "1280"
+        armorId: "type-50-yinglung-soft-armor"
+        glovesId: "type-50-yinglung-gauntlets"
+        kit1Id: "type-50-yinglung-beacon"
+        kit2Id: "365"
 potentials:
   entries:
     - level: 1

@@ -763,8 +763,12 @@ def smoke_i18n(page, base_url, width):
             details.locator("summary").click()
             verify(details.get_attribute("open") is not None and
                    details.locator(".op-equipment-matrix thead th img").count()==6 and
-                   details.locator(".op-matrix-empty-row").count()==1,
-                   label+": "+lang+" "+slug+" matrix operator plus five equipment icons and no invented rows")
+                   details.locator(".op-equipment-matrix tbody tr").count()==(2 if slug=="si" else 3) and
+                   details.locator(".op-matrix-empty-row").count()==0,
+                   label+": "+lang+" "+slug+" matrix shows guide-approved setups and all five gear slots")
+            cells=details.locator(".op-equipment-matrix tbody tr:first-child td:not(.op-matrix-gear-cell)").all_text_contents()
+            verify(len(cells)==5 and all(cell.strip()=="—" for cell in cells),
+                   label+": "+lang+" "+slug+" unverified matrix percentages remain blank")
             check_overflow(page,label+" "+lang+" "+slug+" matrix")
         page.goto(base_url+prefix+("/endfield/operatoren/typhoeus/" if lang=="de" else "/endfield/operators/typhoeus/"))
         verify(page.locator('[data-guide-disclosure="equipment-matrix"]').count()==0,

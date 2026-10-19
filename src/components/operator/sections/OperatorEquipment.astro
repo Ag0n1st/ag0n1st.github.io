@@ -246,6 +246,7 @@ import { guideText } from "../../../lib/i18n/guideUi";
             <span class="op-guide-accordion-hint">{model.lang==="en"?"Compare Gear Setups":"Rüstungssetups vergleichen"}</span>
           </summary>
           <div class="op-guide-accordion-content">
+            {matrix.rows.length>0 && matrix.rows.every(row=>Object.keys(row.values).length===0) && <p class="op-muted op-body-copy">{model.lang==="en"?"The setups reflect existing guide recommendations. Comparison values are not yet calculated or verified; dashes do not mean zero.":"Die Setups stammen aus bestehenden Guide-Empfehlungen. Vergleichswerte wurden noch nicht berechnet oder geprüft; Striche bedeuten nicht null."}</p>}
             {matrix.metrics.length>0 ?
               <div class="op-matrix-scroller" role="region" tabindex="0" aria-label={model.lang==="en"?"Gear comparison matrix":"Ausrüstungs-Vergleichsmatrix"}>
                 <table class="op-equipment-matrix">
