@@ -482,18 +482,16 @@
    position, rather than restarting the pink-to-cyan scale. 4 gaps × 4px. */
 .op-meter i.active{background-image:linear-gradient(90deg,var(--pink),var(--cyan));background-repeat:no-repeat;background-size:calc(500% + 16px) 100%;background-position:calc((var(--meter-step) - 1) * 25%) 0}
 .op-chip.op-element-chip{font-weight:700}
-.op-element-chip[data-element="electric"],.op-element-chip[data-element="electro"]{color:#c0a4ff;border-color:#8560d0;background:rgba(151,108,225,.13)}
+.op-element-chip[data-element="electric"],.op-element-chip[data-element="electro"]{color:#ffe985;border-color:#d9b92e;background:rgba(231,193,39,.14)}
 .op-element-chip[data-element="cryo"]{color:#91e3ff;border-color:#52aacc;background:rgba(83,186,225,.12)}
-.op-element-chip[data-element="heat"]{color:#ffae82;border-color:#d87c48;background:rgba(239,112,55,.12)}
+.op-element-chip[data-element="heat"]{color:#ff9a9f;border-color:#e5545b;background:rgba(226,57,72,.14)}
 .op-element-chip[data-element="nature"]{color:#b6e39b;border-color:#72af68;background:rgba(112,190,98,.12)}
 .op-element-chip[data-element="physical"]{color:#efcfba;border-color:#c9a082;background:rgba(185,149,125,.12)}
 
-// Latest released operator guide card – not tied to an edit timestamp.
+/* Latest released operator guide card: visible without hover; not tied to an edit timestamp. */
 .op-card-art{position:relative}
-.op-card-new{position:absolute;top:12px;right:12px;z-index:2;display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:5px 12px;background:linear-gradient(105deg,#ec4ea8,#9f3bdd);border:1px solid #ffadf2;border-radius:9px;color:#fff;box-shadow:0 4px 16px #0009;font-size:12px;font-weight:700;letter-spacing:.12em;line-height:1}
-// Owner-requested game-element label colors (source element IDs, never translated names).
-.op-element-chip[data-element="electric"],.op-element-chip[data-element="electro"]{color:#ffe985;border-color:#d9b92e;background:rgba(231,193,39,.14)}
-.op-element-chip[data-element="heat"]{color:#ff9a9f;border-color:#e5545b;background:rgba(226,57,72,.14)}
+.op-card-new{position:absolute;top:12px;right:12px;z-index:2;opacity:1;visibility:visible;pointer-events:none;display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:5px 12px;background:linear-gradient(105deg,#ec4ea8,#9f3bdd);border:1px solid #ffadf2;border-radius:9px;color:#fff;box-shadow:0 4px 16px #0009;font-size:12px;font-weight:700;letter-spacing:.12em;line-height:1}
+/* Element colours use original SKPORT IDs, independent of translated labels. */
 
 
 
@@ -542,3 +540,19 @@
 /* Anchor visually hidden column names inside each cell, not at page root:
    otherwise absolutely positioned sr-only labels increase document.scrollWidth. */
 .op-equipment-matrix thead th{position:relative}
+
+/* Matrix: full-sized, accessible dialog outside the narrow guide column. */
+.op-matrix-actions{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin:12px 0}
+.op-matrix-actions .op-muted{margin:0;flex:1 1 230px;font-size:11px}
+.op-matrix-expand-button,.op-matrix-dialog-close{font:inherit;font-size:12px;font-weight:700;color:#f6f3fa;background:#302536;border:1px solid #7f5b95;border-radius:9px;padding:10px 14px;min-height:42px;cursor:pointer}
+.op-matrix-expand-button:hover,.op-matrix-dialog-close:hover{border-color:var(--cyan)}
+.op-matrix-expand-button:focus-visible,.op-matrix-dialog-close:focus-visible,.op-matrix-dialog-scroll:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.op-matrix-scroller{scrollbar-width:thin;scrollbar-color:#766581 #242229}
+.op-matrix-dialog{box-sizing:border-box;width:min(96vw,1560px);max-width:96vw;max-height:92dvh;padding:clamp(12px,2vw,24px);border:1px solid #675173;border-radius:16px;background:#19171f;color:#f6f3fa;box-shadow:0 24px 90px #000c}
+.op-matrix-dialog::backdrop{background:rgba(4,3,9,.85)}
+.op-matrix-dialog-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.op-matrix-dialog-header strong{font-size:clamp(15px,1.8vw,21px)}
+.op-matrix-dialog-header form{margin:0}
+.op-matrix-dialog-scroll{box-sizing:border-box;max-width:100%;max-height:calc(92dvh - 110px);overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;border:1px solid #39343e;border-radius:12px;background:#242229}
+.op-matrix-dialog-scroll .op-equipment-matrix{width:max-content;min-width:100%;margin:0}
+@media(max-width:680px){.op-matrix-dialog{max-width:98vw;width:98vw;padding:10px}.op-matrix-dialog-scroll{max-height:calc(92dvh - 90px)}.op-matrix-dialog-header{margin-bottom:10px}}
