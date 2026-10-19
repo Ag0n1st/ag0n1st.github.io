@@ -1,5 +1,6 @@
 ---
 import EndfieldPlaceholder from "../../layouts/EndfieldPlaceholder.astro";
+import {featuredBosses} from "../../lib/endfield/threatCatalog";
 interface Props {lang?:"de"|"en"}
 const {lang="de"}=Astro.props;
 const en=lang==="en";
@@ -10,6 +11,15 @@ const l=(de:string,english:string)=>en?english:de;
     <span class="section-kicker">ARKNIGHTS: ENDFIELD · SPEEDRUNS</span>
     <h1 class="endfield-stacked-title"><span>Community</span><span>Leaderboard<span class="title-period">.</span></span></h1>
     <p class="endfield-utility-intro">{l("Hier entsteht das Community-Leaderboard für Speedrun-Rankings der aktuellen Bosse.","This is where the community leaderboard for current boss speedruns will appear.")}</p>
+    <h2>{l("Geplante Boss-Rankings","Planned Boss Rankings")}</h2>
+    <div class="endfield-boss-grid" aria-label={l("Bosse mit geplanten Ranglisten","Bosses with planned rankings")}>
+      {featuredBosses.map(boss=><article class="endfield-boss-card">
+        <figure>{boss.image && <img src={boss.image} alt={boss.label} loading="lazy" decoding="async" />}</figure>
+        <div class="endfield-boss-meta"><strong>{boss.label}</strong>
+          <small>{boss.provisional?l("Operatorbild als Platzhalter – Wiki-Eintrag folgt","Operator artwork placeholder – wiki entry pending"):l("Leaderboard in Vorbereitung","Leaderboard coming soon")}</small>
+        </div>
+      </article>)}
+    </div>
     <div class="endfield-coming-cards">
       <article class="op-cardlet endfield-coming-card">
         <h2>{l("Boss-Rankings","Boss Rankings")}</h2>

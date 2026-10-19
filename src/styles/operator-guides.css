@@ -495,7 +495,7 @@
 .op-element-chip[data-element="electric"],.op-element-chip[data-element="electro"]{color:#ffe985;border-color:#d9b92e;background:rgba(231,193,39,.14)}
 .op-element-chip[data-element="heat"]{color:#ff9a9f;border-color:#e5545b;background:rgba(226,57,72,.14)}
 
-.endfield-nav-link .endfield-nav-text{display:inline-flex;flex-direction:column;align-items:center;line-height:1.15;gap:2px}
+
 
 /* Horizontally scrollable editable operator-specific equipment matrix. */
 .op-matrix-scroller{max-width:100%;overflow-x:auto;border:1px solid #39343e;border-radius:13px;background:#242229}

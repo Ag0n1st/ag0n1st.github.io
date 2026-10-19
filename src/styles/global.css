@@ -384,3 +384,16 @@ h1 { margin: 27px 0 17px; font-size: clamp(56px, 6.3vw, 82px); line-height: .95;
 .endfield-coming-card p{font-size:13px;color:var(--muted);line-height:1.75;margin:0}
 .endfield-coming-card .section-kicker{color:var(--cyan);font-size:10px}
 .endfield-coming-card .op-chip{margin-top:auto}
+
+/* Stacked labels for upcoming Endfield subpages, also on pages that do not
+   import the operator-guide stylesheet. */
+.endfield-nav-link .endfield-nav-text{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1;gap:2px}
+.endfield-coming-card .op-chip{display:inline-flex;align-items:center;padding:5px 9px;border-radius:999px;background:#27212f;border:1px solid #54425e;color:#d9c8e7;font-size:11px;font-weight:700}
+.endfield-coming-card .op-link{color:var(--cyan);text-underline-offset:3px}
+.endfield-boss-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,148px),1fr));gap:12px;margin:18px 0 32px}
+.endfield-boss-card{display:flex;flex-direction:column;min-width:0;border-radius:12px;border:1px solid #36323f;overflow:hidden;background:#1c1b22}
+.endfield-boss-card figure{margin:0;display:grid;place-items:center;height:140px;padding:10px;background:radial-gradient(circle at 50% 40%,#33273b,#1b1b23)}
+.endfield-boss-card figure img{display:block;max-width:100%;max-height:100%;object-fit:contain}
+.endfield-boss-card .endfield-boss-meta{display:flex;flex-direction:column;gap:5px;padding:12px}
+.endfield-boss-card strong{font-size:12px;line-height:1.35}
+.endfield-boss-card small{font-size:10px;color:var(--muted);line-height:1.5}
