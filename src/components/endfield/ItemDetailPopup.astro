@@ -1,0 +1,91 @@
+---
+import {getEndfieldItem} from "../../lib/endfield/itemCatalog";
+import {getOfficialGear,getOfficialWeapon} from "../../lib/endfield/equipmentDetails";
+import {gameItemName} from "../../lib/endfield/terminology";
+import MaterialCosts from "./MaterialCosts.astro";
+
+interface Props {id:string;lang?:"de"|"en"}
+const {id,lang="de"}=Astro.props;
+const catalog=getEndfieldItem(id);
+const gear=catalog?.categories.includes("Gear")?getOfficialGear(id):undefined;
+const weapon=catalog?.categories.includes("Weapons")?getOfficialWeapon(id):undefined;
+const name=gameItemName(id,lang,catalog?.name??id);
+const l=(de:string,en:string)=>lang==="en"?en:de;
+const gearTables=gear?.stats.flatMap(tab=>tab.tables)??[];
+const refiningTables=gear?.artificing.flatMap(tab=>tab.tables)??[];
+const attributeTables=weapon?.attributes.flatMap(tab=>tab.tables)??[];
+const rankTables=weapon?.details.flatMap(tab=>tab.tables)??[];
+const tuningTables=weapon?.tuning.flatMap(tab=>tab.tables)??[];
+const isVerified=(gear??weapon)?.status==="verified";
+---
+<article class="op-item-detail-card" lang={lang}>
+  <header class="op-item-detail-header">
+    {catalog?.iconPath && <img src={catalog.iconPath} alt="" width="44" height="44" loading="lazy" decoding="async" />}
+    <div>
+      <strong>{name}</strong>
+      <small>{gear?l("Ausrüstung","Gear"):l("Waffe","Weapon")}{gear?.level?" · Lv. "+gear.level:""}{weapon?.weaponType?" · "+weapon.weaponType:""}</small>
+    </div>
+    <span class="op-item-detail-close-hint">{l("Esc: schließen","Esc: close")}</span>
+  </header>
+  {isVerified ? <>
+    {gear && <>
+      <div class="op-item-detail-facts">
+        {gear.gearSlot && <span>{l("Slot","Slot")}: {gear.gearSlot}</span>}
+        {gear.setName && <span>{l("Set","Set")}: {gear.setName}</span>}
+      </div>
+      {gearTables.length>0 && <section class="op-item-detail-section">
+        <h4>{l("Standardwerte und Attribute","Base stats and attributes")}</h4>
+        {gearTables.map(table=><div class="op-item-detail-table-scroll"><table>
+          <thead><tr>{table.columns.map(column=><th scope="col">{column||"—"}</th>)}</tr></thead>
+          <tbody>{table.rows.map(row=><tr>{row.cells.map((value,i)=>i===0?<th scope="row">{value||"—"}</th>:<td>{value||"—"}</td>)}</tr>)}</tbody>
+        </table></div>)}
+      </section>}
+      {gear.setEffect && <section class="op-item-detail-section">
+        <h4>{l("Seteffekt","Set effect")}</h4>
+        <p class="op-item-detail-copy">{gear.setEffect}</p>
+      </section>}
+      <section class="op-item-detail-section">
+        <h4>{l("Veredelungsstufen und Werte","Refinement levels and values")}</h4>
+        {refiningTables.length>0 ? refiningTables.map(table=><div class="op-item-detail-table-scroll"><table>
+          <thead><tr>{table.columns.map(column=><th scope="col">{column||"—"}</th>)}</tr></thead>
+          <tbody>{table.rows.map(row=><tr>{row.cells.map((value,i)=>i===0?<th scope="row">{value||"—"}</th>:<td>{value||"—"}</td>)}</tr>)}</tbody>
+        </table></div>) : <p class="op-item-detail-empty">{l("Keine offiziellen Veredelungsstufen gelistet.","No official refinement levels listed.")}</p>}
+      </section>
+      <section class="op-item-detail-section">
+        <h4>{l("Mindestmaterialien zur Herstellung","Minimum crafting materials")}</h4>
+        {gear.standardRecipe?.materials?.length && gear.recipeStatus==="verified"
+          ? <MaterialCosts items={gear.standardRecipe.materials} lang={lang} />
+          : <p class="op-item-detail-empty">{gear.recipeStatus==="needs-review"
+            ? l("Die Materialangaben müssen noch überprüft werden.","Material requirements still need verification.")
+            : l("Kein offizielles Standardrezept dokumentiert.","No official standard recipe documented.")}</p>}
+        {gear.standardRecipe?.materials?.length && gear.recipeStatus==="verified" &&
+          <p class="op-item-detail-footnote">{l("Grundrezept ohne zusätzliche Veredelungs- oder Upgrade-Kosten.","Base recipe excluding additional refinement or upgrade costs.")}</p>}
+      </section>
+    </>}
+    {weapon && <>
+      <section class="op-item-detail-section">
+        <h4>{l("Attribute und Grundwerte","Attributes and base values")}</h4>
+        {attributeTables.length ? attributeTables.map(table=><div class="op-item-detail-table-scroll"><table>
+          <thead><tr>{table.columns.map(column=><th scope="col">{column||"—"}</th>)}</tr></thead>
+          <tbody>{table.rows.map(row=><tr>{row.cells.map((value,i)=>i===0?<th scope="row">{value||"—"}</th>:<td>{value||"—"}</td>)}</tr>)}</tbody>
+        </table></div>) : <p class="op-item-detail-empty">{l("Noch keine offiziellen Attributwerte dokumentiert.","No official attribute values documented.")}</p>}
+      </section>
+      <section class="op-item-detail-section">
+        <h4>{l("Waffenrang x1 / x2 / x3 und Effekte","Weapon ranks x1 / x2 / x3 and effects")}</h4>
+        {rankTables.length ? rankTables.map(table=><div class="op-item-detail-table-scroll"><table>
+          <thead><tr>{table.columns.map(column=><th scope="col">{column||"—"}</th>)}</tr></thead>
+          <tbody>{table.rows.map(row=><tr>{row.cells.map((value,i)=>i===0?<th scope="row">{value||"—"}</th>:<td>{value||"—"}</td>)}</tr>)}</tbody>
+        </table></div>) : <p class="op-item-detail-empty">{l("Keine vollständigen offiziellen Rangwerte dokumentiert.","No complete official rank values documented.")}</p>}
+      </section>
+      {tuningTables.length>0 && <section class="op-item-detail-section">
+        <h4>{l("Tuning-Werte","Tuning values")}</h4>
+        {tuningTables.map(table=><div class="op-item-detail-table-scroll"><table>
+          <thead><tr>{table.columns.map(column=><th scope="col">{column||"—"}</th>)}</tr></thead>
+          <tbody>{table.rows.map(row=><tr>{row.cells.map((value,i)=>i===0?<th scope="row">{value||"—"}</th>:<td>{value||"—"}</td>)}</tr>)}</tbody>
+        </table></div>)}
+      </section>}
+    </>}
+    <p class="op-item-detail-source">{l("Quelle: SKPORT-Wiki · Datenstand","Source: SKPORT Wiki · snapshot")} {(gear??weapon)?.source.snapshot}</p>
+  </> :
+  <p class="op-item-detail-empty">{l("Für dieses Item liegen noch keine vollständig geprüften offiziellen SKPORT-Detailwerte, Veredelungs- oder Herstellungsdaten vor. Nicht bestätigte Werte werden nicht angezeigt.","Fully verified official SKPORT details, refinement or crafting data are not yet available for this item. Unverified values are not displayed.")}</p>}
+</article>
