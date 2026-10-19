@@ -95,7 +95,7 @@ def normalize(sub):
         desc=" ".join(c.get("text",{}).get("text","").strip()
                       for c in captions if isinstance(c,dict) and isinstance(c.get("text"),dict))
         cover=brief.get("cover") or ""
-        if cover and not re.fullmatch(r"https://static\\.skport\\.com/image/[A-Za-z0-9/_-]+\\.png",cover):
+        if cover and not re.fullmatch(r"https://static\.skport\.com/image/[A-Za-z0-9/_-]+\.png",cover):
             # Do not cache untrusted images from arbitrary hosts.
             cover=""
         all_items.append({
@@ -167,7 +167,7 @@ async def main():
     data=normalize(await fetch_public_catalog())
     cache_art(data)
     OUTPUT.parent.mkdir(parents=True,exist_ok=True)
-    OUTPUT.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+    OUTPUT.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print("SAVED",OUTPUT,"SIZE",OUTPUT.stat().st_size,flush=True)
 
 if __name__=="__main__":
