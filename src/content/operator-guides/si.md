@@ -330,6 +330,16 @@ equipment:
             kit2Id: "334"
           - id: si-support-support-mix-2
             label: "SUPPORT-MIX-2"
+            values: {atk: "5068", cs-dmg: "+98.7%", ult-gain: "+49.4%"}
+            weaponId: "1280"
+            weaponPotential: "P0"
+            weaponTuning: "9/9/4"
+            armorId: "eternal-xiranite-overalls"
+            glovesId: "eternal-xiranite-channeling-gloves"
+            kit1Id: "eternal-xiranite-rangefinder"
+            kit2Id: "349"
+          - id: si-support-support-mix-3
+            label: "SUPPORT-MIX-3"
             values: {atk: "5077", cs-dmg: "+107.6%", ult-gain: "+43.9%"}
             weaponId: "1280"
             weaponPotential: "P0"
@@ -338,8 +348,8 @@ equipment:
             glovesId: "1128"
             kit1Id: "eternal-xiranite-rangefinder"
             kit2Id: "eternal-xiranite-rangefinder"
-          - id: si-support-support-mix-3
-            label: "SUPPORT-MIX-3"
+          - id: si-support-support-mix-4
+            label: "SUPPORT-MIX-4"
             values: {atk: "5082", cs-dmg: "+107.6%", ult-gain: "+43.7%"}
             weaponId: "1280"
             weaponPotential: "P0"
