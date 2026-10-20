@@ -52,8 +52,8 @@ test("Only three Liino rows have calculated WILL/ULT.gain/AMP, unknown cells rem
 test("Both operators label every weapon card but never hide name/preview; P5 badge is yellow",()=>{
   assert.match(schema,/weaponPotential: z\.enum\(\["P0","P5"\]\)\.optional\(\)/);
   assert.match(schema,/weaponTuning: z\.enum\(\["9\/9\/4","9\/9\/9"\]\)\.optional\(\)/);
-  assert.equal((siSection.match(/weaponPotential: "P0"/g)||[]).length,18);
-  assert.equal((siSection.match(/weaponTuning: "9\/9\/4"/g)||[]).length,18);
+  assert.equal((siSection.match(/weaponPotential: "P0"/g)||[]).length,19);
+  assert.equal((siSection.match(/weaponTuning: "9\/9\/4"/g)||[]).length,19);
   assert.equal((siSection.match(/weaponPotential: "P5"/g)||[]).length,0);
   assert.match(ui,/data-matrix-weapon-potential/);
   assert.match(ui,/data-matrix-weapon-tuning/);

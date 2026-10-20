@@ -32,8 +32,9 @@ const expectedSupport=[
  ["SUPPORT-DPS-3","5077","+134.6%","+27.9%","eternal-xiranite-mod-armor","1128","eternal-xiranite-rangefinder","eternal-xiranite-rangefinder"],
  ["SUPPORT-DPS-4","5082","+152.5%","+16.7%","796","eternal-xiranite-channeling-gloves","eternal-xiranite-rangefinder","eternal-xiranite-rangefinder"],
  ["SUPPORT-MIX-1","5077","+80.7%","+59.9%","eternal-xiranite-mod-armor","1128","eternal-xiranite-rangefinder","334"],
- ["SUPPORT-MIX-2","5077","+107.6%","+43.9%","eternal-xiranite-overalls","1128","eternal-xiranite-rangefinder","eternal-xiranite-rangefinder"],
- ["SUPPORT-MIX-3","5082","+107.6%","+43.7%","796","330","eternal-xiranite-rangefinder","eternal-xiranite-rangefinder"],
+ ["SUPPORT-MIX-2","5068","+98.7%","+49.4%","eternal-xiranite-overalls","eternal-xiranite-channeling-gloves","eternal-xiranite-rangefinder","349"],
+ ["SUPPORT-MIX-3","5077","+107.6%","+43.9%","eternal-xiranite-overalls","1128","eternal-xiranite-rangefinder","eternal-xiranite-rangefinder"],
+ ["SUPPORT-MIX-4","5082","+107.6%","+43.7%","796","330","eternal-xiranite-rangefinder","eternal-xiranite-rangefinder"],
  ["SUPPORT-ULT-1","5077","+53.8%","+75.9%","eternal-xiranite-overalls","1128","eternal-xiranite-rangefinder","334"],
  ["SUPPORT-ULT-2","5082","+53.8%","+75.4%","796","330","eternal-xiranite-rangefinder","334"],
  ["SUPPORT-ULT-3","5082","+0%","+107.4%","796","330","334","334"],
@@ -44,7 +45,8 @@ test("Si ships exactly two independent and accessible matrices",()=>{
  assert.match(schema,/variants: z\.array/);
  assert.match(matrix,/    variants:\n      - id: dps/);
  assert.match(matrix,/      - id: support/);
- assert.deepEqual([dps.length,support.length],[5,13]);
+ assert.deepEqual([dps.length,support.length],[5,14]);
+ assert.deepEqual(support.filter(r=>r.label.startsWith("SUPPORT-MIX-")).map(r=>r.label),["SUPPORT-MIX-1","SUPPORT-MIX-2","SUPPORT-MIX-3","SUPPORT-MIX-4"]);
  assert.deepEqual(dps.map(row=>row.label),["MAIN-DPS-0","MAIN-DPS-1","MAIN-DPS-2","MAIN-DPS-3","MAIN-DPS-4"]);
  assert.deepEqual(support.slice(0,5).map(row=>row.label),["SUPPORT-DPS-0","SUPPORT-DPS-1","SUPPORT-DPS-2","SUPPORT-DPS-3","SUPPORT-DPS-4"]);
  for(const m of ["ATK","CS.DMG","ULT.gain"])assert.match(matrix,new RegExp('labelEn: "'+m.replace(".","\\.")+'"'));
@@ -71,6 +73,9 @@ test("every Si spreadsheet row and exact column value matches imported setup",()
  assert.equal(support.filter(r=>r.label==="SUPPORT-ULT-4").length,1,"Final CSV labels are unique");
  assert.equal(support.filter(r=>!r.values.includes("ult-gain:")).length,0);
  assert.equal(support.filter(r=>r.label==="SUPPORT-ULT-5").length,1);
+ assert.equal(new Set(support.map(row=>row.id)).size,14);
+ assert.equal(new Set(support.map(row=>row.label)).size,14);
+ assert.deepEqual(dps.map(row=>row.label),["MAIN-DPS-0","MAIN-DPS-1","MAIN-DPS-2","MAIN-DPS-3","MAIN-DPS-4"]);
  for(const row of [...dps,...support]){
    assert.match(row.values,/cs-dmg: "\+\d+(?:\.\d+)?%"/);
    assert.match(row.values,/ult-gain: "\+\d+(?:\.\d+)?%"/);
