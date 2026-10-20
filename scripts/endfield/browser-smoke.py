@@ -879,23 +879,31 @@ def smoke_i18n(page, base_url, width):
                 support=details.locator('[data-matrix-panel="support"]')
                 verify(support.is_visible() and not details.locator('[data-matrix-panel="dps"]').is_visible() and
                        tabs.nth(1).get_attribute("aria-selected")=="true" and
-                       support.locator(".op-equipment-matrix tbody tr").count()==13,
-                       label+": "+lang+" switching to SUPPORT shows 13 distinct setups")
+                       support.locator(".op-equipment-matrix tbody tr").count()==14,
+                       label+": "+lang+" switching to SUPPORT shows 14 distinct setups")
                 support_names=[t.strip() for t in support.locator(".op-equipment-matrix tbody th[scope='row']").all_text_contents()]
                 verify(support_names[:5]==["SUPPORT-DPS-0","SUPPORT-DPS-1","SUPPORT-DPS-2","SUPPORT-DPS-3","SUPPORT-DPS-4"],
                        label+": "+lang+" Si SUPPORT tab retains original SUPPORT-DPS-0 through SUPPORT-DPS-4")
+                mix_names=[t.strip() for t in support.locator(".op-equipment-matrix tbody th[scope='row']").all_text_contents() if t.strip().startswith("SUPPORT-MIX-")]
+                verify(mix_names==["SUPPORT-MIX-1","SUPPORT-MIX-2","SUPPORT-MIX-3","SUPPORT-MIX-4"],
+                       label+": "+lang+" four uniquely ordered SUPPORT-MIX builds")
+                mix_new=support.locator(".op-equipment-matrix tbody tr").nth(6)
+                verify([x.strip() for x in mix_new.locator("td:not(.op-matrix-gear-cell)").all_text_contents()]==["5068","+98.7%","+49.4%"] and
+                       mix_new.locator(".op-matrix-weapon-potential").inner_text().strip()=="P0" and
+                       mix_new.locator(".op-matrix-gear-cell").count()==5,
+                       label+": "+lang+" new SUPPORT-MIX-2 preserves CSV bonuses, five item slots and P0 weapon label")
                 support_first=support.locator(".op-equipment-matrix tbody tr").first
                 verify([x.strip() for x in support_first.locator("td:not(.op-matrix-gear-cell)").all_text_contents()]==["5830","+125.6%","+0%"],
                        label+": "+lang+" SUPPORT matrix uses original CSV data")
-                verify([x.strip() for x in support.locator(".op-equipment-matrix tbody tr").nth(11).locator("td:not(.op-matrix-gear-cell)").all_text_contents()]==["5068","+0%","+108.1%"],
+                verify([x.strip() for x in support.locator(".op-equipment-matrix tbody tr").nth(12).locator("td:not(.op-matrix-gear-cell)").all_text_contents()]==["5068","+0%","+108.1%"],
                        label+": "+lang+" SUPPORT ULT-4 now has explicit +108.1% rather than a missing value")
-                support_last=support.locator(".op-equipment-matrix tbody tr").nth(12)
+                support_last=support.locator(".op-equipment-matrix tbody tr").nth(13)
                 verify("SUPPORT-ULT-5" in support_last.locator('th[scope="row"]').inner_text() and
                        [x.strip() for x in support_last.locator("td:not(.op-matrix-gear-cell)").all_text_contents()]==["5077","+0%","+107.9%"],
                        label+": "+lang+" final SUPPORT-ULT-5 is distinct, with signed CSV bonuses")
                 support.locator("[data-matrix-expand]").click()
                 dialog.wait_for(state="visible")
-                verify(dialog.locator(".op-equipment-matrix tbody tr").count()==13 and
+                verify(dialog.locator(".op-equipment-matrix tbody tr").count()==14 and
                        "SUPPORT" in dialog.locator("[data-matrix-dialog-variant]").inner_text(),
                        label+": "+lang+" large matrix follows selected SUPPORT tab")
                 page.keyboard.press("Escape")
