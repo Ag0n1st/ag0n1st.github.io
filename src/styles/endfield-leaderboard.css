@@ -1,0 +1,103 @@
+
+/* Endfield Community Leaderboard – native, fully local imagery and dark cards. */
+.cl-page{max-width:1200px}
+.cl-page-lead{font-size:13px;color:var(--muted);margin:10px 0 26px}
+.cl-container{position:relative;isolation:isolate;min-width:0;overflow:hidden;background:linear-gradient(142deg,#211b2a 0%,#17151d 55%,#12141a 100%);border:1px solid #45394d;border-radius:20px;padding:clamp(20px,3.3vw,34px);box-shadow:0 16px 45px #0004}
+.cl-event-container{min-height:132px;margin-bottom:26px;border-color:#3b3744;background:linear-gradient(120deg,#1f1b27,#16181e)}
+.cl-section-head{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.cl-section-head h1,.cl-section-head h2{margin:7px 0 0;color:#f7f3fb;line-height:1.15;letter-spacing:-.035em}
+.cl-section-head h1{font-size:clamp(27px,3.5vw,42px)}
+.cl-section-head h2{font-size:clamp(22px,2.9vw,32px)}
+.cl-eyebrow{display:block;font-size:10px;letter-spacing:.19em;font-weight:700;color:#d47cbd}
+.cl-status{flex:none;font-size:10px;letter-spacing:.07em;font-weight:700;color:#bfb2c6;border:1px solid #514658;border-radius:999px;background:#29232f;padding:6px 10px}
+.cl-event-intro{color:#aaa4b0;font-size:13px;line-height:1.65;margin:19px 0 0;max-width:650px}
+.cl-community-head{position:relative;min-height:87px;padding-right:100px}
+.cl-trophy-art{position:absolute;width:100px;height:100px;right:0;top:-13px;opacity:.22;color:#dec6dd;pointer-events:none}
+.cl-filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;max-width:750px;margin:28px 0 18px}
+.cl-control{display:flex;flex-direction:column;gap:9px;min-width:0}
+.cl-control label{font-size:12px;font-weight:700;color:#e4dce9}
+.cl-control select{appearance:auto;width:100%;min-width:0;min-height:46px;background:#29252f;color:#f4edf7;border:1px solid #5d4a62;border-radius:10px;padding:10px 12px;font:inherit;font-size:13px;cursor:pointer}
+.cl-control select:focus-visible,.cl-boss-choice:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.cl-boss-choices-label{font-size:10px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:#aaa1b4;margin:23px 0 11px}
+.cl-boss-choices{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;max-width:100%;overflow-x:auto;scrollbar-width:thin;padding:3px 2px 12px}
+.cl-boss-choice{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-width:0;min-height:137px;gap:4px;border:1px solid #433846;background:linear-gradient(145deg,#29202e,#181920);border-radius:12px;color:#e3dce6;cursor:pointer;overflow:hidden;padding:7px 6px 11px;transition:border-color .15s,background .15s,transform .15s;font:inherit}
+.cl-boss-choice:hover{transform:translateY(-2px);border-color:#966488;background:#2a202e}
+.cl-boss-choice[aria-pressed="true"]{border-color:#f19cdb;background:linear-gradient(155deg,#412b49,#211a28);box-shadow:inset 0 0 0 1px #86547b,0 4px 17px #0005;color:#fff}
+.cl-boss-art{display:flex;align-items:center;justify-content:center;width:100%;height:88px;min-height:0}
+.cl-boss-art img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 6px 7px #0009)}
+.cl-boss-name{display:block;max-width:100%;font-size:10px;font-weight:800;line-height:1.3;text-align:center;overflow-wrap:anywhere}
+.cl-results-panel[hidden]{display:none!important}
+.cl-results{margin-top:22px}
+.cl-results-head{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid #3a3141;padding:5px 0 16px;min-height:89px}
+.cl-results-head h3{font-size:clamp(18px,2.4vw,27px);letter-spacing:-.03em;margin:5px 0 0;color:#faf6fc}
+.cl-results-kicker{font-size:10px;color:var(--cyan);letter-spacing:.13em;font-weight:800}
+.cl-current-boss{width:76px;height:76px;object-fit:contain;filter:drop-shadow(0 4px 10px #000a)}
+.cl-demo-disclaimer{font-size:11px;color:#d5b7d7;line-height:1.65;margin:14px 0 -1px}
+.cl-rank-table{border-collapse:separate;border-spacing:0 8px;width:100%;font-size:12px;text-align:left;table-layout:fixed}
+.cl-rank-table th,.cl-rank-table td{vertical-align:middle}
+.cl-rank-table thead th{color:#aba0b5;font-size:10px;text-transform:uppercase;letter-spacing:.09em;font-weight:800;padding:10px 9px}
+.cl-rank-table thead th:nth-child(1){width:54px}
+.cl-rank-table thead th:nth-child(2){width:21%}
+.cl-rank-table thead th:nth-child(3){width:65px;text-align:center}
+.cl-rank-table thead th:nth-child(4){width:31%}
+.cl-rank-table thead th:nth-child(5){width:16%}
+.cl-rank-table thead th:nth-child(6){width:80px}
+.cl-rank-row th,.cl-rank-row td{background:#24222b;border-top:1px solid #3d3544;border-bottom:1px solid #3d3544;padding:9px}
+.cl-rank-row th:first-child{border-left:1px solid #3d3544;border-radius:11px 0 0 11px}
+.cl-rank-row td:last-child{border-right:1px solid #3d3544;border-radius:0 11px 11px 0}
+.cl-placement{display:flex;align-items:center;justify-content:center;width:31px;height:31px;border-radius:8px;color:#e7deeb;background:#36313e;font-size:14px;font-weight:900;font-variant-numeric:tabular-nums}
+.cl-placement.is-first{color:#ffe985;background:#453923}
+.cl-placement.is-second{color:#e0e5ed;background:#3d414a}
+.cl-placement.is-third{color:#eaba98;background:#493528}
+.cl-player{font-weight:800;color:#f2edf6;overflow-wrap:anywhere}
+.cl-country{text-align:center;font-size:24px}
+.cl-country span{display:inline-block;vertical-align:middle}
+.cl-team-items{display:inline-flex;align-items:center;gap:5px;max-width:100%}
+.cl-team-operator{position:relative;display:inline-flex;width:43px;height:43px;border:1px solid #58445e;border-radius:8px;background:#30283a;overflow:hidden;flex:0 0 43px;align-items:center;justify-content:center}
+.cl-team-operator img{display:block;width:100%;height:100%;object-fit:contain}
+.cl-operator-potential{position:absolute;z-index:1;right:1px;bottom:1px;display:block;font-size:9px;line-height:1.1;min-width:17px;padding:2px;border:1px solid #8b7191;border-radius:4px;background:#1d1824e8;color:#fff;font-weight:900;text-align:center;pointer-events:none}
+.cl-run-time a{color:#8ed5f1;text-decoration:none;font-size:16px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cl-run-time a:hover{text-decoration:underline}
+.cl-external{font-size:11px;margin-left:4px}
+.cl-test-label{display:inline-flex;margin-left:5px;vertical-align:middle;border:1px solid #aa7cba;border-radius:5px;padding:2px 4px;color:#e9c5f1;font-size:9px;font-weight:900;letter-spacing:.04em}
+.cl-run-version{font-size:12px;color:#c1b3ce;font-weight:700}
+.cl-empty-row td{text-align:center;border:1px dashed #534458;border-radius:11px;background:#211d29;padding:28px 15px;color:#aaa0b4;line-height:1.6}
+.cl-ranking-note{font-size:11px;color:#a9a0b1;line-height:1.65;margin:12px 0 18px}
+.cl-footer{display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap;border-top:1px solid #403447;margin-top:8px;padding-top:18px}
+.cl-footer p{flex:1 1 350px;max-width:700px;margin:0;font-size:12px;color:#b8aebe;line-height:1.65}
+.cl-footer a{color:#8ed5f1;text-decoration:none;border:1px solid #456078;border-radius:9px;padding:10px 14px;font-size:11px;font-weight:800}
+.cl-footer a:hover{border-color:#9aceeb;background:#20303c}
+@media(max-width:950px){.cl-boss-choices{grid-template-columns:repeat(7,minmax(125px,1fr))}}
+@media(max-width:760px){
+ .cl-container{border-radius:15px;padding:19px 13px}
+ .cl-community-head{min-height:70px;padding-right:62px}
+ .cl-trophy-art{width:63px;height:63px;top:0}
+ .cl-filters{gap:11px}
+ .cl-boss-choices{grid-template-columns:repeat(7,123px);padding-bottom:13px}
+ .cl-boss-choice{min-height:131px}
+ .cl-rank-table,.cl-rank-table tbody{display:block}
+ .cl-rank-table thead{display:none}
+ .cl-rank-table{margin-top:12px}
+ .cl-rank-table tbody tr.cl-rank-row{display:grid;grid-template-columns:40px minmax(0,1fr) 46px auto;grid-template-areas:"rank name country time" ". team team version";align-items:center;column-gap:6px;row-gap:10px;padding:11px 9px;margin-bottom:10px;border:1px solid #443748;border-radius:12px;background:#24212b}
+ .cl-rank-row th,.cl-rank-row td{display:block;border:0!important;background:transparent;padding:0;border-radius:0!important}
+ .cl-rank-number{grid-area:rank}
+ .cl-player{grid-area:name}
+ .cl-country{grid-area:country}
+ .cl-team{grid-area:team}
+ .cl-run-time{grid-area:time;text-align:right}
+ .cl-run-version{grid-area:version;text-align:right;font-size:11px}
+ .cl-run-time a{font-size:14px}
+ .cl-team-operator{width:42px;height:42px;flex-basis:42px}
+ .cl-rank-table tbody tr.cl-empty-row{display:block}
+}
+@media(max-width:460px){
+ .cl-filters{grid-template-columns:1fr}
+ .cl-country{font-size:21px}
+ .cl-test-label{font-size:8px;padding:1px 3px;margin-left:3px}
+ .cl-team-items{gap:3px}
+ .cl-team-operator{width:37px;height:37px;flex-basis:37px}
+ .cl-results-head{min-height:76px}
+ .cl-current-boss{width:62px;height:62px}
+ .cl-rank-table tbody tr.cl-rank-row{grid-template-columns:33px minmax(0,1fr) 36px auto;column-gap:4px}
+ .cl-run-time a{font-size:13px}
+}
