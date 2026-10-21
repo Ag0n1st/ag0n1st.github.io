@@ -96,7 +96,7 @@ const countryName=(code:string)=>code==="DEU"?l("Deutschland","Germany"):code;
                     </span>
                   </td>
                   <td class="cl-run-time">
-                    <a href={run.link} target="_blank" rel="noopener noreferrer" aria-label={run.status==="demo"?l("Platzhalter: YouTube-Kanal öffnen","Placeholder: open YouTube channel"):l("Run-Video auf YouTube öffnen","Open run video on YouTube")}>{run.time}<span class="cl-external" aria-hidden="true">↗</span></a>
+                    <a href={run.link} target="_blank" rel="noopener noreferrer" aria-label={run.status==="demo"?l("Platzhaltervideo auf YouTube öffnen","Open placeholder video on YouTube"):l("Run-Video auf YouTube öffnen","Open run video on YouTube")}>{run.time}<span class="cl-external" aria-hidden="true">↗</span></a>
                   </td>
                   <td class="cl-run-version">{run.version}</td>
                 </tr>) : <tr class="cl-empty-row"><td colspan="6">{l("Für diese Auswahl sind noch keine verifizierten Runs eingetragen.","No verified runs have been submitted for this selection yet.")}</td></tr>}
