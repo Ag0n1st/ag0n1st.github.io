@@ -4,6 +4,7 @@ import {featuredBosses} from "../../lib/endfield/threatCatalog";
 import {getOperatorImageUrl} from "../../lib/endfield/operatorAssets";
 import {displayLeaderboardRows,flagForCountry} from "../../lib/endfield/leaderboardRanking.mjs";
 import leaderboard from "../../data/endfield/community-leaderboard.json";
+import LeaderboardEvent from "../endfield/LeaderboardEvent.astro";
 import "../../styles/endfield-leaderboard.css";
 
 interface Props {lang?:"de"|"en"}
@@ -12,7 +13,7 @@ const en=lang==="en";
 const l=(de:string,english:string)=>en?english:de;
 // UI display order is newest boss first, independent of the SKPORT snapshot.
 const bosses=[...featuredBosses].reverse();
-const defaultBoss="rhodagn";
+const defaultBoss="si";
 const versions=["all-time",...leaderboard.versions.slice().sort((a,b)=>Number(b.slice(1))-Number(a.slice(1)))];
 const bossLabels=new Map(bosses.map(boss=>[boss.slug,boss.label]));
 const countryName=(code:string)=>code==="DEU"?l("Deutschland","Germany"):code;
@@ -22,21 +23,11 @@ const countryName=(code:string)=>code==="DEU"?l("Deutschland","Germany"):code;
     <span class="section-kicker">ARKNIGHTS: ENDFIELD · SPEEDRUNS</span>
     <p class="cl-page-lead">{l("Boss-Speedruns aus der Community · RE-Krise · Höchster Schwierigkeitsgrad","Community boss speedruns · RE-Crisis · Highest difficulty")}</p>
 
-    <section class="cl-container cl-event-container" aria-labelledby="cl-event-title">
-      <div class="cl-section-head">
-        <div>
-          <span class="cl-eyebrow">{l("ZEITLICH BEGRENZT","LIMITED-TIME")}</span>
-          <h2 id="cl-event-title">Event Leaderboard</h2>
-        </div>
-        <span class="cl-status">{l("In Vorbereitung","Coming soon")}</span>
-      </div>
-      <p class="cl-event-intro">{l("Hier erscheint das jeweils aktuelle Patch-Event mit seinen eigenen Regeln und Ergebnissen. Der Event-Bereich ist noch nicht aktiv.","The current patch event, its rules and results will appear here. No event is active yet.")}</p>
-    </section>
+    <LeaderboardEvent lang={lang} />
 
     <section class="cl-container cl-main-container" aria-labelledby="cl-community-title">
       <div class="cl-section-head cl-community-head">
         <div>
-          <span class="cl-eyebrow">ARKNIGHTS: ENDFIELD</span>
           <h1 id="cl-community-title">Community Leaderboard</h1>
         </div>
         <svg class="cl-trophy-art" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -81,7 +72,7 @@ const countryName=(code:string)=>code==="DEU"?l("Deutschland","Germany"):code;
               </div>
               {boss.image && <img class="cl-current-boss" src={boss.image} alt="" loading="lazy" decoding="async" width="76" height="76"/>}
             </div>
-            {demoOnly && <p class="cl-demo-disclaimer">{l("Demo-Eintrag zur Darstellung – kein verifizierter Community-Rekord.","Display-only demo entry – not a verified community record.")}</p>}
+            {demoOnly && <p class="cl-demo-disclaimer">{l("Platzhaltereintrag zur Darstellung – kein verifizierter Community-Rekord.","Placeholder entry for display purposes – not a verified community record.")}</p>}
             <table class="cl-rank-table" aria-label={l("Top 10 für ","Top 10 for ")+boss.label}>
               <thead><tr>
                 <th scope="col">#</th>
@@ -94,19 +85,18 @@ const countryName=(code:string)=>code==="DEU"?l("Deutschland","Germany"):code;
               <tbody>
                 {rows.length ? rows.map(run=><tr class:list={["cl-rank-row",{"is-demo":run.status==="demo"}]} data-run-status={run.status}>
                   <th class="cl-rank-number" scope="row"><span class:list={["cl-placement",{"is-first":run.rank===1,"is-second":run.rank===2,"is-third":run.rank===3}]}>{run.rank}</span></th>
-                  <td class="cl-player">{run.discordName}</td>
-                  <td class="cl-country"><span role="img" aria-label={countryName(run.countryCode)} title={countryName(run.countryCode)}>{flagForCountry(run.countryCode)}</span></td>
+                  <td class="cl-player">{run.discordName}{run.status==="demo"&&<span class="cl-placeholder-label">{l("Platzhalter","Placeholder")}</span>}</td>
+                  <td class="cl-country">{run.countryCode==="DEU"?<span class="cl-country-flag cl-flag-de" role="img" aria-label={countryName(run.countryCode)} title={countryName(run.countryCode)}></span>:<span role="img" aria-label={countryName(run.countryCode)} title={countryName(run.countryCode)}>{flagForCountry(run.countryCode)}</span>}</td>
                   <td class="cl-team">
                     <span class="cl-team-items">
                       {run.team.map(member=><span class="cl-team-operator" title={member.slug.charAt(0).toUpperCase()+member.slug.slice(1)+" · P"+member.potential} aria-label={member.slug+" P"+member.potential}>
                         {getOperatorImageUrl(member.slug,"official-icon") && <img src={getOperatorImageUrl(member.slug,"official-icon")} alt={member.slug} width="42" height="42" loading="lazy" decoding="async"/>}
-                        <span class="cl-operator-potential">P{member.potential}</span>
+                        <span class:list={["cl-operator-potential",{"is-p5":member.potential===5}]}>P{member.potential}</span>
                       </span>)}
                     </span>
                   </td>
                   <td class="cl-run-time">
-                    <a href={run.link} target="_blank" rel="noopener noreferrer" aria-label={run.status==="demo"?l("Testlink: YouTube-Kanal öffnen","Test link: open YouTube channel"):l("Run-Video auf YouTube öffnen","Open run video on YouTube")}>{run.time}<span class="cl-external" aria-hidden="true">↗</span></a>
-                    {run.status==="demo"&&<span class="cl-test-label">TEST</span>}
+                    <a href={run.link} target="_blank" rel="noopener noreferrer" aria-label={run.status==="demo"?l("Platzhalter: YouTube-Kanal öffnen","Placeholder: open YouTube channel"):l("Run-Video auf YouTube öffnen","Open run video on YouTube")}>{run.time}<span class="cl-external" aria-hidden="true">↗</span></a>
                   </td>
                   <td class="cl-run-version">{run.version}</td>
                 </tr>) : <tr class="cl-empty-row"><td colspan="6">{l("Für diese Auswahl sind noch keine verifizierten Runs eingetragen.","No verified runs have been submitted for this selection yet.")}</td></tr>}
