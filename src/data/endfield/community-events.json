@@ -47,5 +47,38 @@
       "demoRunId": "demo-ag0n1st-si-v16"
     }
   ],
-  "verifiedRuns": []
+  "verifiedRuns": [
+    {
+      "id": "duality-v16-si-krombi-0129",
+      "status": "verified",
+      "eventId": "duality",
+      "eligibleForCommunity": true,
+      "boss": "si",
+      "playerId": "krombi",
+      "discordName": "Krombi",
+      "countryCode": "DE",
+      "team": [
+        {
+          "slug": "si",
+          "potential": 4
+        },
+        {
+          "slug": "arcane",
+          "potential": 3
+        },
+        {
+          "slug": "tangtang",
+          "potential": 4
+        },
+        {
+          "slug": "gilberta",
+          "potential": 2
+        }
+      ],
+      "time": "01:29",
+      "version": "v1.6",
+      "link": "https://youtu.be/24_sKEqnCm0",
+      "linkKind": "video"
+    }
+  ]
 }
