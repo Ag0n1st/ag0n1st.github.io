@@ -7,7 +7,8 @@ interface Props {lang?:"de"|"en"}
 const {lang="de"}=Astro.props;
 const en=lang==="en";
 const l=(de:string,english:string)=>en?english:de;
-const countryName=(code:string)=>code==="DEU"?l("Deutschland","Germany"):code;
+const isGermanFlag=(code:string)=>code==="DEU"||code==="DE";
+const countryName=(code:string)=>isGermanFlag(code)?l("Deutschland","Germany"):code;
 const events=eventData.events;
 const firstBackground=events[0]?.backgroundImage??"";
 const shortDate=(date:string)=>{const [year,month,day]=date.split("-");return year&&month&&day?`${day}.${month}.`:date;};
@@ -65,7 +66,7 @@ const shortDate=(date:string)=>{const [year,month,day]=date.split("-");return ye
             {rows.length ? rows.map(run=><tr class:list={["cl-rank-row",{"is-demo":run.status==="demo"}]} data-run-status={run.status}>
               <th class="cl-rank-number" scope="row"><span class:list={["cl-placement",{"is-first":run.rank===1,"is-second":run.rank===2,"is-third":run.rank===3}]}>{run.rank}</span></th>
               <td class="cl-player">{run.discordName}{run.status==="demo"&&<span class="cl-placeholder-label">{l("Platzhalter","Placeholder")}</span>}</td>
-              <td class="cl-country">{run.countryCode==="DEU" ? <span class="cl-country-flag cl-flag-de" role="img" aria-label={countryName(run.countryCode)} title={countryName(run.countryCode)}></span> : <span role="img" aria-label={countryName(run.countryCode)}>{flagForCountry(run.countryCode)}</span>}</td>
+              <td class="cl-country">{isGermanFlag(run.countryCode) ? <span class="cl-country-flag cl-flag-de" role="img" aria-label={countryName(run.countryCode)} title={countryName(run.countryCode)}></span> : <span role="img" aria-label={countryName(run.countryCode)}>{flagForCountry(run.countryCode)}</span>}</td>
               <td class="cl-team"><span class="cl-team-items">{run.team.map(member=><span class="cl-team-operator" title={member.slug+" · P"+member.potential}>
                 {getOperatorImageUrl(member.slug,"official-icon")&&<img src={getOperatorImageUrl(member.slug,"official-icon")} alt={member.slug} width="42" height="42" loading="lazy" decoding="async"/>}
                 <span class:list={["cl-operator-potential",{"is-p5":member.potential===5}]}>P{member.potential}</span>
