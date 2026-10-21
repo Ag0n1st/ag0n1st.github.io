@@ -974,21 +974,27 @@ def smoke_i18n(page, base_url, width):
         rule_summary.click()
         verify(not details.evaluate("(el)=>el.open") and not details.locator(".cl-event-rule").first.is_visible(),
                label+": "+lang+" rules collapse again without affecting event results")
-        event_demo=event_panel.locator(".cl-event-results .cl-rank-row")
-        verify(event_demo.count()==1 and event_demo.get_attribute("data-run-status")=="demo" and
-               event_demo.locator(".cl-player").inner_text().startswith("Ag0n1st") and
-               event_demo.locator(".cl-placeholder-label").inner_text()==("Platzhalter" if lang=="de" else "Placeholder") and
-               event_demo.locator(".cl-rank-number").inner_text().strip()=="1" and
-               event_demo.locator(".cl-run-time a").inner_text().strip().startswith("02:05") and
-               event_demo.locator(".cl-run-version").inner_text()=="v1.6" and
+        event_run=event_panel.locator(".cl-event-results .cl-rank-row")
+        verify(event_run.count()==1 and event_run.get_attribute("data-run-status")=="verified" and
+               event_run.locator(".cl-player").inner_text()=="Krombi" and
+               event_run.locator(".cl-placeholder-label").count()==0 and
+               event_run.locator(".cl-rank-number").inner_text().strip()=="1" and
+               event_run.locator(".cl-run-time a").inner_text().strip().startswith("01:29") and
+               event_run.locator(".cl-run-time a").get_attribute("href")=="https://youtu.be/24_sKEqnCm0" and
+               event_run.locator(".cl-run-version").inner_text()=="v1.6" and
                event_panel.locator(".cl-event-results .cl-empty-row").count()==0 and
-               event_panel.locator(".cl-demo-disclaimer").count()==1,
-               label+": "+lang+" Duality Top 10 includes clearly marked non-verified placeholder")
-        verify([x.strip() for x in event_demo.locator(".cl-operator-potential").all_text_contents()]==["P0","P0","P0","P5"] and
-               event_demo.locator(".cl-operator-potential.is-p5").count()==1 and
-               event_demo.locator(".cl-country-flag.cl-flag-de").count()==1 and
-               event_demo.locator(".cl-run-time a").get_attribute("href")=="https://youtu.be/SDqsynAplyI",
-               label+": "+lang+" event demo reuses correct team potential labels, flag and channel link")
+               event_panel.locator(".cl-demo-disclaimer").count()==0,
+               label+": "+lang+" Krombi is first verified Duality run with no placeholder label")
+        verify([x.strip() for x in event_run.locator(".cl-operator-potential").all_text_contents()]==["P4","P3","P4","P2"] and
+               [x.get_attribute("src") for x in event_run.locator(".cl-team-operator img").all()]==[
+                  "/images/endfield/operators/si/official-icon.webp",
+                  "/images/endfield/operators/arcane/official-icon.webp",
+                  "/images/endfield/operators/tangtang/official-icon.webp",
+                  "/images/endfield/operators/gilberta/official-icon.webp"] and
+               event_run.locator(".cl-operator-potential.is-p5").count()==0 and
+               event_run.locator(".cl-country-flag.cl-flag-de").count()==1 and
+               event_run.locator(".cl-country-flag.cl-flag-de").get_attribute("aria-label")==("Deutschland" if lang=="de" else "Germany"),
+               label+": "+lang+" real DE flag and Si P4 / Arcane P3 / Tangtang P4 / Gilberta P2 icons")
         headings=page.evaluate("""() => ({
           event:getComputedStyle(document.querySelector('.cl-event-head h2')).fontSize,
           community:getComputedStyle(document.querySelector('.cl-community-head h1')).fontSize
@@ -1011,35 +1017,38 @@ def smoke_i18n(page, base_url, width):
         verify(active.count()==1 and "Si" in active.locator("h3").inner_text() and
                active.locator(".cl-rank-row").count()==1 and
                active.locator(".cl-rank-number").inner_text().strip()=="1",
-               label+": "+lang+" Si Top 10 shows owner-approved placeholder example")
+               label+": "+lang+" global Si All-Time shows the verified Krombi result")
         row=active.locator(".cl-rank-row")
-        verify(row.get_attribute("data-run-status")=="demo" and
-               "Ag0n1st" in row.locator(".cl-player").inner_text() and
-               row.locator(".cl-placeholder-label").inner_text()==("Platzhalter" if lang=="de" else "Placeholder") and
-               row.locator(".cl-run-time .cl-test-label").count()==0 and
-               row.locator(".cl-team-operator").count()==4,
-               label+": "+lang+" placeholder label is next to Ag0n1st, not the time")
+        verify(row.get_attribute("data-run-status")=="verified" and
+               row.locator(".cl-player").inner_text()=="Krombi" and
+               row.locator(".cl-placeholder-label").count()==0 and
+               row.locator(".cl-run-time a").inner_text().startswith("01:29") and
+               row.locator(".cl-run-time a").get_attribute("href")=="https://youtu.be/24_sKEqnCm0" and
+               row.locator(".cl-run-version").inner_text()=="v1.6" and
+               row.locator(".cl-team-operator").count()==4 and
+               active.locator(".cl-demo-disclaimer").count()==0,
+               label+": "+lang+" community Si leaderboard hides former demo and links real 01:29 record")
         flag=row.locator(".cl-country .cl-flag-de")
         verify(flag.count()==1 and
                flag.get_attribute("aria-label")==("Deutschland" if lang=="de" else "Germany") and
                "linear-gradient" in flag.evaluate("(el)=>getComputedStyle(el).backgroundImage"),
-               label+": "+lang+" country renders as a real German tricolor instead of letters DE")
-        verify(row.locator(".cl-run-time a").inner_text().startswith("02:05") and
-               row.locator(".cl-run-time a").get_attribute("href")=="https://youtu.be/SDqsynAplyI" and
-               row.locator(".cl-run-version").inner_text()=="v1.6" and
-               active.locator(".cl-demo-disclaimer").count()==1,
-               label+": "+lang+" Si demo time MM:SS, YouTube link and non-verified disclaimer")
+               label+": "+lang+" DE country code renders as a CSS German tricolor")
         icons=row.locator(".cl-team-operator")
         verify(icons.count()==4 and
-               [x.strip() for x in row.locator(".cl-operator-potential").all_text_contents()]==["P0","P0","P0","P5"] and
+               [x.strip() for x in row.locator(".cl-operator-potential").all_text_contents()]==["P4","P3","P4","P2"] and
                [x.get_attribute("src") for x in icons.locator("img").all()]==[
                  "/images/endfield/operators/si/official-icon.webp",
                  "/images/endfield/operators/arcane/official-icon.webp",
                  "/images/endfield/operators/tangtang/official-icon.webp",
-                 "/images/endfield/operators/xaihi/official-icon.webp"] and
-               row.locator(".cl-operator-potential.is-p5").count()==1 and
-               row.locator(".cl-operator-potential.is-p5").evaluate("(el)=>getComputedStyle(el).color")=="rgb(255, 233, 133)",
-               label+": "+lang+" four official operator portraits and yellow P5 badge")
+                 "/images/endfield/operators/gilberta/official-icon.webp"] and
+               row.locator(".cl-operator-potential.is-p5").count()==0,
+               label+": "+lang+" the global result uses the exact same four operators and potentials")
+        notice=root.locator(".cl-update-notice")
+        verify(notice.count()==1 and
+               ("am Ende der Woche" if lang=="de" else "at the end of the week") in notice.inner_text() and
+               notice.evaluate("(el)=>getComputedStyle(el).borderLeftWidth")=="3px" and
+               notice.evaluate("(el)=>getComputedStyle(el).borderLeftColor")=="rgb(101, 232, 242)",
+               label+": "+lang+" guide-style weekly update disclaimer is visible above both leaderboards")
         boss_cards.last.click()
         verify(boss_select.input_value()=="rhodagn" and
                root.locator('[data-boss-choice="rhodagn"]').get_attribute("aria-pressed")=="true" and
@@ -1049,8 +1058,9 @@ def smoke_i18n(page, base_url, width):
         boss_select.select_option("si")
         version_select.select_option("v1.6")
         verify(root.locator(".cl-results-panel:not([hidden]) .cl-rank-row").count()==1 and
-               "version=v1.6" in page.url,
-               label+": "+lang+" Si placeholder remains visible in v1.6 filter")
+               "version=v1.6" in page.url and
+               root.locator(".cl-results-panel:not([hidden]) .cl-player").inner_text()=="Krombi",
+               label+": "+lang+" v1.6 patch ranking uses the verified Krombi run")
         page.reload()
         root=page.locator("[data-community-leaderboard]")
         verify(root.locator("[data-boss-select]").input_value()=="si" and
