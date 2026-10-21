@@ -16,7 +16,7 @@ if(root){
     for(const panel of panels)panel.hidden=panel.dataset.leaderboardBoss!==boss||panel.dataset.leaderboardVersion!==version;
     if(updateUrl){
       const url=new URL(location.href);
-      if(boss==="rhodagn")url.searchParams.delete("boss");
+      if(boss==="si")url.searchParams.delete("boss");
       else url.searchParams.set("boss",boss);
       if(version==="all-time")url.searchParams.delete("version");
       else url.searchParams.set("version",version);
@@ -24,10 +24,10 @@ if(root){
     }
   }
   bossSelect?.addEventListener("change",()=>select(bossSelect.value,versionSelect?.value??"all-time"));
-  versionSelect?.addEventListener("change",()=>select(bossSelect?.value??"rhodagn",versionSelect.value));
-  cards.forEach(card=>card.addEventListener("click",()=>select(card.dataset.bossChoice??"rhodagn",versionSelect?.value??"all-time")));
+  versionSelect?.addEventListener("change",()=>select(bossSelect?.value??"si",versionSelect.value));
+  cards.forEach(card=>card.addEventListener("click",()=>select(card.dataset.bossChoice??"si",versionSelect?.value??"all-time")));
   const params=new URLSearchParams(location.search);
-  const requestedBoss=params.get("boss")??"rhodagn";
+  const requestedBoss=params.get("boss")??"si";
   const requestedVersion=params.get("version")??"all-time";
   select(requestedBoss,requestedVersion,false);
 }
