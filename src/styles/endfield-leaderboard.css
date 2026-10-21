@@ -150,3 +150,7 @@
 .cl-event-rules[open] .cl-event-rules-chevron{transform:rotate(180deg)}
 .cl-event-rules .cl-event-rules-grid{padding:0 13px 14px}
 @media(max-width:460px){.cl-event-rules-toggle{padding:10px 11px;gap:7px}.cl-event-rules-title{font-size:15px}.cl-event-rules-toggle .cl-event-date{gap:4px}.cl-event-rules-toggle .cl-event-date-label{font-size:9px}.cl-event-rules-toggle .cl-event-date strong{font-size:11px;padding:5px 6px}.cl-event-rules .cl-event-rules-grid{padding:0 10px 11px}}
+
+/* Guide-style Friendly Disclaimer, matching Operator Potentials' op-notice. */
+.cl-update-notice{margin:0 0 22px;border-left:3px solid var(--cyan);padding:13px 15px;background:rgba(101,232,242,.06);border-radius:0 9px 9px 0;font-size:12px;line-height:1.7;color:#d9d0dd}
+.cl-update-notice strong{font-weight:800;margin-right:4px;color:#f2e8f5}
