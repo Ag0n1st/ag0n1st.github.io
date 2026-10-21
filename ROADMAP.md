@@ -5,7 +5,7 @@
 > **Projekt:** Ag0n1st – deutschsprachiges Gaming-/Guide-Portal.  
 > **Repository:** https://github.com/Ag0n1st/ag0n1st.github.io  
 > **Produktionswebsite:** https://ag0n1st.com (eigene Domain), alternativ https://ag0n1st.github.io  
-> **Hauptbranch:** `main`. Si-Guide aus **PR #34** live; anschließender Recherche- und Editorial-Voice-Abschluss **PR #35**, Squash `c5189e529237ca7707cb3d5824c1fc16219ad0b8`, [CI #157](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/38933564698) und [Pages #280](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/38933850978) erfolgreich. Nachfolgende reine Roadmap-Commits können den HEAD erneut ändern. Historischer erster Übergabestand war PR #12.  
+> **Hauptbranch:** `main`. Aktuell letzter Funktions-Merge **[PR #58](https://github.com/Ag0n1st/ag0n1st.github.io/pull/58)** (Duality-/Si-Rekord Krombi), Squash `735a5291624d9c842b8fc0da9e5a17c04af97ba1`, [CI #39686023719](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/39686023719) und [Pages #39686297220](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/39686297220) laut letzter Release-Dokumentation erfolgreich. Danach folgen reine Roadmap-Commits; aktueller Übergabestand §18.27. Frühere Si-Guide-PRs #34/#35 und ursprünglicher Handoff #12 stehen in der Historie.  
 > **Diese Dokumentation und die Autoritätslevel-Grenze 60:** [Pull Request #13](https://github.com/Ag0n1st/ag0n1st.github.io/pull/13).  
 > **Wichtig:** Bei jeder folgenden Entwicklungsphase diese Datei und das tatsächliche Repository **gemeinsam** prüfen. GitHub-Code und erfolgreiche CI-Läufe sind der Nachweis für Implementierungen; die Roadmap ist die verbindliche Sammlung von Anforderungen, Entscheidungen, Aufgaben und Übergabehinweisen.
 
@@ -25,7 +25,7 @@
 | Welcher Branch? | Normalerweise `main`; komplexe Änderungen zuerst in einem Feature-Branch, danach Merge. |
 | Welche Technologie? | Astro 5, HTML/CSS, wenig clientseitiges TypeScript/JavaScript; GitHub Pages per Actions. |
 | Was ist tatsächlich funktional? | Landing, Endfield-Übersicht, Operator-Guides, lokale SKPORT-Daten, Build-Finder; DE/EN-Speedrun-Playlist, Countdown und Si-/Liino-Gear-Matrizen; bilinguales Community- und Duality-Event-Leaderboard mit dem ersten bestätigten Run Krombi (§18.26). Manche Endfield-Toolseiten bleiben Platzhalter. |
-| Was ist inhaltlich noch leer? | Echte redaktionelle Builds/Teams/Wertungen der Operatoren; mehrere Endfield-Toolseiten; Neverness to Everness; About. |
+| Was ist inhaltlich noch leer? | Viele weitere Operator-Guides neben den ausgearbeiteten Liino-, Typhoeus- und Si-Guides; mehrere Endfield-System-/Toolseiten, Cheat Sheets im Detail, Teile von NTE und About. Fabrik bewusst pausiert. |
 | Was nicht verändern? | Öffentlich sichtbare Texte nicht aus Fantasie erstellen; kein Pflicht-Login; keine externe Datenbank zur normalen Anzeige; 100-MB-Endfield-Dateibudget. |
 | Wo liegen die Endfield-Spieldaten? | `src/data/endfield/`; offizielle Daten in `catalog/`, `operators/`; explizit recherchierte Community-Daten in `progression/`. |
 | Wo liegen persönliche Guide-Texte? | `src/content/operator-guides/<slug>.md`; Vorlage `_template.md`. |
@@ -72,7 +72,7 @@ Die Website ist die langfristige, auffindbare Wissensplattform rund um die Strea
 
 ### 1.3 Verbindliche Produkt-/Designpräferenzen
 
-- **Deutsch** als Primärsprache; Mehrsprachigkeit langfristig vorbereiten, nicht automatisch undurchsichtig übersetzen.
+- **Deutsch** als Ausgangssprache, aber seit 17.10.2026 vollständige **DE/EN-Parität** für sämtliche Website-Änderungen. Englische Guides und Seiten müssen dieselbe inhaltliche Tiefe und Struktur erhalten; beide Sprachen redaktionell konsistent, nicht als reduzierte Fallback-Seite führen.
 - **Dark-Gaming-Portal** mit **Magenta/Pink und Cyan** als CI-Akzenten; **Geist 400/700**.
 - Gleiche visuelle Grundsprache über alle Spiele hinweg; **spielspezifische Akzente** möglich.
 - Navigation: Logo/Wordmark links; Hauptlinks **Arknights: Endfield**, **Neverness to Everness**, **About Me**; Endfield-Zweitnavigation unter dem Hauptheader.
@@ -985,7 +985,7 @@ Dies ist eine **priorisierte Roadmap**, kein bereits bezahlter Projektvertrag un
 
 ### Phase P10 – Mehrsprachigkeit / Internationalisierung
 
-**Status:** [LANGFRISTIG GEPLANT]; Deutsch zuerst, keine ungefragte englische Vollkopie.
+**Status:** [DE/EN-GRUNDSTRUKTUR BEREITS LIVE; WEITERE RUBRIKEN LAUFEND ZWEISPRACHIG PFLEGEN]. Diese ursprüngliche P10-Planung ist für Navigation und bestehende Operator-Guides seit 17.10.2026 überholt; EN ist nicht nur eine spätere Option.
 
 - [ ] Einheitliche Locale-IDs und URL-Struktur festlegen.
 - [ ] Bereits getrennte Operator-Rohdaten (EN) und `locales/de/` als Ansatz behalten.
