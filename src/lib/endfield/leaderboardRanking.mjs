@@ -42,7 +42,7 @@ export function displayLeaderboardRows(data,boss,version="all-time"){
   if(verified.length)return verified;
   // Explicitly non-competitive owner demo for the default Rhodagn view only.
   const examples=(data.demoRuns||[]).filter(run=>
-    run.status==="demo" && run.boss==="rhodagn" && run.boss===boss &&
+    run.status==="demo" && run.boss==="si" && run.boss===boss &&
     (version==="all-time"||run.version===version));
   return examples.map((run,i)=>({...run,rank:i+1}));
 }
