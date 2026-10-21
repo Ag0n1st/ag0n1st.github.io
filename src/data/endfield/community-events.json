@@ -42,7 +42,9 @@
           "de": "Einreichung gemäß Regelwerk §4 über die angepinnte Discord-Nachricht.",
           "en": "Submit according to section 4 of the rules through the pinned Discord message."
         }
-      ]
+      ],
+      "backgroundImage": "/images/endfield/leaderboard/duality-background.webp",
+      "demoRunId": "demo-ag0n1st-si-v16"
     }
   ],
   "verifiedRuns": []
