@@ -131,3 +131,22 @@
 .cl-placeholder-label{display:inline-flex;vertical-align:middle;margin-left:8px;border:1px solid #9a799e;background:#38283e;color:#d8bfe0;border-radius:5px;font-size:9px;line-height:1.2;font-weight:800;padding:3px 5px;letter-spacing:.01em;white-space:nowrap}
 @media(max-width:760px){.cl-event-rules-grid{grid-template-columns:1fr}.cl-event-head{min-height:56px}}
 @media(max-width:460px){.cl-event-selector{max-width:none}.cl-placeholder-label{font-size:8px;margin-left:5px;padding:2px 4px}.cl-event-rule{padding:12px 10px}}
+
+
+/* Event-wide artwork follows the selected event; cover preserves aspect ratio,
+   remains center-aligned and expands with the full height of the container. */
+.cl-event-container{--cl-event-background:none}
+.cl-event-container::before{content:"";position:absolute;inset:0;z-index:0;background-image:var(--cl-event-background);background-size:cover;background-position:center center;background-repeat:no-repeat;opacity:.05;pointer-events:none}
+.cl-event-container>*{position:relative;z-index:1}
+.cl-event-rules{display:block;margin:18px 0 0;border:1px solid #53425a;border-radius:12px;background:linear-gradient(135deg,#2a2332e8,#211d28e8);overflow:hidden}
+.cl-event-rules-toggle{list-style:none;display:flex;align-items:center;gap:12px;min-height:58px;padding:10px 15px;cursor:pointer;color:#f5edf7}
+.cl-event-rules-toggle::-webkit-details-marker{display:none}
+.cl-event-rules-toggle:focus-visible{outline:2px solid var(--cyan);outline-offset:-3px}
+.cl-event-rules-toggle:hover{background:#ffffff08}
+.cl-event-rules-title{font-size:17px;font-weight:800}
+.cl-event-rules-toggle .cl-event-date{margin:0 0 0 auto;display:flex;gap:9px;align-items:center;justify-content:flex-end;flex-wrap:wrap;text-align:right}
+.cl-event-rules-toggle .cl-event-date strong{white-space:nowrap}
+.cl-event-rules-chevron{font-size:24px;font-weight:700;line-height:1;color:#ccb9d3;transform-origin:center;transition:transform .15s}
+.cl-event-rules[open] .cl-event-rules-chevron{transform:rotate(180deg)}
+.cl-event-rules .cl-event-rules-grid{padding:0 13px 14px}
+@media(max-width:460px){.cl-event-rules-toggle{padding:10px 11px;gap:7px}.cl-event-rules-title{font-size:15px}.cl-event-rules-toggle .cl-event-date{gap:4px}.cl-event-rules-toggle .cl-event-date-label{font-size:9px}.cl-event-rules-toggle .cl-event-date strong{font-size:11px;padding:5px 6px}.cl-event-rules .cl-event-rules-grid{padding:0 10px 11px}}
