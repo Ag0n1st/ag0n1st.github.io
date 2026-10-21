@@ -4,6 +4,7 @@ import {featuredBosses} from "../../lib/endfield/threatCatalog";
 import {getOperatorImageUrl} from "../../lib/endfield/operatorAssets";
 import {displayLeaderboardRows,flagForCountry} from "../../lib/endfield/leaderboardRanking.mjs";
 import leaderboard from "../../data/endfield/community-leaderboard.json";
+import events from "../../data/endfield/community-events.json";
 import LeaderboardEvent from "../endfield/LeaderboardEvent.astro";
 import "../../styles/endfield-leaderboard.css";
 
@@ -16,12 +17,18 @@ const bosses=[...featuredBosses].reverse();
 const defaultBoss="si";
 const versions=["all-time",...leaderboard.versions.slice().sort((a,b)=>Number(b.slice(1))-Number(a.slice(1)))];
 const bossLabels=new Map(bosses.map(boss=>[boss.slug,boss.label]));
-const countryName=(code:string)=>code==="DEU"?l("Deutschland","Germany"):code;
+const isGermanFlag=(code:string)=>code==="DEU"||code==="DE";
+const countryName=(code:string)=>isGermanFlag(code)?l("Deutschland","Germany"):code;
+// One authoritative submission: include event runs in general rankings only when
+// individually approved for the permanent Community Leaderboard.
+const generalRuns=[...leaderboard.verifiedRuns,...events.verifiedRuns.filter(run=>run.status==="verified"&&run.eligibleForCommunity===true)];
+const generalLeaderboard={...leaderboard,verifiedRuns:generalRuns};
 ---
 <EndfieldPlaceholder title="Community Leaderboard" kicker="ARKNIGHTS: ENDFIELD · COMMUNITY LEADERBOARD" active="leaderboard" lang={lang} description={l("Verifizierte Boss-Speedruns, Bestenlisten und Community-Events in Arknights: Endfield.","Verified boss speedruns, rankings and community events in Arknights: Endfield.")}>
   <main class="endfield-utility-page section-wrap cl-page" data-community-leaderboard>
     <span class="section-kicker">ARKNIGHTS: ENDFIELD · SPEEDRUNS</span>
     <p class="cl-page-lead">{l("Boss-Speedruns aus der Community · RE-Krise · Höchster Schwierigkeitsgrad","Community boss speedruns · RE-Crisis · Highest difficulty")}</p>
+    <div class="cl-update-notice" role="note"><strong>{l("Hinweis:","Note:")}</strong> {l("Das Community Leaderboard und das Event Leaderboard werden einmal pro Woche am Ende der Woche aktualisiert.","The Community Leaderboard and Event Leaderboard are updated once a week at the end of the week.")}</div>
 
     <LeaderboardEvent lang={lang} />
 
@@ -61,7 +68,7 @@ const countryName=(code:string)=>code==="DEU"?l("Deutschland","Germany"):code;
 
       <div class="cl-results" aria-live="polite" aria-atomic="false">
         {bosses.flatMap(boss=>versions.map(version=>{
-          const rows=displayLeaderboardRows(leaderboard,boss.slug,version);
+          const rows=displayLeaderboardRows(generalLeaderboard,boss.slug,version);
           const visible=boss.slug===defaultBoss&&version==="all-time";
           const demoOnly=rows.length>0&&rows.every(run=>run.status==="demo");
           return <section class="cl-results-panel" data-leaderboard-boss={boss.slug} data-leaderboard-version={version} hidden={!visible} aria-label={l("Rangliste für ","Ranking for ")+boss.label+" · "+(version==="all-time"?"All-Time":version)}>
@@ -86,7 +93,7 @@ const countryName=(code:string)=>code==="DEU"?l("Deutschland","Germany"):code;
                 {rows.length ? rows.map(run=><tr class:list={["cl-rank-row",{"is-demo":run.status==="demo"}]} data-run-status={run.status}>
                   <th class="cl-rank-number" scope="row"><span class:list={["cl-placement",{"is-first":run.rank===1,"is-second":run.rank===2,"is-third":run.rank===3}]}>{run.rank}</span></th>
                   <td class="cl-player">{run.discordName}{run.status==="demo"&&<span class="cl-placeholder-label">{l("Platzhalter","Placeholder")}</span>}</td>
-                  <td class="cl-country">{run.countryCode==="DEU"?<span class="cl-country-flag cl-flag-de" role="img" aria-label={countryName(run.countryCode)} title={countryName(run.countryCode)}></span>:<span role="img" aria-label={countryName(run.countryCode)} title={countryName(run.countryCode)}>{flagForCountry(run.countryCode)}</span>}</td>
+                  <td class="cl-country">{isGermanFlag(run.countryCode)?<span class="cl-country-flag cl-flag-de" role="img" aria-label={countryName(run.countryCode)} title={countryName(run.countryCode)}></span>:<span role="img" aria-label={countryName(run.countryCode)} title={countryName(run.countryCode)}>{flagForCountry(run.countryCode)}</span>}</td>
                   <td class="cl-team">
                     <span class="cl-team-items">
                       {run.team.map(member=><span class="cl-team-operator" title={member.slug.charAt(0).toUpperCase()+member.slug.slice(1)+" · P"+member.potential} aria-label={member.slug+" P"+member.potential}>
