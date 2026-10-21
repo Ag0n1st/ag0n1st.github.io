@@ -8,9 +8,9 @@
   "verifiedRuns": [],
   "demoRuns": [
     {
-      "id": "demo-ag0n1st-rhodagn-v16",
+      "id": "demo-ag0n1st-si-v16",
       "status": "demo",
-      "boss": "rhodagn",
+      "boss": "si",
       "playerId": "demo-ag0n1st",
       "discordName": "Ag0n1st",
       "countryCode": "DEU",
