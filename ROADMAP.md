@@ -1,7 +1,7 @@
 # AG0N1ST.COM – PROJEKT-ROADMAP, ENTWICKLUNGSSTAND & KI-ÜBERGABE
 
 > **Zentrale Projektdokumentation / Single Point of Entry.**  
-> **Stand:** 19. Oktober 2026 (Europe/Berlin); aktueller Hand-off §18.4, ältere Abschnitte bleiben als chronologisches Archiv.  
+> **Stand:** 22. Oktober 2026 (Europe/Berlin); aktueller Hand-off §18.27 (Repo-/PDF-Re-Audit), letzte veröffentlichte Feature-Änderung §18.26 / PR #58. Ältere Abschnitte bleiben als chronologisches Archiv.  
 > **Projekt:** Ag0n1st – deutschsprachiges Gaming-/Guide-Portal.  
 > **Repository:** https://github.com/Ag0n1st/ag0n1st.github.io  
 > **Produktionswebsite:** https://ag0n1st.com (eigene Domain), alternativ https://ag0n1st.github.io  
@@ -24,14 +24,14 @@
 | Wo liegt die Arbeit? | Öffentliches GitHub-Repo `Ag0n1st/ag0n1st.github.io`; lokales Arbeiten mit VS Code und GitHub Desktop möglich. |
 | Welcher Branch? | Normalerweise `main`; komplexe Änderungen zuerst in einem Feature-Branch, danach Merge. |
 | Welche Technologie? | Astro 5, HTML/CSS, wenig clientseitiges TypeScript/JavaScript; GitHub Pages per Actions. |
-| Was ist tatsächlich funktional? | Landing, Endfield-Übersicht, Operatoren-Karten & neunteiliges Guide-Framework, lokale SKPORT-Daten, Build-Finder-Level/Fabrik/Region/Gebiete/Blaupausen. |
+| Was ist tatsächlich funktional? | Landing, Endfield-Übersicht, Operator-Guides, lokale SKPORT-Daten, Build-Finder; DE/EN-Speedrun-Playlist, Countdown und Si-/Liino-Gear-Matrizen; bilinguales Community- und Duality-Event-Leaderboard mit dem ersten bestätigten Run Krombi (§18.26). Manche Endfield-Toolseiten bleiben Platzhalter. |
 | Was ist inhaltlich noch leer? | Echte redaktionelle Builds/Teams/Wertungen der Operatoren; mehrere Endfield-Toolseiten; Neverness to Everness; About. |
 | Was nicht verändern? | Öffentlich sichtbare Texte nicht aus Fantasie erstellen; kein Pflicht-Login; keine externe Datenbank zur normalen Anzeige; 100-MB-Endfield-Dateibudget. |
 | Wo liegen die Endfield-Spieldaten? | `src/data/endfield/`; offizielle Daten in `catalog/`, `operators/`; explizit recherchierte Community-Daten in `progression/`. |
 | Wo liegen persönliche Guide-Texte? | `src/content/operator-guides/<slug>.md`; Vorlage `_template.md`. |
 | Wie heißt der zentrale UI-Bereich? | `src/components/operator/sections/OperatorEquipment.astro`; Browserinteraktionen in `src/components/operator/OperatorGuide.astro`. |
 | Welche Tests? | `npm run test:endfield`, `node scripts/endfield/check-budget.mjs`, `npm run build`. |
-| Was ist aktuell als Nächstes sinnvoll? | **Übergabe 19.10.2026 (§18.4):** Nach PR #47 zuerst DE/EN-Live-Abnahme der neuen Threats-/Leaderboard-/Cheat-Sheets-/Matrix- und Countdown-Oberflächen. Für Si-/Liino-Matrix erst **operator- und szenariospezifische Vergleichsmethoden, Quellen und Zahlen freigeben**, keine unbestätigten Werte eintragen. Daneben ausstehende Endfield-Seiten, Speedrun-Playlist-ID und Gameplay-Videos nach Priorität. **Fabrik explizit pausiert**. v1.6-Gear-IDs erst bei neuer offizieller SKPORT-Evidenz nachziehen. |
+| Was ist aktuell als Nächstes sinnvoll? | **Aktueller Handoff 22.10.2026 (§18.27):** PR #58 ist live; DE/EN-Live-Abnahme der Leaderboard-/Matrix-/Countdown-/Cheat-Sheets-Flows weiter sinnvoll. Die Betreiber-Playlist `PLVTPc82MPn3E` ist seit PR #43 eingebunden, und Si-/Liino-Gear-Matrizen enthalten inzwischen Betreiber-CSV-Werte. Priorisierung: (1) QA und wartbarer manueller Leaderboard-Einreichungs-/Freigabeprozess, (2) quellengestützte Cheat Sheets/Endfield-Systemseiten, (3) weitere Operator-Redaktion/Matrix-Methodik, (4) offizielle SKPORT-Neuimporte nach Beleg. **Fabrik ausdrücklich pausiert.** Ohne konkreten Auftrag keine neue Funktion oder redaktionelle Werte erfinden. |
 | Stand Authority? | Obergrenze **60**, inklusive HTML-Feld, gespeicherten Eingaben und Auswertelogik; bei künftiger Erhöhung zentral anpassen. |
 
 **Diese Datei ist kein Ersatz für die Dateien im Repository.** Wo der Code und die Roadmap abweichen, nicht stillschweigend „korrigieren“: Diskrepanz feststellen, Ursache prüfen, dem Nutzer erläutern, dann dokumentiert ändern.
@@ -45,7 +45,7 @@
 - **[OFFEN / PRÜFEN]**: konkrete Unsicherheit, Fehlergefahr oder notwendige Entscheidung.
 - **[NICHT GEPLANT]**: bewusster Ausschluss, außer der Nutzer revidiert die Entscheidung.
 
-Viele historische Statuskennzeichnungen beziehen sich noch auf den **15.–16.10.2026** und sind nicht retroaktiv korrigiert. Für den aktuellen Stand **19.10.2026** gelten die neuesten chronologischen Abschnitte **§17–§18.4** und der tatsächliche GitHub-Code/CI-Status vor alten Abschnitten.
+Viele historische Statuskennzeichnungen beziehen sich noch auf den **15.–16.10.2026** und sind nicht retroaktiv korrigiert. Für den aktuellen Stand **22.10.2026** gelten insbesondere die Chronologie **§18.5–§18.27** und der tatsächliche GitHub-Code/CI-Status vor alten Abschnitten. §18.4 dokumentiert nur den vorherigen Chat-Handoff vom 19.10.2026.
 
 ---
 
@@ -90,7 +90,7 @@ Die Website ist die langfristige, auffindbare Wissensplattform rund um die Strea
 | --- | --- |
 | Webseiten-CMS | **Kein eigener Admin-Login** nur zum Einpflegen; Git/VS Code + Markdown/YAML/JSON genügt. |
 | Nutzerfortschritt | Vorzugsweise **lokaler Browser-`localStorage`**, ohne Konto; Transparenz über Gerätebindung. |
-| Speedruns | **Eigene Runs/YouTube-Playlist**, keine offene Community-Rangliste. |
+| Speedruns | Eigenes YouTube-Speedrun-Archiv mit der bereits eingetragenen Betreiber-Playlist `PLVTPc82MPn3E`; **zusätzlich separat freigegebenes Community-/Event-Leaderboard** seit PR #54–#58. Keine Website-Einreichung über Benutzerkonten. |
 | Assets | Statische WebP-Icons und ausgewählte Operator-Cover; keine GIF-/Videodateien in Endfield importieren. |
 | Abhängigkeit der Website | Kein benötigter SKPORT-API-Call im Browser zur Laufzeit; Snapshots bei Build/Import versionieren. |
 | Gamedaten | **Offizielle SKPORT-Wiki** als Quelle für objektive Stammdaten und Rezepte; Community für begründete, getrennt gekennzeichnete Fundorthinweise. |
@@ -924,7 +924,7 @@ Dies ist eine **priorisierte Roadmap**, kein bereits bezahlter Projektvertrag un
 - [ ] Datenmodell für **eigene** Runs: Boss, Version, Schwierigkeitsstufe, Operator-Team, P-Stufen, Buff-Food-Regeln, Laufzeit, Datum, Videolink, Notes.
 - [ ] Unterschiede der Regeln (z. B. P0/P5, Buff Food ja/nein) **explizit** speichern, damit Zeiten vergleichbar bleiben.
 - [ ] YouTube-Videos/Playlists verlinken; optional nach Boss und Regeln filtern.
-- [ ] Keine Community-Rangliste, keine Fremdrun-Einsendungen und kein Accountsystem.
+- [x] Das **eigene** Speedrun-Archiv von der inzwischen separat genehmigten **Community-/Event-Rangliste** trennen; kein Website-Accountsystem oder öffentliches Einreichungsformular. Historischer Ausschluss einer Community-Rangliste ist durch PR #54–#58 überholt.
 - **Abnahme:** Eine vom Creator bestätigte Run-Datendatei erzeugt automatisch eine übersichtliche Archivkarte mit prüfbarem Video.
 
 **B. Daily-/Weekly-Checkliste** (`/endfield/checkliste/`)
@@ -2526,3 +2526,30 @@ Alle 109 Endfield-Unit-Tests und die beiden Budgetchecks erfolgreich. Desktop 14
 **Byte-Hardgates grün:** Endfield **29.629.372 / 100.000.000 Bytes** (**29,63 %**, **1.328 Dateien**, Rest **70.370.628 Bytes**). `dist/` **31.507.264 / 1.000.000.000 Bytes** (**3,15 %**, **1.220 Dateien**, Rest **968.492.736 Bytes**). Beide Budgets sicher eingehalten.
 
 **Merge und live:** [PR #58](https://github.com/Ag0n1st/ag0n1st.github.io/pull/58) als Squash nach `main` gemergt, Merge-Commit **`735a5291624d9c842b8fc0da9e5a17c04af97ba1`**. [GitHub Pages #39686297220](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/39686297220) auf diesem Commit: **build=completed/success, deploy=completed/success**. URLs: **https://ag0n1st.com/endfield/leaderboard/** (DE), **https://ag0n1st.com/en/endfield/leaderboard/** (EN). Dieser nur dokumentarische ROADMAP-Commit löst danach einen eigenen Pages-Lauf aus; dessen Build-/Deploy-Status separat prüfen. Alle anderen Boss-Ranglisten bleiben ohne verifizierte Ergebnisse; zukünftige neue Runs werden nach Benutzerfreigabe einzeln ergänzt.
+
+### 18.27 Neuer Chat: vollständige 111-Seiten-PDF, aktueller main-/PR-Abgleich und bereinigter Übergabepunkt (22.10.2026)
+
+**Auftrag / Quellen:** Betreiber stellt das private Archiv `Bisherige Website Konversation(5).pdf` (**111 Seiten**) zur präzisen Wiederaufnahme der Website-Entwicklung bereit; der Text wurde vollständig extrahiert und der chronologische Verlauf von der Website-Builder-/Astro-Entscheidung über SKPORT, Operator-Guides, Build-Finder, Mehrsprachigkeit, Threats, Matrix und Fabrik-Pause bis zum **ersten gültigen Duality-/Si-Eintrag Krombi (PR #58)** auf die aktuelle Repository-Quelle abgeglichen. Die historische PDF wird wegen Umfang und privatem Kontext **nicht im öffentlichen Repo abgelegt**. Frühere Antworten und Roadmap-Handoff §18.4 sind kein Beleg für einen heute noch offenen Arbeitsschritt, wenn späterer Code/PR das Gegenteil zeigen.
+
+**Aktueller Repository-Nachweis beim Prüfzeitpunkt:** GitHub-Defaultbranch `main`; geprüfter Head vor diesem Dokumentationscommit **`27dcfe0ee8cc6c2c32b79701739eb5f3066032a4`** (reiner ROADMAP-Abschluss zu PR #58); vorausgehender Funktions-Merge **PR #58**, Squash **`735a5291624d9c842b8fc0da9e5a17c04af97ba1`**. GitHub-Suche: **0 offene Pull Requests**. Der im älteren PR-Archiv auffällige Forschungs-PR **#3 ist `closed`, `merged:false`** (17.10.), nicht weiter als offene Arbeit darstellen. Eine neue Entwicklungsfunktion wurde durch diesen Übergabeauftrag **nicht beauftragt**.
+
+**Direkt geprüfte Referenzdateien auf `main`:**
+- `src/data/endfield/community-events.json`: genau ein Betreiber-freigegebener `verifiedRuns`-Eintrag **Krombi**, Duality/Si, **01:29**, **v1.6**, DE, Team **Si P4 / Arcane P3 / Tangtang P4 / Gilberta P2**, `eligibleForCommunity:true`, Video `https://youtu.be/24_sKEqnCm0`.
+- `src/data/endfield/community-leaderboard.json`: eigenständige reguläre `verifiedRuns:[]`, archivierter **Demo-Ag0n1st**-Run mit Status `demo`, `02:05` und **`https://youtu.be/SDqsynAplyI`**. Der Demo-Run wird in den zwei befüllten Si-/Duality-Rankings durch Krombi ausgeblendet, nicht gelöscht oder als echt eingestuft.
+- `src/components/pages/EndfieldLeaderboard.astro` übernimmt nur verifizierte Event-Runs mit **`eligibleForCommunity===true`** in die allgemeine Wertung; `src/components/endfield/LeaderboardEvent.astro` zeigt separat die Eventwertung. Beide nutzen dieselben freigegebenen Daten, keine doppelte Ergebnis-Pflege.
+- `scripts/endfield/community-leaderboard.test.mjs` und `scripts/endfield/browser-smoke.py` enthalten Regressionen für Krombi, Potenziale, Land **DE/DEU**, Zeitformat, beide Leaderboards, Versionen, Demo-Trennung und Deutsch/Englisch 1440/390px.
+- `src/data/endfield/speedrunPlaylist.mjs` enthält bereits **`PLVTPc82MPn3E`**; der „Playlist-ID noch offen“-Satz im älteren Handoff §18.4 war spätestens seit PR #43 (§17.5–17.7) **historisch überholt**. Die Si-/Liino-Gear-Matrizen wurden später mit ausdrücklich gelieferten CSV-Werten befüllt (PR #50–#53), sodass §18.4 mit leeren Matrixmetriken ebenfalls nicht mehr als aktueller Zustand gelten darf.
+- `scripts/endfield/check-budget.mjs` und `scripts/check-pages-budget.mjs` haben weiterhin die Hardlimits **100.000.000** und **1.000.000.000 Bytes**.
+
+**Letzte nachgewiesene QA und Speichergröße, nicht heute neu gemessen:** Laut abgeschlossener PR-#58-Dokumentation grüne [CI #39686023719](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/39686023719) mit **178/178 Node-Tests**, Astro-Build, Chromium-Smokes 1440/390px jeweils **DE/EN** sowie erfolgreicher [Pages-Deploy #39686297220](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/39686297220) zum PR-#58-Merge. Endfield **29.629.372 / 100.000.000 Bytes** (Rest **70.370.628**), Pages-`dist/` **31.507.264 / 1.000.000.000 Bytes** (Rest **968.492.736**). Die Live-Webseite und ein neuer Pages-Deploy zum zuletzt dokumentarischen Head konnten bei dieser Lesesitzung **nicht unabhängig abgerufen** werden. Dieser Docs-only-Commit bringt keine Änderung an öffentlichen DE-/EN-Inhalten, Assets oder Konfigurationsdateien; daher **keine Behauptung neuer Builds/CI-Läufe/Byte-Messungen**. Falls er ein erneutes Pages-Deployment anstößt, dessen Build-/Deploy-Ergebnis separat nachverfolgen.
+
+**Verbindliche Arbeitsregeln nochmals bestätigt:** ausschließlich textbasierter Entwicklungs-Chat (keine ungefragten Medien/Previews), bei jeder Änderung **DE- und EN-Parität**, jeden Entwicklungsfortschritt samt Quellenstatus/Tests/Budget/Merge in `ROADMAP.md` dokumentieren; klare direkte Eigenstimme in öffentlichen Texten ohne „vom Creator“/„vom Autor“ oder KI-Herkunftshinweise; offizielle SKPORT-Objektdaten strikt von User-Redaktion und bestätigten Community-Daten trennen; keine erfundenen Zahlen/Items/Leaderboard-Rekorde. **Fabrik bleibt ausdrücklich pausiert** (`docs/endfield-factory-concept.md` ist nur Archiv).
+
+**Aktuelle Prioritäten zur Entscheidung (ohne automatische Implementierung):**
+1. **P0 Abnahme DE/EN:** Bedien- und Produktionskontrolle von Duality und Si-All-Time-Ranking inkl. Boss-/Patchfilter, Links, Vorlesen/Tastatur, 390/1440px; Cheat Sheets, Matrix, Countdown und EN-Parität ergänzend durchgehen. Automatisierte CI ist nachgewiesen, persönliche Sicht-/Inhaltsabnahme und unabhängiger Liveabruf sind getrennt.
+2. **Community Leaderboard dauerhaft pflegbar halten:** den manuellen **wöchentlichen** Bearbeitungs-/Freigabeprozess und den Daten-Validierungsablauf für neue Runs präzisieren, freiwillige **Landesangabe samt ausdrücklicher Veröffentlichungsfreigabe** im Discord-Regelwerk sauber festhalten, spätere Version-/Event-Archivierung konzipieren. **Keine weiteren echten Runs ohne Betreiberfreigabe**; ein Zeitplanhinweis ist kein automatischer Job. Duality endet laut Eventdaten **25.11.2026**.
+3. **Cheat Sheets / Veredelung / Rekrutierung / Essenzen / Checkliste:** ein fachlich eng begrenztes, aus Ingame-/offiziellen Daten belegtes erstes Themenpaket auswählen, danach in DE und EN ausbauen; keine erfundenen Infos zu `#ElasticGoods`, `#Artificing`, `#Bufffood`.
+4. **Operator-Guides und Gear-Matrizen:** bestehende CSV-Zahlen/Tab-Strukturen von Si und Liino respektieren; bei weiteren Vergleichsreihen die gleiche Methodik, Spielversion, P-/Waffenstufe, Team-/Buff-/Rotationsbedingungen und Datenquelle belegen. Fehlende offizielle v1.6-Gear-IDs/Si-Threat-ID nur bei neuem SKPORT-Nachweis vervollständigen.
+5. **Nachrangig:** NTE, About/SEO und weitere Endfield-Werkzeuge erst nach gesonderter Priorisierung. Fabrik unverändert auf Pause.
+
+**Ergebnis:** Nur `ROADMAP.md` in seinen aktuell nutzbaren Kurzangaben präzisiert und §18.27 ergänzt. Keine Änderungen an öffentlichen Website-Seiten, Spiele-Assets, JSON-Spiel-/Leaderboard-Daten, Build-Finder- oder Matrixwerten; keine neue Lizenz, kein Login, kein Tracking.
