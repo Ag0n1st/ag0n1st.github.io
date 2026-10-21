@@ -137,6 +137,8 @@ test("Duality event matches the approved Discord announcement and starts with no
  assert.equal(eventData.schemaVersion,1);
  assert.equal(eventData.events.length,1);
  assert.equal(eventData.verifiedRuns.length,0);
+ assert.equal(eventData.events[0].demoRunId,"demo-ag0n1st-si-v16");
+ assert.equal(eventData.events[0].backgroundImage,"/images/endfield/leaderboard/duality-background.webp");
  const event=eventData.events[0];
  assert.deepEqual([event.id,event.title,event.boss,event.version,event.startsOn,event.endsOn],
    ["duality","Duality","si","v1.6","2026-10-15","2026-11-25"]);
@@ -145,7 +147,11 @@ test("Duality event matches the approved Discord announcement and starts with no
  const raw=readFileSync("public"+event.image);
  assert.equal(raw.toString("ascii",0,4),"RIFF");
  assert.equal(raw.toString("ascii",8,12),"WEBP");
- assert.ok(raw.length<150000,"WebP banner must remain light");
+ assert.ok(raw.length<250000,"Full-resolution WebP should stay below 250 KB");
+ const background=readFileSync("public"+event.backgroundImage);
+ assert.equal(background.toString("ascii",0,4),"RIFF");
+ assert.equal(background.toString("ascii",8,12),"WEBP");
+ assert.ok(background.length<500000,"Background WebP should stay below 500 KB");
  assert.deepEqual(event.rules.map(x=>x.id),[
    "boss","required-operator","damage-dealer","consumables","potentials","submission"
  ]);
@@ -160,6 +166,16 @@ test("Duality event matches the approved Discord announcement and starts with no
  assert.match(component,/data-event-select/);
  assert.match(component,/data-event-panel/);
  assert.match(component,/cl-event-banner/);
+ assert.match(component,/<details class="cl-event-rules" data-event-rules>/);
+ assert.match(component,/<summary class="cl-event-rules-toggle">/);
+ assert.match(component,/cl-event-date/);
+ assert.match(component,/data-event-background/);
+ assert.match(component,/--cl-event-background/);
+ assert.match(component,/demoOnly/);
+ assert.match(component,/cl-placeholder-label/);
+ assert.match(component,/cl-demo-disclaimer/);
+ assert.doesNotMatch(component,/Mit Duality startet unsere erste Speedrun-Challenge/);
+ assert.match(css,/\.cl-event-container::before\{[^\n]*background-image:var\(--cl-event-background\);background-size:cover;background-position:center center[^\n]*opacity:\.05/);
  assert.match(component,/cl-event-rule/);
  assert.match(component,/Top 10 – \{event.title\}/);
  assert.match(component,/Noch keine verifizierten Duality-Runs/);

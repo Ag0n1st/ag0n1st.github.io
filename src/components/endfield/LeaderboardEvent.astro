@@ -1,5 +1,6 @@
 ---
 import eventData from "../../data/endfield/community-events.json";
+import leaderboard from "../../data/endfield/community-leaderboard.json";
 import {getOperatorImageUrl} from "../../lib/endfield/operatorAssets";
 import {rankVerifiedRuns,flagForCountry} from "../../lib/endfield/leaderboardRanking.mjs";
 interface Props {lang?:"de"|"en"}
@@ -8,8 +9,10 @@ const en=lang==="en";
 const l=(de:string,english:string)=>en?english:de;
 const countryName=(code:string)=>code==="DEU"?l("Deutschland","Germany"):code;
 const events=eventData.events;
+const firstBackground=events[0]?.backgroundImage??"";
+const shortDate=(date:string)=>{const [year,month,day]=date.split("-");return year&&month&&day?`${day}.${month}.`:date;};
 ---
-<section class="cl-container cl-event-container" aria-labelledby="cl-event-title" data-event-leaderboard>
+<section class="cl-container cl-event-container" aria-labelledby="cl-event-title" data-event-leaderboard style={`--cl-event-background: url("${firstBackground}")`}>
   <div class="cl-section-head cl-event-head">
     <h2 id="cl-event-title">Event Leaderboard</h2>
   </div>
@@ -20,30 +23,35 @@ const events=eventData.events;
     </select>
   </div>
   {events.map((event,index)=>{
-    const rows=rankVerifiedRuns(eventData.verifiedRuns.filter(run=>run.eventId===event.id),{boss:event.boss,version:event.version});
-    return <div class="cl-event-panel" data-event-panel={event.id} hidden={index!==0}>
+    const verified=rankVerifiedRuns(eventData.verifiedRuns.filter(run=>run.eventId===event.id),{boss:event.boss,version:event.version});
+    const demo=leaderboard.demoRuns.find(run=>run.id===event.demoRunId&&run.status==="demo"&&run.boss===event.boss&&run.version===event.version);
+    const rows=verified.length?verified:demo?[{...demo,rank:1}]:[];
+    const demoOnly=rows.length>0&&rows.every(run=>run.status==="demo");
+    return <div class="cl-event-panel" data-event-panel={event.id} data-event-background={event.backgroundImage} hidden={index!==0}>
       <div class="cl-event-feature">
-        <img class="cl-event-banner" src={event.image} width="800" height="320" alt={l("Duality – Operator Si gegen Boss Si","Duality – operator Si versus boss Si")} loading="eager" decoding="async" />
-        <div class="cl-event-date">
-          <span class="cl-event-date-label">{l("Zeitraum","Period")}</span>
-          <strong>15.10. – 25.11.</strong>
-          <span class="cl-event-version">{l("Gesamte Version 1.6","Entire version 1.6")}</span>
-        </div>
-        <p class="cl-event-description">{l("Mit Duality startet unsere erste Speedrun-Challenge für Version 1.6!","Duality launches our first speedrun challenge for version 1.6!")}</p>
+        <img class="cl-event-banner" src={event.image} width="800" height="320" alt={l(`${event.title} – Event-Banner`,`${event.title} – event banner`)} loading="eager" decoding="async" />
       </div>
-      <div class="cl-event-rules">
-        <h3>{l("Regeln","Rules")}</h3>
+      <details class="cl-event-rules" data-event-rules>
+        <summary class="cl-event-rules-toggle">
+          <span class="cl-event-rules-title">{l("Regeln","Rules")}</span>
+          <span class="cl-event-date">
+            <span class="cl-event-date-label">{l("Zeitraum","Period")}</span>
+            <strong>{shortDate(event.startsOn)} – {shortDate(event.endsOn)}</strong>
+          </span>
+          <span class="cl-event-rules-chevron" aria-hidden="true">⌄</span>
+        </summary>
         <div class="cl-event-rules-grid">
           {event.rules.map((rule,i)=><article class="cl-event-rule" data-event-rule={rule.id}>
             <span class="cl-event-rule-index" aria-hidden="true">{String(i+1).padStart(2,"0")}</span>
             <p>{en?rule.en:rule.de}{rule.id==="submission"&&<> <a href={event.rulebookUrl} target="_blank" rel="noopener noreferrer" aria-label={l("Regelwerk in der angepinnten Discord-Nachricht öffnen","Open the rules linked in the pinned Discord post")}>{l("Regelwerk öffnen ↗","Open rules ↗")}</a></>}</p>
           </article>)}
         </div>
-      </div>
+      </details>
       <div class="cl-event-results">
         <div class="cl-results-head">
           <div><span class="cl-results-kicker">{event.version.toUpperCase()} · EVENT</span><h3>Top 10 – {event.title}</h3></div>
         </div>
+        {demoOnly && <p class="cl-demo-disclaimer">{l("Platzhaltereintrag zur Darstellung – kein verifizierter Event-Rekord.","Placeholder entry for display purposes – not a verified event record.")}</p>}
         <table class="cl-rank-table" aria-label={"Top 10 – "+event.title}>
           <thead><tr>
             <th scope="col">#</th>
@@ -54,15 +62,15 @@ const events=eventData.events;
             <th scope="col">{l("Version","Version")}</th>
           </tr></thead>
           <tbody>
-            {rows.length ? rows.map(run=><tr class="cl-rank-row" data-run-status="verified">
+            {rows.length ? rows.map(run=><tr class:list={["cl-rank-row",{"is-demo":run.status==="demo"}]} data-run-status={run.status}>
               <th class="cl-rank-number" scope="row"><span class:list={["cl-placement",{"is-first":run.rank===1,"is-second":run.rank===2,"is-third":run.rank===3}]}>{run.rank}</span></th>
-              <td class="cl-player">{run.discordName}</td>
+              <td class="cl-player">{run.discordName}{run.status==="demo"&&<span class="cl-placeholder-label">{l("Platzhalter","Placeholder")}</span>}</td>
               <td class="cl-country">{run.countryCode==="DEU" ? <span class="cl-country-flag cl-flag-de" role="img" aria-label={countryName(run.countryCode)} title={countryName(run.countryCode)}></span> : <span role="img" aria-label={countryName(run.countryCode)}>{flagForCountry(run.countryCode)}</span>}</td>
               <td class="cl-team"><span class="cl-team-items">{run.team.map(member=><span class="cl-team-operator" title={member.slug+" · P"+member.potential}>
                 {getOperatorImageUrl(member.slug,"official-icon")&&<img src={getOperatorImageUrl(member.slug,"official-icon")} alt={member.slug} width="42" height="42" loading="lazy" decoding="async"/>}
                 <span class:list={["cl-operator-potential",{"is-p5":member.potential===5}]}>P{member.potential}</span>
               </span>)}</span></td>
-              <td class="cl-run-time"><a href={run.link} target="_blank" rel="noopener noreferrer">{run.time} <span aria-hidden="true">↗</span></a></td>
+              <td class="cl-run-time"><a href={run.link} target="_blank" rel="noopener noreferrer" aria-label={run.status==="demo"?l("Platzhalter: YouTube-Kanal öffnen","Placeholder: open YouTube channel"):l("Run-Video öffnen","Open run video")}>{run.time} <span aria-hidden="true">↗</span></a></td>
               <td class="cl-run-version">{run.version}</td>
             </tr>) : <tr class="cl-empty-row"><td colspan="6">{l("Noch keine verifizierten Duality-Runs eingetragen.","No verified Duality runs have been submitted yet.")}</td></tr>}
           </tbody>
@@ -76,7 +84,12 @@ const events=eventData.events;
   const select=root?.querySelector<HTMLSelectElement>("[data-event-select]");
   select?.addEventListener("change",()=>{
     root?.querySelectorAll<HTMLElement>("[data-event-panel]").forEach(panel=>{
-      panel.hidden=panel.dataset.eventPanel!==select.value;
+      const selected=panel.dataset.eventPanel===select.value;
+      panel.hidden=!selected;
+      if(selected){
+        const image=panel.dataset.eventBackground??"";
+        root.style.setProperty("--cl-event-background",image?'url("'+image+'")':"none");
+      }
     });
   });
 </script>
