@@ -10,6 +10,7 @@ const l=(de:string,english:string)=>en?english:de;
 const countryName=(code:string)=>code==="DEU"?l("Deutschland","Germany"):code;
 const events=eventData.events;
 const firstBackground=events[0]?.backgroundImage??"";
+const shortDate=(date:string)=>{const [year,month,day]=date.split("-");return year&&month&&day?`${day}.${month}.`:date;};
 ---
 <section class="cl-container cl-event-container" aria-labelledby="cl-event-title" data-event-leaderboard style={`--cl-event-background: url("${firstBackground}")`}>
   <div class="cl-section-head cl-event-head">
@@ -28,14 +29,14 @@ const firstBackground=events[0]?.backgroundImage??"";
     const demoOnly=rows.length>0&&rows.every(run=>run.status==="demo");
     return <div class="cl-event-panel" data-event-panel={event.id} data-event-background={event.backgroundImage} hidden={index!==0}>
       <div class="cl-event-feature">
-        <img class="cl-event-banner" src={event.image} width="800" height="320" alt={l("Duality – Operator Si gegen Boss Si","Duality – operator Si versus boss Si")} loading="eager" decoding="async" />
+        <img class="cl-event-banner" src={event.image} width="800" height="320" alt={l(`${event.title} – Event-Banner`,`${event.title} – event banner`)} loading="eager" decoding="async" />
       </div>
       <details class="cl-event-rules" data-event-rules>
         <summary class="cl-event-rules-toggle">
           <span class="cl-event-rules-title">{l("Regeln","Rules")}</span>
           <span class="cl-event-date">
             <span class="cl-event-date-label">{l("Zeitraum","Period")}</span>
-            <strong>15.10. – 25.11.</strong>
+            <strong>{shortDate(event.startsOn)} – {shortDate(event.endsOn)}</strong>
           </span>
           <span class="cl-event-rules-chevron" aria-hidden="true">⌄</span>
         </summary>
