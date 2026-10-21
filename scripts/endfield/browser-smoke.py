@@ -928,29 +928,67 @@ def smoke_i18n(page, base_url, width):
                label+": "+lang+" Duality event is shown above general leaderboard")
         event_select=event.locator("[data-event-select]")
         event_panel=event.locator('[data-event-panel="duality"]')
+        details=event_panel.locator("[data-event-rules]")
         verify(event_select.input_value()=="duality" and
                event_panel.is_visible() and
+               details.count()==1 and not details.evaluate("(el)=>el.open") and
+               not details.locator(".cl-event-rule").first.is_visible() and
                event_panel.locator(".cl-event-rule").count()==6 and
-               "Top 10" in event_panel.locator(".cl-event-results h3").inner_text() and
-               "Duality" in event_panel.locator(".cl-event-results h3").inner_text() and
-               event_panel.locator(".cl-event-results .cl-empty-row").count()==1,
-               label+": "+lang+" Duality event picker, six rule cards and empty Top 10")
+               "Top 10 – Duality" in event_panel.locator(".cl-event-results h3").inner_text(),
+               label+": "+lang+" Duality event selection and initially collapsed six rules")
         banner=event.locator('.cl-event-banner[src="/images/endfield/leaderboard/duality.webp"]')
         verify(banner.count()==1 and
-               banner.evaluate("(el)=>el.complete&&el.naturalWidth>0&&el.naturalHeight>0") and
-               banner.evaluate("(el)=>Math.abs(el.naturalWidth/el.naturalHeight-2.5)<0.02"),
-               label+": "+lang+" uploaded Duality artwork is a valid proportional WebP")
-        texts=event.locator(".cl-event-rule").all_text_contents()
+               banner.evaluate("(el)=>el.complete&&el.naturalWidth===800&&el.naturalHeight===320") and
+               banner.evaluate("(el)=>getComputedStyle(el).objectFit==='contain'"),
+               label+": "+lang+" uploaded Duality banner remains full-res 800x320")
+        bg=event.evaluate("""el=>{
+            const st=getComputedStyle(el,'::before');
+            return {image:st.backgroundImage,size:st.backgroundSize,position:st.backgroundPosition,opacity:st.opacity,
+                    w:el.getBoundingClientRect().width,h:el.getBoundingClientRect().height};
+        }""")
+        verify("duality-background.webp" in bg["image"] and
+               bg["size"]=="cover" and bg["position"]=="50% 50%" and
+               bg["opacity"]=="0.05" and bg["w"]>0 and bg["h"]>0 and
+               "/images/endfield/leaderboard/duality-background.webp" in event_panel.get_attribute("data-event-background"),
+               label+": "+lang+" centered event-dependent 5-percent background uses cover")
+        rule_summary=details.locator("summary")
+        date=rule_summary.locator(".cl-event-date")
+        verify(date.is_visible() and "15.10." in date.inner_text() and "25.11." in date.inner_text() and
+               date.bounding_box()["x"]>rule_summary.locator(".cl-event-rules-title").bounding_box()["x"] and
+               details.locator(".cl-event-rules-grid").is_visible()==False,
+               label+": "+lang+" closed rules show only right-aligned event period")
+        verify(event_panel.locator(".cl-event-description").count()==0,
+               label+": "+lang+" redundant Duality intro text has been removed")
+        rule_summary.click()
+        verify(details.evaluate("(el)=>el.open") and details.locator(".cl-event-rule").first.is_visible(),
+               label+": "+lang+" native rules details expand on click")
+        texts=details.locator(".cl-event-rule").all_text_contents()
         verify(len(texts)==6 and
                ("RE-Krise" if lang=="de" else "RE-Crisis") in texts[0] and
                "Si" in texts[1] and "Damage Dealer" in texts[2] and
                ("Buff-Food" if lang=="de" else "buff food") in texts[3] and
                ("Potenzialbeschränkung" if lang=="de" else "potential restrictions").lower() in texts[4].lower(),
-               label+": "+lang+" six owner-announced Duality rules render")
-        verify(event.locator('[data-event-rule="submission"] a[href="https://bit.ly/3WEuGwD"]').count()==1 and
-               "15.10." in event.locator(".cl-event-date").inner_text() and
-               "25.11." in event.locator(".cl-event-date").inner_text(),
-               label+": "+lang+" v1.6 date range and rulebook link match Discord announcement")
+               label+": "+lang+" all six Duality rule cards expand and contain original rules")
+        verify(details.locator('[data-event-rule="submission"] a[href="https://bit.ly/3WEuGwD"]').count()==1,
+               label+": "+lang+" rules link still points to Discord announcement reference")
+        rule_summary.click()
+        verify(not details.evaluate("(el)=>el.open") and not details.locator(".cl-event-rule").first.is_visible(),
+               label+": "+lang+" rules collapse again without affecting event results")
+        event_demo=event_panel.locator(".cl-event-results .cl-rank-row")
+        verify(event_demo.count()==1 and event_demo.get_attribute("data-run-status")=="demo" and
+               event_demo.locator(".cl-player").inner_text().startswith("Ag0n1st") and
+               event_demo.locator(".cl-placeholder-label").inner_text()==("Platzhalter" if lang=="de" else "Placeholder") and
+               event_demo.locator(".cl-rank-number").inner_text().strip()=="1" and
+               event_demo.locator(".cl-run-time a").inner_text().strip().startswith("02:05") and
+               event_demo.locator(".cl-run-version").inner_text()=="v1.6" and
+               event_panel.locator(".cl-event-results .cl-empty-row").count()==0 and
+               event_panel.locator(".cl-demo-disclaimer").count()==1,
+               label+": "+lang+" Duality Top 10 includes clearly marked non-verified placeholder")
+        verify([x.strip() for x in event_demo.locator(".cl-operator-potential").all_text_contents()]==["P0","P0","P0","P5"] and
+               event_demo.locator(".cl-operator-potential.is-p5").count()==1 and
+               event_demo.locator(".cl-country-flag.cl-flag-de").count()==1 and
+               event_demo.locator(".cl-run-time a").get_attribute("href")=="https://www.youtube.com/@Ag0n1st",
+               label+": "+lang+" event demo reuses correct team potential labels, flag and channel link")
         headings=page.evaluate("""() => ({
           event:getComputedStyle(document.querySelector('.cl-event-head h2')).fontSize,
           community:getComputedStyle(document.querySelector('.cl-community-head h1')).fontSize
