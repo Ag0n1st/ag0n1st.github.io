@@ -70,7 +70,7 @@ const shortDate=(date:string)=>{const [year,month,day]=date.split("-");return ye
                 {getOperatorImageUrl(member.slug,"official-icon")&&<img src={getOperatorImageUrl(member.slug,"official-icon")} alt={member.slug} width="42" height="42" loading="lazy" decoding="async"/>}
                 <span class:list={["cl-operator-potential",{"is-p5":member.potential===5}]}>P{member.potential}</span>
               </span>)}</span></td>
-              <td class="cl-run-time"><a href={run.link} target="_blank" rel="noopener noreferrer" aria-label={run.status==="demo"?l("Platzhalter: YouTube-Kanal öffnen","Placeholder: open YouTube channel"):l("Run-Video öffnen","Open run video")}>{run.time} <span aria-hidden="true">↗</span></a></td>
+              <td class="cl-run-time"><a href={run.link} target="_blank" rel="noopener noreferrer" aria-label={run.status==="demo"?l("Platzhaltervideo auf YouTube öffnen","Open placeholder video on YouTube"):l("Run-Video öffnen","Open run video")}>{run.time} <span aria-hidden="true">↗</span></a></td>
               <td class="cl-run-version">{run.version}</td>
             </tr>) : <tr class="cl-empty-row"><td colspan="6">{l("Noch keine verifizierten Duality-Runs eingetragen.","No verified Duality runs have been submitted yet.")}</td></tr>}
           </tbody>

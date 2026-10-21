@@ -46,8 +46,8 @@ test("Owner demo displays Placeholder beside name, against Si, never as a verifi
  const example=data.demoRuns[0];
  assert.deepEqual([example.status,example.boss,example.discordName,example.countryCode,example.time,example.version],
                   ["demo","si","Ag0n1st","DEU","02:05","v1.6"]);
- assert.equal(example.link,"https://www.youtube.com/@Ag0n1st");
- assert.equal(example.linkKind,"channel");
+ assert.equal(example.link,"https://youtu.be/SDqsynAplyI");
+ assert.equal(example.linkKind,"video");
  assert.equal(flagForCountry(example.countryCode),"🇩🇪");
  assert.equal(flagForCountry(""),"🌐");
  assert.deepEqual(example.team.map(x=>[x.slug,x.potential]),[["si",0],["arcane",0],["tangtang",0],["xaihi",5]]);

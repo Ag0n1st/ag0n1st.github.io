@@ -987,7 +987,7 @@ def smoke_i18n(page, base_url, width):
         verify([x.strip() for x in event_demo.locator(".cl-operator-potential").all_text_contents()]==["P0","P0","P0","P5"] and
                event_demo.locator(".cl-operator-potential.is-p5").count()==1 and
                event_demo.locator(".cl-country-flag.cl-flag-de").count()==1 and
-               event_demo.locator(".cl-run-time a").get_attribute("href")=="https://www.youtube.com/@Ag0n1st",
+               event_demo.locator(".cl-run-time a").get_attribute("href")=="https://youtu.be/SDqsynAplyI",
                label+": "+lang+" event demo reuses correct team potential labels, flag and channel link")
         headings=page.evaluate("""() => ({
           event:getComputedStyle(document.querySelector('.cl-event-head h2')).fontSize,
@@ -1025,7 +1025,7 @@ def smoke_i18n(page, base_url, width):
                "linear-gradient" in flag.evaluate("(el)=>getComputedStyle(el).backgroundImage"),
                label+": "+lang+" country renders as a real German tricolor instead of letters DE")
         verify(row.locator(".cl-run-time a").inner_text().startswith("02:05") and
-               row.locator(".cl-run-time a").get_attribute("href")=="https://www.youtube.com/@Ag0n1st" and
+               row.locator(".cl-run-time a").get_attribute("href")=="https://youtu.be/SDqsynAplyI" and
                row.locator(".cl-run-version").inner_text()=="v1.6" and
                active.locator(".cl-demo-disclaimer").count()==1,
                label+": "+lang+" Si demo time MM:SS, YouTube link and non-verified disclaimer")
