@@ -131,13 +131,42 @@ test("Responsive tabletop leaderboard keeps six data fields, native select and u
  }
 });
 
-test("Duality event matches the approved Discord announcement and starts with no fabricated results",()=>{
+test("Duality event matches the approved Discord announcement and has its first verified run",()=>{
  const eventData=JSON.parse(read("src/data/endfield/community-events.json"));
  const component=read("src/components/endfield/LeaderboardEvent.astro");
  assert.equal(eventData.schemaVersion,1);
  assert.equal(eventData.events.length,1);
- assert.equal(eventData.verifiedRuns.length,0);
+ assert.equal(eventData.verifiedRuns.length,1);
  assert.equal(eventData.events[0].demoRunId,"demo-ag0n1st-si-v16");
+ const verified=eventData.verifiedRuns[0];
+ assert.deepEqual([verified.id,verified.status,verified.eventId,verified.eligibleForCommunity,verified.boss,verified.playerId,
+                   verified.discordName,verified.countryCode,verified.time,verified.version,verified.link,verified.linkKind],
+                  ["duality-v16-si-krombi-0129","verified","duality",true,"si","krombi",
+                   "Krombi","DE","01:29","v1.6","https://youtu.be/24_sKEqnCm0","video"]);
+ assert.deepEqual(verified.team.map(x=>[x.slug,x.potential]),[["si",4],["arcane",3],["tangtang",4],["gilberta",2]]);
+ for(const member of verified.team){
+   const op=art.items.find(x=>x.slug===member.slug);
+   assert.ok(op,"operator must be in artwork catalog: "+member.slug);
+   assert.ok(existsSync("public"+op.assets["official-icon"].path));
+ }
+ assert.equal(flagForCountry(verified.countryCode),"🇩🇪");
+ assert.deepEqual(rankVerifiedRuns(eventData.verifiedRuns.filter(x=>x.eventId==="duality"),{boss:"si",version:"v1.6"}).map(x=>[x.discordName,x.time,x.rank]),[["Krombi","01:29",1]]);
+ const visibleCommunity={...data,verifiedRuns:[...data.verifiedRuns,...eventData.verifiedRuns.filter(x=>x.status==="verified"&&x.eligibleForCommunity===true)]};
+ for(const version of ["all-time","v1.6"]){
+   const rows=displayLeaderboardRows(visibleCommunity,"si",version);
+   assert.deepEqual(rows.map(x=>[x.discordName,x.time,x.rank,x.status]),[["Krombi","01:29",1,"verified"]]);
+ }
+ assert.equal(displayLeaderboardRows(data,"si","all-time")[0].status,"demo","Stored demo retains its separate nonverified status");
+ assert.deepEqual(rankVerifiedRuns(eventData.verifiedRuns.filter(x=>x.eligibleForCommunity!==true),{boss:"si"}),[],"no event run should be admitted automatically");
+ assert.match(page,/eligibleForCommunity===true/);
+ assert.match(page,/generalLeaderboard/);
+ assert.match(page,/isGermanFlag\(run.countryCode\)/);
+ assert.match(component,/isGermanFlag\(run.countryCode\)/);
+ assert.match(page,/cl-update-notice/);
+ assert.match(page,/Das Community Leaderboard und das Event Leaderboard werden einmal pro Woche am Ende der Woche aktualisiert/);
+ assert.match(page,/The Community Leaderboard and Event Leaderboard are updated once a week at the end of the week/);
+ assert.match(css,/\.cl-update-notice\{[^\n]*border-left:3px solid var\(--cyan\);[^\n]*background:rgba\(101,232,242,\.06\)/);
+
  assert.equal(eventData.events[0].backgroundImage,"/images/endfield/leaderboard/duality-background.webp");
  const event=eventData.events[0];
  assert.deepEqual([event.id,event.title,event.boss,event.version,event.startsOn,event.endsOn],
