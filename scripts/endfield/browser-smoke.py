@@ -922,39 +922,75 @@ def smoke_i18n(page, base_url, width):
                label+": "+lang+" other operators do not render the optional matrix")
         page.goto(base_url+prefix+"/endfield/leaderboard/")
         root=page.locator("[data-community-leaderboard]")
+        event=root.locator("[data-event-leaderboard]")
         verify(root.count()==1 and root.locator(".cl-container").count()==2 and
-               root.locator(".cl-event-container").count()==1 and
-               root.locator(".cl-main-container").count()==1,
-               label+": "+lang+" Event placeholder is above the Community Leaderboard")
+               event.count()==1 and root.locator(".cl-main-container").count()==1,
+               label+": "+lang+" Duality event is shown above general leaderboard")
+        event_select=event.locator("[data-event-select]")
+        event_panel=event.locator('[data-event-panel="duality"]')
+        verify(event_select.input_value()=="duality" and
+               event_panel.is_visible() and
+               event_panel.locator(".cl-event-rule").count()==6 and
+               "Top 10" in event_panel.locator(".cl-event-results h3").inner_text() and
+               "Duality" in event_panel.locator(".cl-event-results h3").inner_text() and
+               event_panel.locator(".cl-event-results .cl-empty-row").count()==1,
+               label+": "+lang+" Duality event picker, six rule cards and empty Top 10")
+        banner=event.locator('.cl-event-banner[src="/images/endfield/leaderboard/duality.webp"]')
+        verify(banner.count()==1 and
+               banner.evaluate("(el)=>el.complete&&el.naturalWidth>0&&el.naturalHeight>0") and
+               banner.evaluate("(el)=>Math.abs(el.naturalWidth/el.naturalHeight-2.5)<0.02"),
+               label+": "+lang+" uploaded Duality artwork is a valid proportional WebP")
+        texts=event.locator(".cl-event-rule").all_text_contents()
+        verify(len(texts)==6 and
+               ("RE-Krise" if lang=="de" else "RE-Crisis") in texts[0] and
+               "Si" in texts[1] and "Damage Dealer" in texts[2] and
+               ("Buff-Food" if lang=="de" else "buff food") in texts[3] and
+               ("Potenzialbeschränkung" if lang=="de" else "potential restrictions").lower() in texts[4].lower(),
+               label+": "+lang+" six owner-announced Duality rules render")
+        verify(event.locator('[data-event-rule="submission"] a[href="https://bit.ly/3WEuGwD"]').count()==1 and
+               "15.10." in event.locator(".cl-event-date").inner_text() and
+               "25.11." in event.locator(".cl-event-date").inner_text(),
+               label+": "+lang+" v1.6 date range and rulebook link match Discord announcement")
+        headings=page.evaluate("""() => ({
+          event:getComputedStyle(document.querySelector('.cl-event-head h2')).fontSize,
+          community:getComputedStyle(document.querySelector('.cl-community-head h1')).fontSize
+        })""")
+        verify(headings["event"]==headings["community"],
+               label+": "+lang+" Event and Community title font sizes are equal")
         boss_cards=root.locator("[data-boss-choice]")
         boss_order=[b.get_attribute("data-boss-choice") for b in boss_cards.all()]
         verify(boss_order==["si","alleikhreos","nefarith","ruan-yi","marble-aggelomoirai","triaggelos","rhodagn"] and
                boss_cards.count()==7 and
                root.locator('[data-boss-choice="si"] img[src="/images/endfield/operators/si/official-portrait.webp"]').count()==1,
-               label+": "+lang+" seven verified boss images render in requested newest-first quick-nav order")
+               label+": "+lang+" seven verified boss images retain reverse order")
         boss_select=root.locator("[data-boss-select]")
         version_select=root.locator("[data-version-select]")
-        verify(boss_select.input_value()=="rhodagn" and version_select.input_value()=="all-time" and
+        verify(boss_select.input_value()=="si" and version_select.input_value()=="all-time" and
                version_select.locator("option").all_text_contents()==["All-Time","v1.6"] and
-               root.locator('[data-boss-choice="rhodagn"]').get_attribute("aria-pressed")=="true",
-               label+": "+lang+" Rhodagn All-Time defaults and only v1.6 patch filter exists")
+               root.locator('[data-boss-choice="si"]').get_attribute("aria-pressed")=="true",
+               label+": "+lang+" Si is selected in both boss selectors by default")
         active=root.locator(".cl-results-panel:not([hidden])")
-        verify(active.count()==1 and "Rhodagn" in active.locator("h3").inner_text() and
+        verify(active.count()==1 and "Si" in active.locator("h3").inner_text() and
                active.locator(".cl-rank-row").count()==1 and
                active.locator(".cl-rank-number").inner_text().strip()=="1",
-               label+": "+lang+" default #1 TEST example renders under Rhodagn")
+               label+": "+lang+" Si Top 10 shows owner-approved placeholder example")
         row=active.locator(".cl-rank-row")
         verify(row.get_attribute("data-run-status")=="demo" and
-               row.locator(".cl-player").inner_text()=="Ag0n1st" and
+               "Ag0n1st" in row.locator(".cl-player").inner_text() and
+               row.locator(".cl-placeholder-label").inner_text()==("Platzhalter" if lang=="de" else "Placeholder") and
+               row.locator(".cl-run-time .cl-test-label").count()==0 and
                row.locator(".cl-team-operator").count()==4,
-               label+": "+lang+" DEMO row source is the owner-provided example")
-        verify(row.locator(".cl-country span").get_attribute("aria-label")==("Deutschland" if lang=="de" else "Germany") and
-               row.locator(".cl-run-time a").inner_text().startswith("02:05") and
+               label+": "+lang+" placeholder label is next to Ag0n1st, not the time")
+        flag=row.locator(".cl-country .cl-flag-de")
+        verify(flag.count()==1 and
+               flag.get_attribute("aria-label")==("Deutschland" if lang=="de" else "Germany") and
+               "linear-gradient" in flag.evaluate("(el)=>getComputedStyle(el).backgroundImage"),
+               label+": "+lang+" country renders as a real German tricolor instead of letters DE")
+        verify(row.locator(".cl-run-time a").inner_text().startswith("02:05") and
                row.locator(".cl-run-time a").get_attribute("href")=="https://www.youtube.com/@Ag0n1st" and
-               row.locator(".cl-test-label").inner_text()=="TEST" and
                row.locator(".cl-run-version").inner_text()=="v1.6" and
                active.locator(".cl-demo-disclaimer").count()==1,
-               label+": "+lang+" time MM:SS, channel link, TEST badge and non-verified disclaimer are explicit")
+               label+": "+lang+" Si demo time MM:SS, YouTube link and non-verified disclaimer")
         icons=row.locator(".cl-team-operator")
         verify(icons.count()==4 and
                [x.strip() for x in row.locator(".cl-operator-potential").all_text_contents()]==["P0","P0","P0","P5"] and
@@ -962,24 +998,28 @@ def smoke_i18n(page, base_url, width):
                  "/images/endfield/operators/si/official-icon.webp",
                  "/images/endfield/operators/arcane/official-icon.webp",
                  "/images/endfield/operators/tangtang/official-icon.webp",
-                 "/images/endfield/operators/xaihi/official-icon.webp"],
-               label+": "+lang+" four official operator icons have overlapping P0/P0/P0/P5 badges")
-        boss_cards.first.click()
-        verify(boss_select.input_value()=="si" and
-               root.locator('[data-boss-choice="si"]').get_attribute("aria-pressed")=="true" and
+                 "/images/endfield/operators/xaihi/official-icon.webp"] and
+               row.locator(".cl-operator-potential.is-p5").count()==1 and
+               row.locator(".cl-operator-potential.is-p5").evaluate("(el)=>getComputedStyle(el).color")=="rgb(255, 233, 133)",
+               label+": "+lang+" four official operator portraits and yellow P5 badge")
+        boss_cards.last.click()
+        verify(boss_select.input_value()=="rhodagn" and
+               root.locator('[data-boss-choice="rhodagn"]').get_attribute("aria-pressed")=="true" and
                root.locator(".cl-results-panel:not([hidden]) .cl-empty-row").count()==1 and
-               "si" in page.url.split("boss=")[-1],
-               label+": "+lang+" Si boss card updates select, empty state and URL")
-        boss_select.select_option("rhodagn")
+               "boss=rhodagn" in page.url,
+               label+": "+lang+" other boss has empty ranks, dropdown synced and link restored")
+        boss_select.select_option("si")
         version_select.select_option("v1.6")
         verify(root.locator(".cl-results-panel:not([hidden]) .cl-rank-row").count()==1 and
                "version=v1.6" in page.url,
-               label+": "+lang+" native dropdown filters select the v1.6 example without reload")
+               label+": "+lang+" Si placeholder remains visible in v1.6 filter")
         page.reload()
-        verify(root.locator("[data-boss-select]").input_value()=="rhodagn" and
+        root=page.locator("[data-community-leaderboard]")
+        verify(root.locator("[data-boss-select]").input_value()=="si" and
                root.locator("[data-version-select]").input_value()=="v1.6" and
-               root.locator(".cl-results-panel:not([hidden]) .cl-rank-row").count()==1,
-               label+": "+lang+" filter URL survives reload")
+               root.locator(".cl-results-panel:not([hidden]) .cl-rank-row").count()==1 and
+               root.locator('[data-event-panel="duality"]').is_visible(),
+               label+": "+lang+" query and Duality event survive reload")
         check_overflow(page,label+" "+lang+" leaderboard")
         page.goto(base_url+prefix+"/endfield/cheatsheets/")
         verify(page.locator(".endfield-coming-card").count()==3 and

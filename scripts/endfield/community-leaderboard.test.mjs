@@ -11,12 +11,12 @@ const page=read("src/components/pages/EndfieldLeaderboard.astro");
 const css=read("src/styles/endfield-leaderboard.css");
 const client=read("src/components/endfield/leaderboard-client.ts");
 
-test("Boss quick cards reverse the seven source-backed SKPORT boss identities; Rhodagn remains default",()=>{
+test("Boss quick cards reverse the seven source-backed SKPORT boss identities; Si is the new default",()=>{
  const original=threats.bosses.map(b=>b.slug);
  assert.deepEqual(original,["rhodagn","triaggelos","marble-aggelomoirai","ruan-yi","nefarith","alleikhreos","si"]);
  assert.deepEqual([...original].reverse(),["si","alleikhreos","nefarith","ruan-yi","marble-aggelomoirai","triaggelos","rhodagn"]);
  assert.match(page,/const bosses=\[\.\.\.featuredBosses\]\.reverse\(\)/);
- assert.match(page,/const defaultBoss="rhodagn"/);
+ assert.match(page,/const defaultBoss="si"/);
  assert.match(page,/data-boss-choice/);
  assert.match(page,/data-boss-select/);
  assert.match(page,/data-version-select/);
@@ -25,11 +25,11 @@ test("Boss quick cards reverse the seven source-backed SKPORT boss identities; R
  assert.match(client,/URLSearchParams/);
  assert.match(client,/aria-pressed/);
 });
-test("Current UI has an empty first event card and a functional general ranking section",()=>{
- assert.match(page,/cl-event-container/);
+test("Duality Event appears above the general ranking section",()=>{
+ assert.match(page,/LeaderboardEvent/);
  assert.match(page,/cl-main-container/);
- assert.ok(page.indexOf("cl-event-container")<page.indexOf("cl-main-container"));
- assert.match(page,/Event Leaderboard/);
+ assert.ok(page.indexOf("LeaderboardEvent lang")<page.indexOf("cl-main-container"));
+ assert.match(read("src/components/endfield/LeaderboardEvent.astro"),/Event Leaderboard/);
  assert.match(page,/Community Leaderboard/);
  assert.match(page,/Top 10 – \{boss\.label\}/);
  assert.match(page,/data-leaderboard-version/);
@@ -40,12 +40,12 @@ test("Current UI has an empty first event card and a functional general ranking 
  assert.match(page,/Ingame-Zeit \(MM:SS\)/);
  assert.match(page,/Identische Zeiten teilen sich die Platzierung/);
 });
-test("Published owner example is always visibly TEST, points to existing YouTube channel, never enters verified records",()=>{
+test("Owner demo displays Placeholder beside name, against Si, never as a verified record",()=>{
  assert.equal(data.verifiedRuns.length,0);
  assert.equal(data.demoRuns.length,1);
  const example=data.demoRuns[0];
  assert.deepEqual([example.status,example.boss,example.discordName,example.countryCode,example.time,example.version],
-                  ["demo","rhodagn","Ag0n1st","DEU","02:05","v1.6"]);
+                  ["demo","si","Ag0n1st","DEU","02:05","v1.6"]);
  assert.equal(example.link,"https://www.youtube.com/@Ag0n1st");
  assert.equal(example.linkKind,"channel");
  assert.equal(flagForCountry(example.countryCode),"🇩🇪");
@@ -56,14 +56,19 @@ test("Published owner example is always visibly TEST, points to existing YouTube
    assert.ok(operator,member.slug+" must have official artwork");
    assert.ok(existsSync("public"+operator.assets["official-icon"].path));
  }
- const allTime=displayLeaderboardRows(data,"rhodagn","all-time");
+ const allTime=displayLeaderboardRows(data,"si","all-time");
  assert.equal(allTime.length,1);
  assert.equal(allTime[0].rank,1);
  assert.equal(allTime[0].status,"demo");
- assert.equal(displayLeaderboardRows(data,"rhodagn","v1.6").length,1);
- assert.deepEqual(displayLeaderboardRows(data,"si","all-time"),[]);
- assert.deepEqual(rankVerifiedRuns(data.demoRuns,{boss:"rhodagn",version:"all-time"}),[]);
- assert.match(page,/cl-test-label/);
+ assert.equal(displayLeaderboardRows(data,"si","v1.6").length,1);
+ assert.deepEqual(displayLeaderboardRows(data,"rhodagn","all-time"),[]);
+ assert.deepEqual(rankVerifiedRuns(data.demoRuns,{boss:"si",version:"all-time"}),[]);
+ assert.match(page,/cl-placeholder-label/);
+ assert.match(page,/l\("Platzhalter","Placeholder"\)/);
+ assert.doesNotMatch(page,/cl-test-label/);
+ assert.match(page,/cl-flag-de/);
+ assert.match(css,/\.cl-flag-de\{background:linear-gradient/);
+ assert.match(css,/\.cl-operator-potential\.is-p5\{color:#ffe985/);
  assert.match(page,/cl-demo-disclaimer/);
  assert.match(page,/run\.status==="demo"/);
  assert.match(page,/cl-operator-potential/);
@@ -124,4 +129,40 @@ test("Responsive tabletop leaderboard keeps six data fields, native select and u
    const route="src/pages/"+(lang==="de"?"":"en/")+"endfield/leaderboard/index.astro";
    assert.match(read(route),new RegExp('lang="'+lang+'"'));
  }
+});
+
+test("Duality event matches the approved Discord announcement and starts with no fabricated results",()=>{
+ const eventData=JSON.parse(read("src/data/endfield/community-events.json"));
+ const component=read("src/components/endfield/LeaderboardEvent.astro");
+ assert.equal(eventData.schemaVersion,1);
+ assert.equal(eventData.events.length,1);
+ assert.equal(eventData.verifiedRuns.length,0);
+ const event=eventData.events[0];
+ assert.deepEqual([event.id,event.title,event.boss,event.version,event.startsOn,event.endsOn],
+   ["duality","Duality","si","v1.6","2026-10-15","2026-11-25"]);
+ assert.equal(event.image,"/images/endfield/leaderboard/duality.webp");
+ assert.ok(existsSync("public"+event.image));
+ const raw=readFileSync("public"+event.image);
+ assert.equal(raw.toString("ascii",0,4),"RIFF");
+ assert.equal(raw.toString("ascii",8,12),"WEBP");
+ assert.ok(raw.length<150000,"WebP banner must remain light");
+ assert.deepEqual(event.rules.map(x=>x.id),[
+   "boss","required-operator","damage-dealer","consumables","potentials","submission"
+ ]);
+ assert.match(event.rules[0].de,/Si \(RE-Krise\)/);
+ assert.match(event.rules[1].de,/Si muss/);
+ assert.match(event.rules[2].de,/einzige Operator/);
+ assert.match(event.rules[2].en,/Damage Dealer/);
+ assert.match(event.rules[3].de,/Kein Buff-Food/);
+ assert.match(event.rules[4].de,/Keine Potenzialbeschränkung/);
+ assert.match(event.rules[5].de,/Regelwerk §4/);
+ assert.equal(event.rulebookUrl,"https://bit.ly/3WEuGwD");
+ assert.match(component,/data-event-select/);
+ assert.match(component,/data-event-panel/);
+ assert.match(component,/cl-event-banner/);
+ assert.match(component,/cl-event-rule/);
+ assert.match(component,/Top 10 – \{event.title\}/);
+ assert.match(component,/Noch keine verifizierten Duality-Runs/);
+ assert.match(component,/No verified Duality runs/);
+ assert.match(css,/\.cl-event-head h2\{font-size:clamp\(27px,3.5vw,42px\)/);
 });

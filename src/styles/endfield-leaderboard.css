@@ -101,3 +101,33 @@
  .cl-rank-table tbody tr.cl-rank-row{grid-template-columns:33px minmax(0,1fr) 36px auto;column-gap:4px}
  .cl-run-time a{font-size:13px}
 }
+
+
+/* Duality: full-fledged Event Leaderboard with locally stored rules and banner. */
+.cl-event-container{min-height:0;margin-bottom:26px}
+.cl-event-head{min-height:67px}
+.cl-event-head h2{font-size:clamp(27px,3.5vw,42px);letter-spacing:-.035em}
+.cl-event-selector{max-width:420px;margin:22px 0 22px}
+.cl-event-panel[hidden]{display:none!important}
+.cl-event-feature{min-width:0}
+.cl-event-banner{display:block;width:100%;max-width:800px;height:auto;aspect-ratio:5/2;object-fit:contain;border-radius:12px;border:1px solid #534350;background:#11141a;box-shadow:0 11px 26px #0007}
+.cl-event-date{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:16px 0 9px;color:#e8e0eb;font-size:12px}
+.cl-event-date-label{color:#c8bad0;font-size:10px;letter-spacing:.07em;font-weight:800;text-transform:uppercase}
+.cl-event-date strong{border-radius:7px;background:#3b2e42;border:1px solid #55445c;color:#fff;padding:5px 9px;font-weight:800;font-variant-numeric:tabular-nums}
+.cl-event-version{font-size:11px;color:#bdb0c7}
+.cl-event-description{color:#c9bdcf;line-height:1.65;font-size:13px;margin:10px 0 23px}
+.cl-event-rules{margin-top:19px}
+.cl-event-rules h3{color:#f4edf7;font-size:17px;line-height:1.35;margin:0 0 13px}
+.cl-event-rules-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.cl-event-rule{min-width:0;display:flex;align-items:flex-start;gap:11px;padding:15px 13px;border-radius:11px;border:1px solid #4a3b53;background:linear-gradient(135deg,#2c2334,#211e29)}
+.cl-event-rule-index{flex:0 0 27px;display:grid;place-items:center;width:27px;height:27px;border-radius:7px;border:1px solid #705075;background:#432c4c;color:#efc1e5;font-size:11px;font-weight:800;letter-spacing:.04em}
+.cl-event-rule p{flex:1;min-width:0;color:#e5dce9;line-height:1.6;font-size:12px;margin:1px 0 0;overflow-wrap:anywhere}
+.cl-event-rule a{display:inline-block;color:#90d9f2;text-decoration:underline;text-underline-offset:2px;font-weight:800}
+.cl-event-results{margin-top:28px}
+.cl-event-results .cl-results-head{margin-bottom:9px}
+.cl-country-flag{display:inline-block;width:25px;height:17px;vertical-align:middle;border:1px solid #817b83;border-radius:2px;box-shadow:0 1px 3px #0009;background:#333}
+.cl-flag-de{background:linear-gradient(to bottom,#111 0%,#111 33.333%,#dd0000 33.333%,#dd0000 66.666%,#ffce00 66.666%,#ffce00 100%)}
+.cl-operator-potential.is-p5{color:#ffe985;border-color:#a18b39;background:#322813ef}
+.cl-placeholder-label{display:inline-flex;vertical-align:middle;margin-left:8px;border:1px solid #9a799e;background:#38283e;color:#d8bfe0;border-radius:5px;font-size:9px;line-height:1.2;font-weight:800;padding:3px 5px;letter-spacing:.01em;white-space:nowrap}
+@media(max-width:760px){.cl-event-rules-grid{grid-template-columns:1fr}.cl-event-head{min-height:56px}}
+@media(max-width:460px){.cl-event-selector{max-width:none}.cl-placeholder-label{font-size:8px;margin-left:5px;padding:2px 4px}.cl-event-rule{padding:12px 10px}}
