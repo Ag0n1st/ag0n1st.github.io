@@ -62,11 +62,14 @@ test("localized nav contains both new unfinished subsections, URLs and stacked l
  }
  assert.match(nav,/item\.key==="leaderboard"/);
  assert.match(nav,/item\.key==="cheatsheets"/);
- assert.match(nav,/upcoming=new Set\(\[[^\]]*"leaderboard","cheatsheets"/);
+ assert.doesNotMatch(nav,/upcoming=new Set\(\[[^\]]*"leaderboard"/);
+ assert.match(nav,/upcoming=new Set\(\[[^\]]*"cheatsheets"/);
  const cheat=read("src/components/pages/EndfieldCheatSheets.astro");
  for(const tag of ["#ElasticGoods","#Artificing","#Bufffood"])assert.ok(cheat.includes(tag));
  const leader=read("src/components/pages/EndfieldLeaderboard.astro");
- assert.match(leader,/featuredBosses\.map/);
+ assert.match(leader,/bosses\.map/);
+ assert.match(leader,/featuredBosses/);
+ assert.match(leader,/cl-boss-choice/);
  assert.match(leader,/discord\.gg\/v2h9KKT/);
 });
 test("latest released operator only gets one NEW label, not the latest edit",()=>{
