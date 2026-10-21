@@ -1,39 +1,128 @@
 ---
 import EndfieldPlaceholder from "../../layouts/EndfieldPlaceholder.astro";
 import {featuredBosses} from "../../lib/endfield/threatCatalog";
+import {getOperatorImageUrl} from "../../lib/endfield/operatorAssets";
+import {displayLeaderboardRows,flagForCountry} from "../../lib/endfield/leaderboardRanking.mjs";
+import leaderboard from "../../data/endfield/community-leaderboard.json";
+import "../../styles/endfield-leaderboard.css";
+
 interface Props {lang?:"de"|"en"}
 const {lang="de"}=Astro.props;
 const en=lang==="en";
 const l=(de:string,english:string)=>en?english:de;
+// UI display order is newest boss first, independent of the SKPORT snapshot.
+const bosses=[...featuredBosses].reverse();
+const defaultBoss="rhodagn";
+const versions=["all-time",...leaderboard.versions.slice().sort((a,b)=>Number(b.slice(1))-Number(a.slice(1)))];
+const bossLabels=new Map(bosses.map(boss=>[boss.slug,boss.label]));
+const countryName=(code:string)=>code==="DEU"?l("Deutschland","Germany"):code;
 ---
-<EndfieldPlaceholder title="Community Leaderboard" kicker="ARKNIGHTS: ENDFIELD · COMMUNITY LEADERBOARD" active="leaderboard" lang={lang} description={l("Community-Ranglisten und zeitlich begrenzte Boss-Challenges.","Community rankings and time-limited boss challenges.")}>
-  <main class="endfield-utility-page section-wrap endfield-coming-tool">
+<EndfieldPlaceholder title="Community Leaderboard" kicker="ARKNIGHTS: ENDFIELD · COMMUNITY LEADERBOARD" active="leaderboard" lang={lang} description={l("Verifizierte Boss-Speedruns, Bestenlisten und Community-Events in Arknights: Endfield.","Verified boss speedruns, rankings and community events in Arknights: Endfield.")}>
+  <main class="endfield-utility-page section-wrap cl-page" data-community-leaderboard>
     <span class="section-kicker">ARKNIGHTS: ENDFIELD · SPEEDRUNS</span>
-    <h1 class="endfield-stacked-title"><span>Community</span><span>Leaderboard<span class="title-period">.</span></span></h1>
-    <p class="endfield-utility-intro">{l("Hier entsteht das Community-Leaderboard für Speedrun-Rankings der aktuellen Bosse.","This is where the community leaderboard for current boss speedruns will appear.")}</p>
-    <h2>{l("Geplante Boss-Rankings","Planned Boss Rankings")}</h2>
-    <div class="endfield-boss-grid" aria-label={l("Bosse mit geplanten Ranglisten","Bosses with planned rankings")}>
-      {featuredBosses.map(boss=><article class="endfield-boss-card">
-        <figure>{boss.image && <img src={boss.image} alt={boss.label} loading="lazy" decoding="async" />}</figure>
-        <div class="endfield-boss-meta"><strong>{boss.label}</strong>
-          <small>{boss.provisional?l("Operatorbild als Platzhalter – Wiki-Eintrag folgt","Operator artwork placeholder – wiki entry pending"):l("Leaderboard in Vorbereitung","Leaderboard coming soon")}</small>
+    <p class="cl-page-lead">{l("Boss-Speedruns aus der Community · RE-Krise · Höchster Schwierigkeitsgrad","Community boss speedruns · RE-Crisis · Highest difficulty")}</p>
+
+    <section class="cl-container cl-event-container" aria-labelledby="cl-event-title">
+      <div class="cl-section-head">
+        <div>
+          <span class="cl-eyebrow">{l("ZEITLICH BEGRENZT","LIMITED-TIME")}</span>
+          <h2 id="cl-event-title">Event Leaderboard</h2>
         </div>
-      </article>)}
-    </div>
-    <div class="endfield-coming-cards">
-      <article class="op-cardlet endfield-coming-card">
-        <h2>{l("Boss-Rankings","Boss Rankings")}</h2>
-        <p>{l("Für jeden Boss werden später geprüfte Community-Zeiten und die verwendeten Regeln aufgeführt. Noch sind keine Zeiten oder Platzierungen veröffentlicht.","Verified community times and run rules will be listed for each boss. No times or rankings have been published yet.")}</p>
-      </article>
-      <article class="op-cardlet endfield-coming-card">
-        <h2>{l("Versions-Events","Version Events")}</h2>
-        <p>{l("Wenn eine neue Version einen Boss einführt, soll es dafür zusätzlich eine zeitlich begrenzte Community-Challenge geben. Bedingungen und Starttermine werden erst nach Festlegung veröffentlicht.","When a new version introduces a boss, there may be a limited-time community challenge. Rules and dates will be announced once confirmed.")}</p>
-      </article>
-      <article class="op-cardlet endfield-coming-card">
-        <h2>{l("Runs einreichen","Submit a Run")}</h2>
-        <p>{l("Die Einreichung ist künftig über meine Discord-Community vorgesehen. Eine verbindliche Einreichungsmaske oder automatische Prüfung ist noch nicht aktiv.","Submissions are planned through my Discord community. No submission form or automatic verification is active yet.")}</p>
-        <a class="op-link" href="https://discord.gg/v2h9KKT" target="_blank" rel="noopener noreferrer">{l("Zur Discord-Community ↗","Visit the Discord community ↗")}</a>
-      </article>
-    </div>
+        <span class="cl-status">{l("In Vorbereitung","Coming soon")}</span>
+      </div>
+      <p class="cl-event-intro">{l("Hier erscheint das jeweils aktuelle Patch-Event mit seinen eigenen Regeln und Ergebnissen. Der Event-Bereich ist noch nicht aktiv.","The current patch event, its rules and results will appear here. No event is active yet.")}</p>
+    </section>
+
+    <section class="cl-container cl-main-container" aria-labelledby="cl-community-title">
+      <div class="cl-section-head cl-community-head">
+        <div>
+          <span class="cl-eyebrow">ARKNIGHTS: ENDFIELD</span>
+          <h1 id="cl-community-title">Community Leaderboard</h1>
+        </div>
+        <svg class="cl-trophy-art" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M38 18h44v18c0 25-9 37-22 41-13-4-22-16-22-41V18Z"/>
+          <path d="M38 25H19v14c0 15 9 22 23 22m40-36h19v14c0 15-9 22-23 22M60 78v17m-16 1h32l6 9H38l6-9Zm11-52 5-12 5 12 13 1-10 8 4 12-12-7-12 7 4-12-10-8 13-1Z"/>
+        </svg>
+      </div>
+
+      <div class="cl-filters">
+        <div class="cl-control">
+          <label for="cl-boss-select">{l("Boss auswählen","Select boss")}</label>
+          <select id="cl-boss-select" data-boss-select>
+            {bosses.map(boss=><option value={boss.slug} selected={boss.slug===defaultBoss}>{boss.label}</option>)}
+          </select>
+        </div>
+        <div class="cl-control">
+          <label for="cl-version-select">{l("Spielversion","Game version")}</label>
+          <select id="cl-version-select" data-version-select>
+            {versions.map(version=><option value={version} selected={version==="all-time"}>{version==="all-time"?"All-Time":version}</option>)}
+          </select>
+        </div>
+      </div>
+
+      <div class="cl-boss-choices-label">{l("Schnellauswahl","Quick select")}</div>
+      <div class="cl-boss-choices" role="group" aria-label={l("Boss für die Rangliste auswählen","Choose ranking boss")}>
+        {bosses.map(boss=><button class="cl-boss-choice" type="button" data-boss-choice={boss.slug} aria-pressed={boss.slug===defaultBoss?"true":"false"} title={boss.label}>
+          <span class="cl-boss-art">{boss.image && <img src={boss.image} alt="" loading="lazy" decoding="async" width="96" height="96"/>}</span>
+          <span class="cl-boss-name">{boss.label}</span>
+        </button>)}
+      </div>
+
+      <div class="cl-results" aria-live="polite" aria-atomic="false">
+        {bosses.flatMap(boss=>versions.map(version=>{
+          const rows=displayLeaderboardRows(leaderboard,boss.slug,version);
+          const visible=boss.slug===defaultBoss&&version==="all-time";
+          const demoOnly=rows.length>0&&rows.every(run=>run.status==="demo");
+          return <section class="cl-results-panel" data-leaderboard-boss={boss.slug} data-leaderboard-version={version} hidden={!visible} aria-label={l("Rangliste für ","Ranking for ")+boss.label+" · "+(version==="all-time"?"All-Time":version)}>
+            <div class="cl-results-head">
+              <div>
+                <span class="cl-results-kicker">{version==="all-time"?"ALL-TIME":version.toUpperCase()}</span>
+                <h3>Top 10 – {boss.label}</h3>
+              </div>
+              {boss.image && <img class="cl-current-boss" src={boss.image} alt="" loading="lazy" decoding="async" width="76" height="76"/>}
+            </div>
+            {demoOnly && <p class="cl-demo-disclaimer">{l("Demo-Eintrag zur Darstellung – kein verifizierter Community-Rekord.","Display-only demo entry – not a verified community record.")}</p>}
+            <table class="cl-rank-table" aria-label={l("Top 10 für ","Top 10 for ")+boss.label}>
+              <thead><tr>
+                <th scope="col">#</th>
+                <th scope="col">{l("Name","Name")}</th>
+                <th scope="col">{l("Land","Country")}</th>
+                <th scope="col">Team</th>
+                <th scope="col">{l("Zeit","Time")}</th>
+                <th scope="col">{l("Version","Version")}</th>
+              </tr></thead>
+              <tbody>
+                {rows.length ? rows.map(run=><tr class:list={["cl-rank-row",{"is-demo":run.status==="demo"}]} data-run-status={run.status}>
+                  <th class="cl-rank-number" scope="row"><span class:list={["cl-placement",{"is-first":run.rank===1,"is-second":run.rank===2,"is-third":run.rank===3}]}>{run.rank}</span></th>
+                  <td class="cl-player">{run.discordName}</td>
+                  <td class="cl-country"><span role="img" aria-label={countryName(run.countryCode)} title={countryName(run.countryCode)}>{flagForCountry(run.countryCode)}</span></td>
+                  <td class="cl-team">
+                    <span class="cl-team-items">
+                      {run.team.map(member=><span class="cl-team-operator" title={member.slug.charAt(0).toUpperCase()+member.slug.slice(1)+" · P"+member.potential} aria-label={member.slug+" P"+member.potential}>
+                        {getOperatorImageUrl(member.slug,"official-icon") && <img src={getOperatorImageUrl(member.slug,"official-icon")} alt={member.slug} width="42" height="42" loading="lazy" decoding="async"/>}
+                        <span class="cl-operator-potential">P{member.potential}</span>
+                      </span>)}
+                    </span>
+                  </td>
+                  <td class="cl-run-time">
+                    <a href={run.link} target="_blank" rel="noopener noreferrer" aria-label={run.status==="demo"?l("Testlink: YouTube-Kanal öffnen","Test link: open YouTube channel"):l("Run-Video auf YouTube öffnen","Open run video on YouTube")}>{run.time}<span class="cl-external" aria-hidden="true">↗</span></a>
+                    {run.status==="demo"&&<span class="cl-test-label">TEST</span>}
+                  </td>
+                  <td class="cl-run-version">{run.version}</td>
+                </tr>) : <tr class="cl-empty-row"><td colspan="6">{l("Für diese Auswahl sind noch keine verifizierten Runs eingetragen.","No verified runs have been submitted for this selection yet.")}</td></tr>}
+              </tbody>
+            </table>
+            <p class="cl-ranking-note">{l("Wertung nach Ingame-Zeit (MM:SS). Identische Zeiten teilen sich die Platzierung. Pro Spieler zählt die beste gültige Zeit für die gewählte Auswahl.","Ranked by the in-game timer (MM:SS). Identical times share the same placement. Only each player's best eligible run counts for this selection.")}</p>
+          </section>;
+        }))}
+      </div>
+      <div class="cl-footer">
+        <p>{l("Runs werden auf Discord eingereicht und nach Video- und Ausrüstungsprüfung freigegeben. Ohne Buff Food oder taktische Mittel.","Runs are submitted on Discord and verified using the video and gear details. No buff food or tactical items.")}</p>
+        <a href="https://discord.gg/v2h9KKT" target="_blank" rel="noopener noreferrer">{l("Run über Discord einreichen ↗","Submit a run via Discord ↗")}</a>
+      </div>
+    </section>
   </main>
 </EndfieldPlaceholder>
+<script>
+  import "../endfield/leaderboard-client";
+</script>

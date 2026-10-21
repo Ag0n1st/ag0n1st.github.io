@@ -724,9 +724,9 @@ def smoke_i18n(page, base_url, width):
                flat.index("Tierlist" if lang=="de" else "Tier List") == flat.index("Checkliste" if lang=="de" else "Checklist")+1 and
                flat.index("Countdown") == flat.index("Tierlist" if lang=="de" else "Tier List")+1,
                label+": "+lang+" Tierlist appears after Checklist and before Countdown")
-        verify(page.locator('a.endfield-nav-link[href="'+("/endfield/leaderboard/" if lang=="de" else "/en/endfield/leaderboard/")+'"] .nav-upcoming-wrench').count()==1 and
+        verify(page.locator('a.endfield-nav-link[href="'+("/endfield/leaderboard/" if lang=="de" else "/en/endfield/leaderboard/")+'"] .nav-upcoming-wrench').count()==0 and
                page.locator('a.endfield-nav-link[href="'+("/endfield/cheatsheets/" if lang=="de" else "/en/endfield/cheatsheets/")+'"] .nav-upcoming-wrench').count()==1,
-               label+": "+lang+" new unfinished navigation tabs show their wrench icons")
+               label+": "+lang+" completed Leaderboard has no wrench; unfinished Cheat Sheets retains it")
         check=page.locator("[data-version-countdown]").evaluate(
             "(el)=>({utc:new Date(el.dataset.endsAt).toISOString(),local:el.dataset.endsLocal,hours:(Date.parse(el.dataset.endsAt)-Date.parse('2026-11-25T21:00:00Z'))/3600000})")
         verify(check["utc"]=="2026-11-25T22:00:00.000Z" and
@@ -921,11 +921,65 @@ def smoke_i18n(page, base_url, width):
         verify(page.locator('[data-guide-disclosure="equipment-matrix"]').count()==0,
                label+": "+lang+" other operators do not render the optional matrix")
         page.goto(base_url+prefix+"/endfield/leaderboard/")
-        verify(page.locator(".endfield-boss-grid .endfield-boss-card").count()==7 and
-               page.locator(".endfield-stacked-title > span").count()==2,
-               label+": "+lang+" Community Leaderboard has 7 future boss rankings")
-        verify(page.locator('.endfield-boss-card img[src="/images/endfield/operators/si/official-portrait.webp"]').count()==1,
-               label+": "+lang+" provisional Si Boss uses existing official operator portrait")
+        root=page.locator("[data-community-leaderboard]")
+        verify(root.count()==1 and root.locator(".cl-container").count()==2 and
+               root.locator(".cl-event-container").count()==1 and
+               root.locator(".cl-main-container").count()==1,
+               label+": "+lang+" Event placeholder is above the Community Leaderboard")
+        boss_cards=root.locator("[data-boss-choice]")
+        boss_order=[b.get_attribute("data-boss-choice") for b in boss_cards.all()]
+        verify(boss_order==["si","alleikhreos","nefarith","ruan-yi","marble-aggelomoirai","triaggelos","rhodagn"] and
+               boss_cards.count()==7 and
+               root.locator('[data-boss-choice="si"] img[src="/images/endfield/operators/si/official-portrait.webp"]').count()==1,
+               label+": "+lang+" seven verified boss images render in requested newest-first quick-nav order")
+        boss_select=root.locator("[data-boss-select]")
+        version_select=root.locator("[data-version-select]")
+        verify(boss_select.input_value()=="rhodagn" and version_select.input_value()=="all-time" and
+               version_select.locator("option").all_text_contents()==["All-Time","v1.6"] and
+               root.locator('[data-boss-choice="rhodagn"]').get_attribute("aria-pressed")=="true",
+               label+": "+lang+" Rhodagn All-Time defaults and only v1.6 patch filter exists")
+        active=root.locator(".cl-results-panel:not([hidden])")
+        verify(active.count()==1 and "Rhodagn" in active.locator("h3").inner_text() and
+               active.locator(".cl-rank-row").count()==1 and
+               active.locator(".cl-rank-number").inner_text().strip()=="1",
+               label+": "+lang+" default #1 TEST example renders under Rhodagn")
+        row=active.locator(".cl-rank-row")
+        verify(row.get_attribute("data-run-status")=="demo" and
+               row.locator(".cl-player").inner_text()=="Ag0n1st" and
+               row.locator(".cl-team-operator").count()==4,
+               label+": "+lang+" DEMO row source is the owner-provided example")
+        verify(row.locator(".cl-country span").get_attribute("aria-label")==("Deutschland" if lang=="de" else "Germany") and
+               row.locator(".cl-run-time a").inner_text().startswith("02:05") and
+               row.locator(".cl-run-time a").get_attribute("href")=="https://www.youtube.com/@Ag0n1st" and
+               row.locator(".cl-test-label").inner_text()=="TEST" and
+               row.locator(".cl-run-version").inner_text()=="v1.6" and
+               active.locator(".cl-demo-disclaimer").count()==1,
+               label+": "+lang+" time MM:SS, channel link, TEST badge and non-verified disclaimer are explicit")
+        icons=row.locator(".cl-team-operator")
+        verify(icons.count()==4 and
+               [x.strip() for x in row.locator(".cl-operator-potential").all_text_contents()]==["P0","P0","P0","P5"] and
+               [x.get_attribute("src") for x in icons.locator("img").all()]==[
+                 "/images/endfield/operators/si/official-icon.webp",
+                 "/images/endfield/operators/arcane/official-icon.webp",
+                 "/images/endfield/operators/tangtang/official-icon.webp",
+                 "/images/endfield/operators/xaihi/official-icon.webp"],
+               label+": "+lang+" four official operator icons have overlapping P0/P0/P0/P5 badges")
+        boss_cards.first.click()
+        verify(boss_select.input_value()=="si" and
+               root.locator('[data-boss-choice="si"]').get_attribute("aria-pressed")=="true" and
+               root.locator(".cl-results-panel:not([hidden]) .cl-empty-row").count()==1 and
+               "si" in page.url.split("boss=")[-1],
+               label+": "+lang+" Si boss card updates select, empty state and URL")
+        boss_select.select_option("rhodagn")
+        version_select.select_option("v1.6")
+        verify(root.locator(".cl-results-panel:not([hidden]) .cl-rank-row").count()==1 and
+               "version=v1.6" in page.url,
+               label+": "+lang+" native dropdown filters select the v1.6 example without reload")
+        page.reload()
+        verify(root.locator("[data-boss-select]").input_value()=="rhodagn" and
+               root.locator("[data-version-select]").input_value()=="v1.6" and
+               root.locator(".cl-results-panel:not([hidden]) .cl-rank-row").count()==1,
+               label+": "+lang+" filter URL survives reload")
         check_overflow(page,label+" "+lang+" leaderboard")
         page.goto(base_url+prefix+"/endfield/cheatsheets/")
         verify(page.locator(".endfield-coming-card").count()==3 and

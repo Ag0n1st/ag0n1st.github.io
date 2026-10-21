@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "description": "Public, manually reviewed Community Leaderboard results. Sample entries are demonstrations, never verified records.",
+  "firstVersion": "v1.6",
+  "versions": [
+    "v1.6"
+  ],
+  "verifiedRuns": [],
+  "demoRuns": [
+    {
+      "id": "demo-ag0n1st-rhodagn-v16",
+      "status": "demo",
+      "boss": "rhodagn",
+      "playerId": "demo-ag0n1st",
+      "discordName": "Ag0n1st",
+      "countryCode": "DEU",
+      "team": [
+        {
+          "slug": "si",
+          "potential": 0
+        },
+        {
+          "slug": "arcane",
+          "potential": 0
+        },
+        {
+          "slug": "tangtang",
+          "potential": 0
+        },
+        {
+          "slug": "xaihi",
+          "potential": 5
+        }
+      ],
+      "time": "02:05",
+      "version": "v1.6",
+      "link": "https://www.youtube.com/@Ag0n1st",
+      "linkKind": "channel"
+    }
+  ]
+}
