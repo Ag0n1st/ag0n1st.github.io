@@ -66,6 +66,15 @@ test("33 real public SKPORT illustrations and covers registered in the same offi
   }
  }
  assert.equal(refs,198);
+ const arcane=manifest.items.find(x=>x.slug==="arcane");
+ for(const slot of ["battle","combo","ultimate"]){
+  const record=arcane.assets["skport-skill-"+slot+"-will"];
+  assert.ok(record,"Arcane WILL icon "+slot);
+  assert.equal(record.status,"cached");
+  assert.equal(record.sourceField,"skillVariants.will."+slot+".iconUrl");
+  assert.ok(existsSync(asset(record.path)));
+  assert.ok(statSync(asset(record.path)).size>100);
+ }
 });
 test("consolidated public import report is complete, additive and independently reproducible",()=>{
  assert.equal(report.provider,"SKPORT Wiki");
@@ -76,7 +85,9 @@ test("consolidated public import report is complete, additive and independently 
  assert.equal(report.results.length,30);
  assert.equal(new Set(report.results.map(x=>x.slug)).size,30);
  assert.equal(report.results.flatMap(x=>x.images).filter(x=>x.status==="saved").length,180);
- assert.deepEqual(report.runHistory.map(x=>[x.imported,x.attempted]),[[27,30],[3,3]]);
+ assert.deepEqual(report.runHistory.map(x=>[x.imported,x.attempted]),[[27,30],[3,3],[0,0]]);
+ assert.equal(report.newOptimizedWebPs,183);
+ assert.equal(report.additionalOfficialVariantAssets.length,3);
  assert.deepEqual(report.unreleasedNotImported.map(x=>x.slug),["argent-flow"]);
  assert.deepEqual(report.sourceLimitations.map(x=>x.slug),["endministrator"]);
  for(const x of report.results)assert.ok(!report.priorOfficialImports.includes(x.slug));
