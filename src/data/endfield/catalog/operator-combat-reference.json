@@ -1,0 +1,1705 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "provider": "eldritchtools/endfield-assets",
+    "repository": "https://github.com/eldritchtools/endfield-assets",
+    "skillsUrl": "https://github.com/eldritchtools/endfield-assets/blob/main/data/skills.json",
+    "baseSkillsUrl": "https://github.com/eldritchtools/endfield-assets/blob/main/data/base_skills.json",
+    "skillsBlob": "1073f55d75b11e1c3615f36d138032bf4744b31b",
+    "baseSkillsBlob": "a95152aba7b232cf453aca35cbc617fd50ee3b97",
+    "provenance": "Public community-maintained extracted game metadata; not SKPORT official item/info; no full rank/talent/potential data.",
+    "capturedOn": "2026-10-24"
+  },
+  "coverage": {
+    "roster": 34,
+    "withCombatNames": 30,
+    "withBaseSkills": 29,
+    "missingCombat": [
+      "typhoeus",
+      "purrchena",
+      "si",
+      "argent-flow"
+    ]
+  },
+  "operators": [
+    {
+      "id": "endministrator",
+      "itemId": "2",
+      "name": "Endministrator",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Destructive Sequence"
+        },
+        "battle": {
+          "name": "Constructive Sequence",
+          "outTriggers": [
+            "crush"
+          ]
+        },
+        "combo": {
+          "name": "Sealing Sequence",
+          "inTriggers": [
+            "physical-status",
+            "vulnerability"
+          ],
+          "outTriggers": [
+            "originium-crystals"
+          ]
+        },
+        "ultimate": {
+          "name": "Bombardment Sequence",
+          "inTriggers": [
+            "originium-crystals"
+          ],
+          "outTriggers": [
+            "originium-crystals-consumed"
+          ]
+        }
+      }
+    },
+    {
+      "id": "laevatain",
+      "itemId": "11",
+      "name": "Laevatain",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Flaming Cinders"
+        },
+        "battle": {
+          "name": "Smouldering Fire",
+          "inTriggers": [
+            "melting-flame"
+          ],
+          "outTriggers": [
+            "melting-flame",
+            "combustion"
+          ]
+        },
+        "combo": {
+          "name": "Seethe",
+          "inTriggers": [
+            "combustion",
+            "corrosion"
+          ],
+          "outTriggers": [
+            "melting-flame"
+          ]
+        },
+        "ultimate": {
+          "name": "Twilight",
+          "outTriggers": [
+            "heat-infliction"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Memory Crucible",
+          "room": "MFG",
+          "effectType": "operator xp",
+          "tierValues": [
+            0.2,
+            0.3
+          ]
+        },
+        {
+          "name": "Undying Flames",
+          "room": "MFG",
+          "effectType": "mood drain",
+          "tierValues": [
+            0.14,
+            0.18
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yvonne",
+      "itemId": "14",
+      "name": "Yvonne",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Exuberant Trigger"
+        },
+        "battle": {
+          "name": "Brr-Brr-Bomb β",
+          "inTriggers": [
+            "cryo-infliction",
+            "nature-infliction"
+          ],
+          "outTriggers": [
+            "cryo-infliction-consumed",
+            "nature-infliction-consumed",
+            "solidification"
+          ]
+        },
+        "combo": {
+          "name": "Flashfreezer υ37",
+          "inTriggers": [
+            "solidification"
+          ],
+          "outTriggers": [
+            "solidification"
+          ]
+        },
+        "ultimate": {
+          "name": "Cryoblasting Pistolier",
+          "inTriggers": [
+            "solidification"
+          ],
+          "outTriggers": [
+            "solidification-consumed"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Fungal Pigment Extraction",
+          "room": "GC",
+          "effectType": "fungus",
+          "tierValues": [
+            0.2,
+            0.3
+          ]
+        },
+        {
+          "name": "Fashionista",
+          "room": "GC",
+          "effectType": "mood drain",
+          "tierValues": [
+            0.14,
+            0.18
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gilberta",
+      "itemId": "9",
+      "name": "Gilberta",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Arcane Staff: Beam Cohesion Arts"
+        },
+        "battle": {
+          "name": "Arcane Staff: Gravity Mode",
+          "outTriggers": [
+            "nature-infliction"
+          ]
+        },
+        "combo": {
+          "name": "Arcane Staff: Matrix Displacement",
+          "inTriggers": [
+            "arts-reaction"
+          ],
+          "outTriggers": [
+            "lift"
+          ]
+        },
+        "ultimate": {
+          "name": "Arcane Staff: Gravity Field",
+          "inTriggers": [
+            "vulnerability",
+            "lift"
+          ],
+          "outTriggers": [
+            "nature-infliction",
+            "slow",
+            "arts-susceptibility"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Messengerial Processing",
+          "room": "MFG",
+          "effectType": "mood drain",
+          "tierValues": [
+            0.14,
+            0.18
+          ]
+        },
+        {
+          "name": "Messengerial Arms Mastery",
+          "room": "MFG",
+          "effectType": "weapon xp",
+          "tierValues": [
+            0.2,
+            0.3
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ember",
+      "itemId": "15",
+      "name": "Ember",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Sword Art of Assault"
+        },
+        "battle": {
+          "name": "Forward March",
+          "outTriggers": [
+            "knock-down"
+          ]
+        },
+        "combo": {
+          "name": "Frontline Support",
+          "outTriggers": [
+            "knock-down"
+          ]
+        },
+        "ultimate": {
+          "name": "Re-Ignited Oath"
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Special Northern Training",
+          "room": "MFG",
+          "effectType": "operator xp",
+          "tierValues": [
+            0.2,
+            0.3
+          ]
+        },
+        {
+          "name": "Keepers of the Banner",
+          "room": "RR",
+          "effectType": "clue rate up",
+          "tierValues": [
+            4,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "id": "last-rite",
+      "itemId": "17",
+      "name": "Last Rite",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Dance of Rime"
+        },
+        "battle": {
+          "name": "Esoteric Legacy of Seš'qa",
+          "outTriggers": [
+            "hypothermic-perfusion",
+            "cryo-infliction"
+          ]
+        },
+        "combo": {
+          "name": "Winter's Devourer",
+          "inTriggers": [
+            "cryo-infliction"
+          ],
+          "outTriggers": [
+            "cryo-infliction-consumed"
+          ]
+        },
+        "ultimate": {
+          "name": "Vigil Services"
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Cemetery Gardening",
+          "room": "GC",
+          "effectType": "plant",
+          "tierValues": [
+            0.2,
+            0.3
+          ]
+        },
+        {
+          "name": "Fame of the Royal Courts",
+          "room": "RR",
+          "effectType": "clue rate up",
+          "tierValues": [
+            7,
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lifeng",
+      "itemId": "12",
+      "name": "Lifeng",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Ruination"
+        },
+        "battle": {
+          "name": "Turbid Avatar",
+          "outTriggers": [
+            "knock-down",
+            "physical-susceptibility"
+          ]
+        },
+        "combo": {
+          "name": "Aspect of Wrath",
+          "inTriggers": [
+            "physical-susceptibility",
+            "breach"
+          ],
+          "outTriggers": [
+            "link"
+          ]
+        },
+        "ultimate": {
+          "name": "Heart of the Unmoving",
+          "inTriggers": [
+            "link"
+          ],
+          "outTriggers": [
+            "knock-down"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Youthful Ambition",
+          "room": "CN",
+          "effectType": "mood regen",
+          "tierValues": [
+            0.12,
+            0.16
+          ]
+        },
+        {
+          "name": "Laddie Reliable",
+          "room": "RR",
+          "effectType": "clue rate up",
+          "tierValues": [
+            3,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pogranichnik",
+      "itemId": "20",
+      "name": "Pogranichnik",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "All-Out Offensive"
+        },
+        "battle": {
+          "name": "The Pulverizing Front",
+          "inTriggers": [
+            "vulnerability"
+          ],
+          "outTriggers": [
+            "breach"
+          ]
+        },
+        "combo": {
+          "name": "Full Moon Slash",
+          "inTriggers": [
+            "crush",
+            "breach"
+          ]
+        },
+        "ultimate": {
+          "name": "Shieldguard Banner, Forward",
+          "inTriggers": [
+            "physical-status"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Hone the Weapons",
+          "room": "MFG",
+          "effectType": "weapon xp",
+          "tierValues": [
+            0.2,
+            0.3
+          ]
+        },
+        {
+          "name": "Morale Boost",
+          "room": "MFG",
+          "effectType": "mood drain",
+          "tierValues": [
+            0.14,
+            0.18
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ardelia",
+      "itemId": "19",
+      "name": "Ardelia",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Rocky Whispers"
+        },
+        "battle": {
+          "name": "Dolly Rush",
+          "inTriggers": [
+            "corrosion"
+          ],
+          "outTriggers": [
+            "physical-susceptibility",
+            "arts-susceptibility",
+            "corrosion-consumed"
+          ]
+        },
+        "combo": {
+          "name": "Eruption Column",
+          "outTriggers": [
+            "corrosion"
+          ]
+        },
+        "ultimate": {
+          "name": "Wooly Party"
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Tales of the Land",
+          "room": "RR",
+          "effectType": "clue efficiency",
+          "tierValues": [
+            0.2,
+            0.3
+          ]
+        },
+        {
+          "name": "Mr. Dolly's Game",
+          "room": "RR",
+          "effectType": "mood drain",
+          "tierValues": [
+            0.14,
+            0.18
+          ]
+        }
+      ]
+    },
+    {
+      "id": "perlica",
+      "itemId": "1",
+      "name": "Perlica",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Protocol α: Breach"
+        },
+        "battle": {
+          "name": "Protocol ω: Strike",
+          "outTriggers": [
+            "electric-infliction"
+          ]
+        },
+        "combo": {
+          "name": "Instant Protocol: Chain",
+          "inTriggers": [
+            "vulnerability"
+          ],
+          "outTriggers": [
+            "electrification"
+          ]
+        },
+        "ultimate": {
+          "name": "Protocol ε: 70.41K"
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Supervisor",
+          "room": "CN",
+          "effectType": "mood regen",
+          "tierValues": [
+            0.08,
+            0.12
+          ]
+        },
+        {
+          "name": "Protocol Redistribution",
+          "room": "MFG",
+          "effectType": "weapon xp",
+          "tierValues": [
+            0.2,
+            0.3
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arclight",
+      "itemId": "7",
+      "name": "Arclight",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Seek and Hunt"
+        },
+        "battle": {
+          "name": "Tempestuous Arc",
+          "inTriggers": [
+            "electrification"
+          ],
+          "outTriggers": [
+            "electrification-consumed"
+          ]
+        },
+        "combo": {
+          "name": "Peal of Thunder",
+          "inTriggers": [
+            "electrification",
+            "electrification-consumed"
+          ]
+        },
+        "ultimate": {
+          "name": "Exploding Blitz",
+          "inTriggers": [
+            "electric-infliction"
+          ],
+          "outTriggers": [
+            "electric-infliction",
+            "electrification",
+            "electric-infliction-consumed"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Blade of the Wildlands",
+          "room": "MFG",
+          "effectType": "weapon xp",
+          "tierValues": [
+            0.1,
+            0.2
+          ]
+        },
+        {
+          "name": "Hanna Traditions",
+          "room": "RR",
+          "effectType": "clue rate up",
+          "tierValues": [
+            6,
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "id": "avywenna",
+      "itemId": "10",
+      "name": "Avywenna",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Thunderlance: Blitz"
+        },
+        "battle": {
+          "name": "Thunderlance: Interdiction",
+          "inTriggers": [
+            "thunderlance",
+            "thunderlance-ex"
+          ],
+          "outTriggers": [
+            "electric-infliction"
+          ]
+        },
+        "combo": {
+          "name": "Thunderlance: Strike",
+          "inTriggers": [
+            "electric-infliction",
+            "electrification"
+          ],
+          "outTriggers": [
+            "thunderlance"
+          ]
+        },
+        "ultimate": {
+          "name": "Thunderlance: Final Shock",
+          "outTriggers": [
+            "thunderlance-ex"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Residence Advisor",
+          "room": "CN",
+          "effectType": "mood regen",
+          "tierValues": [
+            0.08,
+            0.12
+          ]
+        },
+        {
+          "name": "Messenger's Secret",
+          "room": "RR",
+          "effectType": "clue rate up",
+          "tierValues": [
+            2,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "da-pan",
+      "itemId": "8",
+      "name": "Da Pan",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "ROLLING CUT!"
+        },
+        "battle": {
+          "name": "FLIP DA WOK!",
+          "outTriggers": [
+            "lift"
+          ]
+        },
+        "combo": {
+          "name": "MORE SPICE!",
+          "inTriggers": [
+            "vulnerability"
+          ],
+          "outTriggers": [
+            "crush"
+          ]
+        },
+        "ultimate": {
+          "name": "CHOP 'N DUNK!",
+          "outTriggers": [
+            "lift",
+            "knock-down"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Chef of Forage and Game",
+          "room": "GC",
+          "effectType": "fungus",
+          "tierValues": [
+            0.1,
+            0.2
+          ]
+        },
+        {
+          "name": "Worldly Wisdom",
+          "room": "CN",
+          "effectType": "mood regen",
+          "tierValues": [
+            0.12,
+            0.16
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chen-qianyu",
+      "itemId": "4",
+      "name": "Chen Qianyu",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Soaring Break"
+        },
+        "battle": {
+          "name": "Ascending Strike",
+          "outTriggers": [
+            "lift"
+          ]
+        },
+        "combo": {
+          "name": "Soar to the Stars",
+          "inTriggers": [
+            "vulnerability"
+          ],
+          "outTriggers": [
+            "lift"
+          ]
+        },
+        "ultimate": {
+          "name": "Blade Gale"
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Blade Critique",
+          "room": "MFG",
+          "effectType": "weapon xp",
+          "tierValues": [
+            0.1,
+            0.2
+          ]
+        },
+        {
+          "name": "Jadeworking",
+          "room": "GC",
+          "effectType": "mineral",
+          "tierValues": [
+            0.2,
+            0.3
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wulfgard",
+      "itemId": "6",
+      "name": "Wulfgard",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Rapid Fire Akimbo"
+        },
+        "battle": {
+          "name": "Thermite Tracers",
+          "inTriggers": [
+            "combustion",
+            "electrification"
+          ],
+          "outTriggers": [
+            "heat-infliction",
+            "combustion-consumed",
+            "electrification-consumed"
+          ]
+        },
+        "combo": {
+          "name": "Frag Grenade·β",
+          "inTriggers": [
+            "arts-infliction"
+          ],
+          "outTriggers": [
+            "heat-infliction"
+          ]
+        },
+        "ultimate": {
+          "name": "Wolven Fury",
+          "outTriggers": [
+            "combustion"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Pack Techniques",
+          "room": "MFG",
+          "effectType": "operator xp",
+          "tierValues": [
+            0.1,
+            0.2
+          ]
+        },
+        {
+          "name": "Knack for the Wildlands",
+          "room": "GC",
+          "effectType": "mineral",
+          "tierValues": [
+            0.2,
+            0.3
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xaihi",
+      "itemId": "13",
+      "name": "Xaihi",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Cooldown"
+        },
+        "battle": {
+          "name": "Distributed DoS",
+          "outTriggers": [
+            "arts-amp",
+            "auxiliary-crystal"
+          ]
+        },
+        "combo": {
+          "name": "Stress Testing",
+          "inTriggers": [
+            "auxiliary-crystal"
+          ],
+          "outTriggers": [
+            "cryo-infliction"
+          ]
+        },
+        "ultimate": {
+          "name": "Stack Overflow",
+          "outTriggers": [
+            "cryo-amp",
+            "nature-amp"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Standardized Scripting",
+          "room": "MFG",
+          "effectType": "operator xp",
+          "tierValues": [
+            0.1,
+            0.2
+          ]
+        },
+        {
+          "name": "Murmuring Session",
+          "room": "RR",
+          "effectType": "clue rate up",
+          "tierValues": [
+            5,
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "id": "snowshine",
+      "itemId": "16",
+      "name": "Snowshine",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Hypothermic Assault"
+        },
+        "battle": {
+          "name": "Saturated Defense",
+          "outTriggers": [
+            "protection",
+            "cryo-infliction"
+          ]
+        },
+        "combo": {
+          "name": "Polar Rescue"
+        },
+        "ultimate": {
+          "name": "Frigid Snowfield",
+          "outTriggers": [
+            "solidification"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Rescuer's Perseverance",
+          "room": "MFG",
+          "effectType": "mood drain",
+          "tierValues": [
+            0.1,
+            0.14
+          ]
+        },
+        {
+          "name": "Happy-Go-Lucky",
+          "room": "CN",
+          "effectType": "mood regen",
+          "tierValues": [
+            0.12,
+            0.16
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alesh",
+      "itemId": "18",
+      "name": "Alesh",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Basic Rod Casting"
+        },
+        "battle": {
+          "name": "Unconventional Lure",
+          "inTriggers": [
+            "cryo-infliction"
+          ],
+          "outTriggers": [
+            "solidification",
+            "cryo-infliction-consumed"
+          ]
+        },
+        "combo": {
+          "name": "Auger Angling",
+          "inTriggers": [
+            "originium-crystals-consumed",
+            "arts-reaction-consumed"
+          ]
+        },
+        "ultimate": {
+          "name": "One Monster Catch!",
+          "outTriggers": [
+            "cryo-infliction"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Casual Angling",
+          "room": "CN",
+          "effectType": "mood regen",
+          "tierValues": [
+            0.08,
+            0.12
+          ]
+        },
+        {
+          "name": "Anglers' Intel Network",
+          "room": "RR",
+          "effectType": "clue rate up",
+          "tierValues": [
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "akekuri",
+      "itemId": "5",
+      "name": "Akekuri",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Sword of Aspiration"
+        },
+        "battle": {
+          "name": "Burst of Passion",
+          "outTriggers": [
+            "heat-infliction"
+          ]
+        },
+        "combo": {
+          "name": "Flash and Dash"
+        },
+        "ultimate": {
+          "name": "SQUAD! ON ME!",
+          "outTriggers": [
+            "link"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Coffee or Tea",
+          "room": "MFG",
+          "effectType": "mood drain",
+          "tierValues": [
+            0.1,
+            0.14
+          ]
+        },
+        {
+          "name": "Icebreaker",
+          "room": "RR",
+          "effectType": "mood drain",
+          "tierValues": [
+            0.14,
+            0.18
+          ]
+        }
+      ]
+    },
+    {
+      "id": "catcher",
+      "itemId": "23",
+      "name": "Catcher",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Basic Tactics"
+        },
+        "battle": {
+          "name": "Rigid Interdiction",
+          "outTriggers": [
+            "protection",
+            "vulnerability"
+          ]
+        },
+        "combo": {
+          "name": "Timely Suppression"
+        },
+        "ultimate": {
+          "name": "Textbook Assault",
+          "outTriggers": [
+            "weaken",
+            "knock-down"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Silent Caretaker",
+          "room": "CN",
+          "effectType": "mood regen",
+          "tierValues": [
+            0.08,
+            0.12
+          ]
+        },
+        {
+          "name": "Grounded Approach",
+          "room": "GC",
+          "effectType": "mood drain",
+          "tierValues": [
+            0.14,
+            0.18
+          ]
+        }
+      ]
+    },
+    {
+      "id": "estella",
+      "itemId": "21",
+      "name": "Estella",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Audio Noise"
+        },
+        "battle": {
+          "name": "Onomatopoeia",
+          "outTriggers": [
+            "cryo-infliction"
+          ]
+        },
+        "combo": {
+          "name": "Distortion",
+          "inTriggers": [
+            "solidification"
+          ],
+          "outTriggers": [
+            "lift",
+            "physical-susceptibility"
+          ]
+        },
+        "ultimate": {
+          "name": "Tremolo",
+          "inTriggers": [
+            "physical-susceptibility"
+          ],
+          "outTriggers": [
+            "lift"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Fragmented Rest",
+          "room": "CN",
+          "effectType": "mood regen",
+          "tierValues": [
+            0.08,
+            0.12
+          ]
+        },
+        {
+          "name": "Frequency Monitoring",
+          "room": "RR",
+          "effectType": "clue efficiency",
+          "tierValues": [
+            0.2,
+            0.3
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fluorite",
+      "itemId": "24",
+      "name": "Fluorite",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Signature Gun Kata"
+        },
+        "battle": {
+          "name": "Tiny Surprise",
+          "outTriggers": [
+            "slow",
+            "nature-infliction",
+            "improvised-explosive"
+          ]
+        },
+        "combo": {
+          "name": "Free Giveaway",
+          "inTriggers": [
+            "cryo-infliction",
+            "nature-infliction"
+          ],
+          "outTriggers": [
+            "cryo-infliction",
+            "nature-infliction"
+          ]
+        },
+        "ultimate": {
+          "name": "Apex Prankster",
+          "inTriggers": [
+            "improvised-explosive",
+            "cryo-infliction",
+            "nature-infliction"
+          ],
+          "outTriggers": [
+            "cryo-infliction",
+            "nature-infliction"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Wildlands Trekker",
+          "room": "GC",
+          "effectType": "mineral",
+          "tierValues": [
+            0.1,
+            0.2
+          ]
+        },
+        {
+          "name": "Reader of Emotions",
+          "room": "CN",
+          "effectType": "mood regen",
+          "tierValues": [
+            0.12,
+            0.16
+          ]
+        }
+      ]
+    },
+    {
+      "id": "antal",
+      "itemId": "22",
+      "name": "Antal",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Exchange Current"
+        },
+        "battle": {
+          "name": "Specified Research Subject",
+          "outTriggers": [
+            "focus",
+            "heat-susceptibility",
+            "electric-susceptibility"
+          ]
+        },
+        "combo": {
+          "name": "EMP Test Site",
+          "inTriggers": [
+            "focus",
+            "physical-status",
+            "arts-infliction"
+          ],
+          "outTriggers": [
+            "physical-status",
+            "arts-infliction"
+          ]
+        },
+        "ultimate": {
+          "name": "Overclocked Moment",
+          "outTriggers": [
+            "heat-amp",
+            "electric-amp"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Experimental Arts Unit",
+          "room": "MFG",
+          "effectType": "weapon xp",
+          "tierValues": [
+            0.1,
+            0.2
+          ]
+        },
+        {
+          "name": "Pun-isher Studies",
+          "room": "GC",
+          "effectType": "mood drain",
+          "tierValues": [
+            0.14,
+            0.18
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tangtang",
+      "itemId": "25",
+      "name": "Tangtang",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "I'LL BLOW YOUR MIND!"
+        },
+        "battle": {
+          "name": "IMA WAVERIDAAH!",
+          "inTriggers": [
+            "whirlpool"
+          ],
+          "outTriggers": [
+            "waterspout",
+            "cryo-infliction",
+            "arts-susceptibility"
+          ]
+        },
+        "combo": {
+          "name": "RIVER, TO ME!",
+          "inTriggers": [
+            "cryo-infliction",
+            "arts-burst"
+          ],
+          "outTriggers": [
+            "whirlpool"
+          ]
+        },
+        "ultimate": {
+          "name": "DA CHIEF SEES YOU!",
+          "inTriggers": [
+            "whirlpool"
+          ],
+          "outTriggers": [
+            "waterspout"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Supreme Chief",
+          "room": "GC",
+          "effectType": "mood drain",
+          "tierValues": [
+            0.14,
+            0.18
+          ]
+        },
+        {
+          "name": "River's Daughter",
+          "room": "GC",
+          "effectType": "plant",
+          "tierValues": [
+            0.2,
+            0.3
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rossi",
+      "itemId": "615",
+      "name": "Rossi",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Seething Wolfblood"
+        },
+        "battle": {
+          "name": "Crimson Shadow",
+          "inTriggers": [
+            "vulnerability"
+          ],
+          "outTriggers": [
+            "lift",
+            "wolven-ambrage",
+            "razor-clawmark"
+          ]
+        },
+        "combo": {
+          "name": "Moment of Blazing Shadow",
+          "inTriggers": [
+            "vulnerability",
+            "arts-infliction"
+          ],
+          "outTriggers": [
+            "arts-infliction-consumed",
+            "lift",
+            "vulnerability"
+          ]
+        },
+        "ultimate": {
+          "name": "\"Razorclaw\" Ambuscade",
+          "outTriggers": [
+            "heat-infliction"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Clan Etiquette",
+          "room": "RR",
+          "effectType": "mood drain",
+          "tierValues": [
+            0.14,
+            0.18
+          ]
+        },
+        {
+          "name": "Scent of the Hunt",
+          "room": "RR",
+          "effectType": "clue efficiency",
+          "tierValues": [
+            0.2,
+            0.3
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zhuang-fangyi",
+      "itemId": "838",
+      "name": "Zhuang Fangyi",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Jolting Arts"
+        },
+        "battle": {
+          "name": "Mantra of Sundering",
+          "inTriggers": [
+            "electrification",
+            "mantra-of-sundering",
+            "sunderblade"
+          ],
+          "outTriggers": [
+            "electrification-consumed",
+            "sunderblade",
+            "electric-amp"
+          ]
+        },
+        "combo": {
+          "name": "Breath of Transformation",
+          "inTriggers": [
+            "electric-infliction",
+            "electrification",
+            "breath-of-transformation"
+          ],
+          "outTriggers": [
+            "electric-infliction-consumed",
+            "electrification"
+          ]
+        },
+        "ultimate": {
+          "name": "Smiting Tempest",
+          "outTriggers": [
+            "electric-infliction",
+            "mantra-of-sundering",
+            "breath-of-transformation"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Viceroy Experience",
+          "room": "MFG",
+          "effectType": "mood drain",
+          "tierValues": [
+            0.14,
+            0.18
+          ]
+        },
+        {
+          "name": "Tianshi Chi Meditation",
+          "room": "MFG",
+          "effectType": "operator xp",
+          "tierValues": [
+            0.2,
+            0.3
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mi-fu",
+      "itemId": "995",
+      "name": "Mi Fu",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Fistmancer of Blades"
+        },
+        "battle": {
+          "name": "Qingbo Triplex",
+          "inTriggers": [
+            "vulnerability"
+          ],
+          "outTriggers": [
+            "crush"
+          ]
+        },
+        "combo": {
+          "name": "Fists of No Regrets",
+          "inTriggers": [
+            "vulnerability"
+          ],
+          "outTriggers": [
+            "physical-susceptibility"
+          ]
+        },
+        "ultimate": {
+          "name": "Pile of No Mercy",
+          "outTriggers": [
+            "lift"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Secret Informants",
+          "room": "RR",
+          "effectType": "clue rate up",
+          "tierValues": [
+            3,
+            3
+          ]
+        },
+        {
+          "name": "Esoteric Tisane",
+          "room": "GC",
+          "effectType": "fungus",
+          "tierValues": [
+            0.2,
+            0.3
+          ]
+        }
+      ]
+    },
+    {
+      "id": "camille",
+      "itemId": "996",
+      "name": "Camille",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Sanguine Absolution"
+        },
+        "battle": {
+          "name": "Blazing Exorcism",
+          "outTriggers": [
+            "heat-infliction",
+            "heat-susceptibility",
+            "weaken",
+            "firefang-vesperwings"
+          ]
+        },
+        "combo": {
+          "name": "Heartstake Thorn",
+          "inTriggers": [
+            "heat-infliction-consumed",
+            "firefang-vesperwings"
+          ]
+        },
+        "ultimate": {
+          "name": "Sanguine Downpour",
+          "inTriggers": [
+            "firefang-vesperwings"
+          ],
+          "outTriggers": [
+            "heat-infliction"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Hemo-Vitreography",
+          "room": "GC",
+          "effectType": "plant",
+          "tierValues": [
+            0.2,
+            0.3
+          ]
+        },
+        {
+          "name": "Agaš'mekanaz's Manual",
+          "room": "MFG",
+          "effectType": "operator xp",
+          "tierValues": [
+            0.2,
+            0.3
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arcane",
+      "itemId": "1040",
+      "name": "Arcane",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "variants": {
+        "intellect": {
+          "basic": {
+            "name": "Artillery Interdiction"
+          },
+          "battle": {
+            "name": "Jadecrushing Grid",
+            "inTriggers": [
+              "imprisonment"
+            ],
+            "outTriggers": [
+              "nature-infliction",
+              "jadecrushing-grid"
+            ]
+          },
+          "combo": {
+            "name": "Yinglung Stance IV",
+            "inTriggers": [
+              "nature-infliction",
+              "arts-infliction"
+            ],
+            "outTriggers": [
+              "nature-susceptibility",
+              "cryo-susceptibility",
+              "imprisonment",
+              "tactical-doubles"
+            ]
+          },
+          "ultimate": {
+            "name": "Gloompurge",
+            "outTriggers": [
+              "corrosion",
+              "gloompurger-array",
+              "gloompurger-arcana",
+              "cluster-strike"
+            ]
+          }
+        },
+        "will": {
+          "basic": {
+            "name": "Artillery Interdiction"
+          },
+          "battle": {
+            "name": "Jadecrushing Grid",
+            "outTriggers": [
+              "nature-infliction",
+              "jadecrushing-grid"
+            ]
+          },
+          "combo": {
+            "name": "Yinglung Stance IV",
+            "inTriggers": [
+              "arts-infliction"
+            ],
+            "outTriggers": [
+              "arts-infliction",
+              "nature-susceptibility",
+              "cryo-susceptibility",
+              "tactical-doubles",
+              "imprisonment"
+            ]
+          },
+          "ultimate": {
+            "name": "Gloompurge",
+            "inTriggers": [
+              "arts-infliction"
+            ],
+            "outTriggers": [
+              "arts-infliction",
+              "gloompurger-array",
+              "gloompurger-arcana",
+              "cluster-strike"
+            ]
+          }
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Pluck the Mountain, Boil the Sea",
+          "room": "GC",
+          "effectType": "mineral",
+          "tierValues": [
+            0.2,
+            0.3
+          ]
+        },
+        {
+          "name": "Botanophile",
+          "room": "GC",
+          "effectType": "plant",
+          "tierValues": [
+            0.2,
+            0.3
+          ]
+        }
+      ]
+    },
+    {
+      "id": "liino",
+      "itemId": "1041",
+      "name": "Liino",
+      "sourceKind": "community-extracted-game-skill-metadata",
+      "skills": {
+        "basic": {
+          "name": "Starry Heart Throb"
+        },
+        "battle": {
+          "name": "Dazzling Focus",
+          "inTriggers": [
+            "vocalist-stance"
+          ],
+          "outTriggers": [
+            "vocalist-stance",
+            "hp-treatment"
+          ]
+        },
+        "combo": {
+          "name": "Delightful Harmonics",
+          "inTriggers": [
+            "vocalist-stance",
+            "arts-reaction",
+            "arts-reaction-consumed"
+          ],
+          "outTriggers": [
+            "hp-treatment"
+          ]
+        },
+        "ultimate": {
+          "name": "Dawnstar Concerto",
+          "outTriggers": [
+            "hp-treatment",
+            "cosmovoice-stance",
+            "electrifying-extravaganza",
+            "electrification",
+            "electric-amp",
+            "nature-amp"
+          ]
+        }
+      },
+      "baseSkills": [
+        {
+          "name": "Idol Passion",
+          "room": "RR",
+          "effectType": "mood drain",
+          "tierValues": [
+            0.14,
+            0.18
+          ]
+        },
+        {
+          "name": "Stage Vibe That Lingers",
+          "room": "CN",
+          "effectType": "mood regen",
+          "tierValues": [
+            0.12,
+            0.16
+          ]
+        }
+      ]
+    }
+  ]
+}
