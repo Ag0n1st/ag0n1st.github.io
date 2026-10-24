@@ -1113,10 +1113,14 @@ def smoke_i18n(page, base_url, width):
 
         page.goto(base_url+prefix+"/endfield/endfieldle/")
         game=page.locator("[data-endfieldle]")
-        verify(game.count()==1 and page.locator("html").get_attribute("lang")==lang and
-               page.locator('a.endfield-nav-link[href="'+prefix+'/endfield/endfieldle/"][aria-current="page"]').count()==1 and
-               page.locator(".efdl-table th").count()==8,
-               label+": "+lang+" Endfieldle page, seven categories and active menu")
+        game_diag={"main":game.count(),
+                   "html_lang":page.locator("html").get_attribute("lang"),
+                   "active_nav":page.locator('a.endfield-nav-link[href="'+prefix+'/endfield/endfieldle/"][aria-current="page"]').count(),
+                   "table_headers":page.locator(".efdl-table th").count(),
+                   "url":page.url}
+        verify(game_diag["main"]==1 and game_diag["html_lang"]==lang and
+               game_diag["active_nav"]==1 and game_diag["table_headers"]==8,
+               label+": "+lang+" Endfieldle page, seven categories and active menu "+str(game_diag))
         page.evaluate("localStorage.removeItem('endfieldle:v1')")
         page.reload()
         page.locator("[data-yesterday] img").wait_for(state="attached")
