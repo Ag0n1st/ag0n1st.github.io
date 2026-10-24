@@ -164,7 +164,12 @@ if(root){
    e.preventDefault();submitGuess(visible[selected]);
   }
  });
- input.addEventListener("blur",()=>{suggestions.hidden=true;input.setAttribute("aria-expanded","false")});
+ input.addEventListener("blur",event=>{
+  // Mobile suggestions participate in form layout. Do not collapse them on
+  // pointer-down focus transfer to Submit or the button shifts before click.
+  if(event.relatedTarget===node("[data-submit]"))return;
+  suggestions.hidden=true;input.setAttribute("aria-expanded","false");
+});
  node("[data-share]").addEventListener("click",async()=>{
   const result="Endfieldle #"+node("[data-puzzle-number]").textContent+" "+record.guesses.length+"/34 "+(record.solved?"✅":"")+"\n"+(record.guesses.map(id=>FIELDS.map(field=>{
    const score=compareOperator(byId.get(id),solution)[field];
