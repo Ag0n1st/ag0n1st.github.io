@@ -23,6 +23,12 @@ test("full 34-operator named roster matches official source identities and local
   if(row.assets.banner)assert.ok(existsSync("public"+row.assets.banner),row.name+" missing banner");
  }
  assert.equal(roster.operators.filter(x=>x.assets.banner).length,33);
+ assert.equal(roster.operators.filter(x=>x.assets.splash).length,3);
+ assert.deepEqual(roster.operators.filter(x=>x.assets.splash).map(x=>x.id).sort(),["liino","si","typhoeus"]);
+ for(const row of roster.operators)if(row.assets.splash){
+   assert.ok(existsSync("public"+row.assets.splash),row.id+" missing SKPORT illustration");
+   assert.ok(existsSync("public"+row.assets.cover),row.id+" missing SKPORT cover");
+ }
 });
 test("every owner-approved release version for all 34 operators is present",()=>{
  const groups={

@@ -9,7 +9,7 @@
     "recent": "https://endfield.wiki.gg/wiki/Argent_Flow",
     "purrchena": "https://endfield.wiki.gg/wiki/Purrchena"
   },
-  "notes": "Release versions supplied and approved by owner. Three complete SKPORT imports are authoritative when present; other compact Endfieldle facts are cross-checked against operator pages until signed SKPORT item/info snapshots can be imported. Endministrator variants collapsed to one solution; gender Variable (not an incorrect fixed-sex claim).",
+  "notes": "Release versions supplied and approved by owner. Three complete SKPORT imports are authoritative when present; other compact Endfieldle facts are cross-checked against operator pages until signed SKPORT item/info snapshots can be imported. Endministrator variants collapsed to one solution; gender Variable (not an incorrect fixed-sex claim). Full SKPORT illustration/splash and separate cover art currently verified only for Liino, Typhoeus and Si; missing other illustration variants are not fabricated.",
   "operators": [
     {
       "id": "endministrator",
@@ -607,7 +607,9 @@
       "assets": {
         "icon": "/images/endfield/operators/liino/official-icon.webp",
         "portrait": "/images/endfield/operators/liino/official-portrait.webp",
-        "banner": "/images/endfield/operators/liino/banner.webp"
+        "banner": "/images/endfield/operators/liino/banner.webp",
+        "splash": "/images/endfield/operators/liino/illustration.webp",
+        "cover": "/images/endfield/operators/liino/cover.webp"
       },
       "sourceQuality": "skport-import"
     },
@@ -627,7 +629,9 @@
       "assets": {
         "icon": "/images/endfield/operators/typhoeus/official-icon.webp",
         "portrait": "/images/endfield/operators/typhoeus/official-portrait.webp",
-        "banner": "/images/endfield/operators/typhoeus/banner.webp"
+        "banner": "/images/endfield/operators/typhoeus/banner.webp",
+        "splash": "/images/endfield/operators/typhoeus/illustration.webp",
+        "cover": "/images/endfield/operators/typhoeus/cover.webp"
       },
       "sourceQuality": "skport-import"
     },
@@ -667,7 +671,9 @@
       "assets": {
         "icon": "/images/endfield/operators/si/official-icon.webp",
         "portrait": "/images/endfield/operators/si/official-portrait.webp",
-        "banner": "/images/endfield/operators/si/banner.webp"
+        "banner": "/images/endfield/operators/si/banner.webp",
+        "splash": "/images/endfield/operators/si/illustration.webp",
+        "cover": "/images/endfield/operators/si/cover.webp"
       },
       "sourceQuality": "skport-import"
     },
