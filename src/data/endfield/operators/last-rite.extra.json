@@ -1,0 +1,678 @@
+{
+  "schemaVersion": 2,
+  "source": {
+    "provider": "SKPORT Wiki",
+    "itemId": "17",
+    "language": "en",
+    "snapshot": "2026-10-24"
+  },
+  "operator": "last-rite",
+  "profile": {
+    "Codename": "Last Rite",
+    "Gender": "Female",
+    "Faction": "Seš'qa",
+    "Birthday": "November 12",
+    "Element": "Cryo",
+    "Race": "Sarkaz",
+    "Chinese CV": "闲踏梧桐",
+    "English CV": "Amber Hood",
+    "Japanese CV": "白石晴香",
+    "Korean CV": "이이로"
+  },
+  "attributes": {
+    "levels": [
+      "LV.1",
+      "LV.20",
+      "LV.40",
+      "LV.60",
+      "LV.80",
+      "LV.90"
+    ],
+    "metrics": [
+      {
+        "name": "Strength (Main)",
+        "values": [
+          "21",
+          "50",
+          "80",
+          "110",
+          "140",
+          "155"
+        ]
+      },
+      {
+        "name": "Agility",
+        "values": [
+          "8",
+          "29",
+          "50",
+          "72",
+          "93",
+          "104"
+        ]
+      },
+      {
+        "name": "Intellect",
+        "values": [
+          "9",
+          "27",
+          "46",
+          "65",
+          "84",
+          "93"
+        ]
+      },
+      {
+        "name": "Will (Secondary)",
+        "values": [
+          "15",
+          "35",
+          "56",
+          "77",
+          "98",
+          "109"
+        ]
+      },
+      {
+        "name": "Base ATK",
+        "values": [
+          "30",
+          "95",
+          "162",
+          "230",
+          "298",
+          "332"
+        ]
+      },
+      {
+        "name": "Base HP",
+        "values": [
+          "500",
+          "1566",
+          "2689",
+          "3811",
+          "4934",
+          "5495"
+        ]
+      }
+    ],
+    "levelCosts": [
+      {
+        "level": "LV.1",
+        "items": []
+      },
+      {
+        "level": "LV.20",
+        "items": [
+          {
+            "id": "100",
+            "count": 5
+          },
+          {
+            "id": "101",
+            "count": 2
+          },
+          {
+            "id": "102",
+            "count": 2
+          },
+          {
+            "id": "642",
+            "count": 820
+          }
+        ]
+      },
+      {
+        "level": "LV.40",
+        "items": [
+          {
+            "id": "100",
+            "count": 3
+          },
+          {
+            "id": "101",
+            "count": 8
+          },
+          {
+            "id": "102",
+            "count": 24
+          },
+          {
+            "id": "642",
+            "count": 12540
+          }
+        ]
+      },
+      {
+        "level": "LV.60",
+        "items": [
+          {
+            "id": "100",
+            "count": 4
+          },
+          {
+            "id": "101",
+            "count": 5
+          },
+          {
+            "id": "102",
+            "count": 47
+          },
+          {
+            "id": "642",
+            "count": 23900
+          }
+        ]
+      },
+      {
+        "level": "LV.80",
+        "items": [
+          {
+            "id": "105",
+            "count": 6
+          },
+          {
+            "id": "106",
+            "count": 46
+          },
+          {
+            "id": "642",
+            "count": 109180
+          }
+        ]
+      },
+      {
+        "level": "LV.90",
+        "items": [
+          {
+            "id": "106",
+            "count": 58
+          },
+          {
+            "id": "642",
+            "count": 238980
+          }
+        ]
+      }
+    ],
+    "mainAttribute": "Strength",
+    "secondaryAttribute": "Will"
+  },
+  "talents": [
+    {
+      "id": "forged",
+      "name": "Forged",
+      "category": "attribute",
+      "levels": [
+        {
+          "name": "Forged 1",
+          "effect": "Operator Strength +10",
+          "requirements": [
+            "20% trust with the Operator",
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 5
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "name": "Forged 2",
+          "effect": "Operator Strength +15",
+          "requirements": [
+            "50% trust with the Operator",
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 10
+            },
+            {
+              "id": "642",
+              "count": 1800
+            }
+          ]
+        },
+        {
+          "name": "Forged 3",
+          "effect": "Operator Strength +15",
+          "requirements": [
+            "100% trust with the Operator",
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 10
+            },
+            {
+              "id": "642",
+              "count": 6000
+            }
+          ]
+        },
+        {
+          "name": "Forged 4",
+          "effect": "Operator Strength +20",
+          "requirements": [
+            "100% trust with the Operator",
+            "Promote to E4 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 20
+            },
+            {
+              "id": "642",
+              "count": 12000
+            }
+          ]
+        }
+      ],
+      "supplementalTables": [
+        [
+          [
+            "Trust",
+            "Raise your operators' trust to unlock more skills and profile data. Operators with higher trust also interact with you differently aboard Dijiang.\nYou can raise operator trust with gifts or by assigning them to the Dijiang Control Nexus."
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "hypothermia",
+      "name": "Hypothermia",
+      "category": "combat",
+      "levels": [
+        {
+          "name": "Hypothermia 1",
+          "effect": "When Last Rite consumes any Arts Infliction, apply Cryo Susceptibility to the target with the effect of [Number of Arts Infliction stacks consumed × 2%] for 15s. This effect cannot stack.",
+          "requirements": [
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 2400
+            }
+          ]
+        },
+        {
+          "name": "Hypothermia 2",
+          "effect": "When Last Rite consumes any Arts Infliction, apply Cryo Susceptibility to the target with the effect of [Number of Arts Infliction stacks consumed × 4%] for 15s. This effect cannot stack.",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 40
+            },
+            {
+              "id": "642",
+              "count": 8600
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cryogenic-embrittlement",
+      "name": "Cryogenic Embrittlement",
+      "category": "combat",
+      "levels": [
+        {
+          "name": "Cryogenic Embrittlement 1",
+          "effect": "Ultimate Vigil Services improved: When the ultimate deals DMG to an enemy with Cryo Susceptibility, the effect of that Cryo Susceptibility is 1.2 times the original.",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 48
+            },
+            {
+              "id": "642",
+              "count": 10000
+            }
+          ]
+        },
+        {
+          "name": "Cryogenic Embrittlement 2",
+          "effect": "Ultimate Vigil Services improved: When the ultimate deals DMG to an enemy with Cryo Susceptibility, the effect of that Cryo Susceptibility is 1.5 times the original.",
+          "requirements": [
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 28
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cemetery-gardening",
+      "name": "Cemetery Gardening",
+      "category": "ship",
+      "levels": [
+        {
+          "name": "Cemetery Gardening β",
+          "effect": "Assign to Growth Chamber to grant vitrified plant growth rate +20%",
+          "requirements": [
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 1600
+            }
+          ]
+        },
+        {
+          "name": "Cemetery Gardening γ",
+          "effect": "Assign to Growth Chamber to grant vitrified plant growth rate +30%",
+          "requirements": [
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 8000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fame-of-the-royal-courts",
+      "name": "Fame of the Royal Courts",
+      "category": "ship",
+      "levels": [
+        {
+          "name": "Fame of the Royal Courts α",
+          "effect": "Assign to Reception Room to grant operators a small Clue 7 Rate-UP: Seš'qa (activates upon assignment; effects of the same type cannot stack)",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 3000
+            }
+          ]
+        },
+        {
+          "name": "Fame of the Royal Courts β",
+          "effect": "Assign to Reception Room to grant operators Clue 7 Rate-UP: Seš'qa (activates upon assignment; effects of the same type cannot stack)",
+          "requirements": [
+            "Promote to E4 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 20
+            },
+            {
+              "id": "642",
+              "count": 20000
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "promotions": [
+    {
+      "name": "Promotion I",
+      "effect": "Activate this to raise operator level cap to 40",
+      "requirement": "Operator Lv.20",
+      "cost": [
+        {
+          "id": "107",
+          "count": 8
+        },
+        {
+          "id": "128",
+          "count": 3
+        },
+        {
+          "id": "642",
+          "count": 1600
+        }
+      ]
+    },
+    {
+      "name": "Outfitting I",
+      "effect": "Activate this to let the operator equip blue quality gear",
+      "requirement": "Promote to E1 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 1800
+        }
+      ]
+    },
+    {
+      "name": "Promotion II",
+      "effect": "Activate this to raise operator level cap to 60",
+      "requirement": "Operator Lv.40",
+      "cost": [
+        {
+          "id": "107",
+          "count": 25
+        },
+        {
+          "id": "133",
+          "count": 5
+        },
+        {
+          "id": "642",
+          "count": 6500
+        }
+      ]
+    },
+    {
+      "name": "Outfitting II",
+      "effect": "Activate this to let the operator equip purple quality gear",
+      "requirement": "Promote to E2 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 6500
+        }
+      ]
+    },
+    {
+      "name": "Promotion III",
+      "effect": "Activate this to raise operator level cap to 80",
+      "requirement": "Operator Lv.60",
+      "cost": [
+        {
+          "id": "108",
+          "count": 24
+        },
+        {
+          "id": "137",
+          "count": 5
+        },
+        {
+          "id": "642",
+          "count": 18000
+        }
+      ]
+    },
+    {
+      "name": "Outfitting III",
+      "effect": "Activate this to let the operator equip gold quality gear",
+      "requirement": "Promote to E3 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 18000
+        }
+      ]
+    },
+    {
+      "name": "Promotion IV",
+      "effect": "Activate this to raise operator level cap to 90",
+      "requirement": "Operator Lv.80",
+      "cost": [
+        {
+          "id": "108",
+          "count": 36
+        },
+        {
+          "id": "103",
+          "count": 20
+        },
+        {
+          "id": "134",
+          "count": 8
+        },
+        {
+          "id": "642",
+          "count": 100000
+        }
+      ]
+    }
+  ],
+  "potentials": [
+    {
+      "level": 1,
+      "name": "Undertaker's Gift",
+      "effect": "When the controlled operator with Hypothermic Perfusion performs a Final Strike that hits the enemy, it deals another 20% DMG and 5 Stagger."
+    },
+    {
+      "level": 2,
+      "name": "Absolute Zero Armament",
+      "effect": "Strength +20, Cryo DMG Dealt +10%."
+    },
+    {
+      "level": 3,
+      "name": "Overlord of Winter",
+      "effect": "Combo skill Winter's Devourer and ultimate Vigil Services improved: DMG multiplier increased to 1.15 times the original."
+    },
+    {
+      "level": 4,
+      "name": "Sincere Wake",
+      "effect": "Ultimate Vigil Services improved: Ultimate Energy cost -15%."
+    },
+    {
+      "level": 5,
+      "name": "Winter is Returning",
+      "effect": "Battle skill Esoteric Legacy of Seš'qa improved: Amount of SP returned is increased by another 5; Mirage Additional ATK Multiplier is increased to 1.2 times the original."
+    }
+  ],
+  "materials": {
+    "100": {
+      "name": "Elementary Combat Record"
+    },
+    "101": {
+      "name": "Intermediate Combat Record"
+    },
+    "102": {
+      "name": "Advanced Combat Record"
+    },
+    "103": {
+      "name": "Triphasic Nanoflake"
+    },
+    "104": {
+      "name": "Quadrant Fitting Fluid"
+    },
+    "105": {
+      "name": "Elementary Cognitive Carrier"
+    },
+    "106": {
+      "name": "Advanced Cognitive Carrier"
+    },
+    "107": {
+      "name": "Protodisk"
+    },
+    "108": {
+      "name": "Protoset"
+    },
+    "109": {
+      "name": "Protoprism"
+    },
+    "110": {
+      "name": "Protohedron"
+    },
+    "112": {
+      "name": "Tachyon Screening Lattice"
+    },
+    "114": {
+      "name": "Mark of Perseverance"
+    },
+    "128": {
+      "name": "Pink Bolete"
+    },
+    "131": {
+      "name": "Blighted Jadeleaf"
+    },
+    "133": {
+      "name": "Red Bolete"
+    },
+    "134": {
+      "name": "Bloodcap"
+    },
+    "137": {
+      "name": "Ruby Bolete"
+    },
+    "141": {
+      "name": "Kalkodendra"
+    },
+    "146": {
+      "name": "Vitrodendra"
+    },
+    "147": {
+      "name": "Chrysodendra"
+    },
+    "642": {
+      "name": "T-Creds"
+    }
+  },
+  "potentialSupplementalTables": [
+    [
+      [
+        "Operator Snapshot",
+        "",
+        ""
+      ],
+      [
+        "Shy Shy No Touchy\nIllustrator: komiki\nIt's fun, but let's not play tricks on her.",
+        "The Still Blossom\nIllustrator: Cenm0\nThe vast lands embraced her as she slumbered. An eon of winters await her beck and call. However, the girl only wishes to offer a bouquet at the place of its rest.",
+        "First Rime to Bloom\nIllustrator: REM\nShe has many unanswered questions, and many difficulties not yet overcome. Nevertheless, she will complete all of your assignments and bring back the smiles on everyone's faces."
+      ]
+    ]
+  ]
+}

@@ -1,0 +1,678 @@
+{
+  "schemaVersion": 2,
+  "source": {
+    "provider": "SKPORT Wiki",
+    "itemId": "15",
+    "language": "en",
+    "snapshot": "2026-10-24"
+  },
+  "operator": "ember",
+  "profile": {
+    "Codename": "Ember",
+    "Gender": "Female",
+    "Faction": "Order of Steel Oath",
+    "Birthday": "April 10",
+    "Element": "Heat",
+    "Race": "Sankta",
+    "Chinese CV": "徐慧",
+    "English CV": "Rhiannon Moushall",
+    "Japanese CV": "小松 未可子",
+    "Korean CV": "이새아"
+  },
+  "attributes": {
+    "levels": [
+      "LV.1",
+      "LV.20",
+      "LV.40",
+      "LV.60",
+      "LV.80",
+      "LV.90"
+    ],
+    "metrics": [
+      {
+        "name": "Strength (Main)",
+        "values": [
+          "21",
+          "54",
+          "89",
+          "124",
+          "159",
+          "176"
+        ]
+      },
+      {
+        "name": "Agility",
+        "values": [
+          "9",
+          "28",
+          "47",
+          "67",
+          "87",
+          "96"
+        ]
+      },
+      {
+        "name": "Intellect",
+        "values": [
+          "8",
+          "25",
+          "42",
+          "60",
+          "77",
+          "86"
+        ]
+      },
+      {
+        "name": "Will (Secondary)",
+        "values": [
+          "13",
+          "36",
+          "60",
+          "84",
+          "108",
+          "120"
+        ]
+      },
+      {
+        "name": "Base ATK",
+        "values": [
+          "30",
+          "93",
+          "159",
+          "225",
+          "291",
+          "323"
+        ]
+      },
+      {
+        "name": "Base HP",
+        "values": [
+          "500",
+          "1566",
+          "2689",
+          "3811",
+          "4934",
+          "5495"
+        ]
+      }
+    ],
+    "levelCosts": [
+      {
+        "level": "LV.1",
+        "items": []
+      },
+      {
+        "level": "LV.20",
+        "items": [
+          {
+            "id": "100",
+            "count": 5
+          },
+          {
+            "id": "101",
+            "count": 2
+          },
+          {
+            "id": "102",
+            "count": 2
+          },
+          {
+            "id": "642",
+            "count": 820
+          }
+        ]
+      },
+      {
+        "level": "LV.40",
+        "items": [
+          {
+            "id": "100",
+            "count": 3
+          },
+          {
+            "id": "101",
+            "count": 8
+          },
+          {
+            "id": "102",
+            "count": 24
+          },
+          {
+            "id": "642",
+            "count": 12540
+          }
+        ]
+      },
+      {
+        "level": "LV.60",
+        "items": [
+          {
+            "id": "100",
+            "count": 4
+          },
+          {
+            "id": "101",
+            "count": 5
+          },
+          {
+            "id": "102",
+            "count": 47
+          },
+          {
+            "id": "642",
+            "count": 23900
+          }
+        ]
+      },
+      {
+        "level": "LV.80",
+        "items": [
+          {
+            "id": "105",
+            "count": 6
+          },
+          {
+            "id": "106",
+            "count": 46
+          },
+          {
+            "id": "642",
+            "count": 109180
+          }
+        ]
+      },
+      {
+        "level": "LV.90",
+        "items": [
+          {
+            "id": "106",
+            "count": 58
+          },
+          {
+            "id": "642",
+            "count": 238980
+          }
+        ]
+      }
+    ],
+    "mainAttribute": "Strength",
+    "secondaryAttribute": "Will"
+  },
+  "talents": [
+    {
+      "id": "forged",
+      "name": "Forged",
+      "category": "attribute",
+      "levels": [
+        {
+          "name": "Forged 1",
+          "effect": "Operator Strength +10",
+          "requirements": [
+            "20% trust with the Operator",
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 5
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "name": "Forged 2",
+          "effect": "Operator Strength +15",
+          "requirements": [
+            "50% trust with the Operator",
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 10
+            },
+            {
+              "id": "642",
+              "count": 1800
+            }
+          ]
+        },
+        {
+          "name": "Forged 3",
+          "effect": "Operator Strength +15",
+          "requirements": [
+            "100% trust with the Operator",
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 10
+            },
+            {
+              "id": "642",
+              "count": 6000
+            }
+          ]
+        },
+        {
+          "name": "Forged 4",
+          "effect": "Operator Strength +20",
+          "requirements": [
+            "100% trust with the Operator",
+            "Promote to E4 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 20
+            },
+            {
+              "id": "642",
+              "count": 12000
+            }
+          ]
+        }
+      ],
+      "supplementalTables": [
+        [
+          [
+            "Trust",
+            "Raise your operators' trust to unlock more skills and profile data. Operators with higher trust also interact with you differently aboard Dijiang.\nYou can raise operator trust with gifts or by assigning them to the Dijiang Control Nexus."
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "inflamed-for-the-assault",
+      "name": "Inflamed for the Assault",
+      "category": "combat",
+      "levels": [
+        {
+          "name": "Inflamed for the Assault 1",
+          "effect": "When casting the battle skill Forward March and the combo skill Frontline Support, Ember gains 30% Protection and is less likely to be interrupted.",
+          "requirements": [
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 2400
+            }
+          ]
+        },
+        {
+          "name": "Inflamed for the Assault 2",
+          "effect": "When casting the battle skill Forward March and the combo skill Frontline Support, Ember gains 50% Protection and is less likely to be interrupted.",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 40
+            },
+            {
+              "id": "642",
+              "count": 8600
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pay-the-ferric-price",
+      "name": "Pay the Ferric Price",
+      "category": "combat",
+      "levels": [
+        {
+          "name": "Pay the Ferric Price 1",
+          "effect": "When Ember receives DMG from the enemy, she gains ATK +6% for 7s. This effect can reach 3 stacks.",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 48
+            },
+            {
+              "id": "642",
+              "count": 10000
+            }
+          ]
+        },
+        {
+          "name": "Pay the Ferric Price 2",
+          "effect": "When Ember receives DMG from the enemy, she gains ATK +9% for 7s. This effect can reach 3 stacks.",
+          "requirements": [
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 28
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "special-northern-training",
+      "name": "Special Northern Training",
+      "category": "ship",
+      "levels": [
+        {
+          "name": "Special Northern Training α",
+          "effect": "Assign to Manufacturing Cabin to grant operator EXP material production efficiency +20%",
+          "requirements": [
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 1600
+            }
+          ]
+        },
+        {
+          "name": "Special Northern Training β",
+          "effect": "Assign to Manufacturing Cabin to grant operator EXP material production efficiency +30%",
+          "requirements": [
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 8000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "keepers-of-the-banner",
+      "name": "Keepers of the Banner",
+      "category": "ship",
+      "levels": [
+        {
+          "name": "Keepers of the Banner α",
+          "effect": "Assign to Reception Room to grant operators a small Clue 4 Rate-UP: Order of Steel Oath (activates upon assignment; effects of the same type cannot stack)",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 3000
+            }
+          ]
+        },
+        {
+          "name": "Keepers of the Banner β",
+          "effect": "Assign to Reception Room to grant operators Clue 4 Rate-UP: Order of Steel Oath (activates upon assignment; effects of the same type cannot stack)",
+          "requirements": [
+            "Promote to E4 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 20
+            },
+            {
+              "id": "642",
+              "count": 20000
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "promotions": [
+    {
+      "name": "Promotion I",
+      "effect": "Activate this to raise operator level cap to 40",
+      "requirement": "Operator Lv.20",
+      "cost": [
+        {
+          "id": "107",
+          "count": 8
+        },
+        {
+          "id": "128",
+          "count": 3
+        },
+        {
+          "id": "642",
+          "count": 1600
+        }
+      ]
+    },
+    {
+      "name": "Outfitting I",
+      "effect": "Activate this to let the operator equip blue quality gear",
+      "requirement": "Promote to E1 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 1800
+        }
+      ]
+    },
+    {
+      "name": "Promotion II",
+      "effect": "Activate this to raise operator level cap to 60",
+      "requirement": "Operator Lv.40",
+      "cost": [
+        {
+          "id": "107",
+          "count": 25
+        },
+        {
+          "id": "133",
+          "count": 5
+        },
+        {
+          "id": "642",
+          "count": 6500
+        }
+      ]
+    },
+    {
+      "name": "Outfitting II",
+      "effect": "Activate this to let the operator equip purple quality gear",
+      "requirement": "Promote to E2 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 6500
+        }
+      ]
+    },
+    {
+      "name": "Promotion III",
+      "effect": "Activate this to raise operator level cap to 80",
+      "requirement": "Operator Lv.60",
+      "cost": [
+        {
+          "id": "108",
+          "count": 24
+        },
+        {
+          "id": "137",
+          "count": 5
+        },
+        {
+          "id": "642",
+          "count": 18000
+        }
+      ]
+    },
+    {
+      "name": "Outfitting III",
+      "effect": "Activate this to let the operator equip gold quality gear",
+      "requirement": "Promote to E3 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 18000
+        }
+      ]
+    },
+    {
+      "name": "Promotion IV",
+      "effect": "Activate this to raise operator level cap to 90",
+      "requirement": "Operator Lv.80",
+      "cost": [
+        {
+          "id": "108",
+          "count": 36
+        },
+        {
+          "id": "99",
+          "count": 20
+        },
+        {
+          "id": "123",
+          "count": 8
+        },
+        {
+          "id": "642",
+          "count": 100000
+        }
+      ]
+    }
+  ],
+  "potentials": [
+    {
+      "level": 1,
+      "name": "Nomadic Fort",
+      "effect": "Talent Inflamed for the Assault improved: Protection effect +20%; hitting an enemy extends the duration by 1.5s"
+    },
+    {
+      "level": 2,
+      "name": "Steel-Hardened Veteran",
+      "effect": "Strength +20, Will +20."
+    },
+    {
+      "level": 3,
+      "name": "Indomitable Front",
+      "effect": "Combo skill Frontline Support improved: Restores the HP of another teammate with the lowest percentage HP at 50% of the base effect."
+    },
+    {
+      "level": 4,
+      "name": "Undying Embers",
+      "effect": "Ultimate Re-Ignited Oath improved: Ultimate Energy cost -15%."
+    },
+    {
+      "level": 5,
+      "name": "The Steel Oath",
+      "effect": "Ultimate Re-Ignited Oath improved: Shield effect is multiplied by 1.2; while this shield is active, the wielder gains ATK +10%."
+    }
+  ],
+  "materials": {
+    "99": {
+      "name": "D96 Steel Sample 4"
+    },
+    "100": {
+      "name": "Elementary Combat Record"
+    },
+    "101": {
+      "name": "Intermediate Combat Record"
+    },
+    "102": {
+      "name": "Advanced Combat Record"
+    },
+    "104": {
+      "name": "Quadrant Fitting Fluid"
+    },
+    "105": {
+      "name": "Elementary Cognitive Carrier"
+    },
+    "106": {
+      "name": "Advanced Cognitive Carrier"
+    },
+    "107": {
+      "name": "Protodisk"
+    },
+    "108": {
+      "name": "Protoset"
+    },
+    "109": {
+      "name": "Protoprism"
+    },
+    "110": {
+      "name": "Protohedron"
+    },
+    "112": {
+      "name": "Tachyon Screening Lattice"
+    },
+    "114": {
+      "name": "Mark of Perseverance"
+    },
+    "123": {
+      "name": "Cosmagaric"
+    },
+    "128": {
+      "name": "Pink Bolete"
+    },
+    "131": {
+      "name": "Blighted Jadeleaf"
+    },
+    "133": {
+      "name": "Red Bolete"
+    },
+    "137": {
+      "name": "Ruby Bolete"
+    },
+    "141": {
+      "name": "Kalkodendra"
+    },
+    "146": {
+      "name": "Vitrodendra"
+    },
+    "147": {
+      "name": "Chrysodendra"
+    },
+    "642": {
+      "name": "T-Creds"
+    }
+  },
+  "potentialSupplementalTables": [
+    [
+      [
+        "Operator Snapshot",
+        "",
+        ""
+      ],
+      [
+        "An Oath Not Yet Fulfilled\nIllustrator: STAR影法师\nSwallow the truth, break down the results, and regain power.",
+        "Boundless Crusade\nIllustrator: へいろー\nThe crusade is the path to the objective. True warriors do not fall until the goal has been fulfilled.",
+        "The Bastion Never Breached\nIllustrator: MoooFoo\nRed hot steel and solid blood were the brick and mortar of the northern bastions. The North is not her nightmare. It is merely her next destination."
+      ]
+    ]
+  ]
+}

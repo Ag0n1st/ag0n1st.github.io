@@ -1,0 +1,1241 @@
+{
+  "schemaVersion": 2,
+  "source": {
+    "provider": "SKPORT Wiki",
+    "itemId": "4",
+    "language": "en",
+    "snapshot": "2026-10-24"
+  },
+  "operator": {
+    "id": "4",
+    "slug": "chen-qianyu",
+    "name": "Chen Qianyu",
+    "rarity": 5,
+    "element": "Physical",
+    "class": "Guard",
+    "weaponType": "Sword",
+    "faction": "Endfield Industries",
+    "coverUrl": "https://static.skport.com/image/rm42wiki/20251214/9890336793612/693e029a7e07c32d4735f10e.png",
+    "illustrationUrl": "https://static.skport.com/image/rm42wiki/20251214/9890336793612/693e029d0ccbd2b76044b9e5.png"
+  },
+  "ranks": [
+    "RANK 1",
+    "RANK 2",
+    "RANK 3",
+    "RANK 4",
+    "RANK 5",
+    "RANK 6",
+    "RANK 7",
+    "RANK 8",
+    "RANK 9",
+    "Mastery I",
+    "Mastery II",
+    "Mastery III"
+  ],
+  "skills": [
+    {
+      "slot": "basic",
+      "name": "Soaring Break",
+      "type": "Basic Attack",
+      "iconUrl": "https://static.skport.com/image/rm42wiki/20260108/9890336793612/695f5b0634fc9623ec80e0b3.png",
+      "description": "BASIC ATTACK:\n\nAn attack with up to 5 sequences that deals Physical DMG. As the controlled operator, Final Strike also deals 16 Stagger.\n\nDIVE ATTACK:\n\nBasic attack performed in mid-air becomes a dive attack that deals Physical DMG to nearby enemies.\n\nFINISHER:\n\nBasic attack performed near a Staggered enemy becomes a finisher attack that deals massive Physical DMG and recovers some SP.",
+      "metrics": [
+        [
+          "BATK SEQ 1 Multiplier",
+          "20%",
+          "22%",
+          "24%",
+          "26%",
+          "28%",
+          "30%",
+          "32%",
+          "34%",
+          "36%",
+          "39%",
+          "42%",
+          "45%"
+        ],
+        [
+          "BATK SEQ 2 Multiplier",
+          "24%",
+          "26%",
+          "29%",
+          "31%",
+          "34%",
+          "36%",
+          "38%",
+          "41%",
+          "43%",
+          "46%",
+          "50%",
+          "54%"
+        ],
+        [
+          "BATK SEQ 3 Multiplier",
+          "27%",
+          "29%",
+          "32%",
+          "35%",
+          "38%",
+          "40%",
+          "43%",
+          "46%",
+          "48%",
+          "52%",
+          "56%",
+          "60%"
+        ],
+        [
+          "BATK SEQ 4 Multiplier",
+          "30%",
+          "33%",
+          "36%",
+          "39%",
+          "42%",
+          "45%",
+          "48%",
+          "51%",
+          "54%",
+          "58%",
+          "62%",
+          "68%"
+        ],
+        [
+          "BATK SEQ 5 Multiplier",
+          "40%",
+          "44%",
+          "48%",
+          "52%",
+          "56%",
+          "60%",
+          "64%",
+          "68%",
+          "72%",
+          "77%",
+          "83%",
+          "90%"
+        ],
+        [
+          "Finisher ATK Multiplier",
+          "400%",
+          "440%",
+          "480%",
+          "520%",
+          "560%",
+          "600%",
+          "640%",
+          "680%",
+          "720%",
+          "770%",
+          "830%",
+          "900%"
+        ],
+        [
+          "Dive ATK Multiplier",
+          "80%",
+          "88%",
+          "96%",
+          "104%",
+          "112%",
+          "120%",
+          "128%",
+          "136%",
+          "144%",
+          "154%",
+          "166%",
+          "180%"
+        ]
+      ],
+      "upgradeCosts": [
+        {
+          "rank": "RANK 1",
+          "items": []
+        },
+        {
+          "rank": "RANK 2",
+          "items": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "141",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "rank": "RANK 3",
+          "items": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "141",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 2700
+            }
+          ]
+        },
+        {
+          "rank": "RANK 4",
+          "items": [
+            {
+              "id": "109",
+              "count": 16
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 3200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 5",
+          "items": [
+            {
+              "id": "109",
+              "count": 21
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 4200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 6",
+          "items": [
+            {
+              "id": "109",
+              "count": 27
+            },
+            {
+              "id": "147",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 5400
+            }
+          ]
+        },
+        {
+          "rank": "RANK 7",
+          "items": [
+            {
+              "id": "110",
+              "count": 6
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 8200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 8",
+          "items": [
+            {
+              "id": "110",
+              "count": 8
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 10500
+            }
+          ]
+        },
+        {
+          "rank": "RANK 9",
+          "items": [
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "146",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 18000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery I",
+          "items": [
+            {
+              "id": "114",
+              "count": 1
+            },
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "99",
+              "count": 6
+            },
+            {
+              "id": "131",
+              "count": 3
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery II",
+          "items": [
+            {
+              "id": "114",
+              "count": 2
+            },
+            {
+              "id": "110",
+              "count": 24
+            },
+            {
+              "id": "99",
+              "count": 16
+            },
+            {
+              "id": "131",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 30000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery III",
+          "items": [
+            {
+              "id": "114",
+              "count": 3
+            },
+            {
+              "id": "110",
+              "count": 50
+            },
+            {
+              "id": "99",
+              "count": 36
+            },
+            {
+              "id": "131",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 65000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "battle",
+      "name": "Ascending Strike",
+      "type": "Battle Skill",
+      "iconUrl": "https://static.skport.com/image/rm42wiki/20260108/9890336793612/695f5b063d5589184a9850a7.png",
+      "description": "Performs an uppercut slash at the target enemy, dealing Physical DMG and Lift.",
+      "metrics": [
+        [
+          "SP Cost",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100"
+        ],
+        [
+          "DMG Multiplier",
+          "169%",
+          "186%",
+          "203%",
+          "219%",
+          "236%",
+          "253%",
+          "270%",
+          "287%",
+          "304%",
+          "325%",
+          "350%",
+          "380%"
+        ],
+        [
+          "Stagger",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10"
+        ],
+        [
+          "Lift Duration",
+          "1s",
+          "1s",
+          "1s",
+          "1s",
+          "1s",
+          "1.5s",
+          "1.5s",
+          "1.5s",
+          "2s",
+          "2s",
+          "2s",
+          "2.5s"
+        ]
+      ],
+      "upgradeCosts": [
+        {
+          "rank": "RANK 1",
+          "items": []
+        },
+        {
+          "rank": "RANK 2",
+          "items": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "141",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "rank": "RANK 3",
+          "items": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "141",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 2700
+            }
+          ]
+        },
+        {
+          "rank": "RANK 4",
+          "items": [
+            {
+              "id": "109",
+              "count": 16
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 3200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 5",
+          "items": [
+            {
+              "id": "109",
+              "count": 21
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 4200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 6",
+          "items": [
+            {
+              "id": "109",
+              "count": 27
+            },
+            {
+              "id": "147",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 5400
+            }
+          ]
+        },
+        {
+          "rank": "RANK 7",
+          "items": [
+            {
+              "id": "110",
+              "count": 6
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 8200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 8",
+          "items": [
+            {
+              "id": "110",
+              "count": 8
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 10500
+            }
+          ]
+        },
+        {
+          "rank": "RANK 9",
+          "items": [
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "146",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 18000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery I",
+          "items": [
+            {
+              "id": "114",
+              "count": 1
+            },
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "112",
+              "count": 6
+            },
+            {
+              "id": "131",
+              "count": 3
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery II",
+          "items": [
+            {
+              "id": "114",
+              "count": 2
+            },
+            {
+              "id": "110",
+              "count": 24
+            },
+            {
+              "id": "112",
+              "count": 16
+            },
+            {
+              "id": "131",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 30000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery III",
+          "items": [
+            {
+              "id": "114",
+              "count": 3
+            },
+            {
+              "id": "110",
+              "count": 50
+            },
+            {
+              "id": "112",
+              "count": 36
+            },
+            {
+              "id": "131",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 65000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "combo",
+      "name": "Soar to the Stars",
+      "type": "Combo Skill",
+      "iconUrl": "https://static.skport.com/image/rm42wiki/20260108/9890336793612/695f5b095c0745090f635e79.png",
+      "description": "COMBO TRIGGER: When an enemy becomes Vulnerable.\n\nA slashing dash that passes through the target enemy and deals Physical DMG and Lift to all enemies along the way.",
+      "metrics": [
+        [
+          "Cooldown",
+          "16s",
+          "16s",
+          "16s",
+          "16s",
+          "16s",
+          "16s",
+          "16s",
+          "16s",
+          "16s",
+          "16s",
+          "16s",
+          "15s"
+        ],
+        [
+          "DMG Multiplier",
+          "120%",
+          "132%",
+          "144%",
+          "156%",
+          "168%",
+          "180%",
+          "192%",
+          "204%",
+          "216%",
+          "231%",
+          "249%",
+          "270%"
+        ],
+        [
+          "Ultimate Energy Gain",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10"
+        ]
+      ],
+      "upgradeCosts": [
+        {
+          "rank": "RANK 1",
+          "items": []
+        },
+        {
+          "rank": "RANK 2",
+          "items": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "141",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "rank": "RANK 3",
+          "items": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "141",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 2700
+            }
+          ]
+        },
+        {
+          "rank": "RANK 4",
+          "items": [
+            {
+              "id": "109",
+              "count": 16
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 3200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 5",
+          "items": [
+            {
+              "id": "109",
+              "count": 21
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 4200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 6",
+          "items": [
+            {
+              "id": "109",
+              "count": 27
+            },
+            {
+              "id": "147",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 5400
+            }
+          ]
+        },
+        {
+          "rank": "RANK 7",
+          "items": [
+            {
+              "id": "110",
+              "count": 6
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 8200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 8",
+          "items": [
+            {
+              "id": "110",
+              "count": 8
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 10500
+            }
+          ]
+        },
+        {
+          "rank": "RANK 9",
+          "items": [
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "146",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 18000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery I",
+          "items": [
+            {
+              "id": "114",
+              "count": 1
+            },
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "99",
+              "count": 6
+            },
+            {
+              "id": "131",
+              "count": 3
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery II",
+          "items": [
+            {
+              "id": "114",
+              "count": 2
+            },
+            {
+              "id": "110",
+              "count": 24
+            },
+            {
+              "id": "99",
+              "count": 16
+            },
+            {
+              "id": "131",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 30000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery III",
+          "items": [
+            {
+              "id": "114",
+              "count": 3
+            },
+            {
+              "id": "110",
+              "count": 50
+            },
+            {
+              "id": "99",
+              "count": 36
+            },
+            {
+              "id": "131",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 65000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "ultimate",
+      "name": "Blade Gale",
+      "type": "Ultimate",
+      "iconUrl": "https://static.skport.com/image/rm42wiki/20260108/9890336793612/695f5b0d7fddd53c2ed6ac4c.png",
+      "description": "A 7-sequence slash attack that deals Physical DMG with each sequence to the target enemy. The final slash sequence deals even more DMG.",
+      "metrics": [
+        [
+          "Ultimate Energy Cost",
+          "70",
+          "70",
+          "70",
+          "70",
+          "70",
+          "70",
+          "70",
+          "70",
+          "70",
+          "70",
+          "70",
+          "70"
+        ],
+        [
+          "Cooldown",
+          "10s",
+          "10s",
+          "10s",
+          "10s",
+          "10s",
+          "10s",
+          "10s",
+          "10s",
+          "10s",
+          "10s",
+          "10s",
+          "10s"
+        ],
+        [
+          "Slash Multiplier",
+          "36%",
+          "40%",
+          "43%",
+          "47%",
+          "50%",
+          "54%",
+          "58%",
+          "61%",
+          "65%",
+          "69%",
+          "75%",
+          "81%"
+        ],
+        [
+          "First Strike Stagger",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15"
+        ],
+        [
+          "Final Strike DMG Multiplier",
+          "455%",
+          "500%",
+          "545%",
+          "591%",
+          "636%",
+          "682%",
+          "727%",
+          "773%",
+          "818%",
+          "875%",
+          "943%",
+          "1023%"
+        ],
+        [
+          "Final Strike Stagger",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20"
+        ]
+      ],
+      "upgradeCosts": [
+        {
+          "rank": "RANK 1",
+          "items": []
+        },
+        {
+          "rank": "RANK 2",
+          "items": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "141",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "rank": "RANK 3",
+          "items": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "141",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 2700
+            }
+          ]
+        },
+        {
+          "rank": "RANK 4",
+          "items": [
+            {
+              "id": "109",
+              "count": 16
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 3200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 5",
+          "items": [
+            {
+              "id": "109",
+              "count": 21
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 4200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 6",
+          "items": [
+            {
+              "id": "109",
+              "count": 27
+            },
+            {
+              "id": "147",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 5400
+            }
+          ]
+        },
+        {
+          "rank": "RANK 7",
+          "items": [
+            {
+              "id": "110",
+              "count": 6
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 8200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 8",
+          "items": [
+            {
+              "id": "110",
+              "count": 8
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 10500
+            }
+          ]
+        },
+        {
+          "rank": "RANK 9",
+          "items": [
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "146",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 18000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery I",
+          "items": [
+            {
+              "id": "114",
+              "count": 1
+            },
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "112",
+              "count": 6
+            },
+            {
+              "id": "131",
+              "count": 3
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery II",
+          "items": [
+            {
+              "id": "114",
+              "count": 2
+            },
+            {
+              "id": "110",
+              "count": 24
+            },
+            {
+              "id": "112",
+              "count": 16
+            },
+            {
+              "id": "131",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 30000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery III",
+          "items": [
+            {
+              "id": "114",
+              "count": 3
+            },
+            {
+              "id": "110",
+              "count": 50
+            },
+            {
+              "id": "112",
+              "count": 36
+            },
+            {
+              "id": "131",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 65000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

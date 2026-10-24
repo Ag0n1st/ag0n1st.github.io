@@ -1,0 +1,678 @@
+{
+  "schemaVersion": 2,
+  "source": {
+    "provider": "SKPORT Wiki",
+    "itemId": "16",
+    "language": "en",
+    "snapshot": "2026-10-24"
+  },
+  "operator": "snowshine",
+  "profile": {
+    "Codename": "Snowshine",
+    "Gender": "Female",
+    "Faction": "Rhodes Island",
+    "Birthday": "December 19",
+    "Element": "Cryo",
+    "Race": "Ursus",
+    "Chinese CV": "刘十四",
+    "English CV": "Stephanie Southerland",
+    "Japanese CV": "明坂聡美",
+    "Korean CV": "유영"
+  },
+  "attributes": {
+    "levels": [
+      "LV.1",
+      "LV.20",
+      "LV.40",
+      "LV.60",
+      "LV.80",
+      "LV.90"
+    ],
+    "metrics": [
+      {
+        "name": "Strength (Main)",
+        "values": [
+          "18",
+          "47",
+          "78",
+          "108",
+          "139",
+          "154"
+        ]
+      },
+      {
+        "name": "Agility",
+        "values": [
+          "12",
+          "32",
+          "52",
+          "73",
+          "94",
+          "104"
+        ]
+      },
+      {
+        "name": "Intellect",
+        "values": [
+          "9",
+          "27",
+          "46",
+          "65",
+          "84",
+          "93"
+        ]
+      },
+      {
+        "name": "Will (Secondary)",
+        "values": [
+          "10",
+          "31",
+          "53",
+          "75",
+          "97",
+          "108"
+        ]
+      },
+      {
+        "name": "Base ATK",
+        "values": [
+          "30",
+          "87",
+          "147",
+          "207",
+          "267",
+          "297"
+        ]
+      },
+      {
+        "name": "Base HP",
+        "values": [
+          "500",
+          "1566",
+          "2689",
+          "3811",
+          "4934",
+          "5495"
+        ]
+      }
+    ],
+    "levelCosts": [
+      {
+        "level": "LV.1",
+        "items": []
+      },
+      {
+        "level": "LV.20",
+        "items": [
+          {
+            "id": "100",
+            "count": 5
+          },
+          {
+            "id": "101",
+            "count": 2
+          },
+          {
+            "id": "102",
+            "count": 2
+          },
+          {
+            "id": "642",
+            "count": 820
+          }
+        ]
+      },
+      {
+        "level": "LV.40",
+        "items": [
+          {
+            "id": "100",
+            "count": 3
+          },
+          {
+            "id": "101",
+            "count": 8
+          },
+          {
+            "id": "102",
+            "count": 24
+          },
+          {
+            "id": "642",
+            "count": 12540
+          }
+        ]
+      },
+      {
+        "level": "LV.60",
+        "items": [
+          {
+            "id": "100",
+            "count": 4
+          },
+          {
+            "id": "101",
+            "count": 5
+          },
+          {
+            "id": "102",
+            "count": 47
+          },
+          {
+            "id": "642",
+            "count": 23900
+          }
+        ]
+      },
+      {
+        "level": "LV.80",
+        "items": [
+          {
+            "id": "105",
+            "count": 6
+          },
+          {
+            "id": "106",
+            "count": 46
+          },
+          {
+            "id": "642",
+            "count": 109180
+          }
+        ]
+      },
+      {
+        "level": "LV.90",
+        "items": [
+          {
+            "id": "106",
+            "count": 58
+          },
+          {
+            "id": "642",
+            "count": 238980
+          }
+        ]
+      }
+    ],
+    "mainAttribute": "Strength",
+    "secondaryAttribute": "Will"
+  },
+  "talents": [
+    {
+      "id": "forged",
+      "name": "Forged",
+      "category": "attribute",
+      "levels": [
+        {
+          "name": "Forged 1",
+          "effect": "Operator Strength +10",
+          "requirements": [
+            "20% trust with the Operator",
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 5
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "name": "Forged 2",
+          "effect": "Operator Strength +15",
+          "requirements": [
+            "50% trust with the Operator",
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 10
+            },
+            {
+              "id": "642",
+              "count": 1800
+            }
+          ]
+        },
+        {
+          "name": "Forged 3",
+          "effect": "Operator Strength +15",
+          "requirements": [
+            "100% trust with the Operator",
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 10
+            },
+            {
+              "id": "642",
+              "count": 6000
+            }
+          ]
+        },
+        {
+          "name": "Forged 4",
+          "effect": "Operator Strength +20",
+          "requirements": [
+            "100% trust with the Operator",
+            "Promote to E4 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 20
+            },
+            {
+              "id": "642",
+              "count": 12000
+            }
+          ]
+        }
+      ],
+      "supplementalTables": [
+        [
+          [
+            "Trust",
+            "Raise your operators' trust to unlock more skills and profile data. Operators with higher trust also interact with you differently aboard Dijiang.\nYou can raise operator trust with gifts or by assigning them to the Dijiang Control Nexus."
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "polar-survival",
+      "name": "Polar Survival",
+      "category": "combat",
+      "levels": [
+        {
+          "name": "Polar Survival 1",
+          "effect": "Treatment Effect +15% for targets of 45% HP or below.",
+          "requirements": [
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 2400
+            }
+          ]
+        },
+        {
+          "name": "Polar Survival 2",
+          "effect": "Treatment Effect +25% for targets of 55% HP or below.",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 40
+            },
+            {
+              "id": "642",
+              "count": 8600
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sar-professional",
+      "name": "SAR Professional",
+      "category": "combat",
+      "levels": [
+        {
+          "name": "SAR Professional 1",
+          "effect": "Battle skill Saturated Defense improved: After successfully retaliating an enemy attack, Snowshine gains another 6 Ultimate Energy.",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 48
+            },
+            {
+              "id": "642",
+              "count": 10000
+            }
+          ]
+        },
+        {
+          "name": "SAR Professional 2",
+          "effect": "Battle skill Saturated Defense improved: After successfully retaliating an enemy attack, Snowshine gains anotherr 10 Ultimate Energy.",
+          "requirements": [
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 28
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rescuer-s-perseverance",
+      "name": "Rescuer's Perseverance",
+      "category": "ship",
+      "levels": [
+        {
+          "name": "Rescuer's Perseverance α",
+          "effect": "Assign to Manufacturing Cabin to slow Mood Drop of all operators in it by 10%",
+          "requirements": [
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 1600
+            }
+          ]
+        },
+        {
+          "name": "Rescuer's Perseverance β",
+          "effect": "Assign to Manufacturing Cabin to slow Mood Drop of all operators in it by 14%",
+          "requirements": [
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 8000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "happy-go-lucky",
+      "name": "Happy-Go-Lucky",
+      "category": "ship",
+      "levels": [
+        {
+          "name": "Happy-Go-Lucky β",
+          "effect": "Assign to Control Nexus to grant all operators' Mood Regen +12%",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 3000
+            }
+          ]
+        },
+        {
+          "name": "Happy-Go-Lucky γ",
+          "effect": "Assign to Control Nexus to grant all operators' Mood Regen +16%",
+          "requirements": [
+            "Promote to E4 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 20
+            },
+            {
+              "id": "642",
+              "count": 20000
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "promotions": [
+    {
+      "name": "Promotion I",
+      "effect": "Activate this to raise operator level cap to 40",
+      "requirement": "Operator Lv.20",
+      "cost": [
+        {
+          "id": "107",
+          "count": 8
+        },
+        {
+          "id": "128",
+          "count": 3
+        },
+        {
+          "id": "642",
+          "count": 1600
+        }
+      ]
+    },
+    {
+      "name": "Outfitting I",
+      "effect": "Activate this to let the operator equip blue quality gear",
+      "requirement": "Promote to E1 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 1800
+        }
+      ]
+    },
+    {
+      "name": "Promotion II",
+      "effect": "Activate this to raise operator level cap to 60",
+      "requirement": "Operator Lv.40",
+      "cost": [
+        {
+          "id": "107",
+          "count": 25
+        },
+        {
+          "id": "133",
+          "count": 5
+        },
+        {
+          "id": "642",
+          "count": 6500
+        }
+      ]
+    },
+    {
+      "name": "Outfitting II",
+      "effect": "Activate this to let the operator equip purple quality gear",
+      "requirement": "Promote to E2 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 6500
+        }
+      ]
+    },
+    {
+      "name": "Promotion III",
+      "effect": "Activate this to raise operator level cap to 80",
+      "requirement": "Operator Lv.60",
+      "cost": [
+        {
+          "id": "108",
+          "count": 24
+        },
+        {
+          "id": "137",
+          "count": 5
+        },
+        {
+          "id": "642",
+          "count": 18000
+        }
+      ]
+    },
+    {
+      "name": "Outfitting III",
+      "effect": "Activate this to let the operator equip gold quality gear",
+      "requirement": "Promote to E3 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 18000
+        }
+      ]
+    },
+    {
+      "name": "Promotion IV",
+      "effect": "Activate this to raise operator level cap to 90",
+      "requirement": "Operator Lv.80",
+      "cost": [
+        {
+          "id": "108",
+          "count": 36
+        },
+        {
+          "id": "104",
+          "count": 20
+        },
+        {
+          "id": "134",
+          "count": 8
+        },
+        {
+          "id": "642",
+          "count": 100000
+        }
+      ]
+    }
+  ],
+  "potentials": [
+    {
+      "level": 1,
+      "name": "Cold Shelter",
+      "effect": "Battle skill Saturated Defense is improved: During the blocking effect, Arts Inflictions cannot be applied to allied operators with Protection."
+    },
+    {
+      "level": 2,
+      "name": "Storm Region",
+      "effect": "Ultimate Frigid Snowfield improved: Effect radius +20%."
+    },
+    {
+      "level": 3,
+      "name": "Polar Survival Guide",
+      "effect": "Ultimate Frigid Snowfield improved: Duration of the Solidification applied by the skill is increased by 2s."
+    },
+    {
+      "level": 4,
+      "name": "Tundra Aegis",
+      "effect": "DEF +20, Will +20."
+    },
+    {
+      "level": 5,
+      "name": "Cold Disaster Specialist",
+      "effect": "Battle skill Saturated Defense improved: Successfully retaliating an enemy attack returns 10 SP."
+    }
+  ],
+  "materials": {
+    "100": {
+      "name": "Elementary Combat Record"
+    },
+    "101": {
+      "name": "Intermediate Combat Record"
+    },
+    "102": {
+      "name": "Advanced Combat Record"
+    },
+    "103": {
+      "name": "Triphasic Nanoflake"
+    },
+    "104": {
+      "name": "Quadrant Fitting Fluid"
+    },
+    "105": {
+      "name": "Elementary Cognitive Carrier"
+    },
+    "106": {
+      "name": "Advanced Cognitive Carrier"
+    },
+    "107": {
+      "name": "Protodisk"
+    },
+    "108": {
+      "name": "Protoset"
+    },
+    "109": {
+      "name": "Protoprism"
+    },
+    "110": {
+      "name": "Protohedron"
+    },
+    "111": {
+      "name": "Metadiastima Photoemission Tube"
+    },
+    "114": {
+      "name": "Mark of Perseverance"
+    },
+    "128": {
+      "name": "Pink Bolete"
+    },
+    "131": {
+      "name": "Blighted Jadeleaf"
+    },
+    "133": {
+      "name": "Red Bolete"
+    },
+    "134": {
+      "name": "Bloodcap"
+    },
+    "137": {
+      "name": "Ruby Bolete"
+    },
+    "141": {
+      "name": "Kalkodendra"
+    },
+    "146": {
+      "name": "Vitrodendra"
+    },
+    "147": {
+      "name": "Chrysodendra"
+    },
+    "642": {
+      "name": "T-Creds"
+    }
+  },
+  "potentialSupplementalTables": [
+    [
+      [
+        "Operator Snapshot",
+        "",
+        ""
+      ],
+      [
+        "Moment for a Break\nIllustrator: 수줍(Sjoop)\nA mug of hot cocoa of flavors from Kjersch is definitely a great choice before hiking the next mountain or receiving the next SOS distress call.",
+        "Snowy but Bright\nIllustrator: 一块二毛一斤\nLike the brightest drop of sun atop the frozen peaks, the very sight of her brings instant warmth to those trapped in precipitous snow. She will brave the frigid cold and bring them to survival.",
+        "Carving Through the Snow\nIllustrator: LAL!ROLE\nThe girl trudged through the peaks and carved a path down the snowy slopes. She is always straightlining her way to save lives in distress."
+      ]
+    ]
+  ]
+}

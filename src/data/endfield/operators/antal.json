@@ -1,0 +1,1241 @@
+{
+  "schemaVersion": 2,
+  "source": {
+    "provider": "SKPORT Wiki",
+    "itemId": "22",
+    "language": "en",
+    "snapshot": "2026-10-24"
+  },
+  "operator": {
+    "id": "22",
+    "slug": "antal",
+    "name": "Antal",
+    "rarity": 4,
+    "element": "Electric",
+    "class": "Supporter",
+    "weaponType": "Arts Unit",
+    "faction": "Endfield Industries",
+    "coverUrl": "https://static.skport.com/image/rm42wiki/20260108/8777262936189/695f6a32c4fd1a611f3e2976.png",
+    "illustrationUrl": "https://static.skport.com/image/rm42wiki/20260108/8777262936189/695f6a369931ee14c9cbb6f8.png"
+  },
+  "ranks": [
+    "RANK 1",
+    "RANK 2",
+    "RANK 3",
+    "RANK 4",
+    "RANK 5",
+    "RANK 6",
+    "RANK 7",
+    "RANK 8",
+    "RANK 9",
+    "Mastery I",
+    "Mastery II",
+    "Mastery III"
+  ],
+  "skills": [
+    {
+      "slot": "basic",
+      "name": "Exchange Current",
+      "type": "Basic Attack",
+      "iconUrl": "https://static.skport.com/image/rm42wiki/20260108/8777262936189/695f6e75c4fd1a611f3e2979.png",
+      "description": "BASIC ATTACK:\n\nAn attack with up to 4 sequences that deals Electric DMG. As the controlled operator, Final Strike also deals 15 Stagger.\n\nDIVE ATTACK:\n\nBasic attack performed in mid-air becomes a dive attack that deals Electric DMG to nearby enemies.\n\nFINISHER:\n\nBasic attack performed near a Staggered enemy becomes a finisher that deals massive Electric DMG and recovers some SP.",
+      "metrics": [
+        [
+          "BATK SEQ 1 Multiplier",
+          "23%",
+          "25%",
+          "28%",
+          "30%",
+          "32%",
+          "35%",
+          "37%",
+          "39%",
+          "41%",
+          "44%",
+          "48%",
+          "52%"
+        ],
+        [
+          "BATK SEQ 2 Multiplier",
+          "28%",
+          "31%",
+          "34%",
+          "36%",
+          "39%",
+          "42%",
+          "45%",
+          "48%",
+          "50%",
+          "54%",
+          "58%",
+          "63%"
+        ],
+        [
+          "BATK SEQ 3 Multiplier",
+          "34%",
+          "37%",
+          "41%",
+          "44%",
+          "48%",
+          "51%",
+          "54%",
+          "58%",
+          "61%",
+          "65%",
+          "71%",
+          "77%"
+        ],
+        [
+          "BATK SEQ 4 Multiplier",
+          "51%",
+          "56%",
+          "61%",
+          "66%",
+          "71%",
+          "77%",
+          "82%",
+          "87%",
+          "92%",
+          "98%",
+          "106%",
+          "115%"
+        ],
+        [
+          "Finisher ATK Multiplier",
+          "400%",
+          "440%",
+          "480%",
+          "520%",
+          "560%",
+          "600%",
+          "640%",
+          "680%",
+          "720%",
+          "770%",
+          "830%",
+          "900%"
+        ],
+        [
+          "Dive ATK Multiplier",
+          "80%",
+          "88%",
+          "96%",
+          "104%",
+          "112%",
+          "120%",
+          "128%",
+          "136%",
+          "144%",
+          "154%",
+          "166%",
+          "180%"
+        ]
+      ],
+      "upgradeCosts": [
+        {
+          "rank": "RANK 1",
+          "items": []
+        },
+        {
+          "rank": "RANK 2",
+          "items": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "141",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "rank": "RANK 3",
+          "items": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "141",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 2700
+            }
+          ]
+        },
+        {
+          "rank": "RANK 4",
+          "items": [
+            {
+              "id": "109",
+              "count": 16
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 3200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 5",
+          "items": [
+            {
+              "id": "109",
+              "count": 21
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 4200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 6",
+          "items": [
+            {
+              "id": "109",
+              "count": 27
+            },
+            {
+              "id": "147",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 5400
+            }
+          ]
+        },
+        {
+          "rank": "RANK 7",
+          "items": [
+            {
+              "id": "110",
+              "count": 6
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 8200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 8",
+          "items": [
+            {
+              "id": "110",
+              "count": 8
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 10500
+            }
+          ]
+        },
+        {
+          "rank": "RANK 9",
+          "items": [
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "146",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 18000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery I",
+          "items": [
+            {
+              "id": "114",
+              "count": 1
+            },
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "99",
+              "count": 6
+            },
+            {
+              "id": "131",
+              "count": 3
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery II",
+          "items": [
+            {
+              "id": "114",
+              "count": 2
+            },
+            {
+              "id": "110",
+              "count": 24
+            },
+            {
+              "id": "99",
+              "count": 16
+            },
+            {
+              "id": "131",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 30000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery III",
+          "items": [
+            {
+              "id": "114",
+              "count": 3
+            },
+            {
+              "id": "110",
+              "count": 50
+            },
+            {
+              "id": "99",
+              "count": 36
+            },
+            {
+              "id": "131",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 65000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "battle",
+      "name": "Specified Research Subject",
+      "type": "Battle Skill",
+      "iconUrl": "https://static.skport.com/image/rm42wiki/20260108/8777262936189/695f6e773d5589184a9850b1.png",
+      "description": "Applies Focus with a long duration on the enemy and deals Electric DMG. An enemy with an active Focus also suffers Electric Susceptibility and Heat Susceptibility. Focus can only be applied to 1 enemy at any given time.",
+      "metrics": [
+        [
+          "SP Cost",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100"
+        ],
+        [
+          "DMG Multiplier",
+          "89%",
+          "98%",
+          "107%",
+          "116%",
+          "124%",
+          "133%",
+          "142%",
+          "151%",
+          "160%",
+          "171%",
+          "185%",
+          "200%"
+        ],
+        [
+          "Duration (s)",
+          "60",
+          "60",
+          "60",
+          "60",
+          "60",
+          "60",
+          "60",
+          "60",
+          "60",
+          "60",
+          "60",
+          "60"
+        ],
+        [
+          "Electric Susceptibility",
+          "5%",
+          "5%",
+          "6%",
+          "6%",
+          "7%",
+          "7%",
+          "8%",
+          "8%",
+          "8%",
+          "9%",
+          "9%",
+          "10%"
+        ],
+        [
+          "Heat Susceptibility",
+          "5%",
+          "5%",
+          "6%",
+          "6%",
+          "7%",
+          "7%",
+          "8%",
+          "8%",
+          "8%",
+          "9%",
+          "9%",
+          "10%"
+        ]
+      ],
+      "upgradeCosts": [
+        {
+          "rank": "RANK 1",
+          "items": []
+        },
+        {
+          "rank": "RANK 2",
+          "items": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "141",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "rank": "RANK 3",
+          "items": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "141",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 2700
+            }
+          ]
+        },
+        {
+          "rank": "RANK 4",
+          "items": [
+            {
+              "id": "109",
+              "count": 16
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 3200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 5",
+          "items": [
+            {
+              "id": "109",
+              "count": 21
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 4200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 6",
+          "items": [
+            {
+              "id": "109",
+              "count": 27
+            },
+            {
+              "id": "147",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 5400
+            }
+          ]
+        },
+        {
+          "rank": "RANK 7",
+          "items": [
+            {
+              "id": "110",
+              "count": 6
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 8200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 8",
+          "items": [
+            {
+              "id": "110",
+              "count": 8
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 10500
+            }
+          ]
+        },
+        {
+          "rank": "RANK 9",
+          "items": [
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "146",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 18000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery I",
+          "items": [
+            {
+              "id": "114",
+              "count": 1
+            },
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "112",
+              "count": 6
+            },
+            {
+              "id": "131",
+              "count": 3
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery II",
+          "items": [
+            {
+              "id": "114",
+              "count": 2
+            },
+            {
+              "id": "110",
+              "count": 24
+            },
+            {
+              "id": "112",
+              "count": 16
+            },
+            {
+              "id": "131",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 30000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery III",
+          "items": [
+            {
+              "id": "114",
+              "count": 3
+            },
+            {
+              "id": "110",
+              "count": 50
+            },
+            {
+              "id": "112",
+              "count": 36
+            },
+            {
+              "id": "131",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 65000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "combo",
+      "name": "EMP Test Site",
+      "type": "Combo Skill",
+      "iconUrl": "https://static.skport.com/image/rm42wiki/20260108/8777262936189/695f6e7a9931ee14c9cbb6fe.png",
+      "description": "COMBO TRIGGER: When an enemy with active Focus suffers a Physical Status or Arts Infliction.\n\nTriggers 1 energy explosion on the enemy that deals Electric DMG and applies another stack of the same Physical Status or Arts Infliction.",
+      "metrics": [
+        [
+          "Cooldown",
+          "25s",
+          "25s",
+          "25s",
+          "25s",
+          "25s",
+          "25s",
+          "25s",
+          "25s",
+          "25s",
+          "25s",
+          "25s",
+          "24s"
+        ],
+        [
+          "DMG Multiplier",
+          "151%",
+          "166%",
+          "181%",
+          "196%",
+          "211%",
+          "227%",
+          "242%",
+          "257%",
+          "272%",
+          "291%",
+          "313%",
+          "340%"
+        ],
+        [
+          "Stagger",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10"
+        ],
+        [
+          "Ultimate Energy Gain",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10"
+        ]
+      ],
+      "upgradeCosts": [
+        {
+          "rank": "RANK 1",
+          "items": []
+        },
+        {
+          "rank": "RANK 2",
+          "items": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "141",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "rank": "RANK 3",
+          "items": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "141",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 2700
+            }
+          ]
+        },
+        {
+          "rank": "RANK 4",
+          "items": [
+            {
+              "id": "109",
+              "count": 16
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 3200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 5",
+          "items": [
+            {
+              "id": "109",
+              "count": 21
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 4200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 6",
+          "items": [
+            {
+              "id": "109",
+              "count": 27
+            },
+            {
+              "id": "147",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 5400
+            }
+          ]
+        },
+        {
+          "rank": "RANK 7",
+          "items": [
+            {
+              "id": "110",
+              "count": 6
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 8200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 8",
+          "items": [
+            {
+              "id": "110",
+              "count": 8
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 10500
+            }
+          ]
+        },
+        {
+          "rank": "RANK 9",
+          "items": [
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "146",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 18000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery I",
+          "items": [
+            {
+              "id": "114",
+              "count": 1
+            },
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "99",
+              "count": 6
+            },
+            {
+              "id": "131",
+              "count": 3
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery II",
+          "items": [
+            {
+              "id": "114",
+              "count": 2
+            },
+            {
+              "id": "110",
+              "count": 24
+            },
+            {
+              "id": "99",
+              "count": 16
+            },
+            {
+              "id": "131",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 30000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery III",
+          "items": [
+            {
+              "id": "114",
+              "count": 3
+            },
+            {
+              "id": "110",
+              "count": 50
+            },
+            {
+              "id": "99",
+              "count": 36
+            },
+            {
+              "id": "131",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 65000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "ultimate",
+      "name": "Overclocked Moment",
+      "type": "Ultimate",
+      "iconUrl": "https://static.skport.com/image/rm42wiki/20260114/3864465401225/6966f1cc0920b30f43778d45.png",
+      "description": "Applies temporary Electric Amp and Heat Amp to the entire team.",
+      "metrics": [
+        [
+          "Ultimate Energy Cost",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100"
+        ],
+        [
+          "Cooldown",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20"
+        ],
+        [
+          "Electric Amp",
+          "8%",
+          "9%",
+          "10%",
+          "11%",
+          "12%",
+          "13%",
+          "14%",
+          "15%",
+          "16%",
+          "17%",
+          "18%",
+          "20%"
+        ],
+        [
+          "Heat Amp",
+          "8%",
+          "9%",
+          "10%",
+          "11%",
+          "12%",
+          "13%",
+          "14%",
+          "15%",
+          "16%",
+          "17%",
+          "18%",
+          "20%"
+        ],
+        [
+          "Duration (s)",
+          "12",
+          "12",
+          "12",
+          "12",
+          "12",
+          "12",
+          "12",
+          "12",
+          "12",
+          "12",
+          "12",
+          "12"
+        ]
+      ],
+      "upgradeCosts": [
+        {
+          "rank": "RANK 1",
+          "items": []
+        },
+        {
+          "rank": "RANK 2",
+          "items": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "141",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "rank": "RANK 3",
+          "items": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "141",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 2700
+            }
+          ]
+        },
+        {
+          "rank": "RANK 4",
+          "items": [
+            {
+              "id": "109",
+              "count": 16
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 3200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 5",
+          "items": [
+            {
+              "id": "109",
+              "count": 21
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 4200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 6",
+          "items": [
+            {
+              "id": "109",
+              "count": 27
+            },
+            {
+              "id": "147",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 5400
+            }
+          ]
+        },
+        {
+          "rank": "RANK 7",
+          "items": [
+            {
+              "id": "110",
+              "count": 6
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 8200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 8",
+          "items": [
+            {
+              "id": "110",
+              "count": 8
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 10500
+            }
+          ]
+        },
+        {
+          "rank": "RANK 9",
+          "items": [
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "146",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 18000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery I",
+          "items": [
+            {
+              "id": "114",
+              "count": 1
+            },
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "112",
+              "count": 6
+            },
+            {
+              "id": "131",
+              "count": 3
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery II",
+          "items": [
+            {
+              "id": "114",
+              "count": 2
+            },
+            {
+              "id": "110",
+              "count": 24
+            },
+            {
+              "id": "112",
+              "count": 16
+            },
+            {
+              "id": "131",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 30000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery III",
+          "items": [
+            {
+              "id": "114",
+              "count": 3
+            },
+            {
+              "id": "110",
+              "count": 50
+            },
+            {
+              "id": "112",
+              "count": 36
+            },
+            {
+              "id": "131",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 65000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

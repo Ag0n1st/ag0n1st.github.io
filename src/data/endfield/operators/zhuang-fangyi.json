@@ -1,0 +1,1346 @@
+{
+  "schemaVersion": 2,
+  "source": {
+    "provider": "SKPORT Wiki",
+    "itemId": "838",
+    "language": "en",
+    "snapshot": "2026-10-24"
+  },
+  "operator": {
+    "id": "838",
+    "slug": "zhuang-fangyi",
+    "name": "Zhuang Fangyi",
+    "rarity": 6,
+    "element": "Electric",
+    "class": "Striker",
+    "weaponType": "Arts Unit",
+    "faction": "HAS",
+    "coverUrl": "https://static.skport.com/image/rm42wiki/20260421/7887973031859/69e668ec337a110681954ce2_f1525633.png",
+    "illustrationUrl": "https://static.skport.com/image/rm42wiki/20260421/7887973031859/69e668ef337a110681954ce3_3eac6ad0.png"
+  },
+  "ranks": [
+    "RANK 1",
+    "RANK 2",
+    "RANK 3",
+    "RANK 4",
+    "RANK 5",
+    "RANK 6",
+    "RANK 7",
+    "RANK 8",
+    "RANK 9",
+    "Mastery I",
+    "Mastery II",
+    "Mastery III"
+  ],
+  "skills": [
+    {
+      "slot": "basic",
+      "name": "Jolting Arts",
+      "type": "Basic Attack",
+      "iconUrl": "https://static.skport.com/image/rm42wiki/20260421/7887973031859/69e6695e9650be73424e99ea_2f76db19.png",
+      "description": "BASIC ATTACK:\n\nAn attack with up to 5 sequences that deals Electric DMG. As the controlled operator, Final Strike also deals 18 Stagger.\n\nDIVE ATTACK:\n\nBasic attack performed in mid-air becomes a dive attack that deals Electric DMG to nearby enemies.\n\nFINISHER:\n\nBasic attack performed near a Staggered enemy becomes a finisher that deals massive Electric DMG and recovers some SP.",
+      "metrics": [
+        [
+          "BATK SEQ 1 Multiplier",
+          "16%",
+          "18%",
+          "19%",
+          "21%",
+          "22%",
+          "24%",
+          "26%",
+          "27%",
+          "29%",
+          "31%",
+          "33%",
+          "36%"
+        ],
+        [
+          "BATK SEQ 2 Multiplier",
+          "24%",
+          "26%",
+          "29%",
+          "31%",
+          "34%",
+          "36%",
+          "38%",
+          "41%",
+          "43%",
+          "46%",
+          "50%",
+          "54%"
+        ],
+        [
+          "BATK SEQ 3 Multiplier",
+          "32%",
+          "35%",
+          "39%",
+          "42%",
+          "45%",
+          "48%",
+          "52%",
+          "55%",
+          "58%",
+          "62%",
+          "67%",
+          "72%"
+        ],
+        [
+          "BATK SEQ 4 Multiplier",
+          "45%",
+          "50%",
+          "54%",
+          "59%",
+          "63%",
+          "68%",
+          "72%",
+          "77%",
+          "81%",
+          "87%",
+          "93%",
+          "101%"
+        ],
+        [
+          "BATK SEQ 5 Multiplier",
+          "48%",
+          "53%",
+          "58%",
+          "62%",
+          "67%",
+          "72%",
+          "77%",
+          "82%",
+          "86%",
+          "92%",
+          "100%",
+          "108%"
+        ],
+        [
+          "Finisher ATK Multiplier",
+          "400%",
+          "440%",
+          "480%",
+          "520%",
+          "560%",
+          "600%",
+          "640%",
+          "680%",
+          "720%",
+          "770%",
+          "830%",
+          "900%"
+        ],
+        [
+          "Dive ATK Multiplier",
+          "80%",
+          "88%",
+          "96%",
+          "104%",
+          "112%",
+          "120%",
+          "128%",
+          "136%",
+          "144%",
+          "154%",
+          "166%",
+          "180%"
+        ]
+      ],
+      "upgradeCosts": [
+        {
+          "rank": "RANK 1",
+          "items": []
+        },
+        {
+          "rank": "RANK 2",
+          "items": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "141",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "rank": "RANK 3",
+          "items": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "141",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 2700
+            }
+          ]
+        },
+        {
+          "rank": "RANK 4",
+          "items": [
+            {
+              "id": "109",
+              "count": 16
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 3200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 5",
+          "items": [
+            {
+              "id": "109",
+              "count": 21
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 4200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 6",
+          "items": [
+            {
+              "id": "109",
+              "count": 27
+            },
+            {
+              "id": "147",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 5400
+            }
+          ]
+        },
+        {
+          "rank": "RANK 7",
+          "items": [
+            {
+              "id": "110",
+              "count": 6
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 8200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 8",
+          "items": [
+            {
+              "id": "110",
+              "count": 8
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 10500
+            }
+          ]
+        },
+        {
+          "rank": "RANK 9",
+          "items": [
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "146",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 18000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery I",
+          "items": [
+            {
+              "id": "114",
+              "count": 1
+            },
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "99",
+              "count": 6
+            },
+            {
+              "id": "131",
+              "count": 3
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery II",
+          "items": [
+            {
+              "id": "114",
+              "count": 2
+            },
+            {
+              "id": "110",
+              "count": 24
+            },
+            {
+              "id": "99",
+              "count": 16
+            },
+            {
+              "id": "131",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 30000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery III",
+          "items": [
+            {
+              "id": "114",
+              "count": 3
+            },
+            {
+              "id": "110",
+              "count": 50
+            },
+            {
+              "id": "99",
+              "count": 36
+            },
+            {
+              "id": "131",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 65000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "battle",
+      "name": "Mantra of Sundering",
+      "type": "Battle Skill",
+      "iconUrl": "https://static.skport.com/image/rm42wiki/20260421/7887973031859/69e669659650be73424e99eb_56331367.png",
+      "description": "Consumes the target's Electrification to increase the DMG multiplier of this battle skill and create [Status Level of Electrification consumed +1] Sunderblades. If the battlefield has fewer than 3 Sunderblades, Mantra of Sundering can still create 1 Sunderblade, even if it does not consume any target's Electrification.\n\nZhuang Fangyi then channels all Sunderblades nearby to successively unleash Thunder Strikes on the target, dealing Electric DMG and giving bonus Ultimate Energy, with the final Thunder Strike dealing 6 times the DMG.\n\nA single battle skill casting can only create a max of 3 Sunderblades.",
+      "metrics": [
+        [
+          "SP Cost",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100"
+        ],
+        [
+          "Thunder Strike DMG Multiplier",
+          "20%",
+          "22%",
+          "24%",
+          "26%",
+          "28%",
+          "30%",
+          "32%",
+          "34%",
+          "36%",
+          "39%",
+          "42%",
+          "45%"
+        ],
+        [
+          "Total Stagger",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15"
+        ],
+        [
+          "Bonus DMG Multiplier per Status Level of Electrification Consumed",
+          "3%",
+          "4%",
+          "4%",
+          "4%",
+          "5%",
+          "5%",
+          "5%",
+          "6%",
+          "6%",
+          "7%",
+          "8%",
+          "9%"
+        ],
+        [
+          "Bonus Ultimate Energy per Thunder Strike",
+          "6",
+          "6",
+          "6",
+          "6",
+          "6",
+          "6",
+          "6",
+          "6",
+          "6",
+          "6",
+          "6",
+          "6"
+        ],
+        [
+          "Sunderblade Limit",
+          "9",
+          "9",
+          "9",
+          "9",
+          "9",
+          "9",
+          "9",
+          "9",
+          "9",
+          "9",
+          "9",
+          "9"
+        ],
+        [
+          "Sunderblade Duration (s)",
+          "36",
+          "36",
+          "36",
+          "36",
+          "36",
+          "36",
+          "36",
+          "36",
+          "36",
+          "36",
+          "36",
+          "36"
+        ],
+        [
+          "During Ultimate: Thunder Strike DMG Multiplier",
+          "36%",
+          "40%",
+          "43%",
+          "47%",
+          "50%",
+          "54%",
+          "58%",
+          "61%",
+          "65%",
+          "69%",
+          "75%",
+          "81%"
+        ],
+        [
+          "During Ultimate: Bonus DMG Multiplier per Status Level of Electrification Consumed",
+          "8%",
+          "9%",
+          "10%",
+          "11%",
+          "11%",
+          "12%",
+          "13%",
+          "14%",
+          "15%",
+          "16%",
+          "17%",
+          "18%"
+        ]
+      ],
+      "upgradeCosts": [
+        {
+          "rank": "RANK 1",
+          "items": []
+        },
+        {
+          "rank": "RANK 2",
+          "items": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "141",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "rank": "RANK 3",
+          "items": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "141",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 2700
+            }
+          ]
+        },
+        {
+          "rank": "RANK 4",
+          "items": [
+            {
+              "id": "109",
+              "count": 16
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 3200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 5",
+          "items": [
+            {
+              "id": "109",
+              "count": 21
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 4200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 6",
+          "items": [
+            {
+              "id": "109",
+              "count": 27
+            },
+            {
+              "id": "147",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 5400
+            }
+          ]
+        },
+        {
+          "rank": "RANK 7",
+          "items": [
+            {
+              "id": "110",
+              "count": 6
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 8200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 8",
+          "items": [
+            {
+              "id": "110",
+              "count": 8
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 10500
+            }
+          ]
+        },
+        {
+          "rank": "RANK 9",
+          "items": [
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "146",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 18000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery I",
+          "items": [
+            {
+              "id": "114",
+              "count": 1
+            },
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "112",
+              "count": 6
+            },
+            {
+              "id": "131",
+              "count": 3
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery II",
+          "items": [
+            {
+              "id": "114",
+              "count": 2
+            },
+            {
+              "id": "110",
+              "count": 24
+            },
+            {
+              "id": "112",
+              "count": 16
+            },
+            {
+              "id": "131",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 30000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery III",
+          "items": [
+            {
+              "id": "114",
+              "count": 3
+            },
+            {
+              "id": "110",
+              "count": 50
+            },
+            {
+              "id": "112",
+              "count": 36
+            },
+            {
+              "id": "131",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 65000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "combo",
+      "name": "Breath of Transformation",
+      "type": "Combo Skill",
+      "iconUrl": "https://static.skport.com/image/rm42wiki/20260421/7887973031859/69e6696a9650be73424e99ec_db193eac.png",
+      "description": "COMBO TRIGGER: When the controlled operator's Final Strike or Finisher hits an enemy with Electric Infliction.\n\nZhuang Fangyi creates a Xiranblitz Array that attacks the enemy and deals Electric DMG. If the Array hits an enemy that has Electric Infliction stack(s), then it will consume the said Electric Infliction stack(s), forcibly apply Electrification, and give Ultimate Energy based on the number of stacks consumed.\n\nIf Electrification is forcibly applied to an enemy that already has Electrification, then apply Status Level +1 to the enemy's Electrification.",
+      "metrics": [
+        [
+          "Cooldown",
+          "18s",
+          "18s",
+          "18s",
+          "18s",
+          "18s",
+          "18s",
+          "18s",
+          "18s",
+          "18s",
+          "18s",
+          "18s",
+          "17s"
+        ],
+        [
+          "DMG Multiplier",
+          "160%",
+          "176%",
+          "192%",
+          "208%",
+          "224%",
+          "240%",
+          "256%",
+          "272%",
+          "288%",
+          "308%",
+          "332%",
+          "360%"
+        ],
+        [
+          "Stagger",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10"
+        ],
+        [
+          "Ultimate Energy Gain",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10"
+        ],
+        [
+          "Additional Ultimate Energy per Infliction Stack",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10"
+        ],
+        [
+          "During Ultimate: DMG Multiplier",
+          "240%",
+          "264%",
+          "288%",
+          "312%",
+          "336%",
+          "360%",
+          "384%",
+          "408%",
+          "432%",
+          "462%",
+          "498%",
+          "540%"
+        ]
+      ],
+      "upgradeCosts": [
+        {
+          "rank": "RANK 1",
+          "items": []
+        },
+        {
+          "rank": "RANK 2",
+          "items": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "141",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "rank": "RANK 3",
+          "items": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "141",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 2700
+            }
+          ]
+        },
+        {
+          "rank": "RANK 4",
+          "items": [
+            {
+              "id": "109",
+              "count": 16
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 3200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 5",
+          "items": [
+            {
+              "id": "109",
+              "count": 21
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 4200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 6",
+          "items": [
+            {
+              "id": "109",
+              "count": 27
+            },
+            {
+              "id": "147",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 5400
+            }
+          ]
+        },
+        {
+          "rank": "RANK 7",
+          "items": [
+            {
+              "id": "110",
+              "count": 6
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 8200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 8",
+          "items": [
+            {
+              "id": "110",
+              "count": 8
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 10500
+            }
+          ]
+        },
+        {
+          "rank": "RANK 9",
+          "items": [
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "146",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 18000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery I",
+          "items": [
+            {
+              "id": "114",
+              "count": 1
+            },
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "99",
+              "count": 6
+            },
+            {
+              "id": "131",
+              "count": 3
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery II",
+          "items": [
+            {
+              "id": "114",
+              "count": 2
+            },
+            {
+              "id": "110",
+              "count": 24
+            },
+            {
+              "id": "99",
+              "count": 16
+            },
+            {
+              "id": "131",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 30000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery III",
+          "items": [
+            {
+              "id": "114",
+              "count": 3
+            },
+            {
+              "id": "110",
+              "count": 50
+            },
+            {
+              "id": "99",
+              "count": 36
+            },
+            {
+              "id": "131",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 65000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "ultimate",
+      "name": "Smiting Tempest",
+      "type": "Ultimate",
+      "iconUrl": "https://static.skport.com/image/rm42wiki/20260421/7887973031859/69e6696e9650be73424e99ed_2f76db19.png",
+      "description": "Transforms into the Empyrean of Truth that grants these enhancements:\n\nZhuang Fangyi's basic attacks are enhanced and her actions are harder to interrupt;\n\nBattle skill Mantra of Sundering gains a higher DMG multiplier and an increased effect range, and the final Thunder Strike also applies Electric Infliction to the target hit.\n\nCombo skill Breath of Transformation gains a higher DMG multiplier, cooldown becomes 4 times faster, and effects are applied to enemies within a small area.\n\nThe first casting of the battle skill Mantra of Sundering on an available target does not consume SP nor Electrification, and is guaranteed to create 3 Sunderblades even if the target has no Electrification.",
+      "metrics": [
+        [
+          "Ultimate Energy Cost",
+          "240",
+          "240",
+          "240",
+          "240",
+          "240",
+          "240",
+          "240",
+          "240",
+          "240",
+          "240",
+          "240",
+          "240"
+        ],
+        [
+          "Duration (s)",
+          "25",
+          "25",
+          "25",
+          "25",
+          "25",
+          "25",
+          "25",
+          "25",
+          "25",
+          "25",
+          "25",
+          "25"
+        ],
+        [
+          "During Ultimate: BATK SEQ 1 Multiplier",
+          "67%",
+          "73%",
+          "80%",
+          "86%",
+          "93%",
+          "100%",
+          "106%",
+          "113%",
+          "120%",
+          "128%",
+          "138%",
+          "150%"
+        ],
+        [
+          "During Ultimate: BATK SEQ 2 Multiplier",
+          "94%",
+          "103%",
+          "112%",
+          "122%",
+          "131%",
+          "140%",
+          "150%",
+          "159%",
+          "168%",
+          "180%",
+          "194%",
+          "210%"
+        ],
+        [
+          "During Ultimate: BATK SEQ 3 Multiplier",
+          "134%",
+          "147%",
+          "160%",
+          "174%",
+          "187%",
+          "200%",
+          "214%",
+          "227%",
+          "240%",
+          "257%",
+          "277%",
+          "300%"
+        ]
+      ],
+      "upgradeCosts": [
+        {
+          "rank": "RANK 1",
+          "items": []
+        },
+        {
+          "rank": "RANK 2",
+          "items": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "141",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "rank": "RANK 3",
+          "items": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "141",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 2700
+            }
+          ]
+        },
+        {
+          "rank": "RANK 4",
+          "items": [
+            {
+              "id": "109",
+              "count": 16
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 3200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 5",
+          "items": [
+            {
+              "id": "109",
+              "count": 21
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 4200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 6",
+          "items": [
+            {
+              "id": "109",
+              "count": 27
+            },
+            {
+              "id": "147",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 5400
+            }
+          ]
+        },
+        {
+          "rank": "RANK 7",
+          "items": [
+            {
+              "id": "110",
+              "count": 6
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 8200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 8",
+          "items": [
+            {
+              "id": "110",
+              "count": 8
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 10500
+            }
+          ]
+        },
+        {
+          "rank": "RANK 9",
+          "items": [
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "146",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 18000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery I",
+          "items": [
+            {
+              "id": "114",
+              "count": 1
+            },
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "112",
+              "count": 6
+            },
+            {
+              "id": "131",
+              "count": 3
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery II",
+          "items": [
+            {
+              "id": "114",
+              "count": 2
+            },
+            {
+              "id": "110",
+              "count": 24
+            },
+            {
+              "id": "112",
+              "count": 16
+            },
+            {
+              "id": "131",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 30000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery III",
+          "items": [
+            {
+              "id": "114",
+              "count": 3
+            },
+            {
+              "id": "110",
+              "count": 50
+            },
+            {
+              "id": "112",
+              "count": 36
+            },
+            {
+              "id": "131",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 65000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

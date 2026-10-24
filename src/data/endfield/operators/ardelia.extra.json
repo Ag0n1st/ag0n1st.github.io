@@ -1,0 +1,669 @@
+{
+  "schemaVersion": 2,
+  "source": {
+    "provider": "SKPORT Wiki",
+    "itemId": "19",
+    "language": "en",
+    "snapshot": "2026-10-24"
+  },
+  "operator": "ardelia",
+  "profile": {
+    "Codename": "Ardelia",
+    "Gender": "Female",
+    "Faction": "Rhodes Island",
+    "Birthday": "October 18",
+    "Element": "Nature",
+    "Race": "Caprinae",
+    "Chinese CV": "降溫",
+    "English CV": "Lindsay Sheppard",
+    "Japanese CV": "金元寿子",
+    "Korean CV": "김하루"
+  },
+  "attributes": {
+    "levels": [
+      "LV.1",
+      "LV.20",
+      "LV.40",
+      "LV.60",
+      "LV.80",
+      "LV.90"
+    ],
+    "metrics": [
+      {
+        "name": "Strength",
+        "values": [
+          "9",
+          "31",
+          "54",
+          "77",
+          "100",
+          "112"
+        ]
+      },
+      {
+        "name": "Agility",
+        "values": [
+          "9",
+          "27",
+          "46",
+          "65",
+          "84",
+          "93"
+        ]
+      },
+      {
+        "name": "Intellect (Main)",
+        "values": [
+          "20",
+          "46",
+          "75",
+          "103",
+          "131",
+          "145"
+        ]
+      },
+      {
+        "name": "Will (Secondary)",
+        "values": [
+          "15",
+          "37",
+          "60",
+          "83",
+          "106",
+          "118"
+        ]
+      },
+      {
+        "name": "Base ATK",
+        "values": [
+          "30",
+          "93",
+          "159",
+          "225",
+          "291",
+          "323"
+        ]
+      },
+      {
+        "name": "Base HP",
+        "values": [
+          "500",
+          "1566",
+          "2689",
+          "3811",
+          "4934",
+          "5495"
+        ]
+      }
+    ],
+    "levelCosts": [
+      {
+        "level": "LV.1",
+        "items": []
+      },
+      {
+        "level": "LV.20",
+        "items": [
+          {
+            "id": "100",
+            "count": 5
+          },
+          {
+            "id": "101",
+            "count": 2
+          },
+          {
+            "id": "102",
+            "count": 2
+          },
+          {
+            "id": "642",
+            "count": 820
+          }
+        ]
+      },
+      {
+        "level": "LV.40",
+        "items": [
+          {
+            "id": "100",
+            "count": 3
+          },
+          {
+            "id": "101",
+            "count": 8
+          },
+          {
+            "id": "102",
+            "count": 24
+          },
+          {
+            "id": "642",
+            "count": 12540
+          }
+        ]
+      },
+      {
+        "level": "LV.60",
+        "items": [
+          {
+            "id": "100",
+            "count": 4
+          },
+          {
+            "id": "101",
+            "count": 5
+          },
+          {
+            "id": "102",
+            "count": 47
+          },
+          {
+            "id": "642",
+            "count": 23900
+          }
+        ]
+      },
+      {
+        "level": "LV.80",
+        "items": [
+          {
+            "id": "105",
+            "count": 6
+          },
+          {
+            "id": "106",
+            "count": 46
+          },
+          {
+            "id": "642",
+            "count": 109180
+          }
+        ]
+      },
+      {
+        "level": "LV.90",
+        "items": [
+          {
+            "id": "106",
+            "count": 58
+          },
+          {
+            "id": "642",
+            "count": 238980
+          }
+        ]
+      }
+    ],
+    "mainAttribute": "Intellect",
+    "secondaryAttribute": "Will"
+  },
+  "talents": [
+    {
+      "id": "keen-mind",
+      "name": "Keen Mind",
+      "category": "attribute",
+      "levels": [
+        {
+          "name": "Keen Mind 1",
+          "effect": "Operator Intellect +10",
+          "requirements": [
+            "20% trust with the Operator",
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 5
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "name": "Keen Mind 2",
+          "effect": "Operator Intellect +15",
+          "requirements": [
+            "50% trust with the Operator",
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 10
+            },
+            {
+              "id": "642",
+              "count": 1800
+            }
+          ]
+        },
+        {
+          "name": "Keen Mind 3",
+          "effect": "Operator Intellect +15",
+          "requirements": [
+            "100% trust with the Operator",
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 10
+            },
+            {
+              "id": "642",
+              "count": 6000
+            }
+          ]
+        },
+        {
+          "name": "Keen Mind 4",
+          "effect": "Operator Intellect +20",
+          "requirements": [
+            "100% trust with the Operator",
+            "Promote to E4 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 20
+            },
+            {
+              "id": "642",
+              "count": 12000
+            }
+          ]
+        }
+      ],
+      "supplementalTables": [
+        [
+          [
+            "Trust",
+            "Raise your operators' trust to unlock more skills and profile data. Operators with higher trust also interact with you differently aboard Dijiang.\nYou can raise operator trust with gifts or by assigning them to the Dijiang Control Nexus."
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "friendly-presence",
+      "name": "Friendly Presence",
+      "category": "combat",
+      "levels": [
+        {
+          "name": "Friendly Presence - 1",
+          "effect": "The battle skill Dolly Rush creates 3 Shadows of Mr. Dolly after hitting the enemy. The copies of Mr. Dolly scattered by the ultimate Wooly Party also have a 10% chance to create Shadows of Mr. Dolly when they fall to the ground. When the controlled operator touches a Shadow of Mr. Dolly, Ardelia restores the said operator’s HP by [45 + Will x 0.38].\nIf the controlled operator is already at max HP, then restore the HP of the teammate with the lowest percentage HP. Shadows of Mr. Dolly last for 10s and up to 10 can exist in the battlefield.",
+          "requirements": [
+            "None"
+          ],
+          "cost": []
+        },
+        {
+          "name": "Friendly Presence - 2",
+          "effect": "The battle skill Dolly Rush creates 3 Shadows of Mr. Dolly after hitting the enemy. The copies of Mr. Dolly scattered by the ultimate Wooly Party also have a 10% chance to create Shadows of Mr. Dolly when they fall to the ground. When the controlled operator touches a Shadow of Mr. Dolly, Ardelia restores the said operator’s HP by [63 + Will x 0.53].\nIf the controlled operator is already at max HP, then restore the HP of the teammate with the lowest percentage HP. Shadows of Mr. Dolly last for 10s and up to 10 can exist in the battlefield.",
+          "requirements": [
+            "E1"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 36
+            },
+            {
+              "id": "642",
+              "count": 7200
+            }
+          ]
+        },
+        {
+          "name": "Friendly Presence - 3",
+          "effect": "The battle skill Dolly Rush creates 3 Shadows of Mr. Dolly after hitting the enemy. The copies of Mr. Dolly scattered by the ultimate Wooly Party also have a 10% chance to create Shadows of Mr. Dolly when they fall to the ground. When the controlled operator touches a Shadow of Mr. Dolly, Ardelia restores the said operator’s HP by [90 + Will x 0.75].\nIf the controlled operator is already at max HP, then restore the HP of the teammate with the lowest percentage HP. Shadows of Mr. Dolly last for 10s and up to 10 can exist in the battlefield.",
+          "requirements": [
+            "E2"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 85
+            },
+            {
+              "id": "642",
+              "count": 26000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mountainpeak-surfer",
+      "name": "Mountainpeak Surfer",
+      "category": "combat",
+      "levels": [
+        {
+          "name": "Mountainpeak Surfer - 1",
+          "effect": "Battle skill Dolly Rush improved: Triggering the additional effect while an enemy with Corrosion is nearby immediately casts the battle skill again.\nThis effect can only trigger once per active battle skill casting.",
+          "requirements": [
+            "E2"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 85
+            },
+            {
+              "id": "642",
+              "count": 26000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tales-of-the-land",
+      "name": "Tales of the Land",
+      "category": "ship",
+      "levels": [
+        {
+          "name": "Tales of the Land β",
+          "effect": "Assign to Reception Room to grant operator clue collecting efficiency +20%",
+          "requirements": [
+            "E1"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 1600
+            }
+          ]
+        },
+        {
+          "name": "Tales of the Land γ",
+          "effect": "Assign to Reception Room to grant operator clue collecting efficiency +30%",
+          "requirements": [
+            "E3"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 8000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mr-dolly-s-game",
+      "name": "Mr. Dolly's Game",
+      "category": "ship",
+      "levels": [
+        {
+          "name": "Mr. Dolly's Game β",
+          "effect": "Assign to Reception Room to slow Mood Drop of all operators in it by 14%",
+          "requirements": [
+            "E2"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 3000
+            }
+          ]
+        },
+        {
+          "name": "Mr. Dolly's Game γ",
+          "effect": "Assign to Reception Room to slow Mood Drop of all operators in it by 18%",
+          "requirements": [
+            "E4"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 20
+            },
+            {
+              "id": "642",
+              "count": 20000
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "promotions": [
+    {
+      "name": "Promotion I",
+      "effect": "Activate this to raise operator level cap to 40",
+      "requirement": "Operator Lv.20",
+      "cost": [
+        {
+          "id": "107",
+          "count": 8
+        },
+        {
+          "id": "128",
+          "count": 3
+        },
+        {
+          "id": "642",
+          "count": 1600
+        }
+      ]
+    },
+    {
+      "name": "Outfitting I",
+      "effect": "Activate this to let the operator equip blue quality gear",
+      "requirement": "Promote to E1 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 1600
+        }
+      ]
+    },
+    {
+      "name": "Promotion II",
+      "effect": "Activate this to raise operator level cap to 60",
+      "requirement": "Operator Lv.40",
+      "cost": [
+        {
+          "id": "107",
+          "count": 25
+        },
+        {
+          "id": "133",
+          "count": 5
+        },
+        {
+          "id": "642",
+          "count": 6500
+        }
+      ]
+    },
+    {
+      "name": "Outfitting II",
+      "effect": "Activate this to let the operator equip purple quality gear",
+      "requirement": "Promote to E2 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 6500
+        }
+      ]
+    },
+    {
+      "name": "Promotion III",
+      "effect": "Activate this to raise operator level cap to 80",
+      "requirement": "Operator Lv.60",
+      "cost": [
+        {
+          "id": "108",
+          "count": 24
+        },
+        {
+          "id": "137",
+          "count": 5
+        },
+        {
+          "id": "642",
+          "count": 18000
+        }
+      ]
+    },
+    {
+      "name": "Outfitting III",
+      "effect": "Activate this to let the operator equip gold quality gear",
+      "requirement": "Promote to E3 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 18000
+        }
+      ]
+    },
+    {
+      "name": "Promotion IV",
+      "effect": "Activate this to raise operator level cap to 90",
+      "requirement": "Operator Lv.80",
+      "cost": [
+        {
+          "id": "108",
+          "count": 36
+        },
+        {
+          "id": "104",
+          "count": 20
+        },
+        {
+          "id": "123",
+          "count": 8
+        },
+        {
+          "id": "642",
+          "count": 100000
+        }
+      ]
+    }
+  ],
+  "potentials": [
+    {
+      "level": 1,
+      "name": "Dolly Paradise",
+      "effect": "Battle skill Dolly Rush improved: Consuming Corrosion now applies Physical Susceptibility and Arts Susceptibility with effects +8%."
+    },
+    {
+      "level": 2,
+      "name": "Game Rewards",
+      "effect": "Talent Friendly Presence improved: When the controlled operator touches the Shadow of Mr. Dolly, Ardelia also treats another allied operator with the lowest percentage HP with half of the treatment effects."
+    },
+    {
+      "level": 3,
+      "name": "Explosive Eruption",
+      "effect": "Ultimate Wooly Party improved: Duration +1s; chance to create Shadow of Mr. Dolly is increased to 1.2 times the original."
+    },
+    {
+      "level": 4,
+      "name": "Rock Blossom",
+      "effect": "Ultimate Wooly Party improved: Ultimate Energy cost -15%."
+    },
+    {
+      "level": 5,
+      "name": "Volcanic Steam",
+      "effect": "Combo skill Eruption Column improved: Length of cooldown -2s; DMG multiplier is increased to 1.2 times of the original; duration of Corrosion applied +4s."
+    }
+  ],
+  "materials": {
+    "99": {
+      "name": "D96 Steel Sample 4"
+    },
+    "100": {
+      "name": "Elementary Combat Record"
+    },
+    "101": {
+      "name": "Intermediate Combat Record"
+    },
+    "102": {
+      "name": "Advanced Combat Record"
+    },
+    "104": {
+      "name": "Quadrant Fitting Fluid"
+    },
+    "105": {
+      "name": "Elementary Cognitive Carrier"
+    },
+    "106": {
+      "name": "Advanced Cognitive Carrier"
+    },
+    "107": {
+      "name": "Protodisk"
+    },
+    "108": {
+      "name": "Protoset"
+    },
+    "109": {
+      "name": "Protoprism"
+    },
+    "110": {
+      "name": "Protohedron"
+    },
+    "112": {
+      "name": "Tachyon Screening Lattice"
+    },
+    "114": {
+      "name": "Mark of Perseverance"
+    },
+    "119": {
+      "name": "False Aggela"
+    },
+    "123": {
+      "name": "Cosmagaric"
+    },
+    "128": {
+      "name": "Pink Bolete"
+    },
+    "133": {
+      "name": "Red Bolete"
+    },
+    "137": {
+      "name": "Ruby Bolete"
+    },
+    "141": {
+      "name": "Kalkodendra"
+    },
+    "146": {
+      "name": "Vitrodendra"
+    },
+    "147": {
+      "name": "Chrysodendra"
+    },
+    "642": {
+      "name": "T-Creds"
+    }
+  },
+  "potentialSupplementalTables": [
+    [
+      [
+        "Operator Snapshot",
+        "",
+        ""
+      ],
+      [
+        "Let's Start Playing\nIllustrator: 温泉瓜\n\"Mr. Dolly invited you too! Let's join its game!\"",
+        "Daydream Without End\nIllustrator: 宇木敦哉\nWhat does she fantasize about when lying on a soft, fluffy cloud of pink? Really weird stones?\nPlaces she never went? Or...",
+        "Aspiration\nIllustrator: Eteru\nFlowers blooming on cold, hard rocks ... barren lands teeming with life and warmth ... and idyllic songs humming by our ears...\nProfessor, this isn't just a dream, right?"
+      ]
+    ]
+  ]
+}
