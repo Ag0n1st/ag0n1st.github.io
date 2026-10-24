@@ -1,0 +1,41 @@
+name: Cache Arcane official SKPORT WILL skill icons
+on:
+  push:
+    branches: [feature-skport-public-operator-bulk-import-20261024]
+    paths: [".github/workflows/cache-skport-arcane-variant-icons.yml"]
+permissions:
+  contents: write
+jobs:
+  assets:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install public static WebP optimizer
+        run: |
+          npm ci
+          npm install --no-save --package-lock=false sharp
+      - name: Cache only official Arcane WILL variant icons
+        run: node scripts/endfield/sync-skport-public-variant-assets.mjs --slug arcane
+      - name: Check both limits and regression suite
+        run: |
+          npm run test:endfield
+          node scripts/endfield/check-budget.mjs
+          npm run build
+          node scripts/check-pages-budget.mjs
+      - name: Commit official 3 additional variant WebPs
+        shell: bash
+        run: |
+          git add public/images/endfield/operators/arcane/skills
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Cache three public SKPORT Arcane WILL skill variant icons"
+          git fetch origin feature-skport-public-operator-bulk-import-20261024
+          git rebase origin/feature-skport-public-operator-bulk-import-20261024
+          git push origin HEAD:feature-skport-public-operator-bulk-import-20261024

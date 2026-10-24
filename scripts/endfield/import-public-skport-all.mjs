@@ -65,12 +65,14 @@ async function optimizedImage(url,kind){
   }
   throw Error("Official image cannot fit capped WebP budget");
 }
-async function saveImages(op,result){
+export async function saveImages(op,result){
   const records=[];
   const assets=[
     ["cover",result.main.operator.coverUrl,"cover.webp"],
     ["illustration",result.main.operator.illustrationUrl,"illustration.webp"],
-    ...result.main.skills.map(skill=>["icon",skill.iconUrl,"skills/skill-"+skill.slot+".webp"])
+    ...result.main.skills.map(skill=>["icon",skill.iconUrl,"skills/skill-"+skill.slot+".webp"]),
+    ...Object.entries(result.main.skillVariants??{}).flatMap(([variant,skills])=>
+      skills.map(skill=>["icon",skill.iconUrl,"skills/skill-"+skill.slot+"-"+variant+".webp"]))
   ];
   for(const [kind,url,relative] of assets){
     if(!url)continue;
