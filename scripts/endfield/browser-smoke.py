@@ -1116,7 +1116,7 @@ def smoke_i18n(page, base_url, width):
         game_diag={"main":game.count(),
                    "html_lang":page.locator("html").get_attribute("lang"),
                    "active_nav":page.locator('a.endfield-nav-link[href="'+prefix+'/endfield/endfieldle/"][aria-current="page"]').count(),
-                   "table_headers":page.locator(".efdl-table th").count(),
+                   "table_headers":page.locator(".efdl-table thead th").count(),
                    "url":page.url}
         verify(game_diag["main"]==1 and game_diag["html_lang"]==lang and
                game_diag["active_nav"]==1 and game_diag["table_headers"]==8,
