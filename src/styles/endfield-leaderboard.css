@@ -154,3 +154,27 @@
 /* Guide-style Friendly Disclaimer, matching Operator Potentials' op-notice. */
 .cl-update-notice{margin:0 0 22px;border-left:3px solid var(--cyan);padding:13px 15px;background:rgba(101,232,242,.06);border-radius:0 9px 9px 0;font-size:12px;line-height:1.7;color:#d9d0dd}
 .cl-update-notice strong{font-weight:800;margin-right:4px;color:#f2e8f5}
+
+
+/* Archiv: closed by default; previously verified results use the same rows and
+   locally stored event artwork without adding images or runtime requests. */
+.cl-event-archive{margin-top:27px;border:1px solid #55455c;border-radius:12px;background:rgba(24,21,32,.78);overflow:hidden}
+.cl-event-archive-toggle{display:flex;align-items:center;gap:11px;list-style:none;padding:15px 17px;min-height:58px;cursor:pointer;color:#e9e0ed;font-weight:800}
+.cl-event-archive-toggle::-webkit-details-marker{display:none}
+.cl-event-archive-toggle:hover{background:#ffffff08}
+.cl-event-archive-toggle:focus-visible{outline:2px solid var(--cyan);outline-offset:-3px}
+.cl-event-archive-title{font-size:15px}
+.cl-event-archive-count{font-size:11px;color:#c4b5d2;border:1px solid #68546c;border-radius:7px;padding:3px 8px;background:#34283b;font-variant-numeric:tabular-nums}
+.cl-event-archive-chevron{margin-left:auto;color:#cdbad7;font-size:22px;transition:transform .15s}
+.cl-event-archive[open] .cl-event-archive-chevron{transform:rotate(180deg)}
+.cl-event-archive-content{padding:3px 17px 18px;border-top:1px solid #453a4a}
+.cl-archive-selector{margin:18px 0 20px;max-width:420px}
+.cl-archive-empty,.cl-event-inactive{color:#c3b8cc;font-size:12px;line-height:1.7}
+.cl-archive-empty{margin:14px 0 2px}
+.cl-event-inactive{padding:14px 0 4px}
+.cl-event-inactive p{margin:8px 0}
+.cl-event-archive-panel{position:relative;isolation:isolate;overflow:hidden;border:1px solid #4e4155;border-radius:12px;padding:clamp(13px,2vw,20px);background:#1c1923}
+.cl-event-archive-panel::before{content:"";position:absolute;z-index:0;inset:0;background-image:var(--cl-archive-background);background-size:cover;background-position:center center;background-repeat:no-repeat;opacity:.05;pointer-events:none}
+.cl-event-archive-panel>*{position:relative;z-index:1}
+.cl-archive-final-label{font-size:11px;letter-spacing:.04em;color:var(--cyan);font-weight:800;margin:0 0 13px}
+@media(max-width:760px){.cl-event-archive-content{padding:3px 10px 13px}.cl-event-archive-toggle{padding:12px}.cl-event-archive-panel{padding:12px}.cl-archive-selector{max-width:none}}

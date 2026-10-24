@@ -926,6 +926,19 @@ def smoke_i18n(page, base_url, width):
         verify(root.count()==1 and root.locator(".cl-container").count()==2 and
                event.count()==1 and root.locator(".cl-main-container").count()==1,
                label+": "+lang+" Duality event is shown above general leaderboard")
+        archive=event.locator("[data-event-archive]")
+        verify(archive.count()==1 and
+               not archive.evaluate("(el)=>el.open") and
+               event.locator(".cl-event-archive-count").inner_text().strip()=="0" and
+               event.locator("[data-no-current-event]").count()==0,
+               label+": "+lang+" archive is collapsed and Duality is not prematurely archived")
+        archive.locator("summary").click()
+        verify(archive.evaluate("(el)=>el.open") and
+               ("Noch keine" if lang=="de" else "No completed") in archive.locator(".cl-archive-empty").inner_text() and
+               archive.locator(".cl-rank-row").count()==0,
+               label+": "+lang+" empty archive has no fabricated results")
+        archive.locator("summary").click()
+        verify(not archive.evaluate("(el)=>el.open"),label+": "+lang+" archive closes again")
         event_select=event.locator("[data-event-select]")
         event_panel=event.locator('[data-event-panel="duality"]')
         details=event_panel.locator("[data-event-rules]")
