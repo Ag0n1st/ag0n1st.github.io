@@ -31,8 +31,8 @@ test("unfinished nav states and tierlist order match shared language data",()=>{
   const keys=[...nav.matchAll(/key: "([^"]+)"/g)].map(x=>x[1]);
   assert.equal(keys[keys.indexOf("checklist")+1],"tierlist");
   assert.equal(keys[keys.indexOf("tierlist")+1],"countdown");
-  assert.equal(keys.length,9);
-  assert.deepEqual(keys,["overview","operators","factory","speedruns","leaderboard","cheatsheets","checklist","tierlist","countdown"]);
+  assert.equal(keys.length,10);
+  assert.deepEqual(keys,["overview","operators","factory","speedruns","leaderboard","cheatsheets","checklist","tierlist","endfieldle","countdown"]);
   for(const key of ["factory","cheatsheets","checklist","tierlist"])
     assert.match(nav,new RegExp('upcoming=new Set\\(\\[[^\\]]*"'+key+'"'));
   assert.match(read("src/components/pages/EndfieldHome.astro"),/09 \/ TIERLIST/);
