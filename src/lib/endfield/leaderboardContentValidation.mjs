@@ -6,7 +6,7 @@ const youtubeHost=url=>{
     const parsed=new URL(url);
     return parsed.protocol==="https:" &&
       ["youtu.be","www.youtube.com","youtube.com","m.youtube.com"].includes(parsed.hostname) &&
-      Boolean(parsed.pathname.replace(/\\//g,""));
+      Boolean(parsed.pathname.replace(/\//g,""));
   }catch{return false;}
 };
 const validDate=value=>{
