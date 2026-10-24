@@ -171,3 +171,43 @@ test("rejects ambiguous skill slots and nonconforming level tables",()=>{
   delete broken.data.item.document.documentMap["data-3"];
   assert.throws(()=>importOperator(broken,items,info),/Dokument fehlt/);
 });
+
+
+test("accepts Yvonne's RANK1 spelling without relaxing other rank-order checks",()=>{
+  const raw=makeFixture();
+  raw.data.item.document.documentMap["data-3"].blockMap["b0_1"].text.inlineElements[0].text.text="RANK1";
+  const {main}=importOperator(raw,items,info);
+  assert.equal(main.skills[3].upgradeCosts.length,12);
+});
+test("records Endministrator's official undisclosed P4/P5 without inventing effects",()=>{
+  const raw=makeFixture();
+  for(const key of ["b3_2","b4_2"])
+    raw.data.item.document.documentMap.potential.blockMap[key].text.inlineElements[0].text.text="";
+  const {extras}=importOperator(raw,items,info);
+  assert.equal(extras.potentials.length,5);
+  assert.equal(extras.potentials[3].effect,"");
+  assert.equal(extras.potentials[3].status,"undisclosed");
+  assert.equal(extras.potentials[4].status,"undisclosed");
+});
+test("keeps both documented Arcane INT and WILL variants with all 12 ranks",()=>{
+  const raw=makeFixture();
+  const doc=raw.data.item.document;
+  const def=doc.chapterGroup.flatMap(x=>x.widgets).find(w=>w.title==="//Combat Skills");
+  const combat=doc.widgetCommonMap[def.id];
+  for(let i=1;i<=3;i++){
+    const existing=combat.tabDataMap["dynamic-"+i];
+    existing.intro.name+=" (Array Arcana: INT)";
+    const id="alt-"+i;
+    combat.tabList.push({tabId:id,icon:"https://example.test/alt-"+i+".png"});
+    combat.tabDataMap[id]={
+      intro:{...existing.intro,name:"Test Skill "+i+" (Array Arcana: WILL)"},
+      content:existing.content
+    };
+  }
+  const {main,extras}=importOperator(raw,items,info);
+  assert.equal(main.skills.length,4);
+  assert.equal(main.skillVariants.will.length,3);
+  assert.deepEqual(main.skillVariants.will.map(x=>x.slot),["battle","combo","ultimate"]);
+  assert.ok(main.skillVariants.will.every(x=>x.upgradeCosts.length===12));
+  assert.equal(extras.potentials.length,5);
+});
