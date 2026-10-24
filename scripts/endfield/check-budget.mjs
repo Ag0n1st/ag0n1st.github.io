@@ -13,13 +13,17 @@ const folders = [
   "public/images/endfield",
   "src/data/endfield",
   "src/content/operator-guides",
+  "src/content/leaderboard-runs",
+  "src/content/leaderboard-events",
+  "src/pages/en/endfield",
   "src/pages/endfield",
   "src/components/operator",
   "src/components/endfield",
   "src/lib/endfield",
   "scripts/endfield",
 ];
-const files = ["src/styles/operator-guides.css","src/components/EndfieldNav.astro"];
+const files = ["src/styles/operator-guides.css","src/components/EndfieldNav.astro",
+  "src/components/pages/EndfieldLeaderboard.astro","src/styles/endfield-leaderboard.css"];
 async function sizeOf(path) {
   let info;
   try { info=await stat(path); }
