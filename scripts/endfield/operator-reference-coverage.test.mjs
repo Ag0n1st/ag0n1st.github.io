@@ -43,12 +43,15 @@ test("base skill tiers are numeric reference data with truthful provenance",()=>
 });
 test("official full-import coverage counts independently verified original pairs",()=>{
  const c=getOperatorImportCoverage();
- assert.equal(c.total,34);assert.ok(c.skportFull>=3&&c.skportFull<=34);
+ assert.equal(c.total,34);assert.ok(c.skportCaptured>=33&&c.skportCaptured<=34);
+ assert.equal(c.skportFull+c.skportPartial,c.skportCaptured);
+ assert.equal(c.skportPartial,1); // Endministrator P4/P5 undisclosed in official source
+ assert.deepEqual(c.pendingDisclosure,["endministrator"]);
  assert.equal(c.communityCombatNames,30);assert.equal(c.communityBaseSkills,29);
- assert.equal(c.missingSkport.length,34-c.skportFull);
+ assert.equal(c.missingSkport.length,34-c.skportCaptured);
  assert.equal(c.rows.filter(x=>x.hasIcon&&x.hasPortrait).length,34);
  assert.equal(c.rows.filter(x=>x.hasBanner).length,33);
- assert.equal(c.rows.filter(x=>x.hasSplash).length,3);
+ assert.equal(c.rows.filter(x=>x.hasSplash).length,c.skportCaptured);
  for(const slug of ["si","typhoeus","liino"])
   assert.ok(c.rows.find(x=>x.id===slug)?.skportFull);
  for(const slug of c.missingSkport)
