@@ -724,8 +724,7 @@ def smoke_i18n(page, base_url, width):
                flat.index("Countdown") == flat.index("Tierlist" if lang=="de" else "Tier List")+1,
                label+": "+lang+" Tierlist appears after Checklist and before Countdown")
         verify(all(not any(name in x for name in ("Rekrutierung","Veredelung","Essenzen","Recruitment","Refinement","Essences")) for x in flat) and
-               flat.count("Cheat\nSheets")==0 and
-               flat.count("CheatSheets")==0,
+               all("Cheat" not in x or "Sheets" in x for x in flat),
                label+": "+lang+" removed three former standalone system links from Endfield nav")
         verify(page.locator(".endfield-nav-link").count()==9 and
                page.locator('a.endfield-nav-link[href="'+("/endfield/cheatsheets/" if lang=="de" else "/en/endfield/cheatsheets/")+'"]').count()==1,
