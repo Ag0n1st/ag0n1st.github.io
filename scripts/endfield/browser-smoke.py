@@ -1146,9 +1146,14 @@ def smoke_i18n(page, base_url, width):
         verify(page.locator("[data-suggestions] .efdl-option").count()>=1,
                label+": "+lang+" autocomplete shows valid operator choices")
         page.locator("[data-submit]").click()
-        verify(page.locator("[data-results] tr").count()==1 and
-               page.locator("[data-results] tr").first.locator(".efdl-cell").count()==7,
-               label+": "+lang+" wrong guess creates all seven trivia comparisons")
+        guess_debug={"rows":page.locator("[data-results] tr").count(),
+                     "cells":page.locator("[data-results] tr").first.locator(".efdl-cell").count(),
+                     "feedback":page.locator("[data-feedback]").inner_text(),
+                     "input":guess_input.input_value(),
+                     "suggestions":page.locator("[data-suggestions] .efdl-option").count(),
+                     "won":page.locator("[data-winner]").is_visible()}
+        verify(guess_debug["rows"]==1 and guess_debug["cells"]==7,
+               label+": "+lang+" wrong guess creates all seven trivia comparisons "+str(guess_debug))
         guess_input.fill(target_name)
         page.locator("[data-submit]").click()
         verify(page.locator("[data-winner]").is_visible() and
