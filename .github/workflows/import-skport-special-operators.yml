@@ -1,0 +1,43 @@
+name: Complete special SKPORT operator variants anonymously
+on:
+  push:
+    branches: [feature-skport-public-operator-bulk-import-20261024]
+    paths: [".github/workflows/import-skport-special-operators.yml"]
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install browser and static WebP conversion
+        run: |
+          npm ci
+          npm install --no-save --package-lock=false playwright sharp
+          npx playwright install --with-deps chromium
+      - name: Import remaining public IDs with shape-aware parser
+        run: node scripts/endfield/import-public-skport-all.mjs
+      - name: Validate all imported profiles and hard budgets
+        run: |
+          npm run test:endfield
+          node scripts/endfield/check-budget.mjs
+          npm run build
+          node scripts/check-pages-budget.mjs
+      - name: Commit only validated normalized profiles and official optimized images
+        shell: bash
+        run: |
+          git add src/data/endfield/operators/ src/data/endfield/catalog/operator-public-import-report.json
+          git add public/images/endfield/operators/
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Import special Endministrator, Yvonne and Arcane public SKPORT widgets"
+          git fetch origin feature-skport-public-operator-bulk-import-20261024
+          git rebase origin/feature-skport-public-operator-bulk-import-20261024
+          git push origin HEAD:feature-skport-public-operator-bulk-import-20261024
