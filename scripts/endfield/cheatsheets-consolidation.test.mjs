@@ -3,9 +3,9 @@ import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 const read=p=>readFileSync(p,"utf8");
 
-test("Endfield nav has nine entries, excludes three former game-system links and keeps Cheat Sheets in both languages",()=>{
+test("Endfield nav has ten entries, excludes three former game-system links and keeps Cheat Sheets in both languages",()=>{
  const nav=read("src/components/EndfieldNav.astro");
- assert.equal((nav.match(/\{ label: "/g)||[]).length,9);
+ assert.equal((nav.match(/\{ label: "/g)||[]).length,10);
  for(const term of ["key: \"recruitment\"","key: \"refinement\"","key: \"essences\"",
                     'href: "/endfield/rekrutierung/"','href: "/endfield/veredelung/"','href: "/endfield/essenzen/"',
                     'recruitment:"/en/endfield/recruitment/"','refinement:"/en/endfield/refinement/"'])
