@@ -54,7 +54,7 @@ if(root){
  function renderSuggestions(){
   const term=nameKey(input.value);
   suggestions.replaceChildren();
-  visible=term&&!record?.solved?roster.operators.filter(o=>nameKey(o.name).includes(term)&&!record?.guesses?.includes(o.id)).slice(0,9):[];
+  visible=term&&!record?.solved?roster.operators.filter(o=>(!o.availableFrom||o.availableFrom<=today)&&nameKey(o.name).includes(term)&&!record?.guesses?.includes(o.id)).slice(0,9):[];
   if(selected>=visible.length)selected=0;
   visible.forEach((o,index)=>{
    const button=el("button","efdl-option");button.type="button";
@@ -144,7 +144,7 @@ if(root){
  function submitGuess(operator){
   if(!solution||record.solved)return;
   const choice=operator??keys.get(nameKey(input.value));
-  if(!choice){status(l("Bitte einen gültigen Operator aus der Liste auswählen.","Select a valid operator from the list."),true);return}
+  if(!choice || (choice.availableFrom && choice.availableFrom>today)){status(l("Bitte einen bereits veröffentlichten Operator aus der Liste auswählen.","Select a released operator from the list."),true);return}
   if(record.guesses.includes(choice.id)){status(l("Diesen Operator hast du bereits versucht.","You've already guessed that operator."),true);return}
   record.guesses.push(choice.id);
   if(choice.id===solution.id)record.solved=true;

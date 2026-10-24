@@ -59,6 +59,13 @@ test("fixed global schedule includes one operator per day and excludes previous 
  assert.equal(schedule.lastDay,"2030-12-31");
  assert.doesNotThrow(()=>validateRosterAndSchedule(roster.operators,schedule.days,schedule));
  assert.notEqual(schedule.days["2026-10-23"],schedule.days["2026-10-24"]);
+ const argent=roster.operators.find(o=>o.id==="argent-flow");
+ assert.equal(argent.releaseVersion,"v1.6");
+ assert.equal(argent.availableFrom,"2026-11-05");
+ assert.equal(schedule.days["2026-10-31"],"gilberta");
+ assert.equal(schedule.days["2026-11-05"],"argent-flow");
+ const before={...schedule.days,["2026-10-31"]:"argent-flow",["2026-11-05"]:"gilberta"};
+ assert.throws(()=>validateRosterAndSchedule(roster.operators,before,schedule),/before official release/);
  assert.ok(schedule.days[previousDay("2026-10-24")]);
 });
 test("Berlin DST and resets are not tied to viewer's local timezone",()=>{

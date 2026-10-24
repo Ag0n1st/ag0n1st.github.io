@@ -24,3 +24,7 @@
 ## Qualität
 
 `npm run test:endfield` kontrolliert den offiziellen Asset-Verweis pro Operator, sieben Kategorien, den Nutzer-Versionsplan, Versions-Pfeile, alle Terminologien, DST-Tage, eingefrorenen Tagesplan und Ausschluss der letzten drei Tage. `npm run build`, Endfield-100-MB-Limit, Pages-1-GB-Limit und Chromium-Tests 1440/390 px mit beiden Sprachrouten müssen vor jedem Merge grün sein. Neue Komponenten müssen **DE und EN zugleich** aktualisieren. Event-Leaderboard, Fabrik und Operator-Guide-Redaktion bleiben unverändert.
+
+## Debüt-Version vs. tatsächliche Verfügbarkeit
+
+Die Debüt-Version ist das **Patchlabel**, nicht automatisch der erste Banner-Tag. Argent Flow gehört nach dem Betreiberplan zu **v1.6**, wird aber laut [veröffentlichtem Zeitplan](https://enfieldbuild.com/characters/argent-flow) erst am **05.11.2026** spielbar. Deshalb trägt er `availableFrom: "2026-11-05"` und wird vorher weder als Tageslösung noch in der Ratensuche angezeigt. Im noch unveröffentlichten Tagesplan wurden **31.10. (Gilberta)** und **05.11. (Argent Flow)** getauscht; alle früheren Tagesrätsel sind gleich geblieben. Der Build-Validator verhindert Verfügbarkeit vor dem angekündigten Datum.

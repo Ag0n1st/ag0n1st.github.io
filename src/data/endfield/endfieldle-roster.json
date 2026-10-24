@@ -7,9 +7,10 @@
     "combat": "https://www.enfieldbuild.com/characters",
     "profile": "https://www.endfielddex.com/guides/endfield-races-and-factions-guide/",
     "recent": "https://endfield.wiki.gg/wiki/Argent_Flow",
-    "purrchena": "https://endfield.wiki.gg/wiki/Purrchena"
+    "purrchena": "https://endfield.wiki.gg/wiki/Purrchena",
+    "argentRelease": "https://enfieldbuild.com/characters/argent-flow"
   },
-  "notes": "Release versions supplied and approved by owner. Three complete SKPORT imports are authoritative when present; other compact Endfieldle facts are cross-checked against operator pages until signed SKPORT item/info snapshots can be imported. Endministrator variants collapsed to one solution; gender Variable (not an incorrect fixed-sex claim). Full SKPORT illustration/splash and separate cover art currently verified only for Liino, Typhoeus and Si; missing other illustration variants are not fabricated.",
+  "notes": "Release versions supplied and approved by owner. Three complete SKPORT imports are authoritative when present; other compact Endfieldle facts are cross-checked against operator pages until signed SKPORT item/info snapshots can be imported. Endministrator variants collapsed to one solution; gender Variable (not an incorrect fixed-sex claim). Full SKPORT illustration/splash and separate cover art currently verified only for Liino, Typhoeus and Si; missing other illustration variants are not fabricated. Argent Flow belongs to v1.6 but becomes eligible for daily puzzles only from the announced November 5, 2026 banner start; see enfieldbuild.com/characters/argent-flow.",
   "operators": [
     {
       "id": "endministrator",
@@ -694,7 +695,8 @@
         "icon": "/images/endfield/operators/argent-flow/official-icon.webp",
         "portrait": "/images/endfield/operators/argent-flow/official-portrait.webp"
       },
-      "sourceQuality": "cross-checked-official-and-community"
+      "sourceQuality": "cross-checked-official-and-community",
+      "availableFrom": "2026-11-05"
     }
   ]
 }

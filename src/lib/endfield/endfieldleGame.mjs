@@ -69,6 +69,7 @@ export function validateRosterAndSchedule(operators,schedule,{firstDay,lastDay,e
   for(const [field,set] of [["element",allowedElements],["class",allowedClasses],["weaponType",allowedWeapons],["gender",allowedGenders],["race",knownRaces]])
    if(!set.has(row[field]))errors.push(row.id+" invalid "+field+" "+row[field]);
   if(!row.faction||!row.factionCode)errors.push(row.id+" missing faction");
+  if(row.availableFrom && !/^\d{4}-\d{2}-\d{2}$/.test(row.availableFrom))errors.push(row.id+" invalid release availability date");
   if(versionValue(row.releaseVersion)===null)errors.push(row.id+" missing release version");
   if(!row.assets?.icon?.endsWith(".webp")||!row.assets?.portrait?.endsWith(".webp"))
     errors.push(row.id+" has missing local artwork");
@@ -79,6 +80,8 @@ export function validateRosterAndSchedule(operators,schedule,{firstDay,lastDay,e
  for(let day=firstDay,step=0;step<expectedCount;day=nextDay(day),step++){
   const id=schedule[day];
   if(!ids.has(id))errors.push(day+" unknown puzzle identity "+id);
+  const chosen=operators.find(row=>row.id===id);
+  if(chosen?.availableFrom && day<chosen.availableFrom)errors.push(day+" selects "+id+" before official release "+chosen.availableFrom);
   if(last.includes(id))errors.push(day+" repeats an operator among previous "+excludedPreviousDays+" days: "+id);
   last.push(id);
   if(last.length>excludedPreviousDays)last.shift();
