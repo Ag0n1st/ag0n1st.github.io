@@ -555,8 +555,8 @@ def smoke_i18n(page, base_url, width):
         check_overflow(page,label+" "+route)
     page.goto(base_url+"/en/endfield/")
     nav_paths=page.locator(".endfield-nav a").evaluate_all("(a)=>a.map(x=>new URL(x.href).pathname)")
-    verify(len(nav_paths)==9 and all(p.startswith("/en/") for p in nav_paths),
-           label+": all nine remaining Endfield tabs are English, no DE fallback")
+    verify(len(nav_paths)==10 and all(p.startswith("/en/") for p in nav_paths),
+           label+": all ten Endfield tabs are English, no DE fallback")
     verify(page.locator(".endfield-section").count()==9,
            label+": identical nine-section Endfield homepage layout")
     page.locator('.endfield-nav a[href="/en/endfield/factory/"]').click()
@@ -719,16 +719,17 @@ def smoke_i18n(page, base_url, width):
         check_overflow(page,label+" "+lang+" countdown")
         links=page.locator(".endfield-nav-link").all_text_contents()
         flat=[x.strip().replace("·","") for x in links]
-        verify(len(flat)==9 and
+        verify(len(flat)==10 and
                flat.index("Tierlist" if lang=="de" else "Tier List") == flat.index("Checkliste" if lang=="de" else "Checklist")+1 and
-               flat.index("Countdown") == flat.index("Tierlist" if lang=="de" else "Tier List")+1,
+               flat.index("Endfieldle")==flat.index("Tierlist" if lang=="de" else "Tier List")+1 and
+               flat.index("Countdown") == flat.index("Endfieldle")+1,
                label+": "+lang+" Tierlist appears after Checklist and before Countdown")
         verify(all(not any(name in x for name in ("Rekrutierung","Veredelung","Essenzen","Recruitment","Refinement","Essences")) for x in flat) and
                all("Cheat" not in x or "Sheets" in x for x in flat),
                label+": "+lang+" removed three former standalone system links from Endfield nav")
-        verify(page.locator(".endfield-nav-link").count()==9 and
+        verify(page.locator(".endfield-nav-link").count()==10 and
                page.locator('a.endfield-nav-link[href="'+("/endfield/cheatsheets/" if lang=="de" else "/en/endfield/cheatsheets/")+'"]').count()==1,
-               label+": "+lang+" consolidated nine nav links include the single Cheat Sheets entry")
+               label+": "+lang+" consolidated ten nav links include the single Cheat Sheets entry")
         verify(page.locator('a.endfield-nav-link[href="'+("/endfield/leaderboard/" if lang=="de" else "/en/endfield/leaderboard/")+'"] .nav-upcoming-wrench').count()==0 and
                page.locator('a.endfield-nav-link[href="'+("/endfield/cheatsheets/" if lang=="de" else "/en/endfield/cheatsheets/")+'"] .nav-upcoming-wrench').count()==1,
                label+": "+lang+" completed Leaderboard has no wrench; unfinished Cheat Sheets retains it")
