@@ -4,7 +4,7 @@ import {featuredBosses} from "../../lib/endfield/threatCatalog";
 import {getOperatorImageUrl} from "../../lib/endfield/operatorAssets";
 import {displayLeaderboardRows,flagForCountry} from "../../lib/endfield/leaderboardRanking.mjs";
 import leaderboard from "../../data/endfield/community-leaderboard.json";
-import events from "../../data/endfield/community-events.json";
+import {loadLeaderboardContent} from "../../lib/endfield/leaderboardContent";
 import LeaderboardEvent from "../endfield/LeaderboardEvent.astro";
 import "../../styles/endfield-leaderboard.css";
 
@@ -15,13 +15,15 @@ const l=(de:string,english:string)=>en?english:de;
 // UI display order is newest boss first, independent of the SKPORT snapshot.
 const bosses=[...featuredBosses].reverse();
 const defaultBoss="si";
-const versions=["all-time",...leaderboard.versions.slice().sort((a,b)=>Number(b.slice(1))-Number(a.slice(1)))];
+const eventData=await loadLeaderboardContent();
+const compareVersions=(a:string,b:string)=>{const [am,an]=a.slice(1).split(".").map(Number);const [bm,bn]=b.slice(1).split(".").map(Number);return bm-am||bn-an;};
+const versions=["all-time",...[...new Set([...leaderboard.versions,...eventData.verifiedRuns.map(run=>run.version),...eventData.events.map(event=>event.version)])].sort(compareVersions)];
 const bossLabels=new Map(bosses.map(boss=>[boss.slug,boss.label]));
-const isGermanFlag=(code:string)=>code==="DEU"||code==="DE";
-const countryName=(code:string)=>isGermanFlag(code)?l("Deutschland","Germany"):code;
+const isGermanFlag=(code?:string)=>code==="DEU"||code==="DE";
+const countryName=(code?:string)=>isGermanFlag(code)?l("Deutschland","Germany"):(code||l("Keine Angabe","Not specified"));
 // One authoritative submission: include event runs in general rankings only when
 // individually approved for the permanent Community Leaderboard.
-const generalRuns=[...leaderboard.verifiedRuns,...events.verifiedRuns.filter(run=>run.status==="verified"&&run.eligibleForCommunity===true)];
+const generalRuns=[...leaderboard.verifiedRuns,...eventData.verifiedRuns.filter(run=>run.eventId&&run.eligibleForCommunity===true)];
 const generalLeaderboard={...leaderboard,verifiedRuns:generalRuns};
 ---
 <EndfieldPlaceholder title="Community Leaderboard" kicker="ARKNIGHTS: ENDFIELD · COMMUNITY LEADERBOARD" active="leaderboard" lang={lang} description={l("Verifizierte Boss-Speedruns, Bestenlisten und Community-Events in Arknights: Endfield.","Verified boss speedruns, rankings and community events in Arknights: Endfield.")}>
@@ -30,7 +32,7 @@ const generalLeaderboard={...leaderboard,verifiedRuns:generalRuns};
     <p class="cl-page-lead">{l("Boss-Speedruns aus der Community · RE-Krise · Höchster Schwierigkeitsgrad","Community boss speedruns · RE-Crisis · Highest difficulty")}</p>
     <div class="cl-update-notice" role="note"><strong>{l("Hinweis:","Note:")}</strong> {l("Das Community Leaderboard und das Event Leaderboard werden einmal pro Woche am Ende der Woche aktualisiert.","The Community Leaderboard and Event Leaderboard are updated once a week at the end of the week.")}</div>
 
-    <LeaderboardEvent lang={lang} />
+    <LeaderboardEvent lang={lang} eventData={eventData} />
 
     <section class="cl-container cl-main-container" aria-labelledby="cl-community-title">
       <div class="cl-section-head cl-community-head">
