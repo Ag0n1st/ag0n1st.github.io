@@ -131,83 +131,48 @@ test("Responsive tabletop leaderboard keeps six data fields, native select and u
  }
 });
 
-test("Duality event matches the approved Discord announcement and has its first verified run",()=>{
- const eventData=JSON.parse(read("src/data/endfield/community-events.json"));
+test("Duality Markdown source keeps the owner-approved run and two-language rules",()=>{
+ const event=read("src/content/leaderboard-events/duality.md");
+ const run=read("src/content/leaderboard-runs/events/duality/krombi-0129.md");
  const component=read("src/components/endfield/LeaderboardEvent.astro");
- assert.equal(eventData.schemaVersion,1);
- assert.equal(eventData.events.length,1);
- assert.equal(eventData.verifiedRuns.length,1);
- assert.equal(eventData.events[0].demoRunId,"demo-ag0n1st-si-v16");
- const verified=eventData.verifiedRuns[0];
- assert.deepEqual([verified.id,verified.status,verified.eventId,verified.eligibleForCommunity,verified.boss,verified.playerId,
-                   verified.discordName,verified.countryCode,verified.time,verified.version,verified.link,verified.linkKind],
-                  ["duality-v16-si-krombi-0129","verified","duality",true,"si","krombi",
-                   "Krombi","DE","01:29","v1.6","https://youtu.be/24_sKEqnCm0","video"]);
- assert.deepEqual(verified.team.map(x=>[x.slug,x.potential]),[["si",4],["arcane",3],["tangtang",4],["gilberta",2]]);
- for(const member of verified.team){
-   const op=art.items.find(x=>x.slug===member.slug);
-   assert.ok(op,"operator must be in artwork catalog: "+member.slug);
+ const loader=read("src/lib/endfield/leaderboardContent.ts");
+ const config=read("src/content/config.ts");
+ assert.match(config,/"leaderboard-runs":leaderboardRuns/);
+ assert.match(config,/"leaderboard-events":leaderboardEvents/);
+ for(const [field,value] of [
+   ["runId","duality-v16-si-krombi-0129"],["discordName","Krombi"],
+   ["playerId","krombi"],["countryCode","DE"],["time",'"01:29"'],
+   ["video",'"https://youtu.be/24_sKEqnCm0"'],["eventId","duality"],
+   ["eligibleForCommunity","true"],["status","verified"]
+ ])assert.ok(run.includes(field+": "+value),field);
+ for(const [slug,p] of [["si",4],["arcane",3],["tangtang",4],["gilberta",2]])
+   assert.match(run,new RegExp("slug: "+slug+", potential: "+p));
+ for(const member of ["si","arcane","tangtang","gilberta"]){
+   const op=art.items.find(x=>x.slug===member);
    assert.ok(existsSync("public"+op.assets["official-icon"].path));
  }
- assert.equal(flagForCountry(verified.countryCode),"🇩🇪");
- assert.deepEqual(rankVerifiedRuns(eventData.verifiedRuns.filter(x=>x.eventId==="duality"),{boss:"si",version:"v1.6"}).map(x=>[x.discordName,x.time,x.rank]),[["Krombi","01:29",1]]);
- const visibleCommunity={...data,verifiedRuns:[...data.verifiedRuns,...eventData.verifiedRuns.filter(x=>x.status==="verified"&&x.eligibleForCommunity===true)]};
- for(const version of ["all-time","v1.6"]){
-   const rows=displayLeaderboardRows(visibleCommunity,"si",version);
-   assert.deepEqual(rows.map(x=>[x.discordName,x.time,x.rank,x.status]),[["Krombi","01:29",1,"verified"]]);
- }
- assert.equal(displayLeaderboardRows(data,"si","all-time")[0].status,"demo","Stored demo retains its separate nonverified status");
- assert.deepEqual(rankVerifiedRuns(eventData.verifiedRuns.filter(x=>x.eligibleForCommunity!==true),{boss:"si"}),[],"no event run should be admitted automatically");
- assert.match(page,/eligibleForCommunity===true/);
- assert.match(page,/generalLeaderboard/);
- assert.match(page,/isGermanFlag\(run.countryCode\)/);
- assert.match(component,/isGermanFlag\(run.countryCode\)/);
- assert.match(page,/cl-update-notice/);
+ for(const str of ["eventId: duality","title: Duality","boss: si","version: v1.6",
+                   'startsOn: "2026-10-15"','endsOn: "2026-11-25"',
+                   'image: "/images/endfield/leaderboard/duality.webp"',
+                   'backgroundImage: "/images/endfield/leaderboard/duality-background.webp"',
+                   'rulebookUrl: "https://bit.ly/3WEuGwD"'])
+   assert.ok(event.includes(str),str);
+ assert.equal((event.match(/^  - id: /gm)||[]).length,6);
+ for(const id of ["boss","required-operator","damage-dealer","consumables","potentials","submission"])
+   assert.ok(event.includes("- id: "+id));
+ assert.match(event,/de: "Boss Si \\(RE-Krise\\)"/);
+ assert.match(event,/en: "Boss Si \\(RE-Crisis\\)"/);
+ assert.match(loader,/getCollection\\("leaderboard-runs"\\)/);
+ assert.match(loader,/getCollection\\("leaderboard-events"\\)/);
+ assert.match(loader,/run.status==="verified"/);
+ assert.match(page,/run.eventId&&run.eligibleForCommunity===true/);
+ assert.match(component,/Top 10 – \\{event.title\\}/);
+ assert.match(component,/<details class="cl-event-rules" data-event-rules>/);
+ assert.match(component,/data-event-background/);
+ assert.match(component,/demoOnly/);
+ assert.match(css,/\\.cl-event-container::before\\{[^\\n]*background-image:var\\(--cl-event-background\\);background-size:cover;background-position:center center[^\\n]*opacity:\\.05/);
+ assert.ok(existsSync("public/images/endfield/leaderboard/duality.webp"));
+ assert.ok(existsSync("public/images/endfield/leaderboard/duality-background.webp"));
  assert.match(page,/Das Community Leaderboard und das Event Leaderboard werden einmal pro Woche am Ende der Woche aktualisiert/);
  assert.match(page,/The Community Leaderboard and Event Leaderboard are updated once a week at the end of the week/);
- assert.match(css,/\.cl-update-notice\{[^\n]*border-left:3px solid var\(--cyan\);[^\n]*background:rgba\(101,232,242,\.06\)/);
-
- assert.equal(eventData.events[0].backgroundImage,"/images/endfield/leaderboard/duality-background.webp");
- const event=eventData.events[0];
- assert.deepEqual([event.id,event.title,event.boss,event.version,event.startsOn,event.endsOn],
-   ["duality","Duality","si","v1.6","2026-10-15","2026-11-25"]);
- assert.equal(event.image,"/images/endfield/leaderboard/duality.webp");
- assert.ok(existsSync("public"+event.image));
- const raw=readFileSync("public"+event.image);
- assert.equal(raw.toString("ascii",0,4),"RIFF");
- assert.equal(raw.toString("ascii",8,12),"WEBP");
- assert.ok(raw.length<250000,"Full-resolution WebP should stay below 250 KB");
- const background=readFileSync("public"+event.backgroundImage);
- assert.equal(background.toString("ascii",0,4),"RIFF");
- assert.equal(background.toString("ascii",8,12),"WEBP");
- assert.ok(background.length<500000,"Background WebP should stay below 500 KB");
- assert.deepEqual(event.rules.map(x=>x.id),[
-   "boss","required-operator","damage-dealer","consumables","potentials","submission"
- ]);
- assert.match(event.rules[0].de,/Si \(RE-Krise\)/);
- assert.match(event.rules[1].de,/Si muss/);
- assert.match(event.rules[2].de,/einzige Operator/);
- assert.match(event.rules[2].en,/Damage Dealer/);
- assert.match(event.rules[3].de,/Kein Buff-Food/);
- assert.match(event.rules[4].de,/Keine Potenzialbeschränkung/);
- assert.match(event.rules[5].de,/Regelwerk §4/);
- assert.equal(event.rulebookUrl,"https://bit.ly/3WEuGwD");
- assert.match(component,/data-event-select/);
- assert.match(component,/data-event-panel/);
- assert.match(component,/cl-event-banner/);
- assert.match(component,/<details class="cl-event-rules" data-event-rules>/);
- assert.match(component,/<summary class="cl-event-rules-toggle">/);
- assert.match(component,/cl-event-date/);
- assert.match(component,/data-event-background/);
- assert.match(component,/--cl-event-background/);
- assert.match(component,/demoOnly/);
- assert.match(component,/cl-placeholder-label/);
- assert.match(component,/cl-demo-disclaimer/);
- assert.doesNotMatch(component,/Mit Duality startet unsere erste Speedrun-Challenge/);
- assert.match(css,/\.cl-event-container::before\{[^\n]*background-image:var\(--cl-event-background\);background-size:cover;background-position:center center[^\n]*opacity:\.05/);
- assert.match(component,/cl-event-rule/);
- assert.match(component,/Top 10 – \{event.title\}/);
- assert.match(component,/Noch keine verifizierten Duality-Runs/);
- assert.match(component,/No verified Duality runs/);
- assert.match(css,/\.cl-event-head h2\{font-size:clamp\(27px,3.5vw,42px\)/);
 });

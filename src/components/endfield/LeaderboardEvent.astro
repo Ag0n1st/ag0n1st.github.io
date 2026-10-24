@@ -1,10 +1,10 @@
 ---
-import eventData from "../../data/endfield/community-events.json";
 import leaderboard from "../../data/endfield/community-leaderboard.json";
 import {getOperatorImageUrl} from "../../lib/endfield/operatorAssets";
 import {rankVerifiedRuns,flagForCountry} from "../../lib/endfield/leaderboardRanking.mjs";
-interface Props {lang?:"de"|"en"}
-const {lang="de"}=Astro.props;
+import type {loadLeaderboardContent} from "../../lib/endfield/leaderboardContent";
+interface Props {lang?:"de"|"en";eventData:Awaited<ReturnType<typeof loadLeaderboardContent>>}
+const {lang="de",eventData}=Astro.props;
 const en=lang==="en";
 const l=(de:string,english:string)=>en?english:de;
 const isGermanFlag=(code:string)=>code==="DEU"||code==="DE";
