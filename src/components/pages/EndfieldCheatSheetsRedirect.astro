@@ -1,0 +1,22 @@
+---
+interface Props { lang:"de"|"en"; section:"recruitment"|"refinement"|"essences" }
+const {lang,section}=Astro.props;
+const target=(lang==="en"?"/en":"")+"/endfield/cheatsheets/#"+section;
+const absolute="https://ag0n1st.com"+target;
+const intro=lang==="en"?"This section is now part of Cheat Sheets.":"Diesen Bereich findest du jetzt unter Cheat Sheets.";
+const linkLabel=lang==="en"?"Open Cheat Sheets":"Cheat Sheets öffnen";
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content={"0;url="+target} />
+    <meta name="robots" content="noindex,follow" />
+    <link rel="canonical" href={absolute} />
+    <title>{lang==="en"?"Moved to Cheat Sheets":"Zu Cheat Sheets verschoben"} — Arknights: Endfield | Ag0n1st</title>
+  </head>
+  <body>
+    <p>{intro} <a href={target}>{linkLabel}</a></p>
+  </body>
+</html>

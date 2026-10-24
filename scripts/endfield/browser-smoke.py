@@ -530,8 +530,7 @@ def smoke_i18n(page, base_url, width):
     en_routes=[
         "/en/","/en/about/","/en/nte/","/en/endfield/",
         "/en/endfield/operators/","/en/endfield/factory/",
-        "/en/endfield/recruitment/","/en/endfield/refinement/",
-        "/en/endfield/essences/","/en/endfield/speedruns/",
+        "/en/endfield/cheatsheets/","/en/endfield/speedruns/",
         "/en/endfield/checklist/","/en/endfield/countdown/",
         "/en/endfield/tierlist/",
     ]
@@ -556,8 +555,8 @@ def smoke_i18n(page, base_url, width):
         check_overflow(page,label+" "+route)
     page.goto(base_url+"/en/endfield/")
     nav_paths=page.locator(".endfield-nav a").evaluate_all("(a)=>a.map(x=>new URL(x.href).pathname)")
-    verify(len(nav_paths)==12 and all(p.startswith("/en/") for p in nav_paths),
-           label+": all twelve Endfield tabs remain English, no DE fallback")
+    verify(len(nav_paths)==9 and all(p.startswith("/en/") for p in nav_paths),
+           label+": all nine remaining Endfield tabs are English, no DE fallback")
     verify(page.locator(".endfield-section").count()==9,
            label+": identical nine-section Endfield homepage layout")
     page.locator('.endfield-nav a[href="/en/endfield/factory/"]').click()
@@ -720,10 +719,16 @@ def smoke_i18n(page, base_url, width):
         check_overflow(page,label+" "+lang+" countdown")
         links=page.locator(".endfield-nav-link").all_text_contents()
         flat=[x.strip().replace("·","") for x in links]
-        verify(len(flat)==12 and
+        verify(len(flat)==9 and
                flat.index("Tierlist" if lang=="de" else "Tier List") == flat.index("Checkliste" if lang=="de" else "Checklist")+1 and
                flat.index("Countdown") == flat.index("Tierlist" if lang=="de" else "Tier List")+1,
                label+": "+lang+" Tierlist appears after Checklist and before Countdown")
+        verify(all(not any(name in x for name in ("Rekrutierung","Veredelung","Essenzen","Recruitment","Refinement","Essences")) for x in flat) and
+               all("Cheat" not in x or "Sheets" in x for x in flat),
+               label+": "+lang+" removed three former standalone system links from Endfield nav")
+        verify(page.locator(".endfield-nav-link").count()==9 and
+               page.locator('a.endfield-nav-link[href="'+("/endfield/cheatsheets/" if lang=="de" else "/en/endfield/cheatsheets/")+'"]').count()==1,
+               label+": "+lang+" consolidated nine nav links include the single Cheat Sheets entry")
         verify(page.locator('a.endfield-nav-link[href="'+("/endfield/leaderboard/" if lang=="de" else "/en/endfield/leaderboard/")+'"] .nav-upcoming-wrench').count()==0 and
                page.locator('a.endfield-nav-link[href="'+("/endfield/cheatsheets/" if lang=="de" else "/en/endfield/cheatsheets/")+'"] .nav-upcoming-wrench').count()==1,
                label+": "+lang+" completed Leaderboard has no wrench; unfinished Cheat Sheets retains it")
@@ -1083,9 +1088,26 @@ def smoke_i18n(page, base_url, width):
                label+": "+lang+" query and Duality event survive reload")
         check_overflow(page,label+" "+lang+" leaderboard")
         page.goto(base_url+prefix+"/endfield/cheatsheets/")
-        verify(page.locator(".endfield-coming-card").count()==3 and
-               all(page.locator("#"+x).count()==1 for x in ("elasticgoods","artificing","bufffood")),
-               label+": "+lang+" three Cheat Sheets topics have cards")
+        verify(page.locator(".endfield-coming-card").count()==6 and
+               all(page.locator("#"+x).count()==1 for x in ("recruitment","refinement","essences","elasticgoods","artificing","bufffood")) and
+               page.locator('[data-cheatsheets-group="systems"] .endfield-coming-card').count()==3 and
+               page.locator('[data-cheatsheets-group="references"] .endfield-coming-card').count()==3,
+               label+": "+lang+" three consolidated game systems and three existing references have their own cards")
+        verify(("Spielsysteme" if lang=="de" else "Game systems") in page.locator("#cheatsheets-systems-heading").inner_text() and
+               ("Referenzen" if lang=="de" else "References") in page.locator("#cheatsheets-reference-heading").inner_text() and
+               page.locator("#artificing .op-chip").count()==1,
+               label+": "+lang+" existing refinement matrix remains independently findable")
+        for old,anchor in (("rekrutierung" if lang=="de" else "recruitment","recruitment"),
+                           ("veredelung" if lang=="de" else "refinement","refinement"),
+                           ("essenzen" if lang=="de" else "essences","essences")):
+            old_path=base_url+prefix+"/endfield/"+old+"/"
+            old_response=page.request.get(old_path)
+            dest=prefix+"/endfield/cheatsheets/#"+anchor
+            verify(old_response.status==200 and
+                   'http-equiv="refresh"' in old_response.text() and
+                   dest in old_response.text() and
+                   'noindex,follow' in old_response.text(),
+                   label+": "+lang+" previous "+old+" link forwards to the correct Cheat Sheets section")
         check_overflow(page,label+" "+lang+" cheatsheets")
     sitemap=page.request.get(base_url+"/sitemap.xml")
     verify(sitemap.status==200 and

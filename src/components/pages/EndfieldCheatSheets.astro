@@ -4,24 +4,61 @@ interface Props {lang?:"de"|"en"}
 const {lang="de"}=Astro.props;
 const en=lang==="en";
 const l=(de:string,english:string)=>en?english:de;
+
+// The three previous standalone menu pages are now reference sections here.
+// Their editorial content remains pending; do not invent mechanics or values.
+const systems=[
+ {id:"recruitment",tag:"#Recruitment",de:"Rekrutierung",en:"Recruitment",
+  descriptionDe:"Hier findest du künftig eine strukturierte Erklärung des Rekrutierungssystems und die wichtigsten Tipps aus meinem Video-Guide.",
+  descriptionEn:"Here you will find an explanation of Arknights: Endfield recruitment, including the essentials and helpful strategies."},
+ {id:"refinement",tag:"#Refinement",de:"Veredelung",en:"Refinement",
+  descriptionDe:"Der Veredelungs-Guide mit den zentralen Mechaniken, Erklärungen und Tipps zur sinnvollen Nutzung befindet sich noch in Arbeit.",
+  descriptionEn:"The refinement guide will cover equipment progression, the available systems and how to use them effectively."},
+ {id:"essences",tag:"#Essences",de:"Essenzen",en:"Essences",
+  descriptionDe:"Hier entsteht eine übersichtliche Referenz zum Essenz-System, damit du wichtige Informationen schnell nachschlagen kannst.",
+  descriptionEn:"An accessible breakdown of the Essence system, its mechanics and practical progression tips is coming soon."}
+];
 const categories=[
  {id:"elasticgoods",tag:"#ElasticGoods",de:"Elastic Goods – Best Prices",en:"Elastic Goods – Best Prices",descriptionDe:"Die besten Verkaufspreise und Waren-Kombinationen für Elastic Goods, später als kompaktes Nachschlagewerk.",descriptionEn:"Best selling prices and combinations for Elastic Goods, in a compact reference sheet."},
  {id:"artificing",tag:"#Artificing",de:"Veredelungs-Matrix – Best Matches",en:"Refinement Matrix – Best Matches",descriptionDe:"Übersicht optimaler Veredelungszuordnungen und passender Materialkombinationen.",descriptionEn:"A quick comparison of recommended refinement matches and compatible material combinations."},
  {id:"bufffood",tag:"#Bufffood",de:"Buff Food – Matrix",en:"Buff Food – Matrix",descriptionDe:"Bufffood nach erhöhten Kampfwerten vergleichen, mit besonderem Fokus auf Speedruns, z. B. ANG und Ultimate-Energiegewinn.",descriptionEn:"Compare buff food by affected combat stats, particularly for speedruns, such as ATK and Ultimate energy gain."}
 ];
 ---
-<EndfieldPlaceholder title="Cheat Sheets" kicker="ARKNIGHTS: ENDFIELD · CHEAT SHEETS" active="cheatsheets" lang={lang} description={l("Schnelle Nachschlagekarten für Spielmechaniken, Farming und Speedruns.","Quick-reference cards for mechanics, farming and speedruns.")}>
+<EndfieldPlaceholder title="Cheat Sheets" kicker="ARKNIGHTS: ENDFIELD · CHEAT SHEETS" active="cheatsheets" lang={lang} description={l("Schnelle Nachschlagekarten für Rekrutierung, Veredelung, Essenzen, Spielmechaniken, Farming und Speedruns.","Quick-reference cards for recruitment, refinement, essences, mechanics, farming and speedruns.")}>
   <main class="endfield-utility-page section-wrap endfield-coming-tool">
     <span class="section-kicker">ARKNIGHTS: ENDFIELD · REFERENCE</span>
     <h1 class="endfield-stacked-title"><span>Cheat</span><span>Sheets<span class="title-period">.</span></span></h1>
     <p class="endfield-utility-intro">{l("Kompakte Nachschlagekarten statt langem Suchen. Die konkreten Tabellen und Werte folgen nach redaktioneller Prüfung.","Compact quick-reference sheets. Verified tables and values will follow.")}</p>
-    <div class="endfield-coming-cards" aria-label={l("Geplante Cheat Sheets","Planned Cheat Sheets")}>
-      {categories.map(category=><article id={category.id} class="op-cardlet endfield-coming-card">
-        <span class="section-kicker">{category.tag}</span>
-        <h2>{en?category.en:category.de}</h2>
-        <p>{en?category.descriptionEn:category.descriptionDe}</p>
-        <span class="op-chip">{l("In Vorbereitung","Coming soon")}</span>
-      </article>)}
-    </div>
+
+    <section class="endfield-cheatsheets-group" aria-labelledby="cheatsheets-systems-heading" data-cheatsheets-group="systems">
+      <h2 id="cheatsheets-systems-heading">{l("Spielsysteme","Game systems")}</h2>
+      <div class="endfield-coming-cards" aria-label={l("Spielsysteme im Überblick","Game systems overview")}>
+        {systems.map(category=><article id={category.id} class="op-cardlet endfield-coming-card">
+          <span class="section-kicker">{category.tag}</span>
+          <h3>{en?category.en:category.de}</h3>
+          <p>{en?category.descriptionEn:category.descriptionDe}</p>
+          <span class="op-chip">{l("In Vorbereitung","Coming soon")}</span>
+        </article>)}
+      </div>
+    </section>
+
+    <section class="endfield-cheatsheets-group" aria-labelledby="cheatsheets-reference-heading" data-cheatsheets-group="references">
+      <h2 id="cheatsheets-reference-heading">{l("Referenzen & Matrizen","References & matrices")}</h2>
+      <div class="endfield-coming-cards" aria-label={l("Geplante Cheat Sheets","Planned Cheat Sheets")}>
+        {categories.map(category=><article id={category.id} class="op-cardlet endfield-coming-card">
+          <span class="section-kicker">{category.tag}</span>
+          <h3>{en?category.en:category.de}</h3>
+          <p>{en?category.descriptionEn:category.descriptionDe}</p>
+          <span class="op-chip">{l("In Vorbereitung","Coming soon")}</span>
+        </article>)}
+      </div>
+    </section>
   </main>
 </EndfieldPlaceholder>
+<style>
+  .endfield-cheatsheets-group{margin:36px 0 42px;scroll-margin-top:90px}
+  .endfield-cheatsheets-group h2{font-size:clamp(21px,2.5vw,28px);line-height:1.3;letter-spacing:-.025em;color:#f4edf7;margin:0 0 9px}
+  .endfield-cheatsheets-group .endfield-coming-cards{margin:16px 0 0}
+  .endfield-cheatsheets-group .endfield-coming-card{scroll-margin-top:94px}
+  .endfield-cheatsheets-group .endfield-coming-card h3{font-size:19px;margin:0;line-height:1.3;color:#f7f3fa}
+</style>
