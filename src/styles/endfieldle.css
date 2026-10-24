@@ -1,0 +1,60 @@
+.efdl-page{padding-top:clamp(30px,5vw,68px);padding-bottom:100px;max-width:1200px}
+.efdl-heading{text-align:center;max-width:880px;margin:0 auto 30px}
+.efdl-heading h1{font-size:clamp(43px,7vw,78px);letter-spacing:-.055em;color:#f8f4fb;margin:14px 0 10px}
+.efdl-heading>p{color:#c4b7cb;font-size:15px;line-height:1.6}
+.efdl-top-stats{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:25px auto 0}
+.efdl-stat{display:flex;flex-direction:column;gap:6px;align-items:center;background:#1a1821;border:1px solid #484054;padding:12px 18px;min-width:132px;border-radius:12px}
+.efdl-stat>span{font-size:11px;color:#c9bdd0}
+.efdl-stat strong{color:#f9f5fd;font-size:20px;font-variant-numeric:tabular-nums}
+.efdl-game,.efdl-box{background:linear-gradient(140deg,#191720,#10151c);border:1px solid #403748;border-radius:17px;padding:clamp(15px,3.5vw,30px)}
+.efdl-game h2,.efdl-box h2{color:#fbf8ff;font-size:clamp(19px,2.8vw,26px);margin:0 0 9px}
+.efdl-game>p{font-size:13px;color:#c7bdce;line-height:1.75}
+.efdl-guess-form{display:flex;align-items:end;gap:10px;max-width:740px;margin:24px auto 10px}
+.efdl-input-wrap{position:relative;flex:1;min-width:0}
+.efdl-input-wrap label{display:block;color:#d9cee0;font-size:12px;font-weight:700;margin:0 0 7px}
+.efdl-input-wrap input{box-sizing:border-box;width:100%;height:48px;border:1px solid #2da2b4;background:#121b22;color:#fff;border-radius:10px;padding:12px 15px;font-family:inherit;font-size:15px;outline:none}
+.efdl-input-wrap input:focus-visible{border-color:#76f0fc;box-shadow:0 0 0 3px rgba(73,213,240,.18)}
+.efdl-submit,.efdl-share{height:48px;border:1px solid #cb4ac8;border-radius:10px;background:#8c1e78;color:white;font-family:inherit;font-weight:700;padding:0 20px;cursor:pointer}
+.efdl-submit:hover,.efdl-share:hover{background:#ad2791}
+.efdl-submit:focus-visible,.efdl-share:focus-visible{outline:2px solid #65e8f2;outline-offset:3px}
+.efdl-submit:disabled,.efdl-input-wrap input:disabled{opacity:.6;cursor:not-allowed}
+.efdl-suggestions{position:absolute;z-index:11;top:100%;left:0;right:0;background:#1b2029;border:1px solid #43899b;border-radius:10px;margin-top:4px;box-shadow:0 15px 30px #0009;max-height:290px;overflow:auto}
+.efdl-suggestions[hidden]{display:none}
+.efdl-option{display:flex;align-items:center;gap:11px;width:100%;background:transparent;border:0;color:#f7f3fa;text-align:left;padding:8px 11px;cursor:pointer;font-family:inherit;font-size:13px}
+.efdl-option img{height:38px;width:38px;object-fit:contain}
+.efdl-option:hover,.efdl-option[aria-selected=true]{background:#2c3443}
+.efdl-feedback{min-height:22px;text-align:center;font-size:13px;font-weight:700;color:#65e8f2}
+.efdl-feedback.is-error{color:#ffc7cb}
+.efdl-legend{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 20px;font-size:11px;color:#d2c9d8;margin:16px auto 21px}
+.efdl-legend span{display:flex;align-items:center;gap:6px}
+.efdl-legend-swatch{height:13px;width:13px;border-radius:3px;display:inline-block}
+.efdl-legend-swatch.is-match,.efdl-cell.is-match{background:#147545;border-color:#35bd79;color:#fff}
+.efdl-legend-swatch.is-miss,.efdl-cell.is-miss{background:#8b2b35;border-color:#e15a60;color:#fff}
+.efdl-legend-swatch.is-unknown,.efdl-cell.is-unknown{background:#383a49;border-color:#6e7180;color:#eef0f2}
+.efdl-table-wrap{max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain;padding-bottom:8px;scrollbar-color:#57b5c5 #1b1b27}
+.efdl-table{border-collapse:separate;border-spacing:5px 6px;width:100%;min-width:810px;table-layout:fixed}
+.efdl-table th{font-size:11px;font-weight:700;color:#d8d0df;padding:7px 3px;border-bottom:2px solid #75637c;text-align:center}
+.efdl-table th:first-child{width:125px}
+.efdl-table td{padding:0;text-align:center;vertical-align:middle}
+.efdl-cell{min-height:72px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;border:1px solid #63586a;border-radius:7px;padding:5px 3px;word-break:break-word;font-size:11px;line-height:1.3;font-weight:700;box-sizing:border-box}
+.efdl-cell .efdl-arrow{font-size:20px;line-height:1;color:#fff;font-weight:800}
+.efdl-guess-name{display:flex;flex-direction:column;align-items:center;gap:3px;color:#f3f2f6;font-weight:700;font-size:11px}
+.efdl-guess-name img{width:58px;height:58px;object-fit:contain;border:1px solid #73677a;border-radius:7px;background:#201e29}
+.efdl-attempts{text-align:center;font-size:12px;margin:12px 0 0!important}
+.efdl-winner{margin:25px auto 0;padding:15px;max-width:690px;border:1px solid #35b8a4;border-radius:14px;display:flex;gap:20px;align-items:center;background:linear-gradient(135deg,#0c2e31,#20182b)}
+.efdl-winner[hidden]{display:none}
+.efdl-winner img{max-width:35%;width:190px;height:240px;object-fit:contain}
+.efdl-winner h3{font-size:27px;color:#fff;margin:10px 0}
+.efdl-winner p{font-size:13px;color:#d7cddc;line-height:1.6}
+.efdl-share{height:40px;margin-top:8px}
+.efdl-below{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+.efdl-box h2{margin:8px 0 15px;font-size:20px}
+.efdl-box p{font-size:12px;line-height:1.75;color:#beb1c6}
+.efdl-yesterday-content{display:flex;gap:16px;align-items:center}
+.efdl-yesterday-content img{width:82px;height:110px;object-fit:contain;border-radius:8px;background:#242430}
+.efdl-yesterday-content strong{color:#fff;display:block;font-size:19px}
+.efdl-yesterday-content small{color:#cfc6d4;font-size:12px}
+.efdl-personal-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:18px 0}
+.efdl-personal-stats>span{display:flex;flex-direction:column;align-items:center;gap:8px;border:1px solid #433a4c;border-radius:10px;padding:10px 4px;color:#c9bfd0;font-size:11px;text-align:center}
+.efdl-personal-stats strong{font-size:23px;color:#fff;font-variant-numeric:tabular-nums}
+@media(max-width:700px){.efdl-below{grid-template-columns:1fr}.efdl-guess-form{align-items:stretch;flex-direction:column}.efdl-submit{width:100%}.efdl-top-stats{gap:7px}.efdl-stat{min-width:85px;padding:11px 13px}.efdl-stat strong{font-size:16px}.efdl-winner{gap:9px}.efdl-winner img{height:180px}.efdl-winner h3{font-size:21px}}
