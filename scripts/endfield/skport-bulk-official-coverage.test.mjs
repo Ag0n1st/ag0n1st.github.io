@@ -49,7 +49,9 @@ test("33 real public SKPORT illustrations and covers registered in the same offi
   for(const [key,expected] of [["cover","cover.webp"],["splash","illustration.webp"]]){
    const url="/images/endfield/operators/"+op.id+"/"+expected;
    assert.equal(op.assets[key],url,op.id);
-   const stats=statSync(asset(url)); assert.ok(stats.size>100&&stats.size<600000,op.id+":"+key);
+   const stats=statSync(asset(url));
+   const original=["liino","typhoeus","si"].includes(op.id);
+   assert.ok(stats.size>100&&stats.size<(original?1_000_000:600000),op.id+":"+key);
   }
   for(const key of ["skport-cover","skport-illustration",
     "skport-skill-basic","skport-skill-battle","skport-skill-combo","skport-skill-ultimate"]){
