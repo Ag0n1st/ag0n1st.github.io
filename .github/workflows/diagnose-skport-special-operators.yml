@@ -1,0 +1,23 @@
+name: Diagnose unusual public SKPORT operator widgets
+on:
+  push:
+    branches: [feature-skport-public-operator-bulk-import-20261024]
+    paths: [".github/workflows/diagnose-skport-special-operators.yml"]
+permissions:
+  contents: read
+jobs:
+  diag:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install anonymous Chromium
+        run: |
+          npm ci
+          npm install --no-save --package-lock=false playwright
+          npx playwright install --with-deps chromium
+      - name: Audit only public widget shapes of Endministrator, Yvonne and Arcane
+        run: node scripts/endfield/diagnose-skport-special-operators.mjs
