@@ -136,6 +136,7 @@ test("Duality Markdown source keeps the owner-approved run and two-language rule
  const event=read("src/content/leaderboard-events/duality.md");
  const run=read("src/content/leaderboard-runs/events/duality/krombi-0129.md");
  const component=read("src/components/endfield/LeaderboardEvent.astro");
+ const eventPanel=read("src/components/endfield/LeaderboardEventPanel.astro");
  const loader=read("src/lib/endfield/leaderboardContent.ts");
  const config=read("src/content/config.ts");
  assert.match(config,/"leaderboard-runs":leaderboardRuns/);
@@ -167,12 +168,12 @@ test("Duality Markdown source keeps the owner-approved run and two-language rule
  assert.match(loader,/getCollection\("leaderboard-events"\)/);
  assert.match(loader,/run.status==="verified"/);
  assert.match(page,/run.eventId&&run.eligibleForCommunity===true/);
- assert.match(component,/Top 10 – \{event.title\}/);
- assert.match(component,/<details class="cl-event-rules" data-event-rules>/);
- assert.match(component,/data-event-background/);
- assert.match(component,/Noch keine verifizierten Runs für dieses Event/);
- assert.match(component,/No verified runs have been submitted for this event/);
- assert.match(component,/demoOnly/);
+ assert.match(eventPanel,/Top 10 – \{event.title\}/);
+ assert.match(eventPanel,/<details class="cl-event-rules" data-event-rules>/);
+ assert.match(eventPanel,/data-event-background/);
+ assert.match(eventPanel,/Noch keine verifizierten Runs für dieses Event/);
+ assert.match(eventPanel,/No verified runs have been submitted for this event/);
+ assert.match(eventPanel,/demoOnly/);
  assert.match(css,/\.cl-event-container::before\{[^\n]*background-image:var\(--cl-event-background\);background-size:cover;background-position:center center[^\n]*opacity:\.05/);
  assert.ok(existsSync("public/images/endfield/leaderboard/duality.webp"));
  assert.ok(existsSync("public/images/endfield/leaderboard/duality-background.webp"));
