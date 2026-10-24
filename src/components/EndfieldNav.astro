@@ -3,9 +3,6 @@ const itemsDe = [
   { label: "Übersicht", href: "/endfield/", key: "overview" },
   { label: "Operatoren", href: "/endfield/operatoren/", key: "operators" },
   { label: "Fabrik", href: "/endfield/fabrik/", key: "factory" },
-  { label: "Rekrutierung", href: "/endfield/rekrutierung/", key: "recruitment" },
-  { label: "Veredelung", href: "/endfield/veredelung/", key: "refinement" },
-  { label: "Essenzen", href: "/endfield/essenzen/", key: "essences" },
   { label: "Speedruns", href: "/endfield/speedruns/", key: "speedruns" },
   { label: "Community Leaderboard", href: "/endfield/leaderboard/", key: "leaderboard" },
   { label: "Cheat Sheets", href: "/endfield/cheatsheets/", key: "cheatsheets" },
@@ -16,14 +13,13 @@ const itemsDe = [
 const { active = "overview", lang = "de" } = Astro.props;
 const isEn=lang==="en";
 // A placeholder alone is not a finished feature. Keep this shared for both languages.
-const upcoming=new Set(["factory","recruitment","refinement","essences","checklist","tierlist","cheatsheets"]);
+const upcoming=new Set(["factory","checklist","tierlist","cheatsheets"]);
 const items=isEn?itemsDe.map(item=>({
  ...item,
- label:({"overview":"Overview","operators":"Operators","tierlist":"Tier List","factory":"Factory","recruitment":"Recruitment","refinement":"Refinement","essences":"Essences","speedruns":"Speedruns","leaderboard":"Community Leaderboard","cheatsheets":"Cheat Sheets","checklist":"Checklist","countdown":"Countdown"} as Record<string,string>)[item.key]??item.label,
+ label:({"overview":"Overview","operators":"Operators","tierlist":"Tier List","factory":"Factory","speedruns":"Speedruns","leaderboard":"Community Leaderboard","cheatsheets":"Cheat Sheets","checklist":"Checklist","countdown":"Countdown"} as Record<string,string>)[item.key]??item.label,
  href:({
   overview:"/en/endfield/",operators:"/en/endfield/operators/",tierlist:"/en/endfield/tierlist/",factory:"/en/endfield/factory/",
-  recruitment:"/en/endfield/recruitment/",refinement:"/en/endfield/refinement/",
-  essences:"/en/endfield/essences/",speedruns:"/en/endfield/speedruns/",leaderboard:"/en/endfield/leaderboard/",cheatsheets:"/en/endfield/cheatsheets/",
+  speedruns:"/en/endfield/speedruns/",leaderboard:"/en/endfield/leaderboard/",cheatsheets:"/en/endfield/cheatsheets/",
   checklist:"/en/endfield/checklist/",countdown:"/en/endfield/countdown/"
  } as Record<string,string>)[item.key],
  untranslated:false
