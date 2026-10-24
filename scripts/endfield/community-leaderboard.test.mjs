@@ -160,17 +160,17 @@ test("Duality Markdown source keeps the owner-approved run and two-language rule
  assert.equal((event.match(/^  - id: /gm)||[]).length,6);
  for(const id of ["boss","required-operator","damage-dealer","consumables","potentials","submission"])
    assert.ok(event.includes("- id: "+id));
- assert.match(event,/de: "Boss Si \\(RE-Krise\\)"/);
- assert.match(event,/en: "Boss Si \\(RE-Crisis\\)"/);
- assert.match(loader,/getCollection\\("leaderboard-runs"\\)/);
- assert.match(loader,/getCollection\\("leaderboard-events"\\)/);
+ assert.match(event,/de: "Boss Si \(RE-Krise\)"/);
+ assert.match(event,/en: "Boss Si \(RE-Crisis\)"/);
+ assert.match(loader,/getCollection\("leaderboard-runs"\)/);
+ assert.match(loader,/getCollection\("leaderboard-events"\)/);
  assert.match(loader,/run.status==="verified"/);
  assert.match(page,/run.eventId&&run.eligibleForCommunity===true/);
- assert.match(component,/Top 10 – \\{event.title\\}/);
+ assert.match(component,/Top 10 – \{event.title\}/);
  assert.match(component,/<details class="cl-event-rules" data-event-rules>/);
  assert.match(component,/data-event-background/);
  assert.match(component,/demoOnly/);
- assert.match(css,/\\.cl-event-container::before\\{[^\\n]*background-image:var\\(--cl-event-background\\);background-size:cover;background-position:center center[^\\n]*opacity:\\.05/);
+ assert.match(css,/\.cl-event-container::before\{[^\n]*background-image:var\(--cl-event-background\);background-size:cover;background-position:center center[^\n]*opacity:\.05/);
  assert.ok(existsSync("public/images/endfield/leaderboard/duality.webp"));
  assert.ok(existsSync("public/images/endfield/leaderboard/duality-background.webp"));
  assert.match(page,/Das Community Leaderboard und das Event Leaderboard werden einmal pro Woche am Ende der Woche aktualisiert/);
