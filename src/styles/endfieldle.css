@@ -57,4 +57,4 @@
 .efdl-personal-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:18px 0}
 .efdl-personal-stats>span{display:flex;flex-direction:column;align-items:center;gap:8px;border:1px solid #433a4c;border-radius:10px;padding:10px 4px;color:#c9bfd0;font-size:11px;text-align:center}
 .efdl-personal-stats strong{font-size:23px;color:#fff;font-variant-numeric:tabular-nums}
-@media(max-width:700px){.efdl-below{grid-template-columns:1fr}.efdl-guess-form{align-items:stretch;flex-direction:column}.efdl-submit{width:100%}.efdl-top-stats{gap:7px}.efdl-stat{min-width:85px;padding:11px 13px}.efdl-stat strong{font-size:16px}.efdl-winner{gap:9px}.efdl-winner img{height:180px}.efdl-winner h3{font-size:21px}}
+@media(max-width:700px){.efdl-suggestions{position:relative;top:auto;left:auto;right:auto;max-height:180px;margin-top:7px}.efdl-below{grid-template-columns:1fr}.efdl-guess-form{align-items:stretch;flex-direction:column}.efdl-submit{width:100%}.efdl-top-stats{gap:7px}.efdl-stat{min-width:85px;padding:11px 13px}.efdl-stat strong{font-size:16px}.efdl-winner{gap:9px}.efdl-winner img{height:180px}.efdl-winner h3{font-size:21px}}
