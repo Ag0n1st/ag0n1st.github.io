@@ -30,6 +30,54 @@
           ],
           "sha256": "47f6e866d894c5c8bbd907debf19c4b9c3e9cd7ccfc3ac3a7bc92280671c968e",
           "bytes": 8770
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/si/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1278",
+          "sourceRecord": "src/data/endfield/operators/si.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 52962
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/si/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1278",
+          "sourceRecord": "src/data/endfield/operators/si.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 335464
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/si/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1278",
+          "sourceRecord": "src/data/endfield/operators/si.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 4764
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/si/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1278",
+          "sourceRecord": "src/data/endfield/operators/si.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 10830
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/si/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1278",
+          "sourceRecord": "src/data/endfield/operators/si.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 5326
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/si/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1278",
+          "sourceRecord": "src/data/endfield/operators/si.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 3126
         }
       }
     },
@@ -79,6 +127,54 @@
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/endministrator2.f0bbf4fa.png",
           "status": "already-present",
           "bytes": 7298
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/endministrator/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=2",
+          "sourceRecord": "src/data/endfield/operators/endministrator.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 30610
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/endministrator/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=2",
+          "sourceRecord": "src/data/endfield/operators/endministrator.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 225070
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/endministrator/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=2",
+          "sourceRecord": "src/data/endfield/operators/endministrator.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 4042
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/endministrator/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=2",
+          "sourceRecord": "src/data/endfield/operators/endministrator.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 4948
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/endministrator/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=2",
+          "sourceRecord": "src/data/endfield/operators/endministrator.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 4814
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/endministrator/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=2",
+          "sourceRecord": "src/data/endfield/operators/endministrator.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 1002
         }
       }
     },
@@ -128,6 +224,54 @@
           ],
           "sha256": "92577a505156683435bf429e952e8c9e888ed1f6adf7cd1f6816d60a6c63b4a8",
           "bytes": 6972
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/perlica/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1",
+          "sourceRecord": "src/data/endfield/operators/perlica.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 30134
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/perlica/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1",
+          "sourceRecord": "src/data/endfield/operators/perlica.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 210232
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/perlica/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1",
+          "sourceRecord": "src/data/endfield/operators/perlica.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 6910
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/perlica/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1",
+          "sourceRecord": "src/data/endfield/operators/perlica.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 4726
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/perlica/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1",
+          "sourceRecord": "src/data/endfield/operators/perlica.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 4654
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/perlica/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1",
+          "sourceRecord": "src/data/endfield/operators/perlica.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 1562
         }
       }
     },
@@ -157,6 +301,54 @@
           ],
           "sha256": "da5e230d08a396c347be3304ea4aeea137e421f931822629ea1b862769191998",
           "bytes": 8028
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/chen-qianyu/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=4",
+          "sourceRecord": "src/data/endfield/operators/chen-qianyu.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 41854
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/chen-qianyu/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=4",
+          "sourceRecord": "src/data/endfield/operators/chen-qianyu.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 217440
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/chen-qianyu/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=4",
+          "sourceRecord": "src/data/endfield/operators/chen-qianyu.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 4042
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/chen-qianyu/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=4",
+          "sourceRecord": "src/data/endfield/operators/chen-qianyu.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 6070
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/chen-qianyu/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=4",
+          "sourceRecord": "src/data/endfield/operators/chen-qianyu.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 7782
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/chen-qianyu/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=4",
+          "sourceRecord": "src/data/endfield/operators/chen-qianyu.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 1892
         }
       }
     },
@@ -186,6 +378,54 @@
           ],
           "sha256": "c4e4d1d37337b2d8b09c99d350380d731a9811cd83a9e72f96706957cbc217f8",
           "bytes": 7704
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/typhoeus/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1173",
+          "sourceRecord": "src/data/endfield/operators/typhoeus.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 60778
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/typhoeus/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1173",
+          "sourceRecord": "src/data/endfield/operators/typhoeus.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 651874
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/typhoeus/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1173",
+          "sourceRecord": "src/data/endfield/operators/typhoeus.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 7202
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/typhoeus/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1173",
+          "sourceRecord": "src/data/endfield/operators/typhoeus.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 6848
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/typhoeus/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1173",
+          "sourceRecord": "src/data/endfield/operators/typhoeus.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 5374
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/typhoeus/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1173",
+          "sourceRecord": "src/data/endfield/operators/typhoeus.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 4130
         }
       }
     },
@@ -215,6 +455,54 @@
           ],
           "sha256": "0ed6343cd9b72d8d21306dfa834bb2e2c4f178e5216b8acd51c8f8799011097c",
           "bytes": 5028
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/purrchena/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1174",
+          "sourceRecord": "src/data/endfield/operators/purrchena.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 23388
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/purrchena/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1174",
+          "sourceRecord": "src/data/endfield/operators/purrchena.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 275834
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/purrchena/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1174",
+          "sourceRecord": "src/data/endfield/operators/purrchena.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 4234
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/purrchena/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1174",
+          "sourceRecord": "src/data/endfield/operators/purrchena.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 9110
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/purrchena/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1174",
+          "sourceRecord": "src/data/endfield/operators/purrchena.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 7068
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/purrchena/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1174",
+          "sourceRecord": "src/data/endfield/operators/purrchena.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 2230
         }
       }
     },
@@ -235,6 +523,54 @@
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/lizhiyan.9b1b7f82.png",
           "status": "already-present",
           "bytes": 7858
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/arcane/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1040",
+          "sourceRecord": "src/data/endfield/operators/arcane.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 36444
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/arcane/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1040",
+          "sourceRecord": "src/data/endfield/operators/arcane.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 262098
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/arcane/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1040",
+          "sourceRecord": "src/data/endfield/operators/arcane.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 6712
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/arcane/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1040",
+          "sourceRecord": "src/data/endfield/operators/arcane.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 7896
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/arcane/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1040",
+          "sourceRecord": "src/data/endfield/operators/arcane.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 5796
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/arcane/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1040",
+          "sourceRecord": "src/data/endfield/operators/arcane.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 2144
         }
       }
     },
@@ -264,6 +600,54 @@
           ],
           "sha256": "f933b46b532f1868314e715bcceb7cb5e58a6c1519aae47b600846c53608704d",
           "bytes": 9258
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/liino/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1041",
+          "sourceRecord": "src/data/endfield/operators/liino.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 65436
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/liino/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1041",
+          "sourceRecord": "src/data/endfield/operators/liino.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 768630
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/liino/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1041",
+          "sourceRecord": "src/data/endfield/operators/liino.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 7478
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/liino/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1041",
+          "sourceRecord": "src/data/endfield/operators/liino.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 7236
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/liino/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1041",
+          "sourceRecord": "src/data/endfield/operators/liino.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 7502
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/liino/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1041",
+          "sourceRecord": "src/data/endfield/operators/liino.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 3688
         }
       }
     },
@@ -293,6 +677,54 @@
           ],
           "sha256": "92110200916b6add5a17e0f6dfc6df7bb82039f3833c6694028d78af4cc05d4e",
           "bytes": 8404
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/mi-fu/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=995",
+          "sourceRecord": "src/data/endfield/operators/mi-fu.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 51388
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/mi-fu/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=995",
+          "sourceRecord": "src/data/endfield/operators/mi-fu.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 226694
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/mi-fu/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=995",
+          "sourceRecord": "src/data/endfield/operators/mi-fu.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 4234
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/mi-fu/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=995",
+          "sourceRecord": "src/data/endfield/operators/mi-fu.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 5708
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/mi-fu/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=995",
+          "sourceRecord": "src/data/endfield/operators/mi-fu.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 6982
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/mi-fu/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=995",
+          "sourceRecord": "src/data/endfield/operators/mi-fu.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 1014
         }
       }
     },
@@ -322,6 +754,54 @@
           ],
           "sha256": "270ae7a45bdbf7405bfa37a9450b4e4d0e35e6e604f9ec7977b07cbc55819bc3",
           "bytes": 7812
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/camille/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=996",
+          "sourceRecord": "src/data/endfield/operators/camille.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 39190
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/camille/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=996",
+          "sourceRecord": "src/data/endfield/operators/camille.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 290760
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/camille/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=996",
+          "sourceRecord": "src/data/endfield/operators/camille.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 6726
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/camille/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=996",
+          "sourceRecord": "src/data/endfield/operators/camille.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 6602
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/camille/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=996",
+          "sourceRecord": "src/data/endfield/operators/camille.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 7766
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/camille/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=996",
+          "sourceRecord": "src/data/endfield/operators/camille.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 2804
         }
       }
     },
@@ -351,6 +831,54 @@
           ],
           "sha256": "d5e11bae423f3c968f15f13e5afcf252b26b38a99bef7454c1b33e14edd58ca5",
           "bytes": 7904
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/zhuang-fangyi/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=838",
+          "sourceRecord": "src/data/endfield/operators/zhuang-fangyi.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 32866
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/zhuang-fangyi/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=838",
+          "sourceRecord": "src/data/endfield/operators/zhuang-fangyi.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 294772
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/zhuang-fangyi/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=838",
+          "sourceRecord": "src/data/endfield/operators/zhuang-fangyi.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 6910
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/zhuang-fangyi/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=838",
+          "sourceRecord": "src/data/endfield/operators/zhuang-fangyi.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 7586
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/zhuang-fangyi/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=838",
+          "sourceRecord": "src/data/endfield/operators/zhuang-fangyi.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 5806
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/zhuang-fangyi/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=838",
+          "sourceRecord": "src/data/endfield/operators/zhuang-fangyi.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 3310
         }
       }
     },
@@ -380,6 +908,54 @@
           ],
           "sha256": "d95801b1444fa44cbc640ff9b5c44ac55157a59a344c00d33a354be440015fe2",
           "bytes": 10076
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/tangtang/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=25",
+          "sourceRecord": "src/data/endfield/operators/tangtang.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 41814
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/tangtang/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=25",
+          "sourceRecord": "src/data/endfield/operators/tangtang.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 260096
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/tangtang/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=25",
+          "sourceRecord": "src/data/endfield/operators/tangtang.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 5768
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/tangtang/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=25",
+          "sourceRecord": "src/data/endfield/operators/tangtang.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 7188
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/tangtang/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=25",
+          "sourceRecord": "src/data/endfield/operators/tangtang.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 8994
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/tangtang/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=25",
+          "sourceRecord": "src/data/endfield/operators/tangtang.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 2770
         }
       }
     },
@@ -409,6 +985,54 @@
           ],
           "sha256": "acb1285ce2382dec2c6c44a6c2dd8cd3f663cd8d40ee75c00b17df1c1d778477",
           "bytes": 9356
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/rossi/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=615",
+          "sourceRecord": "src/data/endfield/operators/rossi.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 30684
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/rossi/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=615",
+          "sourceRecord": "src/data/endfield/operators/rossi.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 241448
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/rossi/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=615",
+          "sourceRecord": "src/data/endfield/operators/rossi.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 4042
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/rossi/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=615",
+          "sourceRecord": "src/data/endfield/operators/rossi.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 9336
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/rossi/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=615",
+          "sourceRecord": "src/data/endfield/operators/rossi.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 8458
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/rossi/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=615",
+          "sourceRecord": "src/data/endfield/operators/rossi.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 3480
         }
       }
     },
@@ -438,6 +1062,54 @@
           ],
           "sha256": "99f6ee2fb8f19d053271ba4869c6ded7f54cbfc539f2a90cd53f7ec6d0ed9951",
           "bytes": 8798
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/laevatain/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=11",
+          "sourceRecord": "src/data/endfield/operators/laevatain.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 41102
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/laevatain/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=11",
+          "sourceRecord": "src/data/endfield/operators/laevatain.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 359970
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/laevatain/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=11",
+          "sourceRecord": "src/data/endfield/operators/laevatain.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 4540
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/laevatain/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=11",
+          "sourceRecord": "src/data/endfield/operators/laevatain.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 7550
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/laevatain/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=11",
+          "sourceRecord": "src/data/endfield/operators/laevatain.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 6268
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/laevatain/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=11",
+          "sourceRecord": "src/data/endfield/operators/laevatain.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 2750
         }
       }
     },
@@ -467,6 +1139,54 @@
           ],
           "sha256": "e994cfa6cf2513a977513e6ee6a399c153ce1c085caffa3ad67b98719ac2dc9f",
           "bytes": 7788
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/yvonne/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=14",
+          "sourceRecord": "src/data/endfield/operators/yvonne.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 34100
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/yvonne/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=14",
+          "sourceRecord": "src/data/endfield/operators/yvonne.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 245284
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/yvonne/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=14",
+          "sourceRecord": "src/data/endfield/operators/yvonne.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 1318
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/yvonne/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=14",
+          "sourceRecord": "src/data/endfield/operators/yvonne.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 1982
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/yvonne/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=14",
+          "sourceRecord": "src/data/endfield/operators/yvonne.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 1736
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/yvonne/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=14",
+          "sourceRecord": "src/data/endfield/operators/yvonne.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 2438
         }
       }
     },
@@ -496,6 +1216,54 @@
           ],
           "sha256": "2cc090e0b9d16e6956a59dcac109d640d4a538bcea8de5a4e7756d85fea46012",
           "bytes": 8212
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/gilberta/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=9",
+          "sourceRecord": "src/data/endfield/operators/gilberta.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 37964
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/gilberta/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=9",
+          "sourceRecord": "src/data/endfield/operators/gilberta.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 302062
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/gilberta/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=9",
+          "sourceRecord": "src/data/endfield/operators/gilberta.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 6712
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/gilberta/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=9",
+          "sourceRecord": "src/data/endfield/operators/gilberta.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 7750
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/gilberta/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=9",
+          "sourceRecord": "src/data/endfield/operators/gilberta.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 4936
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/gilberta/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=9",
+          "sourceRecord": "src/data/endfield/operators/gilberta.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 1200
         }
       }
     },
@@ -516,6 +1284,54 @@
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/ardelia.b46cd31c.png",
           "status": "already-present",
           "bytes": 7948
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/ardelia/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=19",
+          "sourceRecord": "src/data/endfield/operators/ardelia.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 39936
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/ardelia/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=19",
+          "sourceRecord": "src/data/endfield/operators/ardelia.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 289220
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/ardelia/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=19",
+          "sourceRecord": "src/data/endfield/operators/ardelia.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 6712
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/ardelia/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=19",
+          "sourceRecord": "src/data/endfield/operators/ardelia.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 5836
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/ardelia/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=19",
+          "sourceRecord": "src/data/endfield/operators/ardelia.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 6750
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/ardelia/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=19",
+          "sourceRecord": "src/data/endfield/operators/ardelia.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 2094
         }
       }
     },
@@ -536,6 +1352,54 @@
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/ember.235ca9f1.png",
           "status": "already-present",
           "bytes": 8412
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/ember/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=15",
+          "sourceRecord": "src/data/endfield/operators/ember.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 41708
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/ember/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=15",
+          "sourceRecord": "src/data/endfield/operators/ember.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 300448
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/ember/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=15",
+          "sourceRecord": "src/data/endfield/operators/ember.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 4234
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/ember/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=15",
+          "sourceRecord": "src/data/endfield/operators/ember.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 5802
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/ember/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=15",
+          "sourceRecord": "src/data/endfield/operators/ember.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 5890
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/ember/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=15",
+          "sourceRecord": "src/data/endfield/operators/ember.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 2614
         }
       }
     },
@@ -565,6 +1429,54 @@
           ],
           "sha256": "7e8e05db1177c7a038dbeeab9cbcbe133f1be198134083bd7545d4146311910a",
           "bytes": 8224
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/last-rite/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=17",
+          "sourceRecord": "src/data/endfield/operators/last-rite.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 36228
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/last-rite/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=17",
+          "sourceRecord": "src/data/endfield/operators/last-rite.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 293058
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/last-rite/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=17",
+          "sourceRecord": "src/data/endfield/operators/last-rite.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 4630
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/last-rite/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=17",
+          "sourceRecord": "src/data/endfield/operators/last-rite.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 6480
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/last-rite/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=17",
+          "sourceRecord": "src/data/endfield/operators/last-rite.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 7314
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/last-rite/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=17",
+          "sourceRecord": "src/data/endfield/operators/last-rite.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 2604
         }
       }
     },
@@ -594,6 +1506,54 @@
           ],
           "sha256": "c40e6b139966ce2ae16e8b1a2ab0dac9907adef685f67927d17b1fc26bdafb6f",
           "bytes": 8050
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/lifeng/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=12",
+          "sourceRecord": "src/data/endfield/operators/lifeng.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 40918
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/lifeng/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=12",
+          "sourceRecord": "src/data/endfield/operators/lifeng.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 310106
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/lifeng/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=12",
+          "sourceRecord": "src/data/endfield/operators/lifeng.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 6170
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/lifeng/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=12",
+          "sourceRecord": "src/data/endfield/operators/lifeng.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 5074
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/lifeng/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=12",
+          "sourceRecord": "src/data/endfield/operators/lifeng.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 6478
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/lifeng/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=12",
+          "sourceRecord": "src/data/endfield/operators/lifeng.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 1130
         }
       }
     },
@@ -614,6 +1574,54 @@
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/pogranichnik.73f7bcf6.png",
           "status": "already-present",
           "bytes": 7778
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/pogranichnik/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=20",
+          "sourceRecord": "src/data/endfield/operators/pogranichnik.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 38868
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/pogranichnik/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=20",
+          "sourceRecord": "src/data/endfield/operators/pogranichnik.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 250976
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/pogranichnik/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=20",
+          "sourceRecord": "src/data/endfield/operators/pogranichnik.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 4042
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/pogranichnik/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=20",
+          "sourceRecord": "src/data/endfield/operators/pogranichnik.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 9140
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/pogranichnik/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=20",
+          "sourceRecord": "src/data/endfield/operators/pogranichnik.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 10164
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/pogranichnik/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=20",
+          "sourceRecord": "src/data/endfield/operators/pogranichnik.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 1482
         }
       }
     },
@@ -634,6 +1642,54 @@
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/alesh.ca99268b.png",
           "status": "already-present",
           "bytes": 7942
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/alesh/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=18",
+          "sourceRecord": "src/data/endfield/operators/alesh.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 38318
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/alesh/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=18",
+          "sourceRecord": "src/data/endfield/operators/alesh.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 267488
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/alesh/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=18",
+          "sourceRecord": "src/data/endfield/operators/alesh.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 686
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/alesh/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=18",
+          "sourceRecord": "src/data/endfield/operators/alesh.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 1310
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/alesh/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=18",
+          "sourceRecord": "src/data/endfield/operators/alesh.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 1730
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/alesh/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=18",
+          "sourceRecord": "src/data/endfield/operators/alesh.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 2328
         }
       }
     },
@@ -654,6 +1710,54 @@
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/arclight.0b402b3e.png",
           "status": "already-present",
           "bytes": 8032
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/arclight/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=7",
+          "sourceRecord": "src/data/endfield/operators/arclight.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 38448
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/arclight/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=7",
+          "sourceRecord": "src/data/endfield/operators/arclight.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 182838
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/arclight/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=7",
+          "sourceRecord": "src/data/endfield/operators/arclight.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 686
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/arclight/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=7",
+          "sourceRecord": "src/data/endfield/operators/arclight.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 2160
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/arclight/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=7",
+          "sourceRecord": "src/data/endfield/operators/arclight.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 892
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/arclight/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=7",
+          "sourceRecord": "src/data/endfield/operators/arclight.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 1656
         }
       }
     },
@@ -683,6 +1787,54 @@
           ],
           "sha256": "aa82c8835c7a2bb15a9e47ad8ff2279d51365ae17c5c8a4a19ea8d2fa4a62e92",
           "bytes": 7608
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/avywenna/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=10",
+          "sourceRecord": "src/data/endfield/operators/avywenna.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 34980
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/avywenna/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=10",
+          "sourceRecord": "src/data/endfield/operators/avywenna.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 182546
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/avywenna/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=10",
+          "sourceRecord": "src/data/endfield/operators/avywenna.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 6170
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/avywenna/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=10",
+          "sourceRecord": "src/data/endfield/operators/avywenna.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 7130
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/avywenna/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=10",
+          "sourceRecord": "src/data/endfield/operators/avywenna.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 5806
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/avywenna/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=10",
+          "sourceRecord": "src/data/endfield/operators/avywenna.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 2040
         }
       }
     },
@@ -703,6 +1855,54 @@
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/dapan.7b5afdec.png",
           "status": "already-present",
           "bytes": 5796
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/da-pan/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=8",
+          "sourceRecord": "src/data/endfield/operators/da-pan.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 20388
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/da-pan/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=8",
+          "sourceRecord": "src/data/endfield/operators/da-pan.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 270954
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/da-pan/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=8",
+          "sourceRecord": "src/data/endfield/operators/da-pan.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 4234
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/da-pan/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=8",
+          "sourceRecord": "src/data/endfield/operators/da-pan.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 4876
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/da-pan/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=8",
+          "sourceRecord": "src/data/endfield/operators/da-pan.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 4878
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/da-pan/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=8",
+          "sourceRecord": "src/data/endfield/operators/da-pan.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 872
         }
       }
     },
@@ -732,6 +1932,54 @@
           ],
           "sha256": "4ed2efb4a04a30f6185506b02c5a024eda9961a16b79d5423e911722c6d5075c",
           "bytes": 8098
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/snowshine/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=16",
+          "sourceRecord": "src/data/endfield/operators/snowshine.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 33898
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/snowshine/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=16",
+          "sourceRecord": "src/data/endfield/operators/snowshine.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 263202
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/snowshine/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=16",
+          "sourceRecord": "src/data/endfield/operators/snowshine.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 4234
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/snowshine/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=16",
+          "sourceRecord": "src/data/endfield/operators/snowshine.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 6312
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/snowshine/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=16",
+          "sourceRecord": "src/data/endfield/operators/snowshine.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 6660
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/snowshine/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=16",
+          "sourceRecord": "src/data/endfield/operators/snowshine.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 1818
         }
       }
     },
@@ -761,6 +2009,54 @@
           ],
           "sha256": "933458912d9b9c61d14299b34bd4de4c97f7007c2ef31d4ac2388150c5b4dc15",
           "bytes": 7664
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/wulfgard/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=6",
+          "sourceRecord": "src/data/endfield/operators/wulfgard.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 34792
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/wulfgard/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=6",
+          "sourceRecord": "src/data/endfield/operators/wulfgard.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 238896
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/wulfgard/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=6",
+          "sourceRecord": "src/data/endfield/operators/wulfgard.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 5788
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/wulfgard/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=6",
+          "sourceRecord": "src/data/endfield/operators/wulfgard.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 7114
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/wulfgard/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=6",
+          "sourceRecord": "src/data/endfield/operators/wulfgard.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 6652
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/wulfgard/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=6",
+          "sourceRecord": "src/data/endfield/operators/wulfgard.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 1940
         }
       }
     },
@@ -790,6 +2086,54 @@
           ],
           "sha256": "e9a09d2f90522705e02630888303d51e2fb0bb3a5aa012c9de27a0d93d9bfc67",
           "bytes": 7828
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/xaihi/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=13",
+          "sourceRecord": "src/data/endfield/operators/xaihi.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 30108
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/xaihi/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=13",
+          "sourceRecord": "src/data/endfield/operators/xaihi.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 319470
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/xaihi/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=13",
+          "sourceRecord": "src/data/endfield/operators/xaihi.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 6802
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/xaihi/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=13",
+          "sourceRecord": "src/data/endfield/operators/xaihi.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 4388
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/xaihi/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=13",
+          "sourceRecord": "src/data/endfield/operators/xaihi.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 5308
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/xaihi/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=13",
+          "sourceRecord": "src/data/endfield/operators/xaihi.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 1410
         }
       }
     },
@@ -810,6 +2154,54 @@
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/akekuri.3df4a3dc.png",
           "status": "already-present",
           "bytes": 7488
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/akekuri/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=5",
+          "sourceRecord": "src/data/endfield/operators/akekuri.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 34690
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/akekuri/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=5",
+          "sourceRecord": "src/data/endfield/operators/akekuri.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 107044
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/akekuri/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=5",
+          "sourceRecord": "src/data/endfield/operators/akekuri.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 4042
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/akekuri/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=5",
+          "sourceRecord": "src/data/endfield/operators/akekuri.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 5352
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/akekuri/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=5",
+          "sourceRecord": "src/data/endfield/operators/akekuri.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 4668
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/akekuri/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=5",
+          "sourceRecord": "src/data/endfield/operators/akekuri.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 2266
         }
       }
     },
@@ -830,6 +2222,54 @@
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/antal.78d45318.png",
           "status": "already-present",
           "bytes": 7042
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/antal/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=22",
+          "sourceRecord": "src/data/endfield/operators/antal.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 30020
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/antal/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=22",
+          "sourceRecord": "src/data/endfield/operators/antal.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 110676
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/antal/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=22",
+          "sourceRecord": "src/data/endfield/operators/antal.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 6910
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/antal/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=22",
+          "sourceRecord": "src/data/endfield/operators/antal.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 6040
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/antal/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=22",
+          "sourceRecord": "src/data/endfield/operators/antal.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 7042
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/antal/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=22",
+          "sourceRecord": "src/data/endfield/operators/antal.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 2190
         }
       }
     },
@@ -850,6 +2290,54 @@
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/catcher.68b395f9.png",
           "status": "already-present",
           "bytes": 7446
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/catcher/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=23",
+          "sourceRecord": "src/data/endfield/operators/catcher.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 31750
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/catcher/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=23",
+          "sourceRecord": "src/data/endfield/operators/catcher.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 118884
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/catcher/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=23",
+          "sourceRecord": "src/data/endfield/operators/catcher.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 4234
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/catcher/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=23",
+          "sourceRecord": "src/data/endfield/operators/catcher.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 7318
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/catcher/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=23",
+          "sourceRecord": "src/data/endfield/operators/catcher.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 5882
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/catcher/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=23",
+          "sourceRecord": "src/data/endfield/operators/catcher.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 1054
         }
       }
     },
@@ -870,6 +2358,54 @@
           "source": "https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/estella.b761d517.png",
           "status": "already-present",
           "bytes": 5666
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/estella/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=21",
+          "sourceRecord": "src/data/endfield/operators/estella.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 25742
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/estella/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=21",
+          "sourceRecord": "src/data/endfield/operators/estella.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 115204
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/estella/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=21",
+          "sourceRecord": "src/data/endfield/operators/estella.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 1384
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/estella/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=21",
+          "sourceRecord": "src/data/endfield/operators/estella.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 1556
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/estella/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=21",
+          "sourceRecord": "src/data/endfield/operators/estella.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 1022
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/estella/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=21",
+          "sourceRecord": "src/data/endfield/operators/estella.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 1500
         }
       }
     },
@@ -899,6 +2435,54 @@
           ],
           "sha256": "8577a3de15003af99902b3145bf9e532415099d87fa4d4fe8c72f063152014b2",
           "bytes": 7556
+        },
+        "skport-cover": {
+          "path": "/images/endfield/operators/fluorite/cover.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=24",
+          "sourceRecord": "src/data/endfield/operators/fluorite.json",
+          "sourceField": "operator.coverUrl",
+          "status": "cached",
+          "bytes": 29150
+        },
+        "skport-illustration": {
+          "path": "/images/endfield/operators/fluorite/illustration.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=24",
+          "sourceRecord": "src/data/endfield/operators/fluorite.json",
+          "sourceField": "operator.illustrationUrl",
+          "status": "cached",
+          "bytes": 92424
+        },
+        "skport-skill-basic": {
+          "path": "/images/endfield/operators/fluorite/skills/skill-basic.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=24",
+          "sourceRecord": "src/data/endfield/operators/fluorite.json",
+          "sourceField": "skills.basic.iconUrl",
+          "status": "cached",
+          "bytes": 5676
+        },
+        "skport-skill-battle": {
+          "path": "/images/endfield/operators/fluorite/skills/skill-battle.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=24",
+          "sourceRecord": "src/data/endfield/operators/fluorite.json",
+          "sourceField": "skills.battle.iconUrl",
+          "status": "cached",
+          "bytes": 5914
+        },
+        "skport-skill-combo": {
+          "path": "/images/endfield/operators/fluorite/skills/skill-combo.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=24",
+          "sourceRecord": "src/data/endfield/operators/fluorite.json",
+          "sourceField": "skills.combo.iconUrl",
+          "status": "cached",
+          "bytes": 7226
+        },
+        "skport-skill-ultimate": {
+          "path": "/images/endfield/operators/fluorite/skills/skill-ultimate.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=24",
+          "sourceRecord": "src/data/endfield/operators/fluorite.json",
+          "sourceField": "skills.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 1444
         }
       }
     }
