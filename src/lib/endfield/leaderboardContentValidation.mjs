@@ -1,6 +1,6 @@
 import {parseIngameTime} from "./leaderboardRanking.mjs";
 
-const normalisedPath=value=>String(value??"").replace(/\\/g,"/").replace(/\\.md$/i,"").toLowerCase();
+const normalisedPath=value=>String(value??"").replace(/\\/g,"/").replace(/\.md$/i,"").toLowerCase();
 const youtubeHost=url=>{
   try{
     const parsed=new URL(url);
@@ -10,7 +10,7 @@ const youtubeHost=url=>{
   }catch{return false;}
 };
 const validDate=value=>{
-  if(typeof value!=="string"||!/^\\d{4}-\\d{2}-\\d{2}$/.test(value))return false;
+  if(typeof value!=="string"||!/^\d{4}-\d{2}-\d{2}$/.test(value))return false;
   const time=Date.parse(value+"T00:00:00Z");
   return Number.isFinite(time)&&new Date(time).toISOString().startsWith(value);
 };
@@ -69,5 +69,5 @@ export function validateLeaderboardEntries({events,runs,bossSlugs,operatorSlugs}
     }
     if(run.countryCode && !/^[A-Z]{2,3}$/.test(run.countryCode))fail(context,"invalid country code");
   }
-  if(errors.length)throw new Error("Leaderboard Markdown validation failed:\\n"+errors.join("\\n"));
+  if(errors.length)throw new Error("Leaderboard Markdown validation failed:\n"+errors.join("\n"));
 }
