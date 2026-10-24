@@ -16,10 +16,10 @@ const l=(de:string,english:string)=>en?english:de;
 const bosses=[...featuredBosses].reverse();
 const defaultBoss="si";
 const eventData=await loadLeaderboardContent();
-const versions=["all-time",...[...new Set([...leaderboard.versions,...eventData.verifiedRuns.map(run=>run.version)])].sort((a,b)=>Number(b.slice(1))-Number(a.slice(1)))];
+const versions=["all-time",...[...new Set([...leaderboard.versions,...eventData.verifiedRuns.map(run=>run.version),...eventData.events.map(event=>event.version)])].sort((a,b)=>Number(b.slice(1))-Number(a.slice(1)))];
 const bossLabels=new Map(bosses.map(boss=>[boss.slug,boss.label]));
-const isGermanFlag=(code:string)=>code==="DEU"||code==="DE";
-const countryName=(code:string)=>isGermanFlag(code)?l("Deutschland","Germany"):code;
+const isGermanFlag=(code?:string)=>code==="DEU"||code==="DE";
+const countryName=(code?:string)=>isGermanFlag(code)?l("Deutschland","Germany"):(code||l("Keine Angabe","Not specified"));
 // One authoritative submission: include event runs in general rankings only when
 // individually approved for the permanent Community Leaderboard.
 const generalRuns=[...leaderboard.verifiedRuns,...eventData.verifiedRuns.filter(run=>run.eventId&&run.eligibleForCommunity===true)];
