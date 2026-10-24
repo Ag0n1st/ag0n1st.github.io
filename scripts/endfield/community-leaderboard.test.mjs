@@ -33,6 +33,7 @@ test("Duality Event appears above the general ranking section",()=>{
  assert.match(page,/Community Leaderboard/);
  assert.match(page,/Top 10 – \{boss\.label\}/);
  assert.match(page,/data-leaderboard-version/);
+ assert.match(page,/eventData\.events\.map\(event=>event\.version\)/);
  assert.match(page,/all-time/);
  assert.deepEqual(data.versions,["v1.6"]);
  assert.equal(data.firstVersion,"v1.6");
@@ -169,6 +170,8 @@ test("Duality Markdown source keeps the owner-approved run and two-language rule
  assert.match(component,/Top 10 – \{event.title\}/);
  assert.match(component,/<details class="cl-event-rules" data-event-rules>/);
  assert.match(component,/data-event-background/);
+ assert.match(component,/Noch keine verifizierten Runs für dieses Event/);
+ assert.match(component,/No verified runs have been submitted for this event/);
  assert.match(component,/demoOnly/);
  assert.match(css,/\.cl-event-container::before\{[^\n]*background-image:var\(--cl-event-background\);background-size:cover;background-position:center center[^\n]*opacity:\.05/);
  assert.ok(existsSync("public/images/endfield/leaderboard/duality.webp"));
