@@ -41,6 +41,13 @@
       "attempted": 3,
       "imported": 3,
       "remainingAfter": []
+    },
+    {
+      "runUrl": "https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/40099641870",
+      "attempted": 0,
+      "imported": 0,
+      "officialVariantWebPs": 3,
+      "remainingAfter": []
     }
   ],
   "results": [
@@ -1454,5 +1461,23 @@
         }
       ]
     }
-  ]
+  ],
+  "additionalOfficialVariantAssets": [
+    {
+      "slot": "battle",
+      "path": "/images/endfield/operators/arcane/skills/skill-battle-will.webp",
+      "bytes": 6316
+    },
+    {
+      "slot": "combo",
+      "path": "/images/endfield/operators/arcane/skills/skill-combo-will.webp",
+      "bytes": 6202
+    },
+    {
+      "slot": "ultimate",
+      "path": "/images/endfield/operators/arcane/skills/skill-ultimate-will.webp",
+      "bytes": 2116
+    }
+  ],
+  "newOptimizedWebPs": 183
 }

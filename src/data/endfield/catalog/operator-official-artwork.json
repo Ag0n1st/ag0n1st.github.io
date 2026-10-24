@@ -571,6 +571,30 @@
           "sourceField": "skills.ultimate.iconUrl",
           "status": "cached",
           "bytes": 2144
+        },
+        "skport-skill-battle-will": {
+          "path": "/images/endfield/operators/arcane/skills/skill-battle-will.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1040",
+          "sourceRecord": "src/data/endfield/operators/arcane.json",
+          "sourceField": "skillVariants.will.battle.iconUrl",
+          "status": "cached",
+          "bytes": 6316
+        },
+        "skport-skill-combo-will": {
+          "path": "/images/endfield/operators/arcane/skills/skill-combo-will.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1040",
+          "sourceRecord": "src/data/endfield/operators/arcane.json",
+          "sourceField": "skillVariants.will.combo.iconUrl",
+          "status": "cached",
+          "bytes": 6202
+        },
+        "skport-skill-ultimate-will": {
+          "path": "/images/endfield/operators/arcane/skills/skill-ultimate-will.webp",
+          "sourcePage": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1040",
+          "sourceRecord": "src/data/endfield/operators/arcane.json",
+          "sourceField": "skillVariants.will.ultimate.iconUrl",
+          "status": "cached",
+          "bytes": 2116
         }
       }
     },
