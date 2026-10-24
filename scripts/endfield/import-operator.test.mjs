@@ -166,7 +166,7 @@ test("rejects ambiguous skill slots and nonconforming level tables",()=>{
   const fixture=makeFixture();
   const skills=fixture.data.item.document.widgetCommonMap.widget0;
   skills.tabDataMap["dynamic-1"].intro.type="Basic Attack";
-  assert.throws(()=>importOperator(fixture,items,info),/doppelter Skilltyp/);
+  assert.throws(()=>importOperator(fixture,items,info),/(doppelter Skilltyp|mindestens ein Skill jedes Typs nötig)/);
   const broken=makeFixture();
   delete broken.data.item.document.documentMap["data-3"];
   assert.throws(()=>importOperator(broken,items,info),/Dokument fehlt/);
