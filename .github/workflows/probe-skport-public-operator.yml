@@ -1,0 +1,25 @@
+name: Probe anonymous public SKPORT operator detail
+on:
+  push:
+    branches: [feature-skport-public-operator-bulk-import-20261024]
+    paths:
+      - ".github/workflows/probe-skport-public-operator.yml"
+      - "scripts/endfield/probe-public-operator.mjs"
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install anonymous browser
+        run: |
+          npm ci
+          npm install --no-save --package-lock=false playwright
+          npx playwright install --with-deps chromium
+      - name: Probe Purrchena public ID 1174
+        run: node scripts/endfield/probe-public-operator.mjs purrchena
