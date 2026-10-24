@@ -1,0 +1,93 @@
+---
+import EndfieldPlaceholder from "../../layouts/EndfieldPlaceholder.astro";
+import "../../styles/endfieldle.css";
+import roster from "../../data/endfield/endfieldle-roster.json";
+import schedule from "../../data/endfield/endfieldle-schedule.json";
+import {validateRosterAndSchedule} from "../../lib/endfield/endfieldleGame.mjs";
+interface Props {lang?:"de"|"en"}
+const {lang="de"}=Astro.props;
+const en=lang==="en";
+const l=(de:string,english:string)=>en?english:de;
+validateRosterAndSchedule(roster.operators,schedule.days,schedule);
+---
+<EndfieldPlaceholder title="Endfieldle" kicker="ARKNIGHTS: ENDFIELD · DAILY GAME" active="endfieldle" lang={lang}
+ description={l("Endfieldle: Errate jeden Tag einen Arknights: Endfield Operator anhand von sieben Eigenschaften.","Endfieldle: Guess the daily Arknights: Endfield operator using seven attributes.")}>
+  <main class="efdl-page section-wrap" data-endfieldle data-lang={lang}>
+    <header class="efdl-heading">
+      <span class="section-kicker">ARKNIGHTS: ENDFIELD · DAILY</span>
+      <h1>Endfieldle<span class="title-period">.</span></h1>
+      <p>{l("Ein Operator. Sieben Kategorien. Jeden Tag ein neues Rätsel.","One operator. Seven categories. A new puzzle every day.")}</p>
+      <div class="efdl-top-stats">
+        <span class="efdl-stat"><span>{l("Rätsel","Puzzle")}</span><strong data-puzzle-number>–</strong></span>
+        <span class="efdl-stat"><span>{l("Streak","Streak")}</span><strong data-streak>0</strong></span>
+        <span class="efdl-stat"><span>{l("Neues Rätsel in","Next puzzle in")}</span><strong data-reset>--:--:--</strong></span>
+      </div>
+    </header>
+
+    <section class="efdl-game" aria-labelledby="efdl-guess-heading">
+      <h2 id="efdl-guess-heading">{l("Welcher Operator ist gesucht?","Which operator is it?")}</h2>
+      <p>{l("Jeder Tipp enthüllt die Eigenschaften des gewählten Operators. Grün ist richtig, Rot ist falsch und Pfeile bei der Release-Version zeigen, ob der gesuchte Operator früher oder später erschien.","Each guess reveals the chosen operator's attributes. Green is correct, red is incorrect, and arrows for release version point toward an earlier or later debut.")}</p>
+      <form class="efdl-guess-form" data-guess-form autocomplete="off">
+        <div class="efdl-input-wrap">
+          <label for="efdl-operator-input">{l("Operator suchen","Search operator")}</label>
+          <input id="efdl-operator-input" data-guess-input type="text" role="combobox" aria-controls="efdl-suggestions" aria-expanded="false" aria-autocomplete="list" placeholder={l("Operatornamen eingeben …","Type an operator name …")} spellcheck="false" />
+          <div id="efdl-suggestions" class="efdl-suggestions" role="listbox" data-suggestions hidden></div>
+        </div>
+        <button class="efdl-submit" data-submit type="submit">{l("Raten","Guess")} <span aria-hidden="true">➜</span></button>
+      </form>
+      <p class="efdl-feedback" role="status" aria-live="polite" data-feedback></p>
+      <div class="efdl-legend" aria-label={l("Hinweislegende","Hint legend")}>
+        <span><i class="efdl-legend-swatch is-match"></i> {l("Richtig","Correct")}</span>
+        <span><i class="efdl-legend-swatch is-miss"></i> {l("Falsch","Incorrect")}</span>
+        <span><i class="efdl-legend-swatch is-unknown"></i> {l("Nicht vergleichbar","Unknown")}</span>
+        <span><b>↑ / ↓</b> {l("Gesucht: später / früher","Target: later / earlier")}</span>
+      </div>
+
+      <div class="efdl-table-wrap" role="region" tabindex="0" aria-label={l("Versuche und Vergleiche – horizontal scrollbar","Guesses and comparisons – horizontally scrollable")}>
+        <table class="efdl-table" data-results-table>
+          <thead><tr>
+            <th scope="col">{l("Operator","Operator")}</th>
+            <th scope="col">{l("Geschlecht","Gender")}</th>
+            <th scope="col">{l("Spezies","Species")}</th>
+            <th scope="col">{l("Fraktion","Faction")}</th>
+            <th scope="col">{l("Element","Element")}</th>
+            <th scope="col">{l("Klasse","Class")}</th>
+            <th scope="col">{l("Waffentyp","Weapon")}</th>
+            <th scope="col">{l("Release-Version","Release version")}</th>
+          </tr></thead>
+          <tbody data-results></tbody>
+        </table>
+      </div>
+      <p class="efdl-attempts" data-attempts>{l("Noch keine Versuche.","No guesses yet.")}</p>
+      <div class="efdl-winner" data-winner hidden>
+        <img data-winner-portrait width="190" height="270" alt="" loading="lazy" />
+        <div><span class="section-kicker">{l("RÄTSEL GELÖST","PUZZLE SOLVED")}</span>
+          <h3 data-winner-name></h3>
+          <p data-winner-summary></p>
+          <button type="button" class="efdl-share" data-share>{l("Ergebnis teilen","Share result")}</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="efdl-below">
+      <article class="efdl-box">
+        <span class="section-kicker">{l("GESTERN","YESTERDAY")}</span>
+        <h2>{l("Operator von gestern","Yesterday's operator")}</h2>
+        <div class="efdl-yesterday-content" data-yesterday><p>{l("Wird geladen …","Loading …")}</p></div>
+      </article>
+      <article class="efdl-box">
+        <span class="section-kicker">{l("DEINE STATISTIK","YOUR STATISTICS")}</span>
+        <h2>{l("Fortschritt","Progress")}</h2>
+        <div class="efdl-personal-stats">
+          <span>{l("Gespielt","Played")}<strong data-stat-played>0</strong></span>
+          <span>{l("Gelöst","Solved")}<strong data-stat-solved>0</strong></span>
+          <span>{l("Beste Streak","Best streak")}<strong data-stat-best>0</strong></span>
+        </div>
+        <p>{l("Dein Fortschritt wird ausschließlich in diesem Browser gespeichert. Ohne Login und ohne geräteübergreifende Synchronisierung.","Your progress is saved only in this browser. No account or cross-device sync.")}</p>
+      </article>
+    </section>
+  </main>
+</EndfieldPlaceholder>
+<script>
+  import "../../lib/endfield/endfieldleClient.mjs";
+</script>

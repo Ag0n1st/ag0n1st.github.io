@@ -15,6 +15,7 @@ export const EN_PAGES=Object.freeze({
   "/endfield/leaderboard/":"/en/endfield/leaderboard/",
   "/endfield/cheatsheets/":"/en/endfield/cheatsheets/",
   "/endfield/checkliste/":"/en/endfield/checklist/",
+  "/endfield/endfieldle/":"/en/endfield/endfieldle/",
   "/endfield/countdown/":"/en/endfield/countdown/",
   "/endfield/operatoren/si/":"/en/endfield/operators/si/",
   "/endfield/operatoren/typhoeus/":"/en/endfield/operators/typhoeus/",

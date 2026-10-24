@@ -8,6 +8,7 @@ const itemsDe = [
   { label: "Cheat Sheets", href: "/endfield/cheatsheets/", key: "cheatsheets" },
   { label: "Checkliste", href: "/endfield/checkliste/", key: "checklist" },
   { label: "Tierlist", href: "/endfield/tierlist/", key: "tierlist" },
+  { label: "Endfieldle", href: "/endfield/endfieldle/", key: "endfieldle" },
   { label: "Countdown", href: "/endfield/countdown/", key: "countdown" },
 ];
 const { active = "overview", lang = "de" } = Astro.props;
@@ -16,11 +17,11 @@ const isEn=lang==="en";
 const upcoming=new Set(["factory","checklist","tierlist","cheatsheets"]);
 const items=isEn?itemsDe.map(item=>({
  ...item,
- label:({"overview":"Overview","operators":"Operators","tierlist":"Tier List","factory":"Factory","speedruns":"Speedruns","leaderboard":"Community Leaderboard","cheatsheets":"Cheat Sheets","checklist":"Checklist","countdown":"Countdown"} as Record<string,string>)[item.key]??item.label,
+ label:({"overview":"Overview","operators":"Operators","tierlist":"Tier List","factory":"Factory","speedruns":"Speedruns","leaderboard":"Community Leaderboard","cheatsheets":"Cheat Sheets","endfieldle":"Endfieldle","checklist":"Checklist","countdown":"Countdown"} as Record<string,string>)[item.key]??item.label,
  href:({
   overview:"/en/endfield/",operators:"/en/endfield/operators/",tierlist:"/en/endfield/tierlist/",factory:"/en/endfield/factory/",
   speedruns:"/en/endfield/speedruns/",leaderboard:"/en/endfield/leaderboard/",cheatsheets:"/en/endfield/cheatsheets/",
-  checklist:"/en/endfield/checklist/",countdown:"/en/endfield/countdown/"
+  checklist:"/en/endfield/checklist/",endfieldle:"/en/endfield/endfieldle/",countdown:"/en/endfield/countdown/"
  } as Record<string,string>)[item.key],
  untranslated:false
 })):itemsDe.map(item=>({...item,untranslated:false}));

@@ -1,0 +1,702 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "2026-10-24",
+  "sources": {
+    "official": "https://endfield.gryphline.com/en-us/operator",
+    "skport": "https://wiki.skport.com/endfield/catalog?mainTypeId=1",
+    "combat": "https://www.enfieldbuild.com/characters",
+    "profile": "https://www.endfielddex.com/guides/endfield-races-and-factions-guide/",
+    "recent": "https://endfield.wiki.gg/wiki/Argent_Flow",
+    "purrchena": "https://endfield.wiki.gg/wiki/Purrchena",
+    "argentRelease": "https://enfieldbuild.com/characters/argent-flow"
+  },
+  "notes": "Release versions supplied and approved by owner. Three complete SKPORT imports are authoritative when present; other compact Endfieldle facts are cross-checked against operator pages until signed SKPORT item/info snapshots can be imported. Endministrator variants collapsed to one solution; gender Variable (not an incorrect fixed-sex claim). Full SKPORT illustration/splash and separate cover art currently verified only for Liino, Typhoeus and Si; missing other illustration variants are not fabricated. Argent Flow belongs to v1.6 but becomes eligible for daily puzzles only from the announced November 5, 2026 banner start; see enfieldbuild.com/characters/argent-flow.",
+  "operators": [
+    {
+      "id": "endministrator",
+      "itemId": "2",
+      "name": "Endministrator",
+      "rarity": 6,
+      "gender": "Variable",
+      "race": "Undisclosed",
+      "faction": "Endfield Industries",
+      "factionCode": "endfield",
+      "element": "Physical",
+      "class": "Guard",
+      "weaponType": "Sword",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/endministrator-2/official-icon.webp",
+        "portrait": "/images/endfield/operators/endministrator-2/official-portrait.webp",
+        "banner": "/images/endfield/operators/endministrator-male/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "laevatain",
+      "itemId": "11",
+      "name": "Laevatain",
+      "rarity": 6,
+      "gender": "Female",
+      "race": "Sarkaz",
+      "faction": "Rhodes Island",
+      "factionCode": "rhodes",
+      "element": "Heat",
+      "class": "Striker",
+      "weaponType": "Sword",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/laevatain/official-icon.webp",
+        "portrait": "/images/endfield/operators/laevatain/official-portrait.webp",
+        "banner": "/images/endfield/operators/laevatain/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "yvonne",
+      "itemId": "14",
+      "name": "Yvonne",
+      "rarity": 6,
+      "gender": "Female",
+      "race": "Vouivre",
+      "faction": "Endfield Industries",
+      "factionCode": "endfield",
+      "element": "Cryo",
+      "class": "Striker",
+      "weaponType": "Handcannon",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/yvonne/official-icon.webp",
+        "portrait": "/images/endfield/operators/yvonne/official-portrait.webp",
+        "banner": "/images/endfield/operators/yvonne/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "gilberta",
+      "itemId": "9",
+      "name": "Gilberta",
+      "rarity": 6,
+      "gender": "Female",
+      "race": "Vulpo",
+      "faction": "Rhodes Island",
+      "factionCode": "rhodes",
+      "element": "Nature",
+      "class": "Supporter",
+      "weaponType": "Arts Unit",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/gilberta/official-icon.webp",
+        "portrait": "/images/endfield/operators/gilberta/official-portrait.webp",
+        "banner": "/images/endfield/operators/gilberta/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "ember",
+      "itemId": "15",
+      "name": "Ember",
+      "rarity": 6,
+      "gender": "Female",
+      "race": "Sankta",
+      "faction": "Order of Steel Oath",
+      "factionCode": "steel",
+      "element": "Heat",
+      "class": "Defender",
+      "weaponType": "Greatsword",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/ember/official-icon.webp",
+        "portrait": "/images/endfield/operators/ember/official-portrait.webp",
+        "banner": "/images/endfield/operators/ember/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "last-rite",
+      "itemId": "17",
+      "name": "Last Rite",
+      "rarity": 6,
+      "gender": "Female",
+      "race": "Sarkaz",
+      "faction": "Seš'qa",
+      "factionCode": "sesqa",
+      "element": "Cryo",
+      "class": "Striker",
+      "weaponType": "Greatsword",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/last-rite/official-icon.webp",
+        "portrait": "/images/endfield/operators/last-rite/official-portrait.webp",
+        "banner": "/images/endfield/operators/last-rite/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "lifeng",
+      "itemId": "12",
+      "name": "Lifeng",
+      "rarity": 6,
+      "gender": "Male",
+      "race": "Anasa",
+      "faction": "Hongshan Academy of Sciences",
+      "factionCode": "has",
+      "element": "Physical",
+      "class": "Guard",
+      "weaponType": "Polearm",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/lifeng/official-icon.webp",
+        "portrait": "/images/endfield/operators/lifeng/official-portrait.webp",
+        "banner": "/images/endfield/operators/lifeng/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "pogranichnik",
+      "itemId": "20",
+      "name": "Pogranichnik",
+      "rarity": 6,
+      "gender": "Male",
+      "race": "Liberi",
+      "faction": "Rhodes Island",
+      "factionCode": "rhodes",
+      "element": "Physical",
+      "class": "Vanguard",
+      "weaponType": "Sword",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/pogranichnik/official-icon.webp",
+        "portrait": "/images/endfield/operators/pogranichnik/official-portrait.webp",
+        "banner": "/images/endfield/operators/pogranichnik/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "ardelia",
+      "itemId": "19",
+      "name": "Ardelia",
+      "rarity": 6,
+      "gender": "Female",
+      "race": "Caprinae",
+      "faction": "Rhodes Island",
+      "factionCode": "rhodes",
+      "element": "Nature",
+      "class": "Supporter",
+      "weaponType": "Arts Unit",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/ardelia/official-icon.webp",
+        "portrait": "/images/endfield/operators/ardelia/official-portrait.webp",
+        "banner": "/images/endfield/operators/ardelia/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "perlica",
+      "itemId": "1",
+      "name": "Perlica",
+      "rarity": 5,
+      "gender": "Female",
+      "race": "Liberi",
+      "faction": "Endfield Industries",
+      "factionCode": "endfield",
+      "element": "Electric",
+      "class": "Caster",
+      "weaponType": "Arts Unit",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/perlica/official-icon.webp",
+        "portrait": "/images/endfield/operators/perlica/official-portrait.webp",
+        "banner": "/images/endfield/operators/perlica/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "arclight",
+      "itemId": "7",
+      "name": "Arclight",
+      "rarity": 5,
+      "gender": "Female",
+      "race": "Kuranta",
+      "faction": "Hannabit Circuit",
+      "factionCode": "hannabit",
+      "element": "Electric",
+      "class": "Vanguard",
+      "weaponType": "Sword",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/arclight/official-icon.webp",
+        "portrait": "/images/endfield/operators/arclight/official-portrait.webp",
+        "banner": "/images/endfield/operators/arclight/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "avywenna",
+      "itemId": "10",
+      "name": "Avywenna",
+      "rarity": 5,
+      "gender": "Female",
+      "race": "Cautus",
+      "faction": "Talos-II General Chamber of Commerce (TGCC)",
+      "factionCode": "tgcc",
+      "element": "Electric",
+      "class": "Striker",
+      "weaponType": "Polearm",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/avywenna/official-icon.webp",
+        "portrait": "/images/endfield/operators/avywenna/official-portrait.webp",
+        "banner": "/images/endfield/operators/avywenna/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "da-pan",
+      "itemId": "8",
+      "name": "Da Pan",
+      "rarity": 5,
+      "gender": "Male",
+      "race": "Ursus",
+      "faction": "Hongshan Academy of Sciences",
+      "factionCode": "has",
+      "element": "Physical",
+      "class": "Striker",
+      "weaponType": "Greatsword",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/da-pan/official-icon.webp",
+        "portrait": "/images/endfield/operators/da-pan/official-portrait.webp",
+        "banner": "/images/endfield/operators/da-pan/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "chen-qianyu",
+      "itemId": "4",
+      "name": "Chen Qianyu",
+      "rarity": 5,
+      "gender": "Female",
+      "race": "Lung",
+      "faction": "Endfield Industries",
+      "factionCode": "endfield",
+      "element": "Physical",
+      "class": "Guard",
+      "weaponType": "Sword",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/chen-qianyu/official-icon.webp",
+        "portrait": "/images/endfield/operators/chen-qianyu/official-portrait.webp",
+        "banner": "/images/endfield/operators/chen-qianyu/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "wulfgard",
+      "itemId": "6",
+      "name": "Wulfgard",
+      "rarity": 5,
+      "gender": "Male",
+      "race": "Lupo",
+      "faction": "Endfield Industries",
+      "factionCode": "endfield",
+      "element": "Heat",
+      "class": "Caster",
+      "weaponType": "Handcannon",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/wulfgard/official-icon.webp",
+        "portrait": "/images/endfield/operators/wulfgard/official-portrait.webp",
+        "banner": "/images/endfield/operators/wulfgard/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "xaihi",
+      "itemId": "13",
+      "name": "Xaihi",
+      "rarity": 5,
+      "gender": "Female",
+      "race": "Sarkaz",
+      "faction": "Cabal of Tranquility",
+      "factionCode": "cabal",
+      "element": "Cryo",
+      "class": "Supporter",
+      "weaponType": "Arts Unit",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/xaihi/official-icon.webp",
+        "portrait": "/images/endfield/operators/xaihi/official-portrait.webp",
+        "banner": "/images/endfield/operators/xaihi/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "snowshine",
+      "itemId": "16",
+      "name": "Snowshine",
+      "rarity": 5,
+      "gender": "Female",
+      "race": "Ursus",
+      "faction": "Rhodes Island",
+      "factionCode": "rhodes",
+      "element": "Cryo",
+      "class": "Defender",
+      "weaponType": "Greatsword",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/snowshine/official-icon.webp",
+        "portrait": "/images/endfield/operators/snowshine/official-portrait.webp",
+        "banner": "/images/endfield/operators/snowshine/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "alesh",
+      "itemId": "18",
+      "name": "Alesh",
+      "rarity": 5,
+      "gender": "Male",
+      "race": "Anaty",
+      "faction": "United Workers' Syndicates of Talos II",
+      "factionCode": "united",
+      "element": "Cryo",
+      "class": "Vanguard",
+      "weaponType": "Sword",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/alesh/official-icon.webp",
+        "portrait": "/images/endfield/operators/alesh/official-portrait.webp",
+        "banner": "/images/endfield/operators/alesh/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "akekuri",
+      "itemId": "5",
+      "name": "Akekuri",
+      "rarity": 4,
+      "gender": "Female",
+      "race": "Perro",
+      "faction": "Endfield Industries",
+      "factionCode": "endfield",
+      "element": "Heat",
+      "class": "Vanguard",
+      "weaponType": "Sword",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/akekuri/official-icon.webp",
+        "portrait": "/images/endfield/operators/akekuri/official-portrait.webp",
+        "banner": "/images/endfield/operators/akekuri/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "catcher",
+      "itemId": "23",
+      "name": "Catcher",
+      "rarity": 4,
+      "gender": "Male",
+      "race": "Perro",
+      "faction": "Endfield Industries",
+      "factionCode": "endfield",
+      "element": "Physical",
+      "class": "Defender",
+      "weaponType": "Greatsword",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/catcher/official-icon.webp",
+        "portrait": "/images/endfield/operators/catcher/official-portrait.webp",
+        "banner": "/images/endfield/operators/catcher/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "estella",
+      "itemId": "21",
+      "name": "Estella",
+      "rarity": 4,
+      "gender": "Female",
+      "race": "Feline",
+      "faction": "Endfield Industries",
+      "factionCode": "endfield",
+      "element": "Cryo",
+      "class": "Guard",
+      "weaponType": "Polearm",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/estella/official-icon.webp",
+        "portrait": "/images/endfield/operators/estella/official-portrait.webp",
+        "banner": "/images/endfield/operators/estella/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "fluorite",
+      "itemId": "24",
+      "name": "Fluorite",
+      "rarity": 4,
+      "gender": "Female",
+      "race": "Phidia",
+      "faction": "Endfield Industries",
+      "factionCode": "endfield",
+      "element": "Nature",
+      "class": "Caster",
+      "weaponType": "Handcannon",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/fluorite/official-icon.webp",
+        "portrait": "/images/endfield/operators/fluorite/official-portrait.webp",
+        "banner": "/images/endfield/operators/fluorite/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "antal",
+      "itemId": "22",
+      "name": "Antal",
+      "rarity": 4,
+      "gender": "Male",
+      "race": "Savra",
+      "faction": "Endfield Industries",
+      "factionCode": "endfield",
+      "element": "Electric",
+      "class": "Supporter",
+      "weaponType": "Arts Unit",
+      "releaseVersion": "v1.0",
+      "assets": {
+        "icon": "/images/endfield/operators/antal/official-icon.webp",
+        "portrait": "/images/endfield/operators/antal/official-portrait.webp",
+        "banner": "/images/endfield/operators/antal/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "tangtang",
+      "itemId": "25",
+      "name": "Tangtang",
+      "rarity": 6,
+      "gender": "Female",
+      "race": "Feline",
+      "faction": "Endfield Industries",
+      "factionCode": "endfield",
+      "element": "Cryo",
+      "class": "Caster",
+      "weaponType": "Handcannon",
+      "releaseVersion": "v1.1",
+      "assets": {
+        "icon": "/images/endfield/operators/tangtang/official-icon.webp",
+        "portrait": "/images/endfield/operators/tangtang/official-portrait.webp",
+        "banner": "/images/endfield/operators/tangtang/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "rossi",
+      "itemId": "615",
+      "name": "Rossi",
+      "rarity": 6,
+      "gender": "Female",
+      "race": "Lupo",
+      "faction": "Endfield Industries",
+      "factionCode": "endfield",
+      "element": "Physical",
+      "class": "Guard",
+      "weaponType": "Sword",
+      "releaseVersion": "v1.1",
+      "assets": {
+        "icon": "/images/endfield/operators/rossi/official-icon.webp",
+        "portrait": "/images/endfield/operators/rossi/official-portrait.webp",
+        "banner": "/images/endfield/operators/rossi/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "zhuang-fangyi",
+      "itemId": "838",
+      "name": "Zhuang Fangyi",
+      "rarity": 6,
+      "gender": "Female",
+      "race": "Kylin",
+      "faction": "Hongshan Academy of Sciences",
+      "factionCode": "has",
+      "element": "Electric",
+      "class": "Striker",
+      "weaponType": "Arts Unit",
+      "releaseVersion": "v1.2",
+      "assets": {
+        "icon": "/images/endfield/operators/zhuang-fangyi/official-icon.webp",
+        "portrait": "/images/endfield/operators/zhuang-fangyi/official-portrait.webp",
+        "banner": "/images/endfield/operators/zhuang-fangyi/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "mi-fu",
+      "itemId": "995",
+      "name": "Mi Fu",
+      "rarity": 6,
+      "gender": "Female",
+      "race": "Sarkaz",
+      "faction": "Hongshan Academy of Sciences",
+      "factionCode": "has",
+      "element": "Physical",
+      "class": "Guard",
+      "weaponType": "Greatsword",
+      "releaseVersion": "v1.3",
+      "assets": {
+        "icon": "/images/endfield/operators/mi-fu/official-icon.webp",
+        "portrait": "/images/endfield/operators/mi-fu/official-portrait.webp",
+        "banner": "/images/endfield/operators/mi-fu/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "camille",
+      "itemId": "996",
+      "name": "Camille",
+      "rarity": 6,
+      "gender": "Female",
+      "race": "Sarkaz",
+      "faction": "Seš'qa",
+      "factionCode": "sesqa",
+      "element": "Heat",
+      "class": "Vanguard",
+      "weaponType": "Polearm",
+      "releaseVersion": "v1.3",
+      "assets": {
+        "icon": "/images/endfield/operators/camille/official-icon.webp",
+        "portrait": "/images/endfield/operators/camille/official-portrait.webp",
+        "banner": "/images/endfield/operators/camille/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "arcane",
+      "itemId": "1040",
+      "name": "Arcane",
+      "rarity": 6,
+      "gender": "Female",
+      "race": "Liberi",
+      "faction": "Hongshan Academy of Sciences",
+      "factionCode": "has",
+      "element": "Nature",
+      "class": "Caster",
+      "weaponType": "Arts Unit",
+      "releaseVersion": "v1.4",
+      "assets": {
+        "icon": "/images/endfield/operators/arcane/official-icon.webp",
+        "portrait": "/images/endfield/operators/arcane/official-portrait.webp",
+        "banner": "/images/endfield/operators/arcane/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "liino",
+      "itemId": "1041",
+      "name": "Liino",
+      "rarity": 6,
+      "gender": "Female",
+      "race": "Sarkaz",
+      "faction": "Talos-II General Chamber of Commerce (TGCC)",
+      "factionCode": "tgcc",
+      "element": "Electric",
+      "class": "Supporter",
+      "weaponType": "Polearm",
+      "releaseVersion": "v1.4",
+      "assets": {
+        "icon": "/images/endfield/operators/liino/official-icon.webp",
+        "portrait": "/images/endfield/operators/liino/official-portrait.webp",
+        "banner": "/images/endfield/operators/liino/banner.webp",
+        "splash": "/images/endfield/operators/liino/illustration.webp",
+        "cover": "/images/endfield/operators/liino/cover.webp"
+      },
+      "sourceQuality": "skport-import"
+    },
+    {
+      "id": "typhoeus",
+      "itemId": "1173",
+      "name": "Typhoeus",
+      "rarity": 6,
+      "gender": "Female",
+      "race": "Sarkaz",
+      "faction": "Rhodes Island",
+      "factionCode": "rhodes",
+      "element": "Nature",
+      "class": "Striker",
+      "weaponType": "Arts Unit",
+      "releaseVersion": "v1.5",
+      "assets": {
+        "icon": "/images/endfield/operators/typhoeus/official-icon.webp",
+        "portrait": "/images/endfield/operators/typhoeus/official-portrait.webp",
+        "banner": "/images/endfield/operators/typhoeus/banner.webp",
+        "splash": "/images/endfield/operators/typhoeus/illustration.webp",
+        "cover": "/images/endfield/operators/typhoeus/cover.webp"
+      },
+      "sourceQuality": "skport-import"
+    },
+    {
+      "id": "purrchena",
+      "itemId": "1174",
+      "name": "Purrchena",
+      "rarity": 5,
+      "gender": "Female",
+      "race": "Feline",
+      "faction": "Talos-II General Chamber of Commerce (TGCC)",
+      "factionCode": "tgcc",
+      "element": "Physical",
+      "class": "Defender",
+      "weaponType": "Sword",
+      "releaseVersion": "v1.5",
+      "assets": {
+        "icon": "/images/endfield/operators/purrchena/official-icon.webp",
+        "portrait": "/images/endfield/operators/purrchena/official-portrait.webp",
+        "banner": "/images/endfield/operators/purrchena/banner.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community"
+    },
+    {
+      "id": "si",
+      "itemId": "1278",
+      "name": "Si",
+      "rarity": 6,
+      "gender": "Female",
+      "race": "Undisclosed",
+      "faction": "Hongshan Academy of Sciences",
+      "factionCode": "has",
+      "element": "Cryo",
+      "class": "Supporter",
+      "weaponType": "Greatsword",
+      "releaseVersion": "v1.6",
+      "assets": {
+        "icon": "/images/endfield/operators/si/official-icon.webp",
+        "portrait": "/images/endfield/operators/si/official-portrait.webp",
+        "banner": "/images/endfield/operators/si/banner.webp",
+        "splash": "/images/endfield/operators/si/illustration.webp",
+        "cover": "/images/endfield/operators/si/cover.webp"
+      },
+      "sourceQuality": "skport-import"
+    },
+    {
+      "id": "argent-flow",
+      "itemId": "1279",
+      "name": "Argent Flow",
+      "rarity": 6,
+      "gender": "Male",
+      "race": "Lung",
+      "faction": "Hongshan Academy of Sciences",
+      "factionCode": "has",
+      "element": "Electric",
+      "class": "Guard",
+      "weaponType": "Sword",
+      "releaseVersion": "v1.6",
+      "assets": {
+        "icon": "/images/endfield/operators/argent-flow/official-icon.webp",
+        "portrait": "/images/endfield/operators/argent-flow/official-portrait.webp"
+      },
+      "sourceQuality": "cross-checked-official-and-community",
+      "availableFrom": "2026-11-05"
+    }
+  ]
+}

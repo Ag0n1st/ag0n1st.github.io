@@ -555,8 +555,8 @@ def smoke_i18n(page, base_url, width):
         check_overflow(page,label+" "+route)
     page.goto(base_url+"/en/endfield/")
     nav_paths=page.locator(".endfield-nav a").evaluate_all("(a)=>a.map(x=>new URL(x.href).pathname)")
-    verify(len(nav_paths)==9 and all(p.startswith("/en/") for p in nav_paths),
-           label+": all nine remaining Endfield tabs are English, no DE fallback")
+    verify(len(nav_paths)==10 and all(p.startswith("/en/") for p in nav_paths),
+           label+": all ten Endfield tabs are English, no DE fallback")
     verify(page.locator(".endfield-section").count()==9,
            label+": identical nine-section Endfield homepage layout")
     page.locator('.endfield-nav a[href="/en/endfield/factory/"]').click()
@@ -719,16 +719,17 @@ def smoke_i18n(page, base_url, width):
         check_overflow(page,label+" "+lang+" countdown")
         links=page.locator(".endfield-nav-link").all_text_contents()
         flat=[x.strip().replace("·","") for x in links]
-        verify(len(flat)==9 and
+        verify(len(flat)==10 and
                flat.index("Tierlist" if lang=="de" else "Tier List") == flat.index("Checkliste" if lang=="de" else "Checklist")+1 and
-               flat.index("Countdown") == flat.index("Tierlist" if lang=="de" else "Tier List")+1,
+               flat.index("Endfieldle")==flat.index("Tierlist" if lang=="de" else "Tier List")+1 and
+               flat.index("Countdown") == flat.index("Endfieldle")+1,
                label+": "+lang+" Tierlist appears after Checklist and before Countdown")
         verify(all(not any(name in x for name in ("Rekrutierung","Veredelung","Essenzen","Recruitment","Refinement","Essences")) for x in flat) and
                all("Cheat" not in x or "Sheets" in x for x in flat),
                label+": "+lang+" removed three former standalone system links from Endfield nav")
-        verify(page.locator(".endfield-nav-link").count()==9 and
+        verify(page.locator(".endfield-nav-link").count()==10 and
                page.locator('a.endfield-nav-link[href="'+("/endfield/cheatsheets/" if lang=="de" else "/en/endfield/cheatsheets/")+'"]').count()==1,
-               label+": "+lang+" consolidated nine nav links include the single Cheat Sheets entry")
+               label+": "+lang+" consolidated ten nav links include the single Cheat Sheets entry")
         verify(page.locator('a.endfield-nav-link[href="'+("/endfield/leaderboard/" if lang=="de" else "/en/endfield/leaderboard/")+'"] .nav-upcoming-wrench').count()==0 and
                page.locator('a.endfield-nav-link[href="'+("/endfield/cheatsheets/" if lang=="de" else "/en/endfield/cheatsheets/")+'"] .nav-upcoming-wrench').count()==1,
                label+": "+lang+" completed Leaderboard has no wrench; unfinished Cheat Sheets retains it")
@@ -1109,6 +1110,66 @@ def smoke_i18n(page, base_url, width):
                    'noindex,follow' in old_response.text(),
                    label+": "+lang+" previous "+old+" link forwards to the correct Cheat Sheets section")
         check_overflow(page,label+" "+lang+" cheatsheets")
+
+        page.goto(base_url+prefix+"/endfield/endfieldle/")
+        game=page.locator("[data-endfieldle]")
+        game_diag={"main":game.count(),
+                   "html_lang":page.locator("html").get_attribute("lang"),
+                   "active_nav":page.locator('a.endfield-nav-link[href="'+prefix+'/endfield/endfieldle/"][aria-current="page"]').count(),
+                   "table_headers":page.locator(".efdl-table thead th").count(),
+                   "url":page.url}
+        verify(game_diag["main"]==1 and game_diag["html_lang"]==lang and
+               game_diag["active_nav"]==1 and game_diag["table_headers"]==8,
+               label+": "+lang+" Endfieldle page, seven categories and active menu "+str(game_diag))
+        page.evaluate("localStorage.removeItem('endfieldle:v1')")
+        page.reload()
+        page.locator("[data-yesterday] img").wait_for(state="attached")
+        verify(page.locator("[data-guess-input]").is_enabled() and
+               page.locator("[data-streak]").inner_text()=="0" and
+               page.locator("[data-yesterday] img").count()==1 and
+               page.locator("[data-reset]").inner_text().count(":")==2,
+               label+": "+lang+" shared daily date, yesterday's portrait and live countdown")
+        import json as _json
+        from datetime import datetime as _datetime
+        from zoneinfo import ZoneInfo as _ZoneInfo
+        data_root=Path(__file__).resolve().parents[2] / "src/data/endfield"
+        with open(data_root/"endfieldle-schedule.json",encoding="utf8") as handle:
+            schedule=_json.load(handle)["days"]
+        with open(data_root/"endfieldle-roster.json",encoding="utf8") as handle:
+            roster=_json.load(handle)["operators"]
+        now=_datetime.now(_ZoneInfo("Europe/Berlin")).strftime("%Y-%m-%d")
+        answer=schedule[now]
+        target_name=next(o["name"] for o in roster if o["id"]==answer)
+        wrong_name=next(o["name"] for o in roster if o["id"]!=answer)
+        guess_input=page.locator("[data-guess-input]")
+        guess_input.fill(wrong_name)
+        verify(page.locator("[data-suggestions] .efdl-option").count()>=1,
+               label+": "+lang+" autocomplete shows valid operator choices")
+        page.locator("[data-submit]").click()
+        guess_debug={"rows":page.locator("[data-results] tr").count(),
+                     "cells":page.locator("[data-results] tr").first.locator(".efdl-cell").count(),
+                     "feedback":page.locator("[data-feedback]").inner_text(),
+                     "input":guess_input.input_value(),
+                     "suggestions":page.locator("[data-suggestions] .efdl-option").count(),
+                     "won":page.locator("[data-winner]").is_visible()}
+        verify(guess_debug["rows"]==1 and guess_debug["cells"]==7,
+               label+": "+lang+" wrong guess creates all seven trivia comparisons "+str(guess_debug))
+        guess_input.fill(target_name)
+        page.locator("[data-submit]").click()
+        verify(page.locator("[data-winner]").is_visible() and
+               page.locator("[data-winner-name]").inner_text()==target_name and
+               page.locator("[data-results] tr").count()==2 and
+               page.locator("[data-streak]").inner_text()=="1" and
+               not guess_input.is_enabled(),
+               label+": "+lang+" winning answer adds local streak and ends today's puzzle")
+        page.reload()
+        page.locator("[data-winner]").wait_for(state="visible")
+        verify(page.locator("[data-results] tr").count()==2 and
+               page.locator("[data-winner-name]").inner_text()==target_name and
+               page.locator("[data-streak]").inner_text()=="1",
+               label+": "+lang+" browser-local guesses and win survive a reload")
+        check_overflow(page,label+" "+lang+" Endfieldle")
+
     sitemap=page.request.get(base_url+"/sitemap.xml")
     verify(sitemap.status==200 and
            "<loc>https://ag0n1st.com/en/endfield/operators/si/</loc>" in sitemap.text() and
