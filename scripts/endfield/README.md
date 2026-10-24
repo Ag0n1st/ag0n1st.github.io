@@ -1,5 +1,9 @@
 # Endfield – offizielle Spieldaten ohne externe Datenbank
 
+> **Aktueller SKPORT-Datenstand 24.10.2026:** Die historische Entwicklung in den nachfolgenden Abschnitten beschreibt die damaligen Einzelimporte. Inzwischen sind **33/34 eindeutige Operatoren** durch echte öffentliche SKPORT-`item/info`-Antworten erfasst. Die drei ursprünglichen Vollprofile (Liino, Typhoeus, Si) wurden nicht überschrieben. **30 zusätzliche Profile**, inkl. 4×12 Skillränge und – für Arcane – den drei zusätzlichen WILL-Varianten, sowie **180 optimierte offizielle SKPORT-Cover/Illustrationen/Skillicons** wurden auf einem anonymen Chromium-Workflow importiert. Nur **Argent Flow** (Debüt 05.11.2026) ist bislang nicht erfasst; bei Endministrator fehlen im öffentlichen Wiki weiterhin die Effekte von Potenzial 4/5 (keine erfundenen Daten). Die vollständigen Quellnachweise, Tests und Befehle sind unter **[`docs/endfield-operator-import-status.md`](../../docs/endfield-operator-import-status.md)** dokumentiert. Neue Importer: `import-public-skport-all.mjs`, `probe-public-operator.mjs`; Parser `import-operator.mjs` erkennt Yvonnes Rangschreibweise, Arcanes Dual-Skills und unbekannte Potenziale. Der ältere manuelle JSON-Workflow bleibt als Fallback bestehen.
+
+
+
 ## Aktueller Aufbau
 
 - **Redaktionelle Guides:** `src/content/operator-guides/<slug>.md` – deine Texte, Bewertungen, Builds und Teams.
