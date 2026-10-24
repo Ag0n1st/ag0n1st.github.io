@@ -1,0 +1,2373 @@
+{
+  "schemaVersion": 2,
+  "source": {
+    "provider": "SKPORT Wiki",
+    "itemId": "1040",
+    "language": "en",
+    "snapshot": "2026-10-24"
+  },
+  "operator": {
+    "id": "1040",
+    "slug": "arcane",
+    "name": "Arcane",
+    "rarity": 6,
+    "element": "Nature",
+    "class": "Caster",
+    "weaponType": "Arts Unit",
+    "faction": "HAS",
+    "coverUrl": "https://static.skport.com/image/rm42wiki/20260716/7192618399447/6a580a03337a11068196bb6c_6ad0f152.png",
+    "illustrationUrl": "https://static.skport.com/image/rm42wiki/20260716/7192618399447/6a580a0a337a11068196bb6d_3eac6ad0.png"
+  },
+  "ranks": [
+    "RANK 1",
+    "RANK 2",
+    "RANK 3",
+    "RANK 4",
+    "RANK 5",
+    "RANK 6",
+    "RANK 7",
+    "RANK 8",
+    "RANK 9",
+    "Mastery I",
+    "Mastery II",
+    "Mastery III"
+  ],
+  "skills": [
+    {
+      "slot": "basic",
+      "name": "Artillery Interdiction",
+      "type": "Basic Attack",
+      "iconUrl": "https://static.skport.com/image/rm42wiki/20260716/7192618399447/6a5887659650be7342500b8c_f1525633.png",
+      "description": "BASIC ATTACK:\n\nAn attack with up to 5 sequences that deals Nature DMG. As the controlled operator, Final Strike also deals 17 Stagger.\n\nDIVE ATTACK:\n\nBasic attack performed in mid-air becomes a dive attack that deals Nature DMG to nearby enemies.\n\nFINISHER:\n\nBasic attack performed near a Staggered enemy becomes a finisher that deals massive Nature DMG and recovers some SP.",
+      "metrics": [
+        [
+          "BATK SEQ 1 Multiplier",
+          "19%",
+          "21%",
+          "22%",
+          "24%",
+          "26%",
+          "28%",
+          "30%",
+          "32%",
+          "34%",
+          "36%",
+          "39%",
+          "42%"
+        ],
+        [
+          "BATK SEQ 2 Multiplier",
+          "21%",
+          "23%",
+          "26%",
+          "28%",
+          "30%",
+          "32%",
+          "34%",
+          "36%",
+          "38%",
+          "41%",
+          "44%",
+          "48%"
+        ],
+        [
+          "BATK SEQ 3 Multiplier",
+          "33%",
+          "37%",
+          "40%",
+          "43%",
+          "47%",
+          "50%",
+          "53%",
+          "57%",
+          "60%",
+          "64%",
+          "69%",
+          "75%"
+        ],
+        [
+          "BATK SEQ 4 Multiplier",
+          "36%",
+          "39%",
+          "43%",
+          "46%",
+          "50%",
+          "53%",
+          "57%",
+          "61%",
+          "64%",
+          "69%",
+          "74%",
+          "80%"
+        ],
+        [
+          "BATK SEQ 5 Multiplier",
+          "47%",
+          "52%",
+          "56%",
+          "61%",
+          "66%",
+          "71%",
+          "75%",
+          "80%",
+          "85%",
+          "90%",
+          "98%",
+          "106%"
+        ],
+        [
+          "Finisher ATK Multiplier",
+          "400%",
+          "440%",
+          "480%",
+          "520%",
+          "560%",
+          "600%",
+          "640%",
+          "680%",
+          "720%",
+          "770%",
+          "830%",
+          "900%"
+        ],
+        [
+          "Dive ATK Multiplier",
+          "80%",
+          "88%",
+          "96%",
+          "104%",
+          "112%",
+          "120%",
+          "128%",
+          "136%",
+          "144%",
+          "154%",
+          "166%",
+          "180%"
+        ]
+      ],
+      "upgradeCosts": [
+        {
+          "rank": "RANK 1",
+          "items": []
+        },
+        {
+          "rank": "RANK 2",
+          "items": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "141",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "rank": "RANK 3",
+          "items": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "141",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 2700
+            }
+          ]
+        },
+        {
+          "rank": "RANK 4",
+          "items": [
+            {
+              "id": "109",
+              "count": 16
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 3200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 5",
+          "items": [
+            {
+              "id": "109",
+              "count": 21
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 4200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 6",
+          "items": [
+            {
+              "id": "109",
+              "count": 27
+            },
+            {
+              "id": "147",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 5400
+            }
+          ]
+        },
+        {
+          "rank": "RANK 7",
+          "items": [
+            {
+              "id": "110",
+              "count": 6
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 8200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 8",
+          "items": [
+            {
+              "id": "110",
+              "count": 8
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 10500
+            }
+          ]
+        },
+        {
+          "rank": "RANK 9",
+          "items": [
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "146",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 18000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery I",
+          "items": [
+            {
+              "id": "114",
+              "count": 1
+            },
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "112",
+              "count": 6
+            },
+            {
+              "id": "1049",
+              "count": 3
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery II",
+          "items": [
+            {
+              "id": "114",
+              "count": 2
+            },
+            {
+              "id": "110",
+              "count": 24
+            },
+            {
+              "id": "112",
+              "count": 16
+            },
+            {
+              "id": "1049",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 30000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery III",
+          "items": [
+            {
+              "id": "114",
+              "count": 3
+            },
+            {
+              "id": "110",
+              "count": 50
+            },
+            {
+              "id": "112",
+              "count": 36
+            },
+            {
+              "id": "1049",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 65000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "battle",
+      "name": "Jadecrushing Grid (Array Arcana: INT)",
+      "type": "Battle Skill",
+      "iconUrl": "https://static.skport.com/image/rm42wiki/20260716/7192618399447/6a58878a337a11068196bef0_f1525633.png",
+      "description": "Creates a Jadecrushing Grid that deals Nature DMG and applies Nature Infliction to enemies within the area of effect.\n\nArray Arcana: INT:\n\n- Deals more DMG.",
+      "metrics": [
+        [
+          "SP Cost",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100"
+        ],
+        [
+          "Stagger",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10"
+        ],
+        [
+          "DMG Multiplier",
+          "222%",
+          "245%",
+          "267%",
+          "289%",
+          "311%",
+          "333%",
+          "356%",
+          "378%",
+          "400%",
+          "428%",
+          "461%",
+          "500%"
+        ]
+      ],
+      "upgradeCosts": [
+        {
+          "rank": "RANK 1",
+          "items": []
+        },
+        {
+          "rank": "RANK 2",
+          "items": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "141",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "rank": "RANK 3",
+          "items": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "141",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 2700
+            }
+          ]
+        },
+        {
+          "rank": "RANK 4",
+          "items": [
+            {
+              "id": "109",
+              "count": 16
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 3200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 5",
+          "items": [
+            {
+              "id": "109",
+              "count": 21
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 4200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 6",
+          "items": [
+            {
+              "id": "109",
+              "count": 27
+            },
+            {
+              "id": "147",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 5400
+            }
+          ]
+        },
+        {
+          "rank": "RANK 7",
+          "items": [
+            {
+              "id": "110",
+              "count": 6
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 8200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 8",
+          "items": [
+            {
+              "id": "110",
+              "count": 8
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 10500
+            }
+          ]
+        },
+        {
+          "rank": "RANK 9",
+          "items": [
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "146",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 18000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery I",
+          "items": [
+            {
+              "id": "114",
+              "count": 1
+            },
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "103",
+              "count": 6
+            },
+            {
+              "id": "1049",
+              "count": 3
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery II",
+          "items": [
+            {
+              "id": "114",
+              "count": 2
+            },
+            {
+              "id": "110",
+              "count": 24
+            },
+            {
+              "id": "103",
+              "count": 16
+            },
+            {
+              "id": "1049",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 30000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery III",
+          "items": [
+            {
+              "id": "114",
+              "count": 3
+            },
+            {
+              "id": "110",
+              "count": 50
+            },
+            {
+              "id": "103",
+              "count": 36
+            },
+            {
+              "id": "1049",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 65000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "combo",
+      "name": "Yinglung Stance IV (Array Arcana: INT)",
+      "type": "Combo Skill",
+      "iconUrl": "https://static.skport.com/image/rm42wiki/20260716/7192618399447/6a58879c9650be7342500b8e_13673ac9.png",
+      "description": "COMBO TRIGGER: When Nature Infliction or at least 2 stacks of non-Nature Arts Infliction are applied on an enemy.\n\nArcane charges at the target and sets up 4 Tactical Doubles that apply Nature Susceptibility and Cryo Susceptibility and deal Nature DMG to the target and nearby enemies, and also apply Imprisonment on the said target. When Imprisonment ends, the Tactical Doubles will attack the said target to deal Explosion DMG.\n\nImprisonment: A debuff that slows all actions.\n\nArray Arcana: INT:\n\n- Hitting an enemy under Imprisonment with Arcane's battle skill returns some SP, ends the Imprisonment early, deals Explosion DMG, applies another instance of Nature Susceptibility and Cryo Susceptibility, and deals multiple hits of bonus DMG after a short delay.\n\n- Combo skill cooldown is shorter.",
+      "metrics": [
+        [
+          "Cooldown",
+          "14s",
+          "14s",
+          "14s",
+          "14s",
+          "14s",
+          "14s",
+          "14s",
+          "14s",
+          "13s",
+          "13s",
+          "13s",
+          "12s"
+        ],
+        [
+          "Base DMG Multiplier",
+          "35%",
+          "39%",
+          "42%",
+          "46%",
+          "50%",
+          "53%",
+          "57%",
+          "60%",
+          "64%",
+          "68%",
+          "73%",
+          "80%"
+        ],
+        [
+          "Base Stagger",
+          "5",
+          "5",
+          "5",
+          "5",
+          "5",
+          "5",
+          "5",
+          "5",
+          "5",
+          "5",
+          "5",
+          "5"
+        ],
+        [
+          "Explosion DMG Multiplier",
+          "53%",
+          "59%",
+          "64%",
+          "69%",
+          "75%",
+          "80%",
+          "85%",
+          "91%",
+          "96%",
+          "103%",
+          "111%",
+          "120%"
+        ],
+        [
+          "Explosion Stagger",
+          "5",
+          "5",
+          "5",
+          "5",
+          "5",
+          "5",
+          "5",
+          "5",
+          "5",
+          "5",
+          "5",
+          "5"
+        ],
+        [
+          "Ultimate Energy Gain",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10"
+        ],
+        [
+          "Imprisonment and Susceptibility Duration (s)",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        [
+          "Susceptibility",
+          "4%",
+          "4%",
+          "4%",
+          "4%",
+          "4%",
+          "4%",
+          "4%",
+          "4%",
+          "4%",
+          "4%",
+          "4%",
+          "4%"
+        ],
+        [
+          "Bonus DMG Multiplier",
+          "222%",
+          "244%",
+          "266%",
+          "289%",
+          "311%",
+          "333%",
+          "355%",
+          "377%",
+          "400%",
+          "427%",
+          "461%",
+          "500%"
+        ],
+        [
+          "Bonus Susceptibility Duration (s)",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2"
+        ],
+        [
+          "SP Return",
+          "28",
+          "28",
+          "28",
+          "28",
+          "28",
+          "28",
+          "28",
+          "28",
+          "28",
+          "30",
+          "30",
+          "30"
+        ]
+      ],
+      "upgradeCosts": [
+        {
+          "rank": "RANK 1",
+          "items": []
+        },
+        {
+          "rank": "RANK 2",
+          "items": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "141",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "rank": "RANK 3",
+          "items": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "141",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 2700
+            }
+          ]
+        },
+        {
+          "rank": "RANK 4",
+          "items": [
+            {
+              "id": "109",
+              "count": 16
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 3200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 5",
+          "items": [
+            {
+              "id": "109",
+              "count": 21
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 4200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 6",
+          "items": [
+            {
+              "id": "109",
+              "count": 27
+            },
+            {
+              "id": "147",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 5400
+            }
+          ]
+        },
+        {
+          "rank": "RANK 7",
+          "items": [
+            {
+              "id": "110",
+              "count": 6
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 8200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 8",
+          "items": [
+            {
+              "id": "110",
+              "count": 8
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 10500
+            }
+          ]
+        },
+        {
+          "rank": "RANK 9",
+          "items": [
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "146",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 18000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery I",
+          "items": [
+            {
+              "id": "114",
+              "count": 1
+            },
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "112",
+              "count": 6
+            },
+            {
+              "id": "1049",
+              "count": 3
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery II",
+          "items": [
+            {
+              "id": "114",
+              "count": 2
+            },
+            {
+              "id": "110",
+              "count": 24
+            },
+            {
+              "id": "112",
+              "count": 16
+            },
+            {
+              "id": "1049",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 30000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery III",
+          "items": [
+            {
+              "id": "114",
+              "count": 3
+            },
+            {
+              "id": "110",
+              "count": 50
+            },
+            {
+              "id": "112",
+              "count": 36
+            },
+            {
+              "id": "1049",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 65000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "ultimate",
+      "name": "Gloompurge (Array Arcana: INT)",
+      "type": "Ultimate",
+      "iconUrl": "https://static.skport.com/image/rm42wiki/20260716/7192618399447/6a5887f3337a11068196bef4_13673ac9.png",
+      "description": "Arcane creates a Gloompurger Array that immediately deals Nature DMG to enemies within the area of effect (AOE).\n\nWhen hitting an enemy within the Gloompurger Array with a Finisher or a Final Strike performed by the controlled operator, the Gloompurger Array unleashes a Cluster Strike that deals Area DMG to the said enemy. This effect triggers up to 2 times.\n\nAfter triggering Cluster Strike 2 times, the ultimate is switched to Gloompurge Arcana.\n\nGloompurge Arcana: Deals Nature DMG to enemies within a large AOE.\n\nArray Arcana: INT:\n\n- When created, the Gloompurger Array also forcibly applies Corrosion to enemies in the AOE.",
+      "metrics": [
+        [
+          "Ultimate Energy Cost",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100"
+        ],
+        [
+          "Gloompurger Array Creation DMG Multiplier",
+          "80%",
+          "88%",
+          "96%",
+          "104%",
+          "112%",
+          "120%",
+          "128%",
+          "136%",
+          "144%",
+          "154%",
+          "166%",
+          "180%"
+        ],
+        [
+          "Gloompurger Array Creation Stagger",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10"
+        ],
+        [
+          "Gloompurger Array Duration (s)",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20",
+          "20"
+        ],
+        [
+          "Gloompurge Arcana Stagger",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10"
+        ],
+        [
+          "Forced Corrosion Duration (s)",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15",
+          "15"
+        ],
+        [
+          "Cluster Strike Total DMG Multiplier",
+          "160%",
+          "176%",
+          "192%",
+          "208%",
+          "224%",
+          "240%",
+          "256%",
+          "272%",
+          "288%",
+          "308%",
+          "332%",
+          "360%"
+        ],
+        [
+          "Gloompurge Arcana DMG Multiplier",
+          "640%",
+          "704%",
+          "768%",
+          "832%",
+          "896%",
+          "960%",
+          "1024%",
+          "1088%",
+          "1152%",
+          "1232%",
+          "1328%",
+          "1440%"
+        ]
+      ],
+      "upgradeCosts": [
+        {
+          "rank": "RANK 1",
+          "items": []
+        },
+        {
+          "rank": "RANK 2",
+          "items": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "141",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "rank": "RANK 3",
+          "items": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "141",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 2700
+            }
+          ]
+        },
+        {
+          "rank": "RANK 4",
+          "items": [
+            {
+              "id": "109",
+              "count": 16
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 3200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 5",
+          "items": [
+            {
+              "id": "109",
+              "count": 21
+            },
+            {
+              "id": "147",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 4200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 6",
+          "items": [
+            {
+              "id": "109",
+              "count": 27
+            },
+            {
+              "id": "147",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 5400
+            }
+          ]
+        },
+        {
+          "rank": "RANK 7",
+          "items": [
+            {
+              "id": "110",
+              "count": 6
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 8200
+            }
+          ]
+        },
+        {
+          "rank": "RANK 8",
+          "items": [
+            {
+              "id": "110",
+              "count": 8
+            },
+            {
+              "id": "146",
+              "count": 1
+            },
+            {
+              "id": "642",
+              "count": 10500
+            }
+          ]
+        },
+        {
+          "rank": "RANK 9",
+          "items": [
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "146",
+              "count": 2
+            },
+            {
+              "id": "642",
+              "count": 18000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery I",
+          "items": [
+            {
+              "id": "114",
+              "count": 1
+            },
+            {
+              "id": "110",
+              "count": 15
+            },
+            {
+              "id": "103",
+              "count": 6
+            },
+            {
+              "id": "1049",
+              "count": 3
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery II",
+          "items": [
+            {
+              "id": "114",
+              "count": 2
+            },
+            {
+              "id": "110",
+              "count": 24
+            },
+            {
+              "id": "103",
+              "count": 16
+            },
+            {
+              "id": "1049",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 30000
+            }
+          ]
+        },
+        {
+          "rank": "Mastery III",
+          "items": [
+            {
+              "id": "114",
+              "count": 3
+            },
+            {
+              "id": "110",
+              "count": 50
+            },
+            {
+              "id": "103",
+              "count": 36
+            },
+            {
+              "id": "1049",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 65000
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "skillVariants": {
+    "will": [
+      {
+        "slot": "battle",
+        "name": "Jadecrushing Grid (Array Arcana: WILL)",
+        "type": "Battle Skill",
+        "iconUrl": "https://static.skport.com/image/rm42wiki/20260716/7192618399447/6a588793337a11068196bef1_f1525633.png",
+        "description": "Creates a Jadecrushing Grid that deals Nature DMG and applies Nature Infliction to enemies within the area of effect.\n\nArray Arcana: INT:\n\n- When dealing DMG, the array also pulls in enemies within the area of effect.",
+        "metrics": [
+          [
+            "SP Cost",
+            "100",
+            "100",
+            "100",
+            "100",
+            "100",
+            "100",
+            "100",
+            "100",
+            "100",
+            "100",
+            "100",
+            "100"
+          ],
+          [
+            "Stagger",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10"
+          ],
+          [
+            "DMG Multiplier",
+            "133%",
+            "147%",
+            "160%",
+            "173%",
+            "187%",
+            "200%",
+            "213%",
+            "227%",
+            "240%",
+            "257%",
+            "277%",
+            "300%"
+          ]
+        ],
+        "upgradeCosts": [
+          {
+            "rank": "RANK 1",
+            "items": []
+          },
+          {
+            "rank": "RANK 2",
+            "items": [
+              {
+                "id": "109",
+                "count": 6
+              },
+              {
+                "id": "141",
+                "count": 1
+              },
+              {
+                "id": "642",
+                "count": 1000
+              }
+            ]
+          },
+          {
+            "rank": "RANK 3",
+            "items": [
+              {
+                "id": "109",
+                "count": 12
+              },
+              {
+                "id": "141",
+                "count": 2
+              },
+              {
+                "id": "642",
+                "count": 2700
+              }
+            ]
+          },
+          {
+            "rank": "RANK 4",
+            "items": [
+              {
+                "id": "109",
+                "count": 16
+              },
+              {
+                "id": "147",
+                "count": 1
+              },
+              {
+                "id": "642",
+                "count": 3200
+              }
+            ]
+          },
+          {
+            "rank": "RANK 5",
+            "items": [
+              {
+                "id": "109",
+                "count": 21
+              },
+              {
+                "id": "147",
+                "count": 1
+              },
+              {
+                "id": "642",
+                "count": 4200
+              }
+            ]
+          },
+          {
+            "rank": "RANK 6",
+            "items": [
+              {
+                "id": "109",
+                "count": 27
+              },
+              {
+                "id": "147",
+                "count": 2
+              },
+              {
+                "id": "642",
+                "count": 5400
+              }
+            ]
+          },
+          {
+            "rank": "RANK 7",
+            "items": [
+              {
+                "id": "110",
+                "count": 6
+              },
+              {
+                "id": "146",
+                "count": 1
+              },
+              {
+                "id": "642",
+                "count": 8200
+              }
+            ]
+          },
+          {
+            "rank": "RANK 8",
+            "items": [
+              {
+                "id": "110",
+                "count": 8
+              },
+              {
+                "id": "146",
+                "count": 1
+              },
+              {
+                "id": "642",
+                "count": 10500
+              }
+            ]
+          },
+          {
+            "rank": "RANK 9",
+            "items": [
+              {
+                "id": "110",
+                "count": 15
+              },
+              {
+                "id": "146",
+                "count": 2
+              },
+              {
+                "id": "642",
+                "count": 18000
+              }
+            ]
+          },
+          {
+            "rank": "Mastery I",
+            "items": [
+              {
+                "id": "114",
+                "count": 1
+              },
+              {
+                "id": "110",
+                "count": 15
+              },
+              {
+                "id": "103",
+                "count": 6
+              },
+              {
+                "id": "1049",
+                "count": 3
+              },
+              {
+                "id": "642",
+                "count": 24000
+              }
+            ]
+          },
+          {
+            "rank": "Mastery II",
+            "items": [
+              {
+                "id": "114",
+                "count": 2
+              },
+              {
+                "id": "110",
+                "count": 24
+              },
+              {
+                "id": "103",
+                "count": 16
+              },
+              {
+                "id": "1049",
+                "count": 6
+              },
+              {
+                "id": "642",
+                "count": 30000
+              }
+            ]
+          },
+          {
+            "rank": "Mastery III",
+            "items": [
+              {
+                "id": "114",
+                "count": 3
+              },
+              {
+                "id": "110",
+                "count": 50
+              },
+              {
+                "id": "103",
+                "count": 36
+              },
+              {
+                "id": "1049",
+                "count": 12
+              },
+              {
+                "id": "642",
+                "count": 65000
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slot": "combo",
+        "name": "Yinglung Stance IV (Array Arcana: WILL)",
+        "type": "Combo Skill",
+        "iconUrl": "https://static.skport.com/image/rm42wiki/20260716/7192618399447/6a5887bf9650be7342500b92_db193eac.png",
+        "description": "COMBO TRIGGER: When an Arts Infliction is applied on an enemy.\n\nArcane charges at the target and sets up 4 Tactical Doubles that deal Nature DMG and apply another stack of Arts Infliction of the same element, Nature Susceptibility, and Cryo Susceptibility to the target and nearby enemies, and also apply Imprisonment on the said target. When Imprisonment ends, the Tactical Doubles will attack the said target to deal Explosion DMG.\n\nImprisonment: A debuff that slows all actions.\n\nArray Arcana: WILL:\n\n- Applying Imprisonment by casting a combo skill will also slightly pull in enemies near the target.\n\n- The attribute of Will can further increase the effects of Nature Susceptibility and Cryo Susceptibility applied by the combo skill.",
+        "metrics": [
+          [
+            "Cooldown",
+            "20s",
+            "20s",
+            "20s",
+            "20s",
+            "20s",
+            "20s",
+            "20s",
+            "20s",
+            "19s",
+            "19s",
+            "19s",
+            "18s"
+          ],
+          [
+            "Base DMG Multiplier",
+            "35%",
+            "39%",
+            "42%",
+            "46%",
+            "50%",
+            "53%",
+            "57%",
+            "60%",
+            "64%",
+            "68%",
+            "73%",
+            "80%"
+          ],
+          [
+            "Base Stagger",
+            "5",
+            "5",
+            "5",
+            "5",
+            "5",
+            "5",
+            "5",
+            "5",
+            "5",
+            "5",
+            "5",
+            "5"
+          ],
+          [
+            "Explosion DMG Multiplier",
+            "53%",
+            "59%",
+            "64%",
+            "69%",
+            "75%",
+            "80%",
+            "85%",
+            "91%",
+            "96%",
+            "103%",
+            "111%",
+            "120%"
+          ],
+          [
+            "Explosion Stagger",
+            "5",
+            "5",
+            "5",
+            "5",
+            "5",
+            "5",
+            "5",
+            "5",
+            "5",
+            "5",
+            "5",
+            "5"
+          ],
+          [
+            "Ultimate Energy Gain",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10"
+          ],
+          [
+            "Imprisonment and Susceptibility Duration (s)",
+            "6",
+            "6",
+            "6",
+            "6",
+            "6",
+            "6",
+            "6",
+            "6",
+            "6",
+            "6",
+            "6",
+            "6"
+          ],
+          [
+            "Base Susceptibility",
+            "4%",
+            "4%",
+            "4%",
+            "4%",
+            "4%",
+            "4%",
+            "4%",
+            "4%",
+            "4%",
+            "4%",
+            "4%",
+            "4%"
+          ],
+          [
+            "Max Bonus Susceptibility from Will",
+            "7%",
+            "7%",
+            "7%",
+            "7%",
+            "7%",
+            "7%",
+            "7%",
+            "7%",
+            "7.5%",
+            "7.5%",
+            "7.5%",
+            "8%"
+          ],
+          [
+            "Will Required for Max Bonus Susceptibility",
+            "560",
+            "560",
+            "560",
+            "560",
+            "560",
+            "560",
+            "560",
+            "560",
+            "600",
+            "600",
+            "600",
+            "640"
+          ]
+        ],
+        "upgradeCosts": [
+          {
+            "rank": "RANK 1",
+            "items": []
+          },
+          {
+            "rank": "RANK 2",
+            "items": [
+              {
+                "id": "109",
+                "count": 6
+              },
+              {
+                "id": "141",
+                "count": 1
+              },
+              {
+                "id": "642",
+                "count": 1000
+              }
+            ]
+          },
+          {
+            "rank": "RANK 3",
+            "items": [
+              {
+                "id": "109",
+                "count": 12
+              },
+              {
+                "id": "141",
+                "count": 2
+              },
+              {
+                "id": "642",
+                "count": 2700
+              }
+            ]
+          },
+          {
+            "rank": "RANK 4",
+            "items": [
+              {
+                "id": "109",
+                "count": 16
+              },
+              {
+                "id": "147",
+                "count": 1
+              },
+              {
+                "id": "642",
+                "count": 3200
+              }
+            ]
+          },
+          {
+            "rank": "RANK 5",
+            "items": [
+              {
+                "id": "109",
+                "count": 21
+              },
+              {
+                "id": "147",
+                "count": 1
+              },
+              {
+                "id": "642",
+                "count": 4200
+              }
+            ]
+          },
+          {
+            "rank": "RANK 6",
+            "items": [
+              {
+                "id": "109",
+                "count": 27
+              },
+              {
+                "id": "147",
+                "count": 2
+              },
+              {
+                "id": "642",
+                "count": 5400
+              }
+            ]
+          },
+          {
+            "rank": "RANK 7",
+            "items": [
+              {
+                "id": "110",
+                "count": 6
+              },
+              {
+                "id": "146",
+                "count": 1
+              },
+              {
+                "id": "642",
+                "count": 8200
+              }
+            ]
+          },
+          {
+            "rank": "RANK 8",
+            "items": [
+              {
+                "id": "110",
+                "count": 8
+              },
+              {
+                "id": "146",
+                "count": 1
+              },
+              {
+                "id": "642",
+                "count": 10500
+              }
+            ]
+          },
+          {
+            "rank": "RANK 9",
+            "items": [
+              {
+                "id": "110",
+                "count": 15
+              },
+              {
+                "id": "146",
+                "count": 2
+              },
+              {
+                "id": "642",
+                "count": 18000
+              }
+            ]
+          },
+          {
+            "rank": "Mastery I",
+            "items": [
+              {
+                "id": "114",
+                "count": 1
+              },
+              {
+                "id": "110",
+                "count": 15
+              },
+              {
+                "id": "112",
+                "count": 6
+              },
+              {
+                "id": "1049",
+                "count": 3
+              },
+              {
+                "id": "642",
+                "count": 24000
+              }
+            ]
+          },
+          {
+            "rank": "Mastery II",
+            "items": [
+              {
+                "id": "114",
+                "count": 2
+              },
+              {
+                "id": "110",
+                "count": 24
+              },
+              {
+                "id": "112",
+                "count": 16
+              },
+              {
+                "id": "1049",
+                "count": 6
+              },
+              {
+                "id": "642",
+                "count": 30000
+              }
+            ]
+          },
+          {
+            "rank": "Mastery III",
+            "items": [
+              {
+                "id": "114",
+                "count": 3
+              },
+              {
+                "id": "110",
+                "count": 50
+              },
+              {
+                "id": "112",
+                "count": 36
+              },
+              {
+                "id": "1049",
+                "count": 12
+              },
+              {
+                "id": "642",
+                "count": 65000
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slot": "ultimate",
+        "name": "Gloompurge (Array Arcana: WILL)",
+        "type": "Ultimate",
+        "iconUrl": "https://static.skport.com/image/rm42wiki/20260716/7192618399447/6a588825337a11068196befa_3eac6ad0.png",
+        "description": "Arcane creates a Gloompurger Array that immediately deals Nature DMG to enemies within the area of effect (AOE).\n\nWhen hitting an enemy within the Gloompurger Array with a Finisher or a Final Strike performed by the controlled operator, the Gloompurger Array unleashes a Cluster Strike that deals Area DMG to the said enemy. This effect triggers up to 2 times.\n\nAfter triggering Cluster Strike 2 times, the ultimate is switched to Gloompurge Arcana.\n\nGloompurge Arcana: Deals Nature DMG to enemies within a large AOE.\n\nArray Arcana: INT:\n\n- When created, the Gloompurger Array also targets enemies with Arts Infliction within its AOE, and applies another Arts Infliction stack of the same element to them.",
+        "metrics": [
+          [
+            "Ultimate Energy Cost",
+            "100",
+            "100",
+            "100",
+            "100",
+            "100",
+            "100",
+            "100",
+            "100",
+            "100",
+            "100",
+            "100",
+            "100"
+          ],
+          [
+            "Gloompurger Array Creation DMG Multiplier",
+            "80%",
+            "88%",
+            "96%",
+            "104%",
+            "112%",
+            "120%",
+            "128%",
+            "136%",
+            "144%",
+            "154%",
+            "166%",
+            "180%"
+          ],
+          [
+            "Gloompurger Array Creation Stagger",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10"
+          ],
+          [
+            "Gloompurger Array Duration (s)",
+            "20",
+            "20",
+            "20",
+            "20",
+            "20",
+            "20",
+            "20",
+            "20",
+            "20",
+            "20",
+            "20",
+            "20"
+          ],
+          [
+            "Gloompurge Arcana Stagger",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10"
+          ],
+          [
+            "Forced Corrosion Duration (s)",
+            "15",
+            "15",
+            "15",
+            "15",
+            "15",
+            "15",
+            "15",
+            "15",
+            "15",
+            "15",
+            "15",
+            "15"
+          ],
+          [
+            "Cluster Strike Total DMG Multiplier",
+            "160%",
+            "176%",
+            "192%",
+            "208%",
+            "224%",
+            "240%",
+            "256%",
+            "272%",
+            "288%",
+            "308%",
+            "332%",
+            "360%"
+          ],
+          [
+            "Gloompurge Arcana DMG Multiplier",
+            "640%",
+            "704%",
+            "768%",
+            "832%",
+            "896%",
+            "960%",
+            "1024%",
+            "1088%",
+            "1152%",
+            "1232%",
+            "1328%",
+            "1440%"
+          ]
+        ],
+        "upgradeCosts": [
+          {
+            "rank": "RANK 1",
+            "items": []
+          },
+          {
+            "rank": "RANK 2",
+            "items": [
+              {
+                "id": "109",
+                "count": 6
+              },
+              {
+                "id": "141",
+                "count": 1
+              },
+              {
+                "id": "642",
+                "count": 1000
+              }
+            ]
+          },
+          {
+            "rank": "RANK 3",
+            "items": [
+              {
+                "id": "109",
+                "count": 12
+              },
+              {
+                "id": "141",
+                "count": 2
+              },
+              {
+                "id": "642",
+                "count": 2700
+              }
+            ]
+          },
+          {
+            "rank": "RANK 4",
+            "items": [
+              {
+                "id": "109",
+                "count": 16
+              },
+              {
+                "id": "147",
+                "count": 1
+              },
+              {
+                "id": "642",
+                "count": 3200
+              }
+            ]
+          },
+          {
+            "rank": "RANK 5",
+            "items": [
+              {
+                "id": "109",
+                "count": 21
+              },
+              {
+                "id": "147",
+                "count": 1
+              },
+              {
+                "id": "642",
+                "count": 4200
+              }
+            ]
+          },
+          {
+            "rank": "RANK 6",
+            "items": [
+              {
+                "id": "109",
+                "count": 27
+              },
+              {
+                "id": "147",
+                "count": 2
+              },
+              {
+                "id": "642",
+                "count": 5400
+              }
+            ]
+          },
+          {
+            "rank": "RANK 7",
+            "items": [
+              {
+                "id": "110",
+                "count": 6
+              },
+              {
+                "id": "146",
+                "count": 1
+              },
+              {
+                "id": "642",
+                "count": 8200
+              }
+            ]
+          },
+          {
+            "rank": "RANK 8",
+            "items": [
+              {
+                "id": "110",
+                "count": 8
+              },
+              {
+                "id": "146",
+                "count": 1
+              },
+              {
+                "id": "642",
+                "count": 10500
+              }
+            ]
+          },
+          {
+            "rank": "RANK 9",
+            "items": [
+              {
+                "id": "110",
+                "count": 15
+              },
+              {
+                "id": "146",
+                "count": 2
+              },
+              {
+                "id": "642",
+                "count": 18000
+              }
+            ]
+          },
+          {
+            "rank": "Mastery I",
+            "items": [
+              {
+                "id": "114",
+                "count": 1
+              },
+              {
+                "id": "110",
+                "count": 15
+              },
+              {
+                "id": "103",
+                "count": 6
+              },
+              {
+                "id": "1049",
+                "count": 3
+              },
+              {
+                "id": "642",
+                "count": 24000
+              }
+            ]
+          },
+          {
+            "rank": "Mastery II",
+            "items": [
+              {
+                "id": "114",
+                "count": 2
+              },
+              {
+                "id": "110",
+                "count": 24
+              },
+              {
+                "id": "103",
+                "count": 16
+              },
+              {
+                "id": "1049",
+                "count": 6
+              },
+              {
+                "id": "642",
+                "count": 30000
+              }
+            ]
+          },
+          {
+            "rank": "Mastery III",
+            "items": [
+              {
+                "id": "114",
+                "count": 3
+              },
+              {
+                "id": "110",
+                "count": 50
+              },
+              {
+                "id": "103",
+                "count": 36
+              },
+              {
+                "id": "1049",
+                "count": 12
+              },
+              {
+                "id": "642",
+                "count": 65000
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

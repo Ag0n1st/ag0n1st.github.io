@@ -92,7 +92,7 @@ function itemLookup(index,id){
 }
 function collectMaterials(main,attributes,talents,promotions,index) {
   const ids=new Set();
-  for(const skill of main.skills) for(const level of (skill.upgradeCosts??[]))for(const entry of level.items)ids.add(entry.id);
+  for(const skill of [...main.skills,...Object.values(main.skillVariants??{}).flat()]) for(const level of (skill.upgradeCosts??[]))for(const entry of level.items)ids.add(entry.id);
   for(const level of attributes.levelCosts)for(const item of level.items)ids.add(item.id);
   for(const talent of talents)for(const stage of talent.levels)for(const item of stage.cost)ids.add(item.id);
   for(const promotion of promotions)for(const item of promotion.cost)ids.add(item.id);
@@ -114,7 +114,11 @@ export function importOperator(itemResponse,publicItems,{itemId,slug,snapshot}){
     "Wiki-Dokumente oder Widgets fehlen");
 
   const combat=tabs(widget(document,"Combat Skills"));
-  assert(combat.length===4,"vier Skills werden erwartet; erkannt "+combat.length);
+  // Most operators have 4 skill tabs. Arcane has 7 genuine official tabs:
+  // Basic, three INT variants, and three WILL variants. Do not drop the
+  // alternate skill ranks, or flatten them into duplicate slot names.
+  assert(combat.length===4||combat.length===7,
+    "4 reguläre oder 7 offizielle Dual-Array-Skills erwartet; erkannt "+combat.length);
   const slotTypes={"basic attack":"basic","battle skill":"battle",
     "combo skill":"combo","ultimate":"ultimate"};
   const skills=[];
@@ -135,21 +139,38 @@ export function importOperator(itemResponse,publicItems,{itemId,slug,snapshot}){
     assert(!!cost,"Upgrade-Kostenzeile fehlt bei "+name);
     const metricRows=rows.slice(1).filter(row=>row!==cost);
     assert(metricRows.length>=1,"Keine Skillwerte gefunden bei "+name);
-    const skill={
-      slot,name,type,iconUrl:tab.iconUrl,
-      description:ownDescription,
+    skills.push({
+      slot,name,type,iconUrl:tab.iconUrl,description:ownDescription,
       metrics:metricRows.map(row=>[metricName(row.cells[0]),...row.cells.slice(1)]),
       upgradeCosts:ranks.map((rank,i)=>({rank,items:costRefs(cost.entries[i+1])}))
-    };
-    skills.push(skill);
+    });
   }
-  assert(new Set(skills.map(s=>s.slot)).size===4,"fehlender oder doppelter Skilltyp");
-  const ordered=["basic","battle","combo","ultimate"].map(key=>skills.find(s=>s.slot===key));
+  const slots=["basic","battle","combo","ultimate"];
+  const groups=Object.fromEntries(slots.map(slot=>[slot,skills.filter(s=>s.slot===slot)]));
+  assert(slots.every(slot=>groups[slot].length>=1),"mindestens ein Skill jedes Typs nötig");
+  const variantType=skill=>skill.name.match(/\(Array Arcana:\s*(INT|WILL)\)/i)?.[1]?.toLowerCase()??null;
+  const duplicates=slots.filter(slot=>groups[slot].length>1);
+  if(combat.length===7){
+    assert(duplicates.join(",")==="battle,combo,ultimate"&&
+      duplicates.every(slot=>groups[slot].length===2 &&
+        groups[slot].some(s=>variantType(s)==="int") &&
+        groups[slot].some(s=>variantType(s)==="will")),
+      "Doppelte Skills nur als nachweisbare INT/WILL-Varianten zulässig");
+  }else assert(duplicates.length===0,"Doppelter Skillslot ohne Variantenquelle");
+  const ordered=slots.map(slot=>groups[slot].find(s=>variantType(s)==="int")??groups[slot][0]);
+  const skillVariants=combat.length===7?{
+    will:slots.slice(1).map(slot=>groups[slot].find(s=>variantType(s)==="will"))
+  }:null;
   const rankHeaders=oneTable(document,combat[0].content,"Skillränge").rows[0].cells.slice(1);
-  assert(ordered.every(s=>s.upgradeCosts.length===12),"unvollständige Skillkosten");
+  assert(skills.every(s=>s.upgradeCosts.length===12),"unvollständige Skillkosten");
+  // SKPORT sometimes writes "RANK1" for the first Yvonne ultimate rank,
+  // but all twelve ordered ranks otherwise match exactly.
+  const sameRank=(one,two)=>String(one).replace(/\s+/g,"").toLowerCase()===
+    String(two).replace(/\s+/g,"").toLowerCase();
   for(const tab of combat.slice(1)){
     const labels=oneTable(document,tab.content,"Skillränge").rows[0].cells.slice(1);
-    assert(JSON.stringify(labels)===JSON.stringify(rankHeaders),"unterschiedliche Rangsätze");
+    assert(labels.length===rankHeaders.length&&labels.every((label,i)=>sameRank(label,rankHeaders[i])),
+      "unterschiedliche Rangsätze");
   }
   const main={
     schemaVersion:2,source:source(item,itemId,snapshot),
@@ -160,7 +181,8 @@ export function importOperator(itemResponse,publicItems,{itemId,slug,snapshot}){
       weaponType:tagged(item,"10213"),faction:tagged(item,"10219"),
       coverUrl:clean(item.brief?.cover),
       illustrationUrl:clean(document.extraInfo?.illustration)
-    },ranks:rankHeaders,skills:ordered
+    },ranks:rankHeaders,skills:ordered,
+    ...(skillVariants?{skillVariants}: {})
   };
   assert(main.operator.name&&main.operator.rarity>0,"Operatorname oder Seltenheit fehlen");
   // Other widgets are intentionally parsed by their names; no temporal tab IDs.
@@ -238,17 +260,18 @@ export function importOperator(itemResponse,publicItems,{itemId,slug,snapshot}){
   // Some operator Wiki entries append a small profile/unlock table after the
   // five-row potential grid. Locate the grid by explicit POTENTIAL markers.
   const mainPotentialGrids=potentialGrids.filter(grid=>
-    grid.rows.length===5 && grid.rows.every(row=>
-      row.cells.length>=3 && !!clean(row.cells[1]) && !!clean(row.cells[2])));
+    grid.rows.length===5 && grid.rows.every(row=>row.cells.length>=3&&!!clean(row.cells[1])) &&
+    grid.rows.filter(row=>!!clean(row.cells[2])).length>=3);
   assert(mainPotentialGrids.length===1,"Potenziale benötigt genau eine eindeutige Potential-Phases-Tabelle: "+potentialRef);
   const potentialTable=mainPotentialGrids[0];
   const potentials=potentialTable.rows.map((row,i)=>({
     level:i+1,name:clean(row.cells[1]).split("\n")[0],
-    effect:clean(row.cells[2])
+    effect:clean(row.cells[2]),
+    ...(!clean(row.cells[2])?{status:"undisclosed"}:{})
   }));
   const potentialSupplementalTables=potentialGrids.filter(grid=>grid!==potentialTable).map(grid=>
     grid.rows.map(row=>row.cells));
-  assert(potentials.length>=1 && potentials.every(p=>p.name&&p.effect),
+  assert(potentials.length===5 && potentials.every(p=>p.name&&(p.effect||p.status==="undisclosed")),
     "Potenzialnamen/Effekte fehlen");
   const materials=collectMaterials(main,attributes,talents,promotions,publicItems);
   const extras={

@@ -1,0 +1,678 @@
+{
+  "schemaVersion": 2,
+  "source": {
+    "provider": "SKPORT Wiki",
+    "itemId": "21",
+    "language": "en",
+    "snapshot": "2026-10-24"
+  },
+  "operator": "estella",
+  "profile": {
+    "Codename": "Estella",
+    "Gender": "Female",
+    "Faction": "Endfield Industries",
+    "Birthday": "April 9",
+    "Element": "Cryo",
+    "Race": "Feline",
+    "Chinese CV": "张炜萱",
+    "English CV": "Risa Mei",
+    "Japanese CV": "高橋花林",
+    "Korean CV": "이은조"
+  },
+  "attributes": {
+    "levels": [
+      "LV.1",
+      "LV.20",
+      "LV.40",
+      "LV.60",
+      "LV.80",
+      "LV.90"
+    ],
+    "metrics": [
+      {
+        "name": "Strength (Secondary)",
+        "values": [
+          "13",
+          "32",
+          "53",
+          "73",
+          "94",
+          "104"
+        ]
+      },
+      {
+        "name": "Agility",
+        "values": [
+          "8",
+          "27",
+          "47",
+          "67",
+          "87",
+          "97"
+        ]
+      },
+      {
+        "name": "Intellect",
+        "values": [
+          "14",
+          "34",
+          "56",
+          "78",
+          "99",
+          "110"
+        ]
+      },
+      {
+        "name": "Will (Main)",
+        "values": [
+          "15",
+          "44",
+          "74",
+          "105",
+          "136",
+          "151"
+        ]
+      },
+      {
+        "name": "Base ATK",
+        "values": [
+          "30",
+          "90",
+          "153",
+          "217",
+          "280",
+          "312"
+        ]
+      },
+      {
+        "name": "Base HP",
+        "values": [
+          "500",
+          "1566",
+          "2689",
+          "3811",
+          "4934",
+          "5495"
+        ]
+      }
+    ],
+    "levelCosts": [
+      {
+        "level": "LV.1",
+        "items": []
+      },
+      {
+        "level": "LV.20",
+        "items": [
+          {
+            "id": "100",
+            "count": 5
+          },
+          {
+            "id": "101",
+            "count": 2
+          },
+          {
+            "id": "102",
+            "count": 2
+          },
+          {
+            "id": "642",
+            "count": 820
+          }
+        ]
+      },
+      {
+        "level": "LV.40",
+        "items": [
+          {
+            "id": "100",
+            "count": 3
+          },
+          {
+            "id": "101",
+            "count": 8
+          },
+          {
+            "id": "102",
+            "count": 24
+          },
+          {
+            "id": "642",
+            "count": 12540
+          }
+        ]
+      },
+      {
+        "level": "LV.60",
+        "items": [
+          {
+            "id": "100",
+            "count": 4
+          },
+          {
+            "id": "101",
+            "count": 5
+          },
+          {
+            "id": "102",
+            "count": 47
+          },
+          {
+            "id": "642",
+            "count": 23900
+          }
+        ]
+      },
+      {
+        "level": "LV.80",
+        "items": [
+          {
+            "id": "105",
+            "count": 6
+          },
+          {
+            "id": "106",
+            "count": 46
+          },
+          {
+            "id": "642",
+            "count": 109180
+          }
+        ]
+      },
+      {
+        "level": "LV.90",
+        "items": [
+          {
+            "id": "106",
+            "count": 58
+          },
+          {
+            "id": "642",
+            "count": 238980
+          }
+        ]
+      }
+    ],
+    "mainAttribute": "Will",
+    "secondaryAttribute": "Strength"
+  },
+  "talents": [
+    {
+      "id": "stalwart",
+      "name": "Stalwart",
+      "category": "attribute",
+      "levels": [
+        {
+          "name": "Stalwart 1",
+          "effect": "Operator Will +10",
+          "requirements": [
+            "20% trust with the Operator",
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 5
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "name": "Stalwart 2",
+          "effect": "Operator Will +15",
+          "requirements": [
+            "50% trust with the Operator",
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 10
+            },
+            {
+              "id": "642",
+              "count": 1800
+            }
+          ]
+        },
+        {
+          "name": "Stalwart 3",
+          "effect": "Operator Will +15",
+          "requirements": [
+            "100% trust with the Operator",
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 10
+            },
+            {
+              "id": "642",
+              "count": 6000
+            }
+          ]
+        },
+        {
+          "name": "Stalwart 4",
+          "effect": "Operator Will +20",
+          "requirements": [
+            "100% trust with the Operator",
+            "Promote to E4 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 20
+            },
+            {
+              "id": "642",
+              "count": 12000
+            }
+          ]
+        }
+      ],
+      "supplementalTables": [
+        [
+          [
+            "Trust",
+            "Raise your operators' trust to unlock more skills and profile data. Operators with higher trust also interact with you differently aboard Dijiang.\nYou can raise operator trust with gifts or by assigning them to the Dijiang Control Nexus."
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "commiseration",
+      "name": "Commiseration",
+      "category": "combat",
+      "levels": [
+        {
+          "name": "Commiseration 1",
+          "effect": "When triggering Shatter, the next battle skill Onomatopoeia cast returns 7.5 SP. This effect cannot stack.",
+          "requirements": [
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 40
+            },
+            {
+              "id": "642",
+              "count": 8600
+            }
+          ]
+        },
+        {
+          "name": "Commiseration 2",
+          "effect": "When triggering Shatter, the next battle skill Onomatopoeia cast returns 15 SP. This effect cannot stack.",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 40
+            },
+            {
+              "id": "642",
+              "count": 8600
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "laziness-pays-off-now",
+      "name": "Laziness Pays Off Now",
+      "category": "combat",
+      "levels": [
+        {
+          "name": "Laziness Pays Off Now 1",
+          "effect": "Ignores Cryo Infliction and takes -10% Cryo DMG.",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 48
+            },
+            {
+              "id": "642",
+              "count": 10000
+            }
+          ]
+        },
+        {
+          "name": "Laziness Pays Off Now 2",
+          "effect": "Ignores Cryo Infliction and takes -20% Cryo DMG.",
+          "requirements": [
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 28
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fragmented-rest",
+      "name": "Fragmented Rest",
+      "category": "ship",
+      "levels": [
+        {
+          "name": "Fragmented Rest α",
+          "effect": "Assign to Control Nexus to grant all Operators' Mood Regen +8%",
+          "requirements": [
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 1600
+            }
+          ]
+        },
+        {
+          "name": "Fragmented Rest β",
+          "effect": "Assign to Control Nexus to grant all Operators' Mood Regen +12%",
+          "requirements": [
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 8000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "frequency-monitoring",
+      "name": "Frequency Monitoring",
+      "category": "ship",
+      "levels": [
+        {
+          "name": "Frequency Monitoring β",
+          "effect": "Assign to Reception Room to grant operator clue collecting efficiency +20%",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 3000
+            }
+          ]
+        },
+        {
+          "name": "Frequency Monitoring γ",
+          "effect": "Assign to Reception Room to grant operator clue collecting efficiency +30%",
+          "requirements": [
+            "Promote to E4 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 20
+            },
+            {
+              "id": "642",
+              "count": 20000
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "promotions": [
+    {
+      "name": "Promotion I",
+      "effect": "Activate this to raise operator level cap to 40",
+      "requirement": "Operator Lv.20",
+      "cost": [
+        {
+          "id": "107",
+          "count": 8
+        },
+        {
+          "id": "128",
+          "count": 3
+        },
+        {
+          "id": "642",
+          "count": 1600
+        }
+      ]
+    },
+    {
+      "name": "Outfitting I",
+      "effect": "Activate this to let the operator equip blue quality gear",
+      "requirement": "Promote to E1 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 1800
+        }
+      ]
+    },
+    {
+      "name": "Promotion II",
+      "effect": "Activate this to raise operator level cap to 60",
+      "requirement": "Operator Lv.40",
+      "cost": [
+        {
+          "id": "107",
+          "count": 25
+        },
+        {
+          "id": "133",
+          "count": 5
+        },
+        {
+          "id": "642",
+          "count": 6500
+        }
+      ]
+    },
+    {
+      "name": "Outfitting II",
+      "effect": "Activate this to let the operator equip purple quality gear",
+      "requirement": "Promote to E2 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 6500
+        }
+      ]
+    },
+    {
+      "name": "Promotion III",
+      "effect": "Activate this to raise operator level cap to 80",
+      "requirement": "Operator Lv.60",
+      "cost": [
+        {
+          "id": "108",
+          "count": 24
+        },
+        {
+          "id": "137",
+          "count": 5
+        },
+        {
+          "id": "642",
+          "count": 18000
+        }
+      ]
+    },
+    {
+      "name": "Outfitting III",
+      "effect": "Activate this to let the operator equip gold quality gear",
+      "requirement": "Promote to E3 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 18000
+        }
+      ]
+    },
+    {
+      "name": "Promotion IV",
+      "effect": "Activate this to raise operator level cap to 90",
+      "requirement": "Operator Lv.80",
+      "cost": [
+        {
+          "id": "108",
+          "count": 36
+        },
+        {
+          "id": "104",
+          "count": 20
+        },
+        {
+          "id": "123",
+          "count": 8
+        },
+        {
+          "id": "642",
+          "count": 100000
+        }
+      ]
+    }
+  ],
+  "potentials": [
+    {
+      "level": 1,
+      "name": "Habitual Delay",
+      "effect": "Combo skill Distortion improved: Physical Susceptibility duration +3s."
+    },
+    {
+      "level": 2,
+      "name": "Lowered Expectations",
+      "effect": "Ultimate Tremolo improved: Ultimate Energy cost -10%."
+    },
+    {
+      "level": 3,
+      "name": "Delayed Work",
+      "effect": "Battle skill Onomatopoeia improved: Freezing sound wave range +50% and DMG Dealt +40% to the first enemy hit."
+    },
+    {
+      "level": 4,
+      "name": "Life Over Mission",
+      "effect": "Will +10, Strength +10."
+    },
+    {
+      "level": 5,
+      "name": "Survival is a Win",
+      "effect": "Whenever Solidification is applied to an enemy, gain 5 Ultimate Energy. Effect can only trigger once every 1s."
+    }
+  ],
+  "materials": {
+    "99": {
+      "name": "D96 Steel Sample 4"
+    },
+    "100": {
+      "name": "Elementary Combat Record"
+    },
+    "101": {
+      "name": "Intermediate Combat Record"
+    },
+    "102": {
+      "name": "Advanced Combat Record"
+    },
+    "104": {
+      "name": "Quadrant Fitting Fluid"
+    },
+    "105": {
+      "name": "Elementary Cognitive Carrier"
+    },
+    "106": {
+      "name": "Advanced Cognitive Carrier"
+    },
+    "107": {
+      "name": "Protodisk"
+    },
+    "108": {
+      "name": "Protoset"
+    },
+    "109": {
+      "name": "Protoprism"
+    },
+    "110": {
+      "name": "Protohedron"
+    },
+    "112": {
+      "name": "Tachyon Screening Lattice"
+    },
+    "114": {
+      "name": "Mark of Perseverance"
+    },
+    "119": {
+      "name": "False Aggela"
+    },
+    "123": {
+      "name": "Cosmagaric"
+    },
+    "128": {
+      "name": "Pink Bolete"
+    },
+    "133": {
+      "name": "Red Bolete"
+    },
+    "137": {
+      "name": "Ruby Bolete"
+    },
+    "141": {
+      "name": "Kalkodendra"
+    },
+    "146": {
+      "name": "Vitrodendra"
+    },
+    "147": {
+      "name": "Chrysodendra"
+    },
+    "642": {
+      "name": "T-Creds"
+    }
+  },
+  "potentialSupplementalTables": [
+    [
+      [
+        "Operator Snapshot",
+        "",
+        ""
+      ],
+      [
+        "Intermittent Thinker\nIllustrator: またよし\nShe tried to free up some time to ponder when that drop of water will hit the ground.",
+        "Urge to Share\nIllustrator: 余音RinA\n\"How 'bout a sip? Oh... Well, it's a nutritious liquid blend of bugs and plant extracts. Yeah ... the taste is very interesting...\"",
+        "Secret Hour\nIllustrator: かしまき\nMind sharing your hard-earned free time with someone?"
+      ]
+    ]
+  ]
+}

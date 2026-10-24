@@ -1,0 +1,594 @@
+{
+  "schemaVersion": 2,
+  "source": {
+    "provider": "SKPORT Wiki",
+    "itemId": "2",
+    "language": "en",
+    "snapshot": "2026-10-24"
+  },
+  "operator": "endministrator",
+  "profile": {
+    "Codename": "Endministrator",
+    "Gender": "■■",
+    "Faction": "Endfield Industries",
+    "Birthday": "■■",
+    "Element": "Physical",
+    "Race": "■■",
+    "Chinese CV": "楊超然",
+    "English CV": "Hyoie O'Grady",
+    "Japanese CV": "津田拓也",
+    "Korean CV": "이상준"
+  },
+  "attributes": {
+    "levels": [
+      "LV.1",
+      "LV.20",
+      "LV.40",
+      "LV.60",
+      "LV.80",
+      "LV.90"
+    ],
+    "metrics": [
+      {
+        "name": "Strength (Secondary)",
+        "values": [
+          "14",
+          "38",
+          "62",
+          "86",
+          "111",
+          "123"
+        ]
+      },
+      {
+        "name": "Agility (Main)",
+        "values": [
+          "14",
+          "41",
+          "69",
+          "98",
+          "126",
+          "140"
+        ]
+      },
+      {
+        "name": "Intellect",
+        "values": [
+          "9",
+          "28",
+          "47",
+          "67",
+          "87",
+          "96"
+        ]
+      },
+      {
+        "name": "Will",
+        "values": [
+          "10",
+          "31",
+          "53",
+          "74",
+          "96",
+          "107"
+        ]
+      },
+      {
+        "name": "Base ATK",
+        "values": [
+          "30",
+          "92",
+          "157",
+          "222",
+          "287",
+          "319"
+        ]
+      },
+      {
+        "name": "Base HP",
+        "values": [
+          "500",
+          "1566",
+          "2689",
+          "3811",
+          "4934",
+          "5495"
+        ]
+      }
+    ],
+    "levelCosts": [
+      {
+        "level": "LV.1",
+        "items": []
+      },
+      {
+        "level": "LV.20",
+        "items": [
+          {
+            "id": "100",
+            "count": 5
+          },
+          {
+            "id": "101",
+            "count": 2
+          },
+          {
+            "id": "102",
+            "count": 2
+          },
+          {
+            "id": "642",
+            "count": 820
+          }
+        ]
+      },
+      {
+        "level": "LV.40",
+        "items": [
+          {
+            "id": "100",
+            "count": 3
+          },
+          {
+            "id": "101",
+            "count": 8
+          },
+          {
+            "id": "102",
+            "count": 24
+          },
+          {
+            "id": "642",
+            "count": 12540
+          }
+        ]
+      },
+      {
+        "level": "LV.60",
+        "items": [
+          {
+            "id": "100",
+            "count": 4
+          },
+          {
+            "id": "101",
+            "count": 5
+          },
+          {
+            "id": "102",
+            "count": 47
+          },
+          {
+            "id": "642",
+            "count": 23900
+          }
+        ]
+      },
+      {
+        "level": "LV.80",
+        "items": [
+          {
+            "id": "105",
+            "count": 6
+          },
+          {
+            "id": "106",
+            "count": 46
+          },
+          {
+            "id": "642",
+            "count": 109180
+          }
+        ]
+      },
+      {
+        "level": "LV.90",
+        "items": [
+          {
+            "id": "106",
+            "count": 58
+          },
+          {
+            "id": "642",
+            "count": 238980
+          }
+        ]
+      }
+    ],
+    "mainAttribute": "Agility",
+    "secondaryAttribute": "Strength"
+  },
+  "talents": [
+    {
+      "id": "skirmisher",
+      "name": "Skirmisher",
+      "category": "other",
+      "levels": [
+        {
+          "name": "Skirmisher 1",
+          "effect": "Operator Agility +10",
+          "requirements": [
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 5
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "name": "Skirmisher 2",
+          "effect": "Operator Agility +15",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 10
+            },
+            {
+              "id": "642",
+              "count": 1800
+            }
+          ]
+        },
+        {
+          "name": "Skirmisher 3",
+          "effect": "Operator Agility +15",
+          "requirements": [
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 10
+            },
+            {
+              "id": "642",
+              "count": 6000
+            }
+          ]
+        },
+        {
+          "name": "Skirmisher 4",
+          "effect": "Operator Agility +20",
+          "requirements": [
+            "Promote to E4 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 20
+            },
+            {
+              "id": "642",
+              "count": 12000
+            }
+          ]
+        }
+      ],
+      "supplementalTables": [
+        [
+          [
+            "Trust",
+            "Raise your operators' trust to unlock more skills and profile data. Operators with higher trust also interact with you differently aboard Dijiang.\nYou can raise operator trust with gifts or by assigning them to the Dijiang Control Nexus."
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "essence-disintegration",
+      "name": "Essence Disintegration",
+      "category": "other",
+      "levels": [
+        {
+          "name": "Essence Disintegration 1",
+          "effect": "When the Originium Crystals attached to the enemy is consumed, the Endministrator gains ATK +15% for 15s. This effect cannot stack.",
+          "requirements": [
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 2400
+            }
+          ]
+        },
+        {
+          "name": "Essence Disintegration 2",
+          "effect": "When the Originium Crystals attached to the enemy is consumed, the Endministrator gains ATK +30% for 15s. This effect cannot stack.",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 40
+            },
+            {
+              "id": "642",
+              "count": 8600
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realspace-stasis",
+      "name": "Realspace Stasis",
+      "category": "other",
+      "levels": [
+        {
+          "name": "Realspace Stasis 1",
+          "effect": "Enemies with attached Originium Crystals suffer Physical DMG Taken +10%.",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 48
+            },
+            {
+              "id": "642",
+              "count": 10000
+            }
+          ]
+        },
+        {
+          "name": "Realspace Stasis 2",
+          "effect": "Enemies with attached Originium Crystals suffer Physical DMG Taken +20%.",
+          "requirements": [
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 28
+            },
+            {
+              "id": "642",
+              "count": 24000
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "promotions": [
+    {
+      "name": "Promotion I",
+      "effect": "Activate this to raise operator level cap to 40",
+      "requirement": "Operator Lv.20",
+      "cost": [
+        {
+          "id": "107",
+          "count": 8
+        },
+        {
+          "id": "128",
+          "count": 3
+        },
+        {
+          "id": "642",
+          "count": 1600
+        }
+      ]
+    },
+    {
+      "name": "Outfitting I",
+      "effect": "Activate this to let the operator equip blue quality gear",
+      "requirement": "Promote to E1 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 1800
+        }
+      ]
+    },
+    {
+      "name": "Promotion II",
+      "effect": "Activate this to raise operator level cap to 60",
+      "requirement": "Operator Lv.40",
+      "cost": [
+        {
+          "id": "107",
+          "count": 25
+        },
+        {
+          "id": "133",
+          "count": 5
+        },
+        {
+          "id": "642",
+          "count": 6500
+        }
+      ]
+    },
+    {
+      "name": "Outfitting II",
+      "effect": "Activate this to let the operator equip purple quality gear",
+      "requirement": "Promote to E2 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 6500
+        }
+      ]
+    },
+    {
+      "name": "Promotion III",
+      "effect": "Activate this to raise operator level cap to 80",
+      "requirement": "Operator Lv.60",
+      "cost": [
+        {
+          "id": "108",
+          "count": 24
+        },
+        {
+          "id": "137",
+          "count": 5
+        },
+        {
+          "id": "642",
+          "count": 18000
+        }
+      ]
+    },
+    {
+      "name": "Outfitting III",
+      "effect": "Activate this to let the operator equip gold quality gear",
+      "requirement": "Promote to E3 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 18000
+        }
+      ]
+    },
+    {
+      "name": "Promotion IV",
+      "effect": "Activate this to raise operator level cap to 90",
+      "requirement": "Operator Lv.80",
+      "cost": [
+        {
+          "id": "108",
+          "count": 36
+        },
+        {
+          "id": "111",
+          "count": 20
+        },
+        {
+          "id": "134",
+          "count": 8
+        },
+        {
+          "id": "642",
+          "count": 100000
+        }
+      ]
+    }
+  ],
+  "potentials": [
+    {
+      "level": 1,
+      "name": "Final Awakening",
+      "effect": "Battle skill Constructive Sequence improved: Consuming Originium Crystals returns 50 SP."
+    },
+    {
+      "level": 2,
+      "name": "Reflection of Authority",
+      "effect": "Talent Essence Disintegration improved: When the Endministrator gains the ATK buff, other allied operators gain half of this ATK buff."
+    },
+    {
+      "level": 3,
+      "name": "The Guide",
+      "effect": "Ultimate Bombardment Sequence improved: After consuming Originium Crystals, the Endministrator gains 15 Ultimate Energy.\nThis effect does not benefit from other bonuses."
+    },
+    {
+      "level": 4,
+      "name": "???",
+      "effect": "",
+      "status": "undisclosed"
+    },
+    {
+      "level": 5,
+      "name": "???",
+      "effect": "",
+      "status": "undisclosed"
+    }
+  ],
+  "materials": {
+    "99": {
+      "name": "D96 Steel Sample 4"
+    },
+    "100": {
+      "name": "Elementary Combat Record"
+    },
+    "101": {
+      "name": "Intermediate Combat Record"
+    },
+    "102": {
+      "name": "Advanced Combat Record"
+    },
+    "105": {
+      "name": "Elementary Cognitive Carrier"
+    },
+    "106": {
+      "name": "Advanced Cognitive Carrier"
+    },
+    "107": {
+      "name": "Protodisk"
+    },
+    "108": {
+      "name": "Protoset"
+    },
+    "109": {
+      "name": "Protoprism"
+    },
+    "110": {
+      "name": "Protohedron"
+    },
+    "111": {
+      "name": "Metadiastima Photoemission Tube"
+    },
+    "112": {
+      "name": "Tachyon Screening Lattice"
+    },
+    "114": {
+      "name": "Mark of Perseverance"
+    },
+    "119": {
+      "name": "False Aggela"
+    },
+    "128": {
+      "name": "Pink Bolete"
+    },
+    "133": {
+      "name": "Red Bolete"
+    },
+    "134": {
+      "name": "Bloodcap"
+    },
+    "137": {
+      "name": "Ruby Bolete"
+    },
+    "141": {
+      "name": "Kalkodendra"
+    },
+    "146": {
+      "name": "Vitrodendra"
+    },
+    "147": {
+      "name": "Chrysodendra"
+    },
+    "642": {
+      "name": "T-Creds"
+    }
+  },
+  "potentialSupplementalTables": [
+    [
+      [
+        "Operator Snapshot",
+        "",
+        ""
+      ],
+      [
+        "Memory Mesh\nIllustrator: 狂zip\nThe last log is a small passage, or some form of a directive. The threads have been woven and the pieces are in place. You knew about all this.",
+        "Quadrant\nIllustrator: 廻轉\nYou stand right at the center of the crossroads.",
+        "Fully Grasped"
+      ]
+    ]
+  ]
+}

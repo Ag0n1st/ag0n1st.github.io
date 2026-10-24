@@ -1,0 +1,1483 @@
+{
+  "schemaVersion": 2,
+  "provider": "SKPORT Wiki",
+  "snapshot": "2026-10-24",
+  "captureMethod": "anonymous public browser /web/v1/wiki/item/info responses",
+  "catalogueOperators": 34,
+  "priorOfficialImports": [
+    "liino",
+    "typhoeus",
+    "si"
+  ],
+  "newOfficialCaptures": 30,
+  "currentOfficialCaptures": 33,
+  "unreleasedNotImported": [
+    {
+      "slug": "argent-flow",
+      "itemId": "1279",
+      "availableFrom": "2026-11-05"
+    }
+  ],
+  "sourceLimitations": [
+    {
+      "slug": "endministrator",
+      "itemId": "2",
+      "details": "Potential 4 and 5 are explicitly undisclosed in the official public wiki response. No values inferred."
+    }
+  ],
+  "runHistory": [
+    {
+      "runUrl": "https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/40093305326",
+      "attempted": 30,
+      "imported": 27,
+      "remainingAfter": [
+        "endministrator",
+        "yvonne",
+        "arcane"
+      ]
+    },
+    {
+      "runUrl": "https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/40093986649",
+      "attempted": 3,
+      "imported": 3,
+      "remainingAfter": []
+    },
+    {
+      "runUrl": "https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/40099641870",
+      "attempted": 0,
+      "imported": 0,
+      "officialVariantWebPs": 3,
+      "remainingAfter": []
+    }
+  ],
+  "results": [
+    {
+      "slug": "laevatain",
+      "id": "11",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 41102
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 359970
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 4540
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 7550
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 6268
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 2750
+        }
+      ]
+    },
+    {
+      "slug": "gilberta",
+      "id": "9",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 37964
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 302062
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 6712
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 7750
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 4936
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 1200
+        }
+      ]
+    },
+    {
+      "slug": "ember",
+      "id": "15",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 41708
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 300448
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 4234
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 5802
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 5890
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 2614
+        }
+      ]
+    },
+    {
+      "slug": "last-rite",
+      "id": "17",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 36228
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 293058
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 4630
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 6480
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 7314
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 2604
+        }
+      ]
+    },
+    {
+      "slug": "lifeng",
+      "id": "12",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 40918
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 310106
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 6170
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 5074
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 6478
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 1130
+        }
+      ]
+    },
+    {
+      "slug": "pogranichnik",
+      "id": "20",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 38868
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 250976
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 4042
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 9140
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 10164
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 1482
+        }
+      ]
+    },
+    {
+      "slug": "ardelia",
+      "id": "19",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 39936
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 289220
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 6712
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 5836
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 6750
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 2094
+        }
+      ]
+    },
+    {
+      "slug": "perlica",
+      "id": "1",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 30134
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 210232
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 6910
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 4726
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 4654
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 1562
+        }
+      ]
+    },
+    {
+      "slug": "arclight",
+      "id": "7",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 38448
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 182838
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 686
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 2160
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 892
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 1656
+        }
+      ]
+    },
+    {
+      "slug": "avywenna",
+      "id": "10",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 34980
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 182546
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 6170
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 7130
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 5806
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 2040
+        }
+      ]
+    },
+    {
+      "slug": "da-pan",
+      "id": "8",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 20388
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 270954
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 4234
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 4876
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 4878
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 872
+        }
+      ]
+    },
+    {
+      "slug": "chen-qianyu",
+      "id": "4",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 41854
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 217440
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 4042
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 6070
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 7782
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 1892
+        }
+      ]
+    },
+    {
+      "slug": "wulfgard",
+      "id": "6",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 23,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 34792
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 238896
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 5788
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 7114
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 6652
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 1940
+        }
+      ]
+    },
+    {
+      "slug": "xaihi",
+      "id": "13",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 30108
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 319470
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 6802
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 4388
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 5308
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 1410
+        }
+      ]
+    },
+    {
+      "slug": "snowshine",
+      "id": "16",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 33898
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 263202
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 4234
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 6312
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 6660
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 1818
+        }
+      ]
+    },
+    {
+      "slug": "alesh",
+      "id": "18",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 38318
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 267488
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 686
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 1310
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 1730
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 2328
+        }
+      ]
+    },
+    {
+      "slug": "akekuri",
+      "id": "5",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 34690
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 107044
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 4042
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 5352
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 4668
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 2266
+        }
+      ]
+    },
+    {
+      "slug": "catcher",
+      "id": "23",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 31750
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 118884
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 4234
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 7318
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 5882
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 1054
+        }
+      ]
+    },
+    {
+      "slug": "estella",
+      "id": "21",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 25742
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 115204
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 1384
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 1556
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 1022
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 1500
+        }
+      ]
+    },
+    {
+      "slug": "fluorite",
+      "id": "24",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 29150
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 92424
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 5676
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 5914
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 7226
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 1444
+        }
+      ]
+    },
+    {
+      "slug": "antal",
+      "id": "22",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 30020
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 110676
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 6910
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 6040
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 7042
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 2190
+        }
+      ]
+    },
+    {
+      "slug": "tangtang",
+      "id": "25",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 41814
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 260096
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 5768
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 7188
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 8994
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 2770
+        }
+      ]
+    },
+    {
+      "slug": "rossi",
+      "id": "615",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 30684
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 241448
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 4042
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 9336
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 8458
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 3480
+        }
+      ]
+    },
+    {
+      "slug": "zhuang-fangyi",
+      "id": "838",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 32866
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 294772
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 6910
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 7586
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 5806
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 3310
+        }
+      ]
+    },
+    {
+      "slug": "mi-fu",
+      "id": "995",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 51388
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 226694
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 4234
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 5708
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 6982
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 1014
+        }
+      ]
+    },
+    {
+      "slug": "camille",
+      "id": "996",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 39190
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 290760
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 6726
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 6602
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 7766
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 2804
+        }
+      ]
+    },
+    {
+      "slug": "purrchena",
+      "id": "1174",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 23388
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 275834
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 4234
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 9110
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 7068
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 2230
+        }
+      ]
+    },
+    {
+      "slug": "endministrator",
+      "id": "2",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 3,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 30610
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 225070
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 4042
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 4948
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 4814
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 1002
+        }
+      ]
+    },
+    {
+      "slug": "yvonne",
+      "id": "14",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 22,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 34100
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 245284
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 1318
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 1982
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 1736
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 2438
+        }
+      ]
+    },
+    {
+      "slug": "arcane",
+      "id": "1040",
+      "status": "imported",
+      "skillRanks": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "talents": 5,
+      "potentials": 5,
+      "promotions": 7,
+      "materialNames": 21,
+      "images": [
+        {
+          "type": "cover.webp",
+          "status": "saved",
+          "bytes": 36444
+        },
+        {
+          "type": "illustration.webp",
+          "status": "saved",
+          "bytes": 262098
+        },
+        {
+          "type": "skills/skill-basic.webp",
+          "status": "saved",
+          "bytes": 6712
+        },
+        {
+          "type": "skills/skill-battle.webp",
+          "status": "saved",
+          "bytes": 7896
+        },
+        {
+          "type": "skills/skill-combo.webp",
+          "status": "saved",
+          "bytes": 5796
+        },
+        {
+          "type": "skills/skill-ultimate.webp",
+          "status": "saved",
+          "bytes": 2144
+        }
+      ]
+    }
+  ],
+  "additionalOfficialVariantAssets": [
+    {
+      "slot": "battle",
+      "path": "/images/endfield/operators/arcane/skills/skill-battle-will.webp",
+      "bytes": 6316
+    },
+    {
+      "slot": "combo",
+      "path": "/images/endfield/operators/arcane/skills/skill-combo-will.webp",
+      "bytes": 6202
+    },
+    {
+      "slot": "ultimate",
+      "path": "/images/endfield/operators/arcane/skills/skill-ultimate-will.webp",
+      "bytes": 2116
+    }
+  ],
+  "newOptimizedWebPs": 183
+}

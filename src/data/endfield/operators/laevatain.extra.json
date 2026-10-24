@@ -1,0 +1,686 @@
+{
+  "schemaVersion": 2,
+  "source": {
+    "provider": "SKPORT Wiki",
+    "itemId": "11",
+    "language": "en",
+    "snapshot": "2026-10-24"
+  },
+  "operator": "laevatain",
+  "profile": {
+    "Codename": "Laevatain",
+    "Gender": "Female",
+    "Faction": "Rhodes Island",
+    "Birthday": "Same as the Endmin's",
+    "Element": "Heat",
+    "Race": "Sarkaz",
+    "Chinese CV": "阎么么",
+    "English CV": "Kira Buckland",
+    "Japanese CV": "堀江 由衣",
+    "Korean CV": "김유림"
+  },
+  "attributes": {
+    "levels": [
+      "LV.1",
+      "LV.20",
+      "LV.40",
+      "LV.60",
+      "LV.80",
+      "LV.90"
+    ],
+    "metrics": [
+      {
+        "name": "Strength (Secondary)",
+        "values": [
+          "13",
+          "36",
+          "60",
+          "85",
+          "109",
+          "121"
+        ]
+      },
+      {
+        "name": "Agility",
+        "values": [
+          "9",
+          "28",
+          "49",
+          "69",
+          "89",
+          "99"
+        ]
+      },
+      {
+        "name": "Intellect (Main)",
+        "values": [
+          "22",
+          "55",
+          "90",
+          "125",
+          "160",
+          "177"
+        ]
+      },
+      {
+        "name": "Will",
+        "values": [
+          "9",
+          "26",
+          "44",
+          "62",
+          "80",
+          "89"
+        ]
+      },
+      {
+        "name": "Base ATK",
+        "values": [
+          "30",
+          "91",
+          "156",
+          "221",
+          "285",
+          "318"
+        ]
+      },
+      {
+        "name": "Base HP",
+        "values": [
+          "500",
+          "1566",
+          "2689",
+          "3811",
+          "4934",
+          "5495"
+        ]
+      }
+    ],
+    "levelCosts": [
+      {
+        "level": "LV.1",
+        "items": []
+      },
+      {
+        "level": "LV.20",
+        "items": [
+          {
+            "id": "100",
+            "count": 5
+          },
+          {
+            "id": "101",
+            "count": 2
+          },
+          {
+            "id": "102",
+            "count": 2
+          },
+          {
+            "id": "642",
+            "count": 820
+          }
+        ]
+      },
+      {
+        "level": "LV.40",
+        "items": [
+          {
+            "id": "100",
+            "count": 3
+          },
+          {
+            "id": "101",
+            "count": 8
+          },
+          {
+            "id": "102",
+            "count": 24
+          },
+          {
+            "id": "642",
+            "count": 12540
+          }
+        ]
+      },
+      {
+        "level": "LV.60",
+        "items": [
+          {
+            "id": "100",
+            "count": 4
+          },
+          {
+            "id": "101",
+            "count": 5
+          },
+          {
+            "id": "102",
+            "count": 47
+          },
+          {
+            "id": "642",
+            "count": 23900
+          }
+        ]
+      },
+      {
+        "level": "LV.80",
+        "items": [
+          {
+            "id": "105",
+            "count": 6
+          },
+          {
+            "id": "106",
+            "count": 46
+          },
+          {
+            "id": "642",
+            "count": 109180
+          }
+        ]
+      },
+      {
+        "level": "LV.90",
+        "items": [
+          {
+            "id": "106",
+            "count": 58
+          },
+          {
+            "id": "642",
+            "count": 238980
+          }
+        ]
+      }
+    ],
+    "mainAttribute": "Intellect",
+    "secondaryAttribute": "Strength"
+  },
+  "talents": [
+    {
+      "id": "keen-mind",
+      "name": "Keen Mind",
+      "category": "attribute",
+      "levels": [
+        {
+          "name": "Keen Mind 1",
+          "effect": "Operator Intellect +10.",
+          "requirements": [
+            "20% trust with the Operator",
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 5
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "name": "Keen Mind 2",
+          "effect": "Operator Intellect +15.",
+          "requirements": [
+            "50% trust with the Operator",
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 10
+            },
+            {
+              "id": "642",
+              "count": 1800
+            }
+          ]
+        },
+        {
+          "name": "Keen Mind 3",
+          "effect": "Operator Intellect +15.",
+          "requirements": [
+            "100% trust with the Operator",
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 10
+            },
+            {
+              "id": "642",
+              "count": 6000
+            }
+          ]
+        },
+        {
+          "name": "Keen Mind 4",
+          "effect": "Operator Intellect +20.",
+          "requirements": [
+            "100% trust with the Operator",
+            "Promote to E4 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 20
+            },
+            {
+              "id": "642",
+              "count": 12000
+            }
+          ]
+        }
+      ],
+      "supplementalTables": [
+        [
+          [
+            "Trust",
+            "Raise your operators' trust to unlock more skills and profile data. Operators with higher trust also interact with you differently aboard Dijiang.\nYou can raise operator trust with gifts or by assigning them to the Dijiang Control Nexus."
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "scorching-heart",
+      "name": "Scorching Heart",
+      "category": "combat",
+      "levels": [
+        {
+          "name": "Scorching Heart 1",
+          "effect": "After the controlled operator’s Final Strike or Finisher hits the enemy, Laevatain absorbs Heat Infliction from nearby enemies.\nEvery stack of Heat Infliction absorbed gives Laevatain 1 stack of Melting Flame (max stacks: 4).\nAfter reaching 4 stacks, DMG dealt by Laevatain ignores 10 Heat Resistance of the enemy for 20s.\nLaevatain also absorbs Heat Infliction from enemies defeated nearby.",
+          "requirements": [
+            "None"
+          ],
+          "cost": []
+        },
+        {
+          "name": "Scorching Heart 2",
+          "effect": "After the controlled operator’s Final Strike or Finisher hits the enemy, Laevatain absorbs Heat Infliction from nearby enemies.\nEvery stack of Heat Infliction absorbed gives Laevatain 1 stack of Melting Flame (max stacks: 4).\nAfter reaching 4 stacks, DMG dealt by Laevatain ignores 15 Heat Resistance of the enemy for 20s.\nLaevatain also absorbs Heat Infliction from enemies defeated nearby.",
+          "requirements": [
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 2400
+            }
+          ]
+        },
+        {
+          "name": "Scorching Heart 3",
+          "effect": "After the controlled operator’s Final Strike or Finisher hits the enemy, Laevatain absorbs Heat Infliction from nearby enemies.\nEvery stack of Heat Infliction absorbed gives Laevatain 1 stack of Melting Flame (max stacks: 4).\nAfter reaching 4 stacks, DMG dealt by Laevatain ignores 20 Heat Resistance of the enemy for 20s.\nLaevatain also absorbs Heat Infliction from enemies defeated nearby.",
+          "requirements": [
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 18
+            },
+            {
+              "id": "642",
+              "count": 16000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "re-ignition",
+      "name": "Re-Ignition",
+      "category": "combat",
+      "levels": [
+        {
+          "name": "Re-Ignition 1",
+          "effect": "When HP drops below 40% gain 90% Protection and restore 5% Max HP per second for 4s.\nThis effect can only trigger once every 120s.",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 48
+            },
+            {
+              "id": "642",
+              "count": 10800
+            }
+          ]
+        },
+        {
+          "name": "Re-Ignition 2",
+          "effect": "When HP drops below 40% gain 90% Protection and restore 5% Max HP per second for 8s.\nThis effect can only trigger once every 120s.",
+          "requirements": [
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 28
+            },
+            {
+              "id": "642",
+              "count": 24600
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "memory-crucible",
+      "name": "Memory Crucible",
+      "category": "ship",
+      "levels": [
+        {
+          "name": "Memory Crucible β",
+          "effect": "Assign to Manufacturing Cabin to grant operator EXP material production efficiency +20%",
+          "requirements": [
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 1600
+            }
+          ]
+        },
+        {
+          "name": "Memory Crucible γ",
+          "effect": "Assign to Manufacturing Cabin to grant operator EXP material production efficiency +30%",
+          "requirements": [
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 8000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "undying-flames",
+      "name": "Undying Flames",
+      "category": "ship",
+      "levels": [
+        {
+          "name": "Undying Flames β",
+          "effect": "Assign to Manufacturing Cabin to slow Mood Drop of all operators in it by 14%",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 3000
+            }
+          ]
+        },
+        {
+          "name": "Undying Flames γ",
+          "effect": "Assign to Manufacturing Cabin to slow Mood Drop of all operators in it by 18%",
+          "requirements": [
+            "Promote to E4 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 20
+            },
+            {
+              "id": "642",
+              "count": 20000
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "promotions": [
+    {
+      "name": "Promotion I",
+      "effect": "Activate this to raise operator level cap to 40",
+      "requirement": "Operator Lv.20",
+      "cost": [
+        {
+          "id": "107",
+          "count": 8
+        },
+        {
+          "id": "128",
+          "count": 3
+        },
+        {
+          "id": "642",
+          "count": 1600
+        }
+      ]
+    },
+    {
+      "name": "Outfitting I",
+      "effect": "Activate this to let the operator equip blue quality gear",
+      "requirement": "Promote to E1 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 1600
+        }
+      ]
+    },
+    {
+      "name": "Promotion II",
+      "effect": "Activate this to raise operator level cap to 60",
+      "requirement": "Operator Lv.40",
+      "cost": [
+        {
+          "id": "107",
+          "count": 25
+        },
+        {
+          "id": "133",
+          "count": 5
+        },
+        {
+          "id": "642",
+          "count": 6500
+        }
+      ]
+    },
+    {
+      "name": "Outfitting II",
+      "effect": "Activate this to let the operator equip purple quality gear",
+      "requirement": "Promote to E2 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 6500
+        }
+      ]
+    },
+    {
+      "name": "Promotion III",
+      "effect": "Activate this to raise operator level cap to 80",
+      "requirement": "Operator Lv.60",
+      "cost": [
+        {
+          "id": "108",
+          "count": 24
+        },
+        {
+          "id": "137",
+          "count": 5
+        },
+        {
+          "id": "642",
+          "count": 18000
+        }
+      ]
+    },
+    {
+      "name": "Outfitting III",
+      "effect": "Activate this to let the operator equip gold quality gear",
+      "requirement": "Promote to E3 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 18000
+        }
+      ]
+    },
+    {
+      "name": "Promotion IV",
+      "effect": "Activate this to raise operator level cap to 90",
+      "requirement": "Operator Lv.80",
+      "cost": [
+        {
+          "id": "108",
+          "count": 36
+        },
+        {
+          "id": "99",
+          "count": 20
+        },
+        {
+          "id": "123",
+          "count": 8
+        },
+        {
+          "id": "642",
+          "count": 100000
+        }
+      ]
+    }
+  ],
+  "potentials": [
+    {
+      "level": 1,
+      "name": "Heart of Melting Flame",
+      "effect": "Battle skill Smouldering Fire improved: Additional attack multiplier is increased to 1.2 times the original, and scoring a hit returns 20 SP."
+    },
+    {
+      "level": 2,
+      "name": "Pursuit of Memories",
+      "effect": "Intellect +20, Basic Attach DMG Dealt +15%."
+    },
+    {
+      "level": 3,
+      "name": "Fragments from the Past",
+      "effect": "Battle skill Smouldering Fire improved: Duration of the Combustion applied by the skill is increased by 50%. DMG of the Combustion applied by the skills is increased to 1.5 times the original."
+    },
+    {
+      "level": 4,
+      "name": "Ice Cream Furnace",
+      "effect": "Ultimate Twilight improved: Ultimate Energy cost -15%."
+    },
+    {
+      "level": 5,
+      "name": "Proof of Existence",
+      "effect": "Ultimate Twilight improved: Enhanced basic attack DMG multiplier is increased to 1.2 times the original; during the ultimate, every enemy defeated by Laevatain extends ultimate duration by +1s (max: +7s)."
+    }
+  ],
+  "materials": {
+    "99": {
+      "name": "D96 Steel Sample 4"
+    },
+    "100": {
+      "name": "Elementary Combat Record"
+    },
+    "101": {
+      "name": "Intermediate Combat Record"
+    },
+    "102": {
+      "name": "Advanced Combat Record"
+    },
+    "103": {
+      "name": "Triphasic Nanoflake"
+    },
+    "105": {
+      "name": "Elementary Cognitive Carrier"
+    },
+    "106": {
+      "name": "Advanced Cognitive Carrier"
+    },
+    "107": {
+      "name": "Protodisk"
+    },
+    "108": {
+      "name": "Protoset"
+    },
+    "109": {
+      "name": "Protoprism"
+    },
+    "110": {
+      "name": "Protohedron"
+    },
+    "111": {
+      "name": "Metadiastima Photoemission Tube"
+    },
+    "114": {
+      "name": "Mark of Perseverance"
+    },
+    "123": {
+      "name": "Cosmagaric"
+    },
+    "128": {
+      "name": "Pink Bolete"
+    },
+    "131": {
+      "name": "Blighted Jadeleaf"
+    },
+    "133": {
+      "name": "Red Bolete"
+    },
+    "137": {
+      "name": "Ruby Bolete"
+    },
+    "141": {
+      "name": "Kalkodendra"
+    },
+    "146": {
+      "name": "Vitrodendra"
+    },
+    "147": {
+      "name": "Chrysodendra"
+    },
+    "642": {
+      "name": "T-Creds"
+    }
+  },
+  "potentialSupplementalTables": [
+    [
+      [
+        "Operator Snapshot",
+        "",
+        ""
+      ],
+      [
+        "Fire and Sword\nIllustrator: Ask\nThe flames swallowed her past. But a single promise steeled her resolve to swing her sword for the future.",
+        "1538°C\nIllustrator: 嘴広コウ\n1538°C is the melting point of ferrium, not hers. Feel free to get closer to her if you think you're ready for it.",
+        "An Invite to the Melting Fire\nIllustrator: min\nAccompany her through long nights without memories. Fight with her and burn the dark, nightmarish enemies. Stand with her as she lights fires to illuminate future journeys."
+      ]
+    ]
+  ]
+}

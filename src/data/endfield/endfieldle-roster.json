@@ -28,7 +28,9 @@
       "assets": {
         "icon": "/images/endfield/operators/endministrator-2/official-icon.webp",
         "portrait": "/images/endfield/operators/endministrator-2/official-portrait.webp",
-        "banner": "/images/endfield/operators/endministrator-male/banner.webp"
+        "banner": "/images/endfield/operators/endministrator-male/banner.webp",
+        "cover": "/images/endfield/operators/endministrator/cover.webp",
+        "splash": "/images/endfield/operators/endministrator/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -48,7 +50,9 @@
       "assets": {
         "icon": "/images/endfield/operators/laevatain/official-icon.webp",
         "portrait": "/images/endfield/operators/laevatain/official-portrait.webp",
-        "banner": "/images/endfield/operators/laevatain/banner.webp"
+        "banner": "/images/endfield/operators/laevatain/banner.webp",
+        "cover": "/images/endfield/operators/laevatain/cover.webp",
+        "splash": "/images/endfield/operators/laevatain/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -68,7 +72,9 @@
       "assets": {
         "icon": "/images/endfield/operators/yvonne/official-icon.webp",
         "portrait": "/images/endfield/operators/yvonne/official-portrait.webp",
-        "banner": "/images/endfield/operators/yvonne/banner.webp"
+        "banner": "/images/endfield/operators/yvonne/banner.webp",
+        "cover": "/images/endfield/operators/yvonne/cover.webp",
+        "splash": "/images/endfield/operators/yvonne/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -88,7 +94,9 @@
       "assets": {
         "icon": "/images/endfield/operators/gilberta/official-icon.webp",
         "portrait": "/images/endfield/operators/gilberta/official-portrait.webp",
-        "banner": "/images/endfield/operators/gilberta/banner.webp"
+        "banner": "/images/endfield/operators/gilberta/banner.webp",
+        "cover": "/images/endfield/operators/gilberta/cover.webp",
+        "splash": "/images/endfield/operators/gilberta/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -108,7 +116,9 @@
       "assets": {
         "icon": "/images/endfield/operators/ember/official-icon.webp",
         "portrait": "/images/endfield/operators/ember/official-portrait.webp",
-        "banner": "/images/endfield/operators/ember/banner.webp"
+        "banner": "/images/endfield/operators/ember/banner.webp",
+        "cover": "/images/endfield/operators/ember/cover.webp",
+        "splash": "/images/endfield/operators/ember/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -128,7 +138,9 @@
       "assets": {
         "icon": "/images/endfield/operators/last-rite/official-icon.webp",
         "portrait": "/images/endfield/operators/last-rite/official-portrait.webp",
-        "banner": "/images/endfield/operators/last-rite/banner.webp"
+        "banner": "/images/endfield/operators/last-rite/banner.webp",
+        "cover": "/images/endfield/operators/last-rite/cover.webp",
+        "splash": "/images/endfield/operators/last-rite/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -148,7 +160,9 @@
       "assets": {
         "icon": "/images/endfield/operators/lifeng/official-icon.webp",
         "portrait": "/images/endfield/operators/lifeng/official-portrait.webp",
-        "banner": "/images/endfield/operators/lifeng/banner.webp"
+        "banner": "/images/endfield/operators/lifeng/banner.webp",
+        "cover": "/images/endfield/operators/lifeng/cover.webp",
+        "splash": "/images/endfield/operators/lifeng/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -168,7 +182,9 @@
       "assets": {
         "icon": "/images/endfield/operators/pogranichnik/official-icon.webp",
         "portrait": "/images/endfield/operators/pogranichnik/official-portrait.webp",
-        "banner": "/images/endfield/operators/pogranichnik/banner.webp"
+        "banner": "/images/endfield/operators/pogranichnik/banner.webp",
+        "cover": "/images/endfield/operators/pogranichnik/cover.webp",
+        "splash": "/images/endfield/operators/pogranichnik/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -188,7 +204,9 @@
       "assets": {
         "icon": "/images/endfield/operators/ardelia/official-icon.webp",
         "portrait": "/images/endfield/operators/ardelia/official-portrait.webp",
-        "banner": "/images/endfield/operators/ardelia/banner.webp"
+        "banner": "/images/endfield/operators/ardelia/banner.webp",
+        "cover": "/images/endfield/operators/ardelia/cover.webp",
+        "splash": "/images/endfield/operators/ardelia/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -208,7 +226,9 @@
       "assets": {
         "icon": "/images/endfield/operators/perlica/official-icon.webp",
         "portrait": "/images/endfield/operators/perlica/official-portrait.webp",
-        "banner": "/images/endfield/operators/perlica/banner.webp"
+        "banner": "/images/endfield/operators/perlica/banner.webp",
+        "cover": "/images/endfield/operators/perlica/cover.webp",
+        "splash": "/images/endfield/operators/perlica/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -228,7 +248,9 @@
       "assets": {
         "icon": "/images/endfield/operators/arclight/official-icon.webp",
         "portrait": "/images/endfield/operators/arclight/official-portrait.webp",
-        "banner": "/images/endfield/operators/arclight/banner.webp"
+        "banner": "/images/endfield/operators/arclight/banner.webp",
+        "cover": "/images/endfield/operators/arclight/cover.webp",
+        "splash": "/images/endfield/operators/arclight/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -248,7 +270,9 @@
       "assets": {
         "icon": "/images/endfield/operators/avywenna/official-icon.webp",
         "portrait": "/images/endfield/operators/avywenna/official-portrait.webp",
-        "banner": "/images/endfield/operators/avywenna/banner.webp"
+        "banner": "/images/endfield/operators/avywenna/banner.webp",
+        "cover": "/images/endfield/operators/avywenna/cover.webp",
+        "splash": "/images/endfield/operators/avywenna/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -268,7 +292,9 @@
       "assets": {
         "icon": "/images/endfield/operators/da-pan/official-icon.webp",
         "portrait": "/images/endfield/operators/da-pan/official-portrait.webp",
-        "banner": "/images/endfield/operators/da-pan/banner.webp"
+        "banner": "/images/endfield/operators/da-pan/banner.webp",
+        "cover": "/images/endfield/operators/da-pan/cover.webp",
+        "splash": "/images/endfield/operators/da-pan/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -288,7 +314,9 @@
       "assets": {
         "icon": "/images/endfield/operators/chen-qianyu/official-icon.webp",
         "portrait": "/images/endfield/operators/chen-qianyu/official-portrait.webp",
-        "banner": "/images/endfield/operators/chen-qianyu/banner.webp"
+        "banner": "/images/endfield/operators/chen-qianyu/banner.webp",
+        "cover": "/images/endfield/operators/chen-qianyu/cover.webp",
+        "splash": "/images/endfield/operators/chen-qianyu/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -308,7 +336,9 @@
       "assets": {
         "icon": "/images/endfield/operators/wulfgard/official-icon.webp",
         "portrait": "/images/endfield/operators/wulfgard/official-portrait.webp",
-        "banner": "/images/endfield/operators/wulfgard/banner.webp"
+        "banner": "/images/endfield/operators/wulfgard/banner.webp",
+        "cover": "/images/endfield/operators/wulfgard/cover.webp",
+        "splash": "/images/endfield/operators/wulfgard/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -328,7 +358,9 @@
       "assets": {
         "icon": "/images/endfield/operators/xaihi/official-icon.webp",
         "portrait": "/images/endfield/operators/xaihi/official-portrait.webp",
-        "banner": "/images/endfield/operators/xaihi/banner.webp"
+        "banner": "/images/endfield/operators/xaihi/banner.webp",
+        "cover": "/images/endfield/operators/xaihi/cover.webp",
+        "splash": "/images/endfield/operators/xaihi/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -348,7 +380,9 @@
       "assets": {
         "icon": "/images/endfield/operators/snowshine/official-icon.webp",
         "portrait": "/images/endfield/operators/snowshine/official-portrait.webp",
-        "banner": "/images/endfield/operators/snowshine/banner.webp"
+        "banner": "/images/endfield/operators/snowshine/banner.webp",
+        "cover": "/images/endfield/operators/snowshine/cover.webp",
+        "splash": "/images/endfield/operators/snowshine/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -368,7 +402,9 @@
       "assets": {
         "icon": "/images/endfield/operators/alesh/official-icon.webp",
         "portrait": "/images/endfield/operators/alesh/official-portrait.webp",
-        "banner": "/images/endfield/operators/alesh/banner.webp"
+        "banner": "/images/endfield/operators/alesh/banner.webp",
+        "cover": "/images/endfield/operators/alesh/cover.webp",
+        "splash": "/images/endfield/operators/alesh/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -388,7 +424,9 @@
       "assets": {
         "icon": "/images/endfield/operators/akekuri/official-icon.webp",
         "portrait": "/images/endfield/operators/akekuri/official-portrait.webp",
-        "banner": "/images/endfield/operators/akekuri/banner.webp"
+        "banner": "/images/endfield/operators/akekuri/banner.webp",
+        "cover": "/images/endfield/operators/akekuri/cover.webp",
+        "splash": "/images/endfield/operators/akekuri/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -408,7 +446,9 @@
       "assets": {
         "icon": "/images/endfield/operators/catcher/official-icon.webp",
         "portrait": "/images/endfield/operators/catcher/official-portrait.webp",
-        "banner": "/images/endfield/operators/catcher/banner.webp"
+        "banner": "/images/endfield/operators/catcher/banner.webp",
+        "cover": "/images/endfield/operators/catcher/cover.webp",
+        "splash": "/images/endfield/operators/catcher/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -428,7 +468,9 @@
       "assets": {
         "icon": "/images/endfield/operators/estella/official-icon.webp",
         "portrait": "/images/endfield/operators/estella/official-portrait.webp",
-        "banner": "/images/endfield/operators/estella/banner.webp"
+        "banner": "/images/endfield/operators/estella/banner.webp",
+        "cover": "/images/endfield/operators/estella/cover.webp",
+        "splash": "/images/endfield/operators/estella/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -448,7 +490,9 @@
       "assets": {
         "icon": "/images/endfield/operators/fluorite/official-icon.webp",
         "portrait": "/images/endfield/operators/fluorite/official-portrait.webp",
-        "banner": "/images/endfield/operators/fluorite/banner.webp"
+        "banner": "/images/endfield/operators/fluorite/banner.webp",
+        "cover": "/images/endfield/operators/fluorite/cover.webp",
+        "splash": "/images/endfield/operators/fluorite/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -468,7 +512,9 @@
       "assets": {
         "icon": "/images/endfield/operators/antal/official-icon.webp",
         "portrait": "/images/endfield/operators/antal/official-portrait.webp",
-        "banner": "/images/endfield/operators/antal/banner.webp"
+        "banner": "/images/endfield/operators/antal/banner.webp",
+        "cover": "/images/endfield/operators/antal/cover.webp",
+        "splash": "/images/endfield/operators/antal/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -488,7 +534,9 @@
       "assets": {
         "icon": "/images/endfield/operators/tangtang/official-icon.webp",
         "portrait": "/images/endfield/operators/tangtang/official-portrait.webp",
-        "banner": "/images/endfield/operators/tangtang/banner.webp"
+        "banner": "/images/endfield/operators/tangtang/banner.webp",
+        "cover": "/images/endfield/operators/tangtang/cover.webp",
+        "splash": "/images/endfield/operators/tangtang/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -508,7 +556,9 @@
       "assets": {
         "icon": "/images/endfield/operators/rossi/official-icon.webp",
         "portrait": "/images/endfield/operators/rossi/official-portrait.webp",
-        "banner": "/images/endfield/operators/rossi/banner.webp"
+        "banner": "/images/endfield/operators/rossi/banner.webp",
+        "cover": "/images/endfield/operators/rossi/cover.webp",
+        "splash": "/images/endfield/operators/rossi/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -528,7 +578,9 @@
       "assets": {
         "icon": "/images/endfield/operators/zhuang-fangyi/official-icon.webp",
         "portrait": "/images/endfield/operators/zhuang-fangyi/official-portrait.webp",
-        "banner": "/images/endfield/operators/zhuang-fangyi/banner.webp"
+        "banner": "/images/endfield/operators/zhuang-fangyi/banner.webp",
+        "cover": "/images/endfield/operators/zhuang-fangyi/cover.webp",
+        "splash": "/images/endfield/operators/zhuang-fangyi/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -548,7 +600,9 @@
       "assets": {
         "icon": "/images/endfield/operators/mi-fu/official-icon.webp",
         "portrait": "/images/endfield/operators/mi-fu/official-portrait.webp",
-        "banner": "/images/endfield/operators/mi-fu/banner.webp"
+        "banner": "/images/endfield/operators/mi-fu/banner.webp",
+        "cover": "/images/endfield/operators/mi-fu/cover.webp",
+        "splash": "/images/endfield/operators/mi-fu/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -568,7 +622,9 @@
       "assets": {
         "icon": "/images/endfield/operators/camille/official-icon.webp",
         "portrait": "/images/endfield/operators/camille/official-portrait.webp",
-        "banner": "/images/endfield/operators/camille/banner.webp"
+        "banner": "/images/endfield/operators/camille/banner.webp",
+        "cover": "/images/endfield/operators/camille/cover.webp",
+        "splash": "/images/endfield/operators/camille/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -588,7 +644,9 @@
       "assets": {
         "icon": "/images/endfield/operators/arcane/official-icon.webp",
         "portrait": "/images/endfield/operators/arcane/official-portrait.webp",
-        "banner": "/images/endfield/operators/arcane/banner.webp"
+        "banner": "/images/endfield/operators/arcane/banner.webp",
+        "cover": "/images/endfield/operators/arcane/cover.webp",
+        "splash": "/images/endfield/operators/arcane/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },
@@ -652,7 +710,9 @@
       "assets": {
         "icon": "/images/endfield/operators/purrchena/official-icon.webp",
         "portrait": "/images/endfield/operators/purrchena/official-portrait.webp",
-        "banner": "/images/endfield/operators/purrchena/banner.webp"
+        "banner": "/images/endfield/operators/purrchena/banner.webp",
+        "cover": "/images/endfield/operators/purrchena/cover.webp",
+        "splash": "/images/endfield/operators/purrchena/illustration.webp"
       },
       "sourceQuality": "cross-checked-official-and-community"
     },

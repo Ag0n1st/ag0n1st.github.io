@@ -1,0 +1,678 @@
+{
+  "schemaVersion": 2,
+  "source": {
+    "provider": "SKPORT Wiki",
+    "itemId": "10",
+    "language": "en",
+    "snapshot": "2026-10-24"
+  },
+  "operator": "avywenna",
+  "profile": {
+    "Codename": "Avywenna",
+    "Gender": "Female",
+    "Faction": "Talos-II General Chamber of Commerce (TGCC)",
+    "Birthday": "October 25",
+    "Element": "Electric",
+    "Race": "Cautus",
+    "Chinese CV": "蔡娜",
+    "English CV": "Sheena May",
+    "Japanese CV": "喜多村英梨",
+    "Korean CV": "강은애"
+  },
+  "attributes": {
+    "levels": [
+      "LV.1",
+      "LV.20",
+      "LV.40",
+      "LV.60",
+      "LV.80",
+      "LV.90"
+    ],
+    "metrics": [
+      {
+        "name": "Strength",
+        "values": [
+          "12",
+          "33",
+          "54",
+          "75",
+          "96",
+          "107"
+        ]
+      },
+      {
+        "name": "Agility (Secondary)",
+        "values": [
+          "10",
+          "31",
+          "52",
+          "74",
+          "95",
+          "106"
+        ]
+      },
+      {
+        "name": "Intellect",
+        "values": [
+          "14",
+          "34",
+          "56",
+          "78",
+          "99",
+          "110"
+        ]
+      },
+      {
+        "name": "Will (Main)",
+        "values": [
+          "15",
+          "43",
+          "73",
+          "103",
+          "133",
+          "148"
+        ]
+      },
+      {
+        "name": "Base ATK",
+        "values": [
+          "30",
+          "90",
+          "153",
+          "217",
+          "280",
+          "312"
+        ]
+      },
+      {
+        "name": "Base HP",
+        "values": [
+          "500",
+          "1566",
+          "2689",
+          "3811",
+          "4934",
+          "5495"
+        ]
+      }
+    ],
+    "levelCosts": [
+      {
+        "level": "LV.1",
+        "items": []
+      },
+      {
+        "level": "LV.20",
+        "items": [
+          {
+            "id": "100",
+            "count": 5
+          },
+          {
+            "id": "101",
+            "count": 2
+          },
+          {
+            "id": "102",
+            "count": 2
+          },
+          {
+            "id": "642",
+            "count": 820
+          }
+        ]
+      },
+      {
+        "level": "LV.40",
+        "items": [
+          {
+            "id": "100",
+            "count": 3
+          },
+          {
+            "id": "101",
+            "count": 8
+          },
+          {
+            "id": "102",
+            "count": 24
+          },
+          {
+            "id": "642",
+            "count": 12540
+          }
+        ]
+      },
+      {
+        "level": "LV.60",
+        "items": [
+          {
+            "id": "100",
+            "count": 4
+          },
+          {
+            "id": "101",
+            "count": 5
+          },
+          {
+            "id": "102",
+            "count": 47
+          },
+          {
+            "id": "642",
+            "count": 23900
+          }
+        ]
+      },
+      {
+        "level": "LV.80",
+        "items": [
+          {
+            "id": "105",
+            "count": 6
+          },
+          {
+            "id": "106",
+            "count": 46
+          },
+          {
+            "id": "642",
+            "count": 109180
+          }
+        ]
+      },
+      {
+        "level": "LV.90",
+        "items": [
+          {
+            "id": "106",
+            "count": 58
+          },
+          {
+            "id": "642",
+            "count": 238980
+          }
+        ]
+      }
+    ],
+    "mainAttribute": "Will",
+    "secondaryAttribute": "Agility"
+  },
+  "talents": [
+    {
+      "id": "stalwart",
+      "name": "Stalwart",
+      "category": "attribute",
+      "levels": [
+        {
+          "name": "Stalwart 1",
+          "effect": "Operator Will +10",
+          "requirements": [
+            "20% trust with the Operator",
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 5
+            },
+            {
+              "id": "642",
+              "count": 1000
+            }
+          ]
+        },
+        {
+          "name": "Stalwart 2",
+          "effect": "Operator Will +15",
+          "requirements": [
+            "50% trust with the Operator",
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 10
+            },
+            {
+              "id": "642",
+              "count": 1800
+            }
+          ]
+        },
+        {
+          "name": "Stalwart 3",
+          "effect": "Operator Will +15",
+          "requirements": [
+            "100% trust with the Operator",
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 10
+            },
+            {
+              "id": "642",
+              "count": 6000
+            }
+          ]
+        },
+        {
+          "name": "Stalwart 4",
+          "effect": "Operator Will +20",
+          "requirements": [
+            "100% trust with the Operator",
+            "Promote to E4 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 25
+            },
+            {
+              "id": "642",
+              "count": 18000
+            }
+          ]
+        }
+      ],
+      "supplementalTables": [
+        [
+          [
+            "Trust",
+            "Raise your operators' trust to unlock more skills and profile data. Operators with higher trust also interact with you differently aboard Dijiang.\nYou can raise operator trust with gifts or by assigning them to the Dijiang Control Nexus."
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "expedited-delivery",
+      "name": "Expedited Delivery",
+      "category": "combat",
+      "levels": [
+        {
+          "name": "Expedited Delivery 1",
+          "effect": "When a thrown or returning Thunderlance or Thunderlance EX hits the enemy, gain 3 Ultimate Energy.",
+          "requirements": [
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 2400
+            }
+          ]
+        },
+        {
+          "name": "Expedited Delivery 2",
+          "effect": "When a thrown or returning Thunderlance or Thunderlance EX hits the enemy, gain 4 Ultimate Energy.",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 40
+            },
+            {
+              "id": "642",
+              "count": 8600
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tactful-approach",
+      "name": "Tactful Approach",
+      "category": "combat",
+      "levels": [
+        {
+          "name": "Tactful Approach 1",
+          "effect": "Ultimate Thunderlance: Final Shock improved: Also applies 6% Electric Susceptibility for 10s to enemies it hits.",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 48
+            },
+            {
+              "id": "642",
+              "count": 10800
+            }
+          ]
+        },
+        {
+          "name": "Tactful Approach 2",
+          "effect": "Ultimate Thunderlance: Final Shock improved: Also applies 10% Electric Susceptibility for 10s to enemies it hits.",
+          "requirements": [
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 28
+            },
+            {
+              "id": "642",
+              "count": 24600
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "residence-advisor",
+      "name": "Residence Advisor",
+      "category": "ship",
+      "levels": [
+        {
+          "name": "Residence Advisor α",
+          "effect": "Assign to Control Nexus to grant all operators' Mood Regen +8%",
+          "requirements": [
+            "Promote to E1 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 6
+            },
+            {
+              "id": "642",
+              "count": 1600
+            }
+          ]
+        },
+        {
+          "name": "Residence Advisor β",
+          "effect": "Assign to Control Nexus to grant all operators' Mood Regen +12%",
+          "requirements": [
+            "Promote to E3 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 8000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "factory-pioneer",
+      "name": "Factory Pioneer",
+      "category": "ship",
+      "levels": [
+        {
+          "name": "Factory Pioneer α",
+          "effect": "Assign to Manufacturing Cabin to grant weapon EXP material production efficiency +10%",
+          "requirements": [
+            "Promote to E2 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "109",
+              "count": 12
+            },
+            {
+              "id": "642",
+              "count": 3000
+            }
+          ]
+        },
+        {
+          "name": "Factory Pioneer β",
+          "effect": "Assign to Manufacturing Cabin to grant weapon EXP material production efficiency +20%",
+          "requirements": [
+            "Promote to E4 to unlock"
+          ],
+          "cost": [
+            {
+              "id": "110",
+              "count": 20
+            },
+            {
+              "id": "112",
+              "count": 12
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "promotions": [
+    {
+      "name": "Promotion I",
+      "effect": "Activate this to raise operator level cap to 40",
+      "requirement": "Operator Lv.20",
+      "cost": [
+        {
+          "id": "107",
+          "count": 8
+        },
+        {
+          "id": "128",
+          "count": 3
+        },
+        {
+          "id": "642",
+          "count": 1600
+        }
+      ]
+    },
+    {
+      "name": "Outfitting I",
+      "effect": "Activate this to let the operator equip blue quality gear",
+      "requirement": "Promote to E1 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 1800
+        }
+      ]
+    },
+    {
+      "name": "Promotion II",
+      "effect": "Activate this to raise operator level cap to 60",
+      "requirement": "Operator Lv.40",
+      "cost": [
+        {
+          "id": "107",
+          "count": 25
+        },
+        {
+          "id": "133",
+          "count": 5
+        },
+        {
+          "id": "642",
+          "count": 6500
+        }
+      ]
+    },
+    {
+      "name": "Outfitting II",
+      "effect": "Activate this to let the operator equip purple quality gear",
+      "requirement": "Promote to E2 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 6500
+        }
+      ]
+    },
+    {
+      "name": "Promotion III",
+      "effect": "Activate this to raise operator level cap to 80",
+      "requirement": "Operator Lv.60",
+      "cost": [
+        {
+          "id": "108",
+          "count": 24
+        },
+        {
+          "id": "137",
+          "count": 5
+        },
+        {
+          "id": "642",
+          "count": 18000
+        }
+      ]
+    },
+    {
+      "name": "Outfitting III",
+      "effect": "Activate this to let the operator equip gold quality gear",
+      "requirement": "Promote to E3 to unlock",
+      "cost": [
+        {
+          "id": "642",
+          "count": 25600
+        }
+      ]
+    },
+    {
+      "name": "Promotion IV",
+      "effect": "Activate this to raise operator level cap to 99",
+      "requirement": "Operator Lv.80",
+      "cost": [
+        {
+          "id": "108",
+          "count": 36
+        },
+        {
+          "id": "112",
+          "count": 20
+        },
+        {
+          "id": "134",
+          "count": 8
+        },
+        {
+          "id": "642",
+          "count": 100000
+        }
+      ]
+    }
+  ],
+  "potentials": [
+    {
+      "level": 1,
+      "name": "Doubling Down",
+      "effect": "Talent Expedited Delivery improved: Ultimate Energy gain +2."
+    },
+    {
+      "level": 2,
+      "name": "Pole of Menace",
+      "effect": "Thunderlance and Thunderlance EX duration +20s."
+    },
+    {
+      "level": 3,
+      "name": "Hard Negotiator",
+      "effect": "Will +15, Electric DMG Dealt +8%."
+    },
+    {
+      "level": 4,
+      "name": "Very Experienced",
+      "effect": "Ultimate Thunderlance: Final Shock improved: Ultimate Energy cost -15%."
+    },
+    {
+      "level": 5,
+      "name": "Carrot and Sharp Stick",
+      "effect": "When returning Thunderlances and Thunderlance EX hits an Electric Susceptible enemy, DMG multiplier is increased to 1.15 times the original."
+    }
+  ],
+  "materials": {
+    "100": {
+      "name": "Elementary Combat Record"
+    },
+    "101": {
+      "name": "Intermediate Combat Record"
+    },
+    "102": {
+      "name": "Advanced Combat Record"
+    },
+    "103": {
+      "name": "Triphasic Nanoflake"
+    },
+    "104": {
+      "name": "Quadrant Fitting Fluid"
+    },
+    "105": {
+      "name": "Elementary Cognitive Carrier"
+    },
+    "106": {
+      "name": "Advanced Cognitive Carrier"
+    },
+    "107": {
+      "name": "Protodisk"
+    },
+    "108": {
+      "name": "Protoset"
+    },
+    "109": {
+      "name": "Protoprism"
+    },
+    "110": {
+      "name": "Protohedron"
+    },
+    "112": {
+      "name": "Tachyon Screening Lattice"
+    },
+    "114": {
+      "name": "Mark of Perseverance"
+    },
+    "119": {
+      "name": "False Aggela"
+    },
+    "128": {
+      "name": "Pink Bolete"
+    },
+    "133": {
+      "name": "Red Bolete"
+    },
+    "134": {
+      "name": "Bloodcap"
+    },
+    "137": {
+      "name": "Ruby Bolete"
+    },
+    "141": {
+      "name": "Kalkodendra"
+    },
+    "146": {
+      "name": "Vitrodendra"
+    },
+    "147": {
+      "name": "Chrysodendra"
+    },
+    "642": {
+      "name": "T-Creds"
+    }
+  },
+  "potentialSupplementalTables": [
+    [
+      [
+        "Operator Snapshot",
+        "",
+        ""
+      ],
+      [
+        "Found Ya\nIllustrator: se_eeeee\nShe had always traveled alone until she ran into you.",
+        "Missing Me, Hmm?\nIllustrator: umo_yszx\nShe acquired plenty of memories and nostalgias from all sorts of people, but hardly ever mentioned her own.",
+        "Mystery Invite\nIllustrator: LM7\nThe journey is uncertain, but the messenger never hesitated when toasting you this invite."
+      ]
+    ]
+  ]
+}

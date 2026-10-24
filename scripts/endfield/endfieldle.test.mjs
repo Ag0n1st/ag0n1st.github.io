@@ -23,8 +23,8 @@ test("full 34-operator named roster matches official source identities and local
   if(row.assets.banner)assert.ok(existsSync("public"+row.assets.banner),row.name+" missing banner");
  }
  assert.equal(roster.operators.filter(x=>x.assets.banner).length,33);
- assert.equal(roster.operators.filter(x=>x.assets.splash).length,3);
- assert.deepEqual(roster.operators.filter(x=>x.assets.splash).map(x=>x.id).sort(),["liino","si","typhoeus"]);
+ assert.equal(roster.operators.filter(x=>x.assets.splash).length,33);
+ assert.deepEqual(roster.operators.filter(x=>x.assets.splash).map(x=>x.id).sort(),roster.operators.filter(x=>x.id!=="argent-flow").map(x=>x.id).sort());
  for(const row of roster.operators)if(row.assets.splash){
    assert.ok(existsSync("public"+row.assets.splash),row.id+" missing SKPORT illustration");
    assert.ok(existsSync("public"+row.assets.cover),row.id+" missing SKPORT cover");
@@ -104,9 +104,10 @@ test("DE/EN locale routes, nav order, SEO sitemap and no global backend",()=>{
  assert.match(client,/compareOperator/);
  assert.doesNotMatch(client,/cloudflare|firebase|worker\.dev|fetch\(/i);
 });
-test("real SKPORT full-profile importer gap is accurately documented",()=>{
+test("SKPORT anonymous public batch import and remaining unreleased operator are accurately documented",()=>{
  const doc=read("docs/endfield-endfieldle.md");
  assert.match(doc,/SKPORT-Abgrenzung/);
- assert.match(doc,/31/);
- assert.match(doc,/signiert/);
+ assert.match(doc,/33\/34/);
+ assert.match(doc,/anonym/);
+ assert.match(doc,/Argent Flow/);
 });
