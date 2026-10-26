@@ -52,6 +52,20 @@ test("release version arrows point from guess to answer, unknown values remain n
  assert.equal(compareOperator({...si,gender:"Variable"},si).gender.kind,"unknown");
  assert.equal(compareOperator(si,{...si,race:"Undisclosed"}).race.kind,"unknown");
 });
+test("Camille's gender matches the official SKPORT Basic Information in both locales",()=>{
+ const camille=roster.operators.find(op=>op.id==="camille");
+ const official=JSON.parse(read("src/data/endfield/operators/camille.extra.json"));
+ assert.equal(official.profile?.Gender,"Male");
+ assert.equal(camille.gender,official.profile.Gender);
+ assert.equal(camille.releaseVersion,"v1.3");
+ assert.equal(compareOperator({...camille,gender:"Female"},camille).gender.kind,"miss");
+ assert.equal(compareOperator({...camille,gender:"Male"},camille).gender.kind,"match");
+ // DE and EN render the same shared roster. Never create locale-only gender facts.
+ const component=read("src/components/pages/EndfieldlePage.astro");
+ assert.match(component,/import roster from "..\/..\/data\/endfield\/endfieldle-roster\.json"/);
+ assert.match(component,/data-lang=\{lang\}/);
+});
+
 test("fixed global schedule includes one operator per day and excludes previous three",()=>{
  assert.equal(schedule.timeZone,"Europe/Berlin");
  assert.equal(schedule.excludedPreviousDays,3);
