@@ -671,12 +671,16 @@ def smoke_i18n(page, base_url, width):
         check_overflow(page,label+" "+locale+" Si after guide feed changes")
     page.goto(base_url+"/en/endfield/tierlist/")
     verify(page.locator("html").get_attribute("lang")=="en" and
-           "Coming soon" in page.locator("main").inner_text(),
-           label+": English Tierlist is a true translated placeholder")
+           "Community Tier List" in page.locator("main").inner_text() and
+           page.locator('[data-community-tierlist] [data-tierlist-tab]').count()==3 and
+           page.locator("main .placeholder-card").count()==0,
+           label+": English Tierlist is a published translated community ranking")
     page.goto(base_url+"/endfield/tierlist/")
     verify(page.locator("html").get_attribute("lang")=="de" and
-           "Diese Seite entsteht" in page.locator("main").inner_text(),
-           label+": German Tierlist placeholder matches")
+           "Community-Tierlist" in page.locator("main").inner_text() and
+           page.locator('[data-community-tierlist] [data-tierlist-tab]').count()==3 and
+           page.locator("main .placeholder-card").count()==0,
+           label+": German Tierlist published with role tabs")
     page.goto(base_url+"/en/endfield/operators/typhoeus/")
     verify(page.locator("#fertigkeiten").count()==1 and
            page.locator("#ausruestung").count()==1 and
