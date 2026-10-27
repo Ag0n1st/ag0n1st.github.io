@@ -34,9 +34,10 @@ test("unfinished nav states and tierlist order match shared language data",()=>{
   assert.equal(keys[keys.indexOf("endfieldle")+1],"countdown");
   assert.equal(keys.length,10);
   assert.deepEqual(keys,["overview","operators","factory","speedruns","leaderboard","cheatsheets","checklist","tierlist","endfieldle","countdown"]);
-  for(const key of ["factory","checklist","tierlist"])
+  for(const key of ["factory","checklist"])
     assert.match(nav,new RegExp('upcoming=new Set\\(\\[[^\\]]*"'+key+'"'));
   assert.match(read("src/components/pages/EndfieldHome.astro"),/09 \/ TIERLIST/);
+  assert.doesNotMatch(nav,/upcoming=new Set\(\[[^\]]*"tierlist"/);
   assert.match(read("src/components/pages/EndfieldHome.astro"),/10 \/ PATCH-COUNTDOWN/);
 });
 test("YouTube playlist is not guessed and never invents speedruns",()=>{

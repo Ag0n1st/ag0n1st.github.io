@@ -181,7 +181,7 @@ test("Cheat Sheets start with the full bilingual matrix, retain old links, no cl
  assert.match(matrix,/Quelle: SKPORT Wiki/);
  assert.match(css,/grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/);
  assert.match(css,/@media\(max-width:650px\)/);
- assert.match(nav,/new Set\(\["factory","checklist","tierlist"\]\)/);
+ assert.match(nav,/new Set\(\["factory","checklist"\]\)/);
  assert.ok(!read("src/lib/endfield/refinementMatrix.mjs").includes("fetch("));
 });
 

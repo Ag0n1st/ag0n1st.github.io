@@ -12,7 +12,7 @@ test("Endfield nav has ten entries, excludes three former game-system links and 
     assert.ok(!nav.includes(term),"removed stand-alone navigation: "+term);
  assert.match(nav,/key: "cheatsheets"/);
  assert.match(nav,/cheatsheets:"\/en\/endfield\/cheatsheets\/"/);
- assert.match(nav,/new Set\(\["factory","checklist","tierlist"\]\)/);
+ assert.match(nav,/new Set\(\["factory","checklist"\]\)/);
 });
 test("Cheat Sheets has three migrated systems and retains three existing references in DE and EN",()=>{
  const page=read("src/components/pages/EndfieldCheatSheets.astro");

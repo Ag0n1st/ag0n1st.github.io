@@ -32,7 +32,9 @@ const files = ["src/styles/operator-guides.css","src/components/EndfieldNav.astr
   "src/components/pages/EndfieldLeaderboard.astro","src/styles/endfield-leaderboard.css",
   "src/components/pages/EndfieldCheatSheets.astro",
   "src/components/pages/RefinementMatrix.astro",
-  "src/styles/endfield-refinement.css"];
+  "src/styles/endfield-refinement.css",
+  "src/components/pages/EndfieldTierlist.astro",
+  "src/styles/endfield-tierlist.css"];
 async function sizeOf(path) {
   let info;
   try { info=await stat(path); }

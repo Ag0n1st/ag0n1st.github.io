@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "id": "community-2026-08-23",
+  "date": "2026-08-23",
+  "source": "Community tier list from livestream, rankings supplied by Ag0n1st",
+  "roles": {
+    "damage-dealer": {
+      "S": [
+        "zhuang-fangyi",
+        "rossi",
+        "arcane"
+      ],
+      "A": [
+        "yvonne",
+        "laevatain",
+        "mi-fu"
+      ],
+      "B": [
+        "last-rite",
+        "tangtang"
+      ],
+      "C": [
+        "endministrator",
+        "avywenna"
+      ],
+      "D": [
+        "da-pan"
+      ],
+      "F": []
+    },
+    "enabler": {
+      "S": [
+        "arcane",
+        "camille",
+        "tangtang",
+        "pogranichnik"
+      ],
+      "A": [
+        "arclight",
+        "alesh",
+        "chen-qianyu",
+        "perlica"
+      ],
+      "B": [
+        "lifeng",
+        "wulfgard",
+        "fluorite"
+      ],
+      "C": [
+        "snowshine",
+        "ember"
+      ],
+      "D": [
+        "antal",
+        "akekuri"
+      ],
+      "F": []
+    },
+    "buffer": {
+      "S": [
+        "liino",
+        "gilberta",
+        "xaihi"
+      ],
+      "A": [
+        "ardelia",
+        "perlica",
+        "antal"
+      ],
+      "B": [
+        "camille",
+        "lifeng",
+        "akekuri"
+      ],
+      "C": [
+        "pogranichnik"
+      ],
+      "D": [],
+      "F": []
+    }
+  }
+}
