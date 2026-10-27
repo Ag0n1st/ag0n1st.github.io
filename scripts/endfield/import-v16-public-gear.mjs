@@ -38,7 +38,7 @@ try{
      if(!obj||typeof obj!=="object"||depth>12||seen.has(obj))return;
      seen.add(obj);
      if(Array.isArray(obj)){for(const x of obj)visit(x,depth+1);return}
-     if(/^\\d+$/.test(String(obj.itemId??""))&&typeof obj.name==="string")listing.push(obj);
+     if(/^\d+$/.test(String(obj.itemId??""))&&typeof obj.name==="string")listing.push(obj);
      for(const value of Object.values(obj))visit(value,depth+1);
     };
     visit(data.data?.catalog);
