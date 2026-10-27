@@ -1,0 +1,89 @@
+---
+import EndfieldPlaceholder from "../../layouts/EndfieldPlaceholder.astro";
+import roster from "../../data/endfield/endfieldle-roster.json";
+import snapshot from "../../data/endfield/tierlists/2026-08-23.json";
+import {getCommunityTierlist} from "../../lib/endfield/communityTierlist.mjs";
+import "../../styles/endfield-tierlist.css";
+interface Props {lang?:"de"|"en"}
+const {lang="de"}=Astro.props;
+const en=lang==="en";
+const l=(de:string,english:string)=>en?english:de;
+const tierlist=getCommunityTierlist(snapshot,roster);
+const date= new Intl.DateTimeFormat(en?"en-GB":"de-DE",
+ {day:"2-digit",month:"2-digit",year:"numeric",timeZone:"UTC"}).format(new Date(tierlist.date+"T12:00:00Z"));
+---
+<EndfieldPlaceholder title={l("Community-Tierlist","Community Tier List")}
+ kicker="ARKNIGHTS: ENDFIELD · TIERLIST" active="tierlist" lang={lang}
+ description={l("Die Community-Tierlist aus dem Livestream vom 23.08.2026, getrennt nach Damage Dealer, Enabler und Buffer.",
+ "Community tier list from the livestream on 23 August 2026, split into Damage Dealer, Enabler and Buffer.")}>
+ <main class="endfield-utility-page section-wrap tierlist-page" data-community-tierlist data-tierlist-date={tierlist.date}>
+  <span class="section-kicker">ARKNIGHTS: ENDFIELD · COMMUNITY</span>
+  <h1 class="endfield-stacked-title">{l("Community-Tierlist","Community Tier List")}<span class="title-period">.</span></h1>
+  <p class="tierlist-lead">{l("Gemeinsam mit der Community im Stream eingeordnet. Diese Liste zeigt die Bewertung vom 23.08.2026 und wird nicht rückwirkend an neue Versionen angepasst.",
+   "Ranked together with the community live on stream. This list captures the placements from 23 August 2026 and is not retroactively changed for later patches.")}</p>
+  <section class="tierlist-card" aria-labelledby="tierlist-card-heading">
+   <div class="tierlist-card-head">
+    <div>
+     <span class="tierlist-kicker">{l("STREAM-AUSGABE","STREAM EDITION")}</span>
+     <h2 id="tierlist-card-heading">{l("Community-Ranking","Community Ranking")}</h2>
+    </div>
+    <span class="tierlist-date"><time datetime={tierlist.date}>{date}</time></span>
+   </div>
+   <div class="tierlist-tabs" role="tablist" aria-label={l("Tierlist-Rollen","Tier list roles")}>
+    {tierlist.roles.map((role,index)=><button type="button" role="tab"
+      class="tierlist-tab" id={"tierlist-tab-"+role.id}
+      aria-controls={"tierlist-panel-"+role.id} aria-selected={String(index===0)}
+      tabindex={index===0?0:-1} data-tierlist-tab={role.id}>{role.label}</button>)}
+   </div>
+   {tierlist.roles.map((role,index)=><section id={"tierlist-panel-"+role.id}
+      class="tierlist-panel" role="tabpanel" aria-labelledby={"tierlist-tab-"+role.id}
+      data-tierlist-panel={role.id} hidden={index!==0}>
+     <div class="tierlist-ranks">
+      {role.tiers.map(tier=><div class="tierlist-row" data-tierlist-rank={tier.rank}>
+       <div class="tierlist-rank" data-rank={tier.rank} aria-label={l("Rang ","Tier ")+tier.rank}>
+        <span>{tier.rank}</span>
+       </div>
+       <ul class="tierlist-operators" aria-label={l("Operatoren in Rang ","Operators in tier ")+tier.rank}>
+        {tier.operators.map(op=><li class="tierlist-operator" data-operator={op.id} title={op.name}>
+          <img class="tierlist-operator-icon" src={op.icon} alt="" width="66" height="66" loading="lazy" decoding="async"/>
+          <span class="tierlist-operator-name">{op.name}</span>
+        </li>)}
+        {tier.operators.length===0&&<li class="tierlist-empty" aria-label={l("Keine Einträge","No placements")}>—</li>}
+       </ul>
+      </div>)}
+     </div>
+    </section>)}
+   <p class="tierlist-caption">{l("Stand der gemeinsamen Einordnung: ","Community ranking recorded: ")}<time datetime={tierlist.date}>{date}</time>. {l("Die Rollen werden unabhängig voneinander bewertet; ein Operator kann in mehreren Reitern vorkommen.",
+   "Roles are ranked independently; an operator may appear in multiple tabs.")}</p>
+  </section>
+ </main>
+</EndfieldPlaceholder>
+<script>
+ const root=document.querySelector<HTMLElement>("[data-community-tierlist]");
+ if(root){
+  const tabs=Array.from(root.querySelectorAll<HTMLButtonElement>("[data-tierlist-tab]"));
+  const panels=Array.from(root.querySelectorAll<HTMLElement>("[data-tierlist-panel]"));
+  const activate=(id:string,focus=false)=>{
+   for(const tab of tabs){
+    const selected=tab.dataset.tierlistTab===id;
+    tab.setAttribute("aria-selected",String(selected));
+    tab.tabIndex=selected?0:-1;
+    if(selected&&focus)tab.focus();
+   }
+   for(const panel of panels)panel.hidden=panel.dataset.tierlistPanel!==id;
+  };
+  tabs.forEach((tab,index)=>{
+   tab.addEventListener("click",()=>activate(tab.dataset.tierlistTab??""));
+   tab.addEventListener("keydown",event=>{
+    let next=index;
+    if(event.key==="ArrowRight")next=(index+1)%tabs.length;
+    else if(event.key==="ArrowLeft")next=(index-1+tabs.length)%tabs.length;
+    else if(event.key==="Home")next=0;
+    else if(event.key==="End")next=tabs.length-1;
+    else return;
+    event.preventDefault();
+    activate(tabs[next].dataset.tierlistTab??"",true);
+   });
+  });
+ }
+</script>
