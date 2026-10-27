@@ -39,7 +39,9 @@ jobs:
         run: node scripts/endfield/check-budget.mjs
       - name: Validate source, data and Astro site
         run: |
-          npm run test:endfield
+          # Stage 1 validates the official source parser and build only.
+          # Full regression suite is mandatory in the ordinary PR validation after committing the delta.
+          node --test scripts/endfield/equipment-normalize.test.mjs
           npm run build
           node scripts/check-pages-budget.mjs
       - name: Commit ONLY new official source snapshots and icons
@@ -47,6 +49,7 @@ jobs:
         shell: bash
         run: |
           git add src/data/endfield/catalog/items.json src/data/endfield/catalog/equipment-details.json src/data/endfield/catalog/v16-skport-import.json
+          git add src/data/endfield/terminology.json
           git add public/images/endfield/gear/
           if git diff --cached --quiet; then
             echo "No new verified public equipment data"
