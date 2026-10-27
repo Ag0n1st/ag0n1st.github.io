@@ -951,8 +951,10 @@ def smoke_i18n(page, base_url, width):
                imagebox["width"]==(63 if page.evaluate("innerWidth")<=760 else 100),
                label+": "+lang+" event badge aligns at the trophy's top-right position without title overlap")
         badge.focus()
-        verify(badge.evaluate("(el)=>document.activeElement===el && getComputedStyle(el,'::after').visibility==='visible'"),
-               label+": "+lang+" achievement hint is accessible with keyboard focus")
+        page.wait_for_timeout(180)  # Allow the subtle tooltip opacity transition to settle.
+        tooltip_state=badge.evaluate("""el=>({focused:document.activeElement===el,visible:getComputedStyle(el,'::after').visibility==='visible',opacity:parseFloat(getComputedStyle(el,'::after').opacity)})""")
+        verify(tooltip_state["focused"] and tooltip_state["visible"] and tooltip_state["opacity"]>0.95,
+               label+": "+lang+" achievement hint is accessible with keyboard focus: "+str(tooltip_state))
         event.locator("#cl-event-title").click()
         archive=event.locator("[data-event-archive]")
         verify(archive.count()==1 and
