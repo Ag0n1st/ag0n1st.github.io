@@ -14,7 +14,7 @@ const itemsDe = [
 const { active = "overview", lang = "de" } = Astro.props;
 const isEn=lang==="en";
 // A placeholder alone is not a finished feature. Keep this shared for both languages.
-const upcoming=new Set(["factory","checklist","tierlist","cheatsheets"]);
+const upcoming=new Set(["factory","checklist","tierlist"]);
 const items=isEn?itemsDe.map(item=>({
  ...item,
  label:({"overview":"Overview","operators":"Operators","tierlist":"Tier List","factory":"Factory","speedruns":"Speedruns","leaderboard":"Community Leaderboard","cheatsheets":"Cheat Sheets","endfieldle":"Endfieldle","checklist":"Checklist","countdown":"Countdown"} as Record<string,string>)[item.key]??item.label,
