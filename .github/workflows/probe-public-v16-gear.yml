@@ -1,0 +1,26 @@
+name: Probe anonymous SKPORT Gear catalog v1.6 (read only)
+on:
+  push:
+    branches: [feature-refinement-v16-20261027]
+    paths:
+      - "scripts/endfield/probe-public-v16-gear.mjs"
+      - ".github/workflows/probe-public-v16-gear.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install anonymous Chromium browser
+        run: |
+          npm ci
+          npm install --no-save --package-lock=false playwright
+          npx playwright install --with-deps chromium
+      - name: Capture public Gear catalogue structure (no raw data stored)
+        run: node scripts/endfield/probe-public-v16-gear.mjs
