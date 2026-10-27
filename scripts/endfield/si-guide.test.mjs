@@ -76,7 +76,7 @@ test("Si official weapons and Datafield relative reference are well sourced",()=
 });
 
 test("new 1.6 Si gear keeps source-tagged nonnumeric IDs and must not fake SKPORT blueprints",()=>{
-  assert.equal(official.items.length,940,"never silently insert new wiki names into original SKPORT snapshot");
+  assert.equal(official.items.length,official.source.snapshot==="2026-10-15"?940:958,"Only the verified 18 numeric v1.6 SKPORT gear IDs extend the frozen old catalogue");
   assert.equal(release.items.length,6);
   const ids=new Set(release.items.map(x=>x.id));
   for(const row of release.items){
