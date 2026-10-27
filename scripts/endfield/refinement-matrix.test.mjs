@@ -102,7 +102,7 @@ test("only level 70 gear contributes to any category; main/secondary attribute r
  assert.equal(find("secondary","Armor").best?.id,"75");
  assert.equal(find("secondary","Gloves").best,null);
  for(const attr of ["main","secondary"])for(const cell of matrix.find(x=>x.key===attr).slots)
-  if(cell.best)assert.match(cell.best.raw,/^\\+?[\\d.]+%$/,"percent effect required");
+  if(cell.best)assert.match(cell.best.raw,/^\+?[\d.]+%$/,"percent effect required");
 });
 
 test("actual snapshot contains only level 70 displayed entries and genuine % gear effects",()=>{
@@ -114,9 +114,9 @@ test("actual snapshot contains only level 70 displayed entries and genuine % gea
   shown++;
   const gear=sourceById.get(cell.best.id);
   assert.equal(gear?.level,70,row.key+"/"+cell.slot+" item must be level 70");
-  assert.doesNotMatch(gear.name,/^AIC Fieldwork\\b/);
+  assert.doesNotMatch(gear.name,/^AIC Fieldwork\b/);
   if(["main","secondary"].includes(row.key))
-    assert.match(cell.best.raw,/^\\+?[\\d.]+%$/,"main/secondary must have % effects");
+    assert.match(cell.best.raw,/^\+?[\d.]+%$/,"main/secondary must have % effects");
  }
  assert.ok(shown>30);
  const main=matrix.find(x=>x.key==="main");
