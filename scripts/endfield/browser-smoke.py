@@ -1138,6 +1138,41 @@ def smoke_i18n(page, base_url, width):
                    label+": "+lang+" previous "+old+" link forwards to the correct Cheat Sheets section")
         check_overflow(page,label+" "+lang+" cheatsheets")
 
+        # Community tier list: archived August placements with all three roles,
+        # real offline operator icons and responsive, keyboard-operable tabs.
+        page.goto(base_url+prefix+"/endfield/tierlist/")
+        board=page.locator("[data-community-tierlist]")
+        verify(board.count()==1 and
+               board.get_attribute("data-tierlist-date")=="2026-08-23" and
+               page.locator('[data-tierlist-tab]').count()==3 and
+               page.locator('[data-tierlist-panel]').count()==3 and
+               page.locator('[data-tierlist-panel="damage-dealer"]:visible').count()==1 and
+               page.locator('[data-tierlist-panel="damage-dealer"] [data-tierlist-rank="S"] [data-operator]').count()==3 and
+               page.locator('[data-tierlist-panel="damage-dealer"] [data-tierlist-rank="D"] [data-operator="da-pan"]').count()==1 and
+               page.locator('[data-tierlist-panel="damage-dealer"] [data-tierlist-rank="F"] [data-operator]').count()==0,
+               label+": "+lang+" August community Damage Dealer tiers and date")
+        verify(page.locator('[data-tierlist-panel="damage-dealer"] img[src^="/images/endfield/operators/"]').count()==11 and
+               page.locator('[data-tierlist-tab="damage-dealer"]').get_attribute("aria-selected")=="true" and
+               page.locator('a.endfield-nav-link[href="'+prefix+'/endfield/tierlist/"]').get_attribute("title") is None,
+               label+": "+lang+" local operator icons and published tierlist navigation")
+        page.locator('[data-tierlist-tab="enabler"]').click()
+        verify(page.locator('[data-tierlist-panel="enabler"]:visible [data-tierlist-rank="S"] [data-operator]').count()==4 and
+               page.locator('[data-tierlist-panel="enabler"]:visible [data-tierlist-rank="A"] [data-operator="chen-qianyu"]').count()==1 and
+               page.locator('[data-tierlist-panel="damage-dealer"]:visible').count()==0 and
+               page.locator('[data-tierlist-tab="enabler"]').get_attribute("aria-selected")=="true",
+               label+": "+lang+" Enabler tab isolates correct stream rankings")
+        page.locator('[data-tierlist-tab="enabler"]').press("ArrowRight")
+        verify(page.locator('[data-tierlist-tab="buffer"]').get_attribute("aria-selected")=="true" and
+               page.locator('[data-tierlist-panel="buffer"]:visible [data-tierlist-rank="S"] [data-operator]').count()==3 and
+               page.locator('[data-tierlist-panel="buffer"]:visible [data-tierlist-rank="C"] [data-operator="pogranichnik"]').count()==1 and
+               page.locator('[data-tierlist-panel="buffer"]:visible [data-tierlist-rank="D"] [data-operator]').count()==0 and
+               page.locator('[data-tierlist-panel="buffer"]:visible [data-tierlist-rank="F"] [data-operator]').count()==0,
+               label+": "+lang+" keyboard tabs and only supplied Buffer placements")
+        check_overflow(page,label+" "+lang+" community tierlist")
+        page.locator('[data-tierlist-tab="buffer"]').press("Home")
+        verify(page.locator('[data-tierlist-tab="damage-dealer"]').get_attribute("aria-selected")=="true",
+               label+": "+lang+" tierlist Home key returns to first role")
+
         page.goto(base_url+prefix+"/endfield/endfieldle/")
         game=page.locator("[data-endfieldle]")
         game_diag={"main":game.count(),
