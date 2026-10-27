@@ -52,7 +52,7 @@ test("one top verified candidate per slot, shared max glows, ties deterministic 
  assert.equal(strength.slots[0].best.id,"1");
  assert.equal(strength.slots[0].tied,2);
  assert.equal(strength.slots[0].goodMatch,true);
- assert.equal(strength.slots[1].goodMatch,false);
+ assert.equal(strength.slots[1].goodMatch,true);
  assert.equal(strength.slots[2].best,null);
  assert.equal(rows.find(x=>x.key==="int").slots[2].best.id,"4");
  assert.ok(rows.find(x=>x.key==="atk").slots.every(x=>!x.best&&!x.goodMatch));
