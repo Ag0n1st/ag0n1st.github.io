@@ -1,11 +1,11 @@
 # AG0N1ST.COM – PROJEKT-ROADMAP, ENTWICKLUNGSSTAND & KI-ÜBERGABE
 
 > **Zentrale Projektdokumentation / Single Point of Entry.**  
-> **Stand:** 27. Oktober 2026 (Europe/Berlin); §18.52: PR #71 (Tierlist-Disclaimer einmal, Titel einzeilig DE/EN) erfolgreich in `main` gemergt, 233/233 Tests, Chromium und beide Byte-Gates grün. Unabhängige Live-Auslieferung nach Merge nicht nachgewiesen; Web-Lesezugang zeigt teils veraltete Indexstände.
+> **Stand:** 27. Oktober 2026; aktueller Übergabepunkt **§18.53**. PR #71 in `main`; Pages-Build und Deploy für den geprüften Hauptbranch erfolgreich nachgewiesen. 233/233 Tests und beide Byte-Gates grün. Unabhängiger Live-HTML-Abruf bleibt eingeschränkt.
 > **Projekt:** Ag0n1st – deutschsprachiges Gaming-/Guide-Portal.  
 > **Repository:** https://github.com/Ag0n1st/ag0n1st.github.io  
 > **Produktionswebsite:** https://ag0n1st.com (eigene Domain), alternativ https://ag0n1st.github.io  
-> **Hauptbranch:** `main`. Letzter nachweislich veröffentlichter Funktions-/Datenfix **[PR #65](https://github.com/Ag0n1st/ag0n1st.github.io/pull/65)** (Camille-Geschlecht), Squash `d6837e74bee4831509ce4fa5cf6cbfa77f9f49c3`, [PR-CI #40275401628](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/40275401628) und [Pages #40275605622](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/40275605622) erfolgreich. Zuletzt vor der Übergabeprüfung gelesener `main`-HEAD `3ec612ef3b687e16aa17cce4e2752a70a192a9fb` (reiner Roadmap-Nachtrag); aktueller Übergabepunkt §18.46 (P0-Änderung in `main`, Pages-Deploy für PR #66 noch separat nachzuweisen). Frühere Si-Guide-PRs #34/#35 und ursprünglicher Handoff #12 stehen in der Historie.  
+> **Hauptbranch:** `main`. Zuletzt veröffentlichter Funktionsfix: [PR #71](https://github.com/Ag0n1st/ag0n1st.github.io/pull/71), Squash `82902770fe2e31bd6c181c7fb4f7c3893fd51e1e`. Geprüfter HEAD vor diesem Dokumentationsnachtrag: `362864d4a2f79342e7d304a6bd2cb1801a51ab07`. [Pages #40563421338](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/40563421338) einschließlich Build und Deploy erfolgreich; **0 offene PRs** bei der Übergabeprüfung. Frühere Übergabepunkte bleiben als Historie erhalten.
 > **Diese Dokumentation und die Autoritätslevel-Grenze 60:** [Pull Request #13](https://github.com/Ag0n1st/ag0n1st.github.io/pull/13).  
 > **Wichtig:** Bei jeder folgenden Entwicklungsphase diese Datei und das tatsächliche Repository **gemeinsam** prüfen. GitHub-Code und erfolgreiche CI-Läufe sind der Nachweis für Implementierungen; die Roadmap ist die verbindliche Sammlung von Anforderungen, Entscheidungen, Aufgaben und Übergabehinweisen.
 
@@ -24,14 +24,14 @@
 | Wo liegt die Arbeit? | Öffentliches GitHub-Repo `Ag0n1st/ag0n1st.github.io`; lokales Arbeiten mit VS Code und GitHub Desktop möglich. |
 | Welcher Branch? | Normalerweise `main`; komplexe Änderungen zuerst in einem Feature-Branch, danach Merge. |
 | Welche Technologie? | Astro 5, HTML/CSS, wenig clientseitiges TypeScript/JavaScript; GitHub Pages per Actions. |
-| Was ist tatsächlich funktional? | Landing, Endfield-Übersicht, Operator-Guides, lokale SKPORT-Daten, Build-Finder; DE/EN-Speedrun-Playlist, Countdown und Si-/Liino-Gear-Matrizen; bilinguales Community- und Duality-Event-Leaderboard mit dem ersten bestätigten Run Krombi (§18.26). Manche Endfield-Toolseiten bleiben Platzhalter. |
+| Was ist tatsächlich funktional? | Landing, Endfield-Übersicht, Liino-/Typhoeus-/Si-Guides, SKPORT-Daten und Build-Finder; Speedrun-Playlist, Countdown, Gear-Matrizen; Markdown-gepflegte Community-/Event-Leaderboards mit Archiv; Endfieldle Classic; Level-70-Veredelungsmatrix und Community-Tierlist vom 23.08.2026 mit drei Rollen und 36 Platzierungen. Alles DE/EN. |
 | Was ist inhaltlich noch leer? | Viele weitere Operator-Guides neben den ausgearbeiteten Liino-, Typhoeus- und Si-Guides; mehrere Endfield-System-/Toolseiten, Cheat Sheets im Detail, Teile von NTE und About. Fabrik bewusst pausiert. |
 | Was nicht verändern? | Öffentlich sichtbare Texte nicht aus Fantasie erstellen; kein Pflicht-Login; keine externe Datenbank zur normalen Anzeige; 100-MB-Endfield-Dateibudget. |
 | Wo liegen die Endfield-Spieldaten? | `src/data/endfield/`; offizielle Daten in `catalog/`, `operators/`; explizit recherchierte Community-Daten in `progression/`. |
 | Wo liegen persönliche Guide-Texte? | `src/content/operator-guides/<slug>.md`; Vorlage `_template.md`. |
 | Wie heißt der zentrale UI-Bereich? | `src/components/operator/sections/OperatorEquipment.astro`; Browserinteraktionen in `src/components/operator/OperatorGuide.astro`. |
 | Welche Tests? | `npm run test:endfield`, `node scripts/endfield/check-budget.mjs`, `npm run build`. |
-| Was ist aktuell als Nächstes sinnvoll? | **Aktueller Handoff 26.10.2026 (§18.44):** Letzter Datenbank-Task PR #64 ist nachweislich erfolgreich veröffentlicht: 33/34 eindeutige Operatoren mit SKPORT-Originalprofil, 30 neue Imports, 33 lokale SKPORT-Illustrationen/Artworks. Rest: Argent Flow ab dem geplanten 05.11.2026, Endministrator-P4/P5 offiziell noch unbekannt. **Camille-Geschlecht in Endfieldle offiziell bestätigt und korrigiert: `Female` → `Male`**, Quelle `src/data/endfield/operators/camille.extra.json` `profile.Gender`. PR #65 gemergt, 216/216 Tests, DE/EN-Chromium grün, Pages-Build/Deploy erfolgreich. Endfieldle bleibt ohne Cloudflare/Login/Zähler; Tagesplan/Streaks unverändert. Nachfolgende Aufgaben nur nach Betreiberpriorisierung; Fabrik pausiert. |
+| Was ist aktuell als Nächstes sinnvoll? | **Aktueller Handoff §18.53:** Deployment-Nachweis für den aktuellen Hauptbranch geschlossen; unabhängiger Live-HTML-Check noch offen. Danach Cheat Sheets (Rekrutierung/Essenzen bzw. weitere Referenzen) aus belegten Daten und freigegebener Redaktion ausbauen. Veredelungsmatrix und Tierlist sind bereits implementiert. Weitere Operator-Guides nur mit passender Redaktion; Argent Flow frühestens bei tatsächlich verfügbaren offiziellen Daten nach geplantem Release 05.11.2026, Endministrator-P4/P5 weiterhin offen. Fabrik pausiert; kein Endfieldle-Cloudflare/Login/Zähler. |
 | Stand Authority? | Obergrenze **60**, inklusive HTML-Feld, gespeicherten Eingaben und Auswertelogik; bei künftiger Erhöhung zentral anpassen. |
 
 **Diese Datei ist kein Ersatz für die Dateien im Repository.** Wo der Code und die Roadmap abweichen, nicht stillschweigend „korrigieren“: Diskrepanz feststellen, Ursache prüfen, dem Nutzer erläutern, dann dokumentiert ändern.
@@ -45,7 +45,7 @@
 - **[OFFEN / PRÜFEN]**: konkrete Unsicherheit, Fehlergefahr oder notwendige Entscheidung.
 - **[NICHT GEPLANT]**: bewusster Ausschluss, außer der Nutzer revidiert die Entscheidung.
 
-Viele historische Statuskennzeichnungen beziehen sich noch auf den **15.–16.10.2026** und sind nicht retroaktiv korrigiert. Für den aktuellen Stand **22.10.2026** gelten insbesondere die Chronologie **§18.5–§18.27** und der tatsächliche GitHub-Code/CI-Status vor alten Abschnitten. §18.4 dokumentiert nur den vorherigen Chat-Handoff vom 19.10.2026.
+Viele historische Statuskennzeichnungen beziehen sich noch auf den **15.–16.10.2026** und sind nicht retroaktiv korrigiert. Für den aktuellen Stand **27.10.2026** gelten insbesondere der Übergabepunkt **§18.53** und die Chronologie **§18.28–§18.52** und der tatsächliche GitHub-Code/CI-Status vor alten Abschnitten. §18.4 dokumentiert nur den vorherigen Chat-Handoff vom 19.10.2026.
 
 ---
 
@@ -1123,7 +1123,9 @@ Bei Untersuchung **nur die belegten Fälle korrigieren**, nicht auf ganze Sets/R
 
 ---
 
-## 14. AKTUELLER ÜBERGABEPUNKT: fortgeschrieben bis 16. OKTOBER 2026
+## 14. HISTORISCHER ÜBERGABEPUNKT: fortgeschrieben bis 16. OKTOBER 2026
+
+**Aktuelle Fortsetzung: §18.53.** Die folgenden Einträge dokumentieren frühere Anforderungen und Abnahmen; sie ersetzen nicht den aktuellen GitHub-Stand.
 
 > **Historischer Stand:** Diese Überschrift bleibt für die bestehende Test-/Navigationsstruktur erhalten; der tatsächlich aktuelle Hand-off steht in §18.4 und im letzten Chronologieeintrag.
 
@@ -2967,3 +2969,29 @@ Alle 109 Endfield-Unit-Tests und die beiden Budgetchecks erfolgreich. Desktop 14
 
 
 **Nachkontrolle des öffentlichen Deploys (27.10.2026):** Der verfügbare externe Webseiten-Reader konnte die deutsche Live-Route **nicht** öffnen und lieferte bei `https://ag0n1st.com/en/endfield/tierlist/` weiterhin die **alte** Tierlist-Fassung mit zusätzlichem Datums-Badge, Intro und Footer-Caption. Auch der ausgelesene englische Cheat-Sheets-HTML-Index enthielt noch einen wesentlich früheren Stand der Veredelungsmatrix (sogar vor den Fixes aus PR #68/#69). Das deutet auf einen **stark veralteten Abruf/Indexcache**, nicht zwingend auf einen aktuellen tatsächlichen Deployment-Fehler. Cachebusting-URLs konnten dort nicht geöffnet werden; der lokale externe Internetzugriff ist durch DNS eingeschränkt. **Der neue produktive HTML-Stand von PR #71 ist daher mit den derzeit verfügbaren externen Zugängen nicht unabhängig belegbar.** Der echte Merge nach `main`, die vollständigen DE/EN-Build-/Browsertests und die Budgetgates sind aber wie oben dokumentiert erfolgreich. Live-Status bis zu einem frischen Zugriff nicht als bestätigt markieren; tatsächliche GitHub-Pages-Push-Workflow-ID weiterhin nicht verfügbar. Keine ungeprüfte UI-Änderung allein wegen dieses Caches nachschieben.
+
+
+### 18.53 Aktueller Übergabepunkt – vollständige 127-Seiten-Konversation, main-Abgleich und Pages-Nachweis (27.10.2026)
+
+**Auftrag und vollständige Quellenaufnahme:** Die angehängte „Bisherige Website Konversation(7).pdf“ umfasst **127 Seiten**. Seiten 1–111 wurden als Text vollständig gelesen; die ausschließlich bildbasierten Seiten 112–127 wurden zusätzlich per OCR gelesen. Die zunächst nur aus der Textebene abgeleitete Aussage, die PDF ende bei Krombi/PR #58, war unvollständig: Die Bildseiten enthalten auch Markdown-Leaderboards, Event-Archiv, Endfieldle, den SKPORT-Sammelimport und die Arbeiten bis einschließlich **PR #71**. Für exakte IDs, Werte und Schreibweisen bleibt der Abgleich mit den tatsächlichen Repository-Dateien maßgeblich. Die gesamte Gesprächshistorie ist damit berücksichtigt.
+
+**Verbindliche Regeln erneut bestätigt:** Ausschließlich textbasierter Entwicklungschat; jeden Fortschritt hier dokumentieren; Website-Änderungen immer vollständig DE/EN; Endfield höchstens **100.000.000 Byte**, Pages-`dist/` höchstens **1.000.000.000 Byte**. Direkte redaktionelle Sprache ohne „vom Creator“/„vom Autor“, keine redundant wiederholten Quellen- oder Datumsangaben. Offizielle Daten, Community-Einordnungen, persönliche Redaktion und lokaler Nutzerfortschritt bleiben getrennt. Keine erfundenen Rezepte, Builds oder Potenzialeffekte. Fabrik weiterhin pausiert; Endfieldle weiterhin ohne Login, Cloudflare oder Gewinnerzähler.
+
+**Repository und Quellcode geprüft:** Ausgangs-`main` **`362864d4a2f79342e7d304a6bd2cb1801a51ab07`**, **0 offene PRs**, zuletzt gemergter Funktionsfix **PR #71**. Im aktuellen Code bestätigt: gemeinsames `EndfieldTierlist.astro` mit einmaligem sichtbarem Datums-Disclaimer, drei Rollen und unveränderten 36 Platzierungen; `EndfieldCheatSheets.astro` mit einzeiligem Titel, vorhandener Veredelungsmatrix sowie noch nicht ausgearbeiteten Karten für Rekrutierung, Essenzen, Elastic Goods und Buff Food. Keine Produktänderung allein aufgrund eines veralteten externen Seitenabrufs.
+
+**Bisher fehlender Pages-Nachweis jetzt geschlossen:** Die allgemeine GitHub-GET-Schnittstelle kann über `/repos/Ag0n1st/ag0n1st.github.io/actions/runs?branch=main` auch Push-Workflows lesen. Die ältere Einschränkung betraf den speziellen Commit-Workflow-Wrapper mit PR-Filter, nicht sämtliche GitHub-Zugriffe. [Pages-Lauf #40563421338](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/40563421338) gehört exakt zum oben genannten Hauptbranch-Commit, Event `push`, Status `completed/success`. Build-Job **122398214809** und Deploy-Job **122398491598** erfolgreich. Deploy-Log: Deployment für genau diesen SHA angelegt, anschließend **„Reported success!“**. Damit ist der aktuelle Hauptbranch einschließlich PR #66–#71 als erfolgreich an GitHub Pages übergeben nachgewiesen; historische fehlende Einzelnachweise werden dadurch nicht rückwirkend erfunden.
+
+**Tests und exakte Budgets:** Der tatsächlich gelesene **main-/Pages-Build**, nicht nur der frühere PR-Build, meldet **233/233 Tests**, erfolgreichen Astro-Build und beide Hardgates. Endfield **40.405.069 / 100.000.000 Byte**, **1.654 Dateien**, **59.594.931 Byte frei**. Pages-`dist/` **40.837.290 / 1.000.000.000 Byte**, **1.427 Dateien**, **959.162.710 Byte frei**. Zusätzlich auf dem unveränderten lokalen main-Checkout erneut **233/233 Node-Tests** und das Endfield-Budget mit identischem Ergebnis geprüft. Kein zusätzlicher lokaler Astro-Build oder neuer Chromium-Test behauptet; die dokumentierte DE/EN-Desktop-/Mobil-Browserabnahme stammt weiterhin aus PR #71.
+
+**Verbleibende Prüfgrenze:** Ein direkter Abruf der deutschen Produktivroute lieferte hier trotz HTTP 200 nur eine 195-Byte-Zugangsseite mit „Site Unavailable / Unable to access this site.“ Das ist kein verwertbares Tierlist-HTML und kein Nachweis eines Website-Defekts. Eine unabhängige aktuelle Live-HTML-/Browserprüfung beider Sprachen bleibt getrennt vom jetzt belegten erfolgreichen Pages-Deploy offen.
+
+**Dokumentationsänderung dieses Schritts:** Kopfzeile, Hauptbranch-Nachweis, Schnellorientierung und aktueller Übergabeverweis sind auf §18.53 fortgeschrieben. §14 ist ausdrücklich als historischer Übergabepunkt gekennzeichnet. Frühere Anforderungen und Abnahmen bleiben erhalten. Ausschließlich `ROADMAP.md` geändert; keine Website-Texte, Assets, Spielwerte, Tageslösungen oder Rankings verändert. Der Dokumentationscommit kann selbst einen weiteren Pages-Lauf auslösen; dessen Status separat prüfen.
+
+**Sinnvolle nächste Aufgaben, nach Priorisierung:**
+
+1. **Offene offizielle Herstellungskosten nachprüfen:** Bei zwölf v1.6-Gear-Einträgen ist laut §18.48 die Rezeptbestätigung noch offen. Vor einem Import den aktuellen Datensatz und offizielle SKPORT-Antworten vergleichen; nur belegte Standardrezepte übernehmen. Artificing-Werte und redaktionelle Ausrüstungsempfehlungen nicht dadurch verändern.
+2. **Nächstes Cheat Sheet:** Rekrutierung oder Essenzen aus belegten Mechaniken und freigegebener Redaktion ausarbeiten; alternativ die geplante Buff-Food-Matrix bzw. Elastic Goods konkretisieren. Die vorhandene Veredelungsmatrix nicht nochmals als fehlende Implementierung behandeln.
+3. **Weitere Operator-Inhalte:** 33 offizielle Profile als Grundlage verwenden; zusätzliche Guides erst mit passenden eigenen Texten/Teams/Bewertungen. Argent Flow erst bei tatsächlich verfügbarer offizieller Quelle nach geplantem Release 05.11.2026; Endministrator-P4/P5 weiterhin unbekannt lassen.
+4. **Weitere Community-Tierlists:** Erst nach einer neuen freigegebenen Stream-Ausgabe eine zusätzliche datierte JSON-Datei und gegebenenfalls die Datumsauswahl ergänzen; den Snapshot vom 23.08.2026 unverändert erhalten.
+
+**Fortsetzung:** Der technische Übergabe- und Deployment-Abgleich ist abgeschlossen. Unabhängige Live-Prüfung bleibt offen; anschließend einen der konkret eingegrenzten Inhaltsschritte wählen. Fabrik nicht wieder aufnehmen, keine zusätzliche Backend-Architektur einführen.
