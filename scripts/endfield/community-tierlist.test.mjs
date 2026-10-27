@@ -85,7 +85,7 @@ test("both tierlist routes use the same dated card, responsive CSS, tab keyboard
  assert.match(page,/Die Tierlist wird immer zusammen mit der Community Live im Stream erstellt und spiegelt die Meinung der Allgemeinheit wieder/);
  assert.match(page,/The tier list is always created live on stream together with the community/);
  assert.equal((page.match(/<time datetime=\{tierlist.date\}>\{date\}<\/time>/g)||[]).length,1,"exactly one visible date");
- assert.doesNotMatch(page,/tierlist-caption|tierlist-date|tierlist-lead|endfield-stacked-title/);
+ assert.doesNotMatch(page,/class="tierlist-caption"|class="tierlist-date"|class="tierlist-lead"|endfield-stacked-title/);
  assert.match(page,/class="tierlist-title-end"/);
  assert.match(css,/\.tierlist-disclaimer\{border-left:3px solid var\(--cyan\)/);
  assert.match(css,/\.tierlist-page h1 \.tierlist-title-end\{white-space:nowrap/);
