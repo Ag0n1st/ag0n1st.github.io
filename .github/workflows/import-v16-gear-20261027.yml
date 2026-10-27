@@ -1,0 +1,60 @@
+name: Import verified public SKPORT v1.6 Gear (feature branch)
+on:
+  push:
+    branches: [feature/refinement-cheatsheet-v16-20261027]
+    paths:
+      - scripts/endfield/import-v16-public-gear.mjs
+      - .github/workflows/import-v16-gear-20261027.yml
+  pull_request:
+    branches: [main]
+    paths:
+      - scripts/endfield/import-v16-public-gear.mjs
+      - .github/workflows/import-v16-gear-20261027.yml
+permissions:
+  contents: write
+jobs:
+  capture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install anonymous public browser and WebP encoder
+        run: |
+          npm ci
+          npm install --no-save --package-lock=false playwright sharp
+          npx playwright install --with-deps chromium
+      - name: Import source-validated official 18 v1.6 Gear entries
+        run: |
+          if test -f src/data/endfield/catalog/v16-skport-import.json; then
+            echo "Official source delta already present; no extra network capture"
+          else
+            node scripts/endfield/import-v16-public-gear.mjs
+          fi
+      - name: Enforce 100 MB Endfield working-tree limit
+        run: node scripts/endfield/check-budget.mjs
+      - name: Validate source, data and Astro site
+        run: |
+          npm run test:endfield
+          npm run build
+          node scripts/check-pages-budget.mjs
+      - name: Commit ONLY new official source snapshots and icons
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          git add src/data/endfield/catalog/items.json src/data/endfield/catalog/equipment-details.json src/data/endfield/catalog/v16-skport-import.json
+          git add public/images/endfield/gear/
+          if git diff --cached --quiet; then
+            echo "No new verified public equipment data"
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m "data(endfield): import 18 official SKPORT v1.6 Gear records and icons"
+          git fetch origin feature/refinement-cheatsheet-v16-20261027
+          git rebase origin/feature/refinement-cheatsheet-v16-20261027
+          git push origin HEAD:feature/refinement-cheatsheet-v16-20261027
