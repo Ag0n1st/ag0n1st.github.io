@@ -47,6 +47,15 @@ if(root){
       show(archive,true,archive.value);
     }
   }
+  // Native modal: built-in focus trap and Escape support, same pattern as the Gear Matrix.
+  for(const panel of panels){
+    const trigger=panel.querySelector<HTMLButtonElement>("[data-rule-explanation-open]");
+    const dialog=panel.querySelector<HTMLDialogElement>("[data-rule-explanation-dialog]");
+    if(!trigger||!dialog)continue;
+    trigger.addEventListener("click",()=>{if(!dialog.open)dialog.showModal();});
+    dialog.addEventListener("click",event=>{if(event.target===dialog)dialog.close();});
+    dialog.addEventListener("close",()=>{if(!panel.hidden)trigger.focus();});
+  }
   addEventListener("popstate",restore);
   restore();
 }

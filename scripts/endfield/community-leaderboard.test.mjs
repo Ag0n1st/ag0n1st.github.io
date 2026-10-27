@@ -76,6 +76,34 @@ test("Owner demo displays Placeholder beside name, against Si, never as a verifi
  assert.match(css,/\.cl-operator-potential\{position:absolute/);
  assert.match(css,/right:1px;bottom:1px/);
 });
+test("Duality damage-dealer rule has an accessible bilingual modal with local WebP examples",()=>{
+ const panel=read("src/components/endfield/LeaderboardEventPanel.astro");
+ const modalClient=read("src/components/endfield/leaderboard-event-client.ts");
+ const event=read("src/content/leaderboard-events/duality.md");
+ assert.match(panel,/event.id==="duality"&&rule.id==="damage-dealer"/);
+ assert.match(panel,/data-rule-explanation-open aria-haspopup="dialog"/);
+ assert.match(panel,/<dialog class="cl-rule-explanation-dialog"/);
+ assert.match(panel,/data-rule-explanation-dialog aria-labelledby=/);
+ assert.match(panel,/Erklärung","Explanation"/);
+ assert.match(panel,/Erlaubt","✓ Allowed"/);
+ assert.match(panel,/Verboten","✕ Forbidden"/);
+ assert.match(panel,/Schadensverurs\./);
+ assert.match(modalClient,/dialog\.showModal\(\)/);
+ assert.match(modalClient,/dialog\.close\(\)/);
+ assert.match(modalClient,/trigger\.focus\(\)/);
+ assert.match(css,/\.cl-rule-explanation-columns\{display:grid;grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/);
+ assert.match(css,/@media\(max-width:700px\)\{\.cl-rule-explanation-columns\{grid-template-columns:1fr/);
+ for(const [slug,width,height] of [["si",350,153],["arcane",349,156],["yvonne",351,158]]){
+   const path="public/images/endfield/leaderboard/duality-rule-"+slug+".webp";
+   assert.ok(existsSync(path),path);
+   const bytes=readFileSync(path);
+   assert.equal(bytes.toString("ascii",0,4),"RIFF");
+   assert.equal(bytes.toString("ascii",8,12),"WEBP");
+   assert.match(panel,new RegExp('src="/images/endfield/leaderboard/duality-rule-'+slug+'\\.webp" width="'+width+'" height="'+height+'"'));
+ }
+ assert.match(event,/- id: damage-dealer\s+de: "Si ist der einzige Operator im Team/);
+ assert.equal((event.match(/^  - id: /gm)||[]).length,6);
+});
 test("Official time is MM:SS with no hidden fractions or subsecond tiebreak",()=>{
  assert.equal(parseIngameTime("00:00"),0);
  assert.equal(parseIngameTime("02:05"),125);
