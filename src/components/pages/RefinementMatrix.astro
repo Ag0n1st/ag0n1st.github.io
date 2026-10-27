@@ -29,12 +29,12 @@ const coverage=attributes.filter(row=>row.slots.some(slot=>slot.best)).length;
     <div>
       <span class="section-kicker">{l("VEREDELUNG · CHEAT SHEET","ARTIFICING · CHEAT SHEET")}</span>
       <h2 id="refinement-heading">{l("Veredelungs-Matrix","Artificing Matrix")} <span class="refinement-highlight">{l("Gute Übereinstimmungen","Good Matches")}</span></h2>
-      <p>{l("Für jedes Attribut das stärkste verfügbare Ausrüstungsteil in Rüstung, Handschuhen und Kit. Die Werte stammen aus den offiziellen SKPORT-Veredelungstabellen.","The strongest available gear piece for each attribute in Armor, Gloves and Kit. Values come from official SKPORT artificing tables.")}</p>
+      <p>{l("Für jedes Attribut das stärkste verfügbare Ausrüstungsteil in Rüstung, Handschuhen und Kit.","The strongest available gear piece for each attribute in Armor, Gloves and Kit.")}</p>
     </div>
     <span class="refinement-verified-count">{coverage}/{attributes.length} {l("Kategorien mit Werten","attributes covered")}</span>
   </div>
   <p class="refinement-legend"><span class="refinement-legend-light" aria-hidden="true">★</span>
-    {l("Leuchtend markiert: höchster bestätigter Basis-Veredelungswert je Ausrüstungsklasse und Attribut. Gute Übereinstimmung für andere passende Teile derselben Klasse – nicht für das Teil selbst.","Glowing: highest verified default artificing value within the gear class and attribute. Good Match for other compatible gear in that class – not for the item itself.")}
+    {l("Gelb: herausragende Redeemer- oder Rift-Trekker-Teile, deren Veredelungswert über regulären Sets desselben Attributs und Ausrüstungstyps liegt. Nicht für sich selbst.","Yellow: exceptional Redeemer or Rift Trekker gear with a higher artificing value than regular sets for the same attribute and gear slot. Not for itself.")}
   </p>
   <div class="refinement-tabs" role="tablist" aria-label={l("Attributgruppen","Attribute groups")} data-refinement-tabs>
     {groups.map((group,index)=><button type="button" class="refinement-tab" role="tab"
