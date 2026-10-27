@@ -1,0 +1,32 @@
+/* Community stream tierlist: light data-driven board, existing local assets only. */
+.tierlist-page{max-width:1250px;min-width:0}
+.tierlist-page h1{color:#f7f3fb;margin:16px 0 12px;font-size:clamp(33px,4vw,55px);line-height:1.1;letter-spacing:-.05em}
+.tierlist-lead{color:#c3bdca;font-size:14px;line-height:1.7;max-width:790px;margin:0 0 26px}
+.tierlist-card{min-width:0;background:linear-gradient(148deg,#201b27 0%,#181921 56%,#13171d 100%);border:1px solid #484051;border-radius:19px;padding:clamp(14px,2.6vw,30px);box-shadow:0 15px 42px #0005}
+.tierlist-card-head{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.tierlist-kicker{font-size:10px;font-weight:800;letter-spacing:.16em;color:var(--cyan,#6cdbed)}
+.tierlist-card-head h2{font-size:clamp(23px,3vw,34px);color:#fff;margin:7px 0 0;letter-spacing:-.045em;line-height:1.14}
+.tierlist-date{font-size:13px;color:#eee7f3;border:1px solid #5b5164;border-radius:999px;padding:9px 13px;background:#2b2632;white-space:nowrap}
+.tierlist-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:25px 0 19px;padding:6px;background:#121219;border:1px solid #37303d;border-radius:13px}
+.tierlist-tab{font:inherit;font-size:clamp(11px,1.3vw,14px);font-weight:800;cursor:pointer;color:#cac2d1;background:transparent;border:1px solid transparent;border-radius:9px;min-height:46px;padding:8px 10px;transition:color .15s,background .15s,border-color .15s}
+.tierlist-tab:hover{background:#24222d;color:#fff}
+.tierlist-tab[aria-selected="true"]{background:linear-gradient(118deg,#382c43,#1b313b);border-color:#598791;color:#e9fcff;box-shadow:inset 0 0 0 1px #4f6371}
+.tierlist-tab:focus-visible{outline:2px solid #b0f5ff;outline-offset:2px}
+.tierlist-panel[hidden]{display:none!important}
+.tierlist-ranks{display:flex;flex-direction:column;gap:8px}
+.tierlist-row{display:grid;grid-template-columns:clamp(54px,7vw,85px) minmax(0,1fr);gap:8px;min-width:0}
+.tierlist-rank{display:flex;justify-content:center;align-items:center;background:#413242;border-radius:10px;border:1px solid #ffffff30;min-height:113px;font-size:clamp(24px,3vw,36px);font-weight:900;color:#fff;text-shadow:0 1px 6px #0005}
+.tierlist-rank[data-rank="S"]{background:linear-gradient(145deg,#8a6529,#5a432a);border-color:#ab854d;color:#fff0bc}
+.tierlist-rank[data-rank="A"]{background:linear-gradient(145deg,#784568,#4a2a52);border-color:#a96796;color:#ffcbeb}
+.tierlist-rank[data-rank="B"]{background:linear-gradient(145deg,#316a7d,#244957);border-color:#509db4;color:#cff7ff}
+.tierlist-rank[data-rank="C"]{background:linear-gradient(145deg,#356b60,#29433d);border-color:#529c82;color:#d6ffec}
+.tierlist-rank[data-rank="D"]{background:linear-gradient(145deg,#5a566d,#393646);border-color:#747085;color:#e9e5f0}
+.tierlist-rank[data-rank="F"]{background:linear-gradient(145deg,#673d42,#432c35);border-color:#8f505d;color:#ffdce1}
+.tierlist-operators{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;list-style:none;padding:9px;margin:0;border-radius:10px;border:1px solid #37313c;background:#11131bcc;min-width:0;min-height:113px}
+.tierlist-operator{flex:0 0 102px;max-width:100%;display:flex;align-items:center;flex-direction:column;justify-content:center;gap:5px;border:1px solid #423c4a;background:linear-gradient(155deg,#2c2935,#1d1e28);border-radius:9px;padding:7px 5px 8px;text-align:center;min-width:0}
+.tierlist-operator-icon{display:block;width:66px;height:66px;max-width:100%;object-fit:contain;border-radius:7px}
+.tierlist-operator-name{font-size:11px;font-weight:750;color:#f1edf5;line-height:1.25;overflow-wrap:anywhere}
+.tierlist-empty{display:flex;align-items:center;padding:15px 9px;color:#777384;font-size:26px}
+.tierlist-caption{color:#a8a4b2;font-size:12px;line-height:1.65;margin:19px 0 0}
+@media(max-width:700px){.tierlist-card{padding:14px 10px}.tierlist-rank{min-height:97px}.tierlist-operators{min-height:97px;gap:6px;padding:6px}.tierlist-operator{flex-basis:82px;padding:5px 3px}.tierlist-operator-icon{width:58px;height:58px}.tierlist-operator-name{font-size:10px}.tierlist-row{grid-template-columns:48px minmax(0,1fr);gap:6px}}
+@media(max-width:380px){.tierlist-tab{padding-inline:2px;font-size:11px;min-height:44px}.tierlist-operator{flex-basis:73px}.tierlist-operator-icon{width:54px;height:54px}.tierlist-rank{font-size:25px}}
