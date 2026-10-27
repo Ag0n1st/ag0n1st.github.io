@@ -84,11 +84,11 @@ test("incomplete details, unrecognized recipes and editor preview never unlock b
    Array.from({length:4},()=>gear("528"))),
    {level:70,factoryComponent:"maximal",storyProgress:ownedProgress(["528"])}).status,"unverified");
 });
-test("all official 258 Gear standard recipes map to approved components",()=>{
+test("original 258 official Gear recipes stay verified; new review recipes never grant unlocks",()=>{
  const snapshot=JSON.parse(readFileSync("src/data/endfield/catalog/equipment-details.json","utf8"));
- assert.equal(snapshot.gear.length,258);
+ assert.ok(snapshot.gear.length===258||snapshot.gear.length===276);
  const totals={starter:0};
- for(const row of snapshot.gear){
+ for(const row of snapshot.gear.filter(row=>Number(row.id)<1380)){
    const tier=componentRequirementForRecipe(row.standardRecipe);
    assert.ok(tier,"Unmapped official recipe: "+row.id+" "+row.name);
    assert.equal(row.recipeStatus,"verified");

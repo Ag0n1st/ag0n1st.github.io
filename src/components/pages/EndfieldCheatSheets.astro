@@ -1,5 +1,6 @@
 ---
 import EndfieldPlaceholder from "../../layouts/EndfieldPlaceholder.astro";
+import RefinementMatrix from "./RefinementMatrix.astro";
 interface Props {lang?:"de"|"en"}
 const {lang="de"}=Astro.props;
 const en=lang==="en";
@@ -11,16 +12,12 @@ const systems=[
  {id:"recruitment",tag:"#Recruitment",de:"Rekrutierung",en:"Recruitment",
   descriptionDe:"Hier findest du künftig eine strukturierte Erklärung des Rekrutierungssystems und die wichtigsten Tipps aus meinem Video-Guide.",
   descriptionEn:"Here you will find an explanation of Arknights: Endfield recruitment, including the essentials and helpful strategies."},
- {id:"refinement",tag:"#Refinement",de:"Veredelung",en:"Refinement",
-  descriptionDe:"Der Veredelungs-Guide mit den zentralen Mechaniken, Erklärungen und Tipps zur sinnvollen Nutzung befindet sich noch in Arbeit.",
-  descriptionEn:"The refinement guide will cover equipment progression, the available systems and how to use them effectively."},
  {id:"essences",tag:"#Essences",de:"Essenzen",en:"Essences",
   descriptionDe:"Hier entsteht eine übersichtliche Referenz zum Essenz-System, damit du wichtige Informationen schnell nachschlagen kannst.",
   descriptionEn:"An accessible breakdown of the Essence system, its mechanics and practical progression tips is coming soon."}
 ];
 const categories=[
  {id:"elasticgoods",tag:"#ElasticGoods",de:"Elastic Goods – Best Prices",en:"Elastic Goods – Best Prices",descriptionDe:"Die besten Verkaufspreise und Waren-Kombinationen für Elastic Goods, später als kompaktes Nachschlagewerk.",descriptionEn:"Best selling prices and combinations for Elastic Goods, in a compact reference sheet."},
- {id:"artificing",tag:"#Artificing",de:"Veredelungs-Matrix – Best Matches",en:"Refinement Matrix – Best Matches",descriptionDe:"Übersicht optimaler Veredelungszuordnungen und passender Materialkombinationen.",descriptionEn:"A quick comparison of recommended refinement matches and compatible material combinations."},
  {id:"bufffood",tag:"#Bufffood",de:"Buff Food – Matrix",en:"Buff Food – Matrix",descriptionDe:"Bufffood nach erhöhten Kampfwerten vergleichen, mit besonderem Fokus auf Speedruns, z. B. ANG und Ultimate-Energiegewinn.",descriptionEn:"Compare buff food by affected combat stats, particularly for speedruns, such as ATK and Ultimate energy gain."}
 ];
 ---
@@ -28,7 +25,9 @@ const categories=[
   <main class="endfield-utility-page section-wrap endfield-coming-tool">
     <span class="section-kicker">ARKNIGHTS: ENDFIELD · REFERENCE</span>
     <h1 class="endfield-stacked-title"><span>Cheat</span><span>Sheets<span class="title-period">.</span></span></h1>
-    <p class="endfield-utility-intro">{l("Kompakte Nachschlagekarten statt langem Suchen. Die konkreten Tabellen und Werte folgen nach redaktioneller Prüfung.","Compact quick-reference sheets. Verified tables and values will follow.")}</p>
+    <p class="endfield-utility-intro">{l("Kompakte Nachschlagekarten statt langem Suchen. Die Veredelungs-Matrix ist verfügbar; weitere Cheat Sheets werden nach Prüfung ergänzt.","Compact quick-reference sheets. The refinement matrix is available; more verified references will follow.")}</p>
+
+    <RefinementMatrix lang={lang} />
 
     <section class="endfield-cheatsheets-group" aria-labelledby="cheatsheets-systems-heading" data-cheatsheets-group="systems">
       <h2 id="cheatsheets-systems-heading">{l("Spielsysteme","Game systems")}</h2>

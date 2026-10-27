@@ -1,0 +1,99 @@
+---
+import ItemIcon from "../endfield/ItemIcon.astro";
+import details from "../../data/endfield/catalog/equipment-details.json";
+import {deriveRefinementMatrix} from "../../lib/endfield/refinementMatrix.mjs";
+import "../../styles/operator-guides.css";
+import "../../styles/endfield-refinement.css";
+interface Props {lang?:"de"|"en"}
+const {lang="de"}=Astro.props;
+const en=lang==="en";
+const l=(de:string,english:string)=>en?english:de;
+const attributes=deriveRefinementMatrix(details.gear);
+const groups=[
+ {id:"primary",de:"Hauptattribute",en:"Main attributes"},
+ {id:"damage",de:"Schadensboni",en:"Damage bonuses"},
+ {id:"utility",de:"Weitere Attribute",en:"Other attributes"},
+];
+const slotLabels={
+ Armor:l("Rüstung","Armor"),
+ Gloves:l("Handschuhe","Gloves"),
+ Kit:"Kit"
+};
+const highlight=l("Gute Übereinstimmung","Good Match");
+const show=raw=>raw?.startsWith("+")||raw?.startsWith("-")?raw:raw?.includes("%")?raw:"+"+raw;
+const coverage=attributes.filter(row=>row.slots.some(slot=>slot.best)).length;
+---
+<section id="refinement" class="op-cardlet refinement-feature" aria-labelledby="refinement-heading">
+  <span id="artificing" class="refinement-legacy-anchor" aria-hidden="true"></span>
+  <div class="refinement-feature-heading">
+    <div>
+      <span class="section-kicker">{l("VEREDELUNG · CHEAT SHEET","ARTIFICING · CHEAT SHEET")}</span>
+      <h2 id="refinement-heading">{l("Veredelungs-Matrix","Artificing Matrix")} <span class="refinement-highlight">{l("Gute Übereinstimmungen","Good Matches")}</span></h2>
+      <p>{l("Für jedes Attribut das stärkste verfügbare Ausrüstungsteil in Rüstung, Handschuhen und Kit. Die Werte stammen aus den offiziellen SKPORT-Veredelungstabellen.","The strongest available gear piece for each attribute in Armor, Gloves and Kit. Values come from official SKPORT artificing tables.")}</p>
+    </div>
+    <span class="refinement-verified-count">{coverage}/{attributes.length} {l("Kategorien mit Werten","attributes covered")}</span>
+  </div>
+  <p class="refinement-legend"><span class="refinement-legend-light" aria-hidden="true">★</span>
+    {l("Leuchtend markiert: höchster bestätigter Basis-Veredelungswert je Ausrüstungsklasse und Attribut. Gute Übereinstimmung für andere passende Teile derselben Klasse – nicht für das Teil selbst.","Glowing: highest verified default artificing value within the gear class and attribute. Good Match for other compatible gear in that class – not for the item itself.")}
+  </p>
+  <div class="refinement-tabs" role="tablist" aria-label={l("Attributgruppen","Attribute groups")} data-refinement-tabs>
+    {groups.map((group,index)=><button type="button" class="refinement-tab" role="tab"
+      id={"refinement-tab-"+group.id} aria-controls={"refinement-panel-"+group.id}
+      aria-selected={index===0?"true":"false"} tabindex={index===0?0:-1}
+      data-refinement-tab={group.id}>{en?group.en:group.de}
+      <span>{attributes.filter(row=>row.group===group.id).length}</span></button>)}
+  </div>
+  {groups.map((group,index)=><section
+    id={"refinement-panel-"+group.id} class="refinement-panel" role="tabpanel"
+    aria-labelledby={"refinement-tab-"+group.id}
+    data-refinement-panel={group.id} hidden={index!==0}>
+    <div class="refinement-attribute-grid">
+      {attributes.filter(row=>row.group===group.id).map(row=><article class="refinement-attribute-card">
+        <h3>{en?row.en:row.de}</h3>
+        <div class="refinement-slot-grid">
+          {row.slots.map(cell=><div class:list={["refinement-mini-card",{"refinement-good-match":cell.goodMatch,"refinement-empty":!cell.best}]}
+            data-refinement-slot={cell.slot} data-refinement-attribute={row.key}
+            data-refinement-item-id={cell.best?.id??undefined} data-good-match={String(cell.goodMatch)}>
+            <span class="refinement-slot-label">{slotLabels[cell.slot]}</span>
+            {cell.goodMatch&&<span class="refinement-match-star" aria-label={highlight} title={highlight}>★</span>}
+            {cell.best ? <>
+              <ItemIcon id={cell.best.id} lang={lang}/>
+              <strong class="refinement-number">{show(cell.best.raw)}</strong>
+              {cell.best.tag && <span class="refinement-variant-tag">{cell.best.tag}</span>}
+              <span class="refinement-sr">{cell.best.name}</span>
+            </> : <>
+              <span class="refinement-unavailable" aria-label={l("Kein bestätigtes Teil","No verified gear")}>—</span>
+            </>}
+          </div>)}
+        </div>
+      </article>)}
+    </div>
+  </section>)}
+  <p class="refinement-source">{l("Quelle: SKPORT Wiki · Veredelungswerte · Datenstand","Source: SKPORT Wiki · Artificing values · snapshot")} {details.source.snapshot}. {l("Item berühren oder mit Tastatur auswählen, um Namen, Attribute und Stufen einzusehen.","Hover, tap or focus an item for its full name, attributes and ranks.")}</p>
+</section>
+<script>
+  const tabs=Array.from(document.querySelectorAll<HTMLButtonElement>("[data-refinement-tab]"));
+  const panels=Array.from(document.querySelectorAll<HTMLElement>("[data-refinement-panel]"));
+  const activate=(id:string,focus=false)=>{
+    for(const tab of tabs){
+      const active=tab.dataset.refinementTab===id;
+      tab.setAttribute("aria-selected",String(active));
+      tab.tabIndex=active?0:-1;
+      if(active&&focus)tab.focus();
+    }
+    for(const panel of panels)panel.hidden=panel.dataset.refinementPanel!==id;
+  };
+  tabs.forEach((tab,index)=>{
+    tab.addEventListener("click",()=>activate(tab.dataset.refinementTab??""));
+    tab.addEventListener("keydown",event=>{
+      let next=index;
+      if(event.key==="ArrowRight")next=(index+1)%tabs.length;
+      else if(event.key==="ArrowLeft")next=(index-1+tabs.length)%tabs.length;
+      else if(event.key==="Home")next=0;
+      else if(event.key==="End")next=tabs.length-1;
+      else return;
+      event.preventDefault();
+      activate(tabs[next].dataset.refinementTab??"",true);
+    });
+  });
+</script>

@@ -19,7 +19,7 @@ test("24 community crates list individual linked Gear IDs, with no fabricated of
  assert.ok(wiki.pieceLinks.every(x=>x.officialMarkerId===null));
 });
 test("reconciled individual crate assignments are deterministic and never grant unlocks",()=>{
- assert.deepEqual(saved,compilePreciseGearEvidence(gear,hub,wiki,claims));
+ assert.deepEqual(saved,compilePreciseGearEvidence(gear.filter(row=>Number(row.id)<1380),hub,wiki,claims));
  assert.equal(saved.coverage.total,258);
  assert.equal(saved.coverage.officialCrateGear,125);
  assert.ok(saved.entries.every(x=>x.officialMarkerId===null));

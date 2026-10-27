@@ -12,11 +12,12 @@ const categoryFolders={
  "Item Files":"materials",
  "Valuables Stash":"valuables"
 };
-const expected={"Operators":35,"Weapons":84,"Gear":258,"Item Files":340,"Valuables Stash":223};
+const expected={"Operators":35,"Weapons":84,"Gear":catalog.source.snapshot==="2026-10-15"?258:276,"Item Files":340,"Valuables Stash":223};
+const expectedTotal=Object.values(expected).reduce((a,b)=>a+b,0);
 const itemById=new Map(catalog.items.map(item=>[item.id,item]));
 test("all 940 official SKPORT IDs resolve to unique local WebPs in their categories",()=>{
- assert.equal(catalog.items.length,940);
- assert.equal(itemById.size,940);
+ assert.equal(catalog.items.length,expectedTotal);
+ assert.equal(itemById.size,expectedTotal);
  const counts=Object.fromEntries(Object.keys(expected).map(key=>[key,0]));
  const catalogImages=new Set();
  let borrowedCovers=0;
@@ -49,7 +50,7 @@ test("all 940 official SKPORT IDs resolve to unique local WebPs in their categor
 });
 test("all weapon and gear detail records share the canonical icon path",()=>{
  assert.equal(details.weapons.length,84);
- assert.equal(details.gear.length,258);
+ assert.equal(details.gear.length,expected.Gear);
  for(const entry of [...details.weapons,...details.gear]){
    const target=itemById.get(entry.id);
    assert.ok(target,"unknown equipment ID "+entry.id);

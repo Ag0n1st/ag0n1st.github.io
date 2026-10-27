@@ -3,7 +3,7 @@
   "source": {
     "provider": "SKPORT Wiki",
     "language": "en",
-    "snapshot": "2026-10-15"
+    "snapshot": "2026-10-27"
   },
   "categories": [
     {
@@ -19,7 +19,7 @@
     {
       "name": "Gear",
       "officialId": "4",
-      "count": 258
+      "count": 276
     },
     {
       "name": "Item Files",
@@ -9432,6 +9432,186 @@
       "iconPath": "/images/endfield/weapons/1283.webp",
       "cacheStatus": "cached",
       "coverUrl": "https://static.skport.com/image/rm42wiki/20261013/3864465401225/6acd8971be8f5e2663680e09_56331367.png"
+    },
+    {
+      "id": "1380",
+      "name": "Type 50 Yinglung Beacon",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/1380.webp",
+      "cacheStatus": "cached",
+      "coverUrl": "https://static.skport.com/image/rm42wiki/20261021/7040428526148/6ad8c433be8f5e2663684525_56331367.png"
+    },
+    {
+      "id": "1381",
+      "name": "Type 50 Yinglung Gloves",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/1381.webp",
+      "cacheStatus": "cached",
+      "coverUrl": "https://static.skport.com/image/rm42wiki/20261021/7040428526148/6ad8ca4ba03f3aa857d21c79_f1525633.png"
+    },
+    {
+      "id": "1382",
+      "name": "Type 50 Yinglung Soft Armor",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/1382.webp",
+      "cacheStatus": "cached",
+      "coverUrl": "https://static.skport.com/image/rm42wiki/20261021/7040428526148/6ad8cc69be8f5e266368455f_db193eac.png"
+    },
+    {
+      "id": "1383",
+      "name": "Rift Trekker Gauntlets",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/1383.webp",
+      "cacheStatus": "cached",
+      "coverUrl": "https://static.skport.com/image/rm42wiki/20261024/7040428526148/6adc6233a03f3aa857d22a4b_3eac6ad0.png"
+    },
+    {
+      "id": "1384",
+      "name": "Rift Trekker Silver Blade",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/1384.webp",
+      "cacheStatus": "cached",
+      "coverUrl": "https://static.skport.com/image/rm42wiki/20261024/7040428526148/6adc6685a03f3aa857d22a5e_3eac6ad0.png"
+    },
+    {
+      "id": "1385",
+      "name": "Rift Trekker Wraps",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/1385.webp",
+      "cacheStatus": "cached",
+      "coverUrl": "https://static.skport.com/image/rm42wiki/20261024/7040428526148/6adc682cbe8f5e2663685346_f1525633.png"
+    },
+    {
+      "id": "1386",
+      "name": "Rift Trekker Steel Armor",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/1386.webp",
+      "cacheStatus": "cached",
+      "coverUrl": "https://static.skport.com/image/rm42wiki/20261024/7040428526148/6adc68d0be8f5e2663685348_db193eac.png"
+    },
+    {
+      "id": "1387",
+      "name": "Rift Trekker Overalls",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/1387.webp",
+      "cacheStatus": "cached",
+      "coverUrl": "https://static.skport.com/image/rm42wiki/20261024/7040428526148/6adc699cbe8f5e266368534c_6ad0f152.png"
+    },
+    {
+      "id": "1388",
+      "name": "Pulser Labs Armor Slab",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/1388.webp",
+      "cacheStatus": "cached",
+      "coverUrl": "https://static.skport.com/image/rm42wiki/20261024/7040428526148/6adc6d17be8f5e266368535b_db193eac.png"
+    },
+    {
+      "id": "1389",
+      "name": "Pulser Labs Light Armor",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/1389.webp",
+      "cacheStatus": "cached",
+      "coverUrl": "https://static.skport.com/image/rm42wiki/20261024/7040428526148/6adc6fe4a03f3aa857d22a90_3eac6ad0.png"
+    },
+    {
+      "id": "1390",
+      "name": "Pulser Labs Light Gauntlets",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/1390.webp",
+      "cacheStatus": "cached",
+      "coverUrl": "https://static.skport.com/image/rm42wiki/20261024/7040428526148/6adc70ddbe8f5e2663685370_db193eac.png"
+    },
+    {
+      "id": "1391",
+      "name": "Eternal Xiranite Channeling Gloves",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/1391.webp",
+      "cacheStatus": "cached",
+      "coverUrl": "https://static.skport.com/image/rm42wiki/20261024/7040428526148/6adc71aaa03f3aa857d22a97_3eac6ad0.png"
+    },
+    {
+      "id": "1392",
+      "name": "Eternal Xiranite MOD Armor",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/1392.webp",
+      "cacheStatus": "cached",
+      "coverUrl": "https://static.skport.com/image/rm42wiki/20261024/7040428526148/6adc7265a03f3aa857d22a9c_6ad0f152.png"
+    },
+    {
+      "id": "1393",
+      "name": "Eternal Xiranite Rangefinder",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/1393.webp",
+      "cacheStatus": "cached",
+      "coverUrl": "https://static.skport.com/image/rm42wiki/20261024/7040428526148/6adc74cabe8f5e2663685380_db193eac.png"
+    },
+    {
+      "id": "1394",
+      "name": "Eternal Xiranite Overalls",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/1394.webp",
+      "cacheStatus": "cached",
+      "coverUrl": "https://static.skport.com/image/rm42wiki/20261024/7040428526148/6adc7573a03f3aa857d22aa9_2f76db19.png"
+    },
+    {
+      "id": "1395",
+      "name": "AIC Fieldwork CQB Hacksaw",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/1395.webp",
+      "cacheStatus": "cached",
+      "coverUrl": "https://static.skport.com/image/rm42wiki/20261024/7040428526148/6adc7918be8f5e26636853a8_6ad0f152.png"
+    },
+    {
+      "id": "1396",
+      "name": "AIC Fieldwork CQB Gloves",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/1396.webp",
+      "cacheStatus": "cached",
+      "coverUrl": "https://static.skport.com/image/rm42wiki/20261024/7040428526148/6adc7a30be8f5e26636853af_3eac6ad0.png"
+    },
+    {
+      "id": "1397",
+      "name": "AIC Fieldwork CQB Armor",
+      "categories": [
+        "Gear"
+      ],
+      "iconPath": "/images/endfield/gear/1397.webp",
+      "cacheStatus": "cached",
+      "coverUrl": "https://static.skport.com/image/rm42wiki/20261024/7040428526148/6adc7affa03f3aa857d22ad7_db193eac.png"
     }
   ]
 }

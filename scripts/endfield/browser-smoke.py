@@ -731,8 +731,8 @@ def smoke_i18n(page, base_url, width):
                page.locator('a.endfield-nav-link[href="'+("/endfield/cheatsheets/" if lang=="de" else "/en/endfield/cheatsheets/")+'"]').count()==1,
                label+": "+lang+" consolidated ten nav links include the single Cheat Sheets entry")
         verify(page.locator('a.endfield-nav-link[href="'+("/endfield/leaderboard/" if lang=="de" else "/en/endfield/leaderboard/")+'"] .nav-upcoming-wrench').count()==0 and
-               page.locator('a.endfield-nav-link[href="'+("/endfield/cheatsheets/" if lang=="de" else "/en/endfield/cheatsheets/")+'"] .nav-upcoming-wrench').count()==1,
-               label+": "+lang+" completed Leaderboard has no wrench; unfinished Cheat Sheets retains it")
+               page.locator('a.endfield-nav-link[href="'+("/endfield/cheatsheets/" if lang=="de" else "/en/endfield/cheatsheets/")+'"] .nav-upcoming-wrench').count()==0,
+               label+": "+lang+" completed Leaderboard and live Cheat Sheets have no wrench")
         check=page.locator("[data-version-countdown]").evaluate(
             "(el)=>({utc:new Date(el.dataset.endsAt).toISOString(),local:el.dataset.endsLocal,hours:(Date.parse(el.dataset.endsAt)-Date.parse('2026-11-25T21:00:00Z'))/3600000})")
         verify(check["utc"]=="2026-11-25T22:00:00.000Z" and
@@ -1089,15 +1089,33 @@ def smoke_i18n(page, base_url, width):
                label+": "+lang+" query and Duality event survive reload")
         check_overflow(page,label+" "+lang+" leaderboard")
         page.goto(base_url+prefix+"/endfield/cheatsheets/")
-        verify(page.locator(".endfield-coming-card").count()==6 and
+        verify(page.locator("#refinement").count()==1 and
+               page.locator("#artificing").count()==1 and
+               page.locator(".endfield-coming-card").count()==4 and
                all(page.locator("#"+x).count()==1 for x in ("recruitment","refinement","essences","elasticgoods","artificing","bufffood")) and
-               page.locator('[data-cheatsheets-group="systems"] .endfield-coming-card').count()==3 and
-               page.locator('[data-cheatsheets-group="references"] .endfield-coming-card').count()==3,
-               label+": "+lang+" three consolidated game systems and three existing references have their own cards")
+               page.locator('[data-cheatsheets-group="systems"] .endfield-coming-card').count()==2 and
+               page.locator('[data-cheatsheets-group="references"] .endfield-coming-card').count()==2,
+               label+": "+lang+" refinement is first card; remaining game systems and references follow")
         verify(("Spielsysteme" if lang=="de" else "Game systems") in page.locator("#cheatsheets-systems-heading").inner_text() and
                ("Referenzen" if lang=="de" else "References") in page.locator("#cheatsheets-reference-heading").inner_text() and
-               page.locator("#artificing .op-chip").count()==1,
-               label+": "+lang+" existing refinement matrix remains independently findable")
+               page.locator("#refinement-panel-primary:not([hidden]) .refinement-attribute-card").count()==4 and
+               page.locator("#refinement-panel-primary:not([hidden]) .refinement-mini-card").count()==12 and
+               page.locator("#refinement-panel-primary:not([hidden]) .refinement-good-match").count()>0 and
+               page.locator("#refinement-panel-primary:not([hidden]) .op-item-hover-trigger").count()>0,
+               label+": "+lang+" four official primary attribute cards with real gear and highlighted matches")
+        page.locator('[data-refinement-tab="damage"]').click()
+        verify(page.locator('#refinement-panel-damage:visible .refinement-attribute-card').count()==9 and
+               page.locator('#refinement-panel-primary:visible').count()==0,
+               label+": "+lang+" switching to nine damage attributes does not mix panels")
+        page.locator('[data-refinement-tab="utility"]').click()
+        verify(page.locator('#refinement-panel-utility:visible .refinement-attribute-card').count()==9 and
+               page.locator('[data-refinement-attribute="atk"].refinement-empty').count()==3,
+               label+": "+lang+" nine utility attributes and missing ATK source kept explicit")
+        page.locator('[data-refinement-tab="primary"]').click()
+        trigger=page.locator("#refinement-panel-primary .op-item-hover-trigger").first
+        trigger.hover()
+        verify(page.locator(".op-item-hover-panel:popover-open").count()==1,
+               label+": "+lang+" official mini-card icon uses shared popup with full item stats")
         for old,anchor in (("rekrutierung" if lang=="de" else "recruitment","recruitment"),
                            ("veredelung" if lang=="de" else "refinement","refinement"),
                            ("essenzen" if lang=="de" else "essences","essences")):

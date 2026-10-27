@@ -12,20 +12,24 @@ test("Endfield nav has ten entries, excludes three former game-system links and 
     assert.ok(!nav.includes(term),"removed stand-alone navigation: "+term);
  assert.match(nav,/key: "cheatsheets"/);
  assert.match(nav,/cheatsheets:"\/en\/endfield\/cheatsheets\/"/);
- assert.match(nav,/new Set\(\["factory","checklist","tierlist","cheatsheets"\]\)/);
+ assert.match(nav,/new Set\(\["factory","checklist","tierlist"\]\)/);
 });
 test("Cheat Sheets has three migrated systems and retains three existing references in DE and EN",()=>{
  const page=read("src/components/pages/EndfieldCheatSheets.astro");
- for(const anchor of ["recruitment","refinement","essences","elasticgoods","artificing","bufffood"])
+ for(const anchor of ["recruitment","essences","elasticgoods","bufffood"])
    assert.ok(page.includes('id:"'+anchor+'"'),"missing anchor "+anchor);
  assert.match(page,/data-cheatsheets-group="systems"/);
  assert.match(page,/data-cheatsheets-group="references"/);
  assert.match(page,/Spielsysteme","Game systems"/);
  assert.match(page,/Referenzen & Matrizen","References & matrices"/);
- assert.match(page,/Veredelungs-Matrix – Best Matches/);
- assert.match(page,/Refinement Matrix – Best Matches/);
- assert.match(page,/Die konkreten Tabellen und Werte folgen nach redaktioneller Prüfung/);
- assert.match(page,/Verified tables and values will follow/);
+ assert.match(page,/<RefinementMatrix lang=\{lang\}/);
+ const ref=read("src/components/pages/RefinementMatrix.astro");
+ assert.match(ref,/id="refinement"/);
+ assert.match(ref,/id="artificing"/);
+ assert.match(ref,/Veredelungs-Matrix/);
+ assert.match(ref,/Artificing Matrix/);
+ assert.match(page,/Die Veredelungs-Matrix ist verfügbar/);
+ assert.match(page,/The refinement matrix is available/);
  assert.match(page,/In Vorbereitung","Coming soon"/);
 });
 test("All six old DE and EN system routes redirect to canonical Cheat Sheet section anchors",()=>{
