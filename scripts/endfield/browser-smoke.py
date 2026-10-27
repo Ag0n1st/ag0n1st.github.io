@@ -1109,7 +1109,7 @@ def smoke_i18n(page, base_url, width):
                label+": "+lang+" switching to nine damage attributes does not mix panels")
         page.locator('[data-refinement-tab="utility"]').click()
         verify(page.locator('#refinement-panel-utility:visible .refinement-attribute-card').count()==9 and
-               page.locator('[data-refinement-attribute="atk"] .refinement-empty').count()==3,
+               page.locator('[data-refinement-attribute="atk"].refinement-empty').count()==3,
                label+": "+lang+" nine utility attributes and missing ATK source kept explicit")
         page.locator('[data-refinement-tab="primary"]').click()
         trigger=page.locator("#refinement-panel-primary .op-item-hover-trigger").first
