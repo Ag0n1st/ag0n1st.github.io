@@ -6,12 +6,16 @@ if(root){
   const archive=root.querySelector<HTMLSelectElement>("[data-archive-select]");
   const archiveDetails=root.querySelector<HTMLDetailsElement>("[data-event-archive]");
   const panels=[...root.querySelectorAll<HTMLElement>("[data-event-panel]")];
+  const achievementBadges=[...root.querySelectorAll<HTMLElement>("[data-event-achievement]")];
   function show(select:HTMLSelectElement|undefined,archived:boolean,id:string){
     if(!select||![...select.options].some(option=>option.value===id))return false;
     select.value=id;
     for(const panel of panels){
       if((panel.dataset.eventArchived==="true")===archived)
         panel.hidden=panel.dataset.eventPanel!==id;
+    }
+    for(const badge of achievementBadges){
+      badge.hidden=archived||badge.dataset.eventAchievement!==id;
     }
     if(!archived){
       const active=panels.find(panel=>panel.dataset.eventArchived==="false"&&panel.dataset.eventPanel===id);

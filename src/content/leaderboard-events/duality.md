@@ -7,6 +7,10 @@ startsOn: "2026-10-15"
 endsOn: "2026-11-25"
 image: "/images/endfield/leaderboard/duality.webp"
 backgroundImage: "/images/endfield/leaderboard/duality-background.webp"
+achievement:
+  image: "/images/endfield/leaderboard/duality-achievement.webp"
+  tooltipDe: "Discord-Achievement „Duality“ – für einen gültig eingereichten Run."
+  tooltipEn: "Discord achievement ‘Duality’ – awarded for a valid submitted run."
 rulebookUrl: "https://bit.ly/3WEuGwD"
 demoRunId: demo-ag0n1st-si-v16
 rules:

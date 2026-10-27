@@ -104,6 +104,35 @@ test("Duality damage-dealer rule has an accessible bilingual modal with local We
  assert.match(event,/- id: damage-dealer\s+de: "Si ist der einzige Operator im Team/);
  assert.equal((event.match(/^  - id: /gm)||[]).length,6);
 });
+test("Optional Duality Discord achievement badge follows selected event and stays bilingual",()=>{
+ const component=read("src/components/endfield/LeaderboardEvent.astro");
+ const client=read("src/components/endfield/leaderboard-event-client.ts");
+ const schema=read("src/content/config.ts");
+ const event=read("src/content/leaderboard-events/duality.md");
+ assert.match(schema,/achievement:z\.object\(\{/);
+ assert.match(schema,/tooltipDe:z\.string\(\)\.min\(1\)/);
+ assert.match(schema,/tooltipEn:z\.string\(\)\.min\(1\)/);
+ assert.match(event,/achievement:\s+image: "\/images\/endfield\/leaderboard\/duality-achievement\.webp"/);
+ assert.match(event,/tooltipDe: "Discord-Achievement „Duality“/);
+ assert.match(event,/tooltipEn: "Discord achievement ‘Duality’/);
+ assert.match(component,/active\.map\(\(event,index\)=>event\.achievement&&/);
+ assert.match(component,/data-event-achievement=\{event\.id\}/);
+ assert.match(component,/data-achievement-tooltip=\{l\(event\.achievement\.tooltipDe,event\.achievement\.tooltipEn\)\}/);
+ assert.match(component,/role="img"/);
+ assert.match(component,/tabindex="0"/);
+ assert.match(component,/hidden=\{index!==0\}/);
+ assert.match(client,/badge\.hidden=archived\|\|badge\.dataset\.eventAchievement!==id/);
+ assert.match(css,/\.cl-event-achievement\{position:absolute;right:0;top:-13px/);
+ assert.match(css,/\.cl-event-achievement\[hidden\]\{display:none!important\}/);
+ assert.match(css,/\.cl-event-achievement:hover::after,\.cl-event-achievement:focus-visible::after/);
+ assert.match(css,/@media\(max-width:760px\)\{\.cl-event-head\{min-height:70px;padding-right:72px\}/);
+ const path="public/images/endfield/leaderboard/duality-achievement.webp";
+ assert.ok(existsSync(path));
+ const bytes=readFileSync(path);
+ assert.equal(bytes.toString("ascii",0,4),"RIFF");
+ assert.equal(bytes.toString("ascii",8,12),"WEBP");
+ assert.ok(bytes.byteLength<25000,"badge must be optimized");
+});
 test("Official time is MM:SS with no hidden fractions or subsecond tiebreak",()=>{
  assert.equal(parseIngameTime("00:00"),0);
  assert.equal(parseIngameTime("02:05"),125);

@@ -14,6 +14,16 @@ const shortPeriod=(event:typeof eventData.events[number])=>{
 <section class="cl-container cl-event-container" aria-labelledby="cl-event-title" data-event-leaderboard style={'--cl-event-background: '+(firstBackground?'url("'+firstBackground+'")':"none")}>
   <div class="cl-section-head cl-event-head">
     <h2 id="cl-event-title">Event Leaderboard</h2>
+    {active.map((event,index)=>event.achievement&&<span
+      class="cl-event-achievement"
+      data-event-achievement={event.id}
+      data-achievement-tooltip={l(event.achievement.tooltipDe,event.achievement.tooltipEn)}
+      role="img"
+      tabindex="0"
+      aria-label={l(event.achievement.tooltipDe,event.achievement.tooltipEn)}
+      hidden={index!==0}>
+      <img src={event.achievement.image} width="160" height="160" alt="" aria-hidden="true" decoding="async"/>
+    </span>)}
   </div>
   {active.length>0 ? <>
     <div class="cl-event-selector cl-control">

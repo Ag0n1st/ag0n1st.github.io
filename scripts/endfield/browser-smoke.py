@@ -936,6 +936,24 @@ def smoke_i18n(page, base_url, width):
         verify(root.count()==1 and root.locator(".cl-container").count()==2 and
                event.count()==1 and root.locator(".cl-main-container").count()==1,
                label+": "+lang+" Duality event is shown above general leaderboard")
+        badge=event.locator('[data-event-achievement="duality"]')
+        verify(badge.count()==1 and badge.is_visible() and
+               badge.locator('img[src="/images/endfield/leaderboard/duality-achievement.webp"]').count()==1 and
+               badge.locator("img").evaluate("(im)=>im.complete && im.naturalWidth===160 && im.naturalHeight===160") and
+               ("Discord-Achievement „Duality“" if lang=="de" else "Discord achievement ‘Duality’") in badge.get_attribute("aria-label") and
+               badge.get_attribute("data-achievement-tooltip")==badge.get_attribute("aria-label"),
+               label+": "+lang+" the approved Duality badge is loaded and locally labelled")
+        headbox=event.locator(".cl-event-head").bounding_box()
+        imagebox=badge.bounding_box()
+        titlebox=event.locator(".cl-event-head h2").bounding_box()
+        verify(abs(headbox["x"]+headbox["width"]-imagebox["x"]-imagebox["width"])<2 and
+               titlebox["x"]+titlebox["width"] <= imagebox["x"]+2 and
+               imagebox["width"]==(63 if page.evaluate("innerWidth")<=760 else 100),
+               label+": "+lang+" event badge aligns at the trophy's top-right position without title overlap")
+        badge.focus()
+        verify(badge.evaluate("(el)=>document.activeElement===el && getComputedStyle(el,'::after').visibility==='visible'"),
+               label+": "+lang+" achievement hint is accessible with keyboard focus")
+        event.locator("#cl-event-title").click()
         archive=event.locator("[data-event-archive]")
         verify(archive.count()==1 and
                not archive.evaluate("(el)=>el.open") and
