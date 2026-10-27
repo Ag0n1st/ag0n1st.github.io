@@ -79,7 +79,8 @@ try{
   if(official.status!=="verified"||!["Armor","Gloves","Kit"].includes(official.gearSlot) ||
       !official.stats.length||!official.stats.some(tab=>tab.tables.length))
     throw Error("Official Gear detail not verified "+id);
-  if(official.recipeStatus==="needs-review")throw Error("Official crafting data needs review "+id);
+  // Keep official stats and artificing if Source recipe text needs review; never invent material costs.
+  if(official.recipeStatus==="needs-review")console.log("OFFICIAL_V16_RECIPE_REVIEW",id);
   const uri=new URL(cover);
   if(uri.protocol!=="https:"||uri.hostname!=="static.skport.com"||!uri.pathname.startsWith("/image/"))
     throw Error("Unverified official icon CDN for "+id);
