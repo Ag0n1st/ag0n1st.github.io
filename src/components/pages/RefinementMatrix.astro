@@ -34,7 +34,7 @@ const coverage=attributes.filter(row=>row.slots.some(slot=>slot.best)).length;
     <span class="refinement-verified-count">{coverage}/{attributes.length} {l("Kategorien mit Werten","attributes covered")}</span>
   </div>
   <p class="refinement-legend"><span class="refinement-legend-light" aria-hidden="true">★</span>
-    {l("Leuchtend markiert: höchster bestätigter Basis-Veredelungswert für das jeweilige Attribut. Als Gute Übereinstimmung für andere passende Teile derselben Klasse nutzbar – nicht für das Teil selbst.","Glowing: highest verified default artificing value for the attribute. Suitable as a Good Match for other compatible pieces of its class – not for the same piece.")}
+    {l("Leuchtend markiert: höchster bestätigter Basis-Veredelungswert je Ausrüstungsklasse und Attribut. Gute Übereinstimmung für andere passende Teile derselben Klasse – nicht für das Teil selbst.","Glowing: highest verified default artificing value within the gear class and attribute. Good Match for other compatible gear in that class – not for the item itself.")}
   </p>
   <div class="refinement-tabs" role="tablist" aria-label={l("Attributgruppen","Attribute groups")} data-refinement-tabs>
     {groups.map((group,index)=><button type="button" class="refinement-tab" role="tab"
