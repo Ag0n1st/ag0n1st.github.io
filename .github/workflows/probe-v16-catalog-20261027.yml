@@ -1,0 +1,23 @@
+name: Probe public SKPORT v1.6 Gear catalogue
+on:
+  push:
+    branches: [feature/refinement-cheatsheet-v16-20261027]
+    paths:
+      - scripts/endfield/probe-v16-public-catalog.mjs
+      - .github/workflows/probe-v16-catalog-20261027.yml
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: |
+          npm ci
+          npm install --no-save --package-lock=false playwright
+          npx playwright install --with-deps chromium
+      - run: node scripts/endfield/probe-v16-public-catalog.mjs
