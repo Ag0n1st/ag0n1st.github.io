@@ -1,7 +1,7 @@
 # AG0N1ST.COM – PROJEKT-ROADMAP, ENTWICKLUNGSSTAND & KI-ÜBERGABE
 
 > **Zentrale Projektdokumentation / Single Point of Entry.**  
-> **Stand:** 27. Oktober 2026 (Europe/Berlin); §18.50: PR #69 (Level 70 only; Hauptattribut % / Sekundärattribut %) nach 229 erfolgreichen Tests/Browser-/Budget-Gates in `main` gemergt. Produktiven Pages-Deploy gesondert nachweisen.
+> **Stand:** 27. Oktober 2026 (Europe/Berlin); §18.51: erste veröffentlichbare Community-Tierlist (Stream vom 23.08.2026) als dreiteilige DE/EN Tierlist-Card auf PR in Abnahme. Letzte geprüfte produktive Codebasis PR #69.
 > **Projekt:** Ag0n1st – deutschsprachiges Gaming-/Guide-Portal.  
 > **Repository:** https://github.com/Ag0n1st/ag0n1st.github.io  
 > **Produktionswebsite:** https://ag0n1st.com (eigene Domain), alternativ https://ag0n1st.github.io  
@@ -2915,3 +2915,26 @@ Alle 109 Endfield-Unit-Tests und die beiden Budgetchecks erfolgreich. Desktop 14
 **Freigegebener Output und sachliche Grenzen:** Alle Level-60-AIC-Fieldwork-Einträge werden bereits vor dem Ranking herausgefiltert; `Main Attribute`/`Secondary Attribute` ohne `%` im offiziellen Artificing-Default bleiben auch bei zukünftigen Level-70-Datensätzen ausgeschlossen. Main/Kit **LYNX Slab ID 365 +20.7%**, Secondary/Kit **Rift Trekker Armor Slab ID 1127 +21.6%**. Secondary/Armor hat derzeit zwei valide gleich hohe Kandidaten: Frontiers Armor T3 ID 306 und Eternal Xiranite Light Armor T1 ID 1135 mit jeweils +10.4%; deterministische Rangfolge bleibt beibehalten, kein unbestätigter Sonderbonus. Main Armor, Main Gloves und Secondary Gloves bleiben leer. Die gemeinsame Slot-Korrektur, Ausnahme-Highlight-Regeln und übrigen 20 Kategorien wurden nicht verändert. Beide Sprachversionen nutzen dasselbe Datenmodell und explizite `%`-Bezeichnungen; der Subtitle erwähnt kompakt Level 70 ohne redundante Quellenzeilen.
 
 **Deploy-Nachweis:** Der GitHub-Connector bietet bislang nur PR-getriggerte Actions-Runs für einen Commit; der separate `main`-/GitHub-Pages-Deploy dieses Merges ist damit **nicht unmittelbar per Run-ID bestätigt**. Die bereits auf `main` sichtbare Codeänderung ist anhand Merge-SHA belegt. Produktivstatus nur nach konkreter Live-/Pages-Prüfung als verifiziert dokumentieren. Diese ergänzende Roadmap-Aktualisierung ist rein dokumentarisch und kann einen weiteren Pages-Build auslösen.
+
+### 18.51 Community-Tierlist 23.08.2026 – 3 Rollen, dated Snapshot, DE/EN (27.10.2026; Feature-PR in Prüfung)
+
+**Betreiberauftrag:** Statt des bislang leeren Tierlist-Platzhalters eine veröffentlichbare **Card mit den gemeinsam im Stream vom 23.08.2026 erstellten drei Tierlists** einbauen; drei Reiter **Damage Dealer / Enabler / Buffer**. Historischer Bewertungsstand beibehalten, keine automatische Migration auf neue Patches und keine Rollen-/Operatorbewertungen aus SKPORT erfinden. Textbasierter Entwicklungschat, keine eigens generierten Bilder/Previews; lokale vorhandene 1:1-Operator-Icons verwenden. Neue Ausgabe vollständig DE/EN mit derselben Datenbasis und identischem Layout. Alle Schritte in ROADMAP vermerken und 100-MB-Endfield-/1-GB-Pages-Gates prüfen.
+
+**Explizit freigegebene Platzierungen in Original-Reihenfolge:**
+
+| Rang | Damage Dealer | Enabler | Buffer |
+|---|---|---|---|
+| S | Zhuang, Rossi, Arcane | Arcane, Camille, Tang Tang, Pogranichnik | Liino, Gilberta, Xaihi |
+| A | Yvonne, Laevatein, Mi Fu | Arclight, Alesh, Chen, Perlica | Ardelia, Perlica, Antal |
+| B | Last Rite, Tang Tang | Lifeng, Wulfguard, Fluorite | Camille, Lifeng, Akekuri |
+| C | Endmin, Avywenna | Snowshine, Ember | Pogranichnik |
+| D | Da Pan | Antal, Akekuri | — (keine Platzierung übermittelt) |
+| F | — | — | — (keine Platzierung übermittelt) |
+
+**Technische Datenabgrenzung:** Quelle allein die im Chat gelieferten Rangfolgen (keine Behauptung einer verifizierten Video-Aufzeichnung oder vorhandenen angehängten Grafikdateien). Namenszuordnungen im lokalen Roster: Zhuang = `zhuang-fangyi` (Zhuang Fangyi), Laevatein = `laevatain`, Endmin = `endministrator`, Tang Tang = `tangtang`, Chen = `chen-qianyu`, Wulfguard = `wulfgard` (offizieller Anzeigename **Wulfgard**). Leere Buffer-Ränge D/F bleiben sichtbar unbesetzt; daraus **keine Aussage über einen eigens vergebenen F-Rang** ableiten. Dieselben Operatoren dürfen bei unterschiedlichen Rollen unabhängig bewertet werden. Die Ausgabe enthält **11 Damage-Dealer, 15 Enabler, 10 Buffer**, also insgesamt **36 Rollen-Platzierungen**.
+
+**Persistenz/Architektur:** Historische, leicht editierbare Datei `src/data/endfield/tierlists/2026-08-23.json` mit ID, Datum, Rollen-IDs und Listen von bestehenden Operator-Slugs; `src/lib/endfield/communityTierlist.mjs` validiert alle drei Rollen, S/A/B/C/D/F-Reihen, keine doppelten Slugs innerhalb einer Rolle sowie belegte Roster-Operatoren mit offiziellen lokal vorhandenen Icon-Pfaden. Neue Stream-Editionen **als zusätzliche JSON-Dateien** statt Überschreiben der alten Ergebnisse; ein echtes Archiv-/Datumsdropdown erst nach Vorliegen weiterer Editionen. Kein externer Laufzeit-API-Call, kein Login, keine Cloudflare-Abhängigkeit.
+
+**UI-Umsetzung:** Gemeinsame Komponente `src/components/pages/EndfieldTierlist.astro`, eingebunden durch `src/pages/endfield/tierlist/index.astro` und `src/pages/en/endfield/tierlist/index.astro`. Responsive, dunkel stilisierte Community-Ranking-Card mit sichtbarem Datum, drei Tab-Schaltflächen, sechs farbigen Rangzeilen; Operatoren erscheinen als lokale Bild-Mini-Cards mit Namen. Cards wrappen ohne seitliches Scrollen bei 390/320 px; leere Stufen als `—`. Tastatur/Pfeiltasten/Home/End/ARIA-Tabpanels unterstützt; initial Damage Dealer. `src/styles/endfield-tierlist.css` kapselt das Design. `EndfieldNav.astro` streicht `tierlist` aus der Liste unvollständiger Abschnitte in **DE+EN**; die Endfield-Startseite aktualisiert den bisher veralteten Teaser in beiden Sprachen. Bestehende Cheat Sheets, Guides, Endfieldle, Fabrik und Leaderboards unverändert.
+
+**QA vor Merge/Deployment:** Neue Regression `scripts/endfield/community-tierlist.test.mjs` prüft alle 36 zugewiesenen Slugs, Reihen und Leereinträge, echte lokale Icons, englische/deutsche Routen, validierbare Daten. Vorhandene Navigationstests `endfield-utility-pages.test.mjs`, `refinement-matrix.test.mjs`, `cheatsheets-consolidation.test.mjs` an den nun fertiggestellten Tierlist-Zustand angepasst. `scripts/endfield/browser-smoke.py` prüft DE/EN 1440px und 390px mit allen Tabs, Klick, Pfeiltasten/Home, korrekten Operatoren, keine horizontale Überbreite. Endfield-Budgetinventar um neue Komponente und CSS ergänzt. **Pflicht-Gates:** `npm run test:endfield`, Endfield 100.000.000 Byte, `npm run build`, Pages 1.000.000.000 Byte, Browser-Smokes erfolgreich. Erst dann PR mergen, tatsächlichen Merge-Commit/Testwerte dokumentieren und Pages-Auslieferung separat gegenprüfen.
