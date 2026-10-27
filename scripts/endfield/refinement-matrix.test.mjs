@@ -84,7 +84,7 @@ test("real imported Gear 1138 remains Gloves rather than leaking into Agility/Wi
  assert.equal(willKit.best?.id,"348","real Will Kit must be Redeemer Seal T1");
  for(const row of matrix)for(const cell of row.slots)if(cell.slot==="Kit"){
   assert.notEqual(cell.best?.id,"1138","mislabelled Eternal Xiranite Hands must never be a Kit");
-  assert.doesNotMatch(cell.best?.name??"",/\\b(?:gloves|gauntlets|hands|wraps)\\b/i);
+  assert.doesNotMatch(cell.best?.name??"",/\b(?:gloves|gauntlets|hands|wraps)\b/i);
  }
 });
 
@@ -102,7 +102,7 @@ test("matrix only renders verifiable official IDs, Artificing defaults and local
   assert.equal(cell.best.tag,refinementVariantTag(item.name));
   if(cell.goodMatch){
    const recorded=equipment.gear.find(x=>x.id===cell.best.id);
-   assert.match(cell.best.name,/^(?:Redeemer|Rift Trekker)\\b/);
+   assert.match(cell.best.name,/^(?:Redeemer|Rift Trekker)\b/);
    assert.equal(recorded?.setName,"Non-Set");
   }
  }
