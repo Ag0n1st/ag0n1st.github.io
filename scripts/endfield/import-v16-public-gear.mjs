@@ -14,8 +14,10 @@ import {normalizeEquipment,extractRenderedGearSource} from "./equipment-normaliz
 const catalogPath="src/data/endfield/catalog/items.json";
 const detailPath="src/data/endfield/catalog/equipment-details.json";
 const reportPath="src/data/endfield/catalog/v16-skport-import.json";
+const termPath="src/data/endfield/terminology.json";
 const old=JSON.parse(await readFile(catalogPath,"utf8"));
 const details=JSON.parse(await readFile(detailPath,"utf8"));
+const terminology=JSON.parse(await readFile(termPath,"utf8"));
 const published=new Set(old.items.map(row=>String(row.id)));
 const first=1380,last=1397,day=new Date().toISOString().slice(0,10);
 const expect=Array.from({length:last-first+1},(_,n)=>String(first+n));
@@ -110,6 +112,11 @@ try{
  if(old.items.find(x=>x.id==="411")?.name==="Type 50 Yinglung Gloves")
    console.log("OFFICIAL_V16_DUPLICATE_NAME",JSON.stringify({oldId:"411",newId:"1381",name:"Type 50 Yinglung Gloves"}));
  old.items.push(...added);
+ for(const entry of added){
+  if(terminology.itemsById[entry.id])throw Error("Translation entry already exists "+entry.id);
+  // Official EN names are retained for both locale lookups until a real DE name is verified.
+  terminology.itemsById[entry.id]={category:"Gear",en:entry.name,de:entry.name};
+ }
  const category=old.categories.find(x=>x.name==="Gear");
  if(!category)throw Error("Official Gear category missing");
  category.count+=18;
@@ -135,6 +142,7 @@ try{
  await writeFile(catalogPath,JSON.stringify(old,null,2)+"\n");
  await writeFile(detailPath,JSON.stringify(details,null,2)+"\n");
  await writeFile(reportPath,JSON.stringify(summary,null,2)+"\n");
+ await writeFile(termPath,JSON.stringify(terminology,null,2)+"\n");
  console.log("OFFICIAL_V16_IMPORT_COMPLETE",JSON.stringify({count:added.length,gearTotal:details.gear.length,
   coverage:details.coverage,iconBytes:images.reduce((s,x)=>s+x.bytes,0)}));
 }finally{await browser.close()}
