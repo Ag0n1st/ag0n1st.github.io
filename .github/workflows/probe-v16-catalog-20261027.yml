@@ -1,5 +1,7 @@
 name: Probe public SKPORT v1.6 Gear catalogue
 on:
+  pull_request:
+    branches: [main]
   push:
     branches: [feature/refinement-cheatsheet-v16-20261027]
     paths:
