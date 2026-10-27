@@ -1101,11 +1101,14 @@ def smoke_i18n(page, base_url, width):
                page.locator("#refinement-panel-primary:not([hidden]) .refinement-attribute-card").count()==4 and
                page.locator("#refinement-panel-primary:not([hidden]) .refinement-mini-card").count()==12 and
                page.locator("#refinement-panel-primary:not([hidden]) .refinement-good-match").count()>0 and
-               page.locator("#refinement-panel-primary:not([hidden]) .op-item-hover-trigger").count()>0,
+               page.locator("#refinement-panel-primary:not([hidden]) .op-item-hover-trigger").count()>0 and
+               page.locator('[data-refinement-attribute="agi"][data-refinement-slot="Kit"]').get_attribute("data-refinement-item-id")=="350" and
+               page.locator('[data-refinement-attribute="will"][data-refinement-slot="Kit"]').get_attribute("data-refinement-item-id")=="348",
                label+": "+lang+" four official primary attribute cards with real gear and highlighted matches")
         page.locator('[data-refinement-tab="damage"]').click()
         verify(page.locator('#refinement-panel-damage:visible .refinement-attribute-card').count()==9 and
-               page.locator('#refinement-panel-primary:visible').count()==0,
+               page.locator('#refinement-panel-primary:visible').count()==0 and
+               page.locator('#refinement-panel-damage [data-refinement-attribute="physical"].refinement-good-match').count()==0,
                label+": "+lang+" switching to nine damage attributes does not mix panels")
         page.locator('[data-refinement-tab="utility"]').click()
         verify(page.locator('#refinement-panel-utility:visible .refinement-attribute-card').count()==9 and

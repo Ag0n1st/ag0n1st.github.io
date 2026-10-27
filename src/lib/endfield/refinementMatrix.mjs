@@ -1,3 +1,5 @@
+import {normalizeOfficialGearSlot} from "./gearSlotCorrections.mjs";
+
 /**
  * Read-only attribute winners from verified official SKPORT Artificing tables.
  * No user-visible numbers are inferred from third-party preview gear stats.
@@ -49,7 +51,9 @@ export function deriveRefinementMatrix(gear){
  if(!Array.isArray(gear))throw Error("Official Gear snapshot required");
  const pool=new Map();
  const used=new Set();
- for(const piece of gear){
+ for(const raw of gear){
+  // Reuse the established shared source correction (e.g. Gear 1138 is Gloves).
+  const piece=normalizeOfficialGearSlot(raw);
   if(piece?.kind!=="gear"||piece.status!=="verified"||
      !REFINEMENT_SLOTS.includes(piece.gearSlot)||!/^\d+$/.test(String(piece.id)))continue;
   if(used.has(piece.id))throw Error("Duplicate official Gear ID "+piece.id);
@@ -66,6 +70,7 @@ export function deriveRefinementMatrix(gear){
     if(old.some(x=>x.id===piece.id))continue;
     old.push({id:String(piece.id),name:piece.name,slot:piece.gearSlot,attribute:key,
      value:base,raw:String(row.cells[defaultIndex]).trim(),level:Number(piece.level)||0,
+     setName:piece.setName,
      tag:refinementVariantTag(piece.name)});
     pool.set(id,old);
    }
@@ -76,13 +81,18 @@ export function deriveRefinementMatrix(gear){
    const list=(pool.get(a.key+"|"+slot)??[]).sort((x,y)=>
     y.value-x.value||y.level-x.level||x.name.localeCompare(y.name)||Number(x.id)-Number(y.id));
    const best=list[0]??null;
-   return {slot,best,tied:list.filter(x=>x.value===best?.value).length,available:list.length};
+   // A simple per-slot maximum is merely a suggested piece, not automatically
+   // an outstanding Good Match. Highlight only non-set Redeemer/Rift Trekker
+   // pieces with a strictly stronger Default than every conventional set piece
+   // for this same attribute and equipment class.
+   const regular=list.find(x=>x.setName!=="Non-Set");
+   const goodMatch=!!best&&best.setName==="Non-Set"&&
+     /^(?:Redeemer|Rift Trekker)\b/.test(best.name)&&
+     !!regular&&best.value>regular.value;
+   return {slot,best,tied:list.filter(x=>x.value===best?.value).length,
+    available:list.length,goodMatch};
   });
-  return {...a,slots:candidates.map(c=>({...c,
-   // Values have different base ranges by equipment class. A slot winner is a
-   // Good Match for other compatible pieces of that SAME class, not other slots.
-   goodMatch:!!c.best,
-   }))};
+  return {...a,slots:candidates};
  });
  return result;
 }
