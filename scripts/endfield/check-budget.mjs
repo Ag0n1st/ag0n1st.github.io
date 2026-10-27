@@ -29,7 +29,10 @@ const folders = [
   "scripts/endfield",
 ];
 const files = ["src/styles/operator-guides.css","src/components/EndfieldNav.astro",
-  "src/components/pages/EndfieldLeaderboard.astro","src/styles/endfield-leaderboard.css"];
+  "src/components/pages/EndfieldLeaderboard.astro","src/styles/endfield-leaderboard.css",
+  "src/components/pages/EndfieldCheatSheets.astro",
+  "src/components/pages/RefinementMatrix.astro",
+  "src/styles/endfield-refinement.css"];
 async function sizeOf(path) {
   let info;
   try { info=await stat(path); }
