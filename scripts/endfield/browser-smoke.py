@@ -1098,10 +1098,10 @@ def smoke_i18n(page, base_url, width):
                label+": "+lang+" refinement is first card; remaining game systems and references follow")
         verify(("Spielsysteme" if lang=="de" else "Game systems") in page.locator("#cheatsheets-systems-heading").inner_text() and
                ("Referenzen" if lang=="de" else "References") in page.locator("#cheatsheets-reference-heading").inner_text() and
-               page.locator("#refinement .refinement-attribute-card").count()==4 and
-               page.locator("#refinement .refinement-mini-card").count()==12 and
-               page.locator("#refinement .refinement-good-match").count()>0 and
-               page.locator("#refinement .op-item-hover-trigger").count()>0,
+               page.locator("#refinement-panel-primary:not([hidden]) .refinement-attribute-card").count()==4 and
+               page.locator("#refinement-panel-primary:not([hidden]) .refinement-mini-card").count()==12 and
+               page.locator("#refinement-panel-primary:not([hidden]) .refinement-good-match").count()>0 and
+               page.locator("#refinement-panel-primary:not([hidden]) .op-item-hover-trigger").count()>0,
                label+": "+lang+" four official primary attribute cards with real gear and highlighted matches")
         page.locator('[data-refinement-tab="damage"]').click()
         verify(page.locator('#refinement-panel-damage:visible .refinement-attribute-card').count()==9 and
