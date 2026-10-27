@@ -25,6 +25,8 @@ Vorlage `src/content/leaderboard-events/_event-template.md` nach `src/content/le
 
 **Kein automatischer Ergebnis-Freeze:** Das Archiv verwendet dieselben verifizierten Markdown-Runs; Korrekturen an bereits freigegebenen Einreichungen erfolgen weiterhin bewusst über Markdown/PR. Entwürfe und Demo-Einträge können im Archiv keine Endplatzierung beanspruchen. Duality bleibt einschließlich **25.11.2026** aktiv und wird ab **26.11.2026 (Europe/Berlin)** beim nächsten Build archiviert. Es gibt weder eine erfundene weitere Challenge noch eine automatische Neuausschreibung.
 
+**Optionales Achievement-Badge:** Ein Event kann im Markdown zusätzlich `achievement:` mit `image` (lokaler WebP-Pfad), `tooltipDe` und `tooltipEn` festlegen. Das Bild wird dann oben rechts neben dem **Event Leaderboard**-Titel angezeigt, ohne zusätzlichen sichtbaren Hinweistext. Beim Hover oder Tastaturfokus erscheint die zweisprachige Kurzbeschreibung. Das Badge folgt der Auswahl im aktiven Event-Selector und wird bei anderen Events ohne Badge bzw. bei Archiv-Auswahl ausgeblendet. Das vorhandene „Duality“-Badge beschreibt ausschließlich den Discord-Erfolg für eine **gültige Run-Einreichung**; das Abzeichen wird auf der Website nicht automatisch zugewiesen. Für neue Events ohne Badge ist kein Feld erforderlich.
+
 ## Schutz und Ranking
 
 Der Build prüft doppelte Run-/Event-IDs, bekannte Boss-/Operator-Slugs, maximal P5, vier unterschiedliche Mitglieder, MM:SS ohne Hundertstel, YouTube-Video-URL, Event-Zuordnung/Boss/Patch, zulässigen Ordnerpfad sowie Datums- und Regel-ID-Konsistenz. Ungültige Daten **stoppen den Build**. `draft` wird nicht veröffentlicht.

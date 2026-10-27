@@ -67,6 +67,11 @@ const leaderboardEvents=defineCollection({
     endsOn:z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     image:z.string().startsWith("/images/endfield/"),
     backgroundImage:z.string().startsWith("/images/endfield/"),
+    achievement:z.object({
+      image:z.string().startsWith("/images/endfield/"),
+      tooltipDe:z.string().min(1),
+      tooltipEn:z.string().min(1)
+    }).optional(),
     rulebookUrl:z.string().url(),
     demoRunId:z.string().optional(),
     rules:z.array(z.object({
