@@ -2,19 +2,19 @@
   "schemaVersion": 1,
   "source": {
     "provider": "SKPORT Wiki",
-    "snapshot": "2026-10-15",
-    "description": "Official public item/info widgets + rendered default gear Source"
+    "snapshot": "2026-10-27",
+    "description": "Official public item/info widgets + rendered default gear Source; earlier records retain their individual capture dates; 18 verified v1.6 Gear items appended."
   },
   "coverage": {
-    "requested": 342,
-    "parsed": 342,
-    "verified": 338,
+    "requested": 360,
+    "parsed": 360,
+    "verified": 356,
     "incomplete": 4,
     "errors": 0,
     "weaponCount": 84,
-    "gearCount": 258,
-    "standardRecipesVerified": 258,
-    "recipeNeedsReview": 0,
+    "gearCount": 276,
+    "standardRecipesVerified": 261,
+    "recipeNeedsReview": 15,
     "recipesNotListed": 0
   },
   "weapons": [
@@ -78924,6 +78924,2308 @@
         "Game progress reaches the [Wuling] region"
       ],
       "artificingStatus": "available"
+    },
+    {
+      "id": "1380",
+      "name": "Type 50 Yinglung Beacon",
+      "category": "Gear",
+      "iconPath": "/images/endfield/gear/1380.webp",
+      "source": {
+        "provider": "SKPORT Wiki",
+        "itemId": "1380",
+        "language": "en",
+        "snapshot": "2026-10-27"
+      },
+      "rarity": "5★",
+      "kind": "gear",
+      "gearSlot": "Kit",
+      "setName": "Type 50 Yinglung",
+      "level": 70,
+      "status": "verified",
+      "artificingStatus": "available",
+      "stats": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Level",
+                "70"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Defense",
+                    "+21"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Intellect",
+                    "+32"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Strength",
+                    "+21"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Combo Skill DMG Bonus",
+                    "+41.4%"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "artificing": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Stats",
+                "Default",
+                "Level 1",
+                "Level 2",
+                "Level 3"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Intellect",
+                    "+32",
+                    "+35",
+                    "+38",
+                    "+41"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Strength",
+                    "+21",
+                    "+23",
+                    "+25",
+                    "+27"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Combo Skill DMG Bonus",
+                    "+41.4%",
+                    "+45.5%",
+                    "+49.7%",
+                    "+53.8%"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Artificing Progress",
+                    "None",
+                    "6",
+                    "12",
+                    "20"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "setEffect": "3-piece set effect: Wearer's ATK +15%.\n\nWhen any operator in the team casts a battle skill, the wearer gains 1 stack of Yinglung's Edge that gives DMG +20% to the wearer's next combo skill. Yinglung's Edge can stack 3 time(s).",
+      "standardRecipe": null,
+      "recipeStatus": "needs-review",
+      "acquisitionNotes": [
+        "Gear Template Crate"
+      ]
+    },
+    {
+      "id": "1381",
+      "name": "Type 50 Yinglung Gloves",
+      "category": "Gear",
+      "iconPath": "/images/endfield/gear/1381.webp",
+      "source": {
+        "provider": "SKPORT Wiki",
+        "itemId": "1381",
+        "language": "en",
+        "snapshot": "2026-10-27"
+      },
+      "rarity": "5★",
+      "kind": "gear",
+      "gearSlot": "Gloves",
+      "setName": "Type 50 Yinglung",
+      "level": 70,
+      "status": "verified",
+      "artificingStatus": "available",
+      "stats": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Level",
+                "70"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Defense",
+                    "+42"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Agility",
+                    "+65"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Intellect",
+                    "+43"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Combo Skill DMG Bonus",
+                    "+34.5%"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "artificing": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Stats",
+                "Default",
+                "Level 1",
+                "Level 2",
+                "Level 3"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Agility",
+                    "+65",
+                    "+71",
+                    "+78",
+                    "+84"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Intellect",
+                    "+43",
+                    "+47",
+                    "+51",
+                    "+55"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Combo Skill DMG Bonus",
+                    "+34.5%",
+                    "+38.0%",
+                    "+41.4%",
+                    "+44.9%"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Artificing Progress",
+                    "None",
+                    "6",
+                    "12",
+                    "20"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "setEffect": "3-piece set effect: Wearer's ATK +15%.\n\nWhen any operator in the team casts a battle skill, the wearer gains 1 stack of Yinglung's Edge that gives DMG +20% to the wearer's next combo skill. Yinglung's Edge can stack 3 time(s).",
+      "standardRecipe": null,
+      "recipeStatus": "needs-review",
+      "acquisitionNotes": [
+        "Gear Template Crate"
+      ]
+    },
+    {
+      "id": "1382",
+      "name": "Type 50 Yinglung Soft Armor",
+      "category": "Gear",
+      "iconPath": "/images/endfield/gear/1382.webp",
+      "source": {
+        "provider": "SKPORT Wiki",
+        "itemId": "1382",
+        "language": "en",
+        "snapshot": "2026-10-27"
+      },
+      "rarity": "5★",
+      "kind": "gear",
+      "gearSlot": "Armor",
+      "setName": "Type 50 Yinglung",
+      "level": 70,
+      "status": "verified",
+      "artificingStatus": "available",
+      "stats": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Level",
+                "70"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Defense",
+                    "+56"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Intellect",
+                    "+87"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Strength",
+                    "+58"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Combo Skill DMG Bonus",
+                    "+20.7%"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "artificing": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Stats",
+                "Default",
+                "Level 1",
+                "Level 2",
+                "Level 3"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Intellect",
+                    "+87",
+                    "+95",
+                    "+104",
+                    "+113"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Strength",
+                    "+58",
+                    "+63",
+                    "+69",
+                    "+75"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Combo Skill DMG Bonus",
+                    "+20.7%",
+                    "+22.8%",
+                    "+24.8%",
+                    "+26.9%"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Artificing Progress",
+                    "None",
+                    "6",
+                    "12",
+                    "20"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "setEffect": "3-piece set effect: Wearer's ATK +15%.\n\nWhen any operator in the team casts a battle skill, the wearer gains 1 stack of Yinglung's Edge that gives DMG +20% to the wearer's next combo skill. Yinglung's Edge can stack 3 time(s).",
+      "standardRecipe": null,
+      "recipeStatus": "needs-review",
+      "acquisitionNotes": [
+        "Gear Template Crate"
+      ]
+    },
+    {
+      "id": "1383",
+      "name": "Rift Trekker Gauntlets",
+      "category": "Gear",
+      "iconPath": "/images/endfield/gear/1383.webp",
+      "source": {
+        "provider": "SKPORT Wiki",
+        "itemId": "1383",
+        "language": "en",
+        "snapshot": "2026-10-27"
+      },
+      "rarity": "5★",
+      "kind": "gear",
+      "gearSlot": "Gloves",
+      "setName": "Non-Set",
+      "level": 70,
+      "status": "verified",
+      "artificingStatus": "available",
+      "stats": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Level",
+                "70"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Defense",
+                    "+42"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Strength",
+                    "+86"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Basic Attack DMG Bonus",
+                    "+24.0%"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "artificing": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Stats",
+                "Default",
+                "Level 1",
+                "Level 2",
+                "Level 3"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Strength",
+                    "+86",
+                    "+94",
+                    "+103",
+                    "+111"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Basic Attack DMG Bonus",
+                    "+24.0%",
+                    "+26.4%",
+                    "+28.8%",
+                    "+31.2%"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Special Artificing Progress",
+                    "None",
+                    "12",
+                    "24",
+                    "40"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "setEffect": "No Set Effects",
+      "standardRecipe": null,
+      "recipeStatus": "needs-review",
+      "acquisitionNotes": [
+        "*1",
+        "Exchange"
+      ]
+    },
+    {
+      "id": "1384",
+      "name": "Rift Trekker Silver Blade",
+      "category": "Gear",
+      "iconPath": "/images/endfield/gear/1384.webp",
+      "source": {
+        "provider": "SKPORT Wiki",
+        "itemId": "1384",
+        "language": "en",
+        "snapshot": "2026-10-27"
+      },
+      "rarity": "5★",
+      "kind": "gear",
+      "gearSlot": "Kit",
+      "setName": "Non-Set",
+      "level": 70,
+      "status": "verified",
+      "artificingStatus": "available",
+      "stats": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Level",
+                "70"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Defense",
+                    "+21"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Agility",
+                    "+43"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "ULT Efficiency",
+                    "+25.7%"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "artificing": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Stats",
+                "Default",
+                "Level 1",
+                "Level 2",
+                "Level 3"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Agility",
+                    "+43",
+                    "+47",
+                    "+51",
+                    "+55"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "ULT Efficiency",
+                    "+25.7%",
+                    "+28.3%",
+                    "+30.9%",
+                    "+33.4%"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Special Artificing Progress",
+                    "None",
+                    "12",
+                    "24",
+                    "40"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "setEffect": "No Set Effects",
+      "standardRecipe": null,
+      "recipeStatus": "needs-review",
+      "acquisitionNotes": [
+        "*1",
+        "Exchange"
+      ]
+    },
+    {
+      "id": "1385",
+      "name": "Rift Trekker Wraps",
+      "category": "Gear",
+      "iconPath": "/images/endfield/gear/1385.webp",
+      "source": {
+        "provider": "SKPORT Wiki",
+        "itemId": "1385",
+        "language": "en",
+        "snapshot": "2026-10-27"
+      },
+      "rarity": "5★",
+      "kind": "gear",
+      "gearSlot": "Gloves",
+      "setName": "Non-Set",
+      "level": 70,
+      "status": "verified",
+      "artificingStatus": "available",
+      "stats": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Level",
+                "70"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Defense",
+                    "+42"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Will",
+                    "+86"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Cry & Electric DMG",
+                    "+20.0%"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "artificing": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Stats",
+                "Default",
+                "Level 1",
+                "Level 2",
+                "Level 3"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Will",
+                    "+86",
+                    "+94",
+                    "+103",
+                    "+111"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Cryo & Electric DMG",
+                    "+20.0%",
+                    "+22.0%",
+                    "+24.0%",
+                    "+26.0%"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Special Artificing Progress",
+                    "None",
+                    "12",
+                    "24",
+                    "40"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "setEffect": "No Set Effects",
+      "standardRecipe": null,
+      "recipeStatus": "needs-review",
+      "acquisitionNotes": [
+        "*1",
+        "Exchange"
+      ]
+    },
+    {
+      "id": "1386",
+      "name": "Rift Trekker Steel Armor",
+      "category": "Gear",
+      "iconPath": "/images/endfield/gear/1386.webp",
+      "source": {
+        "provider": "SKPORT Wiki",
+        "itemId": "1386",
+        "language": "en",
+        "snapshot": "2026-10-27"
+      },
+      "rarity": "5★",
+      "kind": "gear",
+      "gearSlot": "Armor",
+      "setName": "Non-Set",
+      "level": 70,
+      "status": "verified",
+      "artificingStatus": "available",
+      "stats": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Level",
+                "70"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Defense",
+                    "+56"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Agility",
+                    "+115"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Combo Skill DMG Bonus",
+                    "+21.6%"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "artificing": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Stats",
+                "Default",
+                "Level 1",
+                "Level 2",
+                "Level 3"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Agility",
+                    "+115",
+                    "+126",
+                    "+138",
+                    "+149"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Combo Skill DMG Bonus",
+                    "+21.6%",
+                    "+23.8%",
+                    "+25.9%",
+                    "+28.1%"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Special Artificing Progress",
+                    "None",
+                    "12",
+                    "24",
+                    "40"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "setEffect": "No Set Effects",
+      "standardRecipe": null,
+      "recipeStatus": "needs-review",
+      "acquisitionNotes": [
+        "*1",
+        "Exchange"
+      ]
+    },
+    {
+      "id": "1387",
+      "name": "Rift Trekker Overalls",
+      "category": "Gear",
+      "iconPath": "/images/endfield/gear/1387.webp",
+      "source": {
+        "provider": "SKPORT Wiki",
+        "itemId": "1387",
+        "language": "en",
+        "snapshot": "2026-10-27"
+      },
+      "rarity": "5★",
+      "kind": "gear",
+      "gearSlot": "Armor",
+      "setName": "Non-Set",
+      "level": 70,
+      "status": "verified",
+      "artificingStatus": "available",
+      "stats": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Level",
+                "70"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Defense",
+                    "+56"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Intellect",
+                    "+115"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Heat & Nature DMG",
+                    "+12.0%"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "artificing": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Stats",
+                "Default",
+                "Level 1",
+                "Level 2",
+                "Level 3"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Intellect",
+                    "+115",
+                    "+126",
+                    "+138",
+                    "+149"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Heat & Nature DMG",
+                    "+12.0%",
+                    "+13.2%",
+                    "+14.4%",
+                    "+15.6%"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Special Artificing Progress",
+                    "None",
+                    "12",
+                    "24",
+                    "40"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "setEffect": "No Set Effects",
+      "standardRecipe": null,
+      "recipeStatus": "needs-review",
+      "acquisitionNotes": [
+        "*1",
+        "Exchange"
+      ]
+    },
+    {
+      "id": "1388",
+      "name": "Pulser Labs Armor Slab",
+      "category": "Gear",
+      "iconPath": "/images/endfield/gear/1388.webp",
+      "source": {
+        "provider": "SKPORT Wiki",
+        "itemId": "1388",
+        "language": "en",
+        "snapshot": "2026-10-27"
+      },
+      "rarity": "5★",
+      "kind": "gear",
+      "gearSlot": "Kit",
+      "setName": "Pulser Labs",
+      "level": 70,
+      "status": "verified",
+      "artificingStatus": "available",
+      "stats": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Level",
+                "70"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Defense",
+                    "+21"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Will",
+                    "+32"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Strength",
+                    "+21"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "ULT Efficiency",
+                    "+24.6%"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "artificing": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Stats",
+                "Default",
+                "Level 1",
+                "Level 2",
+                "Level 3"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Will",
+                    "+32",
+                    "+35",
+                    "+38",
+                    "+41"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Strength",
+                    "+21",
+                    "+23",
+                    "+25",
+                    "+27"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "ULT Efficiency",
+                    "+24.6%",
+                    "+27.1%",
+                    "+29.6%",
+                    "+32.0%"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Artificing Progress",
+                    "None",
+                    "6",
+                    "12",
+                    "20"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "setEffect": "3-piece set effect: Wearer's Arts Intensity +30.\n\nAfter the wearer applies Electrification, the wearer gains Electric DMG +50% for 10s. After the wearer applies Solidification, the wearer gains Cryo DMG +50% for 10s. The aforementioned effects cannot stack.",
+      "standardRecipe": null,
+      "recipeStatus": "needs-review",
+      "acquisitionNotes": [
+        "Gear Template Crate"
+      ]
+    },
+    {
+      "id": "1389",
+      "name": "Pulser Labs Light Armor",
+      "category": "Gear",
+      "iconPath": "/images/endfield/gear/1389.webp",
+      "source": {
+        "provider": "SKPORT Wiki",
+        "itemId": "1389",
+        "language": "en",
+        "snapshot": "2026-10-27"
+      },
+      "rarity": "5★",
+      "kind": "gear",
+      "gearSlot": "Armor",
+      "setName": "Pulser Labs",
+      "level": 70,
+      "status": "verified",
+      "artificingStatus": "available",
+      "stats": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Level",
+                "70"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Defense",
+                    "+56"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Will",
+                    "+87"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Strength",
+                    "+58"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Cryo & Electric DMG",
+                    "+11.5%"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "artificing": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Stats",
+                "Default",
+                "Level 1",
+                "Level 2",
+                "Level 3"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Will",
+                    "+87",
+                    "+95",
+                    "+104",
+                    "+113"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Strength",
+                    "+58",
+                    "+63",
+                    "+69",
+                    "+75"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Cryo & Electric DMG",
+                    "+11.5%",
+                    "+12.7%",
+                    "+13.8%",
+                    "+14.9%"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Artificing Progress",
+                    "None",
+                    "6",
+                    "12",
+                    "20"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "setEffect": "3-piece set effect: Wearer's Arts Intensity +30.\n\nAfter the wearer applies Electrification, the wearer gains Electric DMG +50% for 10s. After the wearer applies Solidification, the wearer gains Cryo DMG +50% for 10s. The aforementioned effects cannot stack.",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "602",
+            "count": 360
+          },
+          {
+            "id": "1067",
+            "count": 50
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
+      "acquisitionNotes": [
+        "Gear Template Crate"
+      ]
+    },
+    {
+      "id": "1390",
+      "name": "Pulser Labs Light Gauntlets",
+      "category": "Gear",
+      "iconPath": "/images/endfield/gear/1390.webp",
+      "source": {
+        "provider": "SKPORT Wiki",
+        "itemId": "1390",
+        "language": "en",
+        "snapshot": "2026-10-27"
+      },
+      "rarity": "5★",
+      "kind": "gear",
+      "gearSlot": "Gloves",
+      "setName": "Pulser Labs",
+      "level": 70,
+      "status": "verified",
+      "artificingStatus": "available",
+      "stats": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Level",
+                "70"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Defense",
+                    "+42"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Will",
+                    "+65"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Strength",
+                    "+43"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Cryo & Electric DMG",
+                    "+19.2%"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "artificing": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Stats",
+                "Default",
+                "Level 1",
+                "Level 2",
+                "Level 3"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Will",
+                    "+65",
+                    "+71",
+                    "+78",
+                    "+84"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Strength",
+                    "+43",
+                    "+47",
+                    "+51",
+                    "+55"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Cryo & Electric DMG",
+                    "+19.2%",
+                    "+21.1%",
+                    "+23.0%",
+                    "+24.9%"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Artificing Progress",
+                    "None",
+                    "6",
+                    "12",
+                    "20"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "setEffect": "3-piece set effect: Wearer's Arts Intensity +30.\n\nAfter the wearer applies Electrification, the wearer gains Electric DMG +50% for 10s. After the wearer applies Solidification, the wearer gains Cryo DMG +50% for 10s. The aforementioned effects cannot stack.",
+      "standardRecipe": null,
+      "recipeStatus": "needs-review",
+      "acquisitionNotes": [
+        "Gear Template Crate"
+      ]
+    },
+    {
+      "id": "1391",
+      "name": "Eternal Xiranite Channeling Gloves",
+      "category": "Gear",
+      "iconPath": "/images/endfield/gear/1391.webp",
+      "source": {
+        "provider": "SKPORT Wiki",
+        "itemId": "1391",
+        "language": "en",
+        "snapshot": "2026-10-27"
+      },
+      "rarity": "5★",
+      "kind": "gear",
+      "gearSlot": "Gloves",
+      "setName": "Eternal Xiranite",
+      "level": 70,
+      "status": "verified",
+      "artificingStatus": "available",
+      "stats": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Level",
+                "70"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Defense",
+                    "+42"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Intellect",
+                    "+65"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Strength",
+                    "+43"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Combo Skill DMG Bonus",
+                    "+34.5%"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "artificing": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Stats",
+                "Default",
+                "Level 1",
+                "Level 2",
+                "Level 3"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Intellect",
+                    "+65",
+                    "+71",
+                    "+78",
+                    "+84"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Strength",
+                    "+43",
+                    "+47",
+                    "+51",
+                    "+55"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Combo Skill DMG Bonus",
+                    "+34.5%",
+                    "+38.0%",
+                    "+41.4%",
+                    "+44.9%"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Artificing Progress",
+                    "None",
+                    "6",
+                    "12",
+                    "20"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "setEffect": "3-piece set effect: Wearer's HP +1000.\n\nAfter the wearer applies Amp, Protection, Susceptibility, or Weakness, other teammates gain DMG Dealt +16% for 15s. This effect cannot stack.",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "602",
+            "count": 360
+          },
+          {
+            "id": "1067",
+            "count": 50
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
+      "acquisitionNotes": [
+        "Gear Template Crate"
+      ]
+    },
+    {
+      "id": "1392",
+      "name": "Eternal Xiranite MOD Armor",
+      "category": "Gear",
+      "iconPath": "/images/endfield/gear/1392.webp",
+      "source": {
+        "provider": "SKPORT Wiki",
+        "itemId": "1392",
+        "language": "en",
+        "snapshot": "2026-10-27"
+      },
+      "rarity": "5★",
+      "kind": "gear",
+      "gearSlot": "Armor",
+      "setName": "Eternal Xiranite",
+      "level": 70,
+      "status": "verified",
+      "artificingStatus": "available",
+      "stats": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Level",
+                "70"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Defense",
+                    "+56"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Intellect",
+                    "+87"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Strength",
+                    "+58"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Combo Skill DMG Bonus",
+                    "+20.7%"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "artificing": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Stats",
+                "Default",
+                "Level 1",
+                "Level 2",
+                "Level 3"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Intellect",
+                    "+87",
+                    "+95",
+                    "+104",
+                    "+113"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Strength",
+                    "+58",
+                    "+63",
+                    "+69",
+                    "+75"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Combo Skill DMG Bonus",
+                    "+20.7%",
+                    "+22.8%",
+                    "+24.8%",
+                    "+26.9%"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Artificing Progress",
+                    "None",
+                    "6",
+                    "12",
+                    "20"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "setEffect": "3-piece set effect: Wearer's HP +1000.\n\nAfter the wearer applies Amp, Protection, Susceptibility, or Weakness, other teammates gain DMG Dealt +16% for 15s. This effect cannot stack.",
+      "standardRecipe": null,
+      "recipeStatus": "needs-review",
+      "acquisitionNotes": [
+        "Gear Template Crate"
+      ]
+    },
+    {
+      "id": "1393",
+      "name": "Eternal Xiranite Rangefinder",
+      "category": "Gear",
+      "iconPath": "/images/endfield/gear/1393.webp",
+      "source": {
+        "provider": "SKPORT Wiki",
+        "itemId": "1393",
+        "language": "en",
+        "snapshot": "2026-10-27"
+      },
+      "rarity": "5★",
+      "kind": "gear",
+      "gearSlot": "Kit",
+      "setName": "Eternal Xiranite",
+      "level": 70,
+      "status": "verified",
+      "artificingStatus": "available",
+      "stats": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Level",
+                "70"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Defense",
+                    "+21"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Intellect",
+                    "+32"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Strength",
+                    "+21"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Combo Skill DMG Bonus",
+                    "+41.4%"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "artificing": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Stats",
+                "Default",
+                "Level 1",
+                "Level 2",
+                "Level 3"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Intellect",
+                    "+32",
+                    "+35",
+                    "+38",
+                    "+41"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Strength",
+                    "+21",
+                    "+23",
+                    "+25",
+                    "+27"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Combo Skill DMG Bonus",
+                    "+41.4%",
+                    "+45.5%",
+                    "+49.7%",
+                    "+53.8%"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Artificing Progress",
+                    "None",
+                    "6",
+                    "12",
+                    "20"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "setEffect": "3-piece set effect: Wearer's HP +1000.\n\nAfter the wearer applies Amp, Protection, Susceptibility, or Weakness, other teammates gain DMG Dealt +16% for 15s. This effect cannot stack.",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "602",
+            "count": 360
+          },
+          {
+            "id": "1067",
+            "count": 50
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
+      "acquisitionNotes": [
+        "Gear Template Crate"
+      ]
+    },
+    {
+      "id": "1394",
+      "name": "Eternal Xiranite Overalls",
+      "category": "Gear",
+      "iconPath": "/images/endfield/gear/1394.webp",
+      "source": {
+        "provider": "SKPORT Wiki",
+        "itemId": "1394",
+        "language": "en",
+        "snapshot": "2026-10-27"
+      },
+      "rarity": "5★",
+      "kind": "gear",
+      "gearSlot": "Armor",
+      "setName": "Eternal Xiranite",
+      "level": 70,
+      "status": "verified",
+      "artificingStatus": "available",
+      "stats": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Level",
+                "70"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Defense",
+                    "+56"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Intellect",
+                    "+87"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Strength",
+                    "+58"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "ULT Efficiency",
+                    "+12.3%"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "artificing": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Stats",
+                "Default",
+                "Level 1",
+                "Level 2",
+                "Level 3"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Intellect",
+                    "+87",
+                    "+95",
+                    "+104",
+                    "+113"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Strength",
+                    "+58",
+                    "+63",
+                    "+69",
+                    "+75"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "ULT Efficiency",
+                    "+12.3%",
+                    "+13.6%",
+                    "+14.8%",
+                    "+16.0%"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Artificing Progress",
+                    "None",
+                    "6",
+                    "12",
+                    "20"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "setEffect": "3-piece set effect: Wearer's HP +1000.\n\nAfter the wearer applies Amp, Protection, Susceptibility, or Weakness, other teammates gain DMG Dealt +16% for 15s. This effect cannot stack.",
+      "standardRecipe": null,
+      "recipeStatus": "needs-review",
+      "acquisitionNotes": [
+        "Gear Template Crate"
+      ]
+    },
+    {
+      "id": "1395",
+      "name": "AIC Fieldwork CQB Hacksaw",
+      "category": "Gear",
+      "iconPath": "/images/endfield/gear/1395.webp",
+      "source": {
+        "provider": "SKPORT Wiki",
+        "itemId": "1395",
+        "language": "en",
+        "snapshot": "2026-10-27"
+      },
+      "rarity": "5★",
+      "kind": "gear",
+      "gearSlot": "Kit",
+      "setName": "AIC Fieldwork",
+      "level": 60,
+      "status": "verified",
+      "artificingStatus": "available",
+      "stats": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Level",
+                "60"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Defense",
+                    "+18"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Main Attribute",
+                    "+27"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Secondary Attribute",
+                    "+18"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Physical DMG Bonus",
+                    "+19.7%"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "artificing": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Stats",
+                "Default",
+                "Level 1",
+                "Level 2",
+                "Level 3"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Main Attribute",
+                    "+27",
+                    "+29",
+                    "+32",
+                    "+35"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Secondary Attribute",
+                    "+18",
+                    "+19",
+                    "+21",
+                    "+23"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Physical DMG Bonus",
+                    "+19.7%",
+                    "+21.6%",
+                    "+23.6%",
+                    "+25.6%"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Artificing Progress",
+                    "None",
+                    "6",
+                    "12",
+                    "20"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "setEffect": "3-piece set effect: Wearer gains DMG Dealt +20% for all types of DMG, 10% DMG Reduction against all types of DMG, and Ultimate Gain Efficiency +10%.",
+      "standardRecipe": null,
+      "recipeStatus": "needs-review",
+      "acquisitionNotes": [
+        "[Sanctuary of Ink] Version Update",
+        "Game progress reaches the [Wuling] region"
+      ]
+    },
+    {
+      "id": "1396",
+      "name": "AIC Fieldwork CQB Gloves",
+      "category": "Gear",
+      "iconPath": "/images/endfield/gear/1396.webp",
+      "source": {
+        "provider": "SKPORT Wiki",
+        "itemId": "1396",
+        "language": "en",
+        "snapshot": "2026-10-27"
+      },
+      "rarity": "5★",
+      "kind": "gear",
+      "gearSlot": "Gloves",
+      "setName": "AIC Fieldwork",
+      "level": 60,
+      "status": "verified",
+      "artificingStatus": "available",
+      "stats": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Level",
+                "60"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Defense",
+                    "+36"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Main Attribute",
+                    "+55"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Secondary Attribute",
+                    "+37"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Physical DMG Bonus",
+                    "+16.4%"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "artificing": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Stats",
+                "Default",
+                "Level 1",
+                "Level 2",
+                "Level 3"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Main Attribute",
+                    "+55",
+                    "+60",
+                    "+66",
+                    "+71"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Secondary Attribute",
+                    "+37",
+                    "+40",
+                    "+44",
+                    "+48"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Physical DMG Bonus",
+                    "+16.4%",
+                    "+18.0%",
+                    "+19.7%",
+                    "+21.3%"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Artificing Progress",
+                    "None",
+                    "6",
+                    "12",
+                    "20"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "setEffect": "3-piece set effect: Wearer gains DMG Dealt +20% for all types of DMG, 10% DMG Reduction against all types of DMG, and Ultimate Gain Efficiency +10%.",
+      "standardRecipe": null,
+      "recipeStatus": "needs-review",
+      "acquisitionNotes": [
+        "[Sanctuary of Ink] Version Update",
+        "Game progress reaches the [Wuling] region"
+      ]
+    },
+    {
+      "id": "1397",
+      "name": "AIC Fieldwork CQB Armor",
+      "category": "Gear",
+      "iconPath": "/images/endfield/gear/1397.webp",
+      "source": {
+        "provider": "SKPORT Wiki",
+        "itemId": "1397",
+        "language": "en",
+        "snapshot": "2026-10-27"
+      },
+      "rarity": "5★",
+      "kind": "gear",
+      "gearSlot": "Armor",
+      "setName": "AIC Fieldwork",
+      "level": 60,
+      "status": "verified",
+      "artificingStatus": "available",
+      "stats": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Level",
+                "60"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Defense",
+                    "+48"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Main Attribute",
+                    "+74"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Secondary Attribute",
+                    "+49"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Physical DMG Bonus",
+                    "+9.8%"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "artificing": [
+        {
+          "tab": "default",
+          "introName": "",
+          "tables": [
+            {
+              "columns": [
+                "Stats",
+                "Default",
+                "Level 1",
+                "Level 2",
+                "Level 3"
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    "Main Attribute",
+                    "+74",
+                    "+81",
+                    "+88",
+                    "+96"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Secondary Attribute",
+                    "+49",
+                    "+53",
+                    "+58",
+                    "+63"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Physical DMG Bonus",
+                    "+9.8%",
+                    "+10.8%",
+                    "+11.8%",
+                    "+12.8%"
+                  ],
+                  "costs": []
+                },
+                {
+                  "cells": [
+                    "Artificing Progress",
+                    "None",
+                    "6",
+                    "12",
+                    "20"
+                  ],
+                  "costs": []
+                }
+              ]
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "setEffect": "3-piece set effect: Wearer gains DMG Dealt +20% for all types of DMG, 10% DMG Reduction against all types of DMG, and Ultimate Gain Efficiency +10%.",
+      "standardRecipe": null,
+      "recipeStatus": "needs-review",
+      "acquisitionNotes": [
+        "[Sanctuary of Ink] Version Update",
+        "Game progress reaches the [Wuling] region"
+      ]
     }
   ],
   "review": [

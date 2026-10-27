@@ -6021,6 +6021,96 @@
       "en": "Lunar Calling",
       "de": "Lunar Calling"
     },
+    "1380": {
+      "category": "Gear",
+      "en": "Type 50 Yinglung Beacon",
+      "de": "Type 50 Yinglung Beacon"
+    },
+    "1381": {
+      "category": "Gear",
+      "en": "Type 50 Yinglung Gloves",
+      "de": "Type 50 Yinglung Gloves"
+    },
+    "1382": {
+      "category": "Gear",
+      "en": "Type 50 Yinglung Soft Armor",
+      "de": "Type 50 Yinglung Soft Armor"
+    },
+    "1383": {
+      "category": "Gear",
+      "en": "Rift Trekker Gauntlets",
+      "de": "Rift Trekker Gauntlets"
+    },
+    "1384": {
+      "category": "Gear",
+      "en": "Rift Trekker Silver Blade",
+      "de": "Rift Trekker Silver Blade"
+    },
+    "1385": {
+      "category": "Gear",
+      "en": "Rift Trekker Wraps",
+      "de": "Rift Trekker Wraps"
+    },
+    "1386": {
+      "category": "Gear",
+      "en": "Rift Trekker Steel Armor",
+      "de": "Rift Trekker Steel Armor"
+    },
+    "1387": {
+      "category": "Gear",
+      "en": "Rift Trekker Overalls",
+      "de": "Rift Trekker Overalls"
+    },
+    "1388": {
+      "category": "Gear",
+      "en": "Pulser Labs Armor Slab",
+      "de": "Pulser Labs Armor Slab"
+    },
+    "1389": {
+      "category": "Gear",
+      "en": "Pulser Labs Light Armor",
+      "de": "Pulser Labs Light Armor"
+    },
+    "1390": {
+      "category": "Gear",
+      "en": "Pulser Labs Light Gauntlets",
+      "de": "Pulser Labs Light Gauntlets"
+    },
+    "1391": {
+      "category": "Gear",
+      "en": "Eternal Xiranite Channeling Gloves",
+      "de": "Eternal Xiranite Channeling Gloves"
+    },
+    "1392": {
+      "category": "Gear",
+      "en": "Eternal Xiranite MOD Armor",
+      "de": "Eternal Xiranite MOD Armor"
+    },
+    "1393": {
+      "category": "Gear",
+      "en": "Eternal Xiranite Rangefinder",
+      "de": "Eternal Xiranite Rangefinder"
+    },
+    "1394": {
+      "category": "Gear",
+      "en": "Eternal Xiranite Overalls",
+      "de": "Eternal Xiranite Overalls"
+    },
+    "1395": {
+      "category": "Gear",
+      "en": "AIC Fieldwork CQB Hacksaw",
+      "de": "AIC Fieldwork CQB Hacksaw"
+    },
+    "1396": {
+      "category": "Gear",
+      "en": "AIC Fieldwork CQB Gloves",
+      "de": "AIC Fieldwork CQB Gloves"
+    },
+    "1397": {
+      "category": "Gear",
+      "en": "AIC Fieldwork CQB Armor",
+      "de": "AIC Fieldwork CQB Armor"
+    },
     "aic-fieldwork-cqb-armor": {
       "category": "Gear (v1.6 preview)",
       "en": "AIC Fieldwork CQB Armor",

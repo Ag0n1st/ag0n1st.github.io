@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "provider": "SKPORT Wiki",
+  "snapshot": "2026-10-27",
+  "evidence": "anonymous /web/v1/wiki/item/catalog and /web/v1/wiki/item/info",
+  "count": 18,
+  "originalGearCount": 258,
+  "latestGearCount": 276,
+  "entries": [
+    {
+      "id": "1380",
+      "name": "Type 50 Yinglung Beacon",
+      "slot": "Kit",
+      "artificingStatus": "available",
+      "recipeStatus": "needs-review",
+      "image": "/images/endfield/gear/1380.webp"
+    },
+    {
+      "id": "1381",
+      "name": "Type 50 Yinglung Gloves",
+      "slot": "Gloves",
+      "artificingStatus": "available",
+      "recipeStatus": "needs-review",
+      "image": "/images/endfield/gear/1381.webp"
+    },
+    {
+      "id": "1382",
+      "name": "Type 50 Yinglung Soft Armor",
+      "slot": "Armor",
+      "artificingStatus": "available",
+      "recipeStatus": "needs-review",
+      "image": "/images/endfield/gear/1382.webp"
+    },
+    {
+      "id": "1383",
+      "name": "Rift Trekker Gauntlets",
+      "slot": "Gloves",
+      "artificingStatus": "available",
+      "recipeStatus": "needs-review",
+      "image": "/images/endfield/gear/1383.webp"
+    },
+    {
+      "id": "1384",
+      "name": "Rift Trekker Silver Blade",
+      "slot": "Kit",
+      "artificingStatus": "available",
+      "recipeStatus": "needs-review",
+      "image": "/images/endfield/gear/1384.webp"
+    },
+    {
+      "id": "1385",
+      "name": "Rift Trekker Wraps",
+      "slot": "Gloves",
+      "artificingStatus": "available",
+      "recipeStatus": "needs-review",
+      "image": "/images/endfield/gear/1385.webp"
+    },
+    {
+      "id": "1386",
+      "name": "Rift Trekker Steel Armor",
+      "slot": "Armor",
+      "artificingStatus": "available",
+      "recipeStatus": "needs-review",
+      "image": "/images/endfield/gear/1386.webp"
+    },
+    {
+      "id": "1387",
+      "name": "Rift Trekker Overalls",
+      "slot": "Armor",
+      "artificingStatus": "available",
+      "recipeStatus": "needs-review",
+      "image": "/images/endfield/gear/1387.webp"
+    },
+    {
+      "id": "1388",
+      "name": "Pulser Labs Armor Slab",
+      "slot": "Kit",
+      "artificingStatus": "available",
+      "recipeStatus": "needs-review",
+      "image": "/images/endfield/gear/1388.webp"
+    },
+    {
+      "id": "1389",
+      "name": "Pulser Labs Light Armor",
+      "slot": "Armor",
+      "artificingStatus": "available",
+      "recipeStatus": "verified",
+      "image": "/images/endfield/gear/1389.webp"
+    },
+    {
+      "id": "1390",
+      "name": "Pulser Labs Light Gauntlets",
+      "slot": "Gloves",
+      "artificingStatus": "available",
+      "recipeStatus": "needs-review",
+      "image": "/images/endfield/gear/1390.webp"
+    },
+    {
+      "id": "1391",
+      "name": "Eternal Xiranite Channeling Gloves",
+      "slot": "Gloves",
+      "artificingStatus": "available",
+      "recipeStatus": "verified",
+      "image": "/images/endfield/gear/1391.webp"
+    },
+    {
+      "id": "1392",
+      "name": "Eternal Xiranite MOD Armor",
+      "slot": "Armor",
+      "artificingStatus": "available",
+      "recipeStatus": "needs-review",
+      "image": "/images/endfield/gear/1392.webp"
+    },
+    {
+      "id": "1393",
+      "name": "Eternal Xiranite Rangefinder",
+      "slot": "Kit",
+      "artificingStatus": "available",
+      "recipeStatus": "verified",
+      "image": "/images/endfield/gear/1393.webp"
+    },
+    {
+      "id": "1394",
+      "name": "Eternal Xiranite Overalls",
+      "slot": "Armor",
+      "artificingStatus": "available",
+      "recipeStatus": "needs-review",
+      "image": "/images/endfield/gear/1394.webp"
+    },
+    {
+      "id": "1395",
+      "name": "AIC Fieldwork CQB Hacksaw",
+      "slot": "Kit",
+      "artificingStatus": "available",
+      "recipeStatus": "needs-review",
+      "image": "/images/endfield/gear/1395.webp"
+    },
+    {
+      "id": "1396",
+      "name": "AIC Fieldwork CQB Gloves",
+      "slot": "Gloves",
+      "artificingStatus": "available",
+      "recipeStatus": "needs-review",
+      "image": "/images/endfield/gear/1396.webp"
+    },
+    {
+      "id": "1397",
+      "name": "AIC Fieldwork CQB Armor",
+      "slot": "Armor",
+      "artificingStatus": "available",
+      "recipeStatus": "needs-review",
+      "image": "/images/endfield/gear/1397.webp"
+    }
+  ],
+  "duplicateNameNotice": "Type 50 Yinglung Gloves exists under distinct official IDs 411 and 1381; preserve both numeric IDs.",
+  "images": [
+    {
+      "id": "1380",
+      "bytes": 7512
+    },
+    {
+      "id": "1381",
+      "bytes": 9058
+    },
+    {
+      "id": "1382",
+      "bytes": 8878
+    },
+    {
+      "id": "1383",
+      "bytes": 9836
+    },
+    {
+      "id": "1384",
+      "bytes": 5808
+    },
+    {
+      "id": "1385",
+      "bytes": 8692
+    },
+    {
+      "id": "1386",
+      "bytes": 9494
+    },
+    {
+      "id": "1387",
+      "bytes": 8988
+    },
+    {
+      "id": "1388",
+      "bytes": 7412
+    },
+    {
+      "id": "1389",
+      "bytes": 10562
+    },
+    {
+      "id": "1390",
+      "bytes": 10828
+    },
+    {
+      "id": "1391",
+      "bytes": 8288
+    },
+    {
+      "id": "1392",
+      "bytes": 10374
+    },
+    {
+      "id": "1393",
+      "bytes": 6774
+    },
+    {
+      "id": "1394",
+      "bytes": 11308
+    },
+    {
+      "id": "1395",
+      "bytes": 9444
+    },
+    {
+      "id": "1396",
+      "bytes": 8366
+    },
+    {
+      "id": "1397",
+      "bytes": 8348
+    }
+  ]
+}
