@@ -124,7 +124,7 @@ test("Optional Duality Discord achievement badge follows selected event and stay
  assert.match(client,/badge\.hidden=archived\|\|badge\.dataset\.eventAchievement!==id/);
  assert.match(css,/\.cl-event-achievement\{position:absolute;right:0;top:-13px/);
  assert.match(css,/\.cl-event-achievement\[hidden\]\{display:none!important\}/);
- assert.match(css,/\.cl-event-achievement:hover::after,\.cl-event-achievement:focus-visible::after/);
+ assert.match(css,/\.cl-event-achievement:hover::after,\.cl-event-achievement:focus::after/);
  assert.match(css,/@media\(max-width:760px\)\{\.cl-event-head\{min-height:70px;padding-right:72px\}/);
  const path="public/images/endfield/leaderboard/duality-achievement.webp";
  assert.ok(existsSync(path));
