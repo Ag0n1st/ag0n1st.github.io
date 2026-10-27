@@ -22,8 +22,12 @@ test("Cheat Sheets has three migrated systems and retains three existing referen
  assert.match(page,/data-cheatsheets-group="references"/);
  assert.match(page,/Spielsysteme","Game systems"/);
  assert.match(page,/Referenzen & Matrizen","References & matrices"/);
- assert.match(page,/Veredelungs-Matrix – Best Matches/);
- assert.match(page,/Refinement Matrix – Best Matches/);
+ assert.match(page,/<RefinementMatrix lang=\{lang\}/);
+ const ref=read("src/components/pages/RefinementMatrix.astro");
+ assert.match(ref,/id="refinement"/);
+ assert.match(ref,/id="artificing"/);
+ assert.match(ref,/Veredelungs-Matrix/);
+ assert.match(ref,/Artificing Matrix/);
  assert.match(page,/Die Veredelungs-Matrix ist verfügbar/);
  assert.match(page,/The refinement matrix is available/);
  assert.match(page,/In Vorbereitung","Coming soon"/);
