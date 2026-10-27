@@ -78,11 +78,10 @@ export function deriveRefinementMatrix(gear){
    const best=list[0]??null;
    return {slot,best,tied:list.filter(x=>x.value===best?.value).length,available:list.length};
   });
-  const globalMax=Math.max(0,...candidates.map(c=>c.best?.value??0));
   return {...a,slots:candidates.map(c=>({...c,
-   goodMatch:!!c.best&&c.best.value===globalMax,
-   // Every slot has its own best candidate; the glow marks the highest
-   // verified default value across the three selected classes.
+   // Values have different base ranges by equipment class. A slot winner is a
+   // Good Match for other compatible pieces of that SAME class, not other slots.
+   goodMatch:!!c.best,
    }))};
  });
  return result;
