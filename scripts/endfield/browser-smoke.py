@@ -1093,6 +1093,12 @@ def smoke_i18n(page, base_url, width):
                label+": "+lang+" query and Duality event survive reload")
         check_overflow(page,label+" "+lang+" leaderboard")
         page.goto(base_url+prefix+"/endfield/cheatsheets/")
+        cheats_title=page.locator("main h1.endfield-cheatsheets-title")
+        verify(cheats_title.count()==1 and
+               cheats_title.inner_text()=="Cheat Sheets." and
+               cheats_title.evaluate("(el)=>({height:el.getBoundingClientRect().height,line:parseFloat(getComputedStyle(el).lineHeight),nowrap:getComputedStyle(el).whiteSpace})")["nowrap"]=="nowrap" and
+               cheats_title.locator(".title-period").count()==1,
+               label+": "+lang+" Cheat Sheets title stays on one line with inline period")
         verify(page.locator("#refinement").count()==1 and
                page.locator("#artificing").count()==1 and
                page.locator(".endfield-coming-card").count()==4 and
@@ -1146,6 +1152,24 @@ def smoke_i18n(page, base_url, width):
         # real offline operator icons and responsive, keyboard-operable tabs.
         page.goto(base_url+prefix+"/endfield/tierlist/")
         board=page.locator("[data-community-tierlist]")
+        notice=page.locator(".tierlist-card .tierlist-disclaimer")
+        heading=page.locator(".tierlist-page h1")
+        expected_date="23/08/2026" if lang=="en" else "23.08.2026"
+        verify(notice.count()==1 and
+               notice.locator('time[datetime="2026-08-23"]').count()==1 and
+               page.locator("main time").count()==1 and
+               expected_date in notice.inner_text() and
+               ("Die Tierlist wird immer zusammen mit der Community Live im Stream erstellt" if lang=="de" else
+                "The tier list is always created live on stream together with the community") in notice.inner_text() and
+               page.locator(".tierlist-date, .tierlist-caption, .tierlist-lead").count()==0,
+               label+": "+lang+" one dated disclaimer directly under card heading; no redundant caption")
+        title_end=heading.locator(".tierlist-title-end")
+        dot=title_end.locator(".title-period")
+        verify(heading.count()==1 and dot.count()==1 and
+               dot.evaluate("(el)=>Math.abs(el.getBoundingClientRect().top-el.parentElement.getBoundingClientRect().top)<3") and
+               "nowrap"==title_end.evaluate("(el)=>getComputedStyle(el).whiteSpace") and
+               heading.inner_text().endswith("."),
+               label+": "+lang+" tierlist period stays attached to title")
         verify(board.count()==1 and
                board.get_attribute("data-tierlist-date")=="2026-08-23" and
                page.locator('[data-tierlist-tab]').count()==3 and
