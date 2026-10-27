@@ -24,7 +24,7 @@ const categories=[
 <EndfieldPlaceholder title="Cheat Sheets" kicker="ARKNIGHTS: ENDFIELD · CHEAT SHEETS" active="cheatsheets" lang={lang} description={l("Schnelle Nachschlagekarten für Rekrutierung, Veredelung, Essenzen, Spielmechaniken, Farming und Speedruns.","Quick-reference cards for recruitment, refinement, essences, mechanics, farming and speedruns.")}>
   <main class="endfield-utility-page section-wrap endfield-coming-tool">
     <span class="section-kicker">ARKNIGHTS: ENDFIELD · REFERENCE</span>
-    <h1 class="endfield-stacked-title"><span>Cheat</span><span>Sheets<span class="title-period">.</span></span></h1>
+    <h1 class="endfield-cheatsheets-title">Cheat Sheets<span class="title-period">.</span></h1>
     <p class="endfield-utility-intro">{l("Kompakte Nachschlagekarten statt langem Suchen. Die Veredelungs-Matrix ist verfügbar; weitere Cheat Sheets werden nach Prüfung ergänzt.","Compact quick-reference sheets. The refinement matrix is available; more verified references will follow.")}</p>
 
     <RefinementMatrix lang={lang} />
@@ -55,6 +55,7 @@ const categories=[
   </main>
 </EndfieldPlaceholder>
 <style>
+  .endfield-utility-page h1.endfield-cheatsheets-title{white-space:nowrap;font-size:clamp(30px,5vw,58px)}
   .endfield-cheatsheets-group{margin:36px 0 42px;scroll-margin-top:90px}
   .endfield-cheatsheets-group h2{font-size:clamp(21px,2.5vw,28px);line-height:1.3;letter-spacing:-.025em;color:#f4edf7;margin:0 0 9px}
   .endfield-cheatsheets-group .endfield-coming-cards{margin:16px 0 0}
