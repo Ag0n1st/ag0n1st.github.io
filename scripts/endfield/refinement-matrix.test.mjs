@@ -19,6 +19,10 @@ test("all 22 requested official DE/EN attribute categories occur exactly once",(
  assert.equal(refinementAttributeFor("Cryo & Electric DMG"),"cryo");
  assert.equal(refinementAttributeFor("ULT Efficiency"),"ult-ef");
  assert.equal(refinementAttributeFor("All Skill DMG Dealth Bonus"),"all");
+ assert.equal(REFINEMENT_ATTRIBUTES.find(x=>x.key==="main").de,"Hauptattribut %");
+ assert.equal(REFINEMENT_ATTRIBUTES.find(x=>x.key==="main").en,"Main Attribute %");
+ assert.equal(REFINEMENT_ATTRIBUTES.find(x=>x.key==="secondary").de,"Sekundärattribut %");
+ assert.equal(REFINEMENT_ATTRIBUTES.find(x=>x.key==="secondary").en,"Secondary Attribute %");
  assert.equal(refinementAttributeFor("Special Artificing Progress"),null);
  for(const row of REFINEMENT_ATTRIBUTES)assert.ok(row.de&&row.en&&row.aliases.length);
 });
@@ -72,6 +76,57 @@ test("ordinary maxima remain visible; glow only for exceptional Redeemer/Rift Tr
  assert.equal(rows.find(x=>x.key==="int").slots[2].goodMatch,false);
  assert.equal(rows.find(x=>x.key==="int").slots[0].goodMatch,false,"no ordinary baseline is not a proven standout");
  assert.ok(rows.find(x=>x.key==="atk").slots.every(x=>!x.best&&!x.goodMatch));
+});
+
+test("only level 70 gear contributes to any category; main/secondary attribute require percentage effects",()=>{
+ const examples=[
+  piece("61","AIC Fieldwork Armor","Armor","Main Attribute","+74",60),
+  piece("62","AIC Fieldwork Vest","Armor","Secondary Attribute","+8.9%",60),
+  piece("63","AIC Fieldwork Gloves","Gloves","Strength","+900",60),
+  piece("70","Regular Armor","Armor","Strength","+87"),
+  piece("71","LYNX Slab","Kit","Main Attribute","+20.7%"),
+  piece("72","Frontiers Extra O2 Tube","Kit","Secondary Attribute","+20.7%"),
+  piece("73","Fake Level 70 Flat Armor","Armor","Main Attribute","+99"),
+  piece("74","Fake Level 70 Flat Gloves","Gloves","Secondary Attribute","+99"),
+  piece("75","Percent Secondary Armor","Armor","Secondary Attribute","+10.4%"),
+  {...piece("76","Unknown-Level Armor","Armor","Strength","+999"),level:null},
+ ];
+ const matrix=deriveRefinementMatrix(examples);
+ const find=(attr,slot)=>matrix.find(x=>x.key===attr).slots.find(x=>x.slot===slot);
+ assert.equal(find("str","Armor").best?.id,"70");
+ assert.equal(find("str","Gloves").best,null);
+ assert.equal(find("main","Kit").best?.id,"71");
+ assert.equal(find("main","Armor").best,null);
+ assert.equal(find("main","Gloves").best,null);
+ assert.equal(find("secondary","Kit").best?.id,"72");
+ assert.equal(find("secondary","Armor").best?.id,"75");
+ assert.equal(find("secondary","Gloves").best,null);
+ for(const attr of ["main","secondary"])for(const cell of matrix.find(x=>x.key===attr).slots)
+  if(cell.best)assert.match(cell.best.raw,/^\\+?[\\d.]+%$/,"percent effect required");
+});
+
+test("actual snapshot contains only level 70 displayed entries and genuine % gear effects",()=>{
+ const matrix=deriveRefinementMatrix(equipment.gear);
+ const sourceById=new Map(equipment.gear.map(x=>[x.id,x]));
+ let shown=0;
+ for(const row of matrix)for(const cell of row.slots){
+  if(!cell.best)continue;
+  shown++;
+  const gear=sourceById.get(cell.best.id);
+  assert.equal(gear?.level,70,row.key+"/"+cell.slot+" item must be level 70");
+  assert.doesNotMatch(gear.name,/^AIC Fieldwork\\b/);
+  if(["main","secondary"].includes(row.key))
+    assert.match(cell.best.raw,/^\\+?[\\d.]+%$/,"main/secondary must have % effects");
+ }
+ assert.ok(shown>30);
+ const main=matrix.find(x=>x.key==="main");
+ const secondary=matrix.find(x=>x.key==="secondary");
+ assert.equal(main.slots.find(x=>x.slot==="Kit").best?.id,"365","LYNX Slab is the main-stat percent kit");
+ assert.equal(main.slots.find(x=>x.slot==="Armor").best,null);
+ assert.equal(main.slots.find(x=>x.slot==="Gloves").best,null);
+ assert.equal(secondary.slots.find(x=>x.slot==="Kit").best?.id,"1127","Rift Trekker Slab is the strongest % secondary kit");
+ assert.ok(["306","1135"].includes(secondary.slots.find(x=>x.slot==="Armor").best?.id));
+ assert.equal(secondary.slots.find(x=>x.slot==="Gloves").best,null);
 });
 
 test("real imported Gear 1138 remains Gloves rather than leaking into Agility/Will Kits",()=>{
