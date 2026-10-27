@@ -48,18 +48,18 @@ const demoOnly=rows.length>0&&rows.every(run=>run.status==="demo");
             <h4>{l("✓ Erlaubt","✓ Allowed")}</h4>
             <div class="cl-rule-explanation-example">
               <p><strong>Si</strong> – {l("als einziger Operator mit dem Trait „Schadensverurs.“ / „Damage Dealer“.","as the only operator with the “Damage Dealer” trait.")}</p>
-              <img src="/images/endfield/leaderboard/duality-rule-si.webp" width="350" height="153" loading="lazy" decoding="async" alt={l("Si: Der Trait Schadensverurs. ist grün markiert und erlaubt.","Si: Damage Dealer trait highlighted in green, allowed.")}/>
+              <img src="/images/endfield/leaderboard/duality-rule-si.webp" width="350" height="153" loading="eager" decoding="async" alt={l("Si: Der Trait Schadensverurs. ist grün markiert und erlaubt.","Si: Damage Dealer trait highlighted in green, allowed.")}/>
             </div>
             <div class="cl-rule-explanation-example">
               <p><strong>{l("Weitere Teammitglieder","Other team members")}</strong> – {l("nur ohne den Trait „Schadensverurs.“ / „Damage Dealer“, beispielsweise Arkan.","only without the “Damage Dealer” trait, for example Arcane.")}</p>
-              <img src="/images/endfield/leaderboard/duality-rule-arcane.webp" width="349" height="156" loading="lazy" decoding="async" alt={l("Arkan: Kein Schadensverurs.-Trait, grün als erlaubt gekennzeichnet.","Arcane: No Damage Dealer trait, highlighted in green as allowed.")}/>
+              <img src="/images/endfield/leaderboard/duality-rule-arcane.webp" width="349" height="156" loading="eager" decoding="async" alt={l("Arkan: Kein Schadensverurs.-Trait, grün als erlaubt gekennzeichnet.","Arcane: No Damage Dealer trait, highlighted in green as allowed.")}/>
             </div>
           </section>
           <section class="cl-rule-explanation-forbidden" aria-label={l("Verbotene Teammitglieder","Forbidden team members")}>
             <h4>{l("✕ Verboten","✕ Forbidden")}</h4>
             <div class="cl-rule-explanation-example">
               <p><strong>{l("Alle anderen Operatoren","Any other operator")}</strong> – {l("mit dem Trait „Schadensverurs.“ / „Damage Dealer“, beispielsweise Yvonne.","with the “Damage Dealer” trait, for example Yvonne.")}</p>
-              <img src="/images/endfield/leaderboard/duality-rule-yvonne.webp" width="351" height="158" loading="lazy" decoding="async" alt={l("Yvonne: Schadensverurs.-Trait rot markiert und durchgestrichen, verboten.","Yvonne: Damage Dealer trait marked in red and crossed out, forbidden.")}/>
+              <img src="/images/endfield/leaderboard/duality-rule-yvonne.webp" width="351" height="158" loading="eager" decoding="async" alt={l("Yvonne: Schadensverurs.-Trait rot markiert und durchgestrichen, verboten.","Yvonne: Damage Dealer trait marked in red and crossed out, forbidden.")}/>
             </div>
           </section>
         </div>
