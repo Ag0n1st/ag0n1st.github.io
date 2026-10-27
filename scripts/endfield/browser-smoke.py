@@ -1112,7 +1112,13 @@ def smoke_i18n(page, base_url, width):
                label+": "+lang+" switching to nine damage attributes does not mix panels")
         page.locator('[data-refinement-tab="utility"]').click()
         verify(page.locator('#refinement-panel-utility:visible .refinement-attribute-card').count()==9 and
-               page.locator('[data-refinement-attribute="atk"].refinement-empty').count()==3,
+               page.locator('[data-refinement-attribute="atk"].refinement-empty').count()==3 and
+               page.locator('[data-refinement-attribute="main"][data-refinement-slot="Kit"]').get_attribute("data-refinement-item-id")=="365" and
+               page.locator('[data-refinement-attribute="secondary"][data-refinement-slot="Kit"]').get_attribute("data-refinement-item-id")=="1127" and
+               page.locator('[data-refinement-attribute="main"].refinement-empty').count()==2 and
+               page.locator('[data-refinement-attribute="secondary"].refinement-empty').count()==1 and
+               all("%" in value for value in page.locator('#refinement-panel-utility [data-refinement-attribute="main"] .refinement-number').all_inner_texts()) and
+               all("%" in value for value in page.locator('#refinement-panel-utility [data-refinement-attribute="secondary"] .refinement-number').all_inner_texts()),
                label+": "+lang+" nine utility attributes and missing ATK source kept explicit")
         page.locator('[data-refinement-tab="primary"]').click()
         trigger=page.locator("#refinement-panel-primary .op-item-hover-trigger").first

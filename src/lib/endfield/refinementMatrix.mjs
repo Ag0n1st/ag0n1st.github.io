@@ -21,8 +21,8 @@ export const REFINEMENT_ATTRIBUTES=Object.freeze([
  {key:"crit",group:"utility",de:"Kritische Rate",en:"Critical Rate",aliases:["Critical Rate"]},
  {key:"ult-ef",group:"utility",de:"ULT-Effizienz",en:"ULT Efficiency",aliases:["Ultimate Gain Efficiency","ULT Efficiency"]},
  {key:"arts",group:"utility",de:"Technik-Intensität",en:"Arts Intensity",aliases:["Arts Intensity"]},
- {key:"main",group:"utility",de:"Hauptattribut",en:"Main Attribute",aliases:["Main Attribute"]},
- {key:"secondary",group:"utility",de:"Sekundärattribut",en:"Secondary Attribute",aliases:["Secondary Attribute"]},
+ {key:"main",group:"utility",de:"Hauptattribut %",en:"Main Attribute %",aliases:["Main Attribute"]},
+ {key:"secondary",group:"utility",de:"Sekundärattribut %",en:"Secondary Attribute %",aliases:["Secondary Attribute"]},
  {key:"reduction",group:"utility",de:"Finaler-SDN-Reduzierung",en:"Final DMG Reduction",aliases:["Final DMG Reduction"]},
  {key:"treatment",group:"utility",de:"Behandlungsbonus",en:"Treatment Bonus",aliases:["Treatment Bonus"]},
  {key:"hp",group:"utility",de:"LP",en:"HP",aliases:["HP"]},
@@ -55,6 +55,7 @@ export function deriveRefinementMatrix(gear){
   // Reuse the established shared source correction (e.g. Gear 1138 is Gloves).
   const piece=normalizeOfficialGearSlot(raw);
   if(piece?.kind!=="gear"||piece.status!=="verified"||
+     Number(piece.level)!==70||
      !REFINEMENT_SLOTS.includes(piece.gearSlot)||!/^\d+$/.test(String(piece.id)))continue;
   if(used.has(piece.id))throw Error("Duplicate official Gear ID "+piece.id);
   used.add(piece.id);
@@ -64,12 +65,16 @@ export function deriveRefinementMatrix(gear){
    for(const row of table.rows??[]){
     const key=refinementAttributeFor(row.cells?.[0]);
     if(!key)continue;
-    const base=refinementNumber(row.cells[defaultIndex]);
+    const rawValue=String(row.cells[defaultIndex]??"").trim();
+    // Main/Secondary Attribute refers to the gear EFFECT in %, never the
+    // flat main/secondary numeric stat present on lower-level AIC gear.
+    if((key==="main"||key==="secondary")&&!rawValue.endsWith("%"))continue;
+    const base=refinementNumber(rawValue);
     if(base===null||base<=0)continue;
     const id=key+"|"+piece.gearSlot,old=pool.get(id)??[];
     if(old.some(x=>x.id===piece.id))continue;
     old.push({id:String(piece.id),name:piece.name,slot:piece.gearSlot,attribute:key,
-     value:base,raw:String(row.cells[defaultIndex]).trim(),level:Number(piece.level)||0,
+     value:base,raw:rawValue,level:piece.level,
      setName:piece.setName,
      tag:refinementVariantTag(piece.name)});
     pool.set(id,old);
