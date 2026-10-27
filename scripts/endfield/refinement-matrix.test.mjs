@@ -34,28 +34,58 @@ test("default artificing numeric parser rejects invented or ambiguous values",()
  assert.equal(refinementVariantTag("Rift Trekker Gloves"),null);
 });
 
-const piece=(id,name,slot,label,value,level=70)=>({
- id,name,kind:"gear",status:"verified",gearSlot:slot,level,
+const piece=(id,name,slot,label,value,level=70,setName="Regular Set")=>({
+ id,name,kind:"gear",status:"verified",gearSlot:slot,level,setName,
  artificing:[{tables:[{columns:["Stats","Default","Level 1"],rows:[
   {cells:[label,String(value),String(value)]},{cells:["Artificing Progress","None","6"]}]}]}]
 });
-test("one top verified candidate per slot, shared max glows, ties deterministic and kit can be empty",()=>{
+test("ordinary maxima remain visible; glow only for exceptional Redeemer/Rift Trekker above regular sets",()=>{
  const rows=deriveRefinementMatrix([
   piece("1","Armor T1","Armor","Strength","+100"),
   piece("2","Armor T2","Armor","Strength","+100"),
   piece("3","Gloves T1","Gloves","Strength","+80"),
   piece("4","Test Kit","Kit","Intellect","+50"),
+  piece("7","Redeemer Plates","Armor","Agility","+115",70,"Non-Set"),
+  piece("8","Regular Armor","Armor","Agility","+87"),
+  piece("9","Rift Trekker Hands","Gloves","Will","+86",70,"Non-Set"),
+  piece("10","Regular Gloves","Gloves","Will","+65"),
+  piece("11","Redeemer Tag","Kit","Strength","+43",70,"Non-Set"),
+  piece("12","Regular Kit","Kit","Strength","+41"),
+  piece("13","Rift Trekker Light Armor","Armor","Will","+110",70,"Non-Set"),
+  piece("14","Regular Will Armor","Armor","Will","+110"),
+  piece("15","Redeemer Armor","Armor","Intellect","+115",70,"Non-Set"),
   {...piece("5","External Preview","Armor","Strength","+900"),status:"incomplete"},
   {...piece("6","Fake Future","Armor","Strength","+900"),kind:"weapon"},
  ]);
  const strength=rows.find(x=>x.key==="str");
  assert.equal(strength.slots[0].best.id,"1");
  assert.equal(strength.slots[0].tied,2);
- assert.equal(strength.slots[0].goodMatch,true);
- assert.equal(strength.slots[1].goodMatch,true);
- assert.equal(strength.slots[2].best,null);
+ assert.equal(strength.slots[0].goodMatch,false,"regular best is not a Good Match highlight");
+ assert.equal(strength.slots[1].goodMatch,false);
+ assert.equal(strength.slots[2].best.id,"11");
+ assert.equal(strength.slots[2].goodMatch,true,"standout Redeemer Kit should glow");
+ assert.equal(rows.find(x=>x.key==="agi").slots[0].best.id,"7");
+ assert.equal(rows.find(x=>x.key==="agi").slots[0].goodMatch,true);
+ assert.equal(rows.find(x=>x.key==="will").slots[0].goodMatch,false,"equal default to regular set is not outstanding");
+ assert.equal(rows.find(x=>x.key==="will").slots[1].goodMatch,true);
  assert.equal(rows.find(x=>x.key==="int").slots[2].best.id,"4");
+ assert.equal(rows.find(x=>x.key==="int").slots[2].goodMatch,false);
+ assert.equal(rows.find(x=>x.key==="int").slots[0].goodMatch,false,"no ordinary baseline is not a proven standout");
  assert.ok(rows.find(x=>x.key==="atk").slots.every(x=>!x.best&&!x.goodMatch));
+});
+
+test("real imported Gear 1138 remains Gloves rather than leaking into Agility/Will Kits",()=>{
+ const matrix=deriveRefinementMatrix(equipment.gear);
+ const agi=matrix.find(x=>x.key==="agi");
+ const will=matrix.find(x=>x.key==="will");
+ const agiKit=agi.slots.find(x=>x.slot==="Kit");
+ const willKit=will.slots.find(x=>x.slot==="Kit");
+ assert.equal(agiKit.best?.id,"350","real Agility Kit must be Redeemer Tag T1");
+ assert.equal(willKit.best?.id,"348","real Will Kit must be Redeemer Seal T1");
+ for(const row of matrix)for(const cell of row.slots)if(cell.slot==="Kit"){
+  assert.notEqual(cell.best?.id,"1138","mislabelled Eternal Xiranite Hands must never be a Kit");
+  assert.doesNotMatch(cell.best?.name??"",/\\b(?:gloves|gauntlets|hands|wraps)\\b/i);
+ }
 });
 
 test("matrix only renders verifiable official IDs, Artificing defaults and local assets",()=>{
@@ -70,6 +100,11 @@ test("matrix only renders verifiable official IDs, Artificing defaults and local
   assert.ok(Number.isFinite(cell.best.value)&&cell.best.value>0);
   assert.equal(cell.slot,cell.best.slot);
   assert.equal(cell.best.tag,refinementVariantTag(item.name));
+  if(cell.goodMatch){
+   const recorded=equipment.gear.find(x=>x.id===cell.best.id);
+   assert.match(cell.best.name,/^(?:Redeemer|Rift Trekker)\\b/);
+   assert.equal(recorded?.setName,"Non-Set");
+  }
  }
  assert.ok(matrix.find(x=>x.key==="atk").slots.every(x=>!x.best),"No fictional ATK refinement item");
 });
@@ -87,6 +122,8 @@ test("Cheat Sheets start with the full bilingual matrix, retain old links, no cl
  assert.match(matrix,/data-refinement-panel/);
  assert.match(matrix,/data-good-match/);
  assert.match(matrix,/refinement-variant-tag/);
+ assert.doesNotMatch(matrix,/Die Werte stammen aus den offiziellen SKPORT|Values come from official SKPORT/);
+ assert.match(matrix,/Quelle: SKPORT Wiki/);
  assert.match(css,/grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/);
  assert.match(css,/@media\(max-width:650px\)/);
  assert.match(nav,/new Set\(\["factory","checklist","tierlist"\]\)/);
