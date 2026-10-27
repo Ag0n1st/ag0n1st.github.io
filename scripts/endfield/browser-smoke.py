@@ -992,6 +992,30 @@ def smoke_i18n(page, base_url, width):
                ("Buff-Food" if lang=="de" else "buff food") in texts[3] and
                ("Potenzialbeschränkung" if lang=="de" else "potential restrictions").lower() in texts[4].lower(),
                label+": "+lang+" all six Duality rule cards expand and contain original rules")
+        explanation_trigger=details.locator('[data-event-rule="damage-dealer"] [data-rule-explanation-open]')
+        explanation_dialog=event_panel.locator("[data-rule-explanation-dialog]")
+        verify(explanation_trigger.count()==1 and explanation_dialog.count()==1 and
+               explanation_trigger.inner_text().strip()==("Erklärung" if lang=="de" else "Explanation") and
+               not explanation_dialog.evaluate("(el)=>el.open"),
+               label+": "+lang+" rule 3 offers a language-matched modal button")
+        explanation_trigger.click()
+        verify(explanation_dialog.evaluate("(el)=>el.open") and explanation_dialog.is_visible() and
+               explanation_dialog.locator(".cl-rule-explanation-allowed .cl-rule-explanation-example").count()==2 and
+               explanation_dialog.locator(".cl-rule-explanation-forbidden .cl-rule-explanation-example").count()==1 and
+               explanation_dialog.locator("img").count()==3 and
+               explanation_dialog.locator("img").evaluate_all("(items)=>items.every(x=>x.complete && x.naturalWidth>=349 && x.naturalHeight>=153)"),
+               label+": "+lang+" rule 3 dialog opens with all three converted WebP examples")
+        modal_layout=explanation_dialog.evaluate("""el=>{
+            const a=el.querySelector(".cl-rule-explanation-allowed").getBoundingClientRect();
+            const f=el.querySelector(".cl-rule-explanation-forbidden").getBoundingClientRect();
+            return {ax:a.x,ay:a.y,fx:f.x,fy:f.y,scroll:el.scrollWidth,client:el.clientWidth};
+        }""")
+        verify((modal_layout["fx"]>modal_layout["ax"] if page.evaluate("window.innerWidth")>700 else modal_layout["fy"]>modal_layout["ay"]) and
+               modal_layout["scroll"]<=modal_layout["client"]+1,
+               label+": "+lang+" modal has side-by-side desktop or stacked mobile cards without horizontal overflow")
+        page.keyboard.press("Escape")
+        verify(not explanation_dialog.evaluate("(el)=>el.open") and explanation_trigger.evaluate("(el)=>document.activeElement===el"),
+               label+": "+lang+" Escape closes modal and restores keyboard focus")
         verify(details.locator('[data-event-rule="submission"] a[href="https://bit.ly/3WEuGwD"]').count()==1,
                label+": "+lang+" rules link still points to Discord announcement reference")
         rule_summary.click()

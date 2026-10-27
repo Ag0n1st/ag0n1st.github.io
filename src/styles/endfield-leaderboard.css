@@ -178,3 +178,30 @@
 .cl-event-archive-panel>*{position:relative;z-index:1}
 .cl-archive-final-label{font-size:11px;letter-spacing:.04em;color:var(--cyan);font-weight:800;margin:0 0 13px}
 @media(max-width:760px){.cl-event-archive-content{padding:3px 10px 13px}.cl-event-archive-toggle{padding:12px}.cl-event-archive-panel{padding:12px}.cl-archive-selector{max-width:none}}
+
+
+/* Duality rule 3: modal explanation, patterned after the operator Gear Matrix. */
+.cl-rule-explanation-trigger{display:inline-flex;vertical-align:middle;align-items:center;justify-content:center;min-height:34px;margin:5px 0 2px 7px;padding:5px 11px;border:1px solid #8f74a3;border-radius:999px;background:#382a44;color:#f8eaff;font:inherit;font-size:11px;font-weight:800;line-height:1.2;cursor:pointer;white-space:nowrap}
+.cl-rule-explanation-trigger:hover{border-color:var(--cyan);background:#40324c}
+.cl-rule-explanation-trigger:focus-visible,.cl-rule-explanation-close:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.cl-rule-explanation-dialog{box-sizing:border-box;width:min(96vw,920px);max-width:96vw;max-height:90dvh;overflow-y:auto;overscroll-behavior:contain;margin:auto;padding:clamp(16px,2.8vw,27px);border:1px solid #695579;border-radius:16px;background:#1a1720;color:#f7f2f9;box-shadow:0 24px 90px #000c}
+.cl-rule-explanation-dialog::backdrop{background:rgba(4,3,9,.85)}
+.cl-rule-explanation-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.cl-rule-explanation-header h3{margin:0;font-size:clamp(17px,2vw,23px);line-height:1.3;color:#f6effa}
+.cl-rule-explanation-header form{margin:0}
+.cl-rule-explanation-close{display:grid;place-items:center;min-width:40px;min-height:40px;padding:0 8px;border:1px solid #6f5a78;border-radius:10px;color:#f6effa;background:#32283a;font:inherit;font-size:24px;cursor:pointer}
+.cl-rule-explanation-close:hover{border-color:var(--cyan)}
+.cl-rule-explanation-intro{margin:13px 0 21px;font-size:13px;line-height:1.7;color:#dcd2e2}
+.cl-rule-explanation-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.cl-rule-explanation-allowed,.cl-rule-explanation-forbidden{min-width:0;border:1px solid;border-left-width:3px;border-radius:12px;padding:clamp(13px,2vw,19px)}
+.cl-rule-explanation-allowed{border-color:rgba(90,191,136,.38);border-left-color:rgba(90,191,136,.85);background:linear-gradient(125deg,rgba(38,105,68,.17),#1b1921 70%)}
+.cl-rule-explanation-forbidden{border-color:rgba(226,104,111,.38);border-left-color:rgba(226,104,111,.85);background:linear-gradient(125deg,rgba(119,48,59,.19),#1b1921 70%)}
+.cl-rule-explanation-columns h4{margin:0 0 17px;font-size:18px}
+.cl-rule-explanation-allowed h4{color:#a4e8bc}
+.cl-rule-explanation-forbidden h4{color:#ffb7b7}
+.cl-rule-explanation-example{min-width:0}
+.cl-rule-explanation-example+.cl-rule-explanation-example{margin-top:24px;padding-top:18px;border-top:1px solid #ffffff20}
+.cl-rule-explanation-example p{margin:0 0 12px;color:#e8e1eb;line-height:1.6;font-size:13px}
+.cl-rule-explanation-example strong{color:#fff}
+.cl-rule-explanation-example img{display:block;max-width:100%;height:auto;width:350px;margin:0 auto;border-radius:7px}
+@media(max-width:700px){.cl-rule-explanation-columns{grid-template-columns:1fr;gap:12px}.cl-rule-explanation-intro{margin-bottom:15px}}
