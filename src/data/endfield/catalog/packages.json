@@ -19,8 +19,10 @@
       "evidence": "reference",
       "wikiTitle": "Ankhorilling Kitchenware (pkg)",
       "internalId": "item_domainshop_cargo_tundra_1",
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/kitchenware.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Ankhorilling_Kitchenware_%28pkg%29.png?2d74b8",
+      "iconBytes": 4006
     },
     {
       "id": "dangles",
@@ -31,8 +33,10 @@
       "evidence": "reference",
       "wikiTitle": "Musbeast Scrimshaw Dangles (pkg)",
       "internalId": null,
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/dangles.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Musbeast_Scrimshaw_Dangles_%28pkg%29.png?c58ac2",
+      "iconBytes": 4116
     },
     {
       "id": "drill",
@@ -43,8 +47,10 @@
       "evidence": "reference",
       "wikiTitle": "Witchcraft Mining Drill (pkg)",
       "internalId": "item_domainshop_cargo_tundra_3",
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/drill.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Witchcraft_Mining_Drill_%28pkg%29.png?1ff9d8",
+      "iconBytes": 4068
     },
     {
       "id": "war-tins",
@@ -55,8 +61,10 @@
       "evidence": "reference",
       "wikiTitle": "Aggeloi War Tins (pkg)",
       "internalId": "item_domainshop_cargo_tundra_4",
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/war-tins.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Aggeloi_War_Tins_%28pkg%29.png?41ad4d",
+      "iconBytes": 4588
     },
     {
       "id": "wuxia-movies",
@@ -67,8 +75,10 @@
       "evidence": "community",
       "wikiTitle": "Wuxia Movies (pkg)",
       "internalId": null,
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/wuxia-movies.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Wuxia_Movies_%28pkg%29.png?e74bda",
+      "iconBytes": 4438
     },
     {
       "id": "eureka-tincture",
@@ -79,8 +89,10 @@
       "evidence": "community",
       "wikiTitle": "Eureka Anti-smog Tincture (pkg)",
       "internalId": null,
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/eureka-tincture.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Eureka_Anti-smog_Tincture_%28pkg%29.png?790262",
+      "iconBytes": 3584
     },
     {
       "id": "wuling-peas",
@@ -91,8 +103,10 @@
       "evidence": "community",
       "wikiTitle": "Wuling Frozen Pears (pkg)",
       "internalId": null,
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/wuling-peas.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Wuling_Frozen_Pears_%28pkg%29.png?25ce21",
+      "iconBytes": 3426
     },
     {
       "id": "nymphsprout",
@@ -103,8 +117,10 @@
       "evidence": "community",
       "wikiTitle": "Nymphsprout (pkg)",
       "internalId": null,
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/nymphsprout.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Nymphsprout_%28pkg%29.png?ba91aa",
+      "iconBytes": 4062
     },
     {
       "id": "fillets",
@@ -115,8 +131,10 @@
       "evidence": "reference",
       "wikiTitle": "Valley Hydroculture Fillets (pkg)",
       "internalId": "item_domainshop_cargo_tundra_5",
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/fillets.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Valley_Hydroculture_Fillets_%28pkg%29.png?ff7462",
+      "iconBytes": 4424
     },
     {
       "id": "syrup",
@@ -127,8 +145,10 @@
       "evidence": "reference",
       "wikiTitle": "Unity Syrup (pkg)",
       "internalId": "item_domainshop_cargo_tundra_6",
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/syrup.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Unity_Syrup_%28pkg%29.png?7dbee9",
+      "iconBytes": 4356
     },
     {
       "id": "knucklebones",
@@ -139,8 +159,10 @@
       "evidence": "reference",
       "wikiTitle": "Seš'qamam Knucklebones (pkg)",
       "internalId": "item_domainshop_cargo_tundra_7",
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/knucklebones.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Se%C5%A1%27qamam_Knucklebones_%28pkg%29.png?86e79f",
+      "iconBytes": 4208
     },
     {
       "id": "crystals",
@@ -151,8 +173,10 @@
       "evidence": "reference",
       "wikiTitle": "Astarron Crystals (pkg)",
       "internalId": null,
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/crystals.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Astarron_Crystals_%28pkg%29.png?622a8e",
+      "iconBytes": 4108
     },
     {
       "id": "chubby-lung-tianshi",
@@ -163,8 +187,10 @@
       "evidence": "community",
       "wikiTitle": "Chubby Lung Tianshi (pkg)",
       "internalId": null,
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/chubby-lung-tianshi.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Chubby_Lung_Tianshi_%28pkg%29.png?a277f7",
+      "iconBytes": 3598
     },
     {
       "id": "xiranite-filter-cores",
@@ -175,8 +201,10 @@
       "evidence": "community",
       "wikiTitle": "Xiranite Filter Cores (pkg)",
       "internalId": "item_domainshop_cargo_jinlong_7",
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/xiranite-filter-cores.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Xiranite_Filter_Cores_%28pkg%29.png?b735bc",
+      "iconBytes": 3756
     },
     {
       "id": "qingbo-rafts",
@@ -187,8 +215,10 @@
       "evidence": "community",
       "wikiTitle": "Qingbo Rafts (pkg)",
       "internalId": null,
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/qingbo-rafts.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Qingbo_Rafts_%28pkg%29.png?1100a3",
+      "iconBytes": 3972
     },
     {
       "id": "aero-receiver",
@@ -199,8 +229,10 @@
       "evidence": "community",
       "wikiTitle": "Aerial Receptionists (pkg)",
       "internalId": null,
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/aero-receiver.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Aerial_Receptionists_%28pkg%29.png?edcc9d",
+      "iconBytes": 3538
     },
     {
       "id": "xiranite-fireworks",
@@ -211,8 +243,10 @@
       "evidence": "community",
       "wikiTitle": "Xiran-Hue Fireworks (pkg)",
       "internalId": "item_domainshop_cargo_jinlong_6",
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/xiranite-fireworks.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Xiran-Hue_Fireworks_%28pkg%29.png?644349",
+      "iconBytes": 3802
     },
     {
       "id": "saplings",
@@ -223,8 +257,10 @@
       "evidence": "reference",
       "wikiTitle": "Originium Saplings (pkg)",
       "internalId": null,
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/saplings.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Originium_Saplings_%28pkg%29.png?d41720",
+      "iconBytes": 3808
     },
     {
       "id": "pickaxes",
@@ -235,8 +271,10 @@
       "evidence": "reference",
       "wikiTitle": "Vigilant Pickaxes (pkg)",
       "internalId": "item_domainshop_cargo_tundra_11",
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/pickaxes.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Vigilant_Pickaxes_%28pkg%29.png?3d4116",
+      "iconBytes": 4136
     },
     {
       "id": "helmets",
@@ -247,8 +285,10 @@
       "evidence": "reference",
       "wikiTitle": "Hard Noggin Helmets (pkg)",
       "internalId": null,
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/helmets.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Hard_Noggin_Helmets_%28pkg%29.png?33cdb9",
+      "iconBytes": 4196
     },
     {
       "id": "toy-blocks",
@@ -259,8 +299,10 @@
       "evidence": "reference",
       "wikiTitle": "Scrap Toy Blocks (pkg)",
       "internalId": null,
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/toy-blocks.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Scrap_Toy_Blocks_%28pkg%29.png?4750e5",
+      "iconBytes": 4106
     },
     {
       "id": "xiranite-bridge",
@@ -271,8 +313,10 @@
       "evidence": "community",
       "wikiTitle": "Xiranite Bridge (pkg)",
       "internalId": null,
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/xiranite-bridge.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Xiranite_Bridge_%28pkg%29.png?c597fa",
+      "iconBytes": 4052
     },
     {
       "id": "swordmancer-forge",
@@ -283,8 +327,10 @@
       "evidence": "community",
       "wikiTitle": "Swordmancer Forge (pkg)",
       "internalId": null,
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/swordmancer-forge.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Swordmancer_Forge_%28pkg%29.png?53b515",
+      "iconBytes": 4342
     },
     {
       "id": "borderstone-stopper",
@@ -295,8 +341,10 @@
       "evidence": "community",
       "wikiTitle": "Marker Stone Lock (pkg)",
       "internalId": "item_domainshop_cargo_jinlong_12",
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/borderstone-stopper.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Marker_Stone_Lock_%28pkg%29.png?61838b",
+      "iconBytes": 3782
     },
     {
       "id": "chubby-lung-balloon",
@@ -307,8 +355,10 @@
       "evidence": "community",
       "wikiTitle": "Chubby Lung Blimp (pkg)",
       "internalId": "item_domainshop_cargo_jinlong_13",
-      "iconPath": null,
-      "cacheStatus": "not-cached"
+      "iconPath": "/images/endfield/packages/chubby-lung-balloon.webp",
+      "cacheStatus": "cached",
+      "imageSourceUrl": "https://endfield.wiki.gg/images/Chubby_Lung_Blimp_%28pkg%29.png?e8a4a4",
+      "iconBytes": 4212
     }
   ]
 }
