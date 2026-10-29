@@ -147,7 +147,7 @@ test("Regional currency icons are source-derived local transparent WebPs with ac
  assert.match(styles,/\.eg-currency-icon\[hidden\]\{display:none!important\}/);
  assert.match(styles,/\.eg-price\{display:inline-flex;align-items:center;justify-self:end;gap:6px/);
  assert.match(styles,/@media\(max-width:800px\).*?\.eg-price\{grid-column:2;justify-self:start\}/);
- assert.equal((feature.match(/<strong class="eg-range">/g)||[]).length,1);
+ assert.equal((feature.match(/<strong class="eg-range" data-eg-range/g)||[]).length,1);
  // No currencies inserted in TL;DR, per owner approval.
  assert.ok(feature.indexOf('data-eg-currency={origin.id}')>feature.indexOf('<div class="eg-peak-heading">'));
  assert.ok(feature.indexOf('data-eg-currency={origin.id}')>feature.indexOf('</div>\n\n  <div class="eg-region-tabs"'));
@@ -171,7 +171,7 @@ test("Peak tiers explicitly describe each good's attainable maximum, not a unive
  assert.match(feature,/Low ist bereits ihr eigener höchster Peak/);
  assert.match(feature,/Low is already their own highest peak/);
  assert.match(feature,/nicht ihren aktuellen Preis/);
- assert.match(feature,/not their current price/);
+ assert.match(feature,/not its current price/);
  assert.match(feature,/Nicht jede Ware kann 5\.500 erreichen/);
  assert.match(feature,/Not every good can reach 5,500/);
  assert.match(feature,/individuelle Peak der Ware/);
@@ -179,10 +179,35 @@ test("Peak tiers explicitly describe each good's attainable maximum, not a unive
 
 test("Wuling/Valley tabs are origin-tinted when inactive and stronger when selected, with doubled currency icons",()=>{
  const css=read("src/styles/endfield-elastic-goods.css");
- assert.match(css,/\.eg-currency-icon\{display:block;flex:none;width:clamp\(46px,5\.4vw,64px\)/);
- assert.match(css,/\.eg-region-tab\{[^\n]*background:color-mix\(in srgb,var\(--eg-accent\) 16%,#171c26\)/);
- assert.match(css,/\.eg-region-tab:hover\{[^\n]*background:color-mix\(in srgb,var\(--eg-accent\) 24%,#171c26\)/);
- assert.match(css,/\.eg-region-tab\[aria-selected="true"\]\{[^\n]*background:color-mix\(in srgb,var\(--eg-accent\) 33%,#171c26\)/);
+ assert.match(css,/\.eg-currency-icon\{display:block;flex:none;width:clamp\(34px,4\.05vw,48px\)/);
+ assert.match(css,/\.eg-region-tab\{[^\n]*background:color-mix\(in srgb,var\(--eg-accent\) 24%,#171c26\)/);
+ assert.match(css,/\.eg-region-tab:hover\{[^\n]*background:color-mix\(in srgb,var\(--eg-accent\) 32%,#171c26\)/);
+ assert.match(css,/\.eg-region-tab\[aria-selected="true"\]\{[^\n]*background:color-mix\(in srgb,var\(--eg-accent\) 45%,#171c26\)/);
  assert.match(css,/\.eg-valley\{--eg-accent:#e0ed48/);
  assert.match(css,/\.eg-wuling\{--eg-accent:#4cdbd5/);
+});
+
+test("High Peak has a Wuling-only observed ceiling, with Valley IV and both other tiers unchanged",()=>{
+ const prices=elasticPeakRanges;
+ assert.equal(prices.length,3);
+ assert.deepEqual(prices.map(x=>x.regionOverrides),[[],[],[{region:"wuling",de:"5.100–5.400",en:"5,100–5,400"}]]);
+ assert.equal(prices[2].valueDe,"5.100–5.500");
+ assert.equal(prices[2].valueEn,"5,100–5,500");
+ const feature=read("src/components/pages/ElasticGoodsPeaks.astro");
+ assert.match(feature,/const peakValue=/);
+ assert.match(feature,/peak\.regionOverrides\.find\(entry=>entry\.region===origin\)/);
+ assert.match(feature,/data-eg-range-values=\{JSON\.stringify\(Object\.fromEntries\(origins\.map\(origin=>\[origin\.id,peakValue\(peak,origin\.id\)\]\)\)\)\}/);
+ assert.match(feature,/\{peakValue\(peak,defaultOrigin\)\}/);
+ assert.match(feature,/priceRanges\.forEach\(range=>\{/);
+ assert.match(feature,/if\(values\[region\]\)range\.textContent=values\[region\]/);
+ assert.match(feature,/Die Preisbereiche basieren auf Beobachtungen der Community/);
+ assert.match(feature,/The price ranges are based on community observations/);
+});
+test("Region tab CSS does not shadow the colours with a later neutral custom property",()=>{
+ const css=read("src/styles/endfield-elastic-goods.css");
+ const neutral=css.match(/\.eg-region-tab\{([^}]+)\}/)?.[1];
+ assert.ok(neutral);
+ assert.doesNotMatch(neutral,/--eg-accent:/);
+ assert.match(css,/\.eg-region-tab\.eg-wuling\{--eg-accent:#4cdbd5\}/);
+ assert.match(css,/\.eg-region-tab\.eg-valley\{--eg-accent:#e0ed48\}/);
 });
