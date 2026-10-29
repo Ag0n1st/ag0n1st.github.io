@@ -152,3 +152,37 @@ test("Regional currency icons are source-derived local transparent WebPs with ac
  assert.ok(feature.indexOf('data-eg-currency={origin.id}')>feature.indexOf('<div class="eg-peak-heading">'));
  assert.ok(feature.indexOf('data-eg-currency={origin.id}')>feature.indexOf('</div>\n\n  <div class="eg-region-tabs"'));
 });
+
+test("Peak tiers explicitly describe each good's attainable maximum, not a universal three-step ladder",()=>{
+ const feature=read("src/components/pages/ElasticGoodsPeaks.astro");
+ const peaks=elasticPeakRanges;
+ const map=new Map(peaks.map(x=>[x.id,x]));
+ for(const peak of ["low","mid","high"]){
+   const x=map.get(peak);
+   assert.ok(x?.descriptionDe&&x?.descriptionEn);
+   assert.match(x.descriptionDe,/Höchster Peak dieser Waren/);
+   assert.match(x.descriptionEn,/These goods peak at/);
+ }
+ assert.match(map.get("low").descriptionDe,/keinen Mid- oder High-Peak/);
+ assert.match(map.get("low").descriptionEn,/cannot reach a Mid or High Peak/);
+ assert.match(map.get("mid").descriptionDe,/niedrigere Peaks möglich/);
+ assert.match(map.get("high").descriptionDe,/Low- oder Mid-Peaks/);
+ assert.match(map.get("high").descriptionEn,/Low or Mid Peaks/);
+ assert.match(feature,/Low ist bereits ihr eigener höchster Peak/);
+ assert.match(feature,/Low is already their own highest peak/);
+ assert.match(feature,/nicht ihren aktuellen Preis/);
+ assert.match(feature,/not their current price/);
+ assert.match(feature,/Nicht jede Ware kann 5\.500 erreichen/);
+ assert.match(feature,/Not every good can reach 5,500/);
+ assert.match(feature,/individuelle Peak der Ware/);
+});
+
+test("Wuling/Valley tabs are origin-tinted when inactive and stronger when selected, with doubled currency icons",()=>{
+ const css=read("src/styles/endfield-elastic-goods.css");
+ assert.match(css,/\.eg-currency-icon\{display:block;flex:none;width:clamp\(46px,5\.4vw,64px\)/);
+ assert.match(css,/\.eg-region-tab\{[^\n]*background:color-mix\(in srgb,var\(--eg-accent\) 16%,#171c26\)/);
+ assert.match(css,/\.eg-region-tab:hover\{[^\n]*background:color-mix\(in srgb,var\(--eg-accent\) 24%,#171c26\)/);
+ assert.match(css,/\.eg-region-tab\[aria-selected="true"\]\{[^\n]*background:color-mix\(in srgb,var\(--eg-accent\) 33%,#171c26\)/);
+ assert.match(css,/\.eg-valley\{--eg-accent:#e0ed48/);
+ assert.match(css,/\.eg-wuling\{--eg-accent:#4cdbd5/);
+});
