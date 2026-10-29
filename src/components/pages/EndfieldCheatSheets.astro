@@ -1,6 +1,7 @@
 ---
 import EndfieldPlaceholder from "../../layouts/EndfieldPlaceholder.astro";
 import RefinementMatrix from "./RefinementMatrix.astro";
+import ElasticGoodsPeaks from "./ElasticGoodsPeaks.astro";
 interface Props {lang?:"de"|"en"}
 const {lang="de"}=Astro.props;
 const en=lang==="en";
@@ -17,7 +18,6 @@ const systems=[
   descriptionEn:"An accessible breakdown of the Essence system, its mechanics and practical progression tips is coming soon."}
 ];
 const categories=[
- {id:"elasticgoods",tag:"#ElasticGoods",de:"Elastic Goods – Best Prices",en:"Elastic Goods – Best Prices",descriptionDe:"Die besten Verkaufspreise und Waren-Kombinationen für Elastic Goods, später als kompaktes Nachschlagewerk.",descriptionEn:"Best selling prices and combinations for Elastic Goods, in a compact reference sheet."},
  {id:"bufffood",tag:"#Bufffood",de:"Buff Food – Matrix",en:"Buff Food – Matrix",descriptionDe:"Bufffood nach erhöhten Kampfwerten vergleichen, mit besonderem Fokus auf Speedruns, z. B. ANG und Ultimate-Energiegewinn.",descriptionEn:"Compare buff food by affected combat stats, particularly for speedruns, such as ATK and Ultimate energy gain."}
 ];
 ---
@@ -25,7 +25,7 @@ const categories=[
   <main class="endfield-utility-page section-wrap endfield-coming-tool">
     <span class="section-kicker">ARKNIGHTS: ENDFIELD · REFERENCE</span>
     <h1 class="endfield-cheatsheets-title">Cheat Sheets<span class="title-period">.</span></h1>
-    <p class="endfield-utility-intro">{l("Kompakte Nachschlagekarten statt langem Suchen. Die Veredelungs-Matrix ist verfügbar; weitere Cheat Sheets werden nach Prüfung ergänzt.","Compact quick-reference sheets. The refinement matrix is available; more verified references will follow.")}</p>
+    <p class="endfield-utility-intro">{l("Kompakte Nachschlagekarten statt langem Suchen. Die Veredelungs-Matrix und Elastic Goods – Price Peaks sind verfügbar; weitere Cheat Sheets werden nach Prüfung ergänzt.","Compact quick-reference sheets. The refinement matrix and Elastic Goods – Price Peaks are available; more verified references will follow.")}</p>
 
     <RefinementMatrix lang={lang} />
 
@@ -43,6 +43,7 @@ const categories=[
 
     <section class="endfield-cheatsheets-group" aria-labelledby="cheatsheets-reference-heading" data-cheatsheets-group="references">
       <h2 id="cheatsheets-reference-heading">{l("Referenzen & Matrizen","References & matrices")}</h2>
+      <ElasticGoodsPeaks lang={lang} />
       <div class="endfield-coming-cards" aria-label={l("Geplante Cheat Sheets","Planned Cheat Sheets")}>
         {categories.map(category=><article id={category.id} class="op-cardlet endfield-coming-card">
           <span class="section-kicker">{category.tag}</span>

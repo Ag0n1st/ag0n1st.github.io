@@ -1145,11 +1145,11 @@ def smoke_i18n(page, base_url, width):
                label+": "+lang+" Cheat Sheets title stays on one line with inline period")
         verify(page.locator("#refinement").count()==1 and
                page.locator("#artificing").count()==1 and
-               page.locator(".endfield-coming-card").count()==4 and
+               page.locator(".endfield-coming-card").count()==3 and
                all(page.locator("#"+x).count()==1 for x in ("recruitment","refinement","essences","elasticgoods","artificing","bufffood")) and
                page.locator('[data-cheatsheets-group="systems"] .endfield-coming-card').count()==2 and
-               page.locator('[data-cheatsheets-group="references"] .endfield-coming-card').count()==2,
-               label+": "+lang+" refinement is first card; remaining game systems and references follow")
+               page.locator('[data-cheatsheets-group="references"] .endfield-coming-card').count()==1,
+               label+": "+lang+" refinement is first card; Elastic Goods is live, other systems remain placeholders")
         verify(("Spielsysteme" if lang=="de" else "Game systems") in page.locator("#cheatsheets-systems-heading").inner_text() and
                ("Referenzen" if lang=="de" else "References") in page.locator("#cheatsheets-reference-heading").inner_text() and
                page.locator("#refinement-panel-primary:not([hidden]) .refinement-attribute-card").count()==4 and
@@ -1159,6 +1159,28 @@ def smoke_i18n(page, base_url, width):
                page.locator('[data-refinement-attribute="agi"][data-refinement-slot="Kit"]').get_attribute("data-refinement-item-id")=="350" and
                page.locator('[data-refinement-attribute="will"][data-refinement-slot="Kit"]').get_attribute("data-refinement-item-id")=="348",
                label+": "+lang+" four official primary attribute cards with real gear and highlighted matches")
+        eg=page.locator("[data-elastic-goods]")
+        verify(eg.count()==1 and eg.locator("#eg-title").inner_text()=="Elastic Goods – Price Peaks" and
+               eg.locator('[data-peak="low"]').count()==1 and
+               eg.locator('[data-peak="mid"]').count()==1 and
+               eg.locator('[data-peak="high"]').count()==1 and
+               eg.locator('[data-elastic-good]').count()==25 and
+               eg.locator('[data-origin="valley"]').count()==3 and
+               eg.locator('[data-origin="wuling"]').count()==3 and
+               eg.locator('[data-elastic-good="chubby-lung-balloon"]').count()==1 and
+               eg.locator('[data-elastic-good="wuxia-movies"]').count()==1,
+               label+": "+lang+" 25 Elastic Goods cards grouped in three peaks and two origins")
+        verify(("< 1.000" if lang=="de" else "< 1,000") in eg.locator(".eg-buy").inner_text() or
+               "< 1.000" in eg.locator(".eg-buy").inner_text(),
+               label+": "+lang+" buy-below-1000 guidance is visible")
+        verify(("Wichtig" if lang=="de" else "Important") in eg.locator(".eg-key-takeaway").inner_text() and
+               ("Wuling" in eg.inner_text()) and
+               (("Tal-IV" in eg.inner_text()) if lang=="de" else ("Valley-IV" in eg.inner_text())),
+               label+": "+lang+" low-peak selling advice and bilingual origin legend")
+        verify(eg.locator(".eg-item img").count()==0 and
+               eg.locator(".eg-source").count()==1 and
+               eg.evaluate("(el)=>el.scrollWidth<=el.clientWidth+1"),
+               label+": "+lang+" uses source-backed names without fabricated SKPORT item icons or overflow")
         page.locator('[data-refinement-tab="damage"]').click()
         verify(page.locator('#refinement-panel-damage:visible .refinement-attribute-card').count()==9 and
                page.locator('#refinement-panel-primary:visible').count()==0 and

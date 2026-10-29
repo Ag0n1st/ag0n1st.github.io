@@ -1,0 +1,79 @@
+---
+import {elasticPeakRanges, elasticGoods} from "../../data/endfield/elasticGoodsPeaks.mjs";
+import "../../styles/endfield-elastic-goods.css";
+interface Props {lang?:"de"|"en"}
+const {lang="de"}=Astro.props;
+const en=lang==="en";
+const l=(de:string,english:string)=>en?english:de;
+const origins=[{id:"valley",labelDe:"Tal-IV",labelEn:"Valley-IV"},{id:"wuling",labelDe:"Wuling",labelEn:"Wuling"}];
+const goodsFor=(peak:string,origin:string)=>elasticGoods.filter(good=>good.peak===peak&&good.region===origin);
+---
+<section id="elasticgoods" class="op-cardlet eg-feature" aria-labelledby="eg-title" data-elastic-goods>
+  <div class="eg-heading">
+    <span class="section-kicker">ELASTIC GOODS · PRICE PEAKS</span>
+    <h3 id="eg-title">{l("Elastic Goods – Price Peaks","Elastic Goods – Price Peaks")}</h3>
+    <p>{l("Wann kaufen, wann verkaufen? Drei Peak-Kategorien und die passenden Waren aus Tal-IV und Wuling auf einen Blick.","When should you buy or sell? Three price-peak tiers and their goods from Valley-IV and Wuling at a glance.")}</p>
+    <div class="eg-legend" aria-label={l("Herkunft der Waren","Origin of goods")}>
+      {origins.map(origin=><span class:list={["eg-origin-chip",origin.id==="valley"?"eg-valley":"eg-wuling"]}>
+        <span class="eg-region-dot" aria-hidden="true"></span>{en?origin.labelEn:origin.labelDe}
+      </span>)}
+    </div>
+  </div>
+
+  <div class="eg-tldr" aria-labelledby="eg-tldr-heading">
+    <h4 id="eg-tldr-heading">TL;DR</h4>
+    <div class="eg-trade-grid">
+      <div class="eg-trade-step eg-buy">
+        <span class="eg-trade-label">{l("KAUFEN","BUY")}</span>
+        <strong>&lt; {l("1.000","1,000")}</strong>
+        <span>{l("Möglichst günstig einkaufen","Buy below this price")}</span>
+      </div>
+      <div class="eg-trade-arrow" aria-hidden="true">→</div>
+      <div class="eg-trade-step eg-sell">
+        <span class="eg-trade-label">{l("VERKAUFEN","SELL")}</span>
+        <strong>{l("Am Peak","At a peak")}</strong>
+        <span>{l("Low, Mid oder High sind gültige Verkaufsziele","Low, Mid and High are all valid selling points")}</span>
+      </div>
+    </div>
+    <p class="eg-key-takeaway"><strong>{l("Wichtig:","Important:")}</strong> {l("Du musst nicht auf einen High Peak warten. Auch bei einem Low Peak zu verkaufen ist völlig in Ordnung, weil der Preis bereits seinen typischen Höhepunkt erreicht.","You do not have to wait for a High Peak. Selling at a Low Peak is perfectly fine: the good has already reached its typical price peak.")}</p>
+  </div>
+
+  <div class="eg-section-intro">
+    <h4>{l("Die drei Price Peaks","The three price peaks")}</h4>
+    <p>{l("Die Werte sind grobe Orientierungsbereiche aus den Referenz- und Community-Beobachtungen – keine festen Verkaufsschwellen. Die Einordnung richtet sich nach der jeweiligen Ware, nicht nur nach einem einzelnen Zahlenwert.","These are approximate ranges from the reference and community observations, not fixed sell thresholds. The category depends on the individual good, not just one isolated number.")}</p>
+  </div>
+
+  <div class="eg-peaks">
+    {elasticPeakRanges.map((peak,index)=><section class:list={["eg-peak",`eg-peak-${peak.id}`]} aria-labelledby={`eg-peak-${peak.id}-title`} data-peak={peak.id}>
+      <div class="eg-peak-heading">
+        <span class="eg-peak-level">{String(index+1).padStart(2,"0")}</span>
+        <div>
+          <h5 id={`eg-peak-${peak.id}-title`}>{peak.label}</h5>
+          <p>{en?peak.descriptionEn:peak.descriptionDe}</p>
+        </div>
+        <strong class="eg-range">{en?peak.valueEn:peak.valueDe}</strong>
+      </div>
+      <div class="eg-origin-columns">
+        {origins.map(origin=><div class:list={["eg-origin-group",origin.id==="valley"?"eg-valley":"eg-wuling"]} data-origin={origin.id}>
+          <h6><span class="eg-region-dot" aria-hidden="true"></span>{en?origin.labelEn:origin.labelDe}</h6>
+          <div class="eg-item-grid">
+            {goodsFor(peak.id,origin.id).map(good=><div class="eg-item" data-elastic-good={good.id} data-evidence={good.evidence}>
+              <span class="eg-item-name">{en?good.en:good.de}</span>
+            </div>)}
+          </div>
+        </div>)}
+      </div>
+    </section>)}
+  </div>
+
+  <div class="eg-tips" aria-labelledby="eg-tips-heading">
+    <h4 id="eg-tips-heading">{l("So nutzt du die Peaks","How to use the peaks")}</h4>
+    <div class="eg-tips-grid">
+      <p><strong>{l("1. Günstig kaufen.","1. Buy low.")}</strong> {l("Unter 1.000 einkaufen und Vorräte aufbauen.","Buy below 1,000 and build a stockpile.")}</p>
+      <p><strong>{l("2. Peak abwarten.","2. Wait for a peak.")}</strong> {l("Die Preise sind zu Wochenbeginn oft niedriger und steigen zum Wochenende hin. Beobachte die aktuelle Marktentwicklung.","Prices are often lower early in the week and rise towards the weekend. Watch the current market.")}</p>
+      <p><strong>{l("3. Flexibel verkaufen.","3. Sell flexibly.")}</strong> {l("Low Peak ist bereits gut. Mid und High lohnen sich zum Ansparen, wenn du warten möchtest.","Low Peak is already fine. Holding for Mid or High is a choice when you can afford to wait.")}</p>
+      <p><strong>{l("4. Potenzial vergleichen.","4. Compare potential.")}</strong> {l("Sind mehrere Waren gleich günstig, kannst du Waren mit einem höheren Peak bevorzugen.","If multiple goods cost the same, you can favour goods with higher peak potential.")}</p>
+    </div>
+  </div>
+  <p class="eg-source">{l("Einordnung: Referenzgrafik „Price Peaks“ und beobachtete Höchstpreise aus der Community-Übersicht. Keine garantierten Marktpreise; exakte Einzelwerte werden bewusst nicht angegeben. Die Pakete sind im aktuellen SKPORT-Itemkatalog noch nicht einzeln erfasst.","Classification: the “Price Peaks” reference graphic and observed maxima from the community sheet. Prices are not guaranteed; exact item values are intentionally omitted. These packages are not individually indexed in the current SKPORT item catalogue.")}</p>
+</section>
