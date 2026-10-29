@@ -1160,7 +1160,7 @@ def smoke_i18n(page, base_url, width):
                page.locator('[data-refinement-attribute="will"][data-refinement-slot="Kit"]').get_attribute("data-refinement-item-id")=="348",
                label+": "+lang+" four official primary attribute cards with real gear and highlighted matches")
         eg=page.locator("[data-elastic-goods]")
-        verify(eg.count()==1 and eg.locator("#eg-title").inner_text()=="Elastic Goods – Price Peaks" and
+        verify(eg.count()==1 and eg.locator("#eg-title").inner_text()==("Elastische Waren - Preis Peaks" if lang=="de" else "Elastic Goods – Price Peaks") and
                eg.locator('[data-peak="low"]').count()==1 and
                eg.locator('[data-peak="mid"]').count()==1 and
                eg.locator('[data-peak="high"]').count()==1 and
@@ -1175,12 +1175,29 @@ def smoke_i18n(page, base_url, width):
                label+": "+lang+" buy-below-1000 guidance is visible")
         verify(("Wichtig" if lang=="de" else "Important") in eg.locator(".eg-key-takeaway").inner_text() and
                ("Wuling" in eg.inner_text()) and
-               (("Tal-IV" in eg.inner_text()) if lang=="de" else ("Valley-IV" in eg.inner_text())),
-               label+": "+lang+" low-peak selling advice and bilingual origin legend")
-        verify(eg.locator(".eg-item img").count()==0 and
-               eg.locator(".eg-source").count()==1 and
+               (("Tal4" in eg.inner_text()) if lang=="de" else ("Valley-IV" in eg.inner_text())),
+               label+": "+lang+" low-peak selling advice and DE/EN region headers")
+        verify(eg.locator(".eg-item img.eg-item-icon").count()==25 and
+               eg.locator(".eg-item img.eg-item-icon").evaluate_all("(imgs)=>imgs.every(im=>im.complete&&im.naturalWidth===128&&im.naturalHeight===128)") and
+               eg.locator(".eg-legend").count()==0 and
+               eg.locator(".eg-source").count()==0 and
+               eg.locator(".eg-item-icon-pending").count()==0 and
                eg.evaluate("(el)=>el.scrollWidth<=el.clientWidth+1"),
-               label+": "+lang+" uses source-backed names without fabricated SKPORT item icons or overflow")
+               label+": "+lang+" 25 correct local Package WebPs load without placeholder assets or overflow")
+        verify(eg.locator('[data-peak="low"] .eg-range').inner_text()==("4.600–4.800" if lang=="de" else "4,600–4,800") and
+               eg.locator('[data-peak="mid"] .eg-range').inner_text()==("4.800–5.100" if lang=="de" else "4,800–5,100") and
+               eg.locator('[data-peak="high"] .eg-range').inner_text()==("5.100–5.500" if lang=="de" else "5,100–5,500") and
+               eg.locator(".eg-range").first.evaluate("(el)=>getComputedStyle(el).fontSize")==
+                  eg.locator(".eg-trade-step strong").first.evaluate("(el)=>getComputedStyle(el).fontSize") and
+               eg.locator(".eg-peak-low").evaluate("(el)=>getComputedStyle(el).getPropertyValue('--eg-peak-accent').trim()")=="#efa251",
+               label+": "+lang+" approved price bands, enlarged ranges and orange Low Peak")
+        verify(("Ankhor-Küchenzubehör" if lang=="de" else "Ankhorilling Kitchenware") in
+               eg.locator('[data-elastic-good="kitchenware"]').inner_text() and
+               ("Aero-Empfänger" if lang=="de" else "Aerial Receptionists") in
+               eg.locator('[data-elastic-good="aero-receiver"]').inner_text() and
+               ("Chubby-Lung-Wetterbalon" if lang=="de" else "Chubby Lung Blimp") in
+               eg.locator('[data-elastic-good="chubby-lung-balloon"]').inner_text(),
+               label+": "+lang+" operator-approved item names are rendered")
         page.locator('[data-refinement-tab="damage"]').click()
         verify(page.locator('#refinement-panel-damage:visible .refinement-attribute-card').count()==9 and
                page.locator('#refinement-panel-primary:visible').count()==0 and

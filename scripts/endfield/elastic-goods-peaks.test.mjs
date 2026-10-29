@@ -1,71 +1,106 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import {readFileSync} from "node:fs";
+import {readFileSync,existsSync} from "node:fs";
 import {elasticGoods,elasticPeakRanges,elasticGoodsSource} from "../../src/data/endfield/elasticGoodsPeaks.mjs";
 const read=path=>readFileSync(path,"utf8");
+const catalog=JSON.parse(read("src/data/endfield/catalog/packages.json"));
 
-test("Elastic Goods tiers represent both user-supplied charts without fabricating official item IDs",()=>{
+test("wiki.gg Packages catalogue extends Item Files separately from official SKPORT entries",()=>{
+ assert.equal(catalog.schemaVersion,1);
+ assert.equal(catalog.category,"Packages");
+ assert.equal(catalog.parentCategory,"Item Files");
+ assert.match(catalog.source.url,/^https:\/\/endfield\.wiki\.gg\/wiki\/Category:Packages$/);
  assert.equal(elasticGoodsSource.verifiedOfficialItemIds,false);
+ assert.equal(catalog.items.length,25);
  assert.equal(elasticGoods.length,25);
- assert.equal(new Set(elasticGoods.map(good=>good.id)).size,25);
- assert.deepEqual(elasticPeakRanges.map(peak=>peak.id),["low","mid","high"]);
- assert.deepEqual(["low","mid","high"].map(peak=>elasticGoods.filter(g=>g.peak===peak).length),[8,9,8]);
- assert.deepEqual(["low","mid","high"].map(peak=>elasticGoods.filter(g=>g.peak===peak&&g.evidence==="community").length),[4,5,4]);
- assert.equal(elasticGoods.filter(g=>g.evidence==="community").length,13);
- assert.equal(elasticGoods.filter(g=>g.evidence==="reference").length,12);
- for(const good of elasticGoods){
-  assert.match(good.id,/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
-  assert.ok(good.de.length>2&&good.en.length>2);
-  assert.ok(["low","mid","high"].includes(good.peak));
-  assert.ok(["valley","wuling"].includes(good.region));
-  assert.ok(["reference","community"].includes(good.evidence));
-  assert.equal("officialId" in good,false);
-  assert.equal("icon" in good,false);
- }
- for(const good of elasticGoods.filter(g=>g.evidence==="community"))
-  assert.equal(good.region,"wuling");
- assert.deepEqual(elasticGoods.filter(g=>g.region==="valley").length,12);
- assert.equal(elasticGoods.filter(g=>g.region==="wuling").length,13);
+ assert.equal(new Set(elasticGoods.map(x=>x.id)).size,25);
+ assert.equal(elasticGoods.filter(x=>x.region==="valley").length,12);
+ assert.equal(elasticGoods.filter(x=>x.region==="wuling").length,13);
+ assert.deepEqual(["low","mid","high"].map(peak=>elasticGoods.filter(x=>x.peak===peak).length),[8,9,8]);
+ const official=JSON.parse(read("src/data/endfield/catalog/items.json"));
+ assert.equal(official.source.provider,"SKPORT Wiki");
+ assert.ok(official.items.every(x=>x.categories.indexOf("Packages")===-1));
+ const itemResolver=read("src/lib/endfield/itemCatalog.ts");
+ assert.match(itemResolver,/import packageCatalog from "\.\.\/\.\.\/data\/endfield\/catalog\/packages\.json"/);
+ assert.match(itemResolver,/export function getEndfieldPackage/);
+ assert.match(itemResolver,/export const endfieldPackageCatalogMeta=/);
 });
 
-test("New community-sourced price tiers preserve peak colouring from the screenshot rather than arbitrary price cutoffs",()=>{
- const get=id=>elasticGoods.find(good=>good.id===id);
- for(const id of ["wuxia-movies","eureka-tincture","wuling-peas","nymphsprout"])
-  assert.equal(get(id)?.peak,"low",id);
- for(const id of ["xiranite-filter-cores","aero-receiver","qingbo-rafts","xiranite-fireworks","chubby-lung-tianshi"])
-  assert.equal(get(id)?.peak,"mid",id);
- for(const id of ["xiranite-bridge","swordmancer-forge","borderstone-stopper","chubby-lung-balloon"])
-  assert.equal(get(id)?.peak,"high",id);
- for(const peak of elasticPeakRanges){
-  assert.ok(peak.valueDe.startsWith("ca."),peak.id);
-  assert.ok(peak.valueEn.startsWith("approx."),peak.id);
-  assert.ok(peak.descriptionDe&&peak.descriptionEn);
- }
+test("every approved package has the exact DE/EN in-game name, the expected peak and origin",()=>{
+ const expected=[
+ ["kitchenware","Ankhor-Küchenzubehör","Ankhorilling Kitchenware","low","valley"],
+ ["dangles","Meusbiest-Schnitzerei-Anhänger","Musbeast Scrimshaw Dangles","low","valley"],
+ ["drill","Zauber-Abbaubohrer","Witchcraft Mining Drill","low","valley"],
+ ["war-tins","Dosen aus dem Aggeloi-Krieg","Aggeloi War Tins","low","valley"],
+ ["wuxia-movies","Wuxia-Filme","Wuxia Movies","low","wuling"],
+ ["eureka-tincture","Eureka-Anti-Rauch-Tinktur","Eureka Anti-smog Tincture","low","wuling"],
+ ["wuling-peas","Wuling-Tiefkühlerbsen","Wuling Frozen Pears","low","wuling"],
+ ["nymphsprout","Nymphenspross","Nymphsprout","low","wuling"],
+ ["fillets","Hydrokultur-Filet aus dem Tal","Valley Hydroculture Fillets","mid","valley"],
+ ["syrup","Einheitssirup","Unity Syrup","mid","valley"],
+ ["knucklebones","Ses'qarier-Knöchel","Ses'qamam Knucklebones","mid","valley"],
+ ["crystals","Astarron-Kristalle","Astarron Crystals","mid","valley"],
+ ["chubby-lung-tianshi","Chubby-Lung-Tianshi","Chubby Lung Tianshi","mid","wuling"],
+ ["xiranite-filter-cores","Xiranit-Filterkerne","Xiranite Filter Cores","mid","wuling"],
+ ["qingbo-rafts","Qingbo-Flöße","Qingbo Rafts","mid","wuling"],
+ ["aero-receiver","Aero-Empfänger","Aerial Receptionists","mid","wuling"],
+ ["xiranite-fireworks","Xiranit-farbene Feuerwerkskörper","Xiran-Hue Fireworks","mid","wuling"],
+ ["saplings","Originum-Setzlinge","Originum Saplings","high","valley"],
+ ["pickaxes","Bürgerwehr-Spitzhacken","Vigilant Pickaxes","high","valley"],
+ ["helmets","Dickschädel-Helme","Hard Noggin Helmets","high","valley"],
+ ["toy-blocks","Ausrangierte Bauklötze","Scrap Toy Blocks","high","valley"],
+ ["xiranite-bridge","Xiranit-Brücke","Xiranite Bridge","high","wuling"],
+ ["swordmancer-forge","Schwertkämpferschmiede","Swordmancer Forge","high","wuling"],
+ ["borderstone-stopper","Grenzstein-Stopper","Marker Stone Lock","high","wuling"],
+ ["chubby-lung-balloon","Chubby-Lung-Wetterbalon","Chubby Lung Blimp","high","wuling"]
+ ];
+ assert.deepEqual(catalog.items.map(x=>[x.id,x.nameDe,x.nameEn,x.peak,x.region]),expected);
+ assert.deepEqual(elasticGoods.map(x=>[x.id,x.de,x.en,x.peak,x.region]),expected);
+ assert.deepEqual(elasticPeakRanges.map(x=>[x.valueDe,x.valueEn]),[
+ ["4.600–4.800","4,600–4,800"],
+ ["4.800–5.100","4,800–5,100"],
+ ["5.100–5.500","5,100–5,500"]
+ ]);
+ assert.ok(elasticPeakRanges.every(x=>!x.valueDe.includes("+")&&!x.valueEn.includes("+")));
 });
 
-test("Elastic Goods has a bilingual, responsive standalone cheat-sheet card and no ghost official icons",()=>{
+test("all 25 item mini-cards receive a verified 128px local WebP from wiki.gg",()=>{
+ for(const x of catalog.items){
+  assert.match(x.id,/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
+  assert.equal(x.iconPath,`/images/endfield/packages/${x.id}.webp`);
+  assert.equal(x.cacheStatus,"cached");
+  assert.match(x.wikiTitle,/\(pkg\)$/);
+  assert.match(x.imageSourceUrl,/^https:\/\/endfield\.wiki\.gg\/images\//);
+  const file="public"+x.iconPath;
+  assert.ok(existsSync(file),file);
+  const bytes=readFileSync(file);
+  assert.equal(bytes.toString("ascii",0,4),"RIFF");
+  assert.equal(bytes.toString("ascii",8,12),"WEBP");
+  assert.equal(x.iconBytes,bytes.byteLength);
+  assert.ok(bytes.byteLength>=1000&&bytes.byteLength<=120000,file);
+ }
+ assert.ok(catalog.items.reduce((n,x)=>n+x.iconBytes,0)<250000);
+});
+
+test("the bilingual Cheat Sheet uses image mini cards, removes repeated legend/source and enlarges orange Low Peak",()=>{
  const page=read("src/components/pages/EndfieldCheatSheets.astro");
  const feature=read("src/components/pages/ElasticGoodsPeaks.astro");
  const css=read("src/styles/endfield-elastic-goods.css");
- assert.match(page,/import ElasticGoodsPeaks from "\.\/ElasticGoodsPeaks\.astro"/);
  assert.match(page,/<ElasticGoodsPeaks lang=\{lang\} \/>/);
- assert.match(feature,/id="elasticgoods" class="op-cardlet eg-feature"/);
- assert.match(feature,/data-elastic-goods/);
- assert.match(feature,/const goodsFor=/);
- assert.match(feature,/\{elasticPeakRanges\.map/);
- assert.match(feature,/origins\.map/);
+ assert.match(page,/Die Veredelungs-Matrix und Elastische Waren – Preis Peaks sind verfügbar/);
+ assert.match(feature,/Elastische Waren - Preis Peaks/);
+ assert.match(feature,/Elastic Goods – Price Peaks/);
+ assert.match(feature,/labelDe:"Tal4"/);
+ assert.match(feature,/labelEn:"Valley-IV"/);
  assert.match(feature,/data-elastic-good=\{good\.id\}/);
+ assert.match(feature,/<img class="eg-item-icon" src=\{good\.iconPath\}/);
  assert.match(feature,/&lt; \{l\("1\.000","1,000"\)\}/);
- assert.match(feature,/Low Peak/);
- assert.match(feature,/High Peak/);
- assert.match(feature,/Tal-IV/);
- assert.match(feature,/Valley-IV/);
- assert.match(feature,/Wuling/);
- assert.match(feature,/SKPORT-Itemkatalog/);
- assert.doesNotMatch(feature,/<ItemIcon|<img\s|iconPath/);
- assert.match(css,/\.eg-origin-columns\{display:grid;grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/);
- assert.match(css,/@media\(max-width:680px\)\{\.eg-feature/);
+ assert.doesNotMatch(feature,/class="eg-legend"|class="eg-source"/);
+ assert.match(css,/\.eg-peak-low\{--eg-peak-accent:#efa251\}/);
+ assert.match(css,/\.eg-range\{[^\n]*font-size:clamp\(22px,3\.1vw,36px\)/);
+ assert.match(css,/\.eg-trade-step strong\{font-size:clamp\(22px,3\.1vw,36px\)/);
+ assert.match(css,/\.eg-item-icon\{display:block/);
+ assert.match(css,/@media\(max-width:680px\)/);
  assert.match(css,/\.eg-valley\{--eg-accent:#e0ed48/);
  assert.match(css,/\.eg-wuling\{--eg-accent:#4cdbd5/);
- assert.match(page,/id:"bufffood"/);
 });
