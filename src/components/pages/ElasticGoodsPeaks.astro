@@ -11,6 +11,10 @@ const origins=[
 ];
 const defaultOrigin=origins[0].id;
 const goodsFor=(peak:string,origin:string)=>elasticGoods.filter(good=>good.peak===peak&&good.region===origin);
+const peakValue=(peak:typeof elasticPeakRanges[number],origin:string)=>{
+  const custom=peak.regionOverrides.find(entry=>entry.region===origin);
+  return (en?custom?.en:custom?.de)??(en?peak.valueEn:peak.valueDe);
+};
 ---
 <section id="elasticgoods" class="op-cardlet eg-feature" aria-labelledby="eg-title" data-elastic-goods>
   <div class="eg-heading">
@@ -49,7 +53,7 @@ const goodsFor=(peak:string,origin:string)=>elasticGoods.filter(good=>good.peak=
       aria-controls="eg-region-panel"
       tabindex={index===0?0:-1}>{en?origin.labelEn:origin.labelDe}</button>)}
   </div>
-  <p class="eg-peaks-note">{l("Die Preisbereiche zeigen den höchsten Peak der jeweiligen Waren, nicht ihren aktuellen Preis. Bei Mid- und High-Peak-Waren sind niedrigere Zwischenpeaks möglich.","Each range shows the goods’ highest peak, not their current price. Mid and High Peak goods can also have lower interim peaks.")}</p>
+  <p class="eg-peaks-note">{l("Die Preisbereiche basieren auf Beobachtungen der Community und zeigen den höchsten Peak der jeweiligen Waren, nicht ihren aktuellen Preis. Bei Mid- und High-Peak-Waren sind niedrigere Zwischenpeaks möglich.","The price ranges are based on community observations and show each good’s highest peak, not its current price. Mid and High Peak goods can also have lower interim peaks.")}</p>
   <div id="eg-region-panel" role="tabpanel" aria-labelledby={`eg-region-tab-${defaultOrigin}`} data-eg-region-panel tabindex="0">
   <div class="eg-peaks">
     {elasticPeakRanges.map((peak,index)=><section class:list={["eg-peak",`eg-peak-${peak.id}`]} aria-labelledby={`eg-peak-${peak.id}-title`} data-peak={peak.id}>
@@ -67,7 +71,7 @@ const goodsFor=(peak:string,origin:string)=>elasticGoods.filter(good=>good.peak=
             alt={en?origin.currencyAltEn:origin.currencyAltDe}
             width="56" height="36" loading="eager" decoding="async"
             hidden={origin.id!==defaultOrigin}/>)}
-          <strong class="eg-range">{en?peak.valueEn:peak.valueDe}</strong>
+          <strong class="eg-range" data-eg-range data-eg-range-values={JSON.stringify(Object.fromEntries(origins.map(origin=>[origin.id,peakValue(peak,origin.id)])))}>{peakValue(peak,defaultOrigin)}</strong>
         </span>
       </div>
       <div class="eg-origin-columns">
@@ -104,6 +108,7 @@ const goodsFor=(peak:string,origin:string)=>elasticGoods.filter(good=>good.peak=
     const panel=root.querySelector<HTMLElement>("[data-eg-region-panel]");
     const groups=[...root.querySelectorAll<HTMLElement>("[data-origin]")];
     const currencyIcons=[...root.querySelectorAll<HTMLImageElement>("[data-eg-currency]")];
+    const priceRanges=[...root.querySelectorAll<HTMLElement>("[data-eg-range]")];
     if(!panel||!tabs.length)return;
     const select=(tab:HTMLButtonElement,focus=false)=>{
       const region=tab.dataset.egRegionTab;
@@ -115,6 +120,10 @@ const goodsFor=(peak:string,origin:string)=>elasticGoods.filter(good=>good.peak=
       });
       groups.forEach(group=>{group.hidden=group.dataset.origin!==region;});
       currencyIcons.forEach(icon=>{icon.hidden=icon.dataset.egCurrency!==region;});
+      priceRanges.forEach(range=>{
+        const values=JSON.parse(range.dataset.egRangeValues??"{}") as Record<string,string>;
+        if(values[region])range.textContent=values[region];
+      });
       panel.setAttribute("aria-labelledby",tab.id);
       if(focus)tab.focus();
     };

@@ -8,13 +8,13 @@ export const elasticGoodsSource = {
  packagesWiki: packageCatalog.source.url
 };
 export const elasticPeakRanges = [
- {id:"low",label:"LOW PEAK",valueDe:"4.600–4.800",valueEn:"4,600–4,800",
+ {id:"low",label:"LOW PEAK",valueDe:"4.600–4.800",valueEn:"4,600–4,800",regionOverrides:[],
   descriptionDe:"Höchster Peak dieser Waren: Low. Sie erreichen keinen Mid- oder High-Peak.",
   descriptionEn:"These goods peak at Low. They cannot reach a Mid or High Peak."},
- {id:"mid",label:"MID PEAK",valueDe:"4.800–5.100",valueEn:"4,800–5,100",
+ {id:"mid",label:"MID PEAK",valueDe:"4.800–5.100",valueEn:"4,800–5,100",regionOverrides:[],
   descriptionDe:"Höchster Peak dieser Waren: Mid. Davor sind auch niedrigere Peaks möglich.",
   descriptionEn:"These goods peak at Mid. Lower peaks are also possible along the way."},
- {id:"high",label:"HIGH PEAK",valueDe:"5.100–5.500",valueEn:"5,100–5,500",
+ {id:"high",label:"HIGH PEAK",valueDe:"5.100–5.500",valueEn:"5,100–5,500",regionOverrides:[{region:"wuling",de:"5.100–5.400",en:"5,100–5,400"}],
   descriptionDe:"Höchster Peak dieser Waren: High. Sie können zuvor auch Low- oder Mid-Peaks erreichen.",
   descriptionEn:"These goods peak at High. They can also reach Low or Mid Peaks first."}
 ];
