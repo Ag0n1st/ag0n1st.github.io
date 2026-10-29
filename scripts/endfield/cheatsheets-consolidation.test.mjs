@@ -20,19 +20,20 @@ test("Cheat Sheets has three migrated systems and retains three existing referen
    assert.ok(page.includes('id:"'+anchor+'"'),"missing placeholder anchor "+anchor);
  assert.match(page,/<ElasticGoodsPeaks lang=\{lang\}/);
  assert.match(read("src/components/pages/ElasticGoodsPeaks.astro"),/id="elasticgoods"/);
- assert.match(page,/data-cheatsheets-group="systems"/);
- assert.match(page,/data-cheatsheets-group="references"/);
- assert.match(page,/Spielsysteme","Game systems"/);
- assert.match(page,/Referenzen & Matrizen","References & matrices"/);
+ assert.doesNotMatch(page,/data-cheatsheets-group=|cheatsheets-systems-heading|cheatsheets-reference-heading/);
+ assert.doesNotMatch(page,/Spielsysteme","Game systems"|Referenzen & Matrizen","References & matrices"/);
+ assert.ok(page.indexOf("<ElasticGoodsPeaks lang={lang}")<page.indexOf("<RefinementMatrix lang={lang}"),"Elastic Goods must be first");
  assert.match(page,/<RefinementMatrix lang=\{lang\}/);
  const ref=read("src/components/pages/RefinementMatrix.astro");
  assert.match(ref,/id="refinement"/);
  assert.match(ref,/id="artificing"/);
  assert.match(ref,/Veredelungs-Matrix/);
  assert.match(ref,/Artificing Matrix/);
- assert.match(page,/Die Veredelungs-Matrix und Elastische Waren – Preis Peaks sind verfügbar/);
- assert.match(page,/The refinement matrix and Elastic Goods – Price Peaks are available/);
+ assert.match(page,/Elastische Waren – Preis Peaks und die Veredelungs-Matrix sind verfügbar/);
+ assert.match(page,/Elastic Goods – Price Peaks and the refinement matrix are available/);
  assert.match(page,/In Vorbereitung","Coming soon"/);
+ assert.match(page,/\[\.\.\.systems,\.\.\.categories\]\.map/);
+ assert.match(page,/class="endfield-coming-cards endfield-cheatsheets-upcoming"/);
 });
 test("All six old DE and EN system routes redirect to canonical Cheat Sheet section anchors",()=>{
  const paths={
