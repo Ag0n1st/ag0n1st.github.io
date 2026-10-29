@@ -170,16 +170,17 @@ test("Peak tiers explicitly describe each good's attainable maximum, not a unive
  assert.match(map.get("high").descriptionEn,/Low or Mid Peaks/);
  assert.match(feature,/Low ist bereits ihr eigener höchster Peak/);
  assert.match(feature,/Low is already their own highest peak/);
- assert.match(feature,/nicht ihren aktuellen Preis/);
- assert.match(feature,/not its current price/);
+ assert.match(feature,/Die Preisbereiche basieren auf Beobachtungen der Community und zeigen den höchsten Peak der jeweiligen Waren\./);
+ assert.match(feature,/The price ranges are based on community observations and show the highest peak of each good\./);
+ assert.doesNotMatch(feature,/nicht ihren aktuellen Preis|not its current price|niedrigere Zwischenpeaks möglich/);
  assert.match(feature,/Nicht jede Ware kann 5\.500 erreichen/);
  assert.match(feature,/Not every good can reach 5,500/);
  assert.match(feature,/individuelle Peak der Ware/);
 });
 
-test("Wuling/Valley tabs are origin-tinted when inactive and stronger when selected, with doubled currency icons",()=>{
+test("Wuling/Valley tabs are origin-tinted when inactive and stronger when selected, with 130%-size currency icons",()=>{
  const css=read("src/styles/endfield-elastic-goods.css");
- assert.match(css,/\.eg-currency-icon\{display:block;flex:none;width:clamp\(34px,4\.05vw,48px\)/);
+ assert.match(css,/\.eg-currency-icon\{display:block;flex:none;width:clamp\(30px,3\.51vw,42px\)/);
  assert.match(css,/\.eg-region-tab\{[^\n]*background:color-mix\(in srgb,var\(--eg-accent\) 24%,#171c26\)/);
  assert.match(css,/\.eg-region-tab:hover\{[^\n]*background:color-mix\(in srgb,var\(--eg-accent\) 32%,#171c26\)/);
  assert.match(css,/\.eg-region-tab\[aria-selected="true"\]\{[^\n]*background:color-mix\(in srgb,var\(--eg-accent\) 45%,#171c26\)/);
@@ -210,4 +211,19 @@ test("Region tab CSS does not shadow the colours with a later neutral custom pro
  assert.doesNotMatch(neutral,/--eg-accent:/);
  assert.match(css,/\.eg-region-tab\.eg-wuling\{--eg-accent:#4cdbd5\}/);
  assert.match(css,/\.eg-region-tab\.eg-valley\{--eg-accent:#e0ed48\}/);
+});
+
+test("the supplied Stock Redistribution icon is a local subtle grey decoration at the top right",()=>{
+ const feature=read("src/components/pages/ElasticGoodsPeaks.astro");
+ const css=read("src/styles/endfield-elastic-goods.css");
+ const path="public/images/endfield/cheatsheets/stock-redistribution.webp";
+ assert.ok(existsSync(path),"Missing source-derived redistribution icon");
+ const bytes=readFileSync(path);
+ assert.equal(bytes.toString("ascii",0,4),"RIFF");
+ assert.equal(bytes.toString("ascii",8,12),"WEBP");
+ assert.ok(bytes.byteLength<5000,"The decorative WebP must stay tiny");
+ assert.match(feature,/class="eg-stock-redistribution-art" src="\/images\/endfield\/cheatsheets\/stock-redistribution\.webp" alt="" aria-hidden="true" width="118" height="118"/);
+ assert.match(css,/\.eg-heading\{position:relative;min-height:87px;padding-right:110px\}/);
+ assert.match(css,/\.eg-stock-redistribution-art\{position:absolute;right:0;top:-13px;display:block;width:100px;height:100px;object-fit:contain;opacity:\.22;filter:grayscale\(1\) brightness\(\.8\)/);
+ assert.match(css,/@media\(max-width:760px\)\{\.eg-heading\{min-height:70px;padding-right:72px\}\.eg-stock-redistribution-art\{width:63px;height:63px;top:0\}\}/);
 });

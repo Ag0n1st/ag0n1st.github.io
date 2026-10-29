@@ -1198,6 +1198,13 @@ def smoke_i18n(page, base_url, width):
                eg.locator(".eg-item-icon-pending").count()==0 and
                eg.evaluate("(el)=>el.scrollWidth<=el.clientWidth+1"),
                label+": "+lang+" 25 correct local Package WebPs load without placeholder assets or overflow")
+        redistribution=eg.locator(".eg-stock-redistribution-art")
+        verify(redistribution.count()==1 and
+               redistribution.get_attribute("alt")=="" and redistribution.get_attribute("aria-hidden")=="true" and
+               redistribution.evaluate("(img)=>img.complete&&img.naturalWidth===118&&img.naturalHeight===118&&getComputedStyle(img).opacity==='0.22'&&getComputedStyle(img).filter.includes('grayscale(1)')") and
+               redistribution.evaluate("(img)=>Math.abs(img.getBoundingClientRect().right-img.parentElement.getBoundingClientRect().right)<1.5") and
+               redistribution.evaluate("(img)=>Math.abs(img.getBoundingClientRect().width-(innerWidth>760?100:63))<1.5"),
+               label+": "+lang+" subtle grey Stock Redistribution decoration aligns with card heading top right")
         curr=eg.locator(".eg-currency-icon")
         verify(eg.locator("[data-eg-price]").count()==3 and curr.count()==6 and
                eg.locator('[data-eg-currency="wuling"]:visible').count()==3 and
@@ -1212,15 +1219,14 @@ def smoke_i18n(page, base_url, width):
         verify(("Höchster Peak dieser Waren" if lang=="de" else "These goods peak at") in eg.locator('[data-peak="low"] .eg-peak-heading p').inner_text() and
                ("keinen Mid- oder High-Peak" if lang=="de" else "cannot reach a Mid or High Peak") in eg.locator('[data-peak="low"] .eg-peak-heading p').inner_text() and
                ("Low- oder Mid-Peaks" if lang=="de" else "Low or Mid Peaks") in eg.locator('[data-peak="high"] .eg-peak-heading p').inner_text() and
-               ("nicht ihren aktuellen Preis" if lang=="de" else "not its current price") in eg.locator(".eg-peaks-note").inner_text() and
-               ("Beobachtungen der Community" if lang=="de" else "community observations") in eg.locator(".eg-peaks-note").inner_text(),
+               eg.locator(".eg-peaks-note").inner_text().strip()==("Die Preisbereiche basieren auf Beobachtungen der Community und zeigen den höchsten Peak der jeweiligen Waren." if lang=="de" else "The price ranges are based on community observations and show the highest peak of each good."),
                label+": "+lang+" peak tiers explain maximum attainable values and lower interim peaks")
         currency_width=eg.locator('[data-eg-currency="wuling"]:visible').first.evaluate("(el)=>el.getBoundingClientRect().width")
-        verify(abs(currency_width-(48 if page.evaluate("innerWidth")>1185 else 34))<1.1 and
+        verify(abs(currency_width-(42 if page.evaluate("innerWidth")>1185 else 30))<1.1 and
                eg.locator('[data-eg-currency="wuling"]:visible').first.evaluate(
                  "(img)=>img.getBoundingClientRect().height < parseFloat(getComputedStyle(img.parentElement.querySelector('.eg-range')).fontSize)") and
                eg.locator(".eg-price").first.evaluate("(el)=>el.scrollWidth<=el.clientWidth+1"),
-               label+": "+lang+" currency symbol is about 50% larger than original yet shorter than price numbers")
+               label+": "+lang+" currency symbol is 130% of original size yet shorter than price numbers")
         styles=eg.locator(".eg-region-tab").evaluate_all(
           "(tabs)=>tabs.map(el=>({id:el.dataset.egRegionTab,selected:el.getAttribute('aria-selected'),color:getComputedStyle(el).backgroundColor,accent:getComputedStyle(el).getPropertyValue('--eg-accent').trim()}))")
         verify(len(styles)==2 and
