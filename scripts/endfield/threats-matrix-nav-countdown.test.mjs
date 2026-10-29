@@ -65,7 +65,9 @@ test("localized nav contains both new unfinished subsections, URLs and stacked l
  assert.doesNotMatch(nav,/upcoming=new Set\(\[[^\]]*"leaderboard"/);
  assert.doesNotMatch(nav,/upcoming=new Set\(\[[^\]]*"cheatsheets"/);
  const cheat=read("src/components/pages/EndfieldCheatSheets.astro");
- for(const tag of ["#ElasticGoods","#Bufffood"])assert.ok(cheat.includes(tag));
+ assert.ok(cheat.includes("#Bufffood"));
+ assert.ok(read("src/components/pages/ElasticGoodsPeaks.astro").includes("ELASTIC GOODS · PRICE PEAKS"));
+ assert.match(cheat,/<ElasticGoodsPeaks lang=\{lang\}/);
  assert.match(read("src/components/pages/RefinementMatrix.astro"),/id="artificing"/);
  const leader=read("src/components/pages/EndfieldLeaderboard.astro");
  assert.match(leader,/bosses\.map/);
