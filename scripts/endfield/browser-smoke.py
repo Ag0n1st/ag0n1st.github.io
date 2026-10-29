@@ -1198,6 +1198,17 @@ def smoke_i18n(page, base_url, width):
                eg.locator(".eg-item-icon-pending").count()==0 and
                eg.evaluate("(el)=>el.scrollWidth<=el.clientWidth+1"),
                label+": "+lang+" 25 correct local Package WebPs load without placeholder assets or overflow")
+        curr=eg.locator(".eg-currency-icon")
+        verify(eg.locator("[data-eg-price]").count()==3 and curr.count()==6 and
+               eg.locator('[data-eg-currency="wuling"]:visible').count()==3 and
+               eg.locator('[data-eg-currency="valley"]:visible').count()==0 and
+               eg.locator('[data-eg-currency="wuling"]:visible').evaluate_all(
+                   "(imgs)=>imgs.every(im=>im.complete&&im.naturalWidth===56&&im.naturalHeight===36)") and
+               all(("Wuling-Währung" if lang=="de" else "Wuling currency") == image.get_attribute("alt")
+                   for image in eg.locator('[data-eg-currency="wuling"]').all()) and
+               all(eg.locator('[data-peak="'+peak+'"] [data-eg-currency="wuling"]:visible').count()==1
+                   for peak in ("low","mid","high")),
+               label+": "+lang+" all three peak ranges show the correct local Wuling currency symbol")
         verify(eg.locator('[data-peak="low"] .eg-range').inner_text()==("4.600–4.800" if lang=="de" else "4,600–4,800") and
                eg.locator('[data-peak="mid"] .eg-range').inner_text()==("4.800–5.100" if lang=="de" else "4,800–5,100") and
                eg.locator('[data-peak="high"] .eg-range').inner_text()==("5.100–5.500" if lang=="de" else "5,100–5,500") and
@@ -1213,6 +1224,13 @@ def smoke_i18n(page, base_url, width):
                eg.locator('[data-origin="valley"] img.eg-item-icon').count()==12,
                label+": "+lang+" optional tips and all 12 Valley IV assets are preserved")
         valley.click()
+        verify(eg.locator('[data-eg-currency="valley"]:visible').count()==3 and
+               eg.locator('[data-eg-currency="wuling"]:visible').count()==0 and
+               eg.locator('[data-eg-currency="valley"]:visible').evaluate_all(
+                 "(imgs)=>imgs.every(im=>im.complete&&im.naturalWidth===56&&im.naturalHeight===36)") and
+               all(("Tal-IV-Währung" if lang=="de" else "Valley IV currency") == image.get_attribute("alt")
+                   for image in eg.locator('[data-eg-currency="valley"]').all()),
+               label+": "+lang+" all three price ranges switch to the Valley IV currency icon")
         verify(valley.get_attribute("aria-selected")=="true" and wuling.get_attribute("aria-selected")=="false" and
                eg.locator('[data-origin="wuling"]:visible').count()==0 and
                eg.locator('[data-origin="valley"]:visible').count()==3 and
@@ -1234,6 +1252,9 @@ def smoke_i18n(page, base_url, width):
                valley.evaluate("(el)=>document.activeElement===el"),
                label+": "+lang+" End selects last region with accessible keyboard controls")
         valley.press("Home")
+        verify(eg.locator('[data-eg-currency="wuling"]:visible').count()==3 and
+               eg.locator('[data-eg-currency="valley"]:visible').count()==0,
+               label+": "+lang+" keyboard region selection also restores Wuling currency icons")
         verify(wuling.get_attribute("aria-selected")=="true" and eg.locator(".eg-item:visible").count()==13,
                label+": "+lang+" Home restores first region Wuling")
         eg.locator(".eg-tips summary").click()
