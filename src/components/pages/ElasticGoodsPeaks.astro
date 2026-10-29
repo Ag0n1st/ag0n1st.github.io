@@ -5,19 +5,15 @@ interface Props {lang?:"de"|"en"}
 const {lang="de"}=Astro.props;
 const en=lang==="en";
 const l=(de:string,english:string)=>en?english:de;
-const origins=[{id:"valley",labelDe:"Tal-IV",labelEn:"Valley-IV"},{id:"wuling",labelDe:"Wuling",labelEn:"Wuling"}];
+const origins=[{id:"valley",labelDe:"Tal4",labelEn:"Valley-IV"},{id:"wuling",labelDe:"Wuling",labelEn:"Wuling"}];
 const goodsFor=(peak:string,origin:string)=>elasticGoods.filter(good=>good.peak===peak&&good.region===origin);
 ---
 <section id="elasticgoods" class="op-cardlet eg-feature" aria-labelledby="eg-title" data-elastic-goods>
   <div class="eg-heading">
     <span class="section-kicker">ELASTIC GOODS · PRICE PEAKS</span>
-    <h3 id="eg-title">{l("Elastic Goods – Price Peaks","Elastic Goods – Price Peaks")}</h3>
+    <h3 id="eg-title">{l("Elastische Waren - Preis Peaks","Elastic Goods – Price Peaks")}</h3>
     <p>{l("Wann kaufen, wann verkaufen? Drei Peak-Kategorien und die passenden Waren aus Tal-IV und Wuling auf einen Blick.","When should you buy or sell? Three price-peak tiers and their goods from Valley-IV and Wuling at a glance.")}</p>
-    <div class="eg-legend" aria-label={l("Herkunft der Waren","Origin of goods")}>
-      {origins.map(origin=><span class:list={["eg-origin-chip",origin.id==="valley"?"eg-valley":"eg-wuling"]}>
-        <span class="eg-region-dot" aria-hidden="true"></span>{en?origin.labelEn:origin.labelDe}
-      </span>)}
-    </div>
+    
   </div>
 
   <div class="eg-tldr" aria-labelledby="eg-tldr-heading">
@@ -58,6 +54,9 @@ const goodsFor=(peak:string,origin:string)=>elasticGoods.filter(good=>good.peak=
           <h6><span class="eg-region-dot" aria-hidden="true"></span>{en?origin.labelEn:origin.labelDe}</h6>
           <div class="eg-item-grid">
             {goodsFor(peak.id,origin.id).map(good=><div class="eg-item" data-elastic-good={good.id} data-evidence={good.evidence}>
+              {good.iconPath ?
+                <img class="eg-item-icon" src={good.iconPath} alt="" width="68" height="68" loading="lazy" decoding="async"/> :
+                <span class="eg-item-icon eg-item-icon-pending" aria-hidden="true">◇</span>}
               <span class="eg-item-name">{en?good.en:good.de}</span>
             </div>)}
           </div>
@@ -75,5 +74,4 @@ const goodsFor=(peak:string,origin:string)=>elasticGoods.filter(good=>good.peak=
       <p><strong>{l("4. Potenzial vergleichen.","4. Compare potential.")}</strong> {l("Sind mehrere Waren gleich günstig, kannst du Waren mit einem höheren Peak bevorzugen.","If multiple goods cost the same, you can favour goods with higher peak potential.")}</p>
     </div>
   </div>
-  <p class="eg-source">{l("Einordnung: Referenzgrafik „Price Peaks“ und beobachtete Höchstpreise aus der Community-Übersicht. Keine garantierten Marktpreise; exakte Einzelwerte werden bewusst nicht angegeben. Die Pakete sind im aktuellen SKPORT-Itemkatalog noch nicht einzeln erfasst.","Classification: the “Price Peaks” reference graphic and observed maxima from the community sheet. Prices are not guaranteed; exact item values are intentionally omitted. These packages are not individually indexed in the current SKPORT item catalogue.")}</p>
 </section>

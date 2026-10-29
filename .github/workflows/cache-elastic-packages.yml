@@ -1,0 +1,44 @@
+name: Cache Endfield Wiki.gg Package Icons (feature branch)
+
+on:
+  push:
+    branches: [feat/elastic-goods-correct-names-packages]
+    paths:
+      - scripts/endfield/import-wikigg-packages.mjs
+      - .github/workflows/cache-elastic-packages.yml
+      - src/data/endfield/catalog/packages.json
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  cache:
+    if: github.repository == 'Ag0n1st/ag0n1st.github.io'
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install sharp
+        run: |
+          npm ci
+          npm install --no-save --package-lock=false sharp
+      - name: Cache Wiki.gg package icons into local WebP assets
+        run: node scripts/endfield/import-wikigg-packages.mjs
+      - name: Verify storage limits
+        run: node scripts/endfield/check-budget.mjs
+      - name: Commit complete verified package icon cache to this feature branch
+        run: |
+          git add public/images/endfield/packages/ src/data/endfield/catalog/packages.json
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Cache 25 verified Talos Wiki Package icons as WebP'
+          git fetch origin feat/elastic-goods-correct-names-packages
+          git rebase origin/feat/elastic-goods-correct-names-packages
+          git push origin HEAD:feat/elastic-goods-correct-names-packages

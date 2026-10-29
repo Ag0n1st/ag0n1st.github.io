@@ -30,7 +30,7 @@ test("Cheat Sheets has three migrated systems and retains three existing referen
  assert.match(ref,/id="artificing"/);
  assert.match(ref,/Veredelungs-Matrix/);
  assert.match(ref,/Artificing Matrix/);
- assert.match(page,/Die Veredelungs-Matrix und Elastic Goods – Price Peaks sind verfügbar/);
+ assert.match(page,/Die Veredelungs-Matrix und Elastische Waren – Preis Peaks sind verfügbar/);
  assert.match(page,/The refinement matrix and Elastic Goods – Price Peaks are available/);
  assert.match(page,/In Vorbereitung","Coming soon"/);
 });
