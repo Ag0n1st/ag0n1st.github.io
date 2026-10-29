@@ -120,3 +120,35 @@ test("the bilingual Cheat Sheet uses image mini cards, removes repeated legend/s
  assert.match(css,/\.eg-valley\{--eg-accent:#e0ed48/);
  assert.match(css,/\.eg-wuling\{--eg-accent:#4cdbd5/);
 });
+
+test("Regional currency icons are source-derived local transparent WebPs with accessible DE/EN labelling",()=>{
+ const official=JSON.parse(read("src/data/endfield/catalog/items.json"));
+ const assets=[
+  {region:"wuling",id:"602",name:"Wuling Stock Bill",size:982},
+  {region:"valley",id:"601",name:"Valley Stock Bill",size:844}
+ ];
+ const feature=read("src/components/pages/ElasticGoodsPeaks.astro");
+ const styles=read("src/styles/endfield-elastic-goods.css");
+ for(const x of assets){
+  assert.equal(official.items.find(item=>item.id===x.id)?.name,x.name,"Source asset exists in official SKPORT catalogue");
+  const path="public/images/endfield/currency/"+x.region+".webp";
+  const bytes=readFileSync(path);
+  assert.ok(existsSync(path),"Missing currency icon "+x.region);
+  assert.equal(bytes.toString("ascii",0,4),"RIFF");
+  assert.equal(bytes.toString("ascii",8,12),"WEBP");
+  assert.equal(bytes.length,x.size);
+  assert.match(feature,new RegExp('currencyIcon:"/images/endfield/currency/'+x.region+'\\.webp"'));
+ }
+ assert.match(feature,/data-eg-currency=\{origin\.id\}/);
+ assert.match(feature,/alt=\{en\?origin\.currencyAltEn:origin\.currencyAltDe\}/);
+ assert.match(feature,/currencyIcons\.forEach\(icon=>\{icon\.hidden=icon\.dataset\.egCurrency!==region;\}\)/);
+ assert.match(feature,/class="eg-price" data-eg-price/);
+ assert.match(feature,/hidden=\{origin\.id!==defaultOrigin\}/);
+ assert.match(styles,/\.eg-currency-icon\[hidden\]\{display:none!important\}/);
+ assert.match(styles,/\.eg-price\{display:inline-flex;align-items:center;justify-self:end;gap:6px/);
+ assert.match(styles,/@media\(max-width:800px\).*?\.eg-price\{grid-column:2;justify-self:start\}/);
+ assert.equal((feature.match(/<strong class="eg-range">/g)||[]).length,1);
+ // No currencies inserted in TL;DR, per owner approval.
+ assert.ok(feature.indexOf('data-eg-currency={origin.id}')>feature.indexOf('<div class="eg-peak-heading">'));
+ assert.ok(feature.indexOf('data-eg-currency={origin.id}')>feature.indexOf('</div>\n\n  <div class="eg-region-tabs"'));
+});

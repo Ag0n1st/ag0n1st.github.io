@@ -35,7 +35,10 @@
 .eg-peak-level{font-size:19px;color:var(--eg-peak-accent);font-weight:850;font-variant-numeric:tabular-nums}
 .eg-peak-heading h5{font-size:clamp(17px,1.9vw,21px);font-weight:850}
 .eg-peak-heading p{margin:4px 0 0;color:#c2bec8;font-size:11px}
-.eg-range{justify-self:end;color:var(--eg-peak-accent);font-size:clamp(22px,3.1vw,36px);letter-spacing:-.035em;white-space:nowrap;font-weight:800;font-variant-numeric:tabular-nums}
+.eg-price{display:inline-flex;align-items:center;justify-self:end;gap:6px;min-width:0}
+.eg-currency-icon{display:block;flex:none;width:clamp(23px,2.7vw,32px);height:auto;object-fit:contain}
+.eg-currency-icon[hidden]{display:none!important}
+.eg-range{color:var(--eg-peak-accent);font-size:clamp(22px,3.1vw,36px);letter-spacing:-.035em;white-space:nowrap;font-weight:800;font-variant-numeric:tabular-nums}
 .eg-origin-columns{display:block;min-width:0;padding:10px 12px 12px}
 .eg-origin-group{min-width:0;width:100%;box-sizing:border-box;border:1px solid var(--eg-border);border-radius:9px;background:var(--eg-tint);padding:9px}
 .eg-item-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
@@ -51,6 +54,6 @@
 .eg-tips-grid p{margin:0;padding:12px 14px;background:#ffffff06;border:1px solid #44434d;border-radius:9px;color:#cfcad5;font-size:12px}
 .eg-tips-grid strong{color:#f6f1f7}
 @media(max-width:960px){.eg-item-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media(max-width:800px){.eg-peak-heading{grid-template-columns:auto minmax(0,1fr);gap:9px}.eg-range{grid-column:2;justify-self:start}.eg-peak-heading p{font-size:11px}}
+@media(max-width:800px){.eg-peak-heading{grid-template-columns:auto minmax(0,1fr);gap:9px}.eg-price{grid-column:2;justify-self:start}.eg-peak-heading p{font-size:11px}}
 @media(max-width:680px){.eg-feature{padding:15px 11px}.eg-item-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.eg-tips-grid{grid-template-columns:minmax(0,1fr)}.eg-origin-columns{padding:8px}.eg-region-tab{flex:1;min-width:0}}
 @media(max-width:420px){.eg-trade-grid{grid-template-columns:minmax(0,1fr)}.eg-trade-arrow{transform:rotate(90deg);line-height:1}.eg-item{min-height:91px}.eg-item-icon{width:46px;height:46px}.eg-peak-heading{gap:7px}.eg-feature{padding:13px 9px}.eg-peak-heading{padding:9px 10px}}

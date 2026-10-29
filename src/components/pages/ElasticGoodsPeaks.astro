@@ -5,7 +5,10 @@ interface Props {lang?:"de"|"en"}
 const {lang="de"}=Astro.props;
 const en=lang==="en";
 const l=(de:string,english:string)=>en?english:de;
-const origins=[{id:"wuling",labelDe:"Wuling",labelEn:"Wuling"},{id:"valley",labelDe:"Tal IV",labelEn:"Valley IV"}];
+const origins=[
+  {id:"wuling",labelDe:"Wuling",labelEn:"Wuling",currencyIcon:"/images/endfield/currency/wuling.webp",currencyAltDe:"Wuling-Währung",currencyAltEn:"Wuling currency"},
+  {id:"valley",labelDe:"Tal IV",labelEn:"Valley IV",currencyIcon:"/images/endfield/currency/valley.webp",currencyAltDe:"Tal-IV-Währung",currencyAltEn:"Valley IV currency"}
+];
 const defaultOrigin=origins[0].id;
 const goodsFor=(peak:string,origin:string)=>elasticGoods.filter(good=>good.peak===peak&&good.region===origin);
 ---
@@ -56,7 +59,16 @@ const goodsFor=(peak:string,origin:string)=>elasticGoods.filter(good=>good.peak=
           <h5 id={`eg-peak-${peak.id}-title`}>{peak.label}</h5>
           <p>{en?peak.descriptionEn:peak.descriptionDe}</p>
         </div>
-        <strong class="eg-range">{en?peak.valueEn:peak.valueDe}</strong>
+        <span class="eg-price" data-eg-price>
+          {origins.map(origin=><img
+            class="eg-currency-icon"
+            data-eg-currency={origin.id}
+            src={origin.currencyIcon}
+            alt={en?origin.currencyAltEn:origin.currencyAltDe}
+            width="56" height="36" loading="eager" decoding="async"
+            hidden={origin.id!==defaultOrigin}/>)}
+          <strong class="eg-range">{en?peak.valueEn:peak.valueDe}</strong>
+        </span>
       </div>
       <div class="eg-origin-columns">
         {origins.map(origin=><div class:list={["eg-origin-group",origin.id==="valley"?"eg-valley":"eg-wuling"]} data-origin={origin.id} hidden={origin.id!==defaultOrigin}>
@@ -91,6 +103,7 @@ const goodsFor=(peak:string,origin:string)=>elasticGoods.filter(good=>good.peak=
     const tabs=[...root.querySelectorAll<HTMLButtonElement>("[data-eg-region-tab]")];
     const panel=root.querySelector<HTMLElement>("[data-eg-region-panel]");
     const groups=[...root.querySelectorAll<HTMLElement>("[data-origin]")];
+    const currencyIcons=[...root.querySelectorAll<HTMLImageElement>("[data-eg-currency]")];
     if(!panel||!tabs.length)return;
     const select=(tab:HTMLButtonElement,focus=false)=>{
       const region=tab.dataset.egRegionTab;
@@ -101,6 +114,7 @@ const goodsFor=(peak:string,origin:string)=>elasticGoods.filter(good=>good.peak=
         button.tabIndex=selected?0:-1;
       });
       groups.forEach(group=>{group.hidden=group.dataset.origin!==region;});
+      currencyIcons.forEach(icon=>{icon.hidden=icon.dataset.egCurrency!==region;});
       panel.setAttribute("aria-labelledby",tab.id);
       if(focus)tab.focus();
     };
