@@ -16,8 +16,10 @@ test("Endfield nav has ten entries, excludes three former game-system links and 
 });
 test("Cheat Sheets has three migrated systems and retains three existing references in DE and EN",()=>{
  const page=read("src/components/pages/EndfieldCheatSheets.astro");
- for(const anchor of ["recruitment","essences","elasticgoods","bufffood"])
-   assert.ok(page.includes('id:"'+anchor+'"'),"missing anchor "+anchor);
+ for(const anchor of ["recruitment","essences","bufffood"])
+   assert.ok(page.includes('id:"'+anchor+'"'),"missing placeholder anchor "+anchor);
+ assert.match(page,/<ElasticGoodsPeaks lang=\{lang\}/);
+ assert.match(read("src/components/pages/ElasticGoodsPeaks.astro"),/id="elasticgoods"/);
  assert.match(page,/data-cheatsheets-group="systems"/);
  assert.match(page,/data-cheatsheets-group="references"/);
  assert.match(page,/Spielsysteme","Game systems"/);
@@ -28,8 +30,8 @@ test("Cheat Sheets has three migrated systems and retains three existing referen
  assert.match(ref,/id="artificing"/);
  assert.match(ref,/Veredelungs-Matrix/);
  assert.match(ref,/Artificing Matrix/);
- assert.match(page,/Die Veredelungs-Matrix ist verfügbar/);
- assert.match(page,/The refinement matrix is available/);
+ assert.match(page,/Die Veredelungs-Matrix und Elastic Goods – Price Peaks sind verfügbar/);
+ assert.match(page,/The refinement matrix and Elastic Goods – Price Peaks are available/);
  assert.match(page,/In Vorbereitung","Coming soon"/);
 });
 test("All six old DE and EN system routes redirect to canonical Cheat Sheet section anchors",()=>{
