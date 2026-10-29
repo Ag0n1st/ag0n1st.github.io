@@ -1,5 +1,6 @@
 import officialItems from "../../data/endfield/catalog/items.json";
 import v16Gear from "../../data/endfield/catalog/v16-gear.json";
+import packageCatalog from "../../data/endfield/catalog/packages.json";
 
 export interface EndfieldCatalogItem {
   id: string;
@@ -70,3 +71,33 @@ export function findOperatorCatalogItem(slug:string):EndfieldCatalogItem|undefin
   return [...items.values()].find(item=>
     item.categories.includes("Operators") && normalizedId(item.name)===slug);
 }
+
+
+/** Locally cached wiki.gg packages: distinct source IDs, never conflated with official SKPORT IDs. */
+export interface EndfieldPackageItem {
+  id:string;
+  nameDe:string;
+  nameEn:string;
+  region:"valley"|"wuling";
+  peak:"low"|"mid"|"high";
+  iconPath:string|null;
+  cacheStatus:string;
+  wikiTitle:string;
+  internalId:string|null;
+}
+const packageItems=new Map<string,EndfieldPackageItem>();
+for(const pkg of packageCatalog.items){
+  if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(pkg.id)||packageItems.has(pkg.id))throw Error("Invalid or duplicate Package ID: "+pkg.id);
+  if(pkg.iconPath&&!/^\/images\/endfield\/packages\/[a-z0-9-]+\.webp$/.test(pkg.iconPath))throw Error("Untrusted Package icon path: "+pkg.id);
+  packageItems.set(pkg.id,pkg as EndfieldPackageItem);
+}
+export function getEndfieldPackage(id:string):EndfieldPackageItem|undefined{
+  return packageItems.get(id);
+}
+export const endfieldPackageCatalogMeta={
+  category:packageCatalog.category,
+  parentCategory:packageCatalog.parentCategory,
+  provider:packageCatalog.source.provider,
+  items:packageItems.size,
+  cached:[...packageItems.values()].filter(x=>x.cacheStatus==="cached").length
+};
