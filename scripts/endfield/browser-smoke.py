@@ -1173,10 +1173,12 @@ def smoke_i18n(page, base_url, width):
         verify(("< 1.000" if lang=="de" else "< 1,000") in eg.locator(".eg-buy").inner_text() or
                "< 1.000" in eg.locator(".eg-buy").inner_text(),
                label+": "+lang+" buy-below-1000 guidance is visible")
-        verify(("Wichtig" if lang=="de" else "Important") in eg.locator(".eg-key-takeaway").inner_text() and
-               ("Wuling" in eg.inner_text()) and
-               (("Tal4" in eg.inner_text()) if lang=="de" else ("Valley-IV" in eg.inner_text())),
+        verify(("Wichtig" if lang=="de" else "Important") in eg.locator(".eg-key-takeaway").text_content() and
+               eg.locator('[data-origin="wuling"] h6').first.text_content().strip()=="Wuling" and
+               eg.locator('[data-origin="valley"] h6').first.text_content().strip()==("Tal4" if lang=="de" else "Valley-IV"),
                label+": "+lang+" low-peak selling advice and DE/EN region headers")
+        for icon in eg.locator(".eg-item img.eg-item-icon").all():
+            icon.scroll_into_view_if_needed()
         verify(eg.locator(".eg-item img.eg-item-icon").count()==25 and
                eg.locator(".eg-item img.eg-item-icon").evaluate_all("(imgs)=>imgs.every(im=>im.complete&&im.naturalWidth===128&&im.naturalHeight===128)") and
                eg.locator(".eg-legend").count()==0 and
