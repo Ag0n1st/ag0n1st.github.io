@@ -147,7 +147,7 @@ test("Regional currency icons are source-derived local transparent WebPs with ac
  assert.match(styles,/\.eg-currency-icon\[hidden\]\{display:none!important\}/);
  assert.match(styles,/\.eg-price\{display:inline-flex;align-items:center;justify-self:end;gap:6px/);
  assert.match(styles,/@media\(max-width:800px\).*?\.eg-price\{grid-column:2;justify-self:start\}/);
- assert.equal((feature.match(/<strong class="eg-range">/g)||[]).length,1);
+ assert.equal((feature.match(/<strong class="eg-range" data-eg-range/g)||[]).length,1);
  // No currencies inserted in TL;DR, per owner approval.
  assert.ok(feature.indexOf('data-eg-currency={origin.id}')>feature.indexOf('<div class="eg-peak-heading">'));
  assert.ok(feature.indexOf('data-eg-currency={origin.id}')>feature.indexOf('</div>\n\n  <div class="eg-region-tabs"'));
@@ -171,7 +171,7 @@ test("Peak tiers explicitly describe each good's attainable maximum, not a unive
  assert.match(feature,/Low ist bereits ihr eigener höchster Peak/);
  assert.match(feature,/Low is already their own highest peak/);
  assert.match(feature,/nicht ihren aktuellen Preis/);
- assert.match(feature,/not their current price/);
+ assert.match(feature,/not its current price/);
  assert.match(feature,/Nicht jede Ware kann 5\.500 erreichen/);
  assert.match(feature,/Not every good can reach 5,500/);
  assert.match(feature,/individuelle Peak der Ware/);
