@@ -1147,11 +1147,12 @@ def smoke_i18n(page, base_url, width):
                page.locator("#artificing").count()==1 and
                page.locator(".endfield-coming-card").count()==3 and
                all(page.locator("#"+x).count()==1 for x in ("recruitment","refinement","essences","elasticgoods","artificing","bufffood")) and
-               page.locator('[data-cheatsheets-group="systems"] .endfield-coming-card').count()==2 and
-               page.locator('[data-cheatsheets-group="references"] .endfield-coming-card').count()==1,
-               label+": "+lang+" refinement is first card; Elastic Goods is live, other systems remain placeholders")
-        verify(("Spielsysteme" if lang=="de" else "Game systems") in page.locator("#cheatsheets-systems-heading").inner_text() and
-               ("Referenzen" if lang=="de" else "References") in page.locator("#cheatsheets-reference-heading").inner_text() and
+               page.locator(".endfield-cheatsheets-upcoming .endfield-coming-card").count()==3 and
+               page.locator("[data-cheatsheets-group]").count()==0 and
+               page.locator("#elasticgoods").evaluate("(el)=>el.compareDocumentPosition(document.querySelector('#refinement')) & Node.DOCUMENT_POSITION_FOLLOWING")!=0,
+               label+": "+lang+" Elastic Goods comes first, Refinement second, then three ungrouped placeholders")
+        verify(page.locator("#cheatsheets-systems-heading").count()==0 and
+               page.locator("#cheatsheets-reference-heading").count()==0 and
                page.locator("#refinement-panel-primary:not([hidden]) .refinement-attribute-card").count()==4 and
                page.locator("#refinement-panel-primary:not([hidden]) .refinement-mini-card").count()==12 and
                page.locator("#refinement-panel-primary:not([hidden]) .refinement-good-match").count()>0 and
@@ -1173,14 +1174,25 @@ def smoke_i18n(page, base_url, width):
         verify(("< 1.000" if lang=="de" else "< 1,000") in eg.locator(".eg-buy").inner_text() or
                "< 1.000" in eg.locator(".eg-buy").inner_text(),
                label+": "+lang+" buy-below-1000 guidance is visible")
+        tabs=eg.locator('[data-eg-region-tab]')
+        wuling=eg.locator('[data-eg-region-tab="wuling"]')
+        valley=eg.locator('[data-eg-region-tab="valley"]')
         verify(("Wichtig" if lang=="de" else "Important") in eg.locator(".eg-key-takeaway").text_content() and
-               eg.locator('[data-origin="wuling"] h6').first.text_content().strip()=="Wuling" and
-               eg.locator('[data-origin="valley"] h6').first.text_content().strip()==("Tal4" if lang=="de" else "Valley-IV"),
-               label+": "+lang+" low-peak selling advice and DE/EN region headers")
-        for icon in eg.locator(".eg-item img.eg-item-icon").all():
+               tabs.count()==2 and wuling.get_attribute("aria-selected")=="true" and
+               valley.get_attribute("aria-selected")=="false" and
+               wuling.inner_text().strip()=="Wuling" and
+               valley.inner_text().strip()==("Tal IV" if lang=="de" else "Valley IV") and
+               eg.locator('[data-origin="wuling"]:visible').count()==3 and
+               eg.locator('[data-origin="valley"]:visible').count()==0 and
+               eg.locator('.eg-item:visible').count()==13 and
+               eg.locator(".eg-tips").get_attribute("open") is None and
+               eg.locator(".eg-region-panel").count()==0 and
+               eg.locator('[data-eg-region-panel]').get_attribute("aria-labelledby")=="eg-region-tab-wuling",
+               label+": "+lang+" Wuling preselected and future-ready region selector shows only its 13 items")
+        for icon in eg.locator('[data-origin="wuling"] img.eg-item-icon').all():
             icon.scroll_into_view_if_needed()
-        verify(eg.locator(".eg-item img.eg-item-icon").count()==25 and
-               eg.locator(".eg-item img.eg-item-icon").evaluate_all("(imgs)=>imgs.every(im=>im.complete&&im.naturalWidth===128&&im.naturalHeight===128)") and
+        verify(eg.locator('[data-origin="wuling"] img.eg-item-icon').evaluate_all("(imgs)=>imgs.every(im=>im.complete&&im.naturalWidth===128&&im.naturalHeight===128)") and
+               eg.locator(".eg-item img.eg-item-icon").count()==25 and
                eg.locator(".eg-legend").count()==0 and
                eg.locator(".eg-source").count()==0 and
                eg.locator(".eg-item-icon-pending").count()==0 and
@@ -1193,12 +1205,46 @@ def smoke_i18n(page, base_url, width):
                   eg.locator(".eg-trade-step strong").first.evaluate("(el)=>getComputedStyle(el).fontSize") and
                eg.locator(".eg-peak-low").evaluate("(el)=>getComputedStyle(el).getPropertyValue('--eg-peak-accent').trim()")=="#efa251",
                label+": "+lang+" approved price bands, enlarged ranges and orange Low Peak")
+        visible_grid=eg.locator('[data-peak="mid"] [data-origin="wuling"] .eg-item-grid')
+        verify(visible_grid.evaluate("(el)=>getComputedStyle(el).gridTemplateColumns.split(' ').length")==(5 if page.evaluate("innerWidth")>960 else (4 if page.evaluate("innerWidth")>680 else 2)),
+               label+": "+lang+" active goods fill five desktop columns or two mobile columns")
+        verify(eg.locator(".eg-tips:not([open])").count()==1 and
+               eg.locator(".eg-region-tab[aria-selected='true']").count()==1 and
+               eg.locator('[data-origin="valley"] img.eg-item-icon').count()==12,
+               label+": "+lang+" optional tips and all 12 Valley IV assets are preserved")
+        valley.click()
+        verify(valley.get_attribute("aria-selected")=="true" and wuling.get_attribute("aria-selected")=="false" and
+               eg.locator('[data-origin="wuling"]:visible').count()==0 and
+               eg.locator('[data-origin="valley"]:visible').count()==3 and
+               eg.locator(".eg-item:visible").count()==12 and
+               eg.locator('[data-eg-region-panel]').get_attribute("aria-labelledby")=="eg-region-tab-valley",
+               label+": "+lang+" Valley IV tab shows all 12 correct assets, hides Wuling")
+        for icon in eg.locator('[data-origin="valley"] img.eg-item-icon').all():
+            icon.scroll_into_view_if_needed()
+        verify(eg.locator('[data-origin="valley"] img.eg-item-icon').evaluate_all("(imgs)=>imgs.every(im=>im.complete&&im.naturalWidth===128&&im.naturalHeight===128)"),
+               label+": "+lang+" Valley IV pictures finish loading on demand")
+        valley.focus()
+        valley.press("ArrowLeft")
+        verify(wuling.get_attribute("aria-selected")=="true" and
+               wuling.evaluate("(el)=>document.activeElement===el") and
+               eg.locator(".eg-item:visible").count()==13,
+               label+": "+lang+" Left Arrow selects Wuling and restores tab focus")
+        wuling.press("End")
+        verify(valley.get_attribute("aria-selected")=="true" and
+               valley.evaluate("(el)=>document.activeElement===el"),
+               label+": "+lang+" End selects last region with accessible keyboard controls")
+        valley.press("Home")
+        verify(wuling.get_attribute("aria-selected")=="true" and eg.locator(".eg-item:visible").count()==13,
+               label+": "+lang+" Home restores first region Wuling")
+        eg.locator(".eg-tips summary").click()
+        verify(eg.locator(".eg-tips").get_attribute("open") is not None,
+               label+": "+lang+" educational extra tips can expand on demand")
         verify(("Ankhor-Küchenzubehör" if lang=="de" else "Ankhorilling Kitchenware") in
-               eg.locator('[data-elastic-good="kitchenware"]').inner_text() and
+               eg.locator('[data-elastic-good="kitchenware"]').text_content() and
                ("Aero-Empfänger" if lang=="de" else "Aerial Receptionists") in
-               eg.locator('[data-elastic-good="aero-receiver"]').inner_text() and
+               eg.locator('[data-elastic-good="aero-receiver"]').text_content() and
                ("Chubby-Lung-Wetterbalon" if lang=="de" else "Chubby Lung Blimp") in
-               eg.locator('[data-elastic-good="chubby-lung-balloon"]').inner_text(),
+               eg.locator('[data-elastic-good="chubby-lung-balloon"]').text_content(),
                label+": "+lang+" operator-approved item names are rendered")
         page.locator('[data-refinement-tab="damage"]').click()
         verify(page.locator('#refinement-panel-damage:visible .refinement-attribute-card').count()==9 and

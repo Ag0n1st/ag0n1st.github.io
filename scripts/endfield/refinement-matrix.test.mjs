@@ -169,7 +169,8 @@ test("Cheat Sheets start with the full bilingual matrix, retain old links, no cl
  const matrix=read("src/components/pages/RefinementMatrix.astro");
  const css=read("src/styles/endfield-refinement.css");
  const nav=read("src/components/EndfieldNav.astro");
- assert.ok(component.indexOf("<RefinementMatrix lang={lang}")<component.indexOf('data-cheatsheets-group="systems"'));
+ assert.ok(component.indexOf("<ElasticGoodsPeaks lang={lang}")<component.indexOf("<RefinementMatrix lang={lang}"));
+ assert.ok(component.indexOf("<RefinementMatrix lang={lang}")<component.indexOf('class="endfield-coming-cards endfield-cheatsheets-upcoming"'));
  assert.match(matrix,/id="refinement"/);
  assert.match(matrix,/id="artificing"/);
  assert.match(matrix,/ItemIcon id=\{cell.best.id\} lang=\{lang\}/);
