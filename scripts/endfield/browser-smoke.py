@@ -1209,6 +1209,22 @@ def smoke_i18n(page, base_url, width):
                all(eg.locator('[data-peak="'+peak+'"] [data-eg-currency="wuling"]:visible').count()==1
                    for peak in ("low","mid","high")),
                label+": "+lang+" all three peak ranges show the correct local Wuling currency symbol")
+        verify(("Höchster Peak dieser Waren" if lang=="de" else "These goods peak at") in eg.locator('[data-peak="low"] .eg-peak-heading p').inner_text() and
+               ("keinen Mid- oder High-Peak" if lang=="de" else "cannot reach a Mid or High Peak") in eg.locator('[data-peak="low"] .eg-peak-heading p').inner_text() and
+               ("Low- oder Mid-Peaks" if lang=="de" else "Low or Mid Peaks") in eg.locator('[data-peak="high"] .eg-peak-heading p').inner_text() and
+               ("nicht ihren aktuellen Preis" if lang=="de" else "not their current price") in eg.locator(".eg-peaks-note").inner_text(),
+               label+": "+lang+" peak tiers explain maximum attainable values and lower interim peaks")
+        currency_width=eg.locator('[data-eg-currency="wuling"]:visible').first.evaluate("(el)=>el.getBoundingClientRect().width")
+        verify(abs(currency_width-(64 if page.evaluate("innerWidth")>1185 else 46))<1.1 and
+               eg.locator(".eg-price").first.evaluate("(el)=>el.scrollWidth<=el.clientWidth+1"),
+               label+": "+lang+" currency symbol is at least twice its former size without price overlap")
+        styles=eg.locator(".eg-region-tab").evaluate_all(
+          "(tabs)=>tabs.map(el=>({id:el.dataset.egRegionTab,selected:el.getAttribute('aria-selected'),color:getComputedStyle(el).backgroundColor}))")
+        verify(len(styles)==2 and
+               styles[0]["color"]!=styles[1]["color"] and
+               styles[0]["color"]!="rgb(27, 28, 39)" and
+               styles[1]["color"]!="rgb(27, 28, 39)",
+               label+": "+lang+" Wuling and Valley IV tabs have distinct origin-colored backgrounds")
         verify(eg.locator('[data-peak="low"] .eg-range').inner_text()==("4.600–4.800" if lang=="de" else "4,600–4,800") and
                eg.locator('[data-peak="mid"] .eg-range').inner_text()==("4.800–5.100" if lang=="de" else "4,800–5,100") and
                eg.locator('[data-peak="high"] .eg-range').inner_text()==("5.100–5.500" if lang=="de" else "5,100–5,500") and
@@ -1224,6 +1240,11 @@ def smoke_i18n(page, base_url, width):
                eg.locator('[data-origin="valley"] img.eg-item-icon').count()==12,
                label+": "+lang+" optional tips and all 12 Valley IV assets are preserved")
         valley.click()
+        verify(eg.locator('[data-eg-region-tab="valley"]').evaluate(
+                    "(el)=>getComputedStyle(el).backgroundColor")!=
+               eg.locator('[data-eg-region-tab="wuling"]').evaluate(
+                    "(el)=>getComputedStyle(el).backgroundColor"),
+               label+": "+lang+" selected Valley IV has a distinct lime-colored tab background")
         verify(eg.locator('[data-eg-currency="valley"]:visible').count()==3 and
                eg.locator('[data-eg-currency="wuling"]:visible').count()==0 and
                eg.locator('[data-eg-currency="valley"]:visible').evaluate_all(
