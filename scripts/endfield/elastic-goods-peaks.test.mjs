@@ -174,7 +174,7 @@ test("Peak tiers explicitly describe each good's attainable maximum, not a unive
  assert.match(feature,/not their current price/);
  assert.match(feature,/Nicht jede Ware kann 5\.500 erreichen/);
  assert.match(feature,/Not every good can reach 5,500/);
- assert.match(feature,/individuellen Peak der Ware/);
+ assert.match(feature,/individuelle Peak der Ware/);
 });
 
 test("Wuling/Valley tabs are origin-tinted when inactive and stronger when selected, with doubled currency icons",()=>{
