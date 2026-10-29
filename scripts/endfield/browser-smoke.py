@@ -1212,7 +1212,7 @@ def smoke_i18n(page, base_url, width):
         verify(("Höchster Peak dieser Waren" if lang=="de" else "These goods peak at") in eg.locator('[data-peak="low"] .eg-peak-heading p').inner_text() and
                ("keinen Mid- oder High-Peak" if lang=="de" else "cannot reach a Mid or High Peak") in eg.locator('[data-peak="low"] .eg-peak-heading p').inner_text() and
                ("Low- oder Mid-Peaks" if lang=="de" else "Low or Mid Peaks") in eg.locator('[data-peak="high"] .eg-peak-heading p').inner_text() and
-               ("nicht ihren aktuellen Preis" if lang=="de" else "not their current price") in eg.locator(".eg-peaks-note").inner_text() and
+               ("nicht ihren aktuellen Preis" if lang=="de" else "not its current price") in eg.locator(".eg-peaks-note").inner_text() and
                ("Beobachtungen der Community" if lang=="de" else "community observations") in eg.locator(".eg-peaks-note").inner_text(),
                label+": "+lang+" peak tiers explain maximum attainable values and lower interim peaks")
         currency_width=eg.locator('[data-eg-currency="wuling"]:visible').first.evaluate("(el)=>el.getBoundingClientRect().width")
