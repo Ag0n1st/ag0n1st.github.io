@@ -18,6 +18,7 @@ const peakValue=(peak:typeof elasticPeakRanges[number],origin:string)=>{
 ---
 <section id="elasticgoods" class="op-cardlet eg-feature" aria-labelledby="eg-title" data-elastic-goods>
   <div class="eg-heading">
+    <img class="eg-stock-redistribution-art" src="/images/endfield/cheatsheets/stock-redistribution.webp" alt="" aria-hidden="true" width="118" height="118" decoding="async"/>
     <span class="section-kicker">ELASTIC GOODS · PRICE PEAKS</span>
     <h3 id="eg-title">{l("Elastische Waren - Preis Peaks","Elastic Goods – Price Peaks")}</h3>
     <p>{l("Wann kaufen, wann verkaufen? Die drei Kategorien ordnen Waren danach ein, wie hoch ihr höchster Preis-Peak ausfallen kann.","When should you buy or sell? The three categories group goods by how high their own maximum price peak can reach.")}</p>
@@ -53,7 +54,7 @@ const peakValue=(peak:typeof elasticPeakRanges[number],origin:string)=>{
       aria-controls="eg-region-panel"
       tabindex={index===0?0:-1}>{en?origin.labelEn:origin.labelDe}</button>)}
   </div>
-  <p class="eg-peaks-note">{l("Die Preisbereiche basieren auf Beobachtungen der Community und zeigen den höchsten Peak der jeweiligen Waren, nicht ihren aktuellen Preis. Bei Mid- und High-Peak-Waren sind niedrigere Zwischenpeaks möglich.","The price ranges are based on community observations and show each good’s highest peak, not its current price. Mid and High Peak goods can also have lower interim peaks.")}</p>
+  <p class="eg-peaks-note">{l("Die Preisbereiche basieren auf Beobachtungen der Community und zeigen den höchsten Peak der jeweiligen Waren.","The price ranges are based on community observations and show the highest peak of each good.")}</p>
   <div id="eg-region-panel" role="tabpanel" aria-labelledby={`eg-region-tab-${defaultOrigin}`} data-eg-region-panel tabindex="0">
   <div class="eg-peaks">
     {elasticPeakRanges.map((peak,index)=><section class:list={["eg-peak",`eg-peak-${peak.id}`]} aria-labelledby={`eg-peak-${peak.id}-title`} data-peak={peak.id}>
