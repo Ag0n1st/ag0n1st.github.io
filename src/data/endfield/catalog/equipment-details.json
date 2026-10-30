@@ -13,8 +13,8 @@
     "errors": 0,
     "weaponCount": 84,
     "gearCount": 276,
-    "standardRecipesVerified": 261,
-    "recipeNeedsReview": 15,
+    "standardRecipesVerified": 276,
+    "recipeNeedsReview": 0,
     "recipesNotListed": 0
   },
   "weapons": [
@@ -79049,11 +79049,25 @@
         }
       ],
       "setEffect": "3-piece set effect: Wearer's ATK +15%.\n\nWhen any operator in the team casts a battle skill, the wearer gains 1 stack of Yinglung's Edge that gives DMG +20% to the wearer's next combo skill. Yinglung's Edge can stack 3 time(s).",
-      "standardRecipe": null,
-      "recipeStatus": "needs-review",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "602",
+            "count": 360
+          },
+          {
+            "id": "1067",
+            "count": 50
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "recipeVerifiedAt": "2026-10-30"
     },
     {
       "id": "1381",
@@ -79179,11 +79193,25 @@
         }
       ],
       "setEffect": "3-piece set effect: Wearer's ATK +15%.\n\nWhen any operator in the team casts a battle skill, the wearer gains 1 stack of Yinglung's Edge that gives DMG +20% to the wearer's next combo skill. Yinglung's Edge can stack 3 time(s).",
-      "standardRecipe": null,
-      "recipeStatus": "needs-review",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "602",
+            "count": 360
+          },
+          {
+            "id": "1067",
+            "count": 50
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "recipeVerifiedAt": "2026-10-30"
     },
     {
       "id": "1382",
@@ -79309,11 +79337,25 @@
         }
       ],
       "setEffect": "3-piece set effect: Wearer's ATK +15%.\n\nWhen any operator in the team casts a battle skill, the wearer gains 1 stack of Yinglung's Edge that gives DMG +20% to the wearer's next combo skill. Yinglung's Edge can stack 3 time(s).",
-      "standardRecipe": null,
-      "recipeStatus": "needs-review",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "602",
+            "count": 360
+          },
+          {
+            "id": "1067",
+            "count": 50
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "recipeVerifiedAt": "2026-10-30"
     },
     {
       "id": "1383",
@@ -79422,12 +79464,26 @@
         }
       ],
       "setEffect": "No Set Effects",
-      "standardRecipe": null,
-      "recipeStatus": "needs-review",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "602",
+            "count": 360
+          },
+          {
+            "id": "1067",
+            "count": 50
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
       "acquisitionNotes": [
         "*1",
         "Exchange"
-      ]
+      ],
+      "recipeVerifiedAt": "2026-10-30"
     },
     {
       "id": "1384",
@@ -79536,12 +79592,26 @@
         }
       ],
       "setEffect": "No Set Effects",
-      "standardRecipe": null,
-      "recipeStatus": "needs-review",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "602",
+            "count": 360
+          },
+          {
+            "id": "1067",
+            "count": 50
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
       "acquisitionNotes": [
         "*1",
         "Exchange"
-      ]
+      ],
+      "recipeVerifiedAt": "2026-10-30"
     },
     {
       "id": "1385",
@@ -79650,12 +79720,26 @@
         }
       ],
       "setEffect": "No Set Effects",
-      "standardRecipe": null,
-      "recipeStatus": "needs-review",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "602",
+            "count": 360
+          },
+          {
+            "id": "1067",
+            "count": 50
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
       "acquisitionNotes": [
         "*1",
         "Exchange"
-      ]
+      ],
+      "recipeVerifiedAt": "2026-10-30"
     },
     {
       "id": "1386",
@@ -79764,12 +79848,26 @@
         }
       ],
       "setEffect": "No Set Effects",
-      "standardRecipe": null,
-      "recipeStatus": "needs-review",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "602",
+            "count": 360
+          },
+          {
+            "id": "1067",
+            "count": 50
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
       "acquisitionNotes": [
         "*1",
         "Exchange"
-      ]
+      ],
+      "recipeVerifiedAt": "2026-10-30"
     },
     {
       "id": "1387",
@@ -79878,12 +79976,26 @@
         }
       ],
       "setEffect": "No Set Effects",
-      "standardRecipe": null,
-      "recipeStatus": "needs-review",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "602",
+            "count": 360
+          },
+          {
+            "id": "1067",
+            "count": 50
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
       "acquisitionNotes": [
         "*1",
         "Exchange"
-      ]
+      ],
+      "recipeVerifiedAt": "2026-10-30"
     },
     {
       "id": "1388",
@@ -80009,11 +80121,25 @@
         }
       ],
       "setEffect": "3-piece set effect: Wearer's Arts Intensity +30.\n\nAfter the wearer applies Electrification, the wearer gains Electric DMG +50% for 10s. After the wearer applies Solidification, the wearer gains Cryo DMG +50% for 10s. The aforementioned effects cannot stack.",
-      "standardRecipe": null,
-      "recipeStatus": "needs-review",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "602",
+            "count": 360
+          },
+          {
+            "id": "1067",
+            "count": 50
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "recipeVerifiedAt": "2026-10-30"
     },
     {
       "id": "1389",
@@ -80156,7 +80282,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "recipeVerifiedAt": "2026-10-30"
     },
     {
       "id": "1390",
@@ -80282,11 +80409,25 @@
         }
       ],
       "setEffect": "3-piece set effect: Wearer's Arts Intensity +30.\n\nAfter the wearer applies Electrification, the wearer gains Electric DMG +50% for 10s. After the wearer applies Solidification, the wearer gains Cryo DMG +50% for 10s. The aforementioned effects cannot stack.",
-      "standardRecipe": null,
-      "recipeStatus": "needs-review",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "602",
+            "count": 360
+          },
+          {
+            "id": "1067",
+            "count": 50
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "recipeVerifiedAt": "2026-10-30"
     },
     {
       "id": "1391",
@@ -80429,7 +80570,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "recipeVerifiedAt": "2026-10-30"
     },
     {
       "id": "1392",
@@ -80555,11 +80697,25 @@
         }
       ],
       "setEffect": "3-piece set effect: Wearer's HP +1000.\n\nAfter the wearer applies Amp, Protection, Susceptibility, or Weakness, other teammates gain DMG Dealt +16% for 15s. This effect cannot stack.",
-      "standardRecipe": null,
-      "recipeStatus": "needs-review",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "602",
+            "count": 360
+          },
+          {
+            "id": "1067",
+            "count": 50
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "recipeVerifiedAt": "2026-10-30"
     },
     {
       "id": "1393",
@@ -80702,7 +80858,8 @@
       "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "recipeVerifiedAt": "2026-10-30"
     },
     {
       "id": "1394",
@@ -80828,11 +80985,25 @@
         }
       ],
       "setEffect": "3-piece set effect: Wearer's HP +1000.\n\nAfter the wearer applies Amp, Protection, Susceptibility, or Weakness, other teammates gain DMG Dealt +16% for 15s. This effect cannot stack.",
-      "standardRecipe": null,
-      "recipeStatus": "needs-review",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "602",
+            "count": 360
+          },
+          {
+            "id": "1067",
+            "count": 50
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
       "acquisitionNotes": [
         "Gear Template Crate"
-      ]
+      ],
+      "recipeVerifiedAt": "2026-10-30"
     },
     {
       "id": "1395",
@@ -80958,12 +81129,26 @@
         }
       ],
       "setEffect": "3-piece set effect: Wearer gains DMG Dealt +20% for all types of DMG, 10% DMG Reduction against all types of DMG, and Ultimate Gain Efficiency +10%.",
-      "standardRecipe": null,
-      "recipeStatus": "needs-review",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "602",
+            "count": 3000
+          },
+          {
+            "id": "528",
+            "count": 20
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
       "acquisitionNotes": [
         "[Sanctuary of Ink] Version Update",
         "Game progress reaches the [Wuling] region"
-      ]
+      ],
+      "recipeVerifiedAt": "2026-10-30"
     },
     {
       "id": "1396",
@@ -81089,12 +81274,26 @@
         }
       ],
       "setEffect": "3-piece set effect: Wearer gains DMG Dealt +20% for all types of DMG, 10% DMG Reduction against all types of DMG, and Ultimate Gain Efficiency +10%.",
-      "standardRecipe": null,
-      "recipeStatus": "needs-review",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "602",
+            "count": 3000
+          },
+          {
+            "id": "528",
+            "count": 20
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
       "acquisitionNotes": [
         "[Sanctuary of Ink] Version Update",
         "Game progress reaches the [Wuling] region"
-      ]
+      ],
+      "recipeVerifiedAt": "2026-10-30"
     },
     {
       "id": "1397",
@@ -81220,12 +81419,26 @@
         }
       ],
       "setEffect": "3-piece set effect: Wearer gains DMG Dealt +20% for all types of DMG, 10% DMG Reduction against all types of DMG, and Ultimate Gain Efficiency +10%.",
-      "standardRecipe": null,
-      "recipeStatus": "needs-review",
+      "standardRecipe": {
+        "id": "official-standard",
+        "materials": [
+          {
+            "id": "602",
+            "count": 3000
+          },
+          {
+            "id": "528",
+            "count": 20
+          }
+        ],
+        "source": "SKPORT Wiki / Source"
+      },
+      "recipeStatus": "verified",
       "acquisitionNotes": [
         "[Sanctuary of Ink] Version Update",
         "Game progress reaches the [Wuling] region"
-      ]
+      ],
+      "recipeVerifiedAt": "2026-10-30"
     }
   ],
   "review": [
