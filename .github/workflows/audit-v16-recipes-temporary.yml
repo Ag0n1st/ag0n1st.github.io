@@ -1,0 +1,21 @@
+name: Temporary SKPORT v1.6 public recipe audit
+on:
+  push:
+    branches: [audit/v16-recipe-reconciliation-20261030]
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install temporary Chromium
+        run: |
+          python -m pip install --disable-pip-version-check playwright==1.56.0
+          python -m playwright install --with-deps chromium
+      - name: Audit 18 public SKPORT Source panels without mutations
+        run: python scripts/endfield/audit-v16-public-recipes.py
