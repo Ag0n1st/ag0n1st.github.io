@@ -10,7 +10,7 @@ const official=load(root+"items.json");
 const known=new Set(official.items.map(item=>String(item.id)));
 const ids=Array.from({length:18},(_,i)=>String(1380+i));
 if(evidence.provider!=="SKPORT Wiki"||evidence.schemaVersion!==1||
-   !/^20\\d{2}-\\d{2}-\\d{2}$/.test(evidence.snapshot) ||
+   !new RegExp("^20[0-9]{2}-[0-9]{2}-[0-9]{2}$").test(evidence.snapshot) ||
    evidence.recipes?.length!==18||report.entries?.length!==18 ||
    details.gear?.length!==276)throw Error("Unexpected official baseline");
 const recipeMap=new Map(evidence.recipes.map(row=>[String(row.id),row]));
