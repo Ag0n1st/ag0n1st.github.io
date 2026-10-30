@@ -39,11 +39,6 @@ function gearEffect(doc){
     .filter(x=>x.kind==="text").map(x=>str(x.text)).filter(Boolean).join("\n\n")||null;
 }
 /**
- * Find official default crafting materials in the rendered Source widget text.
- * This is intentionally conservative: invalid names/quantities remain unavailable.
- */
-
-/**
  * Official Source widgets embed numeric material IDs and quantities directly.
  * Read that data before falling back to rendered text; linked item names may
  * appear late or be absent in the browser's innerText.
@@ -72,6 +67,7 @@ export function structuredStandardRecipe(doc,catalog){
   return {id:"official-standard",materials,source:"SKPORT Wiki / Source"};
 }
 
+/** Strict legacy fallback for rendered Source text with verified material names. */
 export function standardRecipe(sourcePanel,catalog){
   const lines=str(sourcePanel).split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
   const at=lines.indexOf("Each gear piece costs");
