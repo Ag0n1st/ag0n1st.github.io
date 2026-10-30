@@ -12,6 +12,7 @@ if(root){
  const tabs=[...root.querySelectorAll("[data-roulette-role]")];
  const wheel=root.querySelector("[data-roulette-wheel]");
  const spinButton=root.querySelector("[data-roulette-spin]");
+ const hubButton=root.querySelector("[data-roulette-hub]");
  const resetButton=root.querySelector("[data-roulette-reset]");
  const availableLabel=root.querySelector("[data-roulette-available]");
  const status=root.querySelector("[data-roulette-status]");
@@ -60,6 +61,7 @@ if(root){
    tab.querySelector("[data-roulette-count]").textContent=String(remainingOperators(pools,role,team).length);
   });
   spinButton.disabled=spinning||team.length>=ROULETTE_TEAM_SIZE||wheelItems().length===0;
+  hubButton.disabled=spinButton.disabled;
   resetButton.disabled=spinning||team.length===0;
   availableLabel.textContent=l("Im Rad: ","On wheel: ")+wheelItems().length;
   root.querySelector("[data-roulette-wheel-panel]").setAttribute("aria-labelledby","or-tab-"+category);
@@ -67,8 +69,10 @@ if(root){
  function renderWheel(){
   const items=wheelItems(),n=items.length;
   wheel.replaceChildren();
-  wheel.style.transition="none";wheel.style.transform="rotate(0deg)";
-  rotation=0;
+  // Preserve the stopped angle across category changes; only a new team resets it.
+  wheel.style.transition="none";
+  wheel.style.transform="rotate("+rotation+"deg)";
+  delete wheel.dataset.result;
   const colors=["#31566a","#65304e","#304353","#663956"];
   wheel.style.background=n
    ? "conic-gradient("+items.map((_,i)=>{
@@ -88,9 +92,6 @@ if(root){
    sector.append(img(op,"or-wheel-icon"));
    wheel.append(sector);
   });
-  const hub=document.createElement("span");hub.className="or-wheel-hub";
-  hub.setAttribute("aria-hidden","true");hub.textContent="AG";
-  wheel.append(hub);
   setControls();
  }
  function activate(role,focus=false){
@@ -119,17 +120,28 @@ if(root){
   if(spinning||team.length===ROULETTE_TEAM_SIZE)return;
   const pool=wheelItems();
   if(!pool.length){setControls();return;}
+  // The previous winner remains displayed until the next deliberate spin.
+  // Only now remove drawn operators from the physical wheel.
+  if(wheel.dataset.result)renderWheel();
   const index=randomIndex(pool.length),selected=pool[index];
   spinning=true;setControls();
   message(l("Das Roulette dreht sich …","Spinning the wheel …"));
-  const duration=reduced.matches?70:4600;
-  const target=winnerRotation(rotation,index,pool.length,5+randomIndex(3));
+  // Four deliberate revolutions over fourteen seconds: a visible, slow deceleration.
+  // Only visitors requesting reduced motion receive a short animation.
+  const duration=reduced.matches?350:14000;
+  const target=winnerRotation(rotation,index,pool.length,4);
   const complete=()=>{
    if(!spinning)return;
    spinning=false;
    rotation=target;
+   // Keep the complete wheel and its exact final angle. Do not rebuild here:
+   // otherwise the selected portrait vanishes under the pointer immediately.
+   wheel.dataset.result=selected.id;
+   wheel.querySelectorAll(".or-wheel-segment").forEach(segment=>{
+    segment.classList.toggle("is-winner",segment.dataset.operator===selected.id);
+   });
    team.push({...selected,drawCategory:category});
-   renderTeam();renderWheel();
+   renderTeam();setControls();
    message(team.length===ROULETTE_TEAM_SIZE
     ?l("Team komplett: "+team.map(x=>x.name).join(", ")+"!","Team complete: "+team.map(x=>x.name).join(", ")+"!")
     :l(selected.name+" ist im Team! Du kannst nun die Kategorie wechseln.",
@@ -144,15 +156,16 @@ if(root){
   wheel.addEventListener("transitionend",done);
   // Double frame ensures the conic wheel's initial transform has a layout frame.
   window.requestAnimationFrame(()=>window.requestAnimationFrame(()=>{
-   wheel.style.transition="transform "+duration+"ms cubic-bezier(.12,.79,.16,1)";
+   wheel.style.transition="transform "+duration+"ms cubic-bezier(.28,.13,.14,1)";
    rotation=target;wheel.style.transform="rotate("+target+"deg)";
   }));
   fallback=window.setTimeout(()=>{wheel.removeEventListener("transitionend",done);complete();},duration+900);
  }
  spinButton.addEventListener("click",spin);
+ hubButton.addEventListener("click",spin);
  resetButton.addEventListener("click",()=>{
   if(spinning)return;
-  team=[];category="all";renderTeam();renderWheel();
+  team=[];category="all";rotation=0;renderTeam();renderWheel();
   message(l("Neues Team gestartet. Wähle deine Kategorie und drehe!","New team started. Choose a category and spin!"));
  });
  renderTeam();renderWheel();

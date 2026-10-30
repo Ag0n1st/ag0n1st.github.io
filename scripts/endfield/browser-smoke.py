@@ -1442,18 +1442,73 @@ def smoke_i18n(page, base_url, width):
         verify([roulette.locator('[data-roulette-role="'+role+'"] [data-roulette-count]').inner_text()
                  for role in ("damage-dealer","enabler","buffer")]==["12","16","11"],
                label+": "+lang+" exact community roles with Si and Purrchena")
+        hub=roulette.locator("[data-roulette-hub]")
+        wheel=roulette.locator("[data-roulette-wheel]")
+        verify(hub.count()==1 and hub.get_attribute("type")=="button" and
+               hub.locator('img[src="/images/ag0n1st-logo.svg"]').count()==1 and
+               hub.is_enabled() and
+               ("drehen" if lang=="de" else "Spin") in hub.get_attribute("aria-label"),
+               label+": "+lang+" existing Ag0n1st logo is accessible central spin button")
+
+        if width==1440 and lang=="de":
+            # Test real full-duration animation, not just the reduced-motion
+            # 350 ms fast path used by the normal 4 x 2 locale smoke suite.
+            page.emulate_media(reduced_motion="no-preference")
+            initial=wheel.evaluate("(el)=>getComputedStyle(el).transform")
+            hub.click()
+            verify(hub.is_disabled() and roulette.locator("[data-roulette-spin]").is_disabled() and
+                   roulette.locator("[data-roulette-progress]").inner_text().strip()=="0 / 4",
+                   label+": "+lang+" logo click starts spin and disables both triggers")
+            page.wait_for_timeout(1100)
+            motion=wheel.evaluate("(el)=>({transform:getComputedStyle(el).transform,duration:getComputedStyle(el).transitionDuration})")
+            verify(motion["duration"]=="14s" and motion["transform"]!=initial and
+                   roulette.locator("[data-roulette-progress]").inner_text().strip()=="0 / 4",
+                   label+": "+lang+" roulette visibly rotates and still has no winner mid-14s animation")
+            page.wait_for_function(
+               "()=>document.querySelector('[data-roulette-progress]').textContent.trim()==='1 / 4'",
+               timeout=16500)
+            result=wheel.get_attribute("data-result")
+            rotation_after=wheel.evaluate("(el)=>el.style.transform")
+            pointer_alignment=wheel.evaluate("""el=>{
+              const win=el.querySelector('.or-wheel-segment.is-winner .or-wheel-icon');
+              if(!win)return null;
+              const wheel=el.getBoundingClientRect(),icon=win.getBoundingClientRect();
+              return {dx:Math.abs(icon.x+icon.width/2-(wheel.x+wheel.width/2)),
+                      y:icon.y+icon.height/2,wheelCentreY:wheel.y+wheel.height/2};
+            }""")
+            verify(bool(result) and wheel.locator('.or-wheel-segment.is-winner[data-operator="'+result+'"]').count()==1 and
+                   wheel.locator(".or-wheel-segment").count()==33 and
+                   pointer_alignment and pointer_alignment["dx"]<4 and
+                   pointer_alignment["y"]<pointer_alignment["wheelCentreY"],
+                   label+": "+lang+" winning portrait remains on physical wheel precisely below top marker")
+            page.wait_for_timeout(550)
+            verify(wheel.get_attribute("data-result")==result and
+                   wheel.evaluate("(el)=>el.style.transform")==rotation_after and
+                   hub.is_enabled(),
+                   label+": "+lang+" winning wheel angle stays frozen instead of snapping to zero")
+            roulette.locator("[data-roulette-reset]").click()
+            verify(wheel.get_attribute("data-result") is None and
+                   roulette.locator("[data-roulette-progress]").inner_text().strip()=="0 / 4",
+                   label+": "+lang+" explicit new-team action removes held result")
+            page.emulate_media(reduced_motion="reduce")
+
         team=[]
         for i,role in enumerate(("all","damage-dealer","enabler","buffer"),start=1):
             tab=roulette.locator('[data-roulette-role="'+role+'"]')
             tab.click()
             verify(tab.get_attribute("aria-selected")=="true",
                    label+": "+lang+" tab "+role+" can be selected before spin")
-            roulette.locator("[data-roulette-spin]").click()
+            (hub if i==1 else roulette.locator("[data-roulette-spin]")).click()
             page.wait_for_function(
               "(n)=>document.querySelector('[data-roulette-progress]').textContent.trim()===n",
               arg=str(i)+" / 4",timeout=5500)
-            verify(roulette.locator(".or-team-slot.is-filled").count()==i,
-                   label+": "+lang+" successful roll "+str(i)+" preserved previous slots")
+            result_id=wheel.get_attribute("data-result")
+            verify(roulette.locator(".or-team-slot.is-filled").count()==i and
+                   bool(result_id) and
+                   wheel.locator('.or-wheel-segment.is-winner[data-operator="'+result_id+'"]').count()==1 and
+                   wheel.evaluate("(el)=>el.style.transform")!="rotate(0deg)" and
+                   hub.is_enabled()==(i<4),
+                   label+": "+lang+" held winning position and team slot "+str(i)+" across role changes")
             team.append(roulette.locator(".or-team-slot.is-filled").last.locator("strong").inner_text())
         verify(len(set(team))==4 and roulette.locator("[data-roulette-spin]").is_disabled() and
                roulette.locator(".or-wheel-segment[data-operator='argent-flow']").count()==0,
@@ -1462,8 +1517,9 @@ def smoke_i18n(page, base_url, width):
         verify(roulette.locator("[data-roulette-progress]").inner_text().strip()=="0 / 4" and
                roulette.locator(".or-team-slot.is-filled").count()==0 and
                roulette.locator('[data-roulette-role="all"][aria-selected="true"]').count()==1 and
-               roulette.locator("[data-roulette-spin]").is_enabled(),
-               label+": "+lang+" new team resets all four slots and wheel")
+               roulette.locator("[data-roulette-spin]").is_enabled() and hub.is_enabled() and
+               wheel.get_attribute("data-result") is None,
+               label+": "+lang+" new team resets all four slots, held winner and both triggers")
         check_overflow(page,label+" "+lang+" Roulette")
 
         page.goto(base_url+prefix+"/endfield/endfieldle/")
