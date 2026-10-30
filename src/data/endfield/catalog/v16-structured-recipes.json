@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "provider": "SKPORT Wiki",
+  "snapshot": "2026-10-30",
+  "evidence": "anonymous public /web/v1/wiki/item/info Source widget documentMap entry IDs and counts",
+  "recipes": [
+    {
+      "id": "1380",
+      "materials": [
+        {
+          "id": "602",
+          "count": 360
+        },
+        {
+          "id": "1067",
+          "count": 50
+        }
+      ],
+      "sourceItemUrl": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=4&gameEntryId=1380"
+    },
+    {
+      "id": "1381",
+      "materials": [
+        {
+          "id": "602",
+          "count": 360
+        },
+        {
+          "id": "1067",
+          "count": 50
+        }
+      ],
+      "sourceItemUrl": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=4&gameEntryId=1381"
+    },
+    {
+      "id": "1382",
+      "materials": [
+        {
+          "id": "602",
+          "count": 360
+        },
+        {
+          "id": "1067",
+          "count": 50
+        }
+      ],
+      "sourceItemUrl": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=4&gameEntryId=1382"
+    },
+    {
+      "id": "1383",
+      "materials": [
+        {
+          "id": "602",
+          "count": 360
+        },
+        {
+          "id": "1067",
+          "count": 50
+        }
+      ],
+      "sourceItemUrl": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=4&gameEntryId=1383"
+    },
+    {
+      "id": "1384",
+      "materials": [
+        {
+          "id": "602",
+          "count": 360
+        },
+        {
+          "id": "1067",
+          "count": 50
+        }
+      ],
+      "sourceItemUrl": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=4&gameEntryId=1384"
+    },
+    {
+      "id": "1385",
+      "materials": [
+        {
+          "id": "602",
+          "count": 360
+        },
+        {
+          "id": "1067",
+          "count": 50
+        }
+      ],
+      "sourceItemUrl": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=4&gameEntryId=1385"
+    },
+    {
+      "id": "1386",
+      "materials": [
+        {
+          "id": "602",
+          "count": 360
+        },
+        {
+          "id": "1067",
+          "count": 50
+        }
+      ],
+      "sourceItemUrl": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=4&gameEntryId=1386"
+    },
+    {
+      "id": "1387",
+      "materials": [
+        {
+          "id": "602",
+          "count": 360
+        },
+        {
+          "id": "1067",
+          "count": 50
+        }
+      ],
+      "sourceItemUrl": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=4&gameEntryId=1387"
+    },
+    {
+      "id": "1388",
+      "materials": [
+        {
+          "id": "602",
+          "count": 360
+        },
+        {
+          "id": "1067",
+          "count": 50
+        }
+      ],
+      "sourceItemUrl": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=4&gameEntryId=1388"
+    },
+    {
+      "id": "1389",
+      "materials": [
+        {
+          "id": "602",
+          "count": 360
+        },
+        {
+          "id": "1067",
+          "count": 50
+        }
+      ],
+      "sourceItemUrl": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=4&gameEntryId=1389"
+    },
+    {
+      "id": "1390",
+      "materials": [
+        {
+          "id": "602",
+          "count": 360
+        },
+        {
+          "id": "1067",
+          "count": 50
+        }
+      ],
+      "sourceItemUrl": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=4&gameEntryId=1390"
+    },
+    {
+      "id": "1391",
+      "materials": [
+        {
+          "id": "602",
+          "count": 360
+        },
+        {
+          "id": "1067",
+          "count": 50
+        }
+      ],
+      "sourceItemUrl": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=4&gameEntryId=1391"
+    },
+    {
+      "id": "1392",
+      "materials": [
+        {
+          "id": "602",
+          "count": 360
+        },
+        {
+          "id": "1067",
+          "count": 50
+        }
+      ],
+      "sourceItemUrl": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=4&gameEntryId=1392"
+    },
+    {
+      "id": "1393",
+      "materials": [
+        {
+          "id": "602",
+          "count": 360
+        },
+        {
+          "id": "1067",
+          "count": 50
+        }
+      ],
+      "sourceItemUrl": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=4&gameEntryId=1393"
+    },
+    {
+      "id": "1394",
+      "materials": [
+        {
+          "id": "602",
+          "count": 360
+        },
+        {
+          "id": "1067",
+          "count": 50
+        }
+      ],
+      "sourceItemUrl": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=4&gameEntryId=1394"
+    },
+    {
+      "id": "1395",
+      "materials": [
+        {
+          "id": "602",
+          "count": 3000
+        },
+        {
+          "id": "528",
+          "count": 20
+        }
+      ],
+      "sourceItemUrl": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=4&gameEntryId=1395"
+    },
+    {
+      "id": "1396",
+      "materials": [
+        {
+          "id": "602",
+          "count": 3000
+        },
+        {
+          "id": "528",
+          "count": 20
+        }
+      ],
+      "sourceItemUrl": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=4&gameEntryId=1396"
+    },
+    {
+      "id": "1397",
+      "materials": [
+        {
+          "id": "602",
+          "count": 3000
+        },
+        {
+          "id": "528",
+          "count": 20
+        }
+      ],
+      "sourceItemUrl": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=4&gameEntryId=1397"
+    }
+  ]
+}

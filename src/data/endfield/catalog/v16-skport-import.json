@@ -12,7 +12,7 @@
       "name": "Type 50 Yinglung Beacon",
       "slot": "Kit",
       "artificingStatus": "available",
-      "recipeStatus": "needs-review",
+      "recipeStatus": "verified",
       "image": "/images/endfield/gear/1380.webp"
     },
     {
@@ -20,7 +20,7 @@
       "name": "Type 50 Yinglung Gloves",
       "slot": "Gloves",
       "artificingStatus": "available",
-      "recipeStatus": "needs-review",
+      "recipeStatus": "verified",
       "image": "/images/endfield/gear/1381.webp"
     },
     {
@@ -28,7 +28,7 @@
       "name": "Type 50 Yinglung Soft Armor",
       "slot": "Armor",
       "artificingStatus": "available",
-      "recipeStatus": "needs-review",
+      "recipeStatus": "verified",
       "image": "/images/endfield/gear/1382.webp"
     },
     {
@@ -36,7 +36,7 @@
       "name": "Rift Trekker Gauntlets",
       "slot": "Gloves",
       "artificingStatus": "available",
-      "recipeStatus": "needs-review",
+      "recipeStatus": "verified",
       "image": "/images/endfield/gear/1383.webp"
     },
     {
@@ -44,7 +44,7 @@
       "name": "Rift Trekker Silver Blade",
       "slot": "Kit",
       "artificingStatus": "available",
-      "recipeStatus": "needs-review",
+      "recipeStatus": "verified",
       "image": "/images/endfield/gear/1384.webp"
     },
     {
@@ -52,7 +52,7 @@
       "name": "Rift Trekker Wraps",
       "slot": "Gloves",
       "artificingStatus": "available",
-      "recipeStatus": "needs-review",
+      "recipeStatus": "verified",
       "image": "/images/endfield/gear/1385.webp"
     },
     {
@@ -60,7 +60,7 @@
       "name": "Rift Trekker Steel Armor",
       "slot": "Armor",
       "artificingStatus": "available",
-      "recipeStatus": "needs-review",
+      "recipeStatus": "verified",
       "image": "/images/endfield/gear/1386.webp"
     },
     {
@@ -68,7 +68,7 @@
       "name": "Rift Trekker Overalls",
       "slot": "Armor",
       "artificingStatus": "available",
-      "recipeStatus": "needs-review",
+      "recipeStatus": "verified",
       "image": "/images/endfield/gear/1387.webp"
     },
     {
@@ -76,7 +76,7 @@
       "name": "Pulser Labs Armor Slab",
       "slot": "Kit",
       "artificingStatus": "available",
-      "recipeStatus": "needs-review",
+      "recipeStatus": "verified",
       "image": "/images/endfield/gear/1388.webp"
     },
     {
@@ -92,7 +92,7 @@
       "name": "Pulser Labs Light Gauntlets",
       "slot": "Gloves",
       "artificingStatus": "available",
-      "recipeStatus": "needs-review",
+      "recipeStatus": "verified",
       "image": "/images/endfield/gear/1390.webp"
     },
     {
@@ -108,7 +108,7 @@
       "name": "Eternal Xiranite MOD Armor",
       "slot": "Armor",
       "artificingStatus": "available",
-      "recipeStatus": "needs-review",
+      "recipeStatus": "verified",
       "image": "/images/endfield/gear/1392.webp"
     },
     {
@@ -124,7 +124,7 @@
       "name": "Eternal Xiranite Overalls",
       "slot": "Armor",
       "artificingStatus": "available",
-      "recipeStatus": "needs-review",
+      "recipeStatus": "verified",
       "image": "/images/endfield/gear/1394.webp"
     },
     {
@@ -132,7 +132,7 @@
       "name": "AIC Fieldwork CQB Hacksaw",
       "slot": "Kit",
       "artificingStatus": "available",
-      "recipeStatus": "needs-review",
+      "recipeStatus": "verified",
       "image": "/images/endfield/gear/1395.webp"
     },
     {
@@ -140,7 +140,7 @@
       "name": "AIC Fieldwork CQB Gloves",
       "slot": "Gloves",
       "artificingStatus": "available",
-      "recipeStatus": "needs-review",
+      "recipeStatus": "verified",
       "image": "/images/endfield/gear/1396.webp"
     },
     {
@@ -148,7 +148,7 @@
       "name": "AIC Fieldwork CQB Armor",
       "slot": "Armor",
       "artificingStatus": "available",
-      "recipeStatus": "needs-review",
+      "recipeStatus": "verified",
       "image": "/images/endfield/gear/1397.webp"
     }
   ],
@@ -226,5 +226,13 @@
       "id": "1397",
       "bytes": 8348
     }
-  ]
+  ],
+  "recipeVerification": {
+    "snapshot": "2026-10-30",
+    "provider": "SKPORT Wiki",
+    "evidenceFile": "src/data/endfield/catalog/v16-structured-recipes.json",
+    "method": "public Source widget material entry IDs and quantities",
+    "verified": 18,
+    "needsReview": 0
+  }
 }

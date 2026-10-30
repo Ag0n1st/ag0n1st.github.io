@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import {normalizeEquipment,standardRecipe,extractRenderedGearSource} from "./equipment-normalize.mjs";
+import {normalizeEquipment,standardRecipe,structuredStandardRecipe,extractRenderedGearSource} from "./equipment-normalize.mjs";
 const docWith=(widgets,documents)=>({
   chapterGroup:[{widgets:Object.keys(widgets).map((key,i)=>({id:"widget"+i,title:"//"+key}))}],
   widgetCommonMap:Object.fromEntries(Object.keys(widgets).map((key,i)=>["widget"+i,
@@ -46,4 +46,25 @@ test("official Stats remain valid when low-tier gear has no Artificing widget",(
 });
 test("unknown or mismatched official IDs are rejected",()=>{
   assert.throws(()=>normalizeEquipment({itemId:"123",name:"test",document:{}},{id:"124",name:"test",category:"Weapons"},"2026-10-15"),/ID/);
+});
+
+test("structured SKPORT Source widget resolves material IDs even when rendered names are absent",()=>{
+ const source={chapterGroup:[{widgets:[{id:"src",title:"//Source"}]}],
+   widgetCommonMap:{src:{tabDataMap:{default:{content:"doc"}}}},
+   documentMap:{doc:{blockMap:{cost:{kind:"text",text:{inlineElements:[
+     {kind:"text",text:{text:"Each gear piece costs"}},
+     {kind:"entry",entry:{id:"602",count:"3000",showType:"link-imgText"}},
+     {kind:"text",text:{text:"and"}},
+     {kind:"entry",entry:{id:"528",count:"20",showType:"link-imgText"}}
+   ]}}}}}};
+ assert.deepEqual(structuredStandardRecipe(source,catalog)?.materials,[{id:"602",count:3000},{id:"528",count:20}]);
+ assert.equal(structuredStandardRecipe(source,[]),null);
+ const other=structuredClone(source);
+ other.documentMap.doc.blockMap.cost.text.inlineElements[3].entry.id="not-an-official-id";
+ assert.equal(structuredStandardRecipe(other,catalog),null);
+ other.documentMap.doc.blockMap.cost.text.inlineElements[3].entry.id="602";
+ assert.equal(structuredStandardRecipe(other,catalog),null);
+ const missing=structuredClone(source);
+ missing.documentMap.doc.blockMap.cost.text.inlineElements[0].text.text="Unrelated price";
+ assert.equal(structuredStandardRecipe(missing,catalog),null);
 });
