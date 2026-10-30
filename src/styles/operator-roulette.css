@@ -21,7 +21,12 @@
 .or-wheel::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 25px #000a;pointer-events:none}
 .or-wheel-segment{position:absolute;display:flex;align-items:center;justify-content:center;width:0;height:0;z-index:1;transform:translate(-50%,-50%)}
 .or-wheel-icon{display:block;position:absolute;left:0;top:0;width:clamp(19px,5vw,43px);height:clamp(19px,5vw,43px);border-radius:50%;object-fit:cover;object-position:center;background:#25222b;border:2px solid #f2e4f0;box-shadow:0 2px 7px #000a;box-sizing:border-box;max-width:none;transform:translate(-50%,-50%)}
-.or-wheel-hub{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:13%;aspect-ratio:1;border-radius:50%;border:3px solid #b1dfe8;background:radial-gradient(circle at 30% 20%,#34364e,#0d1520 70%);color:#b4e9ed;font-size:clamp(10px,1.5vw,21px);font-weight:900;letter-spacing:-.07em;box-shadow:0 4px 15px #000b}
+.or-wheel-trigger{position:absolute;z-index:5;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:clamp(58px,14%,88px);aspect-ratio:1;padding:10px;border-radius:50%;border:3px solid #b1dfe8;background:radial-gradient(circle at 30% 20%,#34364e,#0d1520 70%);box-shadow:0 4px 15px #000b;cursor:pointer;transition:box-shadow .22s,border-color .22s,filter .22s}
+.or-wheel-trigger img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;filter:drop-shadow(0 0 5px #00ffff66)}
+.or-wheel-trigger:hover:not(:disabled){border-color:#e5fcff;box-shadow:0 0 22px #00ffff72,0 4px 15px #000b}
+.or-wheel-trigger:disabled{cursor:not-allowed;filter:grayscale(.6) brightness(.8)}
+.or-wheel-trigger:focus-visible{outline:3px solid #fff;outline-offset:4px}
+.or-wheel-segment.is-winner .or-wheel-icon{border-color:#c8ffff;box-shadow:0 0 0 3px #63f5f592,0 0 16px #6af7ffcc,0 2px 7px #000a}
 .or-pointer{position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:4;width:0;height:0;border-left:17px solid transparent;border-right:17px solid transparent;border-top:36px solid #b9f1f3;filter:drop-shadow(0 3px 4px #000d)}
 .or-availability{color:#cdc7d6;font-size:12px;font-variant-numeric:tabular-nums}
 .or-spin-button{border-radius:12px;border:1px solid #64cedb;background:linear-gradient(110deg,#24798a,#3c4b85 60%,#873e89);box-shadow:0 6px 25px #40dae32b;color:#fff;font:inherit;font-size:14px;font-weight:850;letter-spacing:.09em;padding:15px 22px;min-height:52px;cursor:pointer;max-width:100%;width:min(330px,100%)}
@@ -47,5 +52,5 @@
 .or-status{min-height:24px;text-align:center;color:#9ddbe6;font-size:12px;line-height:1.7;margin:24px 0 0}
 .or-page button:focus-visible{outline:2px solid #88f0f6;outline-offset:3px}
 @media(max-width:900px){.or-content{grid-template-columns:minmax(0,1fr);max-width:640px;margin:auto}.or-wheel-outer{width:min(100%,540px)}.or-team-panel{margin-top:12px}}
-@media(max-width:600px){.or-card{padding:17px 12px}.or-tabs{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.or-tab{font-size:12px;min-height:45px}.or-wheel-outer{padding:15px;width:min(100%,420px)}.or-wheel-icon{width:clamp(19px,5.7vw,31px);height:clamp(19px,5.7vw,31px);border-width:1.5px}.or-pointer{border-left-width:12px;border-right-width:12px;border-top-width:27px}.or-wheel-hub{font-size:11px;border-width:2px}.or-team-slot{min-height:72px}.or-team-placeholder,.or-team-avatar{width:50px;height:50px}.or-source{font-size:11px}.or-spin-button{font-size:12px}}
-@media(prefers-reduced-motion:reduce){.or-wheel{will-change:auto}.or-spin-button{scroll-behavior:auto}}
+@media(max-width:600px){.or-card{padding:17px 12px}.or-tabs{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.or-tab{font-size:12px;min-height:45px}.or-wheel-outer{padding:15px;width:min(100%,420px)}.or-wheel-icon{width:clamp(19px,5.7vw,31px);height:clamp(19px,5.7vw,31px);border-width:1.5px}.or-pointer{border-left-width:12px;border-right-width:12px;border-top-width:27px}.or-wheel-trigger{width:clamp(48px,16%,68px);padding:8px;border-width:2px}.or-team-slot{min-height:72px}.or-team-placeholder,.or-team-avatar{width:50px;height:50px}.or-source{font-size:11px}.or-spin-button{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.or-wheel{will-change:auto}.or-wheel-trigger{transition:none}}

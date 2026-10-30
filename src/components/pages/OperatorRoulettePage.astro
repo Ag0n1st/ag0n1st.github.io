@@ -41,6 +41,11 @@ const roles=[
       <div class="or-wheel-frame">
        <div class="or-wheel" data-roulette-wheel aria-hidden="true"></div>
       </div>
+      <button type="button" class="or-wheel-trigger" data-roulette-hub
+       aria-label={l("Roulette durch Klick auf das Logo drehen","Spin the roulette by clicking the logo")}
+       title={l("Zum Drehen klicken","Click to spin")}>
+       <img src="/images/ag0n1st-logo.svg" alt="" aria-hidden="true" width="70" height="70" />
+      </button>
      </div>
      <span class="or-availability" data-roulette-available>{l("Operatoren werden geladen …","Loading operators …")}</span>
      <button type="button" class="or-spin-button" data-roulette-spin>{l("ROULETTE DREHEN","SPIN THE WHEEL")} <span aria-hidden="true">↻</span></button>
