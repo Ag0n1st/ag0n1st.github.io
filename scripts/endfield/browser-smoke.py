@@ -532,7 +532,7 @@ def smoke_i18n(page, base_url, width):
         "/en/endfield/operators/","/en/endfield/factory/",
         "/en/endfield/cheatsheets/","/en/endfield/speedruns/",
         "/en/endfield/checklist/","/en/endfield/countdown/",
-        "/en/endfield/tierlist/",
+        "/en/endfield/tierlist/","/en/endfield/operator-roulette/",
     ]
     for route in en_routes:
         r=page.goto(base_url+route,wait_until="domcontentloaded")
@@ -555,8 +555,8 @@ def smoke_i18n(page, base_url, width):
         check_overflow(page,label+" "+route)
     page.goto(base_url+"/en/endfield/")
     nav_paths=page.locator(".endfield-nav a").evaluate_all("(a)=>a.map(x=>new URL(x.href).pathname)")
-    verify(len(nav_paths)==10 and all(p.startswith("/en/") for p in nav_paths),
-           label+": all ten Endfield tabs are English, no DE fallback")
+    verify(len(nav_paths)==11 and all(p.startswith("/en/") for p in nav_paths),
+           label+": all eleven Endfield tabs are English, no DE fallback")
     verify(page.locator(".endfield-section").count()==9,
            label+": identical nine-section Endfield homepage layout")
     page.locator('.endfield-nav a[href="/en/endfield/factory/"]').click()
@@ -723,17 +723,18 @@ def smoke_i18n(page, base_url, width):
         check_overflow(page,label+" "+lang+" countdown")
         links=page.locator(".endfield-nav-link").all_text_contents()
         flat=[x.strip().replace("·","") for x in links]
-        verify(len(flat)==10 and
-               flat.index("Tierlist" if lang=="de" else "Tier List") == flat.index("Checkliste" if lang=="de" else "Checklist")+1 and
-               flat.index("Endfieldle")==flat.index("Tierlist" if lang=="de" else "Tier List")+1 and
+        verify(len(flat)==11 and
+               flat.index("Operator Roulette")+1==flat.index("Tierlist" if lang=="de" else "Tier List") and
+               flat.index("Checkliste" if lang=="de" else "Checklist")==flat.index("Tierlist" if lang=="de" else "Tier List")+1 and
+               flat.index("Endfieldle")==flat.index("Checkliste" if lang=="de" else "Checklist")+1 and
                flat.index("Countdown") == flat.index("Endfieldle")+1,
-               label+": "+lang+" Tierlist appears after Checklist and before Countdown")
+               label+": "+lang+" Roulette before Tierlist, Checklist after Tierlist and before Countdown")
         verify(all(not any(name in x for name in ("Rekrutierung","Veredelung","Essenzen","Recruitment","Refinement","Essences")) for x in flat) and
                all("Cheat" not in x or "Sheets" in x for x in flat),
                label+": "+lang+" removed three former standalone system links from Endfield nav")
-        verify(page.locator(".endfield-nav-link").count()==10 and
+        verify(page.locator(".endfield-nav-link").count()==11 and
                page.locator('a.endfield-nav-link[href="'+("/endfield/cheatsheets/" if lang=="de" else "/en/endfield/cheatsheets/")+'"]').count()==1,
-               label+": "+lang+" consolidated ten nav links include the single Cheat Sheets entry")
+               label+": "+lang+" eleven nav links include the single Cheat Sheets entry")
         verify(page.locator('a.endfield-nav-link[href="'+("/endfield/leaderboard/" if lang=="de" else "/en/endfield/leaderboard/")+'"] .nav-upcoming-wrench').count()==0 and
                page.locator('a.endfield-nav-link[href="'+("/endfield/cheatsheets/" if lang=="de" else "/en/endfield/cheatsheets/")+'"] .nav-upcoming-wrench').count()==0,
                label+": "+lang+" completed Leaderboard and live Cheat Sheets have no wrench")
@@ -1412,6 +1413,53 @@ def smoke_i18n(page, base_url, width):
         page.locator('[data-tierlist-tab="buffer"]').press("Home")
         verify(page.locator('[data-tierlist-tab="damage-dealer"]').get_attribute("aria-selected")=="true",
                label+": "+lang+" tierlist Home key returns to first role")
+
+        # The same four team slots survive spins across different categories.
+        page.goto(base_url+prefix+"/endfield/operator-roulette/")
+        roulette=page.locator("[data-operator-roulette]")
+        roulette.locator(".or-wheel-icon").first.wait_for(state="attached")
+        links=[a.get_attribute("href") for a in page.locator(".endfield-nav-link").all()]
+        wheel_href=prefix+"/endfield/operator-roulette/"
+        list_href=prefix+"/endfield/tierlist/"
+        check_href=prefix+("/endfield/checklist/" if lang=="en" else "/endfield/checkliste/")
+        verify(links.index(wheel_href)+1==links.index(list_href) and
+               links.index(list_href)+1==links.index(check_href) and
+               page.locator('a.endfield-nav-link[href="'+wheel_href+'"][aria-current="page"]').count()==1,
+               label+": "+lang+" Roulette > Tierlist > Checklist navbar order")
+        note=roulette.locator(".or-source").inner_text()
+        verify(("23.08.2026" if lang=="de" else "23 August 2026") in note and
+               "Si" in note and "Purrchena" in note,
+               label+": "+lang+" source disclosure and manually added roles")
+        verify(roulette.locator(".or-wheel-icon").count()==33 and
+               roulette.locator(".or-wheel-icon").first.evaluate(
+                 "(im)=>im.complete&&im.naturalWidth>0&&getComputedStyle(im).borderRadius==='50%'"),
+               label+": "+lang+" 33 local circular operator portraits on the wheel")
+        verify([roulette.locator('[data-roulette-role="'+role+'"] [data-roulette-count]').inner_text()
+                 for role in ("damage-dealer","enabler","buffer")]==["12","16","11"],
+               label+": "+lang+" exact community roles with Si and Purrchena")
+        team=[]
+        for i,role in enumerate(("all","damage-dealer","enabler","buffer"),start=1):
+            tab=roulette.locator('[data-roulette-role="'+role+'"]')
+            tab.click()
+            verify(tab.get_attribute("aria-selected")=="true",
+                   label+": "+lang+" tab "+role+" can be selected before spin")
+            roulette.locator("[data-roulette-spin]").click()
+            page.wait_for_function(
+              "(n)=>document.querySelector('[data-roulette-progress]').textContent.trim()===n",
+              arg=str(i)+" / 4",timeout=5500)
+            verify(roulette.locator(".or-team-slot.is-filled").count()==i,
+                   label+": "+lang+" successful roll "+str(i)+" preserved previous slots")
+            team.append(roulette.locator(".or-team-slot.is-filled").last.locator("strong").inner_text())
+        verify(len(set(team))==4 and roulette.locator("[data-roulette-spin]").is_disabled() and
+               roulette.locator(".or-wheel-segment[data-operator='argent-flow']").count()==0,
+               label+": "+lang+" team has four distinct released operators, spin disabled")
+        roulette.locator("[data-roulette-reset]").click()
+        verify(roulette.locator("[data-roulette-progress]").inner_text().strip()=="0 / 4" and
+               roulette.locator(".or-team-slot.is-filled").count()==0 and
+               roulette.locator('[data-roulette-role="all"][aria-selected="true"]').count()==1 and
+               roulette.locator("[data-roulette-spin]").is_enabled(),
+               label+": "+lang+" new team resets all four slots and wheel")
+        check_overflow(page,label+" "+lang+" Roulette")
 
         page.goto(base_url+prefix+"/endfield/endfieldle/")
         game=page.locator("[data-endfieldle]")

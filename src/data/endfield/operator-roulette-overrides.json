@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "tierlistId": "community-2026-08-23",
+  "description": "Explicit supplemental Roulette roles approved by Ag0n1st; does not modify the historical Community Tier List.",
+  "roles": {
+    "si": [
+      "damage-dealer",
+      "buffer"
+    ],
+    "purrchena": [
+      "enabler"
+    ]
+  }
+}

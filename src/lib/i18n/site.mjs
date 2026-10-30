@@ -7,6 +7,7 @@ export const EN_PAGES=Object.freeze({
   "/endfield/":"/en/endfield/",
   "/endfield/operatoren/":"/en/endfield/operators/",
   "/endfield/tierlist/":"/en/endfield/tierlist/",
+  "/endfield/operator-roulette/":"/en/endfield/operator-roulette/",
   "/endfield/fabrik/":"/en/endfield/factory/",
   "/endfield/rekrutierung/":"/en/endfield/recruitment/",
   "/endfield/veredelung/":"/en/endfield/refinement/",

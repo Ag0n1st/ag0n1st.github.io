@@ -101,8 +101,9 @@ test("browser-only streak computation handles consecutive wins and missed days",
 test("DE/EN locale routes, nav order, SEO sitemap and no global backend",()=>{
  const nav=read("src/components/EndfieldNav.astro");
  const keys=[...nav.matchAll(/key: "([^"]+)"/g)].map(x=>x[1]);
- assert.equal(keys.length,10);
- assert.deepEqual(keys.slice(-3),["tierlist","endfieldle","countdown"]);
+ assert.equal(keys.length,11);
+ assert.deepEqual(keys.slice(-4),["tierlist","checklist","endfieldle","countdown"]);
+  assert.equal(keys[keys.indexOf("roulette")+1],"tierlist");
  assert.match(nav,/endfieldle:"\/en\/endfield\/endfieldle\/"/);
  assert.match(read("src/lib/i18n/site.mjs"),/endfieldle\/":"\/en\/endfield\/endfieldle\//);
  assert.match(read("src/pages/sitemap.xml.ts"),/"\/endfield\/endfieldle\/"/);

@@ -2,7 +2,7 @@ import {getCollection} from "astro:content";
 import {SITE_ORIGIN,EN_PAGES,localizedUrl} from "../lib/i18n/site.mjs";
 const routes=[
  "/","/about/","/nte/","/endfield/","/endfield/operatoren/",
- "/endfield/tierlist/","/endfield/fabrik/","/endfield/cheatsheets/",
+ "/endfield/tierlist/","/endfield/operator-roulette/","/endfield/fabrik/","/endfield/cheatsheets/",
  "/endfield/speedruns/","/endfield/checkliste/","/endfield/endfieldle/","/endfield/countdown/"
 ];
 const escapeXml=(x:string)=>x.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;").replace(/'/g,"&apos;");
