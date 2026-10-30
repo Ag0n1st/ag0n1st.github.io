@@ -1,15 +1,20 @@
-name: Temporary SKPORT v1.6 public recipe audit
+name: Temporary SKPORT v1.6 structured recipe import
 on:
   push:
     branches: [audit/v16-recipe-reconciliation-20261030]
+    paths:
+      - scripts/endfield/refresh-v16-recipe-sources.py
 permissions:
-  contents: read
+  contents: write
 jobs:
-  audit:
+  capture:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -17,5 +22,14 @@ jobs:
         run: |
           python -m pip install --disable-pip-version-check playwright==1.56.0
           python -m playwright install --with-deps chromium
-      - name: Audit 18 public SKPORT Source panels without mutations
-        run: python scripts/endfield/audit-v16-public-recipes.py
+      - name: Collect all 18 public structured official Source recipes
+        run: python scripts/endfield/refresh-v16-recipe-sources.py
+      - name: Apply only verified standard recipes without touching Artificing
+        run: node scripts/endfield/apply-v16-verified-recipes.mjs
+      - name: Commit only verified local catalogue snapshots to feature branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/endfield/catalog/v16-structured-recipes.json src/data/endfield/catalog/equipment-details.json src/data/endfield/catalog/v16-skport-import.json
+          git diff --cached --stat
+          git diff --cached --quiet || (git commit -m "data(endfield): verify 18 v1.6 standard recipes from SKPORT Source" && git push origin HEAD:audit/v16-recipe-reconciliation-20261030)

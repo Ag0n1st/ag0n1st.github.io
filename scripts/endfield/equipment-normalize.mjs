@@ -42,6 +42,36 @@ function gearEffect(doc){
  * Find official default crafting materials in the rendered Source widget text.
  * This is intentionally conservative: invalid names/quantities remain unavailable.
  */
+
+/**
+ * Official Source widgets embed numeric material IDs and quantities directly.
+ * Read that data before falling back to rendered text; linked item names may
+ * appear late or be absent in the browser's innerText.
+ */
+export function structuredStandardRecipe(doc,catalog){
+  const source=headings(doc).filter(w=>str(w.title).replace(/^\\/\\//,"").toLowerCase()==="source");
+  if(source.length!==1)return null;
+  const tabs=doc.widgetCommonMap?.[source[0].id]?.tabDataMap??{};
+  const references=[...new Set(Object.values(tabs).map(t=>str(t?.content)).filter(Boolean))];
+  if(references.length!==1)return null;
+  const sourceDoc=doc.documentMap?.[references[0]]?.document??doc.documentMap?.[references[0]];
+  const candidates=Object.values(sourceDoc?.blockMap??{}).map(block=>block?.text?.inlineElements)
+    .filter(Array.isArray).filter(elements=>elements.some(el=>
+      str(el?.text?.text??el?.text)==="Each gear piece costs"));
+  if(candidates.length!==1)return null;
+  const entries=candidates[0].filter(el=>el?.kind==="entry"&&el.entry).map(el=>el.entry);
+  if(entries.length<2||entries.length>8)return null;
+  const allowed=new Set(catalog.map(row=>str(row.id)));
+  const materials=[];
+  for(const entry of entries){
+    const id=str(entry.id??entry.itemId),count=Number(entry.count);
+    if(!validId(id)||!allowed.has(id)||!Number.isSafeInteger(count)||count<=0||
+        materials.some(x=>x.id===id))return null;
+    materials.push({id,count});
+  }
+  return {id:"official-standard",materials,source:"SKPORT Wiki / Source"};
+}
+
 export function standardRecipe(sourcePanel,catalog){
   const lines=str(sourcePanel).split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
   const at=lines.indexOf("Each gear piece costs");
@@ -104,7 +134,7 @@ export function normalizeEquipment(item,expected,stamp,{sourcePanel="",catalog=[
   }
   const stats=tables(doc,"Stats"),artificing=tables(doc,"Artificing");
   const bonus=gearEffect(doc);
-  const standard=standardRecipe(sourcePanel,catalog);
+  const standard=structuredStandardRecipe(doc,catalog)??standardRecipe(sourcePanel,catalog);
   const costHeading=sourcePanel.includes("Each gear piece costs");
   const recipeStatus=standard?"verified":costHeading?"needs-review":"not-listed";
   const complete=stats.some(t=>t.tables.length); // Artificing is absent on earlier low-rarity gear.
