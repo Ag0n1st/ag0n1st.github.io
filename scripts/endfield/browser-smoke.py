@@ -1413,6 +1413,53 @@ def smoke_i18n(page, base_url, width):
         verify(page.locator('[data-tierlist-tab="damage-dealer"]').get_attribute("aria-selected")=="true",
                label+": "+lang+" tierlist Home key returns to first role")
 
+        # The same four team slots survive spins across different categories.
+        page.goto(base_url+prefix+"/endfield/operator-roulette/")
+        roulette=page.locator("[data-operator-roulette]")
+        roulette.locator(".or-wheel-icon").first.wait_for(state="attached")
+        links=[a.get_attribute("href") for a in page.locator(".endfield-nav-link").all()]
+        wheel_href=prefix+"/endfield/operator-roulette/"
+        list_href=prefix+"/endfield/tierlist/"
+        check_href=prefix+("/endfield/checklist/" if lang=="en" else "/endfield/checkliste/")
+        verify(links.index(wheel_href)+1==links.index(list_href) and
+               links.index(list_href)+1==links.index(check_href) and
+               page.locator('a.endfield-nav-link[href="'+wheel_href+'"][aria-current="page"]').count()==1,
+               label+": "+lang+" Roulette > Tierlist > Checklist navbar order")
+        note=roulette.locator(".or-source").inner_text()
+        verify(("23.08.2026" if lang=="de" else "23 August 2026") in note and
+               "Si" in note and "Purrchena" in note,
+               label+": "+lang+" source disclosure and manually added roles")
+        verify(roulette.locator(".or-wheel-icon").count()==33 and
+               roulette.locator(".or-wheel-icon").first.evaluate(
+                 "(im)=>im.complete&&im.naturalWidth>0&&getComputedStyle(im).borderRadius==='50%'"),
+               label+": "+lang+" 33 local circular operator portraits on the wheel")
+        verify([roulette.locator('[data-roulette-role="'+role+'"] [data-roulette-count]').inner_text()
+                 for role in ("damage-dealer","enabler","buffer")]==["12","16","11"],
+               label+": "+lang+" exact community roles with Si and Purrchena")
+        team=[]
+        for i,role in enumerate(("all","damage-dealer","enabler","buffer"),start=1):
+            tab=roulette.locator('[data-roulette-role="'+role+'"]')
+            tab.click()
+            verify(tab.get_attribute("aria-selected")=="true",
+                   label+": "+lang+" tab "+role+" can be selected before spin")
+            roulette.locator("[data-roulette-spin]").click()
+            page.wait_for_function(
+              "(n)=>document.querySelector('[data-roulette-progress]').textContent.trim()===n",
+              str(i)+" / 4",timeout=5500)
+            verify(roulette.locator(".or-team-slot.is-filled").count()==i,
+                   label+": "+lang+" successful roll "+str(i)+" preserved previous slots")
+            team.append(roulette.locator(".or-team-slot.is-filled").last.locator("strong").inner_text())
+        verify(len(set(team))==4 and roulette.locator("[data-roulette-spin]").is_disabled() and
+               roulette.locator(".or-wheel-segment[data-operator='argent-flow']").count()==0,
+               label+": "+lang+" team has four distinct released operators, spin disabled")
+        roulette.locator("[data-roulette-reset]").click()
+        verify(roulette.locator("[data-roulette-progress]").inner_text().strip()=="0 / 4" and
+               roulette.locator(".or-team-slot.is-filled").count()==0 and
+               roulette.locator('[data-roulette-role="all"][aria-selected="true"]').count()==1 and
+               roulette.locator("[data-roulette-spin]").is_enabled(),
+               label+": "+lang+" new team resets all four slots and wheel")
+        check_overflow(page,label+" "+lang+" Roulette")
+
         page.goto(base_url+prefix+"/endfield/endfieldle/")
         game=page.locator("[data-endfieldle]")
         game_diag={"main":game.count(),
