@@ -1,13 +1,24 @@
 ---
 import {getEndfieldItem} from "../../lib/endfield/itemCatalog";
 import {getOfficialGear,getOfficialWeapon} from "../../lib/endfield/equipmentDetails";
+import verifiedReleaseAliases from "../../data/endfield/catalog/v16-official-gear-aliases.json";
 import {gameItemName} from "../../lib/endfield/terminology";
 import MaterialCosts from "./MaterialCosts.astro";
 
 interface Props {id:string;lang?:"de"|"en"}
 const {id,lang="de"}=Astro.props;
 const catalog=getEndfieldItem(id);
-const gear=catalog?.categories.includes("Gear")?getOfficialGear(id):undefined;
+// Resolve only the preview's official detail data; do not alter build
+// requirements, author-approved ratings, guide artwork or blueprints.
+const legacyMatch=verifiedReleaseAliases.aliases[id as keyof typeof verifiedReleaseAliases.aliases];
+const verifiedLegacyGear=legacyMatch?getOfficialGear(legacyMatch):undefined;
+const gear=catalog?.categories.includes("Gear")
+  ? (getOfficialGear(id)??(
+      verifiedLegacyGear?.status==="verified" &&
+      verifiedLegacyGear.name===(catalog?.name??"").replace(" (v1.6)","")
+        ? verifiedLegacyGear : undefined
+    ))
+  : undefined;
 const weapon=catalog?.categories.includes("Weapons")?getOfficialWeapon(id):undefined;
 const name=gameItemName(id,lang,catalog?.name??id);
 const l=(de:string,en:string)=>lang==="en"?en:de;
