@@ -125,7 +125,7 @@ test("bilingual routes, navigation order, community disclaimer, animation, acces
  assert.match(client,/wheel\.style\.transition="none"/);
  assert.match(client,/shortMotion\.disabled=spinning/);
  assert.doesNotMatch(client,/prefers-reduced-motion: reduce/);
- assert.match(client,/winnerRotation\(rotation,index,pool\.length,4\)/);
+ assert.match(client,/winnerRotation\(startAngle,index,pool\.length,4\)/);
  assert.match(client,/hubButton\.addEventListener\("click",spin\)/);
  assert.match(client,/hubButton\.disabled=spinButton\.disabled/);
  assert.match(client,/wheel\.dataset\.result=selected\.id/);
