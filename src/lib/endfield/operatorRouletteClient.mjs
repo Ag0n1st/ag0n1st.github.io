@@ -24,7 +24,7 @@ if(root){
  // CSS transitions are forcibly reduced to .01ms!important by the shared site
  // stylesheet when the browser reports reduced motion. Explicit rAF timing here
  // makes the default 14-second spin reliable in every browser configuration.
- const SPIN_DURATION_MS=14000;
+ const SPIN_DURATION_MS=5000;
  const SHORT_DURATION_MS=350;
  const img=(op,className)=>{
   const node=document.createElement("img");
@@ -133,7 +133,7 @@ if(root){
   spinning=true;setControls();
   message(l("Das Roulette dreht sich …","Spinning the wheel …"));
   // Explicit choice, never an implicit system media-query override.
-  // A user who wants the full spin gets all 14 seconds even when the OS reports
+  // A user who wants the full spin gets all 5 seconds even when the OS reports
   // prefers-reduced-motion:reduce. A short, accessible option remains available.
   const duration=shortMotion.checked?SHORT_DURATION_MS:SPIN_DURATION_MS;
   const startAngle=rotation;

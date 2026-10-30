@@ -117,7 +117,7 @@ test("bilingual routes, navigation order, community disclaimer, animation, acces
  assert.match(client,/winnerRotation/);
  assert.doesNotMatch(client,/transitionend/);
  assert.match(client,/requestAnimationFrame/);
- assert.match(client,/const SPIN_DURATION_MS=14000/);
+ assert.match(client,/const SPIN_DURATION_MS=5000/);
  assert.match(client,/const SHORT_DURATION_MS=350/);
  assert.match(client,/const duration=shortMotion\.checked\?SHORT_DURATION_MS:SPIN_DURATION_MS/);
  assert.match(client,/const eased=\(1-Math\.cos\(Math\.PI\*progress\)\)\/2/);

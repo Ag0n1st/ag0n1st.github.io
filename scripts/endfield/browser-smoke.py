@@ -1455,10 +1455,10 @@ def smoke_i18n(page, base_url, width):
         if width==1440 and lang=="de":
             # Deliberately force reduced-motion OS preference: the global CSS
             # previously reduced the user's spin to <1s even with 14s JS config.
-            # New default must still run the full 14s until opt-in checkbox is set.
+            # New default must run the full 5s until opt-in checkbox is set.
             page.emulate_media(reduced_motion="reduce")
             verify(not roulette.locator("[data-roulette-short-motion]").is_checked(),
-                   label+": "+lang+" full 14-second spin is the default even with OS reduced motion")
+                   label+": "+lang+" full 5-second spin is the default even with OS reduced motion")
             initial=wheel.evaluate("(el)=>getComputedStyle(el).transform")
             spin_start=page.evaluate("performance.now()")
             hub.click()
@@ -1467,7 +1467,7 @@ def smoke_i18n(page, base_url, width):
                    label+": "+lang+" logo click starts spin and disables both triggers")
             page.wait_for_timeout(1100)
             motion=wheel.evaluate("(el)=>({transform:getComputedStyle(el).transform,duration:el.dataset.spinDuration})")
-            verify(motion["duration"]=="14000" and motion["transform"]!=initial and
+            verify(motion["duration"]=="5000" and motion["transform"]!=initial and
                    roulette.locator("[data-roulette-progress]").inner_text().strip()=="0 / 4",
                    label+": "+lang+" wheel visibly rotates despite global reduced-motion CSS")
             page.wait_for_timeout(1100)
@@ -1477,10 +1477,10 @@ def smoke_i18n(page, base_url, width):
                    label+": "+lang+" wheel continues moving after 2.2s, not a near-instant spin")
             page.wait_for_function(
                "()=>document.querySelector('[data-roulette-progress]').textContent.trim()==='1 / 4'",
-               timeout=16500)
+               timeout=8500)
             elapsed=page.evaluate("performance.now()")-spin_start
-            verify(13000<elapsed<18500,
-                   label+": "+lang+" full spin actually lasts about fourteen seconds ("+str(round(elapsed))+"ms)")
+            verify(4700<elapsed<9000,
+                   label+": "+lang+" full spin actually lasts about five seconds ("+str(round(elapsed))+"ms)")
             result=wheel.get_attribute("data-result")
             rotation_after=wheel.evaluate("(el)=>el.style.transform")
             pointer_alignment=wheel.evaluate("""el=>{
