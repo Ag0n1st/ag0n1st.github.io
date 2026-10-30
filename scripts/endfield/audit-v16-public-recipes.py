@@ -1,44 +1,62 @@
 #!/usr/bin/env python3
-"""One-off inspection of public SKPORT recipe DOM markup, no repository writes."""
+"""Read-only public item/info SKPORT Source widget inspection for three known IDs."""
 import json
 from urllib.parse import urlparse,parse_qs
 from playwright.sync_api import sync_playwright
-
+ids=("1380","1389","1395")
+def short(value,n=3000):
+ s=json.dumps(value,ensure_ascii=False)
+ return s[:n]
+def summary(raw,id):
+ doc=raw.get("document",{})
+ refs=doc.get("documentMap",{})
+ matches=[]
+ for group in doc.get("chapterGroup",[]):
+  for heading in group.get("widgets",[]):
+   if "source" not in str(heading.get("title","")).lower():continue
+   w=doc.get("widgetCommonMap",{}).get(heading.get("id"),{})
+   tabs=w.get("tabDataMap",{})
+   allrefs=set()
+   def visit(obj):
+    if isinstance(obj,str) and obj in refs:allrefs.add(obj)
+    if isinstance(obj,dict):
+     for x in obj.values():visit(x)
+    elif isinstance(obj,list):
+     for x in obj:visit(x)
+   visit(tabs)
+   for key in sorted(allrefs):
+    node=refs[key]
+    blocks=node.get("document",node).get("blockMap",{})
+    found=[]
+    def visit_entries(obj):
+     if isinstance(obj,dict):
+      if "entry" in obj or "itemId" in obj or "entryId" in obj:
+       found.append({k:obj.get(k) for k in ("entry","itemId","entryId","count") if k in obj})
+      for x in obj.values():visit_entries(x)
+     elif isinstance(obj,list):
+      for x in obj:visit_entries(x)
+    visit_entries(blocks)
+    matches.append({"ref":key,"blockCount":len(blocks),"entries":found[:30],
+      "head":short(blocks,3400)})
+   print("STRUCTURED_SOURCE_DIAG",json.dumps({"id":id,"api_id":str(raw.get("itemId")),"widgetTabs":tabs,
+    "referencedDocCount":len(allrefs),"docs":matches},ensure_ascii=False))
 with sync_playwright() as p:
- browser=p.chromium.launch(headless=True,args=["--no-sandbox","--disable-dev-shm-usage"])
- page=browser.new_page(locale="en-US",viewport={"width":1350,"height":900})
- responses={}
- def onresponse(res):
+ b=p.chromium.launch(headless=True,args=["--no-sandbox","--disable-dev-shm-usage"])
+ page=b.new_page(locale="en-US",viewport={"width":1280,"height":800})
+ def event(res):
   try:
    u=urlparse(res.url)
    if u.hostname=="zonai.skport.com" and u.path=="/web/v1/wiki/item/info" and res.status==200:
     id=parse_qs(u.query).get("id",[""])[0]
-    if id in ("1380","1389","1395"):
+    if id in ids:
      raw=res.json().get("data",{}).get("item",{})
-     doc=raw.get("document",{})
-     headings=[{"title":w.get("title"),"id":w.get("id")} for g in doc.get("chapterGroup",[]) for w in g.get("widgets",[])]
-     source_widgets=[w for w in headings if "source" in (w.get("title") or "").lower()]
-     responses[id]={"id":str(raw.get("itemId")),"sourceWidgets":source_widgets,"headings":headings,
-       "widgetKeys":{w["id"]:list(doc.get("widgetCommonMap",{}).get(w["id"],{}).keys()) for w in source_widgets}}
-  except Exception as e:print("API_DIAGNOSTIC_ERROR",str(e)[:160])
- page.on("response",onresponse)
- for id in ("1380","1389","1395"):
-  url="https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=4&gameEntryId="+id
+     if str(raw.get("itemId"))==id:summary(raw,id)
+  except Exception as e:print("STRUCTURED_DIAG_ERROR",str(e)[:200])
+ page.on("response",event)
+ for id in ids:
   try:
-   page.goto(url,wait_until="domcontentloaded",timeout=45000)
+   res=page.goto("https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=4&gameEntryId="+id,wait_until="domcontentloaded",timeout=45000)
    page.wait_for_timeout(4500)
-   needle=page.get_by_text("Each gear piece costs",exact=True)
-   count=needle.count()
-   if count:
-    diag=needle.first.evaluate("""el=>{
-      const out=[];let n=el;
-      for(let depth=0;depth<5&&n;depth++,n=n.parentElement){
-       out.push({depth,tag:n.tagName,classes:n.className?.toString().slice(0,180),
-        html:n.outerHTML.slice(0,9000),text:n.innerText?.slice(0,800)});
-      }return out;}""")
-   else:
-    diag=[]
-   print("DOM_RECIPE_DIAG",json.dumps({"id":id,"api":responses.get(id),"matches":count,"parents":diag},ensure_ascii=False))
-  except Exception as e:
-   print("DOM_RECIPE_ERROR",json.dumps({"id":id,"error":str(e)[:240]}))
- browser.close()
+   print("PAGE_RESULT",id,res.status if res else "no-response")
+  except Exception as e:print("PAGE_ERROR",id,str(e)[:200])
+ b.close()
