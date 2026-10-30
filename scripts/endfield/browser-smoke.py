@@ -804,7 +804,9 @@ def smoke_i18n(page, base_url, width):
                                "type-50-yinglung-beacon"):
                     trigger=page.locator('#ausruestung .op-meta-build-parts [data-endfield-item-id="'+legacy+'"]').first
                     verify(trigger.count()==1,label+": "+lang+" Si "+legacy+" keeps original guide icon")
-                    trigger.hover()
+                    # Focus exercises the same shared popup without the next
+                    # long tooltip intercepting Playwright's pointer during scroll.
+                    trigger.focus()
                     popup=page.locator(".op-item-hover-panel:popover-open")
                     popup.wait_for(state="visible")
                     verify(popup.locator(".op-item-detail-table-scroll").count()>=2 and
