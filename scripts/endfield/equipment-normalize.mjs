@@ -49,7 +49,7 @@ function gearEffect(doc){
  * appear late or be absent in the browser's innerText.
  */
 export function structuredStandardRecipe(doc,catalog){
-  const source=headings(doc).filter(w=>str(w.title).replace(/^\\/\\//,"").toLowerCase()==="source");
+  const source=headings(doc).filter(w=>str(w.title).replace("//","").toLowerCase()==="source");
   if(source.length!==1)return null;
   const tabs=doc.widgetCommonMap?.[source[0].id]?.tabDataMap??{};
   const references=[...new Set(Object.values(tabs).map(t=>str(t?.content)).filter(Boolean))];
