@@ -1444,29 +1444,43 @@ def smoke_i18n(page, base_url, width):
                label+": "+lang+" exact community roles with Si and Purrchena")
         hub=roulette.locator("[data-roulette-hub]")
         wheel=roulette.locator("[data-roulette-wheel]")
-        verify(hub.count()==1 and hub.get_attribute("type")=="button" and
+        verify(roulette.locator("[data-roulette-short-motion]").count()==1 and
+               not roulette.locator("[data-roulette-short-motion]").is_checked() and
+               hub.count()==1 and hub.get_attribute("type")=="button" and
                hub.locator('img[src="/images/ag0n1st-logo.svg"]').count()==1 and
                hub.is_enabled() and
                ("drehen" if lang=="de" else "Spin") in hub.get_attribute("aria-label"),
                label+": "+lang+" existing Ag0n1st logo is accessible central spin button")
 
         if width==1440 and lang=="de":
-            # Test real full-duration animation, not just the reduced-motion
-            # 350 ms fast path used by the normal 4 x 2 locale smoke suite.
-            page.emulate_media(reduced_motion="no-preference")
+            # Deliberately force reduced-motion OS preference: the global CSS
+            # previously reduced the user's spin to <1s even with 14s JS config.
+            # New default must still run the full 14s until opt-in checkbox is set.
+            page.emulate_media(reduced_motion="reduce")
+            verify(not roulette.locator("[data-roulette-short-motion]").is_checked(),
+                   label+": "+lang+" full 14-second spin is the default even with OS reduced motion")
             initial=wheel.evaluate("(el)=>getComputedStyle(el).transform")
+            spin_start=page.evaluate("performance.now()")
             hub.click()
             verify(hub.is_disabled() and roulette.locator("[data-roulette-spin]").is_disabled() and
                    roulette.locator("[data-roulette-progress]").inner_text().strip()=="0 / 4",
                    label+": "+lang+" logo click starts spin and disables both triggers")
             page.wait_for_timeout(1100)
-            motion=wheel.evaluate("(el)=>({transform:getComputedStyle(el).transform,duration:getComputedStyle(el).transitionDuration})")
-            verify(motion["duration"]=="14s" and motion["transform"]!=initial and
+            motion=wheel.evaluate("(el)=>({transform:getComputedStyle(el).transform,duration:el.dataset.spinDuration})")
+            verify(motion["duration"]=="14000" and motion["transform"]!=initial and
                    roulette.locator("[data-roulette-progress]").inner_text().strip()=="0 / 4",
-                   label+": "+lang+" roulette visibly rotates and still has no winner mid-14s animation")
+                   label+": "+lang+" wheel visibly rotates despite global reduced-motion CSS")
+            page.wait_for_timeout(1100)
+            second=wheel.evaluate("(el)=>getComputedStyle(el).transform")
+            verify(second!=motion["transform"] and
+                   roulette.locator("[data-roulette-progress]").inner_text().strip()=="0 / 4",
+                   label+": "+lang+" wheel continues moving after 2.2s, not a near-instant spin")
             page.wait_for_function(
                "()=>document.querySelector('[data-roulette-progress]').textContent.trim()==='1 / 4'",
                timeout=16500)
+            elapsed=page.evaluate("performance.now()")-spin_start
+            verify(13000<elapsed<18500,
+                   label+": "+lang+" full spin actually lasts about fourteen seconds ("+str(round(elapsed))+"ms)")
             result=wheel.get_attribute("data-result")
             rotation_after=wheel.evaluate("(el)=>el.style.transform")
             pointer_alignment=wheel.evaluate("""el=>{
@@ -1490,8 +1504,12 @@ def smoke_i18n(page, base_url, width):
             verify(wheel.get_attribute("data-result") is None and
                    roulette.locator("[data-roulette-progress]").inner_text().strip()=="0 / 4",
                    label+": "+lang+" explicit new-team action removes held result")
-            page.emulate_media(reduced_motion="reduce")
+            roulette.locator("[data-roulette-short-motion]").check()
+            verify(roulette.locator("[data-roulette-short-motion]").is_checked(),
+                   label+": "+lang+" user can explicitly select short spins")
 
+        if not roulette.locator("[data-roulette-short-motion]").is_checked():
+            roulette.locator("[data-roulette-short-motion]").check()
         team=[]
         for i,role in enumerate(("all","damage-dealer","enabler","buffer"),start=1):
             tab=roulette.locator('[data-roulette-role="'+role+'"]')
@@ -1499,6 +1517,9 @@ def smoke_i18n(page, base_url, width):
             verify(tab.get_attribute("aria-selected")=="true",
                    label+": "+lang+" tab "+role+" can be selected before spin")
             (hub if i==1 else roulette.locator("[data-roulette-spin]")).click()
+            verify(roulette.locator("[data-roulette-short-motion]").is_disabled() and
+                   wheel.get_attribute("data-spin-duration")=="350",
+                   label+": "+lang+" short animation is an explicit opt-in, disabled while spinning")
             page.wait_for_function(
               "(n)=>document.querySelector('[data-roulette-progress]').textContent.trim()===n",
               arg=str(i)+" / 4",timeout=5500)
