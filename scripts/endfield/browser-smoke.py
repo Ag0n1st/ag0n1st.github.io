@@ -1445,7 +1445,7 @@ def smoke_i18n(page, base_url, width):
             roulette.locator("[data-roulette-spin]").click()
             page.wait_for_function(
               "(n)=>document.querySelector('[data-roulette-progress]').textContent.trim()===n",
-              str(i)+" / 4",timeout=5500)
+              arg=str(i)+" / 4",timeout=5500)
             verify(roulette.locator(".or-team-slot.is-filled").count()==i,
                    label+": "+lang+" successful roll "+str(i)+" preserved previous slots")
             team.append(roulette.locator(".or-team-slot.is-filled").last.locator("strong").inner_text())
