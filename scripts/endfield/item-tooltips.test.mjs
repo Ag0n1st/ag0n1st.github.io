@@ -104,9 +104,12 @@ test("18 official v1.6 Gear records power all pre-release item hover menus while
  assert.equal(item.get("411").name,item.get("1381").name);
  assert.equal(Object.hasOwn(manifest.aliases,"type-50-yinglung-gauntlets"),false);
  const lookup=read("src/lib/endfield/equipmentDetails.ts");
- assert.match(lookup,/gearIndex\.get\(v16OfficialAliases\.get\(id\)\?\?id\)/);
- assert.match(lookup,/record\.gearSlot!==preview\.slot/);
+ assert.match(lookup,/gearIndex\.get\(id\)/,"Build-Finder must keep its original data semantics");
+ assert.doesNotMatch(lookup,/v16OfficialAliases/,"No guide-rating or build-filter side effects");
  const popup=read("src/components/endfield/ItemDetailPopup.astro");
+ assert.match(popup,/verifiedReleaseAliases\.aliases\[id as keyof typeof verifiedReleaseAliases\.aliases\]/);
  assert.match(popup,/getOfficialGear\(id\)/);
+ assert.match(popup,/getOfficialGear\(legacyMatch\)/);
+ assert.match(popup,/verifiedLegacyGear\.name===\(catalog\?\.name\?\?""\)\.replace/);
  assert.match(popup,/gear\.standardRecipe\?\.materials/);
 });
