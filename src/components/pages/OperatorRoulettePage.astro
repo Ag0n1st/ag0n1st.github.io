@@ -1,0 +1,72 @@
+---
+import EndfieldPlaceholder from "../../layouts/EndfieldPlaceholder.astro";
+import "../../styles/operator-roulette.css";
+interface Props {lang?:"de"|"en"}
+const {lang="de"}=Astro.props;
+const en=lang==="en";
+const l=(de:string,english:string)=>en?english:de;
+const roles=[
+ {id:"all",label:l("Alle","All")},
+ {id:"damage-dealer",label:"Damage Dealer"},
+ {id:"enabler",label:"Enabler"},
+ {id:"buffer",label:"Buffer"}
+];
+---
+<EndfieldPlaceholder title="Operator Roulette" kicker="ARKNIGHTS: ENDFIELD · ROULETTE"
+ description={l("Zufällige Teams aus vier Operatoren ziehen – über mehrere Rollenkategorien hinweg.",
+ "Spin a four-operator team, mixing different role categories.")} active="roulette" lang={lang}>
+ <main class="endfield-utility-page section-wrap or-page" data-operator-roulette data-lang={lang}>
+  <span class="section-kicker">ARKNIGHTS: ENDFIELD · TEAM GENERATOR</span>
+  <h1>Operator Roulette<span class="title-period">.</span></h1>
+  <section class="or-card" aria-labelledby="or-heading">
+   <div class="or-card-heading">
+    <span class="or-kicker">{l("TEAM-CHALLENGE","TEAM CHALLENGE")}</span>
+    <h2 id="or-heading">{l("Vier Operatoren. Ein Team.","Four operators. One team.")}</h2>
+    <p>{l("Wähle die Kategorie für jeden einzelnen Dreh. Die gezogenen Operatoren bleiben erhalten, bis dein Team vollständig ist.",
+     "Select a category for each spin. Drawn operators stay on your team until all four slots are filled.")}</p>
+   </div>
+   <div class="or-source" role="note">
+    {l("Die Rollenzuordnung basiert auf der gemeinsam mit der Community erstellten Tierlist vom 23.08.2026. Zusätzlich zugeordnet: Si als Damage Dealer und Buffer; Purrchena als Enabler.",
+    "Role assignments are based on the tier list created with the community on 23 August 2026. Additional assignments: Si as Damage Dealer and Buffer; Purrchena as Enabler.")}
+   </div>
+   <div class="or-tabs" role="tablist" aria-label={l("Operator-Kategorie","Operator category")}>
+    {roles.map((role,index)=><button id={"or-tab-"+role.id} type="button" role="tab" class="or-tab"
+      aria-controls="or-wheel-panel" aria-selected={String(index===0)} tabindex={index===0?0:-1}
+      data-roulette-role={role.id}>{role.label}<span class="or-count" data-roulette-count>–</span></button>)}
+   </div>
+   <div class="or-content">
+    <section id="or-wheel-panel" class="or-wheel-panel" role="tabpanel" aria-labelledby="or-tab-all" data-roulette-wheel-panel>
+     <div class="or-wheel-outer">
+      <span class="or-pointer" aria-hidden="true"></span>
+      <div class="or-wheel-frame">
+       <div class="or-wheel" data-roulette-wheel aria-hidden="true"></div>
+      </div>
+     </div>
+     <span class="or-availability" data-roulette-available>{l("Operatoren werden geladen …","Loading operators …")}</span>
+     <button type="button" class="or-spin-button" data-roulette-spin>{l("ROULETTE DREHEN","SPIN THE WHEEL")} <span aria-hidden="true">↻</span></button>
+    </section>
+    <section class="or-team-panel" aria-labelledby="or-team-title">
+     <div class="or-team-heading">
+      <span class="or-kicker">{l("DEIN ERGEBNIS","YOUR RESULT")}</span>
+      <h3 id="or-team-title">{l("Dein Team","Your team")} <span data-roulette-progress>0 / 4</span></h3>
+     </div>
+     <div class="or-team-slots" data-roulette-team>
+      {Array.from({length:4},(_,i)=><div class="or-team-slot" data-roulette-slot={i}>
+       <span class="or-team-placeholder">{String(i+1).padStart(2,"0")}</span>
+       <span class="or-team-empty">{l("Freier Platz","Empty slot")}</span>
+      </div>)}
+     </div>
+     <button class="or-reset-button" type="button" data-roulette-reset disabled>{l("Neues Team erstellen","Create new team")}</button>
+     <p class="or-team-hint">{l("Keine Duplikate: Bereits gezogene Operatoren werden aus allen Kategorien entfernt.",
+      "No duplicates: drawn operators are removed from every category.")}</p>
+    </section>
+   </div>
+   <p class="or-status" role="status" aria-live="polite" data-roulette-status>
+    {l("Wähle eine Kategorie und drehe.","Choose a category and spin.")}
+   </p>
+  </section>
+ </main>
+</EndfieldPlaceholder>
+<script>
+ import "../../lib/endfield/operatorRouletteClient.mjs";
+</script>
