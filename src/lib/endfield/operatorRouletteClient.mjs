@@ -14,13 +14,18 @@ if(root){
  const spinButton=root.querySelector("[data-roulette-spin]");
  const hubButton=root.querySelector("[data-roulette-hub]");
  const resetButton=root.querySelector("[data-roulette-reset]");
+ const shortMotion=root.querySelector("[data-roulette-short-motion]");
  const availableLabel=root.querySelector("[data-roulette-available]");
  const status=root.querySelector("[data-roulette-status]");
  const slots=[...root.querySelectorAll("[data-roulette-slot]")];
  const roleLabel={"all":l("Alle","All"),"damage-dealer":"Damage Dealer",
   enabler:"Enabler",buffer:"Buffer"};
  let category="all",team=[],rotation=0,spinning=false;
- const reduced=window.matchMedia("(prefers-reduced-motion: reduce)");
+ // CSS transitions are forcibly reduced to .01ms!important by the shared site
+ // stylesheet when the browser reports reduced motion. Explicit rAF timing here
+ // makes the default 14-second spin reliable in every browser configuration.
+ const SPIN_DURATION_MS=14000;
+ const SHORT_DURATION_MS=350;
  const img=(op,className)=>{
   const node=document.createElement("img");
   node.className=className;
@@ -63,6 +68,7 @@ if(root){
   spinButton.disabled=spinning||team.length>=ROULETTE_TEAM_SIZE||wheelItems().length===0;
   hubButton.disabled=spinButton.disabled;
   resetButton.disabled=spinning||team.length===0;
+  shortMotion.disabled=spinning;
   availableLabel.textContent=l("Im Rad: ","On wheel: ")+wheelItems().length;
   root.querySelector("[data-roulette-wheel-panel]").setAttribute("aria-labelledby","or-tab-"+category);
  }
@@ -126,17 +132,23 @@ if(root){
   const index=randomIndex(pool.length),selected=pool[index];
   spinning=true;setControls();
   message(l("Das Roulette dreht sich …","Spinning the wheel …"));
-  // Four deliberate revolutions over fourteen seconds: a visible, slow deceleration.
-  // Only visitors requesting reduced motion receive a short animation.
-  const duration=reduced.matches?350:14000;
-  const target=winnerRotation(rotation,index,pool.length,4);
+  // Explicit choice, never an implicit system media-query override.
+  // A user who wants the full spin gets all 14 seconds even when the OS reports
+  // prefers-reduced-motion:reduce. A short, accessible option remains available.
+  const duration=shortMotion.checked?SHORT_DURATION_MS:SPIN_DURATION_MS;
+  const startAngle=rotation;
+  const target=winnerRotation(startAngle,index,pool.length,4);
+  wheel.dataset.spinDuration=String(duration);
+  // No CSS transition: global reduced-motion CSS uses !important and would
+  // otherwise complete the wheel rotation immediately.
+  wheel.style.transition="none";
   const complete=()=>{
    if(!spinning)return;
    spinning=false;
    rotation=target;
-   // Keep the complete wheel and its exact final angle. Do not rebuild here:
-   // otherwise the selected portrait vanishes under the pointer immediately.
+   wheel.style.transform="rotate("+target+"deg)";
    wheel.dataset.result=selected.id;
+   delete wheel.dataset.spinDuration;
    wheel.querySelectorAll(".or-wheel-segment").forEach(segment=>{
     segment.classList.toggle("is-winner",segment.dataset.operator===selected.id);
    });
@@ -147,20 +159,19 @@ if(root){
     :l(selected.name+" ist im Team! Du kannst nun die Kategorie wechseln.",
        selected.name+" joined the team! You can switch categories before the next spin."));
   };
-  let fallback;
-  const done=event=>{
-   if(event?.target!==wheel||event?.propertyName!=="transform")return;
-   wheel.removeEventListener("transitionend",done);
-   window.clearTimeout(fallback);complete();
+  let startedAt=null;
+  const animate=(timestamp)=>{
+   if(!spinning)return;
+   if(startedAt===null)startedAt=timestamp;
+   const progress=Math.min(1,(timestamp-startedAt)/duration);
+   // Ease-in/out keeps the wheel visible, then gradually slows to the winner.
+   const eased=(1-Math.cos(Math.PI*progress))/2;
+   const degrees=startAngle+(target-startAngle)*eased;
+   wheel.style.transform="rotate("+degrees+"deg)";
+   if(progress<1)window.requestAnimationFrame(animate);
+   else complete();
   };
-  wheel.addEventListener("transitionend",done);
-  // Double frame ensures the conic wheel's initial transform has a layout frame.
-  window.requestAnimationFrame(()=>window.requestAnimationFrame(()=>{
-   wheel.style.transition="transform "+duration+"ms cubic-bezier(.28,.13,.14,1)";
-   rotation=target;wheel.style.transform="rotate("+target+"deg)";
-  }));
-  fallback=window.setTimeout(()=>{wheel.removeEventListener("transitionend",done);complete();},duration+900);
- }
+  window.requestAnimationFrame(animate); }
  spinButton.addEventListener("click",spin);
  hubButton.addEventListener("click",spin);
  resetButton.addEventListener("click",()=>{

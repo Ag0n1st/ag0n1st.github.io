@@ -29,6 +29,11 @@
 .or-wheel-segment.is-winner .or-wheel-icon{border-color:#c8ffff;box-shadow:0 0 0 3px #63f5f592,0 0 16px #6af7ffcc,0 2px 7px #000a}
 .or-pointer{position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:4;width:0;height:0;border-left:17px solid transparent;border-right:17px solid transparent;border-top:36px solid #b9f1f3;filter:drop-shadow(0 3px 4px #000d)}
 .or-availability{color:#cdc7d6;font-size:12px;font-variant-numeric:tabular-nums}
+.or-short-motion{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:36px;color:#bcb3c9;font-size:12px;cursor:pointer;padding:3px 8px}
+.or-short-motion input{accent-color:#71e3e9;width:17px;height:17px;cursor:pointer}
+.or-short-motion:has(input:disabled){opacity:.6;cursor:not-allowed}
+.or-short-motion input:disabled{cursor:not-allowed}
+.or-short-motion:focus-within{outline:2px solid #79e7ef;outline-offset:3px;border-radius:5px}
 .or-spin-button{border-radius:12px;border:1px solid #64cedb;background:linear-gradient(110deg,#24798a,#3c4b85 60%,#873e89);box-shadow:0 6px 25px #40dae32b;color:#fff;font:inherit;font-size:14px;font-weight:850;letter-spacing:.09em;padding:15px 22px;min-height:52px;cursor:pointer;max-width:100%;width:min(330px,100%)}
 .or-spin-button span{font-size:20px;margin-left:11px;vertical-align:middle}
 .or-spin-button:hover:not(:disabled){filter:brightness(1.16)}
