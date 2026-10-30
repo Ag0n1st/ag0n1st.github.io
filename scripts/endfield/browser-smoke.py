@@ -794,6 +794,28 @@ def smoke_i18n(page, base_url, width):
                    active.locator(".op-matrix-empty-row").count()==0,
                    label+": "+lang+" "+slug+" matrix shows guide-approved setups and all five gear slots")
             if slug=="si":
+                # All six featured Type 50 and Xiranite v1.6 slugs now display official
+                # tables and standard recipes, instead of the old placeholder.
+                for legacy in ("eternal-xiranite-overalls",
+                               "eternal-xiranite-channeling-gloves",
+                               "eternal-xiranite-rangefinder",
+                               "type-50-yinglung-soft-armor",
+                               "type-50-yinglung-gloves-v16",
+                               "type-50-yinglung-beacon"):
+                    trigger=page.locator('#ausruestung .op-meta-build-parts [data-endfield-item-id="'+legacy+'"]').first
+                    verify(trigger.count()==1,label+": "+lang+" Si "+legacy+" keeps original guide icon")
+                    trigger.hover()
+                    popup=page.locator(".op-item-hover-panel:popover-open")
+                    popup.wait_for(state="visible")
+                    verify(popup.locator(".op-item-detail-table-scroll").count()>=2 and
+                           popup.locator(".op-item-detail-section").count()>=3 and
+                           popup.locator(".op-resource").count()==2 and
+                           popup.locator(".op-item-detail-source").count()==1 and
+                           popup.locator(".op-item-detail-empty").count()==0 and
+                           [v.strip() for v in popup.locator(".op-resource-count").all_text_contents()]==["×360","×50"],
+                           label+": "+lang+" Si "+legacy+" shows SKPORT stats, refining and recipe")
+                    page.keyboard.press("Escape")
+                    verify(not popup.is_visible(),label+": "+lang+" Si "+legacy+" tooltip closes normally")
                 dps_names=[t.strip() for t in active.locator(".op-equipment-matrix tbody th[scope='row']").all_text_contents()]
                 verify(dps_names==["MAIN-DPS-0","MAIN-DPS-1","MAIN-DPS-2","MAIN-DPS-3","MAIN-DPS-4"],
                        label+": "+lang+" Si DPS tab contains MAIN-DPS-0 through MAIN-DPS-4")

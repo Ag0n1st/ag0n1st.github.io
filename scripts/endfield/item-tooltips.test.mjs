@@ -66,3 +66,47 @@ test("NEW badge remains on newest release until replaced, no timed expiry",()=>{
  assert.match(index,/operator\.isNew && <span class="op-card-new"/);
  assert.doesNotMatch(index,/Date\.now\(\)|\bexpiresAt\b|\bnewBadgeDays\b/);
 });
+
+test("18 official v1.6 Gear records power all pre-release item hover menus while preserving guide art",()=>{
+ const manifest=JSON.parse(read("src/data/endfield/catalog/v16-official-gear-aliases.json"));
+ const preview=JSON.parse(read("src/data/endfield/catalog/v16-gear.json"));
+ const report=JSON.parse(read("src/data/endfield/catalog/v16-skport-import.json"));
+ const detail=JSON.parse(read("src/data/endfield/catalog/equipment-details.json"));
+ const official=JSON.parse(read("src/data/endfield/catalog/items.json"));
+ const old=new Map(preview.items.map(x=>[x.id,x]));
+ const summary=new Map(report.entries.map(x=>[x.id,x]));
+ const gear=new Map(detail.gear.map(x=>[x.id,x]));
+ const item=new Map(official.items.map(x=>[x.id,x]));
+ const aliases=Object.entries(manifest.aliases);
+ assert.equal(manifest.schemaVersion,1);
+ assert.match(manifest.source,/SKPORT Wiki/);
+ assert.equal(aliases.length,18);
+ assert.equal(new Set(aliases.map(([,id])=>id)).size,18);
+ for(const [slug,id] of aliases){
+  const legacy=old.get(slug),record=summary.get(id),entry=gear.get(id),catalog=item.get(id);
+  assert.ok(legacy&&record&&entry&&catalog,slug);
+  assert.equal(legacy.name.replace(" (v1.6)",""),record.name,slug);
+  assert.equal(legacy.slot,record.slot);
+  assert.equal(entry.gearSlot,record.slot);
+  assert.equal(entry.name,record.name);
+  assert.equal(entry.source.itemId,id);
+  assert.equal(entry.status,"verified");
+  assert.equal(entry.artificingStatus,"available");
+  assert.ok(entry.stats.some(tab=>tab.tables.length>0));
+  assert.ok(entry.artificing.some(tab=>tab.tables.length>0));
+  assert.equal(entry.recipeStatus,"verified");
+  assert.equal(entry.standardRecipe.materials.length,2);
+  assert.equal(catalog.iconPath,"/images/endfield/gear/"+id+".webp");
+  assert.equal(legacy.officialNumericId,null,"original preview identity remains untouched");
+  assert.equal(legacy.identityStatus,"official-numeric-id-unverified");
+ }
+ assert.equal(manifest.aliases["type-50-yinglung-gloves-v16"],"1381");
+ assert.equal(item.get("411").name,item.get("1381").name);
+ assert.equal(Object.hasOwn(manifest.aliases,"type-50-yinglung-gauntlets"),false);
+ const lookup=read("src/lib/endfield/equipmentDetails.ts");
+ assert.match(lookup,/gearIndex\.get\(v16OfficialAliases\.get\(id\)\?\?id\)/);
+ assert.match(lookup,/record\.gearSlot!==preview\.slot/);
+ const popup=read("src/components/endfield/ItemDetailPopup.astro");
+ assert.match(popup,/getOfficialGear\(id\)/);
+ assert.match(popup,/gear\.standardRecipe\?\.materials/);
+});

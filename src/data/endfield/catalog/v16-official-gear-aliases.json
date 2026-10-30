@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "source": "SKPORT Wiki public item/info and catalog; verified v1.6",
+  "snapshot": "2026-10-30",
+  "note": "Compatibility crosswalk for release slugs; the older Type 50 Yinglung Gloves 411 remain separate from the new ID 1381. Type 50 Yinglung Gauntlets are not in the official 18-piece delta and remain unverified.",
+  "aliases": {
+    "pulser-labs-light-armor": "1389",
+    "pulser-labs-light-gauntlets": "1390",
+    "pulser-labs-armor-slab": "1388",
+    "eternal-xiranite-mod-armor": "1392",
+    "eternal-xiranite-overalls": "1394",
+    "eternal-xiranite-channeling-gloves": "1391",
+    "eternal-xiranite-rangefinder": "1393",
+    "rift-trekker-steel-armor": "1386",
+    "rift-trekker-overalls": "1387",
+    "rift-trekker-wraps": "1385",
+    "rift-trekker-gauntlets": "1383",
+    "rift-trekker-silver-blade": "1384",
+    "type-50-yinglung-soft-armor": "1382",
+    "type-50-yinglung-gloves-v16": "1381",
+    "type-50-yinglung-beacon": "1380",
+    "aic-fieldwork-cqb-armor": "1397",
+    "aic-fieldwork-cqb-gloves": "1396",
+    "aic-fieldwork-cqb-hacksaw": "1395"
+  }
+}
