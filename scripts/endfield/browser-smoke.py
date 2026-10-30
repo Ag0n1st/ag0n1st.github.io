@@ -1432,7 +1432,12 @@ def smoke_i18n(page, base_url, width):
                label+": "+lang+" source disclosure and manually added roles")
         verify(roulette.locator(".or-wheel-icon").count()==33 and
                roulette.locator(".or-wheel-icon").first.evaluate(
-                 "(im)=>im.complete&&im.naturalWidth>0&&getComputedStyle(im).borderRadius==='50%'"),
+                 "(im)=>im.complete&&im.naturalWidth>0&&getComputedStyle(im).borderRadius==='50%'") and
+               roulette.locator(".or-wheel-segment").evaluate_all("""segments=>segments.every(el=>{
+                   const point=el.getBoundingClientRect(),img=el.querySelector('img').getBoundingClientRect();
+                   return Math.abs(point.x-(img.x+img.width/2))<2 &&
+                          Math.abs(point.y-(img.y+img.height/2))<2;
+                 })"""),
                label+": "+lang+" 33 local circular operator portraits on the wheel")
         verify([roulette.locator('[data-roulette-role="'+role+'"] [data-roulette-count]').inner_text()
                  for role in ("damage-dealer","enabler","buffer")]==["12","16","11"],
