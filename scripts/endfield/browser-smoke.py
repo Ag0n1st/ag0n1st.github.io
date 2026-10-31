@@ -722,7 +722,7 @@ def smoke_i18n(page, base_url, width):
                label+": "+lang+" has a non-expired Protocol Pass comparison")
         check_overflow(page,label+" "+lang+" countdown")
         links=page.locator(".endfield-nav-link").all_text_contents()
-        flat=[x.strip().replace("·","") for x in links]
+        flat=[" ".join(x.replace("·","").split()) for x in links]  # two-line nav labels
         verify(len(flat)==11 and
                flat.index("Operator Roulette")+1==flat.index("Tierlist" if lang=="de" else "Tier List") and
                flat.index("Checkliste" if lang=="de" else "Checklist")==flat.index("Tierlist" if lang=="de" else "Tier List")+1 and
