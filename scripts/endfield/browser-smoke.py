@@ -721,8 +721,15 @@ def smoke_i18n(page, base_url, width):
                ("Protokoll-Pass" if lang=="de" else "Protocol Pass") in page.locator(".countdown-source").inner_text(),
                label+": "+lang+" has a non-expired Protocol Pass comparison")
         check_overflow(page,label+" "+lang+" countdown")
-        links=page.locator(".endfield-nav-link").all_text_contents()
-        flat=[" ".join(x.replace("·","").split()) for x in links]  # two-line nav labels
+        # Adjacent span elements have no text-node whitespace in the Astro DOM.
+        # Read each rendered label line separately instead of concatenating
+        # "OperatorRoulette" into a single string.
+        links=page.locator(".endfield-nav-link").evaluate_all("""nodes=>nodes.map(a=>{
+          const text=a.querySelector(".endfield-nav-text");
+          const lines=[...text.querySelectorAll(":scope > span")];
+          return lines.length?lines.map(el=>el.textContent.trim()).join(" "):text.textContent.trim();
+        })""")
+        flat=[" ".join(x.replace("·","").split()) for x in links]
         verify(len(flat)==11 and
                flat.index("Operator Roulette")+1==flat.index("Tierlist" if lang=="de" else "Tier List") and
                flat.index("Checkliste" if lang=="de" else "Checklist")==flat.index("Tierlist" if lang=="de" else "Tier List")+1 and
