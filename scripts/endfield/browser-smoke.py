@@ -721,8 +721,15 @@ def smoke_i18n(page, base_url, width):
                ("Protokoll-Pass" if lang=="de" else "Protocol Pass") in page.locator(".countdown-source").inner_text(),
                label+": "+lang+" has a non-expired Protocol Pass comparison")
         check_overflow(page,label+" "+lang+" countdown")
-        links=page.locator(".endfield-nav-link").all_text_contents()
-        flat=[x.strip().replace("·","") for x in links]
+        # Adjacent span elements have no text-node whitespace in the Astro DOM.
+        # Read each rendered label line separately instead of concatenating
+        # "OperatorRoulette" into a single string.
+        links=page.locator(".endfield-nav-link").evaluate_all("""nodes=>nodes.map(a=>{
+          const text=a.querySelector(".endfield-nav-text");
+          const lines=[...text.querySelectorAll(":scope > span")];
+          return lines.length?lines.map(el=>el.textContent.trim()).join(" "):text.textContent.trim();
+        })""")
+        flat=[" ".join(x.replace("·","").split()) for x in links]
         verify(len(flat)==11 and
                flat.index("Operator Roulette")+1==flat.index("Tierlist" if lang=="de" else "Tier List") and
                flat.index("Checkliste" if lang=="de" else "Checklist")==flat.index("Tierlist" if lang=="de" else "Tier List")+1 and
@@ -1426,6 +1433,37 @@ def smoke_i18n(page, base_url, width):
                links.index(list_href)+1==links.index(check_href) and
                page.locator('a.endfield-nav-link[href="'+wheel_href+'"][aria-current="page"]').count()==1,
                label+": "+lang+" Roulette > Tierlist > Checklist navbar order")
+        # Same two-line treatment as Community Leaderboard (both locales).
+        nav_roulette=page.locator('a.endfield-nav-link[href="'+wheel_href+'"] .endfield-nav-text')
+        nav_leaderboard=page.locator('a.endfield-nav-link[href="'+prefix+'/endfield/leaderboard/"] .endfield-nav-text')
+        verify(nav_roulette.locator("span").all_text_contents()==["Operator","Roulette"] and
+               nav_leaderboard.locator("span").all_text_contents()==["Community","Leaderboard"] and
+               nav_roulette.evaluate("""el=>{
+                 const lines=[...el.children].map(x=>x.getBoundingClientRect());
+                 return lines.length===2 && lines[1].top>lines[0].top+2;
+               }"""),
+               label+": "+lang+" Operator Roulette stacked exactly like Community Leaderboard")
+        # Verify the *rendered* CSS orientation, not only source-defined angles.
+        # A portrait's top direction must point from its position towards the hub,
+        # including after the parent wheel has rotated and stopped.
+        inward_portraits_js="""segments=>{
+          const wheel=segments[0]?.closest('[data-roulette-wheel]');
+          if(!wheel||!segments.length)return false;
+          const wh=wheel.getBoundingClientRect(),wx=wh.left+wh.width/2,wy=wh.top+wh.height/2;
+          const wm=new DOMMatrix(getComputedStyle(wheel).transform);
+          const wheelAngle=Math.atan2(wm.b,wm.a)*180/Math.PI;
+          const delta=(a,b)=>Math.abs(((a-b+540)%360)-180);
+          return segments.every(segment=>{
+            const portrait=segment.querySelector('.or-wheel-icon');
+            if(!portrait)return false;
+            const b=portrait.getBoundingClientRect();
+            const x=b.left+b.width/2,y=b.top+b.height/2;
+            const radialAngle=Math.atan2(x-wx,-(y-wy))*180/Math.PI;
+            const im=new DOMMatrix(getComputedStyle(portrait).transform);
+            const imageAngle=Math.atan2(im.b,im.a)*180/Math.PI;
+            return delta(imageAngle+wheelAngle,radialAngle+180)<2;
+          });
+        }"""
         note=roulette.locator(".or-source").inner_text()
         verify(("23.08.2026" if lang=="de" else "23 August 2026") in note and
                "Si" in note and "Purrchena" in note,
@@ -1439,6 +1477,8 @@ def smoke_i18n(page, base_url, width):
                           Math.abs(point.y-(img.y+img.height/2))<2;
                  })"""),
                label+": "+lang+" 33 local circular operator portraits on the wheel")
+        verify(roulette.locator(".or-wheel-segment").evaluate_all(inward_portraits_js),
+               label+": "+lang+" all 33 operator portraits face into the hub")
         verify([roulette.locator('[data-roulette-role="'+role+'"] [data-roulette-count]').inner_text()
                  for role in ("damage-dealer","enabler","buffer")]==["12","16","11"],
                label+": "+lang+" exact community roles with Si and Purrchena")
@@ -1495,6 +1535,8 @@ def smoke_i18n(page, base_url, width):
                    pointer_alignment and pointer_alignment["dx"]<4 and
                    pointer_alignment["y"]<pointer_alignment["wheelCentreY"],
                    label+": "+lang+" winning portrait remains on physical wheel precisely below top marker")
+            verify(roulette.locator(".or-wheel-segment").evaluate_all(inward_portraits_js),
+                   label+": "+lang+" every portrait still faces the hub after full wheel spin")
             page.wait_for_timeout(550)
             verify(wheel.get_attribute("data-result")==result and
                    wheel.evaluate("(el)=>el.style.transform")==rotation_after and
@@ -1530,6 +1572,8 @@ def smoke_i18n(page, base_url, width):
                    wheel.evaluate("(el)=>el.style.transform")!="rotate(0deg)" and
                    hub.is_enabled()==(i<4),
                    label+": "+lang+" held winning position and team slot "+str(i)+" across role changes")
+            verify(roulette.locator(".or-wheel-segment").evaluate_all(inward_portraits_js),
+                   label+": "+lang+" radially aligned portraits after role switch and result")
             team.append(roulette.locator(".or-team-slot.is-filled").last.locator("strong").inner_text())
         verify(len(set(team))==4 and roulette.locator("[data-roulette-spin]").is_disabled() and
                roulette.locator(".or-wheel-segment[data-operator='argent-flow']").count()==0,
