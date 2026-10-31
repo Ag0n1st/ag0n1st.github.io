@@ -1,7 +1,7 @@
 import roster from "../../data/endfield/endfieldle-roster.json";
 import tierlist from "../../data/endfield/tierlists/2026-08-23.json";
 import overrides from "../../data/endfield/operator-roulette-overrides.json";
-import {getRoulettePools,remainingOperators,randomIndex,winnerRotation,berlinDay,ROULETTE_TEAM_SIZE} from "./operatorRouletteGame.mjs";
+import {getRoulettePools,remainingOperators,randomIndex,winnerRotation,portraitInwardRotation,berlinDay,ROULETTE_TEAM_SIZE} from "./operatorRouletteGame.mjs";
 
 const root=document.querySelector("[data-operator-roulette]");
 if(root){
@@ -95,7 +95,9 @@ if(root){
    const radius=n>24?.402:n>13?.38:.34;
    sector.style.left=(50+Math.sin(rad)*radius*100).toFixed(4)+"%";
    sector.style.top=(50-Math.cos(rad)*radius*100).toFixed(4)+"%";
-   sector.append(img(op,"or-wheel-icon"));
+   const portrait=img(op,"or-wheel-icon");
+   portrait.style.setProperty("--or-portrait-inward",portraitInwardRotation(i,n)+"deg");
+   sector.append(portrait);
    wheel.append(sector);
   });
   setControls();

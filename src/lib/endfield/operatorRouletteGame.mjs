@@ -49,6 +49,17 @@ export function remainingOperators(pools,category,team){
  return pools[category].filter(op=>!chosen.has(op.id));
 }
 
+/** Rotate each portrait so the top of its artwork faces the centre of the wheel.
+ * The wheel itself rotates as one parent, so this orientation survives every
+ * draw and still points inwards when the winner stops under the top pointer.
+ */
+export function portraitInwardRotation(index,total){
+ if(!Number.isSafeInteger(total)||total<1||!Number.isSafeInteger(index)||
+    index<0||index>=total)
+  throw Error("Invalid Roulette portrait sector");
+ return (180+(index+.5)*360/total)%360;
+}
+
 /** Exact rejection sampling prevents modulo bias for wheels with uneven segment counts. */
 export function randomIndex(length,randomUint32){
  if(!Number.isSafeInteger(length)||length<1||length>0x100000000)throw Error("Invalid wheel size");

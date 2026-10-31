@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {readFileSync,existsSync} from "node:fs";
-import {getRoulettePools,remainingOperators,randomIndex,winnerRotation,berlinDay,ROULETTE_TEAM_SIZE,ROULETTE_CATEGORIES} from "../../src/lib/endfield/operatorRouletteGame.mjs";
+import {getRoulettePools,remainingOperators,randomIndex,winnerRotation,portraitInwardRotation,berlinDay,ROULETTE_TEAM_SIZE,ROULETTE_CATEGORIES} from "../../src/lib/endfield/operatorRouletteGame.mjs";
 
 const read=p=>readFileSync(p,"utf8");
 const roster=JSON.parse(read("src/data/endfield/endfieldle-roster.json"));
@@ -82,6 +82,25 @@ test("unbiased 32-bit draws reject modulo tails and final rotation puts winner's
  assert.throws(()=>winnerRotation(0,5,4),/Invalid spin target/);
 });
 
+test("wheel portraits point radially towards the hub for every segment count and final stopped rotation",()=>{
+ const normalize=angle=>((angle%360)+360)%360;
+ const distance=(a,b)=>Math.abs(((a-b+540)%360)-180);
+ for(const count of [1,2,3,4,7,11,12,16,33]){
+  for(let index=0;index<count;index++){
+   const sector=(index+.5)*360/count;
+   const facing=portraitInwardRotation(index,count);
+   assert.ok(distance(facing,sector+180)<1e-9,
+     "portrait must face into the hub before spin: "+count+" / "+index);
+   const spin=winnerRotation(23,index,count,4);
+   assert.ok(distance(facing+spin,sector+spin+180)<1e-9,
+     "portrait must still face into the hub after spin: "+count+" / "+index);
+  }
+ }
+ assert.throws(()=>portraitInwardRotation(-1,33),/Invalid Roulette portrait sector/);
+ assert.throws(()=>portraitInwardRotation(33,33),/Invalid Roulette portrait sector/);
+ assert.throws(()=>portraitInwardRotation(0,0),/Invalid Roulette portrait sector/);
+});
+
 test("Berlin release-day boundary accounts for winter time",()=>{
  assert.equal(berlinDay(new Date("2026-10-30T22:59:00Z")),"2026-10-30");
  assert.equal(berlinDay(new Date("2026-10-30T23:01:00Z")),"2026-10-31");
@@ -110,6 +129,12 @@ test("bilingual routes, navigation order, community disclaimer, animation, acces
  assert.match(page,/Si als Damage Dealer und Buffer; Purrchena als Enabler/);
  assert.match(page,/Si as Damage Dealer and Buffer; Purrchena as Enabler/);
  assert.match(css,/\.or-wheel-icon\{[^}]*border-radius:50%/);
+ assert.match(css,/\.or-wheel-icon\{[^}]*rotate\(var\(--or-portrait-inward,0deg\)\)/);
+ assert.match(client,/portraitInwardRotation\(i,n\)/);
+ assert.match(client,/portrait\.style\.setProperty\("--or-portrait-inward"/);
+ const navText=nav.match(/<span class="endfield-nav-text">([^\n]+)<\/span>/)?.[1]??"";
+ assert.match(navText,/item\.key==="leaderboard" \? <><span>Community<\/span><span>Leaderboard<\/span><\/>/);
+ assert.match(navText,/item\.key==="roulette" \? <><span>Operator<\/span><span>Roulette<\/span><\/>/);
  assert.match(css,/\.or-wheel\{[^}]*border-radius:50%/);
  assert.match(css,/@media\(max-width:600px\)/);
  assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);
