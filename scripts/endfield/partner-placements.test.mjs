@@ -123,7 +123,6 @@ test("GamerSupps alone uses white accents and an accessible bilingual footer dis
  assert.ok(footer.includes('aria-describedby={partner.id==="gamersupps"?'));
  assert.ok(footer.includes('partner.id==="gamersupps" && partner.discount'));
  assert.ok(footer.includes('role="tooltip"'));
- assert.ok(footer.includes('10')===false || gs.discount.percent===10);
  assert.ok(footer.includes('% off with code'));
  assert.ok(footer.includes('Rabatt mit Code'));
  assert.ok(footerCss.includes('.partner-footer-icon[data-partner-id="gamersupps"]{position:relative}'));

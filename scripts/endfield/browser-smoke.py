@@ -649,7 +649,7 @@ def smoke_i18n(page, base_url, width):
         gs_tooltip=gs_footer.locator('[role="tooltip"]')
         gs_discount=("10 % Rabatt mit Code AGON" if locale=="de" else "10% off with code AGON")
         verify(gs_footer.count()==1 and gs_tooltip.count()==1 and
-               gs_tooltip.inner_text()==gs_discount and
+               gs_tooltip.text_content()==gs_discount and
                not gs_tooltip.is_visible() and
                partner_footer.locator('.partner-footer-icon:not([data-partner-id="gamersupps"]) [role="tooltip"]').count()==0 and
                gs_footer.get_attribute("aria-describedby")=="footer-gamersupps-discount" and
