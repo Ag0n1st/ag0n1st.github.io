@@ -55,3 +55,13 @@ test("Event quick buttons do not duplicate the upcoming date",()=>{
   assert.match(panel,/cl-event-upcoming-notice/);
   assert.match(panel,/event\.startsOn\.slice\(0,4\)/);
 });
+
+test("CC score label shrinks approximately 30 percent across desktop and mobile without affecting ranking",()=>{
+  const css=read("src/styles/endfield-leaderboard.css");
+  assert.match(css,/\.cl-cc-score\{[^\n]*min-width:64px;height:27px/);
+  assert.match(css,/\.cl-cc-score-value\{[^\n]*font-size:15px/);
+  assert.match(css,/\.cl-cc-score-mark\{[^\n]*width:21px;height:21px/);
+  assert.match(css,/@media\(max-width:460px\)\{\.cl-cc-score\{min-width:54px;height:24px/);
+  assert.match(css,/@media\(max-width:460px\)\{[^\n]*\.cl-cc-score-value\{font-size:13px/);
+  assert.match(css,/@media\(max-width:460px\)\{[^\n]*\.cl-cc-score-mark\{width:18px;height:18px/);
+});
