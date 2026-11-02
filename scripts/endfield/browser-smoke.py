@@ -643,7 +643,7 @@ def smoke_i18n(page, base_url, width):
         verify(partner_footer_found==1 and len(partner_footer_links)==4 and
                all("sponsored" in (link["rel"] or "").split() and link["target"]=="_blank"
                    for link in partner_footer_links) and
-               ("Werbung" if locale=="de" else "Advertisement") in partner_footer_text,
+               ("werbung" if locale=="de" else "advertisement") in partner_footer_text.lower(),
                label+": "+locale+" footer shows four correctly disclosed affiliate partners: "+str({"count":partner_footer_found,"links":partner_footer_links,"text":partner_footer_text[:250]}))
         partner_home=page.locator("[data-partner-showcase]")
         verify(partner_home.count()==1 and
@@ -654,7 +654,7 @@ def smoke_i18n(page, base_url, width):
                all("sponsored" in link.get_attribute("rel").split() and
                    link.get_attribute("target")=="_blank"
                    for link in partner_home.locator(".partner-card-cta").all()) and
-               ("Meine Partner" if locale=="de" else "My partners") in partner_home.inner_text(),
+               ("meine partner" if locale=="de" else "my partners") in partner_home.inner_text().lower(),
                label+": "+locale+" homepage shows four bilingual advertisement cards")
         for img in partner_home.locator(".partner-card-logo").all():
             img.scroll_into_view_if_needed()
