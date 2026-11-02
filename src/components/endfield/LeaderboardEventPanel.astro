@@ -4,8 +4,8 @@ import {getOperatorImageUrl} from "../../lib/endfield/operatorAssets";
 import {rankVerifiedRuns,rankContingencyContractRuns,flagForCountry} from "../../lib/endfield/leaderboardRanking.mjs";
 import type {loadLeaderboardContent} from "../../lib/endfield/leaderboardContent";
 type Content=Awaited<ReturnType<typeof loadLeaderboardContent>>;
-interface Props {lang?:"de"|"en";event:Content["events"][number];verifiedRuns:Content["verifiedRuns"];archived:boolean;hidden:boolean}
-const {lang="de",event,verifiedRuns,archived,hidden}=Astro.props;
+interface Props {lang?:"de"|"en";event:Content["events"][number];verifiedRuns:Content["verifiedRuns"];archived:boolean;hidden:boolean;upcoming?:boolean}
+const {lang="de",event,verifiedRuns,archived,hidden,upcoming=false}=Astro.props;
 const en=lang==="en";
 const l=(de:string,english:string)=>en?english:de;
 const isGermanFlag=(code?:string)=>code==="DEU"||code==="DE";
@@ -23,6 +23,7 @@ const demoOnly=rows.length>0&&rows.every(run=>run.status==="demo");
 ---
 <div id={`cl-event-panel-${event.id}${archived?"-archive":""}`} class:list={["cl-event-panel",{"cl-event-archive-panel":archived}]} data-event-panel={event.id} data-event-background={event.backgroundImage} hidden={hidden} data-event-archived={archived?"true":"false"} style={archived ? '--cl-archive-background:url("'+event.backgroundImage+'")' : undefined}>
       {archived && <p class="cl-archive-final-label">{l("Abgeschlossen · Endergebnisse","Finished · Final standings")}</p>}
+      {upcoming && <p class="cl-event-upcoming-notice" role="status">{l("Bevorstehendes Event · Start am ","Upcoming event · Starts on ")}{shortDate(event.startsOn)}{event.startsOn.slice(0,4)}</p>}
       <div class="cl-event-feature">
         <img class="cl-event-banner" src={event.image} width="800" height="320" alt={l(`${event.title} – Event-Banner`,`${event.title} – event banner`)} loading="eager" decoding="async" />
       </div>

@@ -70,3 +70,18 @@ test("Contingency Contract v1.6 starts 5 Nov, overlaps Duality and later archive
   assert.deepEqual(partitionLeaderboardEvents([duality,cc],"2026-11-05").active.map(e=>e.id),["contingency-contract-v16","duality"]);
   assert.deepEqual(partitionLeaderboardEvents([duality,cc],"2026-11-26").archived.map(e=>e.id),["contingency-contract-v16","duality"]);
 });
+
+test("Announced CC remains selectable as preview from 2 November; archive still excludes future events",()=>{
+  const cc={id:"contingency-contract-v16",startsOn:"2026-11-05",endsOn:"2026-11-25"};
+  const before=partitionLeaderboardEvents([duality,cc],"2026-11-02");
+  const selectable=[...before.active,...before.upcoming];
+  assert.deepEqual(selectable.map(e=>e.id),["duality","contingency-contract-v16"]);
+  assert.deepEqual(before.archived,[]);
+  const component=read("src/components/endfield/LeaderboardEvent.astro");
+  assert.match(component,/const selectable=\[\.\.\.active,\.\.\.upcoming\]/);
+  assert.match(component,/selectable\.length>1/);
+  assert.match(component,/selectable\.map\(\(event,index\)=>/);
+  assert.match(component,/upcoming=\{upcoming\.some/);
+  const panel=read("src/components/endfield/LeaderboardEventPanel.astro");
+  assert.match(panel,/cl-event-upcoming-notice/);
+});

@@ -29,7 +29,7 @@ test("Shared panel supports CC point column and does not alter boss table",()=>{
   assert.match(panel,/rankContingencyContractRuns/);
   assert.match(panel,/isContract&&<th scope="col">/);
   assert.match(panel,/cl-run-points/);
-  assert.match(eventUI,/active.length>1/);
+  assert.match(eventUI,/selectable.length>1/);
   assert.match(client,/data-event-choice/);
   assert.match(client,/dataset\.eventBackground/);
   assert.match(client,/data-event-achievement/);

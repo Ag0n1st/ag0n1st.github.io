@@ -966,6 +966,30 @@ def smoke_i18n(page, base_url, width):
         root=page.locator("[data-community-leaderboard]")
         event=root.locator("[data-event-leaderboard]")
         # Parallel events: select Duality explicitly when quick buttons are present.
+        # The announced CC event must be selectable already, before 5 November.
+        cc_choice=event.locator('[data-event-choice="contingency-contract-v16"]')
+        verify(cc_choice.count()==1 and
+               event.locator('[data-event-choice="duality"]').count()==1,
+               label+": "+lang+" both Duality and announced CC can be selected")
+        cc_choice.click()
+        cc_panel=event.locator('[data-event-panel="contingency-contract-v16"][data-event-archived="false"]')
+        verify(cc_panel.is_visible() and
+               cc_choice.get_attribute("aria-pressed")=="true" and
+               "Top 10 – Contingency Contract v1.6" in cc_panel.inner_text() and
+               cc_panel.locator(".cl-run-points").first.inner_text().strip()=="45" and
+               cc_panel.locator(".cl-run-time").first.inner_text().strip()=="04:45" and
+               cc_panel.locator(".cl-placeholder-label").count()==1,
+               label+": "+lang+" CC preview shows 45 points, 04:45 and unverified demo")
+        cc_banner=cc_panel.locator('img[src="/images/endfield/leaderboard/contingency-contract-v16.webp"]')
+        cc_badge=event.locator('[data-event-achievement="contingency-contract-v16"]')
+        verify(cc_banner.count()==1 and cc_banner.evaluate("(im)=>im.complete && im.naturalWidth===800 && im.naturalHeight===320") and
+               cc_badge.is_visible() and
+               cc_badge.locator("img").evaluate("(im)=>im.complete && im.naturalWidth===1191") and
+               event.evaluate("(el)=>getComputedStyle(el).getPropertyValue('--cl-event-background').includes('contingency-contract-v16-background.webp')"),
+               label+": "+lang+" CC banner, achievement and card background follow quick selection")
+        if cc_panel.locator(".cl-event-upcoming-notice").count():
+            verify("05.11.2026" in cc_panel.locator(".cl-event-upcoming-notice").inner_text(),
+                   label+": "+lang+" preview correctly displays official 5 Nov start")
         duality_choice=event.locator('[data-event-choice="duality"]')
         if duality_choice.count():
             duality_choice.click()
