@@ -974,17 +974,19 @@ def smoke_i18n(page, base_url, width):
         cc_choice.click()
         cc_panel=event.locator('[data-event-panel="contingency-contract-v16"][data-event-archived="false"]')
         cc_observed={
+            "panel_count":cc_panel.count(),
+            "all_panels":event.locator("[data-event-panel]").evaluate_all("(els)=>els.map(el=>({id:el.getAttribute('data-event-panel'),archived:el.getAttribute('data-event-archived'),hidden:el.hidden}))"),
             "visible":cc_panel.is_visible(),
             "pressed":cc_choice.get_attribute("aria-pressed"),
-            "title":cc_panel.locator(".cl-event-results h3").inner_text(),
-            "points":cc_panel.locator(".cl-run-points").first.inner_text(),
-            "time":cc_panel.locator(".cl-run-time").first.inner_text(),
+            "title":cc_panel.locator(".cl-event-results h3").all_inner_texts(),
+            "points":cc_panel.locator(".cl-run-points").all_inner_texts(),
+            "time":cc_panel.locator(".cl-run-time").all_inner_texts(),
             "demo_labels":cc_panel.locator(".cl-placeholder-label").count()
         }
         verify(cc_observed["visible"] and cc_observed["pressed"]=="true" and
                "Top 10 – Contingency Contract v1.6" in cc_observed["title"] and
-               cc_observed["points"].strip()=="45" and
-               cc_observed["time"].strip()=="04:45" and
+               cc_observed["points"]==["45"] and
+               cc_observed["time"]==["04:45"] and
                cc_observed["demo_labels"]==1,
                label+": "+lang+" CC preview shows score/time/demo: "+str(cc_observed))
         cc_banner=cc_panel.locator('img[src="/images/endfield/leaderboard/contingency-contract-v16.webp"]')
