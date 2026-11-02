@@ -94,7 +94,7 @@ const demoOnly=rows.length>0&&rows.every(run=>run.status==="demo");
                 {getOperatorImageUrl(member.slug,"official-icon")&&<img src={getOperatorImageUrl(member.slug,"official-icon")} alt={member.slug} width="42" height="42" loading="lazy" decoding="async"/>}
                 <span class:list={["cl-operator-potential",{"is-p5":member.potential===5}]}>P{member.potential}</span>
               </span>)}</span></td>
-              {isContract&&<td class="cl-run-points">{run.points}</td>}
+              {isContract&&<td class="cl-run-points"><span class="cl-cc-score" aria-label={l(`${run.points} Punkte`,`${run.points} points`)}><span class="cl-cc-score-value" aria-hidden="true">{run.points}</span><span class="cl-cc-score-mark" aria-hidden="true"></span></span></td>}
               <td class="cl-run-time">{run.link?<a href={run.link} target="_blank" rel="noopener noreferrer" aria-label={run.status==="demo"?l("Platzhaltervideo auf YouTube öffnen","Open placeholder video on YouTube"):l("Run-Video öffnen","Open run video")}>{run.time} <span aria-hidden="true">↗</span></a>:<span>{run.time}</span>}</td>
               <td class="cl-run-version">{run.version}</td>
             </tr>) : <tr class="cl-empty-row"><td colspan={isContract?7:6}>{l("Noch keine verifizierten Runs für dieses Event eingetragen.","No verified runs have been submitted for this event yet.")}</td></tr>}

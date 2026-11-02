@@ -43,3 +43,9 @@ Für größere Änderungen immer `npm run test:endfield`, `node scripts/endfield
 - Reale CC-Runs erscheinen nie in regulären Boss-Bestenlisten. Archivierbare CC-Events verwenden dieselbe Markdown-/Grafikstruktur wie Boss-Events.
 - `demoRun` in der Eventdefinition ist ein **nicht verifizierter Platzhalter** und wird nach Abschluss des Events nicht im Archiv als Ergebnis gezeigt. Ohne freigegebenes Video wird keine fiktive YouTube-Verlinkung angehängt.
 - Neue Eventgrafiken müssen zuerst unter `public/images/endfield/leaderboard/` vorhanden sein; Bildlinks in der Eventdefinition sind exakt zu übernehmen.
+
+
+## CC v1.6 – Design-Feinschliff (02.11.2026)
+- Bei angekündigten Events nur im Panel den einmaligen Start-Hinweis rendern. Schnellauswahl-Buttons zeigen lediglich den Eventtitel.
+- CC-Punkte erscheinen als goldener, zum Eventpassender Badge mit offizieller weißer Symbolquelle (lokale transparente WebP-Maske); der Wert bleibt les- und per `aria-label` zugänglich in beiden Sprachen. Punktesortierung bleibt rein numerisch.
+- Das 800×320-CC-Banner wird pixelgetreu/lossless statt verlustbehaftet gespeichert, damit die vom Betreiber gelieferte Grafik vollständig erhalten bleibt. Das 100-MB-/1-GB-Gate muss nach jeder Änderung bestanden werden.
