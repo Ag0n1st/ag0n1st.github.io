@@ -1,8 +1,7 @@
 ---
+import SiteFooter from "../components/SiteFooter.astro";
 import "../styles/global.css";
 import EndfieldNav from "../components/EndfieldNav.astro";
-import SocialLinks from "../components/SocialLinks.astro";
-import PartnerFooter from "../components/partners/PartnerFooter.astro";
 import SeoHead from "../components/i18n/SeoHead.astro";
 import LanguageSwitch from "../components/i18n/LanguageSwitch.astro";
 import "../styles/i18n.css";
@@ -65,13 +64,7 @@ const base=isEn?"/en":"";
       </section>
     </main>}
 
-    <footer class="site-footer">
-      <PartnerFooter lang={lang} />
-      <SocialLinks />
-
-      <a class="footer-wordmark" href={base+"/"} aria-label={isEn?"Ag0n1st homepage":"Ag0n1st Startseite"}><img class="wordmark-logo" src="/images/ag0n1st-logo.svg" alt="Ag0n1st Logo" /></a>
-      <span class="copyright">© 2025 Ag0n1st. All rights reserved.</span>
-    </footer>
+    <SiteFooter lang={lang} />
     <script>
       const menuButton = document.querySelector(".menu-toggle");
       const mainNav = document.querySelector(".main-nav");

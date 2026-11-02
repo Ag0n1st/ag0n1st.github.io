@@ -1,4 +1,5 @@
 ---
+import SiteFooter from "../../components/SiteFooter.astro";
 import { getCollection, render } from "astro:content";
 import "../../styles/global.css";
 
@@ -39,6 +40,6 @@ const { Content } = await render(post);
         <div class="article-body"><Content /></div>
       </article>
     </main>
-    <footer class="site-footer"><nav class="social-links" aria-label="Social Media"><a href="https://twitch.tv/Ag0n1st" aria-label="Twitch">TW</a><a href="https://youtube.com/@Ag0n1st" aria-label="YouTube">YT</a><a href="https://linktr.ee/Ag0n1st" aria-label="Alle Socials">↗</a></nav><a class="footer-wordmark" href="/">Ag0n1st<span class="title-period">.</span></a><span class="copyright">© 2025 Ag0n1st. All rights reserved.</span></footer>
+    <SiteFooter lang="de" />
   </body>
 </html>

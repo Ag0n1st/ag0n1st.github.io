@@ -1,9 +1,8 @@
 ---
+import SiteFooter from "../SiteFooter.astro";
 import { getGuideFeed } from "../../lib/content/guideFeed";
 import GuideTeaserCard from "../GuideTeaserCard.astro";
-import SocialLinks from "../SocialLinks.astro";
 import PartnerShowcase from "../partners/PartnerShowcase.astro";
-import PartnerFooter from "../partners/PartnerFooter.astro";
 import "../../styles/global.css";
 import SeoHead from "../i18n/SeoHead.astro";
 import LanguageSwitch from "../i18n/LanguageSwitch.astro";
@@ -542,13 +541,7 @@ const href=(de:string)=>isEn?({
       <PartnerShowcase lang={lang} />
     </main>
 
-    <footer class="site-footer">
-      <PartnerFooter lang={lang} />
-      <SocialLinks />
-
-      <a class="footer-wordmark" href={href("/")} aria-label={l("Ag0n1st Startseite","Ag0n1st Homepage")}><img class="wordmark-logo" src="/images/ag0n1st-logo.svg" alt="Ag0n1st Logo" /></a>
-      <span class="copyright">© 2025 Ag0n1st. All rights reserved.</span>
-    </footer>
+    <SiteFooter lang={lang} />
 
     <script>
       const statusPill = document.querySelector("#twitch-status");

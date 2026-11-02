@@ -7,18 +7,11 @@ const en=lang==="en";
 const l=(de:string,english:string)=>en?english:de;
 const partners=registry.partners.filter(partner=>partner.active);
 ---
-<div class="partner-footer" data-partner-footer aria-label={l("Werbung: Meine Partner","Advertisement: My partners")}>
-  <div class="partner-footer-topline">
-    <span class="partner-footer-label">{l("Werbung · Partner","Advertisement · Partners")}</span>
-    <div class="partner-footer-links">
-      {partners.map(partner=><a class="partner-footer-link" data-partner-id={partner.id} href={partner.affiliateUrl} target="_blank" rel="sponsored noopener noreferrer" aria-label={l(`${partner.name} – Werbung, Affiliate-Link`,`${partner.name} – advertisement, affiliate link`)} title={partner.name}>
-        <img src={partner.logoIcon} alt="" aria-hidden="true" loading="lazy" decoding="async"/>
-        <span>{partner.name}</span>
-      </a>)}
-    </div>
-  </div>
-  <p class="partner-footer-disclosure">{l(
-    "Affiliate-Links: Bei qualifizierten Käufen kann ich eine Provision erhalten. Kein Aufpreis durch den Link.",
-    "Affiliate links: I may earn a commission from qualifying purchases. No extra cost from using the link."
-  )}</p>
-</div>
+<nav class="partner-footer-icons" data-partner-footer aria-label={l("Werbung – Affiliate-Links zu meinen Partnern","Advertisement – affiliate links to my partners")}>
+  {partners.map(partner=><a class="partner-footer-icon" data-partner-id={partner.id} href={partner.affiliateUrl}
+    style={`--partner-accent:${partner.accent}`} target="_blank" rel="sponsored noopener noreferrer"
+    aria-label={l(`${partner.name} – Werbung, Affiliate-Link`,`${partner.name} – advertisement, affiliate link`)} title={partner.name}>
+    <img src={partner.logoIcon} alt="" aria-hidden="true" loading="lazy" decoding="async"/>
+  </a>)}
+  <small class="partner-footer-caption">{l("Werbung · Affiliate-Links","Advertisement · Affiliate links")}</small>
+</nav>
