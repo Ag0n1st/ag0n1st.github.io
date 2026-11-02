@@ -28,3 +28,6 @@
 .partner-disclaimer{background:rgba(255,203,46,.065);border-color:rgba(255,203,46,.3)}
 .partner-card-body .partner-disclaimer strong{font-size:10px;line-height:1.65;font-weight:500;color:#dcd8d1}
 .partner-disclaimer u{color:#ffe28a;text-underline-offset:3px;text-decoration-thickness:1px;font-weight:800}
+
+/* GamerSupps uses a clean white accent, including the discount/code emphasis. */
+.partner-card[data-partner-id="gamersupps"] .partner-promo strong,.partner-card[data-partner-id="gamersupps"] .partner-promo code{color:#fff}

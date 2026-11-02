@@ -10,8 +10,11 @@ const partners=registry.partners.filter(partner=>partner.active);
 <nav class="partner-footer-icons" data-partner-footer aria-label={l("Werbung – Affiliate-Links zu meinen Partnern","Advertisement – affiliate links to my partners")}>
   {partners.map(partner=><a class="partner-footer-icon" data-partner-id={partner.id} href={partner.affiliateUrl}
     style={`--partner-accent:${partner.accent}`} target="_blank" rel="sponsored noopener noreferrer"
-    aria-label={l(`${partner.name} – Werbung, Affiliate-Link`,`${partner.name} – advertisement, affiliate link`)} title={partner.name}>
+    aria-label={l(`${partner.name} – Werbung, Affiliate-Link`,`${partner.name} – advertisement, affiliate link`)}
+    aria-describedby={partner.id==="gamersupps"?"footer-gamersupps-discount":undefined}
+    title={partner.id==="gamersupps"?undefined:partner.name}>
     <img src={partner.logoIcon} alt="" aria-hidden="true" loading="lazy" decoding="async"/>
+    {partner.id==="gamersupps" && partner.discount && <span class="partner-footer-discount-tooltip" id="footer-gamersupps-discount" role="tooltip">{en?`${partner.discount.percent}% off with code ${partner.discount.code}`:`${partner.discount.percent} % Rabatt mit Code ${partner.discount.code}`}</span>}
   </a>)}
   <small class="partner-footer-caption">{l("Werbung · Affiliate-Links","Advertisement · Affiliate links")}</small>
 </nav>

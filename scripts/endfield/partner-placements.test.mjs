@@ -106,3 +106,26 @@ test("GamerSupps discount row matches card title font size in desktop and mobile
  assert.equal(loot.disclaimer.deAfter,".");
  assert.equal(loot.disclaimer.enAfter,".");
 });
+
+
+test("GamerSupps alone uses white accents and an accessible bilingual footer discount tooltip",()=>{
+ const gs=partners.find(p=>p.id==="gamersupps");
+ assert.equal(gs.accent,"#ffffff");
+ assert.equal(partners.find(p=>p.id==="razer").accent,"#44d62c");
+ assert.deepEqual([gs.discount.percent,gs.discount.code],[10,"AGON"]);
+ const cardsCss=read("src/styles/partners.css");
+ const footerCss=read("src/styles/footer.css");
+ const footer=read("src/components/partners/PartnerFooter.astro");
+ assert.match(cardsCss,/\.partner-card-top\{[^}]*var\(--partner-accent\)/);
+ assert.match(cardsCss,/\.partner-card-cta\{[^}]*var\(--partner-accent\)/);
+ assert.ok(cardsCss.includes('.partner-card[data-partner-id="gamersupps"] .partner-promo strong'));
+ assert.ok(cardsCss.includes('.partner-card[data-partner-id="gamersupps"] .partner-promo code{color:#fff}'));
+ assert.ok(footer.includes('aria-describedby={partner.id==="gamersupps"?'));
+ assert.ok(footer.includes('partner.id==="gamersupps" && partner.discount'));
+ assert.ok(footer.includes('role="tooltip"'));
+ assert.ok(footer.includes('10')===false || gs.discount.percent===10);
+ assert.ok(footer.includes('% off with code'));
+ assert.ok(footer.includes('Rabatt mit Code'));
+ assert.ok(footerCss.includes('.partner-footer-icon[data-partner-id="gamersupps"]{position:relative}'));
+ assert.ok(footerCss.includes('.partner-footer-icon:is(:hover,:focus-visible) .partner-footer-discount-tooltip'));
+});

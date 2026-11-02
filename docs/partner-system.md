@@ -22,3 +22,8 @@
 - Zwei neue **vom Betreiber farbkorrigierte** Lootbar-WebPs ersetzen die zuvor teilweise monochromen Varianten unter denselben Original-Dateipfaden; die restlichen sieben Logo-Assets bleiben unverändert.
 - Auf Homepage-Sektionen überall Button `Zum Partner*` / `Visit partner*` sowie `*Affiliate-Links` / `*Affiliate links`.
 - Lootbar-Text reduziert auf `Guthaben und Top-Ups für verschiedene Spiele.`. Die frühere pauschale Warnung entfällt zugunsten eines optisch zu GamerSupps passenden Label-Disclaimers. Der gewünschte globale Satz „sind nicht verboten“ ist angesichts offizieller Verbote bei bestimmten Spielen nicht verlässlich; statt dessen unterstrichene und explizit qualifizierte Aussage „sind nicht pauschal verboten“ plus Hinweis auf explizite Verbote einzelner Spiele. Beispiel offizielles Wuthering-Waves-Fair-Play-Regelwerk: `https://wutheringwaves.kurogames.com/en/main/news/detail/742`; ebenso Genshin Impact `https://genshin.hoyoverse.com/en/news/detail/103714`.
+
+
+## GamerSupps Weiß-Akzent und Footer-Rabatt-Tooltip (02.11.2026)
+- Zentraler GamerSupps-Akzent `#ffffff` statt Grün; Card-Glow, Rabatt-Label, Code und CTA nutzen dadurch Weiß. Razer behält `#44d62c`. Keine neuen Assets oder externen Skripte.
+- Nur das GamerSupps-Footer-Icon erhält einen DE/EN-Hover- und Tastaturfokus-Tooltip: „10 % Rabatt mit Code AGON“ / „10% off with code AGON“. Text aus dem vorhandenen Rabattdatensatz abgeleitet; `aria-describedby` / `role="tooltip"`, keine zusätzlichen nativen Doppel-Tooltips. Andere Icons unverändert.
