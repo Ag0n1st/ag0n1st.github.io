@@ -1244,7 +1244,19 @@ def smoke_i18n(page, base_url, width):
                page.locator('[data-refinement-attribute="agi"][data-refinement-slot="Kit"]').get_attribute("data-refinement-item-id")=="350" and
                page.locator('[data-refinement-attribute="will"][data-refinement-slot="Kit"]').get_attribute("data-refinement-item-id")=="348",
                label+": "+lang+" four official primary attribute cards with real gear and highlighted matches")
+        disclosure=page.locator("#refinement [data-refinement-personal-disclosure]")
+        toggle=disclosure.locator("summary.refinement-personal-toggle")
         personal=page.locator('[data-refinement-personal-stats]')
+        verify(disclosure.count()==1 and
+               disclosure.get_attribute("open") is None and
+               toggle.is_visible() and
+               not personal.is_visible() and
+               toggle.bounding_box()["height"]<=70 and
+               ("Eigene Daten & Hochrechnung" if lang=="de" else "Personal data & estimates") in toggle.inner_text(),
+               label+": "+lang+" refinement personal stats collapse by default to one compact row")
+        toggle.click()
+        verify(disclosure.get_attribute("open") is not None and personal.is_visible(),
+               label+": "+lang+" refinement personal stats expand with native details")
         verify(personal.count()==1 and
                page.locator("#refinement").locator(".refinement-personal-divider").count()==1 and
                personal.locator('[data-refinement-pity]').count()==3 and
@@ -1262,7 +1274,12 @@ def smoke_i18n(page, base_url, width):
             ([["274","126","2,2"],["202","48","4,2"],["875","122","7,2"]] if lang=="de" else
              [["274","126","2.2"],["202","48","4.2"],["875","122","7.2"]]),
             label+": "+lang+" source catalyst samples and rounded averages unchanged")
-        check_overflow(page,label+" "+lang+" refinement personal stats")
+        check_overflow(page,label+" "+lang+" refinement personal stats expanded")
+        toggle.focus()
+        toggle.press("Enter")
+        verify(disclosure.get_attribute("open") is None and not personal.is_visible() and toggle.is_visible(),
+               label+": "+lang+" refinement personal stats collapse again with keyboard and keep their summary")
+        check_overflow(page,label+" "+lang+" refinement personal stats collapsed")
         eg=page.locator("[data-elastic-goods]")
         verify(eg.count()==1 and eg.locator("#eg-title").inner_text()==("Elastische Waren - Preis Peaks" if lang=="de" else "Elastic Goods – Price Peaks") and
                eg.locator('[data-peak="low"]').count()==1 and

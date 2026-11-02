@@ -72,7 +72,13 @@ const coverage=attributes.filter(row=>row.slots.some(slot=>slot.best)).length;
   </section>)}
   <p class="refinement-source">{l("Quelle: SKPORT Wiki · Veredelungswerte · Datenstand","Source: SKPORT Wiki · Artificing values · snapshot")} {details.source.snapshot}. {l("Item berühren oder mit Tastatur auswählen, um Namen, Attribute und Stufen einzusehen.","Hover, tap or focus an item for its full name, attributes and ranks.")}</p>
   <hr class="refinement-personal-divider" aria-hidden="true"/>
-  <RefinementPersonalStatistics lang={lang}/>
+  <details class="refinement-personal-disclosure" data-refinement-personal-disclosure>
+    <summary class="refinement-personal-toggle">
+      <span>{l("Eigene Daten & Hochrechnung","Personal data & estimates")}</span>
+      <span class="refinement-personal-toggle-arrow" aria-hidden="true">⌄</span>
+    </summary>
+    <RefinementPersonalStatistics lang={lang}/>
+  </details>
 </section>
 <script>
   const tabs=Array.from(document.querySelectorAll<HTMLButtonElement>("[data-refinement-tab]"));
