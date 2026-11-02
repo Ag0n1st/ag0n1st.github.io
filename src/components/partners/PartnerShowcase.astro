@@ -23,14 +23,15 @@ const partners=registry.partners.filter(partner=>partner.active);
         <p>{en?partner.descriptionEn:partner.descriptionDe}</p>
         {partner.discount && <p class="partner-promo"><strong>{partner.discount.percent}% {l("Rabatt","off")}</strong> {l("mit Code","with code")} <code>{partner.discount.code}</code><small>{en?partner.discount.termsEn:partner.discount.termsDe}</small></p>}
         {partner.noteDe && <p class="partner-card-note">{en?partner.noteEn:partner.noteDe}</p>}
+        {partner.disclaimer && <p class="partner-promo partner-disclaimer" data-partner-disclaimer><strong>{en?partner.disclaimer.enBefore:partner.disclaimer.deBefore}<u>{en?partner.disclaimer.enUnderline:partner.disclaimer.deUnderline}</u>{en?partner.disclaimer.enAfter:partner.disclaimer.deAfter}</strong></p>}
       </div>
       <a class="partner-card-cta" href={partner.affiliateUrl} target="_blank" rel="sponsored noopener noreferrer" aria-label={l(`Zum Partner ${partner.name} – Werbung, Affiliate-Link`,`Visit ${partner.name} – advertisement, affiliate link`)}>
-        {l("Zum Partner","Visit partner")} <span aria-hidden="true">↗</span>
+        {l("Zum Partner*","Visit partner*")} <span aria-hidden="true">↗</span>
       </a>
     </article>)}
   </div>
   <p class="partner-affiliate-note">{l(
-    "Affiliate-Links: Bei qualifizierten Käufen über diese Links kann ich eine Provision erhalten. Für dich entstehen durch die Nutzung der Links keine zusätzlichen Kosten.",
-    "Affiliate links: I may earn a commission from qualifying purchases made through these links. Using the links does not add extra costs for you."
+    "*Affiliate-Links: Bei qualifizierten Käufen über diese Links kann ich eine Provision erhalten. Für dich entstehen durch die Nutzung der Links keine zusätzlichen Kosten.",
+    "*Affiliate links: I may earn a commission from qualifying purchases made through these links. Using the links does not add extra costs for you."
   )}</p>
 </section>

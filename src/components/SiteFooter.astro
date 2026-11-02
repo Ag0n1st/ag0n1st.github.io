@@ -1,0 +1,19 @@
+---
+import SocialLinks from "./SocialLinks.astro";
+import PartnerFooter from "./partners/PartnerFooter.astro";
+import "../styles/global.css";
+import "../styles/footer.css";
+interface Props {lang?:"de"|"en"}
+const {lang="de"}=Astro.props;
+const home=lang==="en"?"/en/":"/";
+---
+<footer class="site-footer site-footer-unified" data-site-footer>
+  <SocialLinks />
+  <div class="footer-brand-center">
+    <a class="footer-wordmark" href={home} aria-label={lang==="en"?"Ag0n1st homepage":"Ag0n1st Startseite"}>
+      <img class="wordmark-logo" src="/images/ag0n1st-logo.svg" alt="Ag0n1st Logo" />
+    </a>
+    <span class="copyright">© 2026 Ag0n1st. All rights reserved.</span>
+  </div>
+  <PartnerFooter lang={lang}/>
+</footer>

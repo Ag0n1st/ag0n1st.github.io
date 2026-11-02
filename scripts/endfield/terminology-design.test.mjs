@@ -89,9 +89,11 @@ test("all footers use exactly one shared set of six social logos and ordered use
  let last=-1;
  for(const url of ordered){const index=component.indexOf(url);assert.ok(index>last,url);last=index;}
  assert.equal((component.match(/\{name:/g)||[]).length,6);
- for(const layout of ["src/components/pages/HomePage.astro","src/layouts/EndfieldPlaceholder.astro"]){
+ const shared=read("src/components/SiteFooter.astro");
+ assert.match(shared,/<SocialLinks \/>/);
+ for(const layout of ["src/components/pages/HomePage.astro","src/components/pages/EndfieldHome.astro","src/layouts/EndfieldPlaceholder.astro"]){
   const content=read(layout);
-  assert.match(content,/<SocialLinks \/>/);
+  assert.match(content,/<SiteFooter lang=/);
   assert.doesNotMatch(content,/linktr\.ee\/Ag0n1st/);
  }
 });

@@ -60,10 +60,16 @@
       "logoColorReference": "/images/partners/partner_lootbar_logo_icon_color.webp",
       "titleDe": "Game-Top-ups",
       "titleEn": "Game top-ups",
-      "descriptionDe": "Guthaben und Top-ups für verschiedene Spiele. Vor dem Kauf Spielregeln und Kontodaten prüfen.",
-      "descriptionEn": "Credit and top-ups for various games. Check game rules and account details before buying.",
-      "noteDe": "Keine pauschale Aussage zur Zulässigkeit in einzelnen Spielen.",
-      "noteEn": "No blanket claim of eligibility for individual games."
+      "descriptionDe": "Guthaben und Top-Ups für verschiedene Spiele.",
+      "descriptionEn": "Game credit and top-ups for various games.",
+      "disclaimer": {
+        "deBefore": "Disclaimer: Vor dem Kauf die allgemeinen Geschäftsbedingungen (ToS) des jeweiligen Spiels überprüfen. Drittanbieter-Top-ups werden in den Nutzungsbedingungen verschiedener Spiele geregelt und ",
+        "deUnderline": "sind nicht pauschal verboten",
+        "deAfter": ". Einzelne Spiele untersagen sie jedoch ausdrücklich.",
+        "enBefore": "Disclaimer: Check the terms of service (ToS) of the relevant game before buying. Third-party top-ups are covered by the terms of various games and ",
+        "enUnderline": "are not universally prohibited",
+        "enAfter": ". Some games explicitly prohibit them."
+      }
     }
   ]
 }
