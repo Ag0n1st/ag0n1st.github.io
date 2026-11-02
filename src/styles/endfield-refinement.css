@@ -110,3 +110,18 @@
 .refinement-personal-stage thead th{font-size:9px}
 .refinement-personal-stats-heading p{max-width:100%}
 }
+
+/* Native disclosure keeps the complete personal statistics in the matrix card without taking page height by default. */
+.refinement-personal-divider{margin-bottom:16px}
+.refinement-personal-disclosure{min-width:0}
+.refinement-personal-toggle{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:49px;box-sizing:border-box;padding:11px 15px;margin:0;border:1px solid #3e626a;border-radius:10px;background:linear-gradient(105deg,rgba(101,232,242,.085),rgba(18,26,34,.65));font-size:14px;font-weight:750;line-height:1.45;color:#e6f9f8;cursor:pointer;list-style:none;transition:border-color .15s,background .15s}
+.refinement-personal-toggle::-webkit-details-marker{display:none}
+.refinement-personal-toggle::marker{content:""}
+.refinement-personal-toggle:hover{border-color:#75b6bd;background:rgba(101,232,242,.105)}
+.refinement-personal-toggle:focus-visible{outline:2px solid #b8f3fb;outline-offset:3px}
+.refinement-personal-toggle-arrow{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:23px;height:23px;border:1px solid #456a70;border-radius:6px;background:#1d3339;color:var(--cyan);font-size:19px;line-height:1;transition:transform .2s ease}
+.refinement-personal-disclosure[open] .refinement-personal-toggle-arrow{transform:rotate(180deg)}
+.refinement-personal-disclosure[open] .refinement-personal-toggle{border-color:#6b9ca4}
+.refinement-personal-disclosure>.refinement-personal-stats{padding-top:24px}
+@media(max-width:650px){.refinement-personal-toggle{font-size:13px;padding:10px 12px;min-height:44px}.refinement-personal-disclosure>.refinement-personal-stats{padding-top:18px}}
+@media(prefers-reduced-motion:reduce){.refinement-personal-toggle,.refinement-personal-toggle-arrow{transition:none}}

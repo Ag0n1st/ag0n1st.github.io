@@ -234,7 +234,8 @@ test("Personal stats are displayed AFTER the matrix, in the same card, with DE/E
  const stats=read("src/components/pages/RefinementPersonalStatistics.astro");
  const css=read("src/styles/endfield-refinement.css");
  assert.ok(matrix.indexOf("refinement-source")<matrix.indexOf("refinement-personal-divider"));
- assert.ok(matrix.indexOf("refinement-personal-divider")<matrix.indexOf("<RefinementPersonalStatistics"));
+ assert.ok(matrix.indexOf("refinement-personal-divider")<matrix.indexOf('<details class="refinement-personal-disclosure"'));
+ assert.ok(matrix.indexOf('<details class="refinement-personal-disclosure"')<matrix.indexOf("<RefinementPersonalStatistics"));
  assert.ok(matrix.indexOf("<RefinementPersonalStatistics")<matrix.lastIndexOf("</section>"));
  assert.match(stats,/Meine Veredelungs-Statistik/);
  assert.match(stats,/My Artificing Statistics/);
@@ -247,4 +248,20 @@ test("Personal stats are displayed AFTER the matrix, in the same card, with DE/E
  assert.match(stats,/Ausrüstungsteile mit nur einem Attribut/);
  assert.match(stats,/gear with only one attribute/);
  assert.match(css,/@media\(max-width:650px\)/);
+});
+
+test("Refinement personal statistics use a native default-closed disclosure while preserving all detail",()=>{
+ const matrix=read("src/components/pages/RefinementMatrix.astro");
+ const stats=read("src/components/pages/RefinementPersonalStatistics.astro");
+ const css=read("src/styles/endfield-refinement.css");
+ assert.match(matrix,/<hr class="refinement-personal-divider" aria-hidden="true"\/>\s*<details class="refinement-personal-disclosure" data-refinement-personal-disclosure>/);
+ assert.doesNotMatch(matrix,/<details[^>]*data-refinement-personal-disclosure[^>]*\sopen(?:\s|=|>)/);
+ assert.match(matrix,/<summary class="refinement-personal-toggle">/);
+ assert.match(matrix,/Eigene Daten & Hochrechnung/);
+ assert.match(matrix,/Personal data & estimates/);
+ assert.match(matrix,/<RefinementPersonalStatistics lang=\{lang\}\/>\s*<\/details>/);
+ assert.match(css,/\.refinement-personal-disclosure\[open\] \.refinement-personal-toggle-arrow/);
+ for(const x of ["data-refinement-pity","data-refinement-match","data-refinement-estimate","refinement-personal-stats-note"]){
+   assert.ok(stats.includes(x),"Existing information and sample data retained: "+x);
+ }
 });
