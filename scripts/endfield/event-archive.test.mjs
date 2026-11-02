@@ -49,7 +49,8 @@ test("archive is native details, shareable query and same source panel/rules in 
   assert.match(component,/Event-Archiv","Event archive"/);
   assert.match(component,/cl-archive-empty/);
   assert.match(component,/data-archive-select/);
-  assert.match(component,/data-event-select/);
+  assert.match(component,/data-event-choice/);
+  assert.doesNotMatch(component,/data-event-select/);
   assert.match(component,/LeaderboardEventPanel/);
   assert.match(panel,/cl-event-rules/);
   assert.match(panel,/cl-event-banner/);
@@ -61,4 +62,11 @@ test("archive is native details, shareable query and same source panel/rules in 
   assert.match(script,/archiveDetails\.open=true/);
   assert.match(css,/\.cl-event-archive-panel::before\{[^\n]*opacity:\.05/);
   assert.match(workflow,/cron: "17 \*\/6 \* \* \*"/);
+});
+
+test("Contingency Contract v1.6 starts 5 Nov, overlaps Duality and later archives",()=>{
+  const cc={id:"contingency-contract-v16",startsOn:"2026-11-05",endsOn:"2026-11-25",kind:"contingency-contract"};
+  assert.deepEqual(partitionLeaderboardEvents([duality,cc],"2026-11-02").active.map(e=>e.id),["duality"]);
+  assert.deepEqual(partitionLeaderboardEvents([duality,cc],"2026-11-05").active.map(e=>e.id),["contingency-contract-v16","duality"]);
+  assert.deepEqual(partitionLeaderboardEvents([duality,cc],"2026-11-26").archived.map(e=>e.id),["duality","contingency-contract-v16"]);
 });

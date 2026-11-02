@@ -34,3 +34,12 @@ Der Build prüft doppelte Run-/Event-IDs, bekannte Boss-/Operator-Slugs, maximal
 Der bestehende Algorithmus bleibt unverändert: pro Spieler/Boss/Version nur die schnellste gültige Zeit, All-Time separat, gleich schnelle Runs teilen sich die Platzierung (1,1,3), Rang 10 enthält alle Gleichstände. Einträge ohne freigegebene Länderangabe zeigen die neutrale Flaggenalternative. **Nie** denselben Eventrun zusätzlich im general-Ordner duplizieren.
 
 Für größere Änderungen immer `npm run test:endfield`, `node scripts/endfield/check-budget.mjs`, `npm run build` und danach `node scripts/check-pages-budget.mjs` sowie Browser-Smoke 390/1440px für DE/EN. Jede Änderung/Abnahme in `ROADMAP.md` vermerken.
+
+
+## Contingency Contracts (ab v1.6)
+- Eventdefinition aus `src/content/leaderboard-events/_contingency-contract-template.md` kopieren; `kind: contingency-contract`, **kein `boss`**.
+- CC-Runs aus `src/content/leaderboard-runs/events/_contingency-contract-run-template.md`; `points` ganzzahlig ≥0, offizielle `time: "MM:SS"`, Video, vier Operatoren und `status: draft` bis zur Freigabe. Kein `boss` und immer `eligibleForCommunity: false`.
+- Sortierung: Punkte absteigend, bei gleicher Punktzahl schnellere Zeit zuerst; identische Punkte **und** Zeit teilen die Platzierung. Beste Einreichung pro Spieler.
+- Reale CC-Runs erscheinen nie in regulären Boss-Bestenlisten. Archivierbare CC-Events verwenden dieselbe Markdown-/Grafikstruktur wie Boss-Events.
+- `demoRun` in der Eventdefinition ist ein **nicht verifizierter Platzhalter** und wird nach Abschluss des Events nicht im Archiv als Ergebnis gezeigt. Ohne freigegebenes Video wird keine fiktive YouTube-Verlinkung angehängt.
+- Neue Eventgrafiken müssen zuerst unter `public/images/endfield/leaderboard/` vorhanden sein; Bildlinks in der Eventdefinition sind exakt zu übernehmen.

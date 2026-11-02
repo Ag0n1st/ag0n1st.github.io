@@ -3322,3 +3322,13 @@ Alle 109 Endfield-Unit-Tests und die beiden Budgetchecks erfolgreich. Desktop 14
 **Nächste sinnvolle Reihenfolge:** Zuerst die in der PDF zuletzt angeforderte **CC-v1.6- und Event-Auswahl-Erweiterung** (zeitkritischer Eventstart; Original-Assets prüfen). Danach die bereits vorgesehenen **Cheat Sheets für Rekrutierung und Essenzen**, bei denen Daten zuerst belegbar ergänzt werden. **Fabrik bleibt ausdrücklich pausiert.** Für die Umsetzung: separater Feature-Branch, Tests inkl. Chromium DE/EN Desktop/Mobil, beide Budget-Gates, PR, Merge und erfolgreicher Pages-Deploy; tatsächliche Werte und Belege danach dokumentieren.
 
 **Status dieses Abschnitts:** **[OFFEN / GEPLANT]** – ausschließlich Übernahme-/Anforderungsabgleich; keine Eventimplementierung oder neue Build-Behauptung.
+
+
+### 18.72 Contingency Contract v1.6 & Event-Schnellauswahl – Feature-Branch (02.11.2026)
+**[IN ENTWICKLUNG – nicht als live markieren]** Branch `feature/contingency-contract-v16-event-switcher`.
+- Bestehendes Event-Board erweitert um aktive Schnellauswahl-Buttons bei mehreren parallelen Events; bei genau einem Event keine redundante Auswahl. Wechsel synchronisiert Panel, Banner, Card-Hintergrund, Achievement und Query-Parameter. Archiv behält seine eigene Dropdown-Auswahl, historische URL-Tieflinks und denselben Detailaufbau.
+- Neues `kind: contingency-contract` (standardmäßig `boss` für Legacy): CC-Events und deren Runs besitzen keine Bossbindung; ihre Ergebnisse dürfen nie in die globale Boss-Rangliste. `points` und `time` sind Pflicht für bestätigte CC-Runs. Ranking Punkte absteigend, bei Gleichstand schnellere MM:SS-Zeit; identische Werte teilen Rang, pro Spieler bestes Ergebnis. Bestehendes Duality-Timer-Ranking unverändert.
+- CC v1.6: 05.11.–25.11.2026 (Originalevent-Grafik), drei bilingual gepflegte Regeln, vorhandener Discord-Regelwerk-Link, optisch bestehender Event-Card folgend. Ag0n1st (DE) Si/Arcane/Tangtang/Gilberta alle P0, 45 Punkte, 04:45 **ausschließlich Demo**, nicht als verifiziert; ohne fingierten Video-Link.
+- Wiederverwendbare CC-Markdown-Vorlagen und Validierungs-/Rankingtests ergänzt. DE/EN über dieselbe Astro-Komponente.
+- Die drei vom Benutzer angehängten Grafik-Quelldateien müssen vor Merge in qualitätswahrendem WebP importiert werden. Für fehlende Assets oder nicht bestätigte CI-/Budget-Werte keinen Produktivabschluss behaupten.
+- Erst nach vollständigen Bilddateien: `npm run test:endfield`, `node scripts/endfield/check-budget.mjs`, `npm run build`, DE/EN-Desktop-/Mobil-Chromium, CI, Pull Request, Merge und erfolgreiches Pages-Deployment protokollieren.
