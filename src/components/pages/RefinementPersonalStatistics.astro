@@ -1,0 +1,71 @@
+---
+import source from "../../data/endfield/refinement-personal-stats.json";
+import {calculateRefinementPersonalStats} from "../../lib/endfield/refinementPersonalStats.mjs";
+interface Props {lang?:"de"|"en"}
+const {lang="de"}=Astro.props;
+const en=lang==="en";
+const l=(de:string,english:string)=>en?english:de;
+const stats=calculateRefinementPersonalStats(source);
+const format=(value:number,decimals=0)=>new Intl.NumberFormat(en?"en-GB":"de-DE",{
+ minimumFractionDigits:decimals,maximumFractionDigits:decimals
+}).format(value);
+const rows=[
+ {key:"good",de:"Gute Übereinstimmung",en:"Good Match"},
+ {key:"standard",de:"Standard-Übereinstimmung",en:"Standard Match"}
+] as const;
+---
+<section class="refinement-personal-stats" data-refinement-personal-stats aria-labelledby="refinement-personal-stats-title">
+  <div class="refinement-personal-stats-heading">
+    <div>
+      <span class="section-kicker">{l("EIGENE ERHEBUNG · KATALYSATOREN","PERSONAL TRACKING · CATALYSTS")}</span>
+      <h3 id="refinement-personal-stats-title">{l("Meine Veredelungs-Statistik","My Artificing Statistics")}</h3>
+      <p>{l("Aus meinem Discord-Tracking: ","From my Discord tracking: ")}
+        <strong>{format(stats.totalAttempts)} {l("Versuche","attempts")}</strong> ·
+        <strong>{format(stats.totalSuccesses)} {l("erfolgreiche Veredelungen","successful refinements")}</strong>
+      </p>
+    </div>
+    <time class="refinement-personal-stats-date" datetime={source.asOf}>{l("Stand: 29.09.2026","As of: 29 Sep 2026")}</time>
+  </div>
+
+  <div class="refinement-personal-stats-grid">
+    {stats.stages.map(stage=><article class="refinement-personal-stage" data-refinement-pity={stage.pity}>
+      <div class="refinement-personal-stage-heading">
+        <h4>{l("Stufe","Stage")} {stage.level}</h4>
+        <span>{l(`${stage.pity}er Pity`,`${stage.pity}-pity`)}</span>
+      </div>
+      <table>
+        <thead><tr>
+          <th scope="col">{l("Match","Match")}</th>
+          <th scope="col">{l("Versuche","Attempts")}</th>
+          <th scope="col">{l("Erfolge","Successes")}</th>
+          <th scope="col">{l("Ø Kat.","Avg. cats.")}</th>
+        </tr></thead>
+        <tbody>{rows.map(row=>{
+          const sample=stage[row.key];
+          return <tr data-refinement-match={row.key}>
+            <th scope="row">{en?row.en:row.de}</th>
+            <td>{format(sample.attempts)}</td>
+            <td>{format(sample.successes)}</td>
+            <td class="refinement-personal-average">{format(sample.average,1)}</td>
+          </tr>;
+        })}</tbody>
+      </table>
+    </article>)}
+  </div>
+
+  <div class="refinement-personal-projection" data-refinement-projection>
+    <div class="refinement-personal-projection-main">
+      <span>{l("Ø Katalysatoren für einen vollständig veredelten Operator","Avg. catalysts for a fully refined operator")}</span>
+      <strong data-refinement-estimate="pooled">{format(stats.perOperator.pooled,1)} <small>{l("Katalysatoren","catalysts")}</small></strong>
+      <p>{l("Hochrechnung: 4 Ausrüstungsteile mit je 3 Attributen (Stufe 1, 2 und 3; 6/12/20er Pity). Pro Stufe sind alle Good- und Standard-Match-Erfolge gemeinsam gewichtet.","Estimate: 4 gear pieces with 3 attributes each (stage 1, 2 and 3; 6/12/20 pity). Good and Standard Match attempts are pooled by successful refinements at each stage.")}</p>
+    </div>
+    <div class="refinement-personal-projection-variants">
+      <div><span>{l("Nur gute Übereinstimmungen","Good Matches only")}</span><strong data-refinement-estimate="good">{format(stats.perOperator.good,1)}</strong></div>
+      <div><span>{l("Nur Standard-Übereinstimmungen","Standard Matches only")}</span><strong data-refinement-estimate="standard">{format(stats.perOperator.standard,1)}</strong></div>
+    </div>
+  </div>
+  <p class="refinement-personal-stats-note">{l(
+    "Nicht berücksichtigt: Ausrüstungsteile mit nur einem Attribut. Sie haben ein höheres Grund-Pity, allerdings reicht mein bisheriger Datensatz dafür nicht für eine aussagekräftige Auswertung. Die Werte sind Beobachtungsdurchschnitte, keine garantierten Kosten.",
+    "Excluded: gear with only one attribute. Its base pity is higher, but my sample is still too small for a meaningful evaluation. These are observed averages, not guaranteed costs."
+  )}</p>
+</section>
