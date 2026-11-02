@@ -965,6 +965,10 @@ def smoke_i18n(page, base_url, width):
         page.goto(base_url+prefix+"/endfield/leaderboard/")
         root=page.locator("[data-community-leaderboard]")
         event=root.locator("[data-event-leaderboard]")
+        # Parallel events: select Duality explicitly when quick buttons are present.
+        duality_choice=event.locator('[data-event-choice="duality"]')
+        if duality_choice.count():
+            duality_choice.click()
         verify(root.count()==1 and root.locator(".cl-container").count()==2 and
                event.count()==1 and root.locator(".cl-main-container").count()==1,
                label+": "+lang+" Duality event is shown above general leaderboard")
@@ -1001,10 +1005,9 @@ def smoke_i18n(page, base_url, width):
                label+": "+lang+" empty archive has no fabricated results")
         archive.locator("summary").click()
         verify(not archive.evaluate("(el)=>el.open"),label+": "+lang+" archive closes again")
-        event_select=event.locator("[data-event-select]")
         event_panel=event.locator('[data-event-panel="duality"]')
         details=event_panel.locator("[data-event-rules]")
-        verify(event_select.input_value()=="duality" and
+        verify(event.locator('[data-event-panel="duality"]').is_visible() and
                event_panel.is_visible() and
                details.count()==1 and not details.evaluate("(el)=>el.open") and
                not details.locator(".cl-event-rule").first.is_visible() and
