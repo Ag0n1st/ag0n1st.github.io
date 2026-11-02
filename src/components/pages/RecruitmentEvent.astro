@@ -1,0 +1,75 @@
+---
+import roster from "../../data/endfield/endfieldle-roster.json";
+import RecruitmentMeters from "./RecruitmentMeters.astro";
+import {SI_LOSS_POOL,featuredExample,sixStarChance} from "../../lib/endfield/recruitment.mjs";
+interface Props {lang:"de"|"en"}
+const {lang}=Astro.props;
+const en=lang==="en";const l=(de:string,eng:string)=>en?eng:de;
+const get=(id:string)=>roster.operators.find(op=>op.id===id);
+const s70=featuredExample(70),s10=featuredExample(10);
+const tracks=[
+ {key:"six",label:l("6★-Pity","6★ pity"),value:69,max:80,note:l("Übertragbar zum nächsten Event-Banner","Carries into the next event banner")},
+ {key:"featured",label:l("Erste Event-Kopie","First featured copy"),value:69,max:120,note:l("Einmalig auf diesem Event-Banner","One time on this event banner")},
+ {key:"token",label:l("Event-Token","Event token"),value:69,max:240,note:l("Separater Zähler – verfällt beim Bannerwechsel","Independent counter – lost on banner change")}
+];
+---
+<section role="tabpanel" class="rc-panel" id="rc-panel-event" aria-labelledby="rc-tab-event" data-rc-panel="event">
+ <header class="rc-panel-head">
+  <div><span class="section-kicker">{l("LIMITIERTE REKRUTIERUNG","LIMITED RECRUITMENT")}</span><h3>{l("Event Banner · Si als Beispiel","Event Banner · Si example")}</h3>
+   <p>{l("Jeder reguläre Pull zählt gleichzeitig für 80, 120 und 240. Die drei Zähler sind unabhängig: Ein 6★-Treffer setzt den 80er zurück, eine erste Si-Kopie verbraucht die 120er-Garantie, der Token zählt trotzdem weiter.","Each regular pull advances the 80, 120 and 240 counters independently. A 6★ resets the 80 counter, your first Si consumes the 120 guarantee, while token progress continues.")}</p></div>
+  <div class="rc-feature" data-operator="si"><img src={get("si")?.assets.icon} alt="" width="68" height="68"/><strong>Si</strong><small>{l("Event-Operator","Featured operator")}</small></div>
+ </header>
+ <p class="rc-illustration">{l("Beispielstand: 69 reguläre Pulls, bisher kein 6★ und keine Si.","Illustration: 69 regular pulls, no 6★ or Si yet.")}</p>
+ <RecruitmentMeters tracks={tracks} lang={lang}/>
+ <div class="rc-callout rc-callout-cyan">
+  <strong>{l("Soft Pity: 0,8 % + 5 Prozentpunkte ab Pull #66","Soft pity: 0.8% + 5 percentage points from pull #66")}</strong>
+  <p>{l("Regulär 0,8 % Chance auf einen 6★ pro Pull. Bei #66 steigt sie auf 5,8 %, bei #67 auf 10,8 %, bei #70 auf 25,8 %. Spätestens #80 garantiert einen 6★. Jeder erhaltene 6★ setzt den 80er-Zähler auf null.","Base 6★ chance is 0.8% per pull. Pull #66 gives 5.8%, #67 gives 10.8%, and #70 gives 25.8%. Pull #80 guarantees a 6★. Any 6★ resets the 80 counter.")}</p>
+ </div>
+ <div class="rc-pool">
+  <h4>{l("Ein 6★ – zwei mögliche Ergebnisse","One 6★ – two possible outcomes")}</h4>
+  <div class="rc-pool-columns">
+   <div class="rc-pool-feature"><strong class="rc-percent">50 %</strong><img src={get("si")?.assets.icon} alt="" width="68" height="68"/><b>Si</b><small>{l("Aktueller Event-Operator","Current featured operator")}</small></div>
+   <div class="rc-pool-loss"><strong class="rc-percent">50 %</strong><b>{l("Alternativer 6★-Pool","Alternative 6★ pool")}</b>
+    <p>{l("Fünf Standard-Operatoren und die zwei letzten Event-Operatoren Typhoeus und Liino:","Five standard operators plus the last two featured operators, Typhoeus and Liino:")}</p>
+    <ul class="rc-icon-list">{SI_LOSS_POOL.map(id=><li data-operator={id}><img src={get(id)?.assets.icon} alt="" width="45" height="45" loading="lazy"/><span>{get(id)?.name}</span></li>)}</ul>
+   </div>
+  </div>
+  <p class="rc-caption">{l("Die 50 % gelten für diesen gesamten Alternativ-Pool, nicht für jeden einzelnen Operator.","The 50% applies to this entire alternative pool, not to each operator individually.")}</p>
+ </div>
+ <div class="rc-example-list" aria-label={l("Aufklappbare Beispiele","Expandable examples")}>
+  <details class="rc-example" data-rc-example="70"><summary><span><strong>{l("Beispiel 1 · Si bei Pull #70","Example 1 · Si on pull #70")}</strong><small>{l("69 Pulls → Soft Pity → 50:50 gewonnen","69 pulls → soft pity → 50:50 won")}</small></span><span aria-hidden="true">⌄</span></summary>
+   <div class="rc-example-body">
+    <ol><li>{l("Nach 69 Pulls sind alle drei Zähler bei 69. Pull #70 hat 25,8 % 6★-Chance.","After 69 pulls, each counter is at 69. Pull #70 has a 25.8% chance of a 6★.")}</li>
+      <li>{l("Pull #70 ist ein 6★. Du gewinnst das 50:50 und bekommst Si.","Pull #70 is a 6★. You win the 50:50 and get Si.")}</li>
+      <li>{l("80er wieder bei 0; 120er-Garantie verbraucht; 240er steht unabhängig bei 70/240.","80 resets to 0; 120 guarantee is consumed; independent 240 counter remains at 70/240.")}</li></ol>
+    <div class="rc-mini-meters">
+     <div><b>0 / 80</b><progress value={s70.pity80} max="80" aria-label={l("80er zurückgesetzt","80 reset")}/><small>{l("Zurückgesetzt","Reset")}</small></div>
+     <div><b>✓ 120</b><progress value="120" max="120" aria-label={l("120er verbraucht","120 consumed")}/><small>{l("Einmalige Garantie weg","One-time guarantee used")}</small></div>
+     <div><b>{s70.token240} / 240</b><progress value={s70.token240} max="240" aria-label={l("Token-Fortschritt","Token progress")}/><small>{s70.remainingToken240} {l("bis zum Token","until token")}</small></div>
+    </div>
+    <p class="rc-callout rc-callout-cyan">{l("Noch 170 reguläre Pulls bis zum garantierten Token – nicht 140. Davor ist jede weitere Si-Kopie wieder vom 50:50 abhängig.","170 more regular pulls until the guaranteed token – not 140. Any earlier Si duplicate depends on another 50:50.")}</p>
+   </div>
+  </details>
+  <details class="rc-example" data-rc-example="10"><summary><span><strong>{l("Beispiel 2 · Si bereits bei Pull #10","Example 2 · Si as early as pull #10")}</strong><small>{l("Früher Treffer, 120er trotzdem aufgebraucht","Early hit still consumes the 120 guarantee")}</small></span><span aria-hidden="true">⌄</span></summary>
+   <div class="rc-example-body">
+    <p>{l("Si erscheint schon beim zehnten Pull. Das 80er-Pity startet wieder bei 0, die 120er-Garantie ist verbraucht. Der unabhängige Token-Zähler bleibt erst bei 10.","Si arrives on pull #10. The 80 pity resets, the 120 guarantee is consumed, and the independent token counter is only at 10.")}</p>
+    <div class="rc-mini-meters">
+     <div><b>0 / 80</b><progress value={s10.pity80} max="80" aria-label={l("80er zurückgesetzt","80 reset")}/><small>{l("Zurückgesetzt","Reset")}</small></div>
+     <div><b>✓ 120</b><progress value="120" max="120" aria-label={l("120er verbraucht","120 consumed")}/><small>{l("Garantie verbraucht","Guarantee used")}</small></div>
+     <div><b>{s10.token240} / 240</b><progress value={s10.token240} max="240" aria-label={l("Token-Fortschritt","Token progress")}/><small>{s10.remainingToken240} {l("bis zum Token","until token")}</small></div>
+    </div>
+    <p class="rc-callout rc-callout-warning">{l("Für Low-Spender lohnen weitere 230 Pulls auf diesem Banner meist nicht. Der 240er-Fortschritt verfällt beim Bannerwechsel. Warte lieber auf den RE-Faktor-Re-Run, der seinen eigenen 240er-Fortschritt mitnimmt.","For low spenders, another 230 pulls on this banner is rarely worth it. The 240 progress resets when the event ends. Consider the RE-Factor re-run, which preserves its own 240 progress.")}</p>
+   </div>
+  </details>
+ </div>
+ <div class="rc-rule-cards">
+  <div><strong>80</strong><p>{l("Wird zum nächsten normalen Event-Banner übertragen.","Carries to the next normal event banner.")}</p></div>
+  <div><strong>120</strong><p>{l("Einmalige Garantie auf den Event-Operator. Beim ersten Treffer verbraucht; beim nächsten Event neu.","One-time featured guarantee. Consumed by the first copy; fresh on the next event.")}</p></div>
+  <div><strong>240</strong><p>{l("Token nach jeweils 240 regulären Pulls, völlig unabhängig von 80 und 120. Verfällt am Ende dieses Banners.","Token every 240 regular pulls, independent of 80 and 120. Progress expires with this banner.")}</p></div>
+ </div>
+ <div class="rc-video-note">
+  <h4>{l("Wichtige Ergänzungen aus dem Video und den Nachträgen","Important additions from the video and its corrections")}</h4>
+  <p>{l("Bei 30 regulären Event-Pulls gibt es eine Bonus-Zehnerziehung, die nicht zum Pity zählt. Bei 60 Pulls gibt es ein Rekrutierungsdossier für zehn Pulls beim nächsten Event-Banner, dort nur zeitlich begrenzt nutzbar.","At 30 regular event pulls you receive a bonus ten-pull that does not count towards pity. At 60 pulls, a recruitment dossier gives ten pulls for the next event banner, with limited availability.")}</p>
+  <p>{l("Pity bewusst aufzubauen ist riskant: Ein unerwarteter 6★ setzt das 80er-Pity zurück. Für einen Wunsch-Operator besser bis zu 120 Pulls einplanen. Eine Kopie reicht für viele Spieler aus; zusätzliche Potenziale sind nicht zwingend nötig.","Deliberately building pity is risky: an unexpected 6★ resets the 80 counter. Budget up to 120 pulls for a featured operator. One copy is enough for many players; extra potentials are not essential.")}</p>
+ </div>
+</section>

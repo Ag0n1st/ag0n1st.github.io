@@ -1,0 +1,13 @@
+---
+interface Track {key:string;label:string;value:number;max:number;note:string}
+interface Props {tracks:Track[];lang?:"de"|"en"}
+const {tracks,lang="de"}=Astro.props;
+---
+<div class="rc-meter-grid">
+ {tracks.map(track=><div class="rc-meter" data-rc-pity={track.max} data-rc-kind={track.key}>
+  <div class="rc-meter-top"><strong>{track.label}</strong><b>{track.value}<small> / {track.max}</small></b></div>
+  <progress value={track.value} max={track.max} aria-label={track.label+": "+track.value+"/"+track.max} />
+  <p>{track.note}</p>
+  {track.key==="six" && <small class="rc-soft-flag">{lang==="en"?"Soft pity from pull #66":"Soft Pity ab Pull #66"}</small>}
+ </div>)}
+</div>

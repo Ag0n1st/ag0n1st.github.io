@@ -1,0 +1,53 @@
+---
+import EndfieldPlaceholder from "../../layouts/EndfieldPlaceholder.astro";
+import RecruitmentEvent from "./RecruitmentEvent.astro";
+import RecruitmentRerun from "./RecruitmentRerun.astro";
+import RecruitmentStandard from "./RecruitmentStandard.astro";
+import "../../styles/endfield-recruitment.css";
+interface Props {lang?:"de"|"en"}
+const {lang="de"}=Astro.props;
+const en=lang==="en";
+const l=(de:string,english:string)=>en?english:de;
+const base=en?"/en/endfield/cheatsheets/":"/endfield/cheatsheets/";
+const tabs=[{id:"event",de:"Event Banner",en:"Event Banner"},{id:"rerun",de:"Re-Run Banner",en:"Re-Run Banner"},{id:"standard",de:"Standard Banner",en:"Standard Banner"}];
+---
+<EndfieldPlaceholder lang={lang} active="cheatsheets" kicker="ARKNIGHTS: ENDFIELD · RECRUITMENT"
+ title={l("Rekrutierung erklärt","Recruitment Explained")}
+ description={l("Event-, RE-Faktor- und Standard-Rekrutierung: 80/120/240-Pity und Beispiele mit Fortschrittsanzeigen.","Event, RE-Factor and standard recruitment: 80/120/240 pity and visual examples.")}>
+ <main class="endfield-utility-page section-wrap rc-page" data-rc-guide>
+  <a class="rc-back" href={base+"#recruitment"}>{l("← Zurück zu den Cheat Sheets","← Back to Cheat Sheets")}</a>
+  <span class="section-kicker">ARKNIGHTS: ENDFIELD · CHEAT SHEETS</span>
+  <h1>{l("Rekrutierung","Recruitment")}<span class="title-period">.</span></h1>
+  <p class="rc-lead">{l("Drei Banner-Arten, drei unterschiedliche Übertragungsregeln. 80, 120 und 240 sind getrennte Fortschrittszähler. Entscheidend ist, was beim Bannerwechsel erhalten bleibt.","Three banner types, three different carry-over rules. The 80, 120 and 240 counters run independently. The important part is what persists between banners.")}</p>
+  <section class="rc-card" aria-labelledby="rc-title">
+   <header class="rc-card-head"><div><span class="section-kicker">{l("GACHA · GRUNDLAGEN UND BEISPIELE","GACHA · BASICS AND EXAMPLES")}</span><h2 id="rc-title">{l("Banner im Überblick","Banners at a glance")}</h2></div><span class="rc-pill">6★ {l("Operatoren","operators")}</span></header>
+   <div class="rc-tabs" role="tablist" aria-label={l("Rekrutierungsart auswählen","Choose banner type")}>
+    {tabs.map((tab,index)=><button type="button" class="rc-tab" id={"rc-tab-"+tab.id} data-rc-tab={tab.id}
+      role="tab" aria-controls={"rc-panel-"+tab.id} aria-selected={String(index===0)} tabindex={index===0?0:-1}>{en?tab.en:tab.de}</button>)}
+   </div>
+   <RecruitmentEvent lang={lang}/>
+   <RecruitmentRerun lang={lang}/>
+   <RecruitmentStandard lang={lang}/>
+  </section>
+ </main>
+</EndfieldPlaceholder>
+<script>
+ const root=document.querySelector<HTMLElement>("[data-rc-guide]");
+ if(root){
+  const tabs=Array.from(root.querySelectorAll<HTMLButtonElement>("[data-rc-tab]"));
+  const panels=Array.from(root.querySelectorAll<HTMLElement>("[data-rc-panel]"));
+  const select=(id:string,focus=false)=>{
+   for(const tab of tabs){const selected=tab.dataset.rcTab===id;tab.setAttribute("aria-selected",String(selected));tab.tabIndex=selected?0:-1;if(selected&&focus)tab.focus();}
+   for(const panel of panels)panel.hidden=panel.dataset.rcPanel!==id;
+  };
+  tabs.forEach((tab,i)=>{
+   tab.addEventListener("click",()=>select(tab.dataset.rcTab??"event"));
+   tab.addEventListener("keydown",event=>{
+    const n=event.key==="ArrowRight"?(i+1)%tabs.length:event.key==="ArrowLeft"?(i+tabs.length-1)%tabs.length:event.key==="Home"?0:event.key==="End"?tabs.length-1:-1;
+    if(n<0)return;event.preventDefault();select(tabs[n].dataset.rcTab??"event",true);
+   });
+  });
+  const hash=location.hash.slice(1);
+  if(tabs.some(tab=>tab.dataset.rcTab===hash))select(hash);
+ }
+</script>

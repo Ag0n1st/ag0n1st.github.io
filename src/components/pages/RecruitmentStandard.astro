@@ -1,0 +1,21 @@
+---
+import roster from "../../data/endfield/endfieldle-roster.json";
+import RecruitmentMeters from "./RecruitmentMeters.astro";
+import {STANDARD_IDS} from "../../lib/endfield/recruitment.mjs";
+interface Props {lang:"de"|"en"}
+const {lang}=Astro.props;const en=lang==="en";
+const l=(de:string,eng:string)=>en?eng:de;
+const standard=STANDARD_IDS.map(id=>roster.operators.find(op=>op.id===id)).filter(Boolean);
+const tracks=[{key:"six",label:l("6★-Pity","6★ pity"),value:35,max:80,note:l("Wiederkehrend nach jedem 6★-Treffer","Repeats after each 6★ hit")}];
+---
+<section role="tabpanel" class="rc-panel" id="rc-panel-standard" aria-labelledby="rc-tab-standard" data-rc-panel="standard" hidden>
+ <header class="rc-panel-head"><div><span class="section-kicker">{l("DAUERHAFTE REKRUTIERUNG","PERMANENT RECRUITMENT")}</span>
+  <h3>{l("Standard Banner","Standard Banner")}</h3>
+  <p>{l("Ausschließlich das wiederkehrende 80er-Pity: spätestens mit Pull #80 ein 6★. Es gibt keine einmalige 120er-Event-Garantie und keinen 240er-Token.","Only the recurring 80 pity applies: a 6★ is guaranteed by pull #80. There is no one-time 120 featured guarantee and no 240 token.")}</p></div></header>
+ <p class="rc-illustration">{l("Illustrativer Fortschritt: 35 von 80 Pulls.","Illustrative progress: 35 of 80 pulls.")}</p>
+ <RecruitmentMeters tracks={tracks} lang={lang}/>
+ <p class="rc-callout rc-callout-cyan">{l("Basis-Chance 0,8 %. Soft Pity ab Pull #66 (+5 Prozentpunkte pro Pull). Pull #80 ist garantiert. Nach jedem 6★ wird der Zähler zurückgesetzt.","Base chance 0.8%. Soft pity starts on pull #66 (+5 percentage points per pull). Pull #80 is guaranteed. Every 6★ resets the counter.")}</p>
+ <h4>{l("Fünf Standard-6★-Operatoren","Five standard 6★ operators")}</h4>
+ <ul class="rc-standard-list">{standard.map(op=><li data-operator={op.id}><img src={op.assets.icon} width="70" height="70" loading="lazy" alt=""/><strong>{op.name}</strong></li>)}</ul>
+ <p class="rc-callout rc-callout-warning">{l("Nutze vorrangig kostenlose Standard-Tickets aus Logins und Missionen. Universelle Pull-Währung für den Standard-Banner auszugeben lohnt sich meist nicht, da alle fünf Operatoren auch im alternativen 50:50-Pool der Event-Banner vorkommen.","Prefer free standard tickets from logins and missions. Spending versatile pull currency here is usually poor value: all five operators also appear in the event banner's alternative 50:50 pool.")}</p>
+</section>
