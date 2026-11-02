@@ -29,9 +29,29 @@ test("Shared panel supports CC point column and does not alter boss table",()=>{
   assert.match(panel,/rankContingencyContractRuns/);
   assert.match(panel,/isContract&&<th scope="col">/);
   assert.match(panel,/cl-run-points/);
+  assert.match(panel,/class="cl-cc-score"/);
+  assert.match(panel,/class="cl-cc-score-mark"/);
+  assert.match(panel,/aria-label=\{l\(/);
+  const css=read("src/styles/endfield-leaderboard.css");
+  assert.match(css,/contingency-contract-score-symbol\.webp/);
+  const thumbnail=readFileSync("public/images/endfield/leaderboard/contingency-contract-v16.webp");
+  const emblem=readFileSync("public/images/endfield/leaderboard/contingency-contract-score-symbol.webp");
+  assert.equal(thumbnail.toString("ascii",0,4),"RIFF");
+  assert.equal(emblem.toString("ascii",0,4),"RIFF");
+  assert.ok(thumbnail.length>100000,"full-fidelity banner must not be aggressively recompressed");
+
   assert.match(panel,/<\/dialog>\}\s*<div class="cl-event-results">/);
   assert.match(eventUI,/selectable.length>1/);
   assert.match(client,/data-event-choice/);
   assert.match(client,/dataset\.eventBackground/);
   assert.match(client,/data-event-achievement/);
+});
+
+test("Event quick buttons do not duplicate the upcoming date",()=>{
+  const ui=read("src/components/endfield/LeaderboardEvent.astro");
+  const panel=read("src/components/endfield/LeaderboardEventPanel.astro");
+  assert.doesNotMatch(ui,/cl-event-choice-upcoming/);
+  assert.match(ui,/\{selectable\.map\(\(event,index\)=>/);
+  assert.match(panel,/cl-event-upcoming-notice/);
+  assert.match(panel,/event\.startsOn\.slice\(0,4\)/);
 });

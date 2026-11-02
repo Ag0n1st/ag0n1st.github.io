@@ -9,9 +9,6 @@ const {active,archived,upcoming}=partitionLeaderboardEvents(eventData.events);
 // Announced events stay previewable before their official start date.
 const selectable=[...active,...upcoming];
 const firstBackground=selectable[0]?.backgroundImage??"";
-const shortPeriod=(event:typeof eventData.events[number])=>{
-  return event.startsOn.split("-").reverse().join(".")+" – "+event.endsOn.split("-").reverse().join(".");
-};
 ---
 <section class="cl-container cl-event-container" aria-labelledby="cl-event-title" data-event-leaderboard style={'--cl-event-background: '+(firstBackground?'url("'+firstBackground+'")':"none")}>
   <div class="cl-section-head cl-event-head">
@@ -32,7 +29,6 @@ const shortPeriod=(event:typeof eventData.events[number])=>{
       {selectable.map((event,index)=><button type="button" class="cl-event-choice" data-event-choice={event.id}
         aria-pressed={index===0?"true":"false"} aria-controls={`cl-event-panel-${event.id}`}>
         <span>{event.title}</span>
-        {upcoming.some(item=>item.id===event.id)&&<span class="cl-event-choice-upcoming">{l("Ab ","From ")}{shortPeriod(event).split(" – ")[0]}</span>}
       </button>)}
     </div>}
     {selectable.map((event,index)=><LeaderboardEventPanel event={event} verifiedRuns={eventData.verifiedRuns} lang={lang} archived={false} upcoming={upcoming.some(item=>item.id===event.id)} hidden={index!==0}/>)}

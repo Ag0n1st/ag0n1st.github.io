@@ -971,6 +971,9 @@ def smoke_i18n(page, base_url, width):
         verify(cc_choice.count()==1 and
                event.locator('[data-event-choice="duality"]').count()==1,
                label+": "+lang+" both Duality and announced CC can be selected")
+        verify("05.11" not in cc_choice.inner_text() and
+               "From" not in cc_choice.inner_text() and "Ab " not in cc_choice.inner_text(),
+               label+": "+lang+" quick choice contains no repeated start date")
         cc_choice.click()
         cc_panel=event.locator('[data-event-panel="contingency-contract-v16"][data-event-archived="false"]')
         cc_observed={
@@ -983,6 +986,10 @@ def smoke_i18n(page, base_url, width):
             "time":cc_panel.locator(".cl-run-time").all_inner_texts(),
             "demo_labels":cc_panel.locator(".cl-placeholder-label").count()
         }
+        verify(cc_panel.locator(".cl-cc-score").count()==1 and
+               cc_panel.locator(".cl-cc-score-mark").count()==1 and
+               cc_panel.locator(".cl-cc-score").get_attribute("aria-label")==("45 Punkte" if lang=="de" else "45 points"),
+               label+": "+lang+" branded gold CC points badge with accessible label")
         verify(cc_observed["visible"] and cc_observed["pressed"]=="true" and
                "Top 10 – Contingency Contract v1.6" in cc_observed["title"] and
                cc_observed["points"]==["45"] and
