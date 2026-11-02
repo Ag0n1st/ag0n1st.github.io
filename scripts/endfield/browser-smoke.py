@@ -981,9 +981,7 @@ def smoke_i18n(page, base_url, width):
             "title":cc_panel.locator(".cl-event-results h3").all_inner_texts(),
             "points":cc_panel.locator(".cl-run-points").all_inner_texts(),
             "time":cc_panel.locator(".cl-run-time").all_inner_texts(),
-            "demo_labels":cc_panel.locator(".cl-placeholder-label").count(),
-            "panel_html":cc_panel.evaluate("(el)=>el.outerHTML.slice(0,2000)"),
-            "all_results":event.locator(".cl-event-results").count()
+            "demo_labels":cc_panel.locator(".cl-placeholder-label").count()
         }
         verify(cc_observed["visible"] and cc_observed["pressed"]=="true" and
                "Top 10 – Contingency Contract v1.6" in cc_observed["title"] and
