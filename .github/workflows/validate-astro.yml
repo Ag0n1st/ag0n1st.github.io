@@ -39,3 +39,5 @@ jobs:
           python -m playwright install --with-deps chromium
       - name: Smoke test built Liino and Typhoeus pages (desktop and mobile)
         run: python scripts/endfield/browser-smoke.py
+      - name: Smoke test recruitment DE/EN desktop and mobile
+        run: python scripts/endfield/recruitment_smoke.py
