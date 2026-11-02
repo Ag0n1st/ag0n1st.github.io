@@ -15,6 +15,7 @@ export const EN_PAGES=Object.freeze({
   "/endfield/speedruns/":"/en/endfield/speedruns/",
   "/endfield/leaderboard/":"/en/endfield/leaderboard/",
   "/endfield/cheatsheets/":"/en/endfield/cheatsheets/",
+  "/endfield/cheatsheets/rekrutierung/":"/en/endfield/cheatsheets/recruitment/",
   "/endfield/checkliste/":"/en/endfield/checklist/",
   "/endfield/endfieldle/":"/en/endfield/endfieldle/",
   "/endfield/countdown/":"/en/endfield/countdown/",

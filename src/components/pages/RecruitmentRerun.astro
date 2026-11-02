@@ -1,0 +1,34 @@
+---
+import roster from "../../data/endfield/endfieldle-roster.json";
+import RecruitmentMeters from "./RecruitmentMeters.astro";
+interface Props {lang:"de"|"en"}
+const {lang}=Astro.props;
+const en=lang==="en";const l=(de:string,eng:string)=>en?eng:de;
+const ops=roster.operators.filter(x=>["tangtang","rossi"].includes(x.id));
+const tracks=[
+ {key:"six",label:l("6★-Pity · RE-Faktor","6★ pity · RE-Factor"),value:25,max:80,note:l("Gemeinsamer Zähler für alle RE-Faktor-Banner","Shared across all RE-Factor banners")},
+ {key:"featured",label:l("Erste RE-Kopie","First RE copy"),value:25,max:120,note:l("Einmalige Garantie pro RE-Faktor-Operator","One-time guarantee for each RE-Factor operator")},
+ {key:"token",label:l("Tangtang-Token","Tangtang token"),value:95,max:240,note:l("Bleibt bei künftigen Tangtang-RE-Runs gespeichert","Preserved for future Tangtang RE-runs")}
+];
+---
+<section role="tabpanel" class="rc-panel" id="rc-panel-rerun" aria-labelledby="rc-tab-rerun" data-rc-panel="rerun" hidden>
+ <header class="rc-panel-head"><div><span class="section-kicker">{l("OFFIZIELL: RE-FAKTOR-REKRUTIERUNG","OFFICIAL: RE-FACTOR RECRUITMENT")}</span>
+  <h3>{l("Re-Run Banner","Re-Run Banner")}</h3>
+  <p>{l("Das RE-Faktor-System besitzt ebenfalls 80/120/240-Pity, wird aber getrennt von normalen Event-Bannern geführt. Die drei Zähler haben unterschiedliche Übertragungsregeln.","RE-Factor also uses 80/120/240 pity but runs separately from normal event banners. Each counter has its own carry-over rule.")}</p></div></header>
+ <p class="rc-illustration">{l("Veranschaulichung: drei unabhängige Beispielstände, keine echten Account-Daten.","Illustration: three independent sample values, not real account data.")}</p>
+ <RecruitmentMeters tracks={tracks} lang={lang}/>
+ <div class="rc-rule-cards">
+  <div><strong>80 · {l("Gemeinsam","Shared")}</strong><p>{l("Das 80er-Pity wird zwischen sämtlichen RE-Faktor-Bannern übernommen – unabhängig vom Operator. Nicht mit dem normalen Event-80er-Pity vermischen.","80 pity is shared across every RE-Factor banner, regardless of operator. It is separate from normal event 80 pity.")}</p></div>
+  <div><strong>120 · {l("Einmalig","Once")}</strong><p>{l("Jeder Operator erhält beim ersten RE-Faktor-Banner seine eigene einmalige 120er-Garantie. Nach dem ersten Treffer ist sie auch bei späteren Wiederholungen nicht erneut verfügbar.","Each operator has their own one-time 120 guarantee on their first RE-Factor banner. Once consumed, it does not return on subsequent re-runs.")}</p></div>
+  <div><strong>240 · {l("Operatorgebunden","Per operator")}</strong><p>{l("Der 240er-Tokenzähler bleibt für den jeweiligen Operator über dessen weitere RE-Faktor-Banner hinweg erhalten. Ein anderer Operator hat einen eigenen Zähler.","The 240 token counter is saved for that operator across future RE-Factor appearances. Another operator has a separate counter.")}</p></div>
+ </div>
+ <div class="rc-rerun-example">
+  <h4>{l("Tangtang vs. Rossi – zwei getrennte Token-Zähler","Tangtang vs Rossi – separate token progress")}</h4>
+  <p>{l("Wenn du bei Tangtang 95/240 erreicht hast, setzt du beim nächsten Tangtang-RE-Run bei 95 fort. Rossi beginnt mit seinem eigenen Zähler. Dein 80er-Pity bleibt über beide RE-Faktor-Banner hinweg erhalten.","If you reach 95/240 on Tangtang, your next Tangtang re-run resumes at 95. Rossi has a separate counter. Your 80 pity is shared between both RE-Factor banners.")}</p>
+  <div class="rc-rerun-grid">{ops.map(op=><div class="rc-rerun-operator" data-operator={op.id}>
+   <img src={op.assets.icon} alt="" width="55" height="55" loading="lazy"/><div><strong>{op.name}</strong><span>{op.id==="tangtang"?"95 / 240":"0 / 240"}</span></div>
+   <progress max="240" value={op.id==="tangtang"?95:0} aria-label={op.name+" token"} />
+  </div>)}</div>
+ </div>
+ <p class="rc-callout rc-callout-cyan">{l("Der wichtigste Vorteil: Der normale Event-Release und der spätere erste RE-Faktor-Run besitzen jeweils eine eigene einmalige 120er-Garantie. So lassen sich weitere Kopien deutlich gezielter planen.","Key advantage: the original event release and the first RE-Factor appearance each have their own one-time 120 guarantee. This makes additional copies easier to plan.")}</p>
+</section>

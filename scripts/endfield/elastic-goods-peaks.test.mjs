@@ -87,7 +87,7 @@ test("the bilingual Cheat Sheet uses image mini cards, removes repeated legend/s
  const feature=read("src/components/pages/ElasticGoodsPeaks.astro");
  const css=read("src/styles/endfield-elastic-goods.css");
  assert.match(page,/<ElasticGoodsPeaks lang=\{lang\} \/>/);
- assert.match(page,/Elastische Waren – Preis Peaks und die Veredelungs-Matrix sind verfügbar/);
+ assert.match(page,/Elastische Waren, Veredelung und Rekrutierung sind verfügbar/);
  assert.match(feature,/Elastische Waren - Preis Peaks/);
  assert.match(feature,/Elastic Goods – Price Peaks/);
  assert.match(feature,/labelDe:"Tal IV"/);
