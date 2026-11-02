@@ -1,11 +1,11 @@
 # AG0N1ST.COM – PROJEKT-ROADMAP, ENTWICKLUNGSSTAND & KI-ÜBERGABE
 
 > **Zentrale Projektdokumentation / Single Point of Entry.**  
-> **Stand:** 31. Oktober 2026; aktueller Übergabepunkt **§18.70 (Operator Roulette: radiale Portraits und zweizeiliger Navbar-Titel abgeschlossen)**. Portraits weisen unabhängig von der Drehposition mit der Bildoberkante radial zur Mitte, das Navbar-Label zeigt **Operator / Roulette** wie **Community / Leaderboard** – auf Deutsch und Englisch, Desktop und Mobil. [PR #88](https://github.com/Ag0n1st/ag0n1st.github.io/pull/88) gemergt; **256/256 Tests**, reale Chromium-Portrait-/Navbar-Checks DE/EN bei 1440/390px bestanden; [Pages-Deploy #41156188868](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/41156188868) erfolgreich. Fünfsekündiger Roulette-Spin, Teamregeln und Logo unverändert.
+> **Stand:** 02. November 2026; aktueller Übergabepunkt **§18.73 (Contingency Contract v1.6 + Event-Schnellauswahl abgeschlossen)**. [PR #89](https://github.com/Ag0n1st/ag0n1st.github.io/pull/89) gemergt, **260/260 Tests**, Build, beide Budget-Gates und Chromium DE/EN Desktop/Mobil erfolgreich. [Pages-Deploy #41404479151](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/41404479151) erfolgreich.
 > **Projekt:** Ag0n1st – deutschsprachiges Gaming-/Guide-Portal.  
 > **Repository:** https://github.com/Ag0n1st/ag0n1st.github.io  
 > **Produktionswebsite:** https://ag0n1st.com (eigene Domain), alternativ https://ag0n1st.github.io  
-> **Hauptbranch:** `main`. Letzter UI-Fix-Merge: [PR #88](https://github.com/Ag0n1st/ag0n1st.github.io/pull/88), Squash-Commit `c9b722ae5575c1822a8897085d54ec16cae0441d` (radial zur Mitte ausgerichtete Operator-Roulette-Portraits, Navbar Operator/Roulette zweizeilig). Validierter PR-Head `0e9fbd918cd160c8d247c1e5c38a4e68c2e1f0d4`. [CI #41155971575](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/41155971575) und [Pages-Deploy #41156188868](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/41156188868) erfolgreich. Vorheriger Merge [PR #87](https://github.com/Ag0n1st/ag0n1st.github.io/pull/87), Roulette-5s-Dauer (§18.69).
+> **Hauptbranch:** `main`; letzter Feature-Merge **PR #89**, Squash-Commit `591177fba90d08002c1e34dcf8316bd839834bc2` (CC v1.6 und Event-Schnellauswahl samt drei WebP-Originalgrafiken). Vorheriger Fix PR #88 (§18.70).
 > **Diese Dokumentation und die Autoritätslevel-Grenze 60:** [Pull Request #13](https://github.com/Ag0n1st/ag0n1st.github.io/pull/13).  
 > **Wichtig:** Bei jeder folgenden Entwicklungsphase diese Datei und das tatsächliche Repository **gemeinsam** prüfen. GitHub-Code und erfolgreiche CI-Läufe sind der Nachweis für Implementierungen; die Roadmap ist die verbindliche Sammlung von Anforderungen, Entscheidungen, Aufgaben und Übergabehinweisen.
 
@@ -3325,7 +3325,7 @@ Alle 109 Endfield-Unit-Tests und die beiden Budgetchecks erfolgreich. Desktop 14
 
 
 ### 18.72 Contingency Contract v1.6 & Event-Schnellauswahl – Feature-Branch (02.11.2026)
-**[IN ENTWICKLUNG – nicht als live markieren]** Branch `feature/contingency-contract-v16-event-switcher`.
+**[FERTIG / main]** Branch `feature/contingency-contract-v16-event-switcher` via PR #89 gemergt.
 - Bestehendes Event-Board erweitert um aktive Schnellauswahl-Buttons bei mehreren parallelen Events; bei genau einem Event keine redundante Auswahl. Wechsel synchronisiert Panel, Banner, Card-Hintergrund, Achievement und Query-Parameter. Archiv behält seine eigene Dropdown-Auswahl, historische URL-Tieflinks und denselben Detailaufbau.
 - Neues `kind: contingency-contract` (standardmäßig `boss` für Legacy): CC-Events und deren Runs besitzen keine Bossbindung; ihre Ergebnisse dürfen nie in die globale Boss-Rangliste. `points` und `time` sind Pflicht für bestätigte CC-Runs. Ranking Punkte absteigend, bei Gleichstand schnellere MM:SS-Zeit; identische Werte teilen Rang, pro Spieler bestes Ergebnis. Bestehendes Duality-Timer-Ranking unverändert.
 - CC v1.6: 05.11.–25.11.2026 (Originalevent-Grafik), drei bilingual gepflegte Regeln, vorhandener Discord-Regelwerk-Link, optisch bestehender Event-Card folgend. Ag0n1st (DE) Si/Arcane/Tangtang/Gilberta alle P0, 45 Punkte, 04:45 **ausschließlich Demo**, nicht als verifiziert; ohne fingierten Video-Link.
@@ -3336,3 +3336,16 @@ Alle 109 Endfield-Unit-Tests und die beiden Budgetchecks erfolgreich. Desktop 14
 **CI-Beleg für den Code-Stand vor Assets (02.11.):** [PR #89](https://github.com/Ag0n1st/ag0n1st.github.io/pull/89), Commit `db90f42ee987956a278f5b1771f626facc11d3ed`; [Validierung #41402184916](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/41402184916) **completed/success**, **260/260 Node-Tests**, Astro-Build und Chromium-Smoke für Desktop/Mobil erfolgreich. Endfield **40.676.694 / 100.000.000 Byte**, Pages `dist/` **41.412.927 / 1.000.000.000 Byte**. Diese Zahlen **enthalten die drei CC-Grafiken noch nicht**. Der PR bleibt bewusst als **Draft** offen; kein Merge, bevor die gelieferten Originalgrafiken im GitHub-Branch liegen und die anschließenden Checks erneut grün sind.
 
 **Asset-Import-Beleg (02.11.2026):** WebP-Blobs `588067b25b6489787178e6cb592ccff9c29da4d4`, `fcaab20a48c62d9027b755deabe03c73187f268b`, `891ca8fb799de92a4b0cba611a79bdc81d9f90d8` stimmen bytegenau mit den aus den hochgeladenen Originalgrafiken konvertierten Dateien überein. PR #89 bleibt bis zum vollständigen erneuten CI-Lauf offen. Nach Merge die finalen beiden Budgetzahlen und den erfolgreichen Pages-Deploy protokollieren.
+
+### 18.73 Contingency Contract v1.6 veröffentlicht – PR #89 (02.11.2026)
+**[FERTIG]** [PR #89](https://github.com/Ag0n1st/ag0n1st.github.io/pull/89) erfolgreich per Squash in `main` gemergt: `591177fba90d08002c1e34dcf8316bd839834bc2`. Die drei exakt übertragenen Originalgrafiken liegen als WebP (800×320 Banner / 1191×1191 Achievement / 1672×941 Hintergrund) unter `public/images/endfield/leaderboard/`; **270.924 Byte** zusätzlich, keine PNG-Duplikate.
+
+**Belegte Validierung nach Grafikimport:** [CI #41404014605](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/41404014605) **success**: **260/260 Node-Tests**, Astro-Build, Endfield-Hardgate und Pages-Hardgate, Chromium Desktop/Mobil inklusive DE/EN-Parität **success**. Die zusätzliche Dokumentations-CI [#41404212786](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/41404212786) ebenfalls **success**. [Pages-Build und -Deployment #41404479151](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/41404479151) **completed/success**.
+
+**Tatsächlich gemessene Budgets nach Bildimport (CI #41404014605):**
+- Endfield tracked: **40.947.618 / 100.000.000 Byte** (40,95 %, Rest 59.052.382 Byte).
+- GitHub Pages `dist/`: **41.683.851 / 1.000.000.000 Byte** (4,17 %, Rest 958.316.149 Byte).
+
+**Funktional:** Zwei parallele aktive Event-Buttons ab 05.11.2026 (Duality + CC v1.6), passende Banner/Background/Achievement synchron, bis dahin ausschließlich Duality sichtbar. Archiv mit Event-Tieflink bleibt. CC ohne Boss, keine globale Übernahme, Punktzahl absteigend / schnellere Zeit bei Punktgleichstand; Ag0n1st 45 Punkte und 04:45 nur klar markierter Demo-Eintrag, **kein verifizierter Rekord**. Wiederverwendbare CC-Templates und lokale Markdown-Einreichungsstruktur bereitgestellt; DE/EN gemeinsam umgesetzt.
+
+**Nächster Arbeitsschritt:** Cheat Sheets Rekrutierung und Essenzen mit verifizierten Datensätzen; Fabrik weiterhin pausiert. Neue Inhalte nur nach Betreiberentscheidung und belegter Datenbasis.
