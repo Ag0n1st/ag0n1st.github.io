@@ -966,6 +966,39 @@ def smoke_i18n(page, base_url, width):
         root=page.locator("[data-community-leaderboard]")
         event=root.locator("[data-event-leaderboard]")
         # Parallel events: select Duality explicitly when quick buttons are present.
+        # The announced CC event must be selectable already, before 5 November.
+        cc_choice=event.locator('[data-event-choice="contingency-contract-v16"]')
+        verify(cc_choice.count()==1 and
+               event.locator('[data-event-choice="duality"]').count()==1,
+               label+": "+lang+" both Duality and announced CC can be selected")
+        cc_choice.click()
+        cc_panel=event.locator('[data-event-panel="contingency-contract-v16"][data-event-archived="false"]')
+        cc_observed={
+            "panel_count":cc_panel.count(),
+            "all_panels":event.locator("[data-event-panel]").evaluate_all("(els)=>els.map(el=>({id:el.getAttribute('data-event-panel'),archived:el.getAttribute('data-event-archived'),hidden:el.hidden}))"),
+            "visible":cc_panel.is_visible(),
+            "pressed":cc_choice.get_attribute("aria-pressed"),
+            "title":cc_panel.locator(".cl-event-results h3").all_inner_texts(),
+            "points":cc_panel.locator(".cl-run-points").all_inner_texts(),
+            "time":cc_panel.locator(".cl-run-time").all_inner_texts(),
+            "demo_labels":cc_panel.locator(".cl-placeholder-label").count()
+        }
+        verify(cc_observed["visible"] and cc_observed["pressed"]=="true" and
+               "Top 10 – Contingency Contract v1.6" in cc_observed["title"] and
+               cc_observed["points"]==["45"] and
+               cc_observed["time"]==["04:45"] and
+               cc_observed["demo_labels"]==1,
+               label+": "+lang+" CC preview shows score/time/demo: "+str(cc_observed))
+        cc_banner=cc_panel.locator('img[src="/images/endfield/leaderboard/contingency-contract-v16.webp"]')
+        cc_badge=event.locator('[data-event-achievement="contingency-contract-v16"]')
+        verify(cc_banner.count()==1 and cc_banner.evaluate("(im)=>im.complete && im.naturalWidth===800 && im.naturalHeight===320") and
+               cc_badge.is_visible() and
+               cc_badge.locator("img").evaluate("(im)=>im.complete && im.naturalWidth===1191") and
+               event.evaluate("(el)=>getComputedStyle(el).getPropertyValue('--cl-event-background').includes('contingency-contract-v16-background.webp')"),
+               label+": "+lang+" CC banner, achievement and card background follow quick selection")
+        if cc_panel.locator(".cl-event-upcoming-notice").count():
+            verify("05.11.2026" in cc_panel.locator(".cl-event-upcoming-notice").inner_text(),
+                   label+": "+lang+" preview correctly displays official 5 Nov start")
         duality_choice=event.locator('[data-event-choice="duality"]')
         if duality_choice.count():
             duality_choice.click()

@@ -238,3 +238,9 @@
  .cl-contract-table .cl-run-version{grid-area:version}
 }
 @media(max-width:460px){.cl-contract-table tbody tr.cl-rank-row{grid-template-columns:33px minmax(0,1fr) 36px auto}.cl-event-choice{width:100%}}
+
+/* Announced events can be selected before their start without being labelled active. */
+.cl-event-choice{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 12px}
+.cl-event-choice-upcoming{font-size:10px;font-weight:700;color:#e6ce89;white-space:nowrap}
+.cl-event-upcoming-notice{display:inline-flex;margin:3px 0 15px;border:1px solid #7b673c;border-radius:8px;background:rgba(214,175,71,.11);padding:8px 12px;color:#f4d990;font-size:12px;font-weight:800}
+@media(max-width:460px){.cl-event-choice{flex-direction:column;gap:3px}}

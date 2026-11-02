@@ -115,7 +115,7 @@ test("Optional Duality Discord achievement badge follows selected event and stay
  assert.match(event,/achievement:\s+image: "\/images\/endfield\/leaderboard\/duality-achievement\.webp"/);
  assert.match(event,/tooltipDe: "Discord-Achievement „Duality“/);
  assert.match(event,/tooltipEn: "Discord achievement ‘Duality’/);
- assert.match(component,/active\.map\(\(event,index\)=>event\.achievement&&/);
+ assert.match(component,/selectable\.map\(\(event,index\)=>event\.achievement&&/);
  assert.match(component,/data-event-achievement=\{event\.id\}/);
  assert.match(component,/data-achievement-tooltip=\{l\(event\.achievement\.tooltipDe,event\.achievement\.tooltipEn\)\}/);
  assert.match(component,/role="img"/);
