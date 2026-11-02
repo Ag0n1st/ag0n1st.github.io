@@ -121,7 +121,7 @@ test("Optional Duality Discord achievement badge follows selected event and stay
  assert.match(component,/role="img"/);
  assert.match(component,/tabindex="0"/);
  assert.match(component,/hidden=\{index!==0\}/);
- assert.match(client,/badge\.hidden=archived\|\|badge\.dataset\.eventAchievement!==id/);
+ assert.match(client,/badge\.hidden=badge\.dataset\.eventAchievement!==id/);
  assert.match(css,/\.cl-event-achievement\{position:absolute;right:0;top:-13px/);
  assert.match(css,/\.cl-event-achievement\[hidden\]\{display:none!important\}/);
  assert.match(css,/\.cl-event-achievement:hover::after,\.cl-event-achievement:focus::after/);
@@ -224,7 +224,7 @@ test("Duality Markdown source keeps the owner-approved run and two-language rule
  assert.match(loader,/getCollection\("leaderboard-runs"\)/);
  assert.match(loader,/getCollection\("leaderboard-events"\)/);
  assert.match(loader,/run.status==="verified"/);
- assert.match(page,/run.eventId&&run.eligibleForCommunity===true/);
+ assert.match(page,/run.eventId&&run.boss&&run.eligibleForCommunity===true/);
  assert.match(eventPanel,/Top 10 – \{event.title\}/);
  assert.match(eventPanel,/<details class="cl-event-rules" data-event-rules>/);
  assert.match(eventPanel,/data-event-background/);

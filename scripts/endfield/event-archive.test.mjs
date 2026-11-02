@@ -68,5 +68,5 @@ test("Contingency Contract v1.6 starts 5 Nov, overlaps Duality and later archive
   const cc={id:"contingency-contract-v16",startsOn:"2026-11-05",endsOn:"2026-11-25",kind:"contingency-contract"};
   assert.deepEqual(partitionLeaderboardEvents([duality,cc],"2026-11-02").active.map(e=>e.id),["duality"]);
   assert.deepEqual(partitionLeaderboardEvents([duality,cc],"2026-11-05").active.map(e=>e.id),["contingency-contract-v16","duality"]);
-  assert.deepEqual(partitionLeaderboardEvents([duality,cc],"2026-11-26").archived.map(e=>e.id),["duality","contingency-contract-v16"]);
+  assert.deepEqual(partitionLeaderboardEvents([duality,cc],"2026-11-26").archived.map(e=>e.id),["contingency-contract-v16","duality"]);
 });

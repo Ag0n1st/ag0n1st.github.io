@@ -56,6 +56,7 @@ export function validateLeaderboardEntries({events,runs,bossSlugs,operatorSlugs}
     const context="Run "+(run.runId??"?");
     if(seenRunIds.has(run.runId))fail(context,"duplicate run ID");
     seenRunIds.add(run.runId);
+    if(run.boss!==undefined && !knownBosses.has(run.boss))fail(context,"unknown boss "+run.boss);
     if(!run.eventId && !knownBosses.has(run.boss))fail(context,"unknown boss "+run.boss);
     if(parseIngameTime(run.time)===null)fail(context,"invalid MM:SS time");
     if(!youtubeHost(run.video))fail(context,"expected public YouTube video URL");
