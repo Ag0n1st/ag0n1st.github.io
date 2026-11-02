@@ -40,32 +40,58 @@ test("Nine source logos stored as real optimized WebP files including Lootbar br
   }
   assert.ok(bytes<150000,"No large assets or PNG duplicates");
 });
-test("All existing page families include the same Footer component; only homepage has cards",()=>{
-  const home=read("src/components/pages/HomePage.astro");
-  const endfield=read("src/layouts/EndfieldPlaceholder.astro");
-  assert.match(home,/<PartnerShowcase lang=\{lang\} \/>/);
-  assert.match(home,/<PartnerFooter lang=\{lang\} \/>/);
-  assert.match(endfield,/<PartnerFooter lang=\{lang\} \/>/);
-  for(const [path,lang] of [
-    ["src/pages/about.astro","de"],["src/pages/nte.astro","de"],
-    ["src/pages/en/about/index.astro","en"],["src/pages/en/nte/index.astro","en"]]){
-    assert.match(read(path),new RegExp('<PartnerFooter lang="'+lang+'"\\s*/>'));
-  }
+test("Site footer is globally shared with centred logo, year 2026 and six social icons",()=>{
+ const footer=read("src/components/SiteFooter.astro");
+ const css=read("src/styles/footer.css");
+ const links=read("src/components/partners/PartnerFooter.astro");
+ assert.match(footer,/<SocialLinks \/>/);
+ assert.match(footer,/<PartnerFooter lang=\{lang\}\/>/);
+ assert.match(footer,/© 2026 Ag0n1st/);
+ assert.match(footer,/footer-brand-center/);
+ assert.match(css,/grid-template-columns:minmax\(0,1fr\) 32px minmax\(0,1fr\)/);
+ assert.match(css,/\.footer-brand-center \.copyright\{position:absolute/);
+ assert.match(css,/@media\(max-width:720px\)/);
+ const paths=[
+   "src/components/pages/HomePage.astro","src/components/pages/EndfieldHome.astro",
+   "src/layouts/EndfieldPlaceholder.astro","src/pages/about.astro",
+   "src/pages/nte.astro","src/pages/en/about/index.astro",
+   "src/pages/en/nte/index.astro","src/pages/posts/[slug].astro"
+ ];
+ for(const path of paths){
+   const s=read(path);
+   assert.match(s,/<SiteFooter lang=/,path);
+   assert.doesNotMatch(s,/<footer class="site-footer">/,path+" still has old footer");
+ }
+ assert.match(links,/class="partner-footer-icon"/);
+ assert.doesNotMatch(links,/partner-footer-disclosure|partner-footer-topline/);
+ assert.match(links,/Werbung · Affiliate-Links/);
+ assert.match(links,/Advertisement · Affiliate links/);
 });
-test("Cards and footer mark every affiliate link as sponsored with direct disclosure",()=>{
-  const a=read("src/components/partners/PartnerShowcase.astro");
-  const b=read("src/components/partners/PartnerFooter.astro");
-  assert.match(a,/partner\.affiliateUrl/);
-  assert.match(b,/partner\.affiliateUrl/);
-  for(const html of [a,b]){
-    assert.match(html,/rel="sponsored noopener noreferrer"/);
-    assert.match(html,/target="_blank"/);
-    assert.match(html,/Werbung/);
-    assert.match(html,/Advertisement/);
-    assert.match(html,/Affiliate-Links/);
-    assert.match(html,/Affiliate links/);
-    assert.doesNotMatch(html,/script src=|onclick=|data-track/);
-  }
-  assert.match(a,/partner\.discount/);
-  assert.match(a,/partner\.noteDe/);
+test("All affiliate links remain visibly marked, star disclosures and Lootbar ToS are bilingual",()=>{
+ const cards=read("src/components/partners/PartnerShowcase.astro");
+ const links=read("src/components/partners/PartnerFooter.astro");
+ for(const source of [cards,links]){
+   assert.match(source,/partner\.affiliateUrl/);
+   assert.match(source,/rel="sponsored noopener noreferrer"/);
+   assert.match(source,/target="_blank"/);
+   assert.match(source,/Werbung/);
+   assert.match(source,/Advertisement/);
+   assert.doesNotMatch(source,/script src=|onclick=|data-track/);
+ }
+ assert.match(cards,/Zum Partner\*/);
+ assert.match(cards,/Visit partner\*/);
+ assert.match(cards,/\*Affiliate-Links:/);
+ assert.match(cards,/\*Affiliate links:/);
+ assert.match(cards,/data-partner-disclaimer/);
+ assert.match(cards,/<u>/);
+ const loot=partners.find(p=>p.id==="lootbar");
+ assert.equal(loot.descriptionDe,"Guthaben und Top-Ups für verschiedene Spiele.");
+ assert.equal(loot.descriptionEn,"Game credit and top-ups for various games.");
+ assert.equal(loot.noteDe,undefined);
+ assert.match(loot.disclaimer.deBefore,/Disclaimer: Vor dem Kauf/);
+ assert.match(loot.disclaimer.deUnderline,/nicht pauschal verboten/);
+ assert.match(loot.disclaimer.deAfter,/Einzelne Spiele untersagen/);
+ assert.match(loot.disclaimer.enUnderline,/not universally prohibited/);
+ assert.match(loot.disclaimer.enAfter,/Some games explicitly prohibit/);
+ assert.equal(partners.find(p=>p.id==="gamersupps").discount.code,"AGON");
 });

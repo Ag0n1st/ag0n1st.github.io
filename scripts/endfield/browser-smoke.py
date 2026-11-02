@@ -638,7 +638,7 @@ def smoke_i18n(page, base_url, width):
                label+": "+locale+" global footer contains six correct social logos in owner order")
         partner_footer=page.locator("footer [data-partner-footer]")
         partner_footer_found=partner_footer.count()
-        partner_footer_links=[{"href":el.get_attribute("href"),"rel":el.get_attribute("rel"),"target":el.get_attribute("target")} for el in partner_footer.locator(".partner-footer-link").all()]
+        partner_footer_links=[{"href":el.get_attribute("href"),"rel":el.get_attribute("rel"),"target":el.get_attribute("target")} for el in partner_footer.locator(".partner-footer-icon").all()]
         partner_footer_text=partner_footer.inner_text() if partner_footer_found else ""
         verify(partner_footer_found==1 and len(partner_footer_links)==4 and
                all("sponsored" in (link["rel"] or "").split() and link["target"]=="_blank"
@@ -662,6 +662,39 @@ def smoke_i18n(page, base_url, width):
             img.wait_for(state="visible")
         verify(all(img.evaluate("(el)=>el.complete && el.naturalWidth>0") for img in partner_home.locator(".partner-card-logo").all()),
                label+": "+locale+" four local high-res WebP partner logos load")
+        verify(all(a.inner_text().strip().endswith("*") for a in partner_home.locator(".partner-card-cta").all()) and
+               partner_home.locator(".partner-affiliate-note").inner_text().lstrip().startswith("*") and
+               partner_home.locator('[data-partner-id="lootbar"] [data-partner-disclaimer] u').count()==1 and
+               ("nicht pauschal verboten" if locale=="de" else "not universally prohibited") in
+                 partner_home.locator('[data-partner-id="lootbar"] [data-partner-disclaimer] u').inner_text() and
+               ("Keine pauschale Aussage" not in partner_home.inner_text()),
+               label+": "+locale+" star-marked CTA/disclosure and carefully scoped Lootbar ToS disclaimer")
+        footer=page.locator("footer[data-site-footer]")
+        verify(footer.count()==1 and footer.locator(".social-links a").count()==6 and
+               footer.locator(".partner-footer-icon").count()==4 and
+               footer.locator(".footer-brand-center .copyright").inner_text().startswith("© 2026"),
+               label+": "+locale+" global footer layout is reused on the homepage")
+        if width>=900:
+            center=footer.locator(".footer-wordmark img").bounding_box()
+            copy=footer.locator(".footer-brand-center .copyright").bounding_box()
+            socials_box=footer.locator(".social-links").bounding_box()
+            partner_box=footer.locator(".partner-footer-icons").bounding_box()
+            verify(center is not None and copy is not None and socials_box is not None and partner_box is not None and
+                   abs(center["x"]+center["width"]/2-width/2)<2 and
+                   copy["x"]>center["x"]+center["width"] and
+                   socials_box["x"]<center["x"] and
+                   partner_box["x"]>center["x"],
+                   label+": "+locale+" desktop footer logo exactly centred, copyright right, socials left and partners right")
+        # Both Endfield root variants previously bypassed the shared footer.
+        for path in ["/endfield/","/about/","/nte/"]:
+            page.goto(base_url+prefix+path)
+            f=page.locator("footer[data-site-footer]")
+            verify(f.count()==1 and f.locator(".social-links a").count()==6 and
+                   f.locator(".partner-footer-icon").count()==4 and
+                   f.locator(".footer-brand-center .copyright").inner_text().startswith("© 2026"),
+                   label+": "+locale+" "+path+" uses the shared global footer")
+            check_overflow(page,label+" "+locale+" "+path+" global footer")
+        page.goto(base_url+home)
         check_overflow(page,label+" "+locale+" partner homepage and footer")
         check_overflow(page,label+" "+locale+" homepage with six footer icons")
         cards=page.locator("#beitraege .guide-teaser-card")
