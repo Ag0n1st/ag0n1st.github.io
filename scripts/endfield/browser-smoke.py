@@ -636,6 +636,31 @@ def smoke_i18n(page, base_url, width):
         verify([(x["name"],x["href"]) for x in social_links]==expected_socials
                and all(x["hasIcon"] for x in social_links),
                label+": "+locale+" global footer contains six correct social logos in owner order")
+        partner_footer=page.locator("footer [data-partner-footer]")
+        verify(partner_footer.count()==1 and
+               partner_footer.locator(".partner-footer-link").count()==4 and
+               all("sponsored" in link.get_attribute("rel").split() and link.get_attribute("target")=="_blank"
+                   for link in partner_footer.locator(".partner-footer-link").all()) and
+               ("Werbung" if locale=="de" else "Advertisement") in partner_footer.inner_text(),
+               label+": "+locale+" footer shows four correctly disclosed affiliate partners")
+        partner_home=page.locator("[data-partner-showcase]")
+        verify(partner_home.count()==1 and
+               partner_home.locator(".partner-card").count()==4 and
+               partner_home.locator(".partner-card-cta").count()==4 and
+               partner_home.locator('[data-partner-id="gamersupps"] code').inner_text()=="AGON" and
+               len(partner_home.locator(".partner-card-logo").all())==4 and
+               all("sponsored" in link.get_attribute("rel").split() and
+                   link.get_attribute("target")=="_blank"
+                   for link in partner_home.locator(".partner-card-cta").all()) and
+               ("Meine Partner" if locale=="de" else "My partners") in partner_home.inner_text(),
+               label+": "+locale+" homepage shows four bilingual advertisement cards")
+        for img in partner_home.locator(".partner-card-logo").all():
+            img.scroll_into_view_if_needed()
+            img.evaluate("(el)=>el.loading='eager'")
+            img.wait_for(state="visible")
+        verify(all(img.evaluate("(el)=>el.complete && el.naturalWidth>0") for img in partner_home.locator(".partner-card-logo").all()),
+               label+": "+locale+" four local high-res WebP partner logos load")
+        check_overflow(page,label+" "+locale+" partner homepage and footer")
         check_overflow(page,label+" "+locale+" homepage with six footer icons")
         cards=page.locator("#beitraege .guide-teaser-card")
         verify(cards.count()==3,label+": "+locale+" homepage contains three newest guides")
