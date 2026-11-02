@@ -217,3 +217,24 @@
 .cl-event-achievement::after{content:attr(data-achievement-tooltip);position:absolute;right:0;top:calc(100% + 3px);width:230px;max-width:calc(100vw - 46px);box-sizing:border-box;padding:9px 12px;border-radius:9px;border:1px solid #71618a;background:#211d2b;color:#f5effa;box-shadow:0 9px 26px #000a;font-size:11px;font-weight:650;line-height:1.55;letter-spacing:0;text-align:left;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-4px);transition:opacity .12s ease,transform .12s ease}
 .cl-event-achievement:hover::after,.cl-event-achievement:focus::after{opacity:1;visibility:visible;transform:translateY(0)}
 @media(max-width:760px){.cl-event-head{min-height:70px;padding-right:72px}.cl-event-achievement{width:63px;height:63px;top:0}.cl-event-achievement::after{width:200px}}
+
+/* Active event quick selection; archive deliberately retains its select. */
+.cl-event-choices{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}
+.cl-event-choice{min-height:44px;border:1px solid #65546c;border-radius:10px;padding:10px 16px;background:#27202f;color:#e4d8ed;font:inherit;font-size:12px;font-weight:800;cursor:pointer;transition:background .15s,border-color .15s}
+.cl-event-choice:hover{border-color:#c4a3df;background:#34273f}
+.cl-event-choice[aria-pressed="true"]{border-color:var(--cyan);background:#183841;color:#e7ffff;box-shadow:inset 0 0 0 1px #4a9fac}
+.cl-event-choice:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.cl-contract-table .cl-run-points{font-size:16px;font-weight:900;color:#ffdc58;font-variant-numeric:tabular-nums}
+.cl-contract-table thead th:nth-child(2){width:18%}
+.cl-contract-table thead th:nth-child(4){width:27%}
+.cl-contract-table thead th:nth-child(5){width:78px}
+.cl-contract-table thead th:nth-child(6){width:14%}
+.cl-contract-table thead th:nth-child(7){width:74px}
+.cl-contract-table .cl-run-time span{font-size:16px;font-weight:800;font-variant-numeric:tabular-nums;color:#e2d8e8}
+@media(max-width:760px){
+ .cl-contract-table tbody tr.cl-rank-row{grid-template-columns:40px minmax(0,1fr) 46px auto;grid-template-areas:"rank name country points" ". team team time" ". version version version"}
+ .cl-contract-table .cl-run-points{grid-area:points;text-align:right}
+ .cl-contract-table .cl-run-time{grid-area:time}
+ .cl-contract-table .cl-run-version{grid-area:version}
+}
+@media(max-width:460px){.cl-contract-table tbody tr.cl-rank-row{grid-template-columns:33px minmax(0,1fr) 36px auto}.cl-event-choice{width:100%}}

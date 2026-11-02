@@ -41,7 +41,8 @@ const leaderboardRuns=defineCollection({
     playerId:z.string().min(1),
     discordName:z.string().min(1),
     countryCode:z.string().regex(/^[A-Z]{2,3}$/).optional(),
-    boss:z.string().regex(/^[a-z0-9-]+$/),
+    boss:z.string().regex(/^[a-z0-9-]+$/).optional(),
+    points:z.number().int().min(0).optional(),
     version:z.string().regex(/^v\d+\.\d+$/),
     time:z.string().regex(/^\d{2,}:[0-5]\d$/),
     video:z.string().url(),
@@ -61,7 +62,8 @@ const leaderboardEvents=defineCollection({
   schema:z.object({
     eventId:z.string().regex(/^[a-z0-9-]+$/),
     title:z.string().min(1),
-    boss:z.string().regex(/^[a-z0-9-]+$/),
+    kind:z.enum(["boss","contingency-contract"]).default("boss"),
+    boss:z.string().regex(/^[a-z0-9-]+$/).optional(),
     version:z.string().regex(/^v\d+\.\d+$/),
     startsOn:z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     endsOn:z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
@@ -74,6 +76,14 @@ const leaderboardEvents=defineCollection({
     }).optional(),
     rulebookUrl:z.string().url(),
     demoRunId:z.string().optional(),
+    demoRun:z.object({
+      playerId:z.string().min(1),discordName:z.string().min(1),
+      countryCode:z.string().regex(/^[A-Z]{2,3}$/).optional(),
+      points:z.number().int().min(0),
+      time:z.string().regex(/^\d{2,}:[0-5]\d$/),
+      video:z.string().url().optional(),
+      team:z.array(z.object({slug:z.string(),potential:z.number().int().min(0).max(5)})).length(4)
+    }).optional(),
     rules:z.array(z.object({
       id:z.string().min(1),
       de:z.string().min(1),

@@ -1,57 +1,59 @@
-// Both lists are statically pre-rendered. Preserve normal boss/version URL filters.
-// Only archive already-ended events at build time, never on the player's timezone.
+// Pre-rendered Event Leaderboard: quick buttons for concurrent events, archived select below.
 const root=document.querySelector<HTMLElement>("[data-event-leaderboard]");
 if(root){
-  const current=root.querySelector<HTMLSelectElement>("[data-event-select]");
+  const choices=[...root.querySelectorAll<HTMLButtonElement>("[data-event-choice]")];
   const archive=root.querySelector<HTMLSelectElement>("[data-archive-select]");
   const archiveDetails=root.querySelector<HTMLDetailsElement>("[data-event-archive]");
   const panels=[...root.querySelectorAll<HTMLElement>("[data-event-panel]")];
   const achievementBadges=[...root.querySelectorAll<HTMLElement>("[data-event-achievement]")];
-  function show(select:HTMLSelectElement|undefined,archived:boolean,id:string){
-    if(!select||![...select.options].some(option=>option.value===id))return false;
-    select.value=id;
-    for(const panel of panels){
-      if((panel.dataset.eventArchived==="true")===archived)
-        panel.hidden=panel.dataset.eventPanel!==id;
-    }
-    for(const badge of achievementBadges){
-      badge.hidden=archived||badge.dataset.eventAchievement!==id;
-    }
-    if(!archived){
-      const active=panels.find(panel=>panel.dataset.eventArchived==="false"&&panel.dataset.eventPanel===id);
-      const image=active?.dataset.eventBackground??"";
+  const activePanels=panels.filter(panel=>panel.dataset.eventArchived==="false");
+  const archivedPanels=panels.filter(panel=>panel.dataset.eventArchived==="true");
+  const defaultId=activePanels[0]?.dataset.eventPanel;
+  function show(id:string,archived:boolean){
+    const subset=archived?archivedPanels:activePanels;
+    if(!subset.some(panel=>panel.dataset.eventPanel===id))return false;
+    for(const panel of subset)panel.hidden=panel.dataset.eventPanel!==id;
+    if(archived){
+      if(archive)archive.value=id;
+    }else{
+      for(const choice of choices)choice.setAttribute("aria-pressed",String(choice.dataset.eventChoice===id));
+      for(const badge of achievementBadges)badge.hidden=badge.dataset.eventAchievement!==id;
+      const image=activePanels.find(panel=>panel.dataset.eventPanel===id)?.dataset.eventBackground??"";
       root!.style.setProperty("--cl-event-background",image?'url("'+image+'")':"none");
     }
     return true;
   }
   function setUrl(id:string,archived:boolean){
     const url=new URL(location.href);
-    if(!archived&&id===current?.options[0]?.value)url.searchParams.delete("event");
+    if(!archived&&id===defaultId)url.searchParams.delete("event");
     else url.searchParams.set("event",id);
     history.replaceState(null,"",url.pathname+url.search+url.hash);
   }
-  current?.addEventListener("change",()=>{
-    if(show(current,false,current.value)){
-      if(archiveDetails)archiveDetails.open=false;
-      setUrl(current.value,false);
-    }
-  });
+  for(const choice of choices){
+    choice.addEventListener("click",()=>{
+      const id=choice.dataset.eventChoice;
+      if(id&&show(id,false)){
+        if(archiveDetails)archiveDetails.open=false;
+        setUrl(id,false);
+      }
+    });
+  }
   archive?.addEventListener("change",()=>{
-    if(show(archive,true,archive.value))setUrl(archive.value,true);
+    if(show(archive.value,true))setUrl(archive.value,true);
   });
   function restore(){
     const requested=new URLSearchParams(location.search).get("event");
-    if(requested&&archive&&show(archive,true,requested)){
+    if(requested&&show(requested,true)){
       if(archiveDetails)archiveDetails.open=true;
-    }else if(requested&&current&&show(current,false,requested)){
-      // Bookmark to an active event, even if it was formerly archived.
-    }else if(current){
-      show(current,false,current.value);
-    }else if(archive){
-      show(archive,true,archive.value);
+    }else if(requested&&show(requested,false)){
+      if(archiveDetails)archiveDetails.open=false;
+    }else if(defaultId){
+      show(defaultId,false);
+      if(archiveDetails)archiveDetails.open=false;
+    }else if(archive&&archivedPanels.length){
+      show(archive.value,true);
     }
   }
-  // Native modal: built-in focus trap and Escape support, same pattern as the Gear Matrix.
   for(const panel of panels){
     const trigger=panel.querySelector<HTMLButtonElement>("[data-rule-explanation-open]");
     const dialog=panel.querySelector<HTMLDialogElement>("[data-rule-explanation-dialog]");

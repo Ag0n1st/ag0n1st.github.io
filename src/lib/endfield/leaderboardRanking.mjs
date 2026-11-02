@@ -37,6 +37,45 @@ export function rankVerifiedRuns(runs,{boss,version="all-time",limit=10}={}){
   }
   return result;
 }
+
+/**
+ * Reusable score-first Contingency Contract ranking, separate from boss speedruns.
+ * Scores descend; the official MM:SS timer breaks score ties. Only the best
+ * verified submission per player counts. Equal score AND time share a rank.
+ */
+export function rankContingencyContractRuns(runs,{eventId,version,limit=10}={}){
+  const bestByPlayer=new Map();
+  for(const run of runs){
+    if(run?.status!=="verified"||run.eventId!==eventId||(version&&run.version!==version))continue;
+    const seconds=parseIngameTime(run.time);
+    if(!Number.isSafeInteger(run.points)||run.points<0||seconds===null||
+       typeof run.playerId!=="string"||!run.playerId.trim())continue;
+    const key=run.playerId.trim().toLowerCase();
+    const previous=bestByPlayer.get(key);
+    if(!previous||run.points>previous.run.points||
+       (run.points===previous.run.points&&seconds<previous.seconds)||
+       (run.points===previous.run.points&&seconds===previous.seconds&&
+        String(run.id).localeCompare(String(previous.run.id))<0)){
+      bestByPlayer.set(key,{run,seconds});
+    }
+  }
+  const sorted=[...bestByPlayer.values()].sort((a,b)=>
+    b.run.points-a.run.points||a.seconds-b.seconds||
+    String(a.run.playerId).localeCompare(String(b.run.playerId))||
+    String(a.run.id).localeCompare(String(b.run.id)));
+  const result=[];
+  let rank=0,lastScore=null,lastSeconds=null;
+  for(let i=0;i<sorted.length;i++){
+    const row=sorted[i];
+    if(row.run.points!==lastScore||row.seconds!==lastSeconds){
+      rank=i+1;lastScore=row.run.points;lastSeconds=row.seconds;
+    }
+    if(rank>limit)break;
+    result.push({...row.run,rank});
+  }
+  return result;
+}
+
 export function displayLeaderboardRows(data,boss,version="all-time"){
   const verified=rankVerifiedRuns(data.verifiedRuns||[],{boss,version});
   if(verified.length)return verified;

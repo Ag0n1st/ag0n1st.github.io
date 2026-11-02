@@ -26,12 +26,12 @@ const shortPeriod=(event:typeof eventData.events[number])=>{
     </span>)}
   </div>
   {active.length>0 ? <>
-    <div class="cl-event-selector cl-control">
-      <label for="cl-event-select">{l("Event auswählen","Select event")}</label>
-      <select id="cl-event-select" data-event-select>
-        {active.map((event,index)=><option value={event.id} selected={index===0}>{event.title}</option>)}
-      </select>
-    </div>
+    {active.length>1 && <div class="cl-event-choices" role="group" aria-label={l("Laufendes Event auswählen","Choose current event")}>
+      {active.map((event,index)=><button type="button" class="cl-event-choice" data-event-choice={event.id}
+        aria-pressed={index===0?"true":"false"} aria-controls={`cl-event-panel-${event.id}`}>
+        {event.title}
+      </button>)}
+    </div>}
     {active.map((event,index)=><LeaderboardEventPanel event={event} verifiedRuns={eventData.verifiedRuns} lang={lang} archived={false} hidden={index!==0}/>)}
   </> : <div class="cl-event-inactive" data-no-current-event>
     <p>{l("Derzeit läuft kein Community-Event.","There is no community event currently running.")}</p>
@@ -52,7 +52,7 @@ const shortPeriod=(event:typeof eventData.events[number])=>{
           </select>
         </div>
         {archived.map((event,index)=><LeaderboardEventPanel event={event} verifiedRuns={eventData.verifiedRuns} lang={lang} archived={true} hidden={index!==0}/>)}
-      </> : <p class="cl-archive-empty">{l("Noch keine abgeschlossenen Events. Duality bleibt bis einschließlich 25.11.2026 im laufenden Event Leaderboard.","No completed events yet. Duality remains in the current Event Leaderboard through 25 November 2026.")}</p>}
+      </> : <p class="cl-archive-empty">{l("Noch keine abgeschlossenen Events.","No completed events yet.")}</p>}
     </div>
   </details>
 </section>
