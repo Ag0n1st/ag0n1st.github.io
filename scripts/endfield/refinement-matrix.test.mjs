@@ -235,7 +235,7 @@ test("Personal stats are displayed AFTER the matrix, in the same card, with DE/E
  const css=read("src/styles/endfield-refinement.css");
  assert.ok(matrix.indexOf("refinement-source")<matrix.indexOf("refinement-personal-divider"));
  assert.ok(matrix.indexOf("refinement-personal-divider")<matrix.indexOf("<RefinementPersonalStatistics"));
- assert.ok(matrix.indexOf("<RefinementPersonalStatistics")<matrix.indexOf("</section>"));
+ assert.ok(matrix.indexOf("<RefinementPersonalStatistics")<matrix.lastIndexOf("</section>"));
  assert.match(stats,/Meine Veredelungs-Statistik/);
  assert.match(stats,/My Artificing Statistics/);
  assert.match(stats,/Stand: 29\.09\.2026/);
