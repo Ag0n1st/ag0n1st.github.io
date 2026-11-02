@@ -990,6 +990,15 @@ def smoke_i18n(page, base_url, width):
                cc_panel.locator(".cl-cc-score-mark").count()==1 and
                cc_panel.locator(".cl-cc-score").get_attribute("aria-label")==("45 Punkte" if lang=="de" else "45 points"),
                label+": "+lang+" branded gold CC points badge with accessible label")
+        cc_score_box=cc_panel.locator(".cl-cc-score").bounding_box()
+        cc_icon_box=cc_panel.locator(".cl-cc-score-mark").bounding_box()
+        expected_box=(54,24,18) if page.evaluate("innerWidth")<=460 else (64,27,21)
+        verify(cc_score_box is not None and cc_icon_box is not None and
+               abs(cc_score_box["width"]-expected_box[0])<2 and
+               abs(cc_score_box["height"]-expected_box[1])<2 and
+               abs(cc_icon_box["width"]-expected_box[2])<1 and
+               abs(cc_icon_box["height"]-expected_box[2])<1,
+               label+": "+lang+" CC score badge 30 percent smaller (badge "+str(cc_score_box)+", icon "+str(cc_icon_box)+")")
         verify(cc_observed["visible"] and cc_observed["pressed"]=="true" and
                "Top 10 – Contingency Contract v1.6" in cc_observed["title"] and
                cc_observed["points"]==["45"] and
