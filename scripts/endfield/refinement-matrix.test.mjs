@@ -4,6 +4,8 @@ import {readFileSync,existsSync} from "node:fs";
 import {deriveRefinementMatrix,REFINEMENT_ATTRIBUTES,REFINEMENT_SLOTS,
  refinementAttributeFor,refinementNumber,refinementVariantTag} from "../../src/lib/endfield/refinementMatrix.mjs";
 const read=p=>readFileSync(p,"utf8");
+import {calculateRefinementPersonalStats} from "../../src/lib/endfield/refinementPersonalStats.mjs";
+const personal=JSON.parse(read("src/data/endfield/refinement-personal-stats.json"));
 const equipment=JSON.parse(read("src/data/endfield/catalog/equipment-details.json"));
 const catalog=JSON.parse(read("src/data/endfield/catalog/items.json"));
 const official=new Map(catalog.items.filter(x=>x.categories.includes("Gear")).map(row=>[row.id,row]));
@@ -207,4 +209,42 @@ test("source-backed v1.6 import delta is complete when publication report exists
  }
  assert.equal(catalog.items.find(x=>x.id==="411").name,"Type 50 Yinglung Gloves");
  assert.equal(catalog.items.find(x=>x.id==="1381").name,"Type 50 Yinglung Gloves");
+});
+
+test("Personal Discord stats preserve every sample and derive stage averages from attempts/successes",()=>{
+ const stats=calculateRefinementPersonalStats(personal);
+ assert.equal(personal.asOf,"2026-09-29");
+ assert.equal(stats.gearPieces,4);
+ assert.deepEqual(stats.stages.map(x=>x.pity),[6,12,20]);
+ assert.deepEqual(stats.stages.map(x=>[x.good.attempts,x.good.successes,x.standard.attempts,x.standard.successes]),[
+  [274,126,99,47],[568,126,202,48],[875,122,508,51]]);
+ assert.equal(stats.totalAttempts,2526);
+ assert.equal(stats.totalSuccesses,520);
+ for(const stage of stats.stages){
+  assert.equal(stage.good.average,stage.good.attempts/stage.good.successes);
+  assert.equal(stage.standard.average,stage.standard.attempts/stage.standard.successes);
+  assert.equal(stage.pooled.average,(stage.good.attempts+stage.standard.attempts)/(stage.good.successes+stage.standard.successes));
+ }
+ assert.ok(Math.abs(stats.perOperator.pooled-58.30230549465)<1e-8);
+ assert.ok(Math.abs(stats.perOperator.good-55.41868332032)<1e-8);
+ assert.ok(Math.abs(stats.perOperator.standard-65.10200250313)<1e-8);
+});
+test("Personal stats are displayed AFTER the matrix, in the same card, with DE/EN and single-attribute exclusion",()=>{
+ const matrix=read("src/components/pages/RefinementMatrix.astro");
+ const stats=read("src/components/pages/RefinementPersonalStatistics.astro");
+ const css=read("src/styles/endfield-refinement.css");
+ assert.ok(matrix.indexOf("refinement-source")<matrix.indexOf("refinement-personal-divider"));
+ assert.ok(matrix.indexOf("refinement-personal-divider")<matrix.indexOf("<RefinementPersonalStatistics"));
+ assert.ok(matrix.indexOf("<RefinementPersonalStatistics")<matrix.lastIndexOf("</section>"));
+ assert.match(stats,/Meine Veredelungs-Statistik/);
+ assert.match(stats,/My Artificing Statistics/);
+ assert.match(stats,/Stand: 29\.09\.2026/);
+ assert.match(stats,/As of: 29 Sep 2026/);
+ assert.match(stats,/data-refinement-pity=\{stage.pity\}/);
+ assert.match(stats,/data-refinement-estimate="pooled"/);
+ assert.match(stats,/data-refinement-estimate="good"/);
+ assert.match(stats,/data-refinement-estimate="standard"/);
+ assert.match(stats,/Ausrüstungsteile mit nur einem Attribut/);
+ assert.match(stats,/gear with only one attribute/);
+ assert.match(css,/@media\(max-width:650px\)/);
 });

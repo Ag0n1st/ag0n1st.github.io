@@ -1244,6 +1244,25 @@ def smoke_i18n(page, base_url, width):
                page.locator('[data-refinement-attribute="agi"][data-refinement-slot="Kit"]').get_attribute("data-refinement-item-id")=="350" and
                page.locator('[data-refinement-attribute="will"][data-refinement-slot="Kit"]').get_attribute("data-refinement-item-id")=="348",
                label+": "+lang+" four official primary attribute cards with real gear and highlighted matches")
+        personal=page.locator('[data-refinement-personal-stats]')
+        verify(personal.count()==1 and
+               page.locator("#refinement").locator(".refinement-personal-divider").count()==1 and
+               personal.locator('[data-refinement-pity]').count()==3 and
+               personal.locator('[data-refinement-match]').count()==6 and
+               personal.locator('[data-refinement-estimate="pooled"]').inner_text().startswith("58,3" if lang=="de" else "58.3") and
+               personal.locator('[data-refinement-estimate="good"]').inner_text()==("55,4" if lang=="de" else "55.4") and
+               personal.locator('[data-refinement-estimate="standard"]').inner_text()==("65,1" if lang=="de" else "65.1") and
+               ("29.09.2026" if lang=="de" else "29 Sep 2026") in personal.inner_text() and
+               ("nur einem Attribut" if lang=="de" else "only one attribute") in personal.inner_text(),
+               label+": "+lang+" Discord refinement sample is below matrix, with 6/12/20-pity rows and full-operator forecasts")
+        verify(
+            [personal.locator('[data-refinement-pity="6"] [data-refinement-match="good"] td').all_inner_texts(),
+             personal.locator('[data-refinement-pity="12"] [data-refinement-match="standard"] td').all_inner_texts(),
+             personal.locator('[data-refinement-pity="20"] [data-refinement-match="good"] td').all_inner_texts()] ==
+            ([["274","126","2,2"],["202","48","4,2"],["875","122","7,2"]] if lang=="de" else
+             [["274","126","2.2"],["202","48","4.2"],["875","122","7.2"]]),
+            label+": "+lang+" source catalyst samples and rounded averages unchanged")
+        check_overflow(page,label+" "+lang+" refinement personal stats")
         eg=page.locator("[data-elastic-goods]")
         verify(eg.count()==1 and eg.locator("#eg-title").inner_text()==("Elastische Waren - Preis Peaks" if lang=="de" else "Elastic Goods – Price Peaks") and
                eg.locator('[data-peak="low"]').count()==1 and

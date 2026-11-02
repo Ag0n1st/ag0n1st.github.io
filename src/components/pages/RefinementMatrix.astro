@@ -1,5 +1,6 @@
 ---
 import ItemIcon from "../endfield/ItemIcon.astro";
+import RefinementPersonalStatistics from "./RefinementPersonalStatistics.astro";
 import details from "../../data/endfield/catalog/equipment-details.json";
 import {deriveRefinementMatrix} from "../../lib/endfield/refinementMatrix.mjs";
 import "../../styles/operator-guides.css";
@@ -70,6 +71,8 @@ const coverage=attributes.filter(row=>row.slots.some(slot=>slot.best)).length;
     </div>
   </section>)}
   <p class="refinement-source">{l("Quelle: SKPORT Wiki · Veredelungswerte · Datenstand","Source: SKPORT Wiki · Artificing values · snapshot")} {details.source.snapshot}. {l("Item berühren oder mit Tastatur auswählen, um Namen, Attribute und Stufen einzusehen.","Hover, tap or focus an item for its full name, attributes and ranks.")}</p>
+  <hr class="refinement-personal-divider" aria-hidden="true"/>
+  <RefinementPersonalStatistics lang={lang}/>
 </section>
 <script>
   const tabs=Array.from(document.querySelectorAll<HTMLButtonElement>("[data-refinement-tab]"));

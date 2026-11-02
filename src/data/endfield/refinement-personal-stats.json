@@ -1,0 +1,43 @@
+{
+  "asOf": "2026-09-29",
+  "source": "Eigene Veredelungs-Statistik aus Discord",
+  "gearPieces": 4,
+  "stages": [
+    {
+      "level": 1,
+      "pity": 6,
+      "good": {
+        "attempts": 274,
+        "successes": 126
+      },
+      "standard": {
+        "attempts": 99,
+        "successes": 47
+      }
+    },
+    {
+      "level": 2,
+      "pity": 12,
+      "good": {
+        "attempts": 568,
+        "successes": 126
+      },
+      "standard": {
+        "attempts": 202,
+        "successes": 48
+      }
+    },
+    {
+      "level": 3,
+      "pity": 20,
+      "good": {
+        "attempts": 875,
+        "successes": 122
+      },
+      "standard": {
+        "attempts": 508,
+        "successes": 51
+      }
+    }
+  ]
+}
