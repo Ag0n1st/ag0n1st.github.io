@@ -49,7 +49,7 @@ test("All existing page families include the same Footer component; only homepag
   for(const [path,lang] of [
     ["src/pages/about.astro","de"],["src/pages/nte.astro","de"],
     ["src/pages/en/about/index.astro","en"],["src/pages/en/nte/index.astro","en"]]){
-    assert.match(read(path),new RegExp('<PartnerFooter lang="'+lang+'"/'));
+    assert.match(read(path),new RegExp('<PartnerFooter lang="'+lang+'"\\s*/>'));
   }
 });
 test("Cards and footer mark every affiliate link as sponsored with direct disclosure",()=>{
