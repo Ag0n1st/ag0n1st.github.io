@@ -973,13 +973,20 @@ def smoke_i18n(page, base_url, width):
                label+": "+lang+" both Duality and announced CC can be selected")
         cc_choice.click()
         cc_panel=event.locator('[data-event-panel="contingency-contract-v16"][data-event-archived="false"]')
-        verify(cc_panel.is_visible() and
-               cc_choice.get_attribute("aria-pressed")=="true" and
-               "Top 10 – Contingency Contract v1.6" in cc_panel.inner_text() and
-               cc_panel.locator(".cl-run-points").first.inner_text().strip()=="45" and
-               cc_panel.locator(".cl-run-time").first.inner_text().strip()=="04:45" and
-               cc_panel.locator(".cl-placeholder-label").count()==1,
-               label+": "+lang+" CC preview shows 45 points, 04:45 and unverified demo")
+        cc_observed={
+            "visible":cc_panel.is_visible(),
+            "pressed":cc_choice.get_attribute("aria-pressed"),
+            "title":cc_panel.locator(".cl-event-results h3").inner_text(),
+            "points":cc_panel.locator(".cl-run-points").first.inner_text(),
+            "time":cc_panel.locator(".cl-run-time").first.inner_text(),
+            "demo_labels":cc_panel.locator(".cl-placeholder-label").count()
+        }
+        verify(cc_observed["visible"] and cc_observed["pressed"]=="true" and
+               "Top 10 – Contingency Contract v1.6" in cc_observed["title"] and
+               cc_observed["points"].strip()=="45" and
+               cc_observed["time"].strip()=="04:45" and
+               cc_observed["demo_labels"]==1,
+               label+": "+lang+" CC preview shows score/time/demo: "+str(cc_observed))
         cc_banner=cc_panel.locator('img[src="/images/endfield/leaderboard/contingency-contract-v16.webp"]')
         cc_badge=event.locator('[data-event-achievement="contingency-contract-v16"]')
         verify(cc_banner.count()==1 and cc_banner.evaluate("(im)=>im.complete && im.naturalWidth===800 && im.naturalHeight===320") and
