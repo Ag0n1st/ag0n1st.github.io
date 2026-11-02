@@ -662,7 +662,7 @@ def smoke_i18n(page, base_url, width):
             img.wait_for(state="visible")
         verify(all(img.evaluate("(el)=>el.complete && el.naturalWidth>0") for img in partner_home.locator(".partner-card-logo").all()),
                label+": "+locale+" four local high-res WebP partner logos load")
-        verify(all(a.inner_text().strip().endswith("*") for a in partner_home.locator(".partner-card-cta").all()) and
+        verify(all(a.inner_text().strip().startswith("Zum Partner*" if locale=="de" else "Visit partner*") for a in partner_home.locator(".partner-card-cta").all()) and
                partner_home.locator(".partner-affiliate-note").inner_text().lstrip().startswith("*") and
                partner_home.locator('[data-partner-id="lootbar"] [data-partner-disclaimer] u').count()==1 and
                ("nicht pauschal verboten" if locale=="de" else "not universally prohibited") in
