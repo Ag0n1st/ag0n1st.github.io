@@ -637,12 +637,14 @@ def smoke_i18n(page, base_url, width):
                and all(x["hasIcon"] for x in social_links),
                label+": "+locale+" global footer contains six correct social logos in owner order")
         partner_footer=page.locator("footer [data-partner-footer]")
-        verify(partner_footer.count()==1 and
-               partner_footer.locator(".partner-footer-link").count()==4 and
-               all("sponsored" in link.get_attribute("rel").split() and link.get_attribute("target")=="_blank"
-                   for link in partner_footer.locator(".partner-footer-link").all()) and
-               ("Werbung" if locale=="de" else "Advertisement") in partner_footer.inner_text(),
-               label+": "+locale+" footer shows four correctly disclosed affiliate partners")
+        partner_footer_found=partner_footer.count()
+        partner_footer_links=[{"href":el.get_attribute("href"),"rel":el.get_attribute("rel"),"target":el.get_attribute("target")} for el in partner_footer.locator(".partner-footer-link").all()]
+        partner_footer_text=partner_footer.inner_text() if partner_footer_found else ""
+        verify(partner_footer_found==1 and len(partner_footer_links)==4 and
+               all("sponsored" in (link["rel"] or "").split() and link["target"]=="_blank"
+                   for link in partner_footer_links) and
+               ("Werbung" if locale=="de" else "Advertisement") in partner_footer_text,
+               label+": "+locale+" footer shows four correctly disclosed affiliate partners: "+str({"count":partner_footer_found,"links":partner_footer_links,"text":partner_footer_text[:250]}))
         partner_home=page.locator("[data-partner-showcase]")
         verify(partner_home.count()==1 and
                partner_home.locator(".partner-card").count()==4 and
