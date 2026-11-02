@@ -645,6 +645,26 @@ def smoke_i18n(page, base_url, width):
                    for link in partner_footer_links) and
                ("werbung" if locale=="de" else "advertisement") in partner_footer_text.lower(),
                label+": "+locale+" footer shows four correctly disclosed affiliate partners: "+str({"count":partner_footer_found,"links":partner_footer_links,"text":partner_footer_text[:250]}))
+        gs_footer=partner_footer.locator('[data-partner-id="gamersupps"]')
+        gs_tooltip=gs_footer.locator('[role="tooltip"]')
+        gs_discount=("10 % Rabatt mit Code AGON" if locale=="de" else "10% off with code AGON")
+        verify(gs_footer.count()==1 and gs_tooltip.count()==1 and
+               gs_tooltip.text_content()==gs_discount and
+               not gs_tooltip.is_visible() and
+               partner_footer.locator('.partner-footer-icon:not([data-partner-id="gamersupps"]) [role="tooltip"]').count()==0 and
+               gs_footer.get_attribute("aria-describedby")=="footer-gamersupps-discount" and
+               gs_footer.evaluate("(el)=>getComputedStyle(el).getPropertyValue('--partner-accent').trim()")=="#ffffff",
+               label+": "+locale+" only GamerSupps has white accent and initially hidden 10% discount tooltip")
+        gs_footer.hover()
+        verify(gs_tooltip.is_visible(),label+": "+locale+" GamerSupps discount shows on mouse hover")
+        page.mouse.move(0,0)
+        verify(not gs_tooltip.is_visible(),label+": "+locale+" GamerSupps discount hides after mouse leaves")
+        page.locator("footer .footer-wordmark").focus()
+        page.keyboard.press("Tab")
+        verify(gs_footer.evaluate("(el)=>document.activeElement===el") and gs_tooltip.is_visible(),
+               label+": "+locale+" GamerSupps discount is keyboard focus-visible")
+        page.keyboard.press("Tab")
+        verify(not gs_tooltip.is_visible(),label+": "+locale+" GamerSupps tooltip hides after focus changes")
         partner_home=page.locator("[data-partner-showcase]")
         verify(partner_home.count()==1 and
                partner_home.locator(".partner-card").count()==4 and
@@ -670,6 +690,11 @@ def smoke_i18n(page, base_url, width):
                ("Keine pauschale Aussage" not in partner_home.inner_text()),
                label+": "+locale+" star-marked CTA/disclosure and carefully scoped Lootbar ToS disclaimer")
         gs_card=partner_home.locator('[data-partner-id="gamersupps"]')
+        verify(gs_card.evaluate("(el)=>getComputedStyle(el).getPropertyValue('--partner-accent').trim()")=="#ffffff" and
+               gs_card.locator(".partner-promo strong").evaluate("(el)=>getComputedStyle(el).color")=="rgb(255, 255, 255)" and
+               gs_card.locator(".partner-promo code").evaluate("(el)=>getComputedStyle(el).color")=="rgb(255, 255, 255)" and
+               partner_home.locator('[data-partner-id="razer"]').evaluate("(el)=>getComputedStyle(el).getPropertyValue('--partner-accent').trim()")=="#44d62c",
+               label+": "+locale+" white GamerSupps card/discount accents; Razer remains green")
         promo_size=gs_card.locator(".partner-promo").evaluate("(el)=>getComputedStyle(el).fontSize")
         title_size=gs_card.locator("h3").evaluate("(el)=>getComputedStyle(el).fontSize")
         loot_disclaimer=partner_home.locator('[data-partner-id="lootbar"] [data-partner-disclaimer]')
