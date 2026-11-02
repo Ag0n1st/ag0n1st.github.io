@@ -13,6 +13,8 @@
 .partner-card-body .partner-card-note{font-size:10px;color:#aea9b6}
 .partner-promo{border:1px solid color-mix(in srgb,var(--partner-accent) 37%,transparent);border-radius:8px;padding:9px;background:color-mix(in srgb,var(--partner-accent) 8%,transparent)}
 .partner-promo strong{color:#f9f3dc}
+/* Only GamerSupps: make the discount/code line as large as the title (15px). */
+.partner-card[data-partner-id="gamersupps"] .partner-promo{font-size:15px}
 .partner-promo code{font-family:inherit;font-weight:850;color:#fff1ac;letter-spacing:.05em}
 .partner-promo small{display:block;font-size:10px;color:#aaaab2;margin-top:4px}
 .partner-card-cta{margin:0 15px 15px;padding:11px 12px;border:1px solid color-mix(in srgb,var(--partner-accent) 55%,#4b4955);border-radius:9px;display:flex;justify-content:space-between;align-items:center;gap:8px;background:color-mix(in srgb,var(--partner-accent) 11%,#181920);color:#f7f5fb;font-size:11px;font-weight:800;text-decoration:none}

@@ -90,8 +90,19 @@ test("All affiliate links remain visibly marked, star disclosures and Lootbar To
  assert.equal(loot.noteDe,undefined);
  assert.match(loot.disclaimer.deBefore,/Disclaimer: Vor dem Kauf/);
  assert.match(loot.disclaimer.deUnderline,/nicht pauschal verboten/);
- assert.match(loot.disclaimer.deAfter,/Einzelne Spiele untersagen/);
+ assert.equal(loot.disclaimer.deAfter,".");
+ assert.doesNotMatch(JSON.stringify(loot.disclaimer),/Einzelne Spiele untersagen/);
  assert.match(loot.disclaimer.enUnderline,/not universally prohibited/);
- assert.match(loot.disclaimer.enAfter,/Some games explicitly prohibit/);
+ assert.equal(loot.disclaimer.enAfter,".");
+ assert.doesNotMatch(JSON.stringify(loot.disclaimer),/Some games explicitly prohibit/);
  assert.equal(partners.find(p=>p.id==="gamersupps").discount.code,"AGON");
+});
+
+test("GamerSupps discount row matches card title font size in desktop and mobile",()=>{
+ const css=read("src/styles/partners.css");
+ assert.match(css,/\.partner-card-body h3\{font-size:15px/);
+ assert.match(css,/\.partner-card\[data-partner-id="gamersupps"\] \.partner-promo\{font-size:15px\}/);
+ const loot=partners.find(x=>x.id==="lootbar");
+ assert.equal(loot.disclaimer.deAfter,".");
+ assert.equal(loot.disclaimer.enAfter,".");
 });

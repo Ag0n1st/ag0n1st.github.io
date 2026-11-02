@@ -65,10 +65,10 @@
       "disclaimer": {
         "deBefore": "Disclaimer: Vor dem Kauf die allgemeinen Geschäftsbedingungen (ToS) des jeweiligen Spiels überprüfen. Drittanbieter-Top-ups werden in den Nutzungsbedingungen verschiedener Spiele geregelt und ",
         "deUnderline": "sind nicht pauschal verboten",
-        "deAfter": ". Einzelne Spiele untersagen sie jedoch ausdrücklich.",
+        "deAfter": ".",
         "enBefore": "Disclaimer: Check the terms of service (ToS) of the relevant game before buying. Third-party top-ups are covered by the terms of various games and ",
         "enUnderline": "are not universally prohibited",
-        "enAfter": ". Some games explicitly prohibit them."
+        "enAfter": "."
       }
     }
   ]

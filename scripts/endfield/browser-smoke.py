@@ -669,6 +669,14 @@ def smoke_i18n(page, base_url, width):
                  partner_home.locator('[data-partner-id="lootbar"] [data-partner-disclaimer] u').inner_text() and
                ("Keine pauschale Aussage" not in partner_home.inner_text()),
                label+": "+locale+" star-marked CTA/disclosure and carefully scoped Lootbar ToS disclaimer")
+        gs_card=partner_home.locator('[data-partner-id="gamersupps"]')
+        promo_size=gs_card.locator(".partner-promo").evaluate("(el)=>getComputedStyle(el).fontSize")
+        title_size=gs_card.locator("h3").evaluate("(el)=>getComputedStyle(el).fontSize")
+        loot_disclaimer=partner_home.locator('[data-partner-id="lootbar"] [data-partner-disclaimer]')
+        verify(promo_size==title_size=="15px" and
+               ("Einzelne Spiele untersagen sie jedoch ausdrücklich." not in loot_disclaimer.inner_text()) and
+               ("Some games explicitly prohibit them." not in loot_disclaimer.inner_text()),
+               label+": "+locale+" GamerSupps 15px discount equals title and Lootbar last sentence is absent")
         footer=page.locator("footer[data-site-footer]")
         verify(footer.count()==1 and footer.locator(".social-links a").count()==6 and
                footer.locator(".partner-footer-icon").count()==4 and
