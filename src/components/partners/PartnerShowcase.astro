@@ -1,0 +1,36 @@
+---
+import registry from "../../data/partners.json";
+import "../../styles/partners.css";
+interface Props {lang?:"de"|"en"}
+const {lang="de"}=Astro.props;
+const en=lang==="en";
+const l=(de:string,english:string)=>en?english:de;
+const partners=registry.partners.filter(partner=>partner.active);
+---
+<section class="partner-showcase content-section section-wrap" id="partners" data-partner-showcase aria-labelledby="partners-heading">
+  <div class="section-heading partner-showcase-heading">
+    <div><span class="section-kicker">{l("WERBUNG · PARTNERSCHAFTEN","ADVERTISEMENT · PARTNERSHIPS")}</span>
+      <h2 id="partners-heading">{l("MEINE PARTNER","MY PARTNERS")}</h2></div>
+  </div>
+  <div class="partner-card-grid">
+    {partners.map(partner=><article class="partner-card" data-partner-id={partner.id} style={`--partner-accent:${partner.accent}`}>
+      <div class="partner-card-top">
+        <span class="partner-ad-label">{l("Werbung","Advertisement")}</span>
+        <img class="partner-card-logo" src={partner.logoFull} alt={partner.name} loading="lazy" decoding="async"/>
+      </div>
+      <div class="partner-card-body">
+        <h3>{en?partner.titleEn:partner.titleDe}</h3>
+        <p>{en?partner.descriptionEn:partner.descriptionDe}</p>
+        {partner.discount && <p class="partner-promo"><strong>{partner.discount.percent}% {l("Rabatt","off")}</strong> {l("mit Code","with code")} <code>{partner.discount.code}</code><small>{en?partner.discount.termsEn:partner.discount.termsDe}</small></p>}
+        {partner.noteDe && <p class="partner-card-note">{en?partner.noteEn:partner.noteDe}</p>}
+      </div>
+      <a class="partner-card-cta" href={partner.affiliateUrl} target="_blank" rel="sponsored noopener noreferrer" aria-label={l(`Zum Partner ${partner.name} – Werbung, Affiliate-Link`,`Visit ${partner.name} – advertisement, affiliate link`)}>
+        {l("Zum Partner","Visit partner")} <span aria-hidden="true">↗</span>
+      </a>
+    </article>)}
+  </div>
+  <p class="partner-affiliate-note">{l(
+    "Affiliate-Links: Bei qualifizierten Käufen über diese Links kann ich eine Provision erhalten. Für dich entstehen durch die Nutzung der Links keine zusätzlichen Kosten.",
+    "Affiliate links: I may earn a commission from qualifying purchases made through these links. Using the links does not add extra costs for you."
+  )}</p>
+</section>

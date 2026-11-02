@@ -636,6 +636,33 @@ def smoke_i18n(page, base_url, width):
         verify([(x["name"],x["href"]) for x in social_links]==expected_socials
                and all(x["hasIcon"] for x in social_links),
                label+": "+locale+" global footer contains six correct social logos in owner order")
+        partner_footer=page.locator("footer [data-partner-footer]")
+        partner_footer_found=partner_footer.count()
+        partner_footer_links=[{"href":el.get_attribute("href"),"rel":el.get_attribute("rel"),"target":el.get_attribute("target")} for el in partner_footer.locator(".partner-footer-link").all()]
+        partner_footer_text=partner_footer.inner_text() if partner_footer_found else ""
+        verify(partner_footer_found==1 and len(partner_footer_links)==4 and
+               all("sponsored" in (link["rel"] or "").split() and link["target"]=="_blank"
+                   for link in partner_footer_links) and
+               ("werbung" if locale=="de" else "advertisement") in partner_footer_text.lower(),
+               label+": "+locale+" footer shows four correctly disclosed affiliate partners: "+str({"count":partner_footer_found,"links":partner_footer_links,"text":partner_footer_text[:250]}))
+        partner_home=page.locator("[data-partner-showcase]")
+        verify(partner_home.count()==1 and
+               partner_home.locator(".partner-card").count()==4 and
+               partner_home.locator(".partner-card-cta").count()==4 and
+               partner_home.locator('[data-partner-id="gamersupps"] code').inner_text()=="AGON" and
+               len(partner_home.locator(".partner-card-logo").all())==4 and
+               all("sponsored" in link.get_attribute("rel").split() and
+                   link.get_attribute("target")=="_blank"
+                   for link in partner_home.locator(".partner-card-cta").all()) and
+               ("meine partner" if locale=="de" else "my partners") in partner_home.inner_text().lower(),
+               label+": "+locale+" homepage shows four bilingual advertisement cards")
+        for img in partner_home.locator(".partner-card-logo").all():
+            img.scroll_into_view_if_needed()
+            img.evaluate("(el)=>el.loading='eager'")
+            img.wait_for(state="visible")
+        verify(all(img.evaluate("(el)=>el.complete && el.naturalWidth>0") for img in partner_home.locator(".partner-card-logo").all()),
+               label+": "+locale+" four local high-res WebP partner logos load")
+        check_overflow(page,label+" "+locale+" partner homepage and footer")
         check_overflow(page,label+" "+locale+" homepage with six footer icons")
         cards=page.locator("#beitraege .guide-teaser-card")
         verify(cards.count()==3,label+": "+locale+" homepage contains three newest guides")

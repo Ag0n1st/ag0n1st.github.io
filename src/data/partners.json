@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-02",
+  "partners": [
+    {
+      "id": "gamersupps",
+      "name": "GamerSupps",
+      "active": true,
+      "affiliateUrl": "https://gamersupps.gg/agon",
+      "accent": "#90e45f",
+      "logoFull": "/images/partners/partner_gamersupps_logo_full.webp",
+      "logoIcon": "/images/partners/partner_gamersupps_logo_icon.webp",
+      "titleDe": "Gaming-Drinks & Waifu Cups",
+      "titleEn": "Gaming drinks & Waifu Cups",
+      "descriptionDe": "Zuckerfreie Getränkepulver mit und ohne Koffein sowie Waifu Cups und Shaker.",
+      "descriptionEn": "Sugar-free drink mixes with or without caffeine, plus Waifu Cups and shakers.",
+      "discount": {
+        "code": "AGON",
+        "percent": 10,
+        "termsDe": "Rabatt gemäß Shopbedingungen.",
+        "termsEn": "Discount subject to store terms."
+      },
+      "noteDe": "Kostenloses Probierpaket, solange verfügbar. Versandbedingungen im Shop prüfen.",
+      "noteEn": "Free sample pack while available. Check shipping conditions in the store."
+    },
+    {
+      "id": "razer",
+      "name": "Razer",
+      "active": true,
+      "affiliateUrl": "https://razer.a9yw.net/ag0n1st",
+      "accent": "#44d62c",
+      "logoFull": "/images/partners/partner_razer_logo_full.webp",
+      "logoIcon": "/images/partners/partner_razer_logo_icon.webp",
+      "titleDe": "Gaming-Peripherie & Hardware",
+      "titleEn": "Gaming peripherals & hardware",
+      "descriptionDe": "Gaming-Mäuse, Tastaturen, Headsets und Blade-Laptops.",
+      "descriptionEn": "Gaming mice, keyboards, headsets and Blade laptops."
+    },
+    {
+      "id": "instant-gaming",
+      "name": "Instant Gaming",
+      "active": true,
+      "affiliateUrl": "https://www.instant-gaming.com/?igr=ag0n1st",
+      "accent": "#ff7207",
+      "logoFull": "/images/partners/partner_ig_logo_full.webp",
+      "logoIcon": "/images/partners/partner_ig_logo_icon.webp",
+      "titleDe": "Digitale Games & Keys",
+      "titleEn": "Digital games & keys",
+      "descriptionDe": "Digitale Spiele und Aktivierungscodes für PC und Konsolen. Plattform und Region vor dem Kauf prüfen.",
+      "descriptionEn": "Digital games and activation keys for PC and consoles. Check platform and region before buying."
+    },
+    {
+      "id": "lootbar",
+      "name": "Lootbar",
+      "active": true,
+      "affiliateUrl": "https://www.lootbar.com/a/k9cA3m",
+      "accent": "#ffcb2e",
+      "logoFull": "/images/partners/partner_lootbar_logo_full.webp",
+      "logoIcon": "/images/partners/partner_lootbar_logo_icon.webp",
+      "logoColorReference": "/images/partners/partner_lootbar_logo_icon_color.webp",
+      "titleDe": "Game-Top-ups",
+      "titleEn": "Game top-ups",
+      "descriptionDe": "Guthaben und Top-ups für verschiedene Spiele. Vor dem Kauf Spielregeln und Kontodaten prüfen.",
+      "descriptionEn": "Credit and top-ups for various games. Check game rules and account details before buying.",
+      "noteDe": "Keine pauschale Aussage zur Zulässigkeit in einzelnen Spielen.",
+      "noteEn": "No blanket claim of eligibility for individual games."
+    }
+  ]
+}
