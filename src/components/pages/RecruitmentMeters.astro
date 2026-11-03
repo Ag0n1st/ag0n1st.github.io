@@ -1,13 +1,17 @@
 ---
-interface Track {key:string;label:string;value:number;max:number;note:string}
+interface Track {key:string;label:string;value:number;max:number;note:string;explanation?:string;tokenImage?:string}
 interface Props {tracks:Track[];lang?:"de"|"en"}
 const {tracks,lang="de"}=Astro.props;
 ---
 <div class="rc-meter-grid">
  {tracks.map(track=><div class="rc-meter" data-rc-pity={track.max} data-rc-kind={track.key}>
-  <div class="rc-meter-top"><strong>{track.label}</strong><b>{track.value}<small> / {track.max}</small></b></div>
+  <div class="rc-meter-top">
+   <div class="rc-meter-label">{track.tokenImage&&<img class="rc-token-icon" src={track.tokenImage} alt="" width="46" height="46" loading="lazy"/>}<strong>{track.label}</strong></div>
+   <b>{track.value}<small> / {track.max}</small></b>
+  </div>
   <progress value={track.value} max={track.max} aria-label={track.label+": "+track.value+"/"+track.max} />
   <p>{track.note}</p>
   {track.key==="six" && <small class="rc-soft-flag">{lang==="en"?"Soft pity from pull #66":"Soft Pity ab Pull #66"}</small>}
+  {track.explanation&&<div class="rc-meter-explanation"><strong>{lang==="en"?"Important":"Wichtig"}</strong><p>{track.explanation}</p></div>}
  </div>)}
 </div>
