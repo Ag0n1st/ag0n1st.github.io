@@ -1,11 +1,11 @@
 # AG0N1ST.COM – PROJEKT-ROADMAP, ENTWICKLUNGSSTAND & KI-ÜBERGABE
 
 > **Zentrale Projektdokumentation / Single Point of Entry.**  
-> **Stand:** 03. November 2026; aktueller Übergabepunkt **§18.86 (alle Cheat Sheets einklappbar, Gacha-Feinschliff live)**. [PR #101](https://github.com/Ag0n1st/ag0n1st.github.io/pull/101), 276/276 Tests und erfolgreiches Pages-Deployment. **Nächstes Thema:** Waffen Ausgabe innerhalb des Gacha Systems.
+> **Stand:** 03. November 2026; aktueller Übergabepunkt **§18.87 (Pity-Verläufe, Risikolabel und Re-Run-Farben veröffentlicht)**. [PR #102](https://github.com/Ag0n1st/ag0n1st.github.io/pull/102), **277/277 Tests**, vollständige DE/EN-Browser-QA und [Pages-Deploy #41590007452](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/41590007452) erfolgreich. **Nächster fachlicher Ausbau:** Waffen Ausgabe innerhalb des Gacha Systems.
 > **Projekt:** Ag0n1st – deutschsprachiges Gaming-/Guide-Portal.  
 > **Repository:** https://github.com/Ag0n1st/ag0n1st.github.io  
 > **Produktionswebsite:** https://ag0n1st.com (eigene Domain), alternativ https://ag0n1st.github.io  
-> **Hauptbranch:** `main`; letzter Feature-Merge **PR #101**, Squash-Commit `cb78bf47223425f71f08683fa4c2d8a53e91aaff` (Cheat-Sheet-Accordion/Gacha-Feinschliff).
+> **Hauptbranch:** `main`; letzter Feature-Merge **PR #102**, Squash-Commit `fa41e79a626f1c270dd2298d635a0179bd07caf4` (Pity-Verläufe und Re-Run-Farben).
 > **Diese Dokumentation und die Autoritätslevel-Grenze 60:** [Pull Request #13](https://github.com/Ag0n1st/ag0n1st.github.io/pull/13).  
 > **Wichtig:** Bei jeder folgenden Entwicklungsphase diese Datei und das tatsächliche Repository **gemeinsam** prüfen. GitHub-Code und erfolgreiche CI-Läufe sind der Nachweis für Implementierungen; die Roadmap ist die verbindliche Sammlung von Anforderungen, Entscheidungen, Aufgaben und Übergabehinweisen.
 
@@ -3494,7 +3494,7 @@ Alle 109 Endfield-Unit-Tests und die beiden Budgetchecks erfolgreich. Desktop 14
 
 ### 18.87 Gacha System: 80/120-Pity-Verlauf, hohes Risiko und Re-Run-Farben (03.11.2026)
 
-**[IN ENTWICKLUNG – CI/PR/Deployment ausstehend]** User-Feedback zu §18.86: Im ausklappbaren Event-Banner-Abschnitt „Pity bewusst aufbauen“ werden die vier Strategie-Cards um die **gesamten historischen Fortschrittsbalken mit rechtsbündigen Countern oberhalb der Balken** ergänzt:
+**[FERTIG – CI, PR-Merge und produktiver Pages-Deploy erfolgreich]** User-Feedback zu §18.86: Im ausklappbaren Event-Banner-Abschnitt „Pity bewusst aufbauen“ werden die vier Strategie-Cards um die **gesamten historischen Fortschrittsbalken mit rechtsbündigen Countern oberhalb der Balken** ergänzt:
 - Card #1: Cyan **41/80**.
 - Card #2: Cyan **80/80**, darunter Magenta **39/120**.
 - Card #3: Cyan **80/80 + 80/80**, darunter Magenta **119/120**.
@@ -3503,3 +3503,7 @@ Alle 109 Endfield-Unit-Tests und die beiden Budgetchecks erfolgreich. Desktop 14
 - Zusätzlich im Header der fortgeschrittenen Pity-Strategie neben `EXTREM FORTGESCHRITTEN` ein zweites, identisch rot akzentuiertes Label **`HOHES RISIKO`** (EN `HIGH RISK`). Im roten „Fall 2 · Worst Case“ ausschließlich die Worte **„bis zu 40 Pulls extra verbraucht werden.“** unterstrichen/hervorgehoben; im Englischen entsprechend `up to 40 extra pulls.`.
 - Im Re-Run-Abschnitt erhalten die gemeinsamen Garantie-Balken **120er Magenta** und **240er Orange** statt des browserbedingten grünen Standardfills. Hierfür auf nativen `<progress>` sowohl `appearance:none` als auch explizit die `::-webkit-progress-value`-/`::-moz-progress-bar`-Pseudo-Füllung definieren; gilt für die gemeinsame 120er Garantie, die drei Tangtang-Ausgaben und den Tangtang/Rossi-240er-Vergleich. Die RE-Faktor-30/60/90-Bonusleiste bleibt in ihrem bestehenden Orange.
 - Alle Anpassungen in DE+EN. Regression: Node-Tests für alle vier Pity-Stufen; Browserchecks DE/EN × 1440/390 px auf Textcounter/Farbvariablen/zugängliche Fortschrittsbalken, gemeinsame Re-Run-Farben, keine Layoutüberläufe. Endfield-100-MB- und Pages-1-GB-Gates vor Merge. Branch `fix/gacha-pity-timeline-rerun-colours-20261103`; Status nach CI/PR/Pages-Deployment ergänzen.
+
+
+**Abschluss §18.87 (03.11.2026):** [PR #102](https://github.com/Ag0n1st/ag0n1st.github.io/pull/102) nach grüner CI per Squash nach `main` gemergt, Commit `fa41e79a626f1c270dd2298d635a0179bd07caf4`. Vier Advanced-Pity-Strategie-Cards zeigen nun vollständige, rechtsbündig beschriftete 80er-/120er-Verlaufsmeter (41/80 → 80/80 + 39/120 → 2×80/80 + 119/120 → 2×80/80 + 1/80 + 120/120) in Cyan/Magenta. „HOHES RISIKO“ (DE)/„HIGH RISK“ (EN) ergänzt; im Worst Case ausschließlich der 40-Pull-Risikoteil hervorgehoben. Für RE-Faktor-Progress-Fills browserübergreifend native Styles auf Magenta für 120 und Orange für 240 fixiert. Keine neuen Assets oder externen Abhängigkeiten.
+**Qualitätsnachweis:** [CI #41589712875](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/41589712875) **completed/success**, **277/277 Node-Tests**, Astro-Build und vollständige reale Chromium-Tests **DE/EN × 1440/390 px** (bestehende Endfield-Regressionssuite und neue Pity/Farb-Checks). **Budgets:** Endfield **41.268.653 / 100.000.000 B** (58.731.347 frei), GitHub Pages `dist/` **42.235.612 / 1.000.000.000 B** (957.764.388 frei). **Produktives Deployment** [#41590007452](https://github.com/Ag0n1st/ag0n1st.github.io/actions/runs/41590007452) **completed/success**. Der zusätzliche Dokumentations-Commit kann einen separaten Pages-Lauf auslösen; dessen Abschluss prüfen.
