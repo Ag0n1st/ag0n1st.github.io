@@ -18,7 +18,8 @@ const tracks=[
 <section role="tabpanel" class="rc-panel" id="rc-panel-rerun" aria-labelledby="rc-tab-rerun" data-rc-panel="rerun" hidden>
  <header class="rc-panel-head"><div><span class="section-kicker">{l("RE-FAKTOR-REKRUTIERUNG","RE-FACTOR RECRUITMENT")}</span>
   <h3>Re-Run Banner <span class="rc-title-aside">{l("– Tangtang als Beispiel","– Tangtang example")}</span></h3>
-  <p>{l("Das RE-Faktor-System besitzt ebenfalls 80/120/240-Pity, wird aber getrennt von normalen Event-Bannern geführt. Die drei Zähler haben unterschiedliche Übertragungsregeln.","RE-Factor also uses 80/120/240 pity but runs separately from normal event banners. Each counter has its own carry-over rule.")}</p></div></header>
+  <p>{l("Das RE-Faktor-System besitzt ebenfalls 80/120/240-Pity, wird aber getrennt von normalen Event-Bannern geführt. Die drei Zähler haben unterschiedliche Übertragungsregeln.","RE-Factor also uses 80/120/240 pity but runs separately from normal event banners. Each counter has its own carry-over rule.")}</p></div>
+  <div class="rc-feature" data-operator="tangtang"><img src={ops.find(op=>op.id==="tangtang")?.assets.icon} alt="" width="68" height="68"/><strong>Tangtang</strong><small>{l("Re-Run Operator","Re-Run Operator")}</small></div></header>
  <p class="rc-illustration">{l("Veranschaulichung: drei Pity-Zähler bei 69 Pulls, keine echten Account-Daten.","Illustration: three Pity counters at 69 pulls, not real account data.")}</p>
  <RecruitmentMeters tracks={tracks} lang={lang}/>
 
