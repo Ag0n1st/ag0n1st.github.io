@@ -32,7 +32,7 @@ if(root){
   return n;
  }
  const genders={Male:l("Männlich","Male"),Female:l("Weiblich","Female"),Variable:l("Variabel","Variable")};
- const classes={Guard:l("Wächter","Guard"),Striker:l("Stürmer","Striker"),Defender:l("Verteidiger","Defender"),Vanguard:l("Vorhut","Vanguard"),Supporter:l("Unterstützer","Supporter"),Caster:l("Caster","Caster")};
+ const classes={Guard:l("Wächter","Guard"),Striker:l("Frontkämpfer","Striker"),Defender:l("Verteidiger","Defender"),Vanguard:l("Vorhut","Vanguard"),Supporter:l("Unterstützer","Supporter"),Caster:l("Caster","Caster")};
  const elements={Physical:l("Physisch","Physical"),Heat:l("Hitze","Heat"),Cryo:l("Kryo","Cryo"),Electric:l("Elektro","Electric"),Nature:l("Natur","Nature")};
  const weaponNames={Greatsword:l("Großschwert","Greatsword"),Sword:l("Schwert","Sword"),Polearm:l("Stangenwaffe","Polearm"),Handcannon:l("Handkanone","Handcannon"),"Arts Unit":l("Arts-Einheit","Arts Unit")};
  const factions={endfield:"Endfield",has:"HAS",rhodes:"Rhodes Island",tgcc:"TGCC",steel:l("Stahleid","Steel Oath"),sesqa:"Seš'qa",hannabit:"Hannabit",cabal:l("Tranquility","Tranquility"),united:l("Gewerkschaften","Workers' Unions")};

@@ -63,6 +63,33 @@ const rows=[
       <div><span>{l("Nur gute Übereinstimmungen","Good Matches only")}</span><strong data-refinement-estimate="good">{format(stats.perOperator.good,1)}</strong></div>
       <div><span>{l("Nur Standard-Übereinstimmungen","Standard Matches only")}</span><strong data-refinement-estimate="standard">{format(stats.perOperator.standard,1)}</strong></div>
     </div>
+    <div class="refinement-personal-worstcase" data-refinement-worstcase>
+      <div class="refinement-personal-worstcase-heading">
+        <div>
+          <span class="section-kicker">{l("WORST CASE · MAXIMALER KATALYSATORVERBRAUCH","WORST CASE · MAXIMUM CATALYST COST")}</span>
+          <h4>{l("Einen Operator vollständig veredeln","Fully refine one operator")}</h4>
+        </div>
+        <div class="refinement-personal-worstcase-total">
+          <strong data-refinement-worstcase-total>{format(stats.worstCase.perOperator)}</strong>
+          <small>{l("Katalysatoren","catalysts")}</small>
+        </div>
+      </div>
+      <div class="refinement-personal-worstcase-stages">
+        {stats.worstCase.stages.map(stage=><div class="refinement-personal-worstcase-stage" data-refinement-worstcase-pity={stage.pity}>
+          <span>{stage.pity}er Pity</span>
+          <strong>{stage.catalysts} <small>{l("Katalysatoren","catalysts")}</small></strong>
+        </div>)}
+      </div>
+      <p class="refinement-personal-worstcase-formula" data-refinement-worstcase-formula>
+        {format(stats.gearPieces)} × ({stats.worstCase.stages.map(stage=>format(stage.catalysts)).join(" + ")})
+        = <strong>{format(stats.worstCase.perOperator)}</strong>
+        <span>{l("· 41 pro Ausrüstungsteil","· 41 per gear piece")}</span>
+      </p>
+      <p class="refinement-personal-worstcase-explanation">{l(
+        "Die 6er-, 12er- und 20er-Pity-Grenzen allein reichen nicht: Nach dem Greifen des Pitys wird jeweils noch ein zusätzlicher Katalysator für die garantierte erfolgreiche Veredelung benötigt. Im Worst Case sind das 7 + 13 + 21 = 41 pro Ausrüstungsteil und 164 für alle vier Teile.",
+        "The 6-, 12- and 20-pity thresholds are not the final catalyst cost: after pity activates, one additional catalyst is needed for the guaranteed successful refinement. In the worst case, that is 7 + 13 + 21 = 41 per gear piece, or 164 across all four pieces."
+      )}</p>
+    </div>
   </div>
   <p class="refinement-personal-stats-note">{l(
     "Nicht berücksichtigt: Ausrüstungsteile mit nur einem Attribut. Sie haben ein höheres Grund-Pity, allerdings reicht mein bisheriger Datensatz dafür nicht für eine aussagekräftige Auswertung. Die Werte sind Beobachtungsdurchschnitte, keine garantierten Kosten.",

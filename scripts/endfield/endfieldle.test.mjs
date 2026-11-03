@@ -66,6 +66,12 @@ test("Camille's gender matches the official SKPORT Basic Information in both loc
  assert.match(component,/data-lang=\{lang\}/);
 });
 
+test("Striker is Frontkämpfer in German Endfieldle while English stays Striker",()=>{
+ const client=read("src/lib/endfield/endfieldleClient.mjs");
+ assert.match(client,/Striker:l\("Frontkämpfer","Striker"\)/);
+ assert.doesNotMatch(client,/Stürmer/);
+ assert.equal(roster.operators.filter(o=>o.class==="Striker").length,7);
+});
 test("fixed global schedule includes one operator per day and excludes previous three",()=>{
  assert.equal(schedule.timeZone,"Europe/Berlin");
  assert.equal(schedule.excludedPreviousDays,3);

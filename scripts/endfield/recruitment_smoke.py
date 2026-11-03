@@ -128,6 +128,15 @@ def smoke(page,base,lang,width):
             "(els)=>els.every(e=>getComputedStyle(e).appearance==='none' && "
             "getComputedStyle(e).getPropertyValue('--rc-re-fill').trim()==='"+colour+"')"),
             str(width)+lang+": RE-Factor "+selector+" explicitly uses magenta/orange non-native fills")
+    tangtang=rerun.locator('.rc-feature[data-operator="tangtang"]')
+    verify(tangtang.count()==1 and tangtang.is_visible() and
+           tangtang.locator("img").get_attribute("src")=="/images/endfield/operators/tangtang/official-icon.webp" and
+           tangtang.locator("strong").inner_text()=="Tangtang" and
+           tangtang.locator("small").inner_text()=="Re-Run Operator" and
+           tangtang.locator("img").evaluate("(img)=>img.decode().then(()=>img.naturalWidth>0).catch(()=>false)") and
+           tangtang.evaluate("(el)=>el.classList.contains('rc-feature')") and
+           event.locator('.rc-feature[data-operator="si"]').count()==1,
+           str(width)+lang+": Tangtang RE-Factor operator card matches the Si event card")
     image=rerun.locator('[data-rc-kind="token"] img.rc-token-icon')
     image.scroll_into_view_if_needed()
     verify(image.evaluate("(img)=>img.decode().then(()=>img.naturalWidth>0).catch(()=>false)"),
