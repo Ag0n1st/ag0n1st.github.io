@@ -95,3 +95,88 @@
 @media(max-width:850px){.rc-meter-grid,.rc-rule-cards{grid-template-columns:1fr}.rc-pool-columns{grid-template-columns:1fr}.rc-pool-feature{flex-direction:row;justify-content:flex-start}}
 @media(max-width:600px){.rc-card{padding:14px 10px}.rc-tabs{padding:4px;gap:4px}.rc-tab{padding:8px 3px;font-size:11px;overflow-wrap:anywhere}.rc-panel-head{display:block}.rc-feature{display:inline-flex;flex-direction:row;margin-top:13px;gap:9px}.rc-feature img{width:46px;height:46px}.rc-mini-meters{grid-template-columns:1fr}.rc-rerun-grid{grid-template-columns:1fr}.rc-standard-list li{flex-basis:94px;padding:9px 5px}.rc-standard-list img{width:56px;height:56px}}
 @media(prefers-reduced-motion:reduce){.rc-example summary>span:last-child{transition:none}}
+
+
+/* Integrated Gacha System card inside /endfield/cheatsheets/. */
+.endfield-utility-page .rc-card{scroll-margin-top:110px;margin:27px 0 34px;padding:clamp(16px,2.5vw,28px)}
+.rc-card-head h2{font-size:clamp(25px,3.2vw,37px);line-height:1.15;margin:10px 0 0}
+.rc-card-summary{color:#c4c0cf;font-size:13px;line-height:1.65;max-width:720px;margin:10px 0 0}
+.rc-mode-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:24px 0 22px}
+.rc-mode-tab{display:flex;align-items:center;justify-content:center;min-height:62px;padding:12px 15px;border:1px solid #514c5d;border-radius:12px;background:linear-gradient(135deg,#282531,#1b1e28);color:#d5d0de;font-size:clamp(13px,1.65vw,17px);font-weight:800;cursor:pointer;transition:background .18s,border-color .18s,box-shadow .18s}
+.rc-mode-tab:hover{border-color:#86dce6;color:#fff}
+.rc-mode-tab[aria-selected="true"]{background:linear-gradient(118deg,#253d46,#322a43);border-color:#77c4cf;color:#efffff;box-shadow:inset 0 0 0 1px #6197a6,0 7px 22px #03060c55}
+.rc-mode-tab:focus-visible,.rc-tab:focus-visible{outline:2px solid #b9f7ff;outline-offset:3px}
+[data-rc-mode-panel][hidden]{display:none!important}
+.rc-operator-heading h3{font-size:clamp(19px,2.35vw,28px);letter-spacing:-.035em;margin:10px 0 8px}
+.rc-operator-heading>.section-kicker{color:#a0cdd4}
+.rc-tabs{margin-top:16px}
+.rc-weapons-panel{border:1px dashed #566273;border-radius:11px;background:linear-gradient(110deg,#1c232d,#22202a);padding:clamp(20px,3vw,30px);min-height:190px}
+.rc-weapons-panel h3{font-size:clamp(22px,2.6vw,29px);margin:10px 0 8px}
+.rc-weapons-panel p{line-height:1.7;color:#c1bfcc;font-size:13px;margin:0}
+.rc-title-aside{font-size:.65em;font-weight:600;color:#aaa5b5;letter-spacing:-.02em}
+.rc-meter-label{display:flex;align-items:center;gap:7px;min-width:0}
+.rc-meter-label strong{overflow-wrap:anywhere}
+.rc-token-icon{width:46px;height:46px;object-fit:contain;flex:0 0 46px}
+.rc-meter-explanation{border-top:1px solid #535160;margin-top:13px;padding-top:12px}
+.rc-meter-explanation>strong{font-size:11px;color:#f0e9ff}
+.rc-meter-explanation p{font-size:11px;line-height:1.65;color:#d2cdd8;margin:5px 0 0}
+.rc-pool-previous{border-color:#bb8c55!important;background:linear-gradient(130deg,#533b2a,#302a36)!important;box-shadow:inset 0 0 0 1px #d9ab6830}
+.rc-pool-previous span{color:#ffe3b9!important}
+.rc-pool-previous:after{content:"EVENT";font-size:8px;font-weight:850;letter-spacing:.1em;color:#fbd5a7;border:1px solid #a87942;border-radius:4px;padding:2px 5px}
+.rc-milestones{margin:23px 0 18px;padding:15px;border:1px solid #50475d;background:#1c202a;border-radius:12px}
+.rc-milestones h4{margin:2px 0 12px}
+.rc-milestone-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.rc-milestone{min-width:0;background:#242431;border:1px solid #504858;border-radius:10px;padding:14px;display:grid;align-content:start;gap:8px}
+.rc-milestone-count{font-size:25px;font-weight:850;color:#f1d3a1}
+.rc-milestone-count small{font-size:11px;color:#bbb3c3;letter-spacing:.03em}
+.rc-milestone strong{font-size:13px;color:#f7f1fc}
+.rc-milestone p{margin:0;color:#cdc6d1;font-size:11px;line-height:1.65}
+.rc-oroberyl{border-left-color:#efad55;background:#efad5517;margin:20px 0!important}
+.rc-oroberyl>strong{font-size:15px;color:#ffe0b5}
+.rc-oroberyl p{margin:8px 0}
+.rc-oroberyl u{text-decoration-color:#e9ab67;text-underline-offset:3px;text-decoration-thickness:1.5px;font-weight:800;color:#ffe1c2}
+.rc-oroberyl>small{display:block;font-size:10px;line-height:1.6;color:#e4c7aa;margin-top:8px}
+.rc-advanced{margin-top:12px}
+.rc-advanced-summary{display:flex!important;flex-direction:row;gap:12px;align-items:center;flex-wrap:wrap}
+.rc-advanced-summary em{font-size:10px;font-style:normal;line-height:1.25;color:#ffcdcd;background:#73202d;border:1px solid #cd4956;border-radius:6px;padding:5px 9px;font-weight:850;letter-spacing:.04em}
+.rc-strategy-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin:16px 0}
+.rc-strategy-grid>div{background:#25232e;border:1px solid #494552;border-radius:10px;padding:13px;min-width:0}
+.rc-strategy-grid .rc-step{display:block;font-weight:850;color:#8ceaf0;font-size:15px;margin-bottom:8px}
+.rc-strategy-grid strong{display:block;font-size:12px;color:#f5f1f9}
+.rc-strategy-grid p{font-size:11px;margin:7px 0 11px}
+.rc-strategy-grid progress{width:100%;height:8px;accent-color:#8ceaf0;border:none;border-radius:5px;overflow:hidden}
+.rc-strategy-outcomes{display:grid;gap:6px;margin:15px 0}
+.rc-strategy-outcomes p{margin:0;padding:10px 12px;border:1px solid #4a4551;background:#21222d;border-radius:8px}
+.rc-rerun-cycle{border:1px solid #55505c;background:#1b2029;border-radius:12px;padding:16px;margin:22px 0}
+.rc-rerun-cycle>h4{margin:0 0 9px}
+.rc-rerun-cycle>p{margin:0 0 16px}
+.rc-cycle-guarantee{border:1px solid #815473;border-radius:11px;padding:13px 15px;background:linear-gradient(110deg,#50263b44,#30213077);margin-bottom:13px}
+.rc-cycle-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.rc-cycle-head strong{font-size:13px}
+.rc-cycle-head b{font-size:18px;white-space:nowrap}
+.rc-cycle-head small{font-size:11px;color:#bbb1c0}
+.rc-cycle-guarantee progress,.rc-cycle-issue progress{display:block;accent-color:#e9a1d4;width:100%;height:10px;border:0;border-radius:8px;margin:11px 0 8px}
+.rc-cycle-guarantee p{margin:0;font-size:11px}
+.rc-cycle-issues{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.rc-cycle-issue{min-width:0;padding:12px;background:#27242d;border:1px solid #554f5e;border-radius:10px}
+.rc-cycle-issue>small{color:#b4b5c4;font-size:9px;line-height:1.4;font-weight:700}
+.rc-issue-heading{display:flex;gap:7px;align-items:center;margin:8px 0}
+.rc-issue-heading img{width:38px;height:38px;object-fit:contain}
+.rc-issue-heading strong{font-size:13px;line-height:1.35}
+.rc-issue-heading span{color:#e1b984}
+.rc-issue-token{display:flex;gap:7px;align-items:center;margin:14px 0 5px}
+.rc-issue-token img{width:34px;height:34px;object-fit:contain}
+.rc-issue-token strong{font-size:11px}
+.rc-cycle-issue progress{accent-color:#e0bc76;margin:7px 0}
+.rc-cycle-issue b{font-size:13px;color:#f2dcad}
+.rc-cycle-issue p{font-size:10px;line-height:1.6;margin:6px 0 0}
+.rc-cycle-bonus{border-top:1px solid #5f5663;margin-top:17px;padding-top:15px}
+.rc-cycle-bonus h5{font-size:13px;margin:0 0 8px;color:#f8e7c0}
+.rc-cycle-bonus p{margin:0 0 13px}
+.rc-bonus-milestones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.rc-bonus-milestone{display:grid;justify-items:center;gap:4px;border:1px solid #715f41;background:#2e292c;border-radius:9px;padding:12px 6px;text-align:center}
+.rc-bonus-milestone b{font-size:19px;color:#f3d6a5}
+.rc-bonus-milestone>strong{font-size:22px;color:#b9ebef}
+.rc-bonus-milestone span,.rc-bonus-milestone small{font-size:10px;color:#bfb5b9;line-height:1.35}
+@media(max-width:850px){.rc-cycle-issues{grid-template-columns:1fr}.rc-milestone-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.endfield-utility-page .rc-card{padding:14px 10px}.rc-mode-tabs{gap:7px;margin-top:18px}.rc-mode-tab{font-size:12px;min-height:54px;padding:9px 5px}.rc-card-head h2{font-size:27px}.rc-meter-top{align-items:start}.rc-meter-explanation{margin-top:10px}.rc-strategy-grid{grid-template-columns:1fr}.rc-advanced-summary{gap:7px}.rc-advanced-summary em{font-size:9px}.rc-milestones,.rc-rerun-cycle{padding:11px}.rc-bonus-milestone{padding:9px 4px}}
