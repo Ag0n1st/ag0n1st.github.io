@@ -1,18 +1,15 @@
 ---
 import EndfieldPlaceholder from "../../layouts/EndfieldPlaceholder.astro";
 import RefinementMatrix from "./RefinementMatrix.astro";
+import EndfieldRecruitment from "./EndfieldRecruitment.astro";
 import ElasticGoodsPeaks from "./ElasticGoodsPeaks.astro";
 interface Props {lang?:"de"|"en"}
 const {lang="de"}=Astro.props;
 const en=lang==="en";
 const l=(de:string,english:string)=>en?english:de;
 
-// The three previous standalone menu pages are now reference sections here.
-// Their editorial content remains pending; do not invent mechanics or values.
+// Available references render as full cards; only Essences and Buff Food remain in preparation.
 const systems=[
- {id:"recruitment",tag:"#Recruitment",de:"Rekrutierung",en:"Recruitment",
-  descriptionDe:"Event-, RE-Faktor- und Standard-Banner: Pity, Garantien und Fortschrittsbeispiele.",
-  descriptionEn:"Event, RE-Factor and standard banners: pity, guarantees and progress examples.",ready:true},
  {id:"essences",tag:"#Essences",de:"Essenzen",en:"Essences",
   descriptionDe:"Hier entsteht eine übersichtliche Referenz zum Essenz-System, damit du wichtige Informationen schnell nachschlagen kannst.",
   descriptionEn:"An accessible breakdown of the Essence system, its mechanics and practical progression tips is coming soon."}
@@ -25,17 +22,18 @@ const categories=[
   <main class="endfield-utility-page section-wrap endfield-coming-tool">
     <span class="section-kicker">ARKNIGHTS: ENDFIELD · REFERENCE</span>
     <h1 class="endfield-cheatsheets-title">Cheat Sheets<span class="title-period">.</span></h1>
-    <p class="endfield-utility-intro">{l("Kompakte Nachschlagekarten statt langem Suchen. Elastische Waren, Veredelung und Rekrutierung sind verfügbar; weitere Cheat Sheets werden nach Prüfung ergänzt.","Compact quick-reference sheets. Elastic Goods, the refinement matrix and recruitment are available; more verified references will follow.")}</p>
+    <p class="endfield-utility-intro">{l("Kompakte Nachschlagekarten statt langem Suchen. Elastische Waren, Veredelung und Rekrutierung sind verfügbar; weitere Cheat Sheets folgen.","Compact quick-reference sheets. Elastic Goods, the refinement matrix and recruitment are available; more references will follow.")}</p>
 
     <ElasticGoodsPeaks lang={lang} />
     <RefinementMatrix lang={lang} />
+    <EndfieldRecruitment lang={lang} />
 
     <div class="endfield-coming-cards endfield-cheatsheets-upcoming" aria-label={l("Weitere Cheat Sheets in Vorbereitung","More Cheat Sheets coming soon")}>
       {[...systems,...categories].map(category=><article id={category.id} class="op-cardlet endfield-coming-card">
         <span class="section-kicker">{category.tag}</span>
         <h3>{en?category.en:category.de}</h3>
         <p>{en?category.descriptionEn:category.descriptionDe}</p>
-        {category.ready ? <a class="op-link" href={(en?"/en/endfield/cheatsheets/recruitment/":"/endfield/cheatsheets/rekrutierung/")}>{l("Rekrutierungs-Guide öffnen →","Open recruitment guide →")}</a> : <span class="op-chip">{l("In Vorbereitung","Coming soon")}</span>}
+        <span class="op-chip">{l("In Vorbereitung","Coming soon")}</span>
       </article>)}
     </div>
   </main>
