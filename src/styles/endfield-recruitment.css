@@ -229,3 +229,35 @@
 .rc-bonus-caption{display:block;color:#c9bbac;font-size:10px;margin-top:10px;line-height:1.55}
 @media(max-width:760px){.rc-card-head{min-height:73px;padding-right:72px}.rc-headhunt-art{width:63px;height:63px;top:0}}
 @media(max-width:420px){.rc-bonus-progress{gap:4px}.rc-bonus-breakpoint{display:grid;gap:1px}.rc-bonus-breakpoint strong,.rc-bonus-breakpoint span{font-size:10px}}
+
+
+/* Four-stage advanced pity history: every counter remains visible as the run progresses. */
+.rc-strategy-grid>div{display:flex;flex-direction:column}
+.rc-strategy-meters{display:grid;gap:11px;margin-top:auto;padding-top:13px}
+.rc-strategy-meter{--rc-meter-fill:#82e3eb;min-width:0}
+.rc-strategy-meter[data-rc-meter-pity="120"]{--rc-meter-fill:#ee99d5}
+.rc-strategy-meter-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:5px}
+.rc-strategy-meter-head span{font-size:10px;color:#beb7c7;line-height:1.3}
+.rc-strategy-meter-head strong{font-size:12px;line-height:1.3;white-space:nowrap;font-variant-numeric:tabular-nums;color:#f7f2fb}
+.rc-strategy-grid .rc-strategy-meter progress{display:block;width:100%;height:9px;margin:0;border:0;border-radius:99px;overflow:hidden;background:#34303c;accent-color:var(--rc-meter-fill);appearance:none;-webkit-appearance:none}
+.rc-strategy-grid .rc-strategy-meter progress::-webkit-progress-bar{background:#34303c;border-radius:99px}
+.rc-strategy-grid .rc-strategy-meter progress::-webkit-progress-value{background:var(--rc-meter-fill);border-radius:99px}
+.rc-strategy-grid .rc-strategy-meter progress::-moz-progress-bar{background:var(--rc-meter-fill);border-radius:99px}
+.rc-advanced-summary .rc-risk-label{background:#73202d;border-color:#cd4956;color:#ffcdcd}
+.rc-strategy-outcomes p:nth-child(2) .rc-risk-emphasis{color:#ffb5be;font-weight:850;text-decoration-color:#ff9eab;text-decoration-thickness:2px;text-underline-offset:3px}
+/* Native <progress> requires explicit track AND fill pseudo-elements: accent-color alone
+   does not override the browser/website default green fill. */
+.rc-rerun-cycle .rc-cycle-guarantee{--rc-re-fill:#ee99d5}
+.rc-rerun-cycle .rc-cycle-issue,.rc-rerun-example .rc-rerun-operator{--rc-re-fill:#e6c27b}
+.rc-rerun-cycle .rc-cycle-guarantee progress,
+.rc-rerun-cycle .rc-cycle-issue progress,
+.rc-rerun-example .rc-rerun-operator progress{width:100%;border:0;border-radius:99px;overflow:hidden;background:#34303c;accent-color:var(--rc-re-fill);appearance:none;-webkit-appearance:none}
+.rc-rerun-cycle .rc-cycle-guarantee progress::-webkit-progress-bar,
+.rc-rerun-cycle .rc-cycle-issue progress::-webkit-progress-bar,
+.rc-rerun-example .rc-rerun-operator progress::-webkit-progress-bar{background:#34303c;border-radius:99px}
+.rc-rerun-cycle .rc-cycle-guarantee progress::-webkit-progress-value,
+.rc-rerun-cycle .rc-cycle-issue progress::-webkit-progress-value,
+.rc-rerun-example .rc-rerun-operator progress::-webkit-progress-value{background:var(--rc-re-fill);border-radius:99px}
+.rc-rerun-cycle .rc-cycle-guarantee progress::-moz-progress-bar,
+.rc-rerun-cycle .rc-cycle-issue progress::-moz-progress-bar,
+.rc-rerun-example .rc-rerun-operator progress::-moz-progress-bar{background:var(--rc-re-fill);border-radius:99px}
