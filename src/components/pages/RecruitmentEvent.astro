@@ -31,6 +31,11 @@ const tracks=[
   <strong>{l("Soft Pity: 0,8 % + 5 Prozentpunkte ab Pull #66","Soft pity: 0.8% + 5 percentage points from pull #66")}</strong>
   <p>{l("Regulär 0,8 % Chance auf einen 6★ pro Pull. Bei #66 steigt sie auf 5,8 %, bei #67 auf 10,8 %, bei #70 auf 25,8 %. Spätestens #80 garantiert einen 6★. Jeder erhaltene 6★ setzt den 80er-Zähler auf null.","Base 6★ chance is 0.8% per pull. Pull #66 gives 5.8%, #67 gives 10.8%, and #70 gives 25.8%. Pull #80 guarantees a 6★. Any 6★ resets the 80 counter.")}</p>
  </div>
+ <div class="rc-callout rc-callout-cyan rc-milestone-note" aria-labelledby="rc-event-milestone-title">
+  <strong id="rc-event-milestone-title">{l("Meilensteine · Bonusrekrutierung und Rekrutierungs-Dossier","Milestones · Bonus Recruitment and Recruitment Dossier")}</strong>
+  <p data-rc-milestone="30"><b>30 Pulls · {l("Bonusrekrutierung","Bonus Recruitment")}:</b> {l("Einmalig ein kostenloser 10er-Pull. Er erhöht keinen Pity-Zähler und keinen Meilenstein-Fortschritt. Triffst du damit den Event-Operator, ist die einmalige 120er Garantie trotzdem verbraucht.","One free ten-pull, awarded only once. It adds no Pity or milestone progress. Pulling the featured operator still consumes the one-time 120 guarantee.")}</p>
+  <p data-rc-milestone="60"><b>60 Pulls · {l("Rekrutierungs-Dossier","Recruitment Dossier")}:</b> {l("Einmaliges Dossier für einen 10er-Rekrutierungsversuch ausschließlich auf dem direkt folgenden Event-Banner. Es wird mit dessen Erscheinen umgewandelt und verfällt nach dessen Ende.","One-time dossier converting into a ten-pull exclusively for the immediately following event banner. It activates when that banner arrives and expires when it ends.")}</p>
+ </div>
  <div class="rc-pool">
   <h4>{l("Ein 6★ – zwei mögliche Ergebnisse","One 6★ – two possible outcomes")}</h4>
   <div class="rc-pool-columns">
@@ -42,18 +47,9 @@ const tracks=[
   </div>
   <p class="rc-caption">{l("Die 50 % gelten für diesen gesamten Alternativ-Pool, nicht für jeden einzelnen Operator.","The 50% applies to this entire alternative pool, not to each operator individually.")}</p>
  </div>
- <div class="rc-milestones" aria-labelledby="rc-event-milestone-title">
-  <h4 id="rc-event-milestone-title">{l("Meilensteine · Bonusrekrutierung und Rekrutierungs-Dossier","Milestones · Bonus Recruitment and Recruitment Dossier")}</h4>
-  <div class="rc-milestone-grid">
-   <article class="rc-milestone" data-rc-milestone="30"><span class="rc-milestone-count">30 <small>Pulls</small></span><strong>{l("Bonusrekrutierung","Bonus Recruitment")}</strong>
-    <p>{l("Einmalig nach den ersten 30 regulären Pulls auf diesem Event-Banner: eine kostenlose 10er-Rekrutierung. Sie erhöht keinen Fortschritt und kein Pity. Ziehst du dadurch den Event-Operator, wird die 120er Garantie trotzdem verbraucht.","After your first 30 regular pulls on this event banner, receive one free ten-pull. It adds no progress to any Pity counter. Pulling the featured operator in this bonus still consumes the 120 guarantee.")}</p></article>
-   <article class="rc-milestone" data-rc-milestone="60"><span class="rc-milestone-count">60 <small>Pulls</small></span><strong>{l("Rekrutierungs-Dossier","Recruitment Dossier")}</strong>
-    <p>{l("Nach insgesamt 60 regulären Pulls erhältst du ein Dossier. Beim Erscheinen des direkt nächsten Event-Banners wird es in einen 10er-Rekrutierungsversuch umgewandelt. Dieser ist ausschließlich auf dem folgenden Banner gültig und verfällt mit dessen Ende.","After 60 regular pulls, receive a dossier. When the immediately following event banner arrives, it converts into a ten-pull exclusively for that next banner and expires when that banner ends.")}</p></article>
-  </div>
- </div>
  <div class="rc-callout rc-callout-warning rc-oroberyl" role="note"><strong>{l("Oroberyls nicht verschwenden","Don't waste Oroberyls")}</strong>
   <p>{l("Gehe behutsam mit deinen ohnehin seltenen Pull-Ressourcen um. Weitere Pulls lohnen sich nur, wenn du gezielt einen zusätzlichen Meilenstein erreichen möchtest.","Be careful with your scarce pull resources. Additional pulls make sense only if you are deliberately targeting another milestone.")}</p>
-  <p><u>{l("Sofern du nicht auf das 240er Token Pity hinarbeitest, gilt: Jeder weitere Pull auf demselben Banner nach verbrauchter 120er Garantie ist verschwendet.","Unless you intend to reach the 240-pull Token Pity, every extra pull on the same banner after consuming the 120 guarantee is wasted.")}</u></p>
+  <p>{l("Sofern du nicht auf das 240er Token Pity hinarbeitest, gilt:","Unless you intend to reach the 240-pull Token Pity:")} <u>{l("Jeder weitere Pull auf demselben Banner, nach verbrauchter 120er Garantie, ist verschwendet!","Every additional pull on the same banner after consuming the 120 guarantee is wasted!")}</u></p>
   <small>{l("Einzige Ausnahme: Bewusster Pity-Aufbau – nur für sehr fortgeschrittene Spieler (siehe unten).","Only exception: intentionally building Pity – for highly advanced players (see below).")}</small>
  </div>
  <div class="rc-example-list" aria-label={l("Aufklappbare Beispiele","Expandable examples")}>
@@ -87,7 +83,7 @@ const tracks=[
   <details class="rc-example rc-advanced" data-rc-advanced>
    <summary><span class="rc-advanced-summary"><strong>{l("Pity bewusst aufbauen","Deliberately building Pity")}</strong><em>{l("EXTREM FORTGESCHRITTEN","EXTREMELY ADVANCED")}</em></span><span aria-hidden="true">⌄</span></summary>
    <div class="rc-example-body">
-    <p class="rc-callout rc-callout-warning">{l("Das bewusste Aufbauen eines Pity solltest du dir gut überlegen und nur machen, wenn du das Gacha System lückenlos verstanden hast und genügend Pull-Währung zur Verfügung hast. Sei dir JEDERZEIT bewusst, dass du bei Pech aktiv Pulls verlieren kannst.","Only build Pity intentionally if you fully understand the entire gacha system and have sufficient pull currency. ALWAYS remember that an unlucky result can cost you pulls.")}</p>
+    <p class="rc-callout rc-callout-warning">{l("Das bewusste Aufbauen eines Pity solltest du dir gut überlegen und nur machen, wenn du das Gacha System lückenlos verstanden hast und","Only build Pity intentionally if you fully understand the gacha system and")} <u>{l("genügend Pull-Währung zur Verfügung hast","have sufficient pull currency")}</u>. {l("Sei dir JEDERZEIT bewusst, dass du bei Pech","ALWAYS remember that an unlucky result means you can")} <u>{l("aktiv Pulls verlieren kannst","actively lose pulls")}</u>.</p>
     <h4>{l("Vorbereitung: Skip- oder Wunsch-Banner?","Preparation: skip or target banner?")}</h4>
     <div class="rc-setup-choices">
      <div><strong>{l("Option 1 · Nächsten Banner skippen","Option 1 · Skip the next banner")}</strong>
@@ -107,10 +103,10 @@ const tracks=[
     </div>
     <div class="rc-strategy-outcomes">
      <p><strong>{l("Fall 1 · Neutral:","Case 1 · Neutral:")}</strong> {l("Du gewinnst direkt das erste 50:50 und bekommst deinen Operator ohne Pity-Vorteil.","You win the first 50:50 and get your operator without a Pity advantage.")}</p>
-     <p><strong>{l("Fall 2 · Ungünstig:","Case 2 · Unfavourable:")}</strong> {l("Du gewinnst das zweite 50:50 erst nach weiteren bis zu 80 Pulls. Kein zusätzlicher 120er-Treffer; im ungünstigen Verlauf können gegenüber einem direkten 120er-Ziel bis zu 40 Pulls extra verbraucht werden.","You win the second 50:50 after up to another 80 pulls. No extra 120 guarantee payout; this route can cost up to 40 extra pulls compared with a straight 120-pull target.")}</p>
+     <p><strong>{l("Fall 2 · Worst Case:","Case 2 · Worst Case:")}</strong> {l("Du gewinnst das zweite 50:50 erst nach weiteren bis zu 80 Pulls. Kein zusätzlicher 120er-Treffer; im ungünstigen Verlauf können gegenüber einem direkten 120er-Ziel bis zu 40 Pulls extra verbraucht werden.","You win the second 50:50 after up to another 80 pulls. No extra 120 guarantee payout; this route can cost up to 40 extra pulls compared with a straight 120-pull target.")}</p>
      <p><strong>{l("Fall 3 · Best Case:","Case 3 · Best case:")}</strong> {l("Beide 50:50 verloren, der 120er Treffer garantiert den dritten 6★ nach insgesamt maximal 161 Pulls.","Both 50:50s are lost; the 120 guarantee provides a third 6★ within a total of 161 pulls.")}</p>
     </div>
-    <p class="rc-callout rc-callout-warning">{l("Nur angehen, wenn du die Ressourcen für mindestens 161 Pulls hast. Wer kein Risiko eingehen möchte, spart lieber 120 reguläre Pulls für den Wunsch-Banner.","Only attempt this if you can afford at least 161 pulls. For a safer approach, save 120 regular pulls for your target banner.")}</p>
+    <p class="rc-callout rc-callout-warning">{l("Nur angehen, wenn du die Ressourcen für mindestens 161 Pulls hast.","Only attempt this if you can afford at least 161 pulls.")} <u>{l("Wer kein Risiko eingehen möchte, spart lieber 120 reguläre Pulls für den Wunsch-Banner","For a safer approach, save 120 regular pulls for your target banner")}</u>.</p>
    </div>
   </details>
  </div>
