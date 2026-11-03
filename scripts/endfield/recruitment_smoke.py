@@ -18,7 +18,7 @@ def smoke(page,base,lang,width):
     verify(entries.count()==5 and all(x.get_attribute("open") is None for x in entries.all()),
            str(width)+lang+": five Cheat Sheets start collapsed")
     detail=page.locator('[data-cheatsheet-entry="recruitment"]')
-    detail.locator("summary").click()
+    detail.locator(":scope > summary").click()
     verify(detail.get_attribute("open") is not None and detail.locator("#recruitment").is_visible(),
            str(width)+lang+": Gacha System expands on demand")
     root=page.locator("[data-rc-guide]")
@@ -117,8 +117,8 @@ def smoke(page,base,lang,width):
     verify(standard.locator(".rc-standard-list img").evaluate_all(
            "(imgs)=>imgs.every(im=>im.complete&&im.naturalWidth>0)"),
            str(width)+lang+": standard icons load")
-    detail.locator("summary").focus()
-    detail.locator("summary").press("Enter")
+    detail.locator(":scope > summary").focus()
+    detail.locator(":scope > summary").press("Enter")
     verify(detail.get_attribute("open") is None and not root.is_visible(),
            str(width)+lang+": Gacha System collapses with keyboard")
     page.goto(base+prefix+"/endfield/cheatsheets/#recruitment")
