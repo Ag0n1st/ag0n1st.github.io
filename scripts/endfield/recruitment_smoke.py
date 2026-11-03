@@ -78,6 +78,30 @@ def smoke(page,base,lang,width):
            advanced.locator(".rc-strategy-grid > div").evaluate_all(
                "(els)=>els.every((el,i)=>getComputedStyle(el).getPropertyValue('--rc-strategy').trim()===(i===0?'#82e3eb':'#ee99d5'))"),
            str(width)+lang+": advanced 161-pull strategy and outcomes expand")
+    # Each subsequent card preserves the previous 80-Pity hits above the 120-Pity meter.
+    expected_stages=[
+        [(41,80)],
+        [(80,80),(39,120)],
+        [(80,80),(80,80),(119,120)],
+        [(80,80),(80,80),(1,80),(120,120)]
+    ]
+    verify(advanced.locator(".rc-risk-label").count()==1 and
+           advanced.locator(".rc-risk-emphasis").count()==1 and
+           advanced.locator(".rc-risk-emphasis").inner_text()==(
+               "bis zu 40 Pulls extra verbraucht werden." if lang=="de" else "up to 40 extra pulls."),
+           str(width)+lang+": high-risk label and only the extra-40-pulls warning emphasised")
+    for step,expected in enumerate(expected_stages,1):
+        stage=advanced.locator(f'[data-rc-strategy-stage="{step}"]')
+        actual=stage.locator("progress").evaluate_all(
+            "(els)=>els.map(e=>[Number(e.value),Number(e.max)])")
+        counters=stage.locator(".rc-strategy-meter-head strong").all_inner_texts()
+        colours=stage.locator(".rc-strategy-meter").evaluate_all(
+            "(els)=>els.map(e=>getComputedStyle(e).getPropertyValue('--rc-meter-fill').trim())")
+        verify(actual==[list(pair) for pair in expected] and
+               [counter.replace(" ","") for counter in counters]==
+               [str(n)+"/"+str(maximum) for n,maximum in expected] and
+               colours==["#82e3eb" if maximum==80 else "#ee99d5" for _,maximum in expected],
+               str(width)+lang+": stage "+str(step)+" shows all 80/120 Pity counters and respective cyan/magenta colours")
     advanced.locator("summary").click()
     event_tab=root.locator('[data-rc-tab="event"]')
     event_tab.focus()
@@ -94,6 +118,16 @@ def smoke(page,base,lang,width):
            rerun.locator('[data-operator="tangtang"] progress').get_attribute("value")=="69" and
            rerun.locator('[data-operator="rossi"] progress').get_attribute("value")=="0",
            str(width)+lang+": three Tangtang issues, one-time 120 and 30/60/90 bonuses")
+    for selector,colour in [
+        ('[data-rc-cycle-guarantee] progress',"#ee99d5"),
+        ('.rc-cycle-issue progress',"#e6c27b"),
+        ('.rc-rerun-operator progress',"#e6c27b")
+    ]:
+        meters=rerun.locator(selector)
+        verify(meters.count()>0 and meters.evaluate_all(
+            "(els)=>els.every(e=>getComputedStyle(e).appearance==='none' && "
+            "getComputedStyle(e).getPropertyValue('--rc-re-fill').trim()==='"+colour+"')"),
+            str(width)+lang+": RE-Factor "+selector+" explicitly uses magenta/orange non-native fills")
     image=rerun.locator('[data-rc-kind="token"] img.rc-token-icon')
     image.scroll_into_view_if_needed()
     verify(image.evaluate("(img)=>img.decode().then(()=>img.naturalWidth>0).catch(()=>false)"),
