@@ -56,6 +56,7 @@ def smoke(page,base,lang,width):
     advanced.locator("summary").click()
     verify(advanced.locator(".rc-example-body").is_visible() and
            advanced.locator(".rc-strategy-grid > div").count()==4 and
+           advanced.locator(".rc-setup-choices > div").count()==2 and
            advanced.locator(".rc-strategy-outcomes > p").count()==3,
            str(width)+lang+": advanced 161-pull strategy and outcomes expand")
     advanced.locator("summary").click()
