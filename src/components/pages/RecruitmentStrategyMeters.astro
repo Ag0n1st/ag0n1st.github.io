@@ -1,0 +1,22 @@
+---
+interface Props {step:1|2|3|4;lang:"de"|"en"}
+const {step,lang}=Astro.props;
+const en=lang==="en";
+const stages:{
+  1:[number,number][];
+  2:[number,number][];
+  3:[number,number][];
+  4:[number,number][];
+}={
+  1:[[41,80]],
+  2:[[80,80],[39,120]],
+  3:[[80,80],[80,80],[119,120]],
+  4:[[80,80],[80,80],[1,80],[120,120]]
+};
+---
+<div class="rc-strategy-meters" data-rc-strategy-stage={step}>
+ {stages[step].map(([value,max],index)=><div class="rc-strategy-meter" data-rc-meter-pity={max} data-rc-meter-index={index+1}>
+  <div class="rc-strategy-meter-head"><span>{max===80?(en?"80-pull Pity":"80er Pity"):(en?"120-pull Pity":"120er Pity")}</span><strong>{value} / {max}</strong></div>
+  <progress value={value} max={max} aria-label={`${en?"Stage":"Schritt"} ${step}: ${max}-${en?"pull Pity":"Pity"} ${index+1} – ${value}/${max}`}/>
+ </div>)}
+</div>
