@@ -33,7 +33,7 @@ def smoke(page,base,lang,width):
            str(width)+lang+": priority 80/120/240 Pity, milestone boxes and highlighted previous event operators")
     token=event.locator('[data-rc-kind="token"] img.rc-token-icon')
     token.scroll_into_view_if_needed()
-    verify(token.count()==1 and token.evaluate("(img)=>img.complete&&img.naturalWidth>0"),
+    verify(token.count()==1 and token.evaluate("(img)=>img.decode().then(()=>img.naturalWidth>0).catch(()=>false)"),
            str(width)+lang+": Si token asset loads")
     a=event.locator('[data-rc-example="70"]')
     b=event.locator('[data-rc-example="10"]')
@@ -76,7 +76,7 @@ def smoke(page,base,lang,width):
            str(width)+lang+": three Tangtang issues, one-time 120 and 30/60/90 bonuses")
     image=rerun.locator('[data-rc-kind="token"] img.rc-token-icon')
     image.scroll_into_view_if_needed()
-    verify(image.evaluate("(img)=>img.complete&&img.naturalWidth>0"),
+    verify(image.evaluate("(img)=>img.decode().then(()=>img.naturalWidth>0).catch(()=>false)"),
            str(width)+lang+": Tangtang token asset loads")
     root.locator('[data-rc-tab="standard"]').click()
     standard=root.locator('[data-rc-panel="standard"]')
