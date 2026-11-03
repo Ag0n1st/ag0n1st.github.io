@@ -228,6 +228,10 @@ test("Personal Discord stats preserve every sample and derive stage averages fro
  assert.ok(Math.abs(stats.perOperator.pooled-58.30230549465)<1e-8);
  assert.ok(Math.abs(stats.perOperator.good-55.41868332032)<1e-8);
  assert.ok(Math.abs(stats.perOperator.standard-65.10200250313)<1e-8);
+ assert.deepEqual(stats.worstCase.stages,[{pity:6,catalysts:7},{pity:12,catalysts:13},{pity:20,catalysts:21}]);
+ assert.equal(stats.worstCase.perPiece,41);
+ assert.equal(stats.worstCase.perOperator,164);
+ assert.equal(stats.worstCase.perOperator,personal.gearPieces*stats.worstCase.stages.reduce((acc,item)=>acc+item.catalysts,0));
 });
 test("Personal stats are displayed AFTER the matrix, in the same card, with DE/EN and single-attribute exclusion",()=>{
  const matrix=read("src/components/pages/RefinementMatrix.astro");
@@ -245,6 +249,14 @@ test("Personal stats are displayed AFTER the matrix, in the same card, with DE/E
  assert.match(stats,/data-refinement-estimate="pooled"/);
  assert.match(stats,/data-refinement-estimate="good"/);
  assert.match(stats,/data-refinement-estimate="standard"/);
+ assert.match(stats,/data-refinement-worstcase/);
+ assert.match(stats,/data-refinement-worstcase-total/);
+ assert.match(stats,/data-refinement-worstcase-formula/);
+ assert.match(stats,/data-refinement-worstcase-pity=\{stage.pity\}/);
+ assert.match(stats,/WORST CASE · MAXIMALER KATALYSATORVERBRAUCH/);
+ assert.match(stats,/WORST CASE · MAXIMUM CATALYST COST/);
+ assert.match(css,/\.refinement-personal-worstcase\{grid-column:1\/-1/);
+ assert.ok(stats.indexOf('data-refinement-estimate="standard"')<stats.indexOf('data-refinement-worstcase'),"Worst case must follow the average inside the same card");
  assert.match(stats,/Ausrüstungsteile mit nur einem Attribut/);
  assert.match(stats,/gear with only one attribute/);
  assert.match(css,/@media\(max-width:650px\)/);
