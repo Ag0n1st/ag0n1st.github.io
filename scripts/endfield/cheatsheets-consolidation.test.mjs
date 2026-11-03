@@ -187,3 +187,29 @@ test("Gacha refinement has bilingual Headhunting art, milestone notes and consis
  assert.match(css,/rc-bonus-segment progress/);
 
 });
+
+
+test("Advanced Pity stages accumulate 80/120 history and RE-Factor meters have explicit colours",()=>{
+ const steps=read("src/components/pages/RecruitmentStrategyMeters.astro");
+ const event=read("src/components/pages/RecruitmentEvent.astro");
+ const css=read("src/styles/endfield-recruitment.css");
+ for(const stage of ["1:[[41,80]]","2:[[80,80],[39,120]]","3:[[80,80],[80,80],[119,120]]","4:[[80,80],[80,80],[1,80],[120,120]]"])
+   assert.ok(steps.includes(stage),"missing complete advanced Pity stage "+stage);
+ for(let n=1;n<=4;n++)assert.ok(event.includes("<RecruitmentStrategyMeters step={"+n+"} lang={lang}/>"),"advanced card "+n);
+ assert.equal((event.match(/<RecruitmentStrategyMeters step=/g)||[]).length,4);
+ assert.match(steps,/rc-strategy-meter-head/);
+ assert.match(steps,/data-rc-meter-pity/);
+ assert.match(steps,/<progress value=\{value\} max=\{max\}/);
+ assert.match(event,/HOHES RISIKO/);
+ assert.match(event,/HIGH RISK/);
+ assert.match(event,/class="rc-risk-emphasis"/);
+ assert.match(event,/bis zu 40 Pulls extra verbraucht werden\./);
+ assert.match(event,/up to 40 extra pulls\./);
+ assert.match(css,/\.rc-strategy-meter\{--rc-meter-fill:#82e3eb/);
+ assert.match(css,/\.rc-strategy-meter\[data-rc-meter-pity="120"\]/);
+ for(const rule of [".rc-cycle-guarantee progress::-webkit-progress-value",".rc-cycle-issue progress::-webkit-progress-value",".rc-rerun-operator progress::-webkit-progress-value"])
+   assert.ok(css.includes(rule),"explicit non-green WebKit fill missing: "+rule);
+ assert.match(css,/\.rc-rerun-cycle \.rc-cycle-guarantee\{--rc-re-fill:#ee99d5\}/);
+ assert.match(css,/\.rc-rerun-cycle \.rc-cycle-issue,\.rc-rerun-example \.rc-rerun-operator\{--rc-re-fill:#e6c27b\}/);
+ assert.match(css,/-webkit-appearance:none/);
+});
