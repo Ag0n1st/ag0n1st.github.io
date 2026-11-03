@@ -14,10 +14,12 @@ test("Endfield nav has eleven entries after Roulette launch, excludes three form
  assert.match(nav,/cheatsheets:"\/en\/endfield\/cheatsheets\/"/);
  assert.match(nav,/new Set\(\["factory","checklist"\]\)/);
 });
-test("Cheat Sheets has three migrated systems and retains three existing references in DE and EN",()=>{
+test("Cheat Sheets integrates Gacha System after Refinement while keeping other references bilingual",()=>{
  const page=read("src/components/pages/EndfieldCheatSheets.astro");
- for(const anchor of ["recruitment","essences","bufffood"])
+ for(const anchor of ["essences","bufffood"])
    assert.ok(page.includes('id:"'+anchor+'"'),"missing placeholder anchor "+anchor);
+ assert.match(page,/<EndfieldRecruitment lang=\{lang\}/);
+ assert.ok(page.indexOf("<RefinementMatrix lang={lang}")<page.indexOf("<EndfieldRecruitment lang={lang}"));
  assert.match(page,/<ElasticGoodsPeaks lang=\{lang\}/);
  assert.match(read("src/components/pages/ElasticGoodsPeaks.astro"),/id="elasticgoods"/);
  assert.doesNotMatch(page,/data-cheatsheets-group=|cheatsheets-systems-heading|cheatsheets-reference-heading/);
@@ -63,7 +65,7 @@ test("Sitemap advertises Cheat Sheets, not six retired standalone URLs",()=>{
 });
 
 
-test("Recruitment guide uses paired standalone routes with three independently displayed pity counters",async()=>{
+test("Gacha System integrates recruitment, bonus milestones, tokens and RE-Factor issues within Cheat Sheets",async()=>{
  const {sixStarChance,featuredExample,STANDARD_IDS,SI_LOSS_POOL}=await import("../../src/lib/endfield/recruitment.mjs");
  assert.equal(sixStarChance(1),0.8);
  assert.equal(sixStarChance(65),0.8);
@@ -82,27 +84,65 @@ test("Recruitment guide uses paired standalone routes with three independently d
  const meters=read("src/components/pages/RecruitmentMeters.astro");
  const ui=read("src/styles/endfield-recruitment.css");
  const routes=["src/pages/endfield/cheatsheets/rekrutierung/index.astro","src/pages/en/endfield/cheatsheets/recruitment/index.astro"];
- for(const path of routes)assert.ok(read(path).includes("EndfieldRecruitment"));
+ for(const path of routes)assert.ok(read(path).includes("EndfieldCheatSheetsRedirect"));
  assert.match(read("src/lib/i18n/site.mjs"),/cheatsheets\/rekrutierung\/":\"\/en\/endfield\/cheatsheets\/recruitment/);
- assert.ok(read("src/pages/sitemap.xml.ts").includes('"/endfield/cheatsheets/rekrutierung/"'));
+ assert.ok(!read("src/pages/sitemap.xml.ts").includes('"/endfield/cheatsheets/rekrutierung/"'));
+ assert.match(guide,/id="recruitment"/);
+ assert.match(guide,/Gacha System/);
+ assert.match(guide,/Operator Rekrutierung/);
+ assert.match(guide,/Weapon Issue/);
+ assert.match(guide,/data-rc-mode-tab/);
+ assert.match(guide,/data-rc-mode-panel/);
  assert.match(guide,/role="tablist"/);
  assert.match(guide,/data-rc-tab=/);
  assert.match(guide,/ArrowRight/);
  for(const kind of ["event","rerun","standard"])assert.ok(guide.includes('id:"'+kind+'"'));
  assert.match(meters,/<progress/);
  assert.match(meters,/data-rc-pity=/);
+ assert.match(meters,/rc-meter-explanation/);
+ assert.match(meters,/rc-token-icon/);
  assert.equal((event.match(/data-rc-example="/g)||[]).length,2);
  assert.match(event,/70\/240/);
  assert.match(event,/170/);
  assert.match(event,/230/);
- assert.match(event,/nicht 140/);
+ assert.doesNotMatch(event,/nicht 140|not 140/);
+ assert.match(event,/REKRUTIERUNG: PRIORISIERT/);
+ assert.match(event,/rc-title-aside/);
+ assert.match(event,/rc-pool-previous/);
+ assert.match(event,/Oroberyls nicht verschwenden/);
+ assert.match(event,/rc-milestone-grid/);
+ assert.match(event,/Bonusrekrutierung/);
+ assert.match(event,/Rekrutierungs-Dossier/);
+ assert.match(event,/data-rc-advanced/);
+ assert.match(event,/EXTREM FORTGESCHRITTEN/);
+ assert.match(event,/161 Pulls/);
+ assert.match(event,/rc-strategy-outcomes/);
  assert.match(event,/SI_LOSS_POOL\.map/);
- assert.match(event,/Bonus-Zehnerziehung/);
+ assert.match(event,/Bonusrekrutierung/);
  assert.match(rerun,/95\/240/);
  assert.match(rerun,/RE-FAKTOR-REKRUTIERUNG/);
+ assert.doesNotMatch(rerun,/OFFIZIELL:/);
+ assert.match(rerun,/data-rc-rerun-cycle/);
+ assert.match(rerun,/data-rc-cycle-guarantee/);
+ assert.match(rerun,/data-rc-issue/);
+ assert.match(rerun,/data-rc-re-milestone/);
+ assert.match(rerun,/Bonusrekrutierung/);
+ assert.match(rerun,/tangtang-token.webp/);
  assert.match(standard,/STANDARD_IDS/);
  assert.match(ui,/@media\(max-width:600px\)/);
  const hub=read("src/components/pages/EndfieldCheatSheets.astro");
- assert.match(hub,/Rekrutierungs-Guide öffnen/);
- assert.match(hub,/cheatsheets\/rekrutierung/);
+ assert.match(hub,/<EndfieldRecruitment lang=\{lang\}/);
+ assert.doesNotMatch(hub,/Rekrutierungs-Guide öffnen/);
+ assert.match(event,/si-token.webp/);
+});
+
+
+// New assets are compressed copies of the two supplied token images.
+test("Both token assets exist without exceeding the site's file budget",async()=>{
+ const {existsSync,statSync}=await import("node:fs");
+ for(const op of ["si","tangtang"]){
+  const path="public/images/endfield/cheatsheets/"+op+"-token.webp";
+  assert.ok(existsSync(path),path);
+  assert.ok(statSync(path).size<10000,path+" should stay compact");
+ }
 });
