@@ -180,3 +180,9 @@
 .rc-bonus-milestone span,.rc-bonus-milestone small{font-size:10px;color:#bfb5b9;line-height:1.35}
 @media(max-width:850px){.rc-cycle-issues{grid-template-columns:1fr}.rc-milestone-grid{grid-template-columns:1fr}}
 @media(max-width:600px){.endfield-utility-page .rc-card{padding:14px 10px}.rc-mode-tabs{gap:7px;margin-top:18px}.rc-mode-tab{font-size:12px;min-height:54px;padding:9px 5px}.rc-card-head h2{font-size:27px}.rc-meter-top{align-items:start}.rc-meter-explanation{margin-top:10px}.rc-strategy-grid{grid-template-columns:1fr}.rc-advanced-summary{gap:7px}.rc-advanced-summary em{font-size:9px}.rc-milestones,.rc-rerun-cycle{padding:11px}.rc-bonus-milestone{padding:9px 4px}}
+
+.rc-setup-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:15px 0 20px}
+.rc-setup-choices>div{min-width:0;border:1px solid #495162;border-radius:10px;background:linear-gradient(130deg,#252936,#221f2c);padding:13px}
+.rc-setup-choices strong{font-size:12px;color:#e6f4ff;line-height:1.4}
+.rc-setup-choices p{font-size:11px;line-height:1.65;margin:8px 0 0}
+@media(max-width:700px){.rc-setup-choices{grid-template-columns:1fr}}
