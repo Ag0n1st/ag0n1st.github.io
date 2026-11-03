@@ -53,7 +53,7 @@ const tracks=[
  </div>
  <div class="rc-rerun-example">
   <h4>{l("Tangtang vs. Rossi – zwei getrennte Token-Zähler","Tangtang vs Rossi – separate token progress")}</h4>
-  <p>{l("Wenn du bei Tangtang 69/240 erreicht hast, setzt du beim nächsten Tangtang-RE-Run bei 69 fort. Rossi beginnt mit seinem eigenen Zähler. Dein 80er-Pity bleibt über beide RE-Faktor-Banner hinweg erhalten.","If you reach 69/240 on Tangtang, your next Tangtang re-run resumes at 95. Rossi has a separate counter. Your 80 pity is shared between both RE-Factor banners.")}</p>
+  <p>{l("Wenn du bei Tangtang 69/240 erreicht hast, setzt du beim nächsten Tangtang-RE-Run bei 69 fort. Rossi beginnt mit seinem eigenen Zähler. Dein 80er-Pity bleibt über beide RE-Faktor-Banner hinweg erhalten.","If you reach 69/240 on Tangtang, your next Tangtang re-run resumes at 69. Rossi has a separate counter. Your 80 pity is shared between both RE-Factor banners.")}</p>
   <div class="rc-rerun-grid">{ops.map(op=><div class="rc-rerun-operator" data-operator={op.id}>
    <img src={op.assets.icon} alt="" width="55" height="55" loading="lazy"/><div><strong>{op.name}</strong><span>{op.id==="tangtang"?"69 / 240":"0 / 240"}</span></div>
    <progress max="240" value={op.id==="tangtang"?69:0} aria-label={op.name+" token"} />
