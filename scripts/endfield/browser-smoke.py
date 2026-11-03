@@ -1323,7 +1323,7 @@ def smoke_i18n(page, base_url, width):
         accordion=page.locator("[data-cheatsheet-entry]")
         verify(accordion.count()==5 and
                all(item.get_attribute("open") is None for item in accordion.all()) and
-               all(item.locator("summary").is_visible() for item in accordion.all()),
+               all(item.locator(":scope > summary").is_visible() for item in accordion.all()),
                label+": "+lang+" five Cheat Sheet cards are collapsed into readable summaries")
         page.locator('[data-cheatsheet-entry="refinement"] > summary').click()
         verify(page.locator('[data-cheatsheet-entry="refinement"]').get_attribute("open") is not None,
