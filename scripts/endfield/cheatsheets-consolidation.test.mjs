@@ -205,7 +205,7 @@ test("Advanced Pity stages accumulate 80/120 history and RE-Factor meters have e
  assert.match(event,/class="rc-risk-emphasis"/);
  assert.match(event,/bis zu 40 Pulls extra verbraucht werden\./);
  assert.match(event,/up to 40 extra pulls\./);
- assert.match(css,/\.rc-strategy-meter\[data-rc-meter-pity="80"\]/);
+ assert.match(css,/\.rc-strategy-meter\{--rc-meter-fill:#82e3eb/);
  assert.match(css,/\.rc-strategy-meter\[data-rc-meter-pity="120"\]/);
  for(const rule of [".rc-cycle-guarantee progress::-webkit-progress-value",".rc-cycle-issue progress::-webkit-progress-value",".rc-rerun-operator progress::-webkit-progress-value"])
    assert.ok(css.includes(rule),"explicit non-green WebKit fill missing: "+rule);
