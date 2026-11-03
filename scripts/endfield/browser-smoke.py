@@ -1320,6 +1320,14 @@ def smoke_i18n(page, base_url, width):
                cheats_title.evaluate("(el)=>({height:el.getBoundingClientRect().height,line:parseFloat(getComputedStyle(el).lineHeight),nowrap:getComputedStyle(el).whiteSpace})")["nowrap"]=="nowrap" and
                cheats_title.locator(".title-period").count()==1,
                label+": "+lang+" Cheat Sheets title stays on one line with inline period")
+        accordion=page.locator("[data-cheatsheet-entry]")
+        verify(accordion.count()==5 and
+               all(item.get_attribute("open") is None for item in accordion.all()) and
+               all(item.locator(":scope > summary").is_visible() for item in accordion.all()),
+               label+": "+lang+" five Cheat Sheet cards are collapsed into readable summaries")
+        page.locator('[data-cheatsheet-entry="refinement"] > summary').click()
+        verify(page.locator('[data-cheatsheet-entry="refinement"]').get_attribute("open") is not None,
+               label+": "+lang+" Refinement card expands on demand")
         verify(page.locator("#refinement").count()==1 and
                page.locator("#artificing").count()==1 and
                page.locator(".endfield-coming-card").count()==2 and
@@ -1375,6 +1383,9 @@ def smoke_i18n(page, base_url, width):
         verify(disclosure.get_attribute("open") is None and not personal.is_visible() and toggle.is_visible(),
                label+": "+lang+" refinement personal stats collapse again with keyboard and keep their summary")
         check_overflow(page,label+" "+lang+" refinement personal stats collapsed")
+        page.locator('[data-cheatsheet-entry="elasticgoods"] > summary').click()
+        verify(page.locator('[data-cheatsheet-entry="elasticgoods"]').get_attribute("open") is not None,
+               label+": "+lang+" Elastic Goods card expands on demand")
         eg=page.locator("[data-elastic-goods]")
         verify(eg.count()==1 and eg.locator("#eg-title").inner_text()==("Elastische Waren - Preis Peaks" if lang=="de" else "Elastic Goods – Price Peaks") and
                eg.locator('[data-peak="low"]').count()==1 and

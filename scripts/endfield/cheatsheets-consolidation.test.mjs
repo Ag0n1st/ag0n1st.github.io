@@ -110,7 +110,8 @@ test("Gacha System integrates recruitment, bonus milestones, tokens and RE-Facto
  assert.match(event,/rc-title-aside/);
  assert.match(event,/rc-pool-previous/);
  assert.match(event,/Oroberyls nicht verschwenden/);
- assert.match(event,/rc-milestone-grid/);
+ assert.match(event,/rc-milestone-note/);
+ assert.doesNotMatch(event,/rc-milestone-grid/);
  assert.match(event,/Bonusrekrutierung/);
  assert.match(event,/Rekrutierungs-Dossier/);
  assert.match(event,/data-rc-advanced/);
@@ -119,7 +120,7 @@ test("Gacha System integrates recruitment, bonus milestones, tokens and RE-Facto
  assert.match(event,/rc-strategy-outcomes/);
  assert.match(event,/SI_LOSS_POOL\.map/);
  assert.match(event,/Bonusrekrutierung/);
- assert.match(rerun,/95\/240/);
+ assert.match(rerun,/69\/240/);
  assert.match(rerun,/RE-FAKTOR-REKRUTIERUNG/);
  assert.doesNotMatch(rerun,/OFFIZIELL:/);
  assert.match(rerun,/data-rc-rerun-cycle/);
@@ -145,4 +146,44 @@ test("Both token assets exist without exceeding the site's file budget",async()=
   assert.ok(existsSync(path),path);
   assert.ok(statSync(path).size<10000,path+" should stay compact");
  }
+});
+
+
+test("All five Cheat Sheet cards collapse and legacy anchors reopen the matching card",()=>{
+ const hub=read("src/components/pages/EndfieldCheatSheets.astro");
+ assert.equal((hub.match(/class="cheatsheet-entry"/g)||[]).length,3);
+ assert.match(hub,/class="cheatsheet-entry cheatsheet-entry-upcoming"/);
+ for(const name of ["elasticgoods","refinement","recruitment"])assert.ok(hub.includes('data-cheatsheet-entry="'+name+'"'));
+ assert.match(hub,/data-cheatsheet-accordion/);
+ assert.match(hub,/hashchange/);
+ assert.match(hub,/artificing:"refinement"/);
+ assert.match(hub,/wrapper\.open=true/);
+ assert.match(hub,/Good Matches/);
+ assert.match(hub,/Gacha System/);
+});
+
+test("Gacha refinement has bilingual Headhunting art, milestone notes and consistent Tangtang 69/90 progress",()=>{
+ const guide=read("src/components/pages/EndfieldRecruitment.astro");
+ const event=read("src/components/pages/RecruitmentEvent.astro");
+ const rerun=read("src/components/pages/RecruitmentRerun.astro");
+ const css=read("src/styles/endfield-recruitment.css");
+ assert.ok(guide.includes("headhun"+"ting.webp"));
+ assert.match(guide,/Alle Banner im Überblick/);
+ assert.match(guide,/All banners at a glance/);
+ assert.match(guide,/REKRUTIERUNG · CHEAT SHEET/);
+ assert.match(event,/rc-milestone-note/);
+ assert.doesNotMatch(event,/rc-milestone-grid/);
+ assert.match(event,/Jeder weitere Pull auf demselben Banner, nach verbrauchter 120er Garantie, ist verschwendet!/);
+ assert.match(event,/genügend Pull-Währung zur Verfügung hast/);
+ assert.match(event,/aktiv Pulls verlieren kannst/);
+ assert.match(event,/Fall 2 · Worst Case/);
+ assert.match(rerun,/Tangtang als Beispiel/);
+ assert.match(rerun,/69.*\/ 120/);
+ assert.match(rerun,/rc-bonus-progress/);
+ assert.match(rerun,/data-rc-bonus-state/);
+ assert.doesNotMatch(rerun,/95\s*\/\s*240/);
+ assert.match(css,/--rc-strategy:#82e3eb/);
+ assert.match(css,/--rc-strategy:#ee99d5/);
+ assert.match(css,/rc-bonus-segment progress/);
+
 });

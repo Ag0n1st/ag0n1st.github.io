@@ -186,3 +186,46 @@
 .rc-setup-choices strong{font-size:12px;color:#e6f4ff;line-height:1.4}
 .rc-setup-choices p{font-size:11px;line-height:1.65;margin:8px 0 0}
 @media(max-width:700px){.rc-setup-choices{grid-template-columns:1fr}}
+
+
+/* Gacha card follows the subtle upper-right icon treatment from Elastic Goods. */
+.rc-card-head{position:relative;min-height:86px;padding-right:110px}
+.rc-headhunt-art{position:absolute;right:0;top:-10px;width:100px;height:100px;object-fit:contain;opacity:.22;filter:grayscale(1) brightness(.8);pointer-events:none;user-select:none}
+.rc-card-head>div{min-width:0}
+.rc-milestone-note{margin:12px 0 19px!important}
+.rc-milestone-note strong{color:#e8fdff}
+.rc-milestone-note p{font-size:12px;line-height:1.68;margin:9px 0 0}
+.rc-milestone-note p b{color:#a4edf5}
+.rc-oroberyl u,.rc-advanced .rc-callout-warning u{font-weight:850;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:2px}
+.rc-advanced .rc-callout-warning u{color:#ffe0be;text-decoration-color:#f2ad6c}
+/* Match the 80-pull cyan and 120-pull magenta colour system. */
+.rc-strategy-grid>div{--rc-strategy:#82e3eb;border-color:#477f8b;background:linear-gradient(120deg,rgba(130,227,235,.105),#20232f)}
+.rc-strategy-grid>div:not(:first-child){--rc-strategy:#ee99d5;border-color:#73546c;background:linear-gradient(120deg,rgba(238,153,213,.10),#26202d)}
+.rc-strategy-grid>div .rc-step{color:var(--rc-strategy)}
+.rc-strategy-grid progress{accent-color:var(--rc-strategy);background:#302c39}
+.rc-strategy-grid progress::-webkit-progress-bar{background:#302c39;border-radius:8px}
+.rc-strategy-grid progress::-webkit-progress-value{background:var(--rc-strategy);border-radius:8px}
+.rc-strategy-grid progress::-moz-progress-bar{background:var(--rc-strategy);border-radius:8px}
+.rc-strategy-outcomes p:nth-child(2){border-color:#9d5365;background:linear-gradient(105deg,rgba(232,91,106,.14),#292028)}
+.rc-strategy-outcomes p:nth-child(2) strong{color:#ffadb7}
+.rc-strategy-outcomes p:nth-child(3){border-color:#477f67;background:linear-gradient(105deg,rgba(104,219,154,.13),#1d2925)}
+.rc-strategy-outcomes p:nth-child(3) strong{color:#aeefce}
+/* RE-Factor bonuses share one 90-pull cycle card across all three issues. */
+.rc-cycle-bonus{border:1px solid #736044;border-radius:11px;margin-top:13px;padding:14px 15px;background:linear-gradient(110deg,rgba(225,187,113,.07),#21212b)}
+.rc-cycle-bonus h5{margin:0;font-size:13px;color:#f8e6be}
+.rc-cycle-bonus>.rc-cycle-head{margin-bottom:9px}
+.rc-cycle-bonus>.rc-cycle-head>b{color:#f6d6a5}
+.rc-cycle-bonus>p{margin:0 0 13px;font-size:11px}
+.rc-bonus-progress{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.rc-bonus-segment{min-width:0;--bonus-accent:#e8c47a}
+.rc-bonus-segment[data-rc-bonus-state="progress"]{--bonus-accent:#edaa6c}
+.rc-bonus-segment progress{display:block;width:100%;height:12px;margin:0 0 7px;accent-color:var(--bonus-accent);border:0;border-radius:6px;background:#383039;overflow:hidden}
+.rc-bonus-segment progress::-webkit-progress-bar{background:#383039;border-radius:6px}
+.rc-bonus-segment progress::-webkit-progress-value{background:var(--bonus-accent);border-radius:6px}
+.rc-bonus-segment progress::-moz-progress-bar{background:var(--bonus-accent);border-radius:6px}
+.rc-bonus-breakpoint{display:flex;align-items:center;justify-content:space-between;gap:4px;flex-wrap:wrap}
+.rc-bonus-breakpoint strong{font-size:11px;color:#ead7b5}
+.rc-bonus-breakpoint span{font-size:11px;font-weight:800;color:var(--bonus-accent)}
+.rc-bonus-caption{display:block;color:#c9bbac;font-size:10px;margin-top:10px;line-height:1.55}
+@media(max-width:760px){.rc-card-head{min-height:73px;padding-right:72px}.rc-headhunt-art{width:63px;height:63px;top:0}}
+@media(max-width:420px){.rc-bonus-progress{gap:4px}.rc-bonus-breakpoint{display:grid;gap:1px}.rc-bonus-breakpoint strong,.rc-bonus-breakpoint span{font-size:10px}}

@@ -14,6 +14,13 @@ def verify(ok,message):
 def smoke(page,base,lang,width):
     prefix="/en" if lang=="en" else ""
     page.goto(base+prefix+"/endfield/cheatsheets/")
+    entries=page.locator("[data-cheatsheet-entry]")
+    verify(entries.count()==5 and all(x.get_attribute("open") is None for x in entries.all()),
+           str(width)+lang+": five Cheat Sheets start collapsed")
+    detail=page.locator('[data-cheatsheet-entry="recruitment"]')
+    detail.locator(":scope > summary").click()
+    verify(detail.get_attribute("open") is not None and detail.locator("#recruitment").is_visible(),
+           str(width)+lang+": Gacha System expands on demand")
     root=page.locator("[data-rc-guide]")
     verify(root.count()==1 and page.locator("html").get_attribute("lang")==lang and
            page.locator("#recruitment").count()==1 and
@@ -29,8 +36,17 @@ def smoke(page,base,lang,width):
            event.locator('.rc-pool-previous').count()==2 and
            event.locator('.rc-meter-explanation').count()==3 and
            event.locator('[data-rc-milestone]').count()==2 and
+           event.locator('.rc-milestone-note').count()==1 and
+           event.locator('.rc-milestone-grid').count()==0 and
+           event.locator('.rc-oroberyl u').count()==1 and
            event.locator('.rc-oroberyl').count()==1,
            str(width)+lang+": priority 80/120/240 Pity, milestone boxes and highlighted previous event operators")
+    icon=root.locator(".rc-headhunt-art")
+    icon.scroll_into_view_if_needed()
+    verify(icon.get_attribute("src")=="/images/endfield/cheatsheets/headhunting.webp" and
+           icon.evaluate("(img)=>img.decode().then(()=>img.naturalWidth===75).catch(()=>false)") and
+           icon.evaluate("(img)=>Math.abs(img.getBoundingClientRect().right-img.parentElement.getBoundingClientRect().right)<2"),
+           str(width)+lang+": supplied Headhunting icon aligns top-right")
     token=event.locator('[data-rc-kind="token"] img.rc-token-icon')
     token.scroll_into_view_if_needed()
     verify(token.count()==1 and token.evaluate("(img)=>img.decode().then(()=>img.naturalWidth>0).catch(()=>false)"),
@@ -57,7 +73,10 @@ def smoke(page,base,lang,width):
     verify(advanced.locator(".rc-example-body").is_visible() and
            advanced.locator(".rc-strategy-grid > div").count()==4 and
            advanced.locator(".rc-setup-choices > div").count()==2 and
-           advanced.locator(".rc-strategy-outcomes > p").count()==3,
+           advanced.locator(".rc-strategy-outcomes > p").count()==3 and
+           advanced.locator(".rc-example-body > .rc-callout-warning u").count()==3 and
+           advanced.locator(".rc-strategy-grid > div").evaluate_all(
+               "(els)=>els.every((el,i)=>getComputedStyle(el).getPropertyValue('--rc-strategy').trim()===(i===0?'#82e3eb':'#ee99d5'))"),
            str(width)+lang+": advanced 161-pull strategy and outcomes expand")
     advanced.locator("summary").click()
     event_tab=root.locator('[data-rc-tab="event"]')
@@ -67,11 +86,12 @@ def smoke(page,base,lang,width):
     verify(rerun.is_visible() and event.is_hidden() and
            root.locator('[data-rc-tab="rerun"]').get_attribute("aria-selected")=="true" and
            rerun.locator('.rc-meter-explanation').count()==3 and
-           rerun.locator('[data-rc-cycle-guarantee] progress').get_attribute("value")=="95" and
+           rerun.locator('[data-rc-cycle-guarantee] progress').get_attribute("value")=="69" and
            rerun.locator('[data-rc-issue]').count()==3 and
-           rerun.locator('[data-rc-issue] progress[value="95"]').count()==3 and
+           rerun.locator('[data-rc-issue] progress[value="69"]').count()==3 and
            rerun.locator('[data-rc-re-milestone]').count()==3 and
-           rerun.locator('[data-operator="tangtang"] progress').get_attribute("value")=="95" and
+           rerun.locator('[data-rc-re-milestone] progress').evaluate_all("(els)=>els.map(x=>x.value).join(',')==='30,30,9'") and
+           rerun.locator('[data-operator="tangtang"] progress').get_attribute("value")=="69" and
            rerun.locator('[data-operator="rossi"] progress').get_attribute("value")=="0",
            str(width)+lang+": three Tangtang issues, one-time 120 and 30/60/90 bonuses")
     image=rerun.locator('[data-rc-kind="token"] img.rc-token-icon')
@@ -97,6 +117,13 @@ def smoke(page,base,lang,width):
     verify(standard.locator(".rc-standard-list img").evaluate_all(
            "(imgs)=>imgs.every(im=>im.complete&&im.naturalWidth>0)"),
            str(width)+lang+": standard icons load")
+    detail.locator(":scope > summary").focus()
+    detail.locator(":scope > summary").press("Enter")
+    verify(detail.get_attribute("open") is None and not root.is_visible(),
+           str(width)+lang+": Gacha System collapses with keyboard")
+    page.goto(base+prefix+"/endfield/cheatsheets/#recruitment")
+    verify(page.locator('[data-cheatsheet-entry="recruitment"]').get_attribute("open") is not None,
+           str(width)+lang+": deep link auto-expands the Gacha card")
     verify(page.evaluate("document.documentElement.scrollWidth<=innerWidth+1"),
            str(width)+lang+": no page-wide overflow")
     old=page.request.get(base+prefix+"/endfield/cheatsheets/"+("recruitment" if lang=="en" else "rekrutierung")+"/")

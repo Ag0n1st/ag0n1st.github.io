@@ -6,28 +6,28 @@ const {lang}=Astro.props;
 const en=lang==="en";const l=(de:string,eng:string)=>en?eng:de;
 const ops=roster.operators.filter(x=>["tangtang","rossi"].includes(x.id));
 const tracks=[
- {key:"six",label:l("80er Pity · RE-Faktor","80-pull Pity · RE-Factor"),value:25,max:80,note:l("6★-Garantie","6★ guarantee"),
+ {key:"six",label:l("80er Pity · RE-Faktor","80-pull Pity · RE-Factor"),value:69,max:80,note:l("6★-Garantie","6★ guarantee"),
   explanation:l("Ein gemeinsames 80er Pity für alle RE-Faktor-Banner – unabhängig vom Operator und getrennt vom normalen Event-Pity.","One shared 80-pull Pity across all RE-Factor banners regardless of operator, separate from standard event Pity.")},
- {key:"featured",label:l("120er Pity","120-pull Pity"),value:95,max:120,note:l("Einmalige RE-Faktor-Garantie","One-time RE-Factor guarantee"),
+ {key:"featured",label:l("120er Pity","120-pull Pity"),value:69,max:120,note:l("Einmalige RE-Faktor-Garantie","One-time RE-Factor guarantee"),
   explanation:l("Einmal pro Operator verfügbar. Sobald die erste Kopie gezogen ist, kehrt diese Garantie in späteren Ausgaben desselben RE-Faktor-Banners nicht zurück.","Once per operator. After the first copy, this guarantee does not return on future issues of the same RE-Factor banner.")},
- {key:"token",label:l("240er Token Pity","240-pull Token Pity"),value:95,max:240,note:l("Tangtang-Token","Tangtang token"),
+ {key:"token",label:l("240er Token Pity","240-pull Token Pity"),value:69,max:240,note:l("Tangtang-Token","Tangtang token"),
   tokenImage:"/images/endfield/cheatsheets/tangtang-token.webp",
   explanation:l("Der 240er Token-Fortschritt bleibt für Tangtang über alle ihre RE-Faktor-Ausgaben hinweg gespeichert. Rossi hat einen eigenen Zähler.","Tangtang's 240-pull Token Pity persists across her RE-Factor issues. Rossi has a separate counter.")}
 ];
 ---
 <section role="tabpanel" class="rc-panel" id="rc-panel-rerun" aria-labelledby="rc-tab-rerun" data-rc-panel="rerun" hidden>
  <header class="rc-panel-head"><div><span class="section-kicker">{l("RE-FAKTOR-REKRUTIERUNG","RE-FACTOR RECRUITMENT")}</span>
-  <h3>{l("Re-Run Banner","Re-Run Banner")}</h3>
+  <h3>Re-Run Banner <span class="rc-title-aside">{l("– Tangtang als Beispiel","– Tangtang example")}</span></h3>
   <p>{l("Das RE-Faktor-System besitzt ebenfalls 80/120/240-Pity, wird aber getrennt von normalen Event-Bannern geführt. Die drei Zähler haben unterschiedliche Übertragungsregeln.","RE-Factor also uses 80/120/240 pity but runs separately from normal event banners. Each counter has its own carry-over rule.")}</p></div></header>
- <p class="rc-illustration">{l("Veranschaulichung: drei unabhängige Beispielstände, keine echten Account-Daten.","Illustration: three independent sample values, not real account data.")}</p>
+ <p class="rc-illustration">{l("Veranschaulichung: drei Pity-Zähler bei 69 Pulls, keine echten Account-Daten.","Illustration: three Pity counters at 69 pulls, not real account data.")}</p>
  <RecruitmentMeters tracks={tracks} lang={lang}/>
 
  <div class="rc-rerun-cycle" data-rc-rerun-cycle>
   <h4>{l("Tangtangs RE-Faktor-Ausgaben · gemeinsame Garantien","Tangtang's RE-Factor issues · shared guarantees")}</h4>
   <p>{l("Drei zeitlich getrennte Ausgaben desselben Operator-Banners. Die einmalige 120er Garantie gehört Tangtang, nicht der jeweiligen Ausgabe.","Three separate issues of the same operator's banner. The one-time 120-pull guarantee belongs to Tangtang, not to each issue.")}</p>
   <div class="rc-cycle-guarantee" data-rc-cycle-guarantee>
-   <div class="rc-cycle-head"><strong>{l("Einmalige 120er Garantie · Tangtang","One-time 120-pull guarantee · Tangtang")}</strong><b>95 <small>/ 120</small></b></div>
-   <progress value="95" max="120" aria-label={l("Tangtang 120er Pity über drei Ausgaben","Tangtang 120 pity across three issues")}/>
+   <div class="rc-cycle-head"><strong>{l("Einmalige 120er Garantie · Tangtang","One-time 120-pull guarantee · Tangtang")}</strong><b>69 <small>/ 120</small></b></div>
+   <progress value="69" max="120" aria-label={l("Tangtang 120er Pity über drei Ausgaben","Tangtang 120 pity across three issues")}/>
    <p>{l("Einmalig über alle Ausgaben. Nach dem ersten Tangtang-Treffer verbraucht – kein Neustart bei #2 oder #3.","One-time across all issues. Used after the first Tangtang hit – no restart on issues #2 or #3.")}</p>
   </div>
   <div class="rc-cycle-issues">
@@ -35,24 +35,28 @@ const tracks=[
     <small>{l("RE-Faktor-Rekrutierung","RE-Factor Recruitment")}</small><div class="rc-issue-heading"><img src={ops.find(o=>o.id==="tangtang")?.assets.icon} alt="" width="38" height="38"/>
      <strong>Tangtang <span>#{issue}</span></strong></div>
     <div class="rc-issue-token"><img src="/images/endfield/cheatsheets/tangtang-token.webp" alt="" width="34" height="34"/><strong>240er Token Pity</strong></div>
-    <progress max="240" value="95" aria-label={"Tangtang #"+issue+" – 95/240"}/><b>95 / 240</b>
+    <progress max="240" value="69" aria-label={"Tangtang #"+issue+" – 69/240"}/><b>69 / 240</b>
     <p>{l("Derselbe gespeicherte Token-Fortschritt, kein Reset.","Same saved token progress – no reset.")}</p>
    </article>)}
   </div>
-  <div class="rc-cycle-bonus">
-   <h5>{l("Bonusrekrutierung · ein Mal pro Meilenstein","Bonus Recruitment · once per milestone")}</h5>
-   <p>{l("Nach den ersten 30, 60 und 90 regulären Pulls gibt es jeweils einen kostenlosen 10er-Rekrutierungsversuch. Diese Boni sind ausgabenübergreifend einmalig, nicht bei jeder neuen Ausgabe erneut erhältlich. Ein noch nicht genutzter freier 10er kann beim nächsten Re-Run genutzt werden.","Your first 30, 60 and 90 regular pulls each unlock a free ten-pull. Each milestone is available only once across issues, not again with every issue. An unused free ten-pull remains available on the next re-run.")}</p>
-   <div class="rc-bonus-milestones">
-    {[30,60,90].map(n=><div class="rc-bonus-milestone" data-rc-re-milestone={n}><b>{n}</b><span>{l("Pulls","pulls")}</span><strong>+10</strong><small>{l("Bonusrekrutierung","Bonus Recruitment")}</small></div>)}
+  <div class="rc-cycle-bonus" data-rc-cycle-bonus>
+   <div class="rc-cycle-head"><h5>{l("Bonusrekrutierung · 30 / 60 / 90 Pulls","Bonus Recruitment · 30 / 60 / 90 pulls")}</h5><b>69 <small>/ 90</small></b></div>
+   <p>{l("Nach den ersten 30, 60 und 90 regulären Pulls erhältst du jeweils einen kostenlosen 10er-Rekrutierungsversuch. Jeder Meilenstein ist über alle Ausgaben hinweg nur einmal verfügbar. Ungenutzte Bonusrekrutierungen bleiben beim nächsten RE-Faktor-Run verfügbar.","Your first 30, 60 and 90 regular pulls each grant a free ten-pull. Each milestone is available only once across all issues. An unused bonus recruitment carries to the next RE-Factor run.")}</p>
+   <div class="rc-bonus-progress" role="group" aria-label={l("Meilenstein-Fortschritt: 69 von 90 Pulls","Milestone progress: 69 out of 90 pulls")}>
+    {[30,60,90].map((n,i)=><div class="rc-bonus-segment" data-rc-re-milestone={n} data-rc-bonus-state={n<=69?"achieved":"progress"}>
+     <progress max="30" value={Math.max(0,Math.min(30,69-i*30))} aria-label={l("Meilenstein","Milestone")+" "+n+": "+Math.max(0,Math.min(30,69-i*30))+"/30"}/>
+     <div class="rc-bonus-breakpoint"><strong>{n} Pulls</strong><span>{n<=69?"✓ +10":"9 / 30"}</span></div>
+    </div>)}
    </div>
+   <small class="rc-bonus-caption">{l("30 ✓ · 60 ✓ · 90 noch offen (21 Pulls fehlen).","30 ✓ · 60 ✓ · 90 pending (21 pulls to go).")}</small>
   </div>
  </div>
  <div class="rc-rerun-example">
   <h4>{l("Tangtang vs. Rossi – zwei getrennte Token-Zähler","Tangtang vs Rossi – separate token progress")}</h4>
-  <p>{l("Wenn du bei Tangtang 95/240 erreicht hast, setzt du beim nächsten Tangtang-RE-Run bei 95 fort. Rossi beginnt mit seinem eigenen Zähler. Dein 80er-Pity bleibt über beide RE-Faktor-Banner hinweg erhalten.","If you reach 95/240 on Tangtang, your next Tangtang re-run resumes at 95. Rossi has a separate counter. Your 80 pity is shared between both RE-Factor banners.")}</p>
+  <p>{l("Wenn du bei Tangtang 69/240 erreicht hast, setzt du beim nächsten Tangtang-RE-Run bei 69 fort. Rossi beginnt mit seinem eigenen Zähler. Dein 80er-Pity bleibt über beide RE-Faktor-Banner hinweg erhalten.","If you reach 69/240 on Tangtang, your next Tangtang re-run resumes at 69. Rossi has a separate counter. Your 80 pity is shared between both RE-Factor banners.")}</p>
   <div class="rc-rerun-grid">{ops.map(op=><div class="rc-rerun-operator" data-operator={op.id}>
-   <img src={op.assets.icon} alt="" width="55" height="55" loading="lazy"/><div><strong>{op.name}</strong><span>{op.id==="tangtang"?"95 / 240":"0 / 240"}</span></div>
-   <progress max="240" value={op.id==="tangtang"?95:0} aria-label={op.name+" token"} />
+   <img src={op.assets.icon} alt="" width="55" height="55" loading="lazy"/><div><strong>{op.name}</strong><span>{op.id==="tangtang"?"69 / 240":"0 / 240"}</span></div>
+   <progress max="240" value={op.id==="tangtang"?69:0} aria-label={op.name+" token"} />
   </div>)}</div>
  </div>
  <p class="rc-callout rc-callout-cyan">{l("Der wichtigste Vorteil: Der normale Event-Release und der spätere erste RE-Faktor-Run besitzen jeweils eine eigene einmalige 120er-Garantie. So lassen sich weitere Kopien deutlich gezielter planen.","Key advantage: the original event release and the first RE-Factor appearance each have their own one-time 120 guarantee. This makes additional copies easier to plan.")}</p>

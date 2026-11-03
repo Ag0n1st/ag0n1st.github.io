@@ -11,11 +11,11 @@ const tabs=[{id:"event",de:"Event Banner",en:"Event Banner"},{id:"rerun",de:"Re-
 ---
 <section id="recruitment" class="op-cardlet rc-card" aria-labelledby="rc-title" data-rc-guide>
  <header class="rc-card-head">
-  <div><span class="section-kicker">ARKNIGHTS: ENDFIELD · CHEAT SHEET</span>
+  <img class="rc-headhunt-art" src="/images/endfield/cheatsheets/headhunting.webp" alt="" aria-hidden="true" width="75" height="75" decoding="async"/>
+  <div><span class="section-kicker">{l("REKRUTIERUNG · CHEAT SHEET","RECRUITMENT · CHEAT SHEET")}</span>
    <h2 id="rc-title">Gacha System</h2>
    <p class="rc-card-summary">{l("Rekrutierung und Waffenausgabe verständlich erklärt – mit Pity-Fortschritt und konkreten Beispielen.","Operator recruitment and weapon issue explained through pity progress and practical examples.")}</p>
   </div>
-  <span class="rc-pill">GACHA · 6★</span>
  </header>
  <div class="rc-mode-tabs" role="tablist" aria-label={l("Gacha-Bereich auswählen","Choose gacha section")}>
   <button type="button" class="rc-mode-tab" role="tab" id="rc-mode-operators" aria-controls="rc-mode-panel-operators"
@@ -25,7 +25,7 @@ const tabs=[{id:"event",de:"Event Banner",en:"Event Banner"},{id:"rerun",de:"Re-
  </div>
  <div id="rc-mode-panel-operators" role="tabpanel" aria-labelledby="rc-mode-operators" data-rc-mode-panel="operators">
   <div class="rc-operator-heading"><span class="section-kicker">{l("OPERATOR REKRUTIERUNG","OPERATOR RECRUITMENT")}</span>
-   <h3>{l("Banner im Überblick","Banners at a glance")}</h3>
+   <h3>{l("Alle Banner im Überblick","All banners at a glance")}</h3>
   </div>
   <div class="rc-tabs" role="tablist" aria-label={l("Rekrutierungsart auswählen","Choose banner type")}>
    {tabs.map((tab,index)=><button type="button" class="rc-tab" id={"rc-tab-"+tab.id} data-rc-tab={tab.id}

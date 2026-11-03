@@ -24,23 +24,72 @@ const categories=[
     <h1 class="endfield-cheatsheets-title">Cheat Sheets<span class="title-period">.</span></h1>
     <p class="endfield-utility-intro">{l("Kompakte Nachschlagekarten statt langem Suchen. Elastische Waren, Veredelung und Rekrutierung sind verfügbar; weitere Cheat Sheets folgen.","Compact quick-reference sheets. Elastic Goods, the refinement matrix and recruitment are available; more references will follow.")}</p>
 
-    <ElasticGoodsPeaks lang={lang} />
-    <RefinementMatrix lang={lang} />
-    <EndfieldRecruitment lang={lang} />
+    <div class="cheatsheet-accordion" data-cheatsheet-accordion>
+      <details class="cheatsheet-entry" data-cheatsheet-entry="elasticgoods">
+        <summary><span class="cheatsheet-entry-title">{l("Elastische Waren - Preis Peaks","Elastic Goods – Price Peaks")}</span><span class="cheatsheet-entry-chevron" aria-hidden="true">⌄</span></summary>
+        <div class="cheatsheet-entry-body"><ElasticGoodsPeaks lang={lang} /></div>
+      </details>
+      <details class="cheatsheet-entry" data-cheatsheet-entry="refinement">
+        <summary><span class="cheatsheet-entry-title">{l("Veredelungs-Matrix","Artificing Matrix")} <span class="cheatsheet-entry-title-muted">{l("Gute Übereinstimmungen","Good Matches")}</span></span><span class="cheatsheet-entry-chevron" aria-hidden="true">⌄</span></summary>
+        <div class="cheatsheet-entry-body"><RefinementMatrix lang={lang} /></div>
+      </details>
+      <details class="cheatsheet-entry" data-cheatsheet-entry="recruitment">
+        <summary><span class="cheatsheet-entry-title">Gacha System</span><span class="cheatsheet-entry-chevron" aria-hidden="true">⌄</span></summary>
+        <div class="cheatsheet-entry-body"><EndfieldRecruitment lang={lang} /></div>
+      </details>
+    </div>
 
     <div class="endfield-coming-cards endfield-cheatsheets-upcoming" aria-label={l("Weitere Cheat Sheets in Vorbereitung","More Cheat Sheets coming soon")}>
-      {[...systems,...categories].map(category=><article id={category.id} class="op-cardlet endfield-coming-card">
-        <span class="section-kicker">{category.tag}</span>
-        <h3>{en?category.en:category.de}</h3>
-        <p>{en?category.descriptionEn:category.descriptionDe}</p>
-        <span class="op-chip">{l("In Vorbereitung","Coming soon")}</span>
-      </article>)}
+      {[...systems,...categories].map(category=><details class="cheatsheet-entry cheatsheet-entry-upcoming" data-cheatsheet-entry={category.id}>
+        <summary><span class="cheatsheet-entry-title">{en?category.en:category.de}</span><span class="cheatsheet-entry-upcoming-badge">{l("In Vorbereitung","Coming soon")}</span><span class="cheatsheet-entry-chevron" aria-hidden="true">⌄</span></summary>
+        <div class="cheatsheet-entry-body"><article id={category.id} class="op-cardlet endfield-coming-card">
+          <span class="section-kicker">{category.tag}</span>
+          <h3>{en?category.en:category.de}</h3>
+          <p>{en?category.descriptionEn:category.descriptionDe}</p>
+          <span class="op-chip">{l("In Vorbereitung","Coming soon")}</span>
+        </article></div>
+      </details>)}
     </div>
   </main>
 </EndfieldPlaceholder>
 <style>
   .endfield-utility-page h1.endfield-cheatsheets-title{white-space:nowrap;font-size:clamp(30px,5vw,58px)}
-  .endfield-cheatsheets-upcoming{margin:28px 0 42px}
+  .endfield-cheatsheets-upcoming{margin:10px 0 42px;display:grid;gap:10px}
   .endfield-cheatsheets-upcoming .endfield-coming-card{scroll-margin-top:94px}
   .endfield-cheatsheets-upcoming .endfield-coming-card h3{font-size:19px;margin:0;line-height:1.3;color:#f7f3fa}
 </style>
+
+<style>
+.cheatsheet-accordion{display:grid;gap:11px;margin:25px 0 10px}
+.cheatsheet-entry{min-width:0;scroll-margin-top:95px;border:1px solid #49465a;border-radius:15px;background:linear-gradient(125deg,#22202d,#171b24);overflow:clip;transition:border-color .16s,background .16s}
+.cheatsheet-entry[open]{border-color:#71939e;background:linear-gradient(120deg,#292732,#191e27)}
+.cheatsheet-entry>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;justify-content:space-between;min-height:64px;padding:15px clamp(15px,2vw,23px)}
+.cheatsheet-entry>summary::-webkit-details-marker{display:none}
+.cheatsheet-entry>summary::marker{content:""}
+.cheatsheet-entry>summary:hover{background:rgba(142,224,236,.075)}
+.cheatsheet-entry>summary:focus-visible{outline:2px solid #9feaf3;outline-offset:-3px}
+.cheatsheet-entry-title{min-width:0;flex:1;font-size:clamp(16px,2.15vw,21px);font-weight:850;letter-spacing:-.025em;line-height:1.3;color:#f7f4fb}
+.cheatsheet-entry-title-muted{font-weight:600;font-size:.84em;color:#c8b5cf}
+.cheatsheet-entry-chevron{flex:0 0 30px;width:30px;height:30px;display:grid;place-items:center;font-size:23px;border:1px solid #5c6371;background:#ffffff0a;border-radius:9px;color:#b5e3eb;transition:transform .16s}
+.cheatsheet-entry[open]>summary .cheatsheet-entry-chevron{transform:rotate(180deg)}
+.cheatsheet-entry-body{padding:0 clamp(7px,1.2vw,14px) clamp(7px,1.2vw,14px)}
+.cheatsheet-entry-body>.eg-feature,.cheatsheet-entry-body>.refinement-feature,.cheatsheet-entry-body>.rc-card{margin:0!important}
+.cheatsheet-entry-upcoming-badge{font-size:10px;color:#c8c4d2;border:1px solid #625c6b;border-radius:7px;padding:6px 9px;white-space:nowrap}
+.cheatsheet-entry-upcoming .endfield-coming-card{margin:0}
+@media(max-width:570px){.cheatsheet-entry>summary{padding:12px;min-height:56px;gap:8px}.cheatsheet-entry-upcoming-badge{font-size:9px;padding:5px 6px}.cheatsheet-entry-chevron{flex-basis:26px;width:26px;height:26px}}
+@media(prefers-reduced-motion:reduce){.cheatsheet-entry,.cheatsheet-entry-chevron{transition:none}}
+</style>
+<script>
+ const entryMap:Record<string,string>={elasticgoods:"elasticgoods",refinement:"refinement",artificing:"refinement",recruitment:"recruitment",essences:"essences",bufffood:"bufffood"};
+ const openHashTarget=()=>{
+   const key=decodeURIComponent(location.hash.slice(1)).toLowerCase();
+   const target=entryMap[key];
+   if(!target)return;
+   const wrapper=document.querySelector<HTMLDetailsElement>(`[data-cheatsheet-entry="${target}"]`);
+   if(!wrapper)return;
+   wrapper.open=true;
+   requestAnimationFrame(()=>document.getElementById(key)?.scrollIntoView({block:"start"}));
+ };
+ window.addEventListener("hashchange",openHashTarget);
+ openHashTarget();
+</script>
