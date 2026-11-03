@@ -1326,7 +1326,7 @@ def smoke_i18n(page, base_url, width):
                all(page.locator("#"+x).count()==1 for x in ("recruitment","refinement","essences","elasticgoods","artificing","bufffood")) and
                page.locator(".endfield-cheatsheets-upcoming .endfield-coming-card").count()==2 and
                page.locator("[data-cheatsheets-group]").count()==0 and
-               page.locator("#elasticgoods").evaluate("(el)=>el.compareDocumentPosition(document.querySelector('#refinement')) & Node.DOCUMENT_POSITION_FOLLOWING")!=0,
+               page.locator("#elasticgoods").evaluate("(el)=>el.compareDocumentPosition(document.querySelector('#refinement')) & Node.DOCUMENT_POSITION_FOLLOWING")!=0 and
                page.locator("[data-rc-guide]").count()==1 and
                page.locator("#refinement").evaluate("(el)=>el.compareDocumentPosition(document.querySelector('#recruitment')) & Node.DOCUMENT_POSITION_FOLLOWING")!=0,
                label+": "+lang+" Elastic Goods, Refinement and Gacha card, then two upcoming references")
