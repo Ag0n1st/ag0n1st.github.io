@@ -125,3 +125,23 @@
 .refinement-personal-disclosure>.refinement-personal-stats{padding-top:24px}
 @media(max-width:650px){.refinement-personal-toggle{font-size:13px;padding:10px 12px;min-height:44px}.refinement-personal-disclosure>.refinement-personal-stats{padding-top:18px}}
 @media(prefers-reduced-motion:reduce){.refinement-personal-toggle,.refinement-personal-toggle-arrow{transition:none}}
+
+
+/* Worst-case catalyst math is part of the existing personal average card, not a new Cheat Sheet. */
+.refinement-personal-worstcase{grid-column:1/-1;min-width:0;border-top:1px solid #53666a;margin-top:2px;padding-top:17px}
+.refinement-personal-worstcase-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:14px}
+.refinement-personal-worstcase-heading .section-kicker{font-size:10px;letter-spacing:.07em;color:#f1c888}
+.refinement-personal-worstcase-heading h4{margin:6px 0 0;font-size:clamp(14px,1.8vw,18px);line-height:1.35;color:#f2eef5}
+.refinement-personal-worstcase-total{display:flex;align-items:baseline;gap:7px;white-space:nowrap}
+.refinement-personal-worstcase-total strong{font-size:clamp(25px,3.2vw,34px);font-variant-numeric:tabular-nums;color:#ffdb9d}
+.refinement-personal-worstcase-total small{font-size:11px;color:#d1c4b7}
+.refinement-personal-worstcase-stages{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.refinement-personal-worstcase-stage{min-width:0;display:flex;justify-content:space-between;align-items:center;gap:7px;padding:10px 12px;border:1px solid #695a48;border-radius:9px;background:linear-gradient(105deg,rgba(235,168,81,.085),rgba(23,24,30,.6))}
+.refinement-personal-worstcase-stage>span{font-size:11px;font-weight:750;color:#d8c3a7}
+.refinement-personal-worstcase-stage>strong{font-size:20px;font-weight:800;font-variant-numeric:tabular-nums;color:#ffe6b6;white-space:nowrap}
+.refinement-personal-worstcase-stage>strong small{font-size:9px;font-weight:600;color:#c5b7ae}
+.refinement-personal-worstcase-formula{font-size:13px;font-variant-numeric:tabular-nums;font-weight:750;line-height:1.6;color:#e4d7c6;margin:13px 0 6px}
+.refinement-personal-worstcase-formula strong{color:#ffe2a8}
+.refinement-personal-worstcase-formula span{font-size:11px;font-weight:500;color:#b8afb3}
+.refinement-personal-worstcase-explanation{font-size:11px;line-height:1.7;color:#bdb9c0;margin:4px 0 0;max-width:950px}
+@media(max-width:650px){.refinement-personal-worstcase-heading{align-items:flex-start;flex-wrap:wrap;gap:8px}.refinement-personal-worstcase-stages{grid-template-columns:1fr}.refinement-personal-worstcase-stage>strong{font-size:18px}}
