@@ -1367,6 +1367,12 @@ def smoke_i18n(page, base_url, width):
                personal.locator('[data-refinement-estimate="pooled"]').inner_text().startswith("58,3" if lang=="de" else "58.3") and
                personal.locator('[data-refinement-estimate="good"]').inner_text()==("55,4" if lang=="de" else "55.4") and
                personal.locator('[data-refinement-estimate="standard"]').inner_text()==("65,1" if lang=="de" else "65.1") and
+               personal.locator('[data-refinement-worstcase-total]').inner_text()=="164" and
+               personal.locator('[data-refinement-worstcase-pity]').count()==3 and
+               personal.locator('[data-refinement-worstcase-pity="6"] strong').inner_text().startswith("7 ") and
+               personal.locator('[data-refinement-worstcase-pity="12"] strong').inner_text().startswith("13 ") and
+               personal.locator('[data-refinement-worstcase-pity="20"] strong').inner_text().startswith("21 ") and
+               ("4 × (7 + 13 + 21)" in personal.locator('[data-refinement-worstcase-formula]').inner_text()) and
                ("29.09.2026" if lang=="de" else "29 Sep 2026") in personal.inner_text() and
                ("nur einem Attribut" if lang=="de" else "only one attribute") in personal.inner_text(),
                label+": "+lang+" Discord refinement sample is below matrix, with 6/12/20-pity rows and full-operator forecasts")
@@ -1377,6 +1383,11 @@ def smoke_i18n(page, base_url, width):
             ([["274","126","2,2"],["202","48","4,2"],["875","122","7,2"]] if lang=="de" else
              [["274","126","2.2"],["202","48","4.2"],["875","122","7.2"]]),
             label+": "+lang+" source catalyst samples and rounded averages unchanged")
+        verify(personal.locator('[data-refinement-worstcase]').evaluate(
+                   "(el)=>el.parentElement.classList.contains('refinement-personal-projection')") and
+               personal.locator('[data-refinement-worstcase]').evaluate(
+                   "(el)=>getComputedStyle(el).gridColumnStart==='1'"),
+               label+": "+lang+" worst case stays inside the average card below its divider")
         check_overflow(page,label+" "+lang+" refinement personal stats expanded")
         toggle.focus()
         toggle.press("Enter")
@@ -1810,7 +1821,7 @@ def smoke_i18n(page, base_url, width):
         now=_datetime.now(_ZoneInfo("Europe/Berlin")).strftime("%Y-%m-%d")
         answer=schedule[now]
         target_name=next(o["name"] for o in roster if o["id"]==answer)
-        wrong_name=next(o["name"] for o in roster if o["id"]!=answer)
+        wrong_name=next(o["name"] for o in roster if o["id"]!=answer and o["class"]=="Striker")
         guess_input=page.locator("[data-guess-input]")
         guess_input.fill(wrong_name)
         verify(page.locator("[data-suggestions] .efdl-option").count()>=1,
@@ -1824,6 +1835,9 @@ def smoke_i18n(page, base_url, width):
                      "won":page.locator("[data-winner]").is_visible()}
         verify(guess_debug["rows"]==1 and guess_debug["cells"]==7,
                label+": "+lang+" wrong guess creates all seven trivia comparisons "+str(guess_debug))
+        verify(page.locator('[data-results] tr').first.locator('.efdl-cell').nth(4).inner_text()==
+               ("Frontkämpfer" if lang=="de" else "Striker"),
+               label+": "+lang+" Striker class is translated correctly in the results table")
         guess_input.fill(target_name)
         page.locator("[data-submit]").click()
         verify(page.locator("[data-winner]").is_visible() and
