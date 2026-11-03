@@ -110,7 +110,8 @@ test("Gacha System integrates recruitment, bonus milestones, tokens and RE-Facto
  assert.match(event,/rc-title-aside/);
  assert.match(event,/rc-pool-previous/);
  assert.match(event,/Oroberyls nicht verschwenden/);
- assert.match(event,/rc-milestone-grid/);
+ assert.match(event,/rc-milestone-note/);
+ assert.doesNotMatch(event,/rc-milestone-grid/);
  assert.match(event,/Bonusrekrutierung/);
  assert.match(event,/Rekrutierungs-Dossier/);
  assert.match(event,/data-rc-advanced/);
@@ -119,7 +120,7 @@ test("Gacha System integrates recruitment, bonus milestones, tokens and RE-Facto
  assert.match(event,/rc-strategy-outcomes/);
  assert.match(event,/SI_LOSS_POOL\.map/);
  assert.match(event,/Bonusrekrutierung/);
- assert.match(rerun,/95\/240/);
+ assert.match(rerun,/69\/240/);
  assert.match(rerun,/RE-FAKTOR-REKRUTIERUNG/);
  assert.doesNotMatch(rerun,/OFFIZIELL:/);
  assert.match(rerun,/data-rc-rerun-cycle/);
