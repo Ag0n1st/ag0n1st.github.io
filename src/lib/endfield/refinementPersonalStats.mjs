@@ -20,10 +20,14 @@ export function calculateRefinementPersonalStats(source){
     return {level:stage.level,pity:stage.pity,good,standard,pooled};
   });
   const sum=key=>source.gearPieces*stages.reduce((total,stage)=>total+stage[key].average,0);
+  // The pity threshold still requires one final catalyst for the guaranteed success.
+  const worstCaseStages=stages.map(stage=>({pity:stage.pity,catalysts:stage.pity+1}));
+  const worstCasePerPiece=worstCaseStages.reduce((total,stage)=>total+stage.catalysts,0);
   return {
     stages,gearPieces:source.gearPieces,attributesPerPiece:stages.length,
     totalAttempts:stages.reduce((sum,stage)=>sum+stage.pooled.attempts,0),
     totalSuccesses:stages.reduce((sum,stage)=>sum+stage.pooled.successes,0),
-    perOperator:{pooled:sum("pooled"),good:sum("good"),standard:sum("standard")}
+    perOperator:{pooled:sum("pooled"),good:sum("good"),standard:sum("standard")},
+    worstCase:{stages:worstCaseStages,perPiece:worstCasePerPiece,perOperator:source.gearPieces*worstCasePerPiece}
   };
 }
