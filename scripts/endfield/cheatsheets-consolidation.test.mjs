@@ -146,3 +146,43 @@ test("Both token assets exist without exceeding the site's file budget",async()=
   assert.ok(statSync(path).size<10000,path+" should stay compact");
  }
 });
+
+
+test("All five Cheat Sheet cards collapse and legacy anchors reopen the matching card",()=>{
+ const hub=read("src/components/pages/EndfieldCheatSheets.astro");
+ assert.equal((hub.match(/class="cheatsheet-entry"/g)||[]).length,3);
+ assert.match(hub,/class="cheatsheet-entry cheatsheet-entry-upcoming"/);
+ for(const name of ["elasticgoods","refinement","recruitment"])assert.ok(hub.includes('data-cheatsheet-entry="'+name+'"'));
+ assert.match(hub,/data-cheatsheet-accordion/);
+ assert.match(hub,/hashchange/);
+ assert.match(hub,/artificing:"refinement"/);
+ assert.match(hub,/wrapper\.open=true/);
+ assert.match(hub,/Good Matches/);
+ assert.match(hub,/Gacha System/);
+});
+
+test("Gacha refinement has bilingual Headhunting art, milestone notes and consistent Tangtang 69/90 progress",()=>{
+ const guide=read("src/components/pages/EndfieldRecruitment.astro");
+ const event=read("src/components/pages/RecruitmentEvent.astro");
+ const rerun=read("src/components/pages/RecruitmentRerun.astro");
+ const css=read("src/styles/endfield-recruitment.css");
+ assert.ok(guide.includes("headhun"+"ting.webp"));
+ assert.match(guide,/Alle Banner im Überblick/);
+ assert.match(guide,/All banners at a glance/);
+ assert.match(guide,/REKRUTIERUNG · CHEAT SHEET/);
+ assert.match(event,/rc-milestone-note/);
+ assert.doesNotMatch(event,/rc-milestone-grid/);
+ assert.match(event,/Jeder weitere Pull auf demselben Banner, nach verbrauchter 120er Garantie, ist verschwendet!/);
+ assert.match(event,/genügend Pull-Währung zur Verfügung hast/);
+ assert.match(event,/aktiv Pulls verlieren kannst/);
+ assert.match(event,/Fall 2 · Worst Case/);
+ assert.match(rerun,/Tangtang als Beispiel/);
+ assert.match(rerun,/69.*\/ 120/);
+ assert.match(rerun,/rc-bonus-progress/);
+ assert.match(rerun,/data-rc-bonus-state/);
+ assert.doesNotMatch(rerun,/95\s*\/\s*240/);
+ assert.match(css,/--rc-strategy:#82e3eb/);
+ assert.match(css,/--rc-strategy:#ee99d5/);
+ assert.match(css,/rc-bonus-segment progress/);
+
+});
