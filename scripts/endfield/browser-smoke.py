@@ -395,8 +395,11 @@ def smoke_si(page, base_url, width):
            label+": Jade Vessel + Long Heritage + verified Khravengger")
     verify(page.locator("#uebersicht .op-quick-partners-card img").count()>=9,
            label+": official cached portraits for diverse Meta partners")
-    verify(page.locator("#uebersicht .op-video-placeholder").count()==1,
-           label+": no invented Si YouTube guide embedded")
+    si_video=page.locator("#uebersicht .op-video-embed")
+    verify(si_video.count()==1 and "c5aWLCyz56c" in (si_video.get_attribute("src") or ""),
+           label+": published Si YouTube guide is embedded")
+    verify(page.locator("#uebersicht .op-video-placeholder").count()==0,
+           label+": Si video placeholder is removed")
 
     verify("SKPORT-Datenstand: 2026-10-16" in page.locator(".op-locale-note").inner_text() and
            "PDF" not in page.locator(".op-locale-note").inner_text(),
