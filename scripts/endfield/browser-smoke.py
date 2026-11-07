@@ -1740,7 +1740,7 @@ def smoke_i18n(page, base_url, width):
                       y:icon.y+icon.height/2,wheelCentreY:wheel.y+wheel.height/2};
             }""")
             verify(bool(result) and wheel.locator('.or-wheel-segment.is-winner[data-operator="'+result+'"]').count()==1 and
-                   wheel.locator(".or-wheel-segment").count()==33 and
+                   wheel.locator(".or-wheel-segment").count()==available_count and
                    pointer_alignment and pointer_alignment["dx"]<4 and
                    pointer_alignment["y"]<pointer_alignment["wheelCentreY"],
                    label+": "+lang+" winning portrait remains on physical wheel precisely below top marker")
