@@ -1,4 +1,45 @@
 ---
+# PORTABLE OPERATOR-GUIDE-VORLAGE · CHATGPT-HANDOFF
+# Diese Markdown-Datei kann in jedem ChatGPT-Projekt als Datei geöffnet,
+# gemeinsam mit dem Nutzer ausgefüllt und anschließend an den Website-Chat
+# zurückgegeben werden. Sie folgt direkt dem echten Astro-Guide-Schema.
+#
+# ANWEISUNG FÜR CHATGPT IM PROJEKT „ARKNIGHTS: ENDFIELD“
+# 1. Nutze den bisherigen Projektkontext, vom Nutzer genannte Builds,
+#    persönliche Einschätzungen und verifizierte Endfield-Quellen.
+# 2. Ersetze „neuer-operator“ durch den echten Operator-Slug.
+#    Dateiname bei Abgabe: <operator-slug>.md.
+# 3. Fülle die neun Guide-Abschnitte unterhalb aus; behalte die YAML-Struktur,
+#    Feldnamen und die --- Trennzeichen vollständig bei.
+# 4. Alle Textfelder als ausformulierte, direkt an Spieler gerichtete
+#    deutsche Guide-Texte schreiben; kein „der Creator sagt“ o. Ä.
+# 5. Trenne offizielle Fakten von persönlicher Bewertung. Erfinde keine
+#    Waffen-, Gear-, Talent- oder Operator-IDs, Zahlen, Team-Setups,
+#    Potenzial-Prozente, Quellen oder noch unbestätigte Meta-Builds.
+# 6. Wenn etwas unbekannt ist, lass es leer/auskommentiert, verwende
+#    status: draft und stelle die relevanten Rückfragen im Chat.
+# 7. Prüfe interne Verweise: featuredBuildId / buildId müssen auf echte
+#    equipment.builds[].id zeigen; pro Team genau vier verschiedene
+#    Operatoren einschließlich des Guide-Operators; pro Build vier Gear-IDs.
+# 8. Spielelemente (Klasse, Element, Seltenheit, Skill-/Talenttexte,
+#    Artwork) kommen beim Website-Import aus dem offiziellen Katalog
+#    und müssen nicht hier erfunden oder doppelt hinterlegt werden.
+# 9. Nur belegte individuelle Prozentvergleiche mit benannten
+#    Bedingungen/Quelle eintragen. Prozente zu Potenzialen nur
+#    inkrementell P(n) gegenüber P(n-1).
+# 10. Gib als Ergebnis die VOLLSTÄNDIG AUSGEFÜLLTE .md-Datei aus,
+#     nicht bloß Stichpunkte; danach dieselbe Datei in den Website-Chat
+#     hochladen. Bei offenen Fragen als draft belassen.
+#
+# WEBSITE-IMPORT (für späteren Website-Chat):
+# - Dieselbe YAML-Struktur wird in src/content/operator-guides/<slug>.md
+#   verwendet. Bis zur Datenprüfung / Freigabe status: draft.
+# - Englische Prosa wird beim Einpflegen in
+#   src/data/i18n/en-guide-content.json vollständig synchronisiert;
+#   IDs, Mengen, Reihenfolgen und Builds bleiben in DE und EN gleich.
+# - Spieldaten, Gear und Artworks werden separat im offiziellen Katalog
+#   validiert/importiert; keine improvisierten Assets oder SKPORT-Zahlen.
+#
 # GUIDE-TEMPLATE: Diese Datei wird von Astro wegen des führenden "_" ignoriert.
 # Neuen Guide anlegen: _template.md kopieren, z.B. nach si.md, operator ändern.
 # Der Operator-Slug muss zur Datei und später zum Import-Datensatz passen.
@@ -131,10 +172,30 @@ equipment:
   # - stage: early # early | mid | late | endgame
   #   note: "Frühe Übergangsausrüstung und Freischaltung"
   generalNotes: "" # zusätzlicher eigener Hinweis; Standard-Disclaimer ist bereits eingebaut
+  # Optional: DPS-/Support-Matrizen mit Metrik-Labels in DE und EN.
+  # Nur mit überprüften Werten befüllen; die unten stehenden IDs sind
+  # syntaktische Beispiele, KEINE tatsächlichen Ausrüstungs-Empfehlungen.
   matrix:
     enabled: false
     metrics: []
     rows: []
+    variants: []
+    # - id: dps
+    #   labelDe: "DPS"
+    #   labelEn: "DPS"
+    #   metrics:
+    #     - {id: atk, labelDe: "ANG", labelEn: "ATK"}
+    #   rows:
+    #     - id: beispiel
+    #       label: "Beispiel-Konfiguration"
+    #       values: {atk: "–"}
+    #       weaponId: "1046"
+    #       weaponPotential: P0   # P0 | P5
+    #       weaponTuning: "9/9/4" # 9/9/4 | 9/9/9
+    #       armorId: "1246"
+    #       glovesId: "1245"
+    #       kit1Id: "1244"
+    #       kit2Id: "1243"
 
 # 6. POTENZIALE
 potentials:
@@ -206,6 +267,7 @@ teams:
 
 # 8. GAMEPLAY
 gameplay:
+  # explanation: "Freigeschaltete Rotation, praktische Tipps und typische Fehler."
   pending: false # true = FOLGT-Ecklabel, keine fiktiven Vorschau-Runs; bis echte Videos vorliegen
   showcases: []
   # - id: trial-run
