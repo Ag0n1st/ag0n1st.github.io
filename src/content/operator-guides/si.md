@@ -11,7 +11,8 @@ listing:
   summaryEn: "Si offers Cryo and Heat amplification, flexible team roles and powerful Combo Skill damage."
   visible: true
 guideVideo:
-  title: "Si – ausführlicher Videoguide in Vorbereitung"
+  title: "Si Guide (Deutsch) – Builds, Teams & Gameplay | Arknights: Endfield"
+  url: "https://youtu.be/c5aWLCyz56c"
 overview:
   summary: "Si ist eine 6★-Kryo-Unterstützerin mit Großschwert, Intellekt als Haupt- und Stärke als Sekundärattribut. Ihr flexibles Kit erlaubt sie sowohl als Main DPS mit Fokus auf Kombofertigkeit und aufgezeichneten Schaden als auch als Sub DPS beziehungsweise Support für Kryo- und Hitze-Teams. Künstlerische Absicht erfasst Schaden am Ziel, ihre Tintenseele überträgt Treffer und Effekte auf den ursprünglichen Gegner, während die Ultimate das gesamte Team mit Kryo- und Hitze-Verstärkung unterstützt. Entscheidend sind Position 1, der Zeitpunkt der Combo-Auslösung und sorgfältiges FP-Management."
   traits: ["Amp", "Damage Dealer", "Cryo Infliction"]
