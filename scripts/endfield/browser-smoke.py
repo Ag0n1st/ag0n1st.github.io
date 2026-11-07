@@ -395,8 +395,11 @@ def smoke_si(page, base_url, width):
            label+": Jade Vessel + Long Heritage + verified Khravengger")
     verify(page.locator("#uebersicht .op-quick-partners-card img").count()>=9,
            label+": official cached portraits for diverse Meta partners")
-    verify(page.locator("#uebersicht .op-video-placeholder").count()==1,
-           label+": no invented Si YouTube guide embedded")
+    si_video=page.locator("#uebersicht .op-video-embed")
+    verify(si_video.count()==1 and "c5aWLCyz56c" in (si_video.get_attribute("src") or ""),
+           label+": published Si YouTube guide is embedded")
+    verify(page.locator("#uebersicht .op-video-placeholder").count()==0,
+           label+": Si video placeholder is removed")
 
     verify("SKPORT-Datenstand: 2026-10-16" in page.locator(".op-locale-note").inner_text() and
            "PDF" not in page.locator(".op-locale-note").inner_text(),
@@ -1673,7 +1676,8 @@ def smoke_i18n(page, base_url, width):
         verify(("23.08.2026" if lang=="de" else "23 August 2026") in note and
                "Si" in note and "Purrchena" in note,
                label+": "+lang+" source disclosure and manually added roles")
-        verify(roulette.locator(".or-wheel-icon").count()==33 and
+        available_count=int(roulette.locator('[data-roulette-role="all"] [data-roulette-count]').inner_text())
+        verify(available_count>=33 and roulette.locator(".or-wheel-icon").count()==available_count and
                roulette.locator(".or-wheel-icon").first.evaluate(
                  "(im)=>im.complete&&im.naturalWidth>0&&getComputedStyle(im).borderRadius==='50%'") and
                roulette.locator(".or-wheel-segment").evaluate_all("""segments=>segments.every(el=>{
@@ -1681,9 +1685,9 @@ def smoke_i18n(page, base_url, width):
                    return Math.abs(point.x-(img.x+img.width/2))<2 &&
                           Math.abs(point.y-(img.y+img.height/2))<2;
                  })"""),
-               label+": "+lang+" 33 local circular operator portraits on the wheel")
+               label+": "+lang+" all currently released local circular operator portraits on the wheel")
         verify(roulette.locator(".or-wheel-segment").evaluate_all(inward_portraits_js),
-               label+": "+lang+" all 33 operator portraits face into the hub")
+               label+": "+lang+" all released operator portraits face into the hub")
         verify([roulette.locator('[data-roulette-role="'+role+'"] [data-roulette-count]').inner_text()
                  for role in ("damage-dealer","enabler","buffer")]==["12","16","11"],
                label+": "+lang+" exact community roles with Si and Purrchena")
@@ -1736,7 +1740,7 @@ def smoke_i18n(page, base_url, width):
                       y:icon.y+icon.height/2,wheelCentreY:wheel.y+wheel.height/2};
             }""")
             verify(bool(result) and wheel.locator('.or-wheel-segment.is-winner[data-operator="'+result+'"]').count()==1 and
-                   wheel.locator(".or-wheel-segment").count()==33 and
+                   wheel.locator(".or-wheel-segment").count()==available_count and
                    pointer_alignment and pointer_alignment["dx"]<4 and
                    pointer_alignment["y"]<pointer_alignment["wheelCentreY"],
                    label+": "+lang+" winning portrait remains on physical wheel precisely below top marker")
