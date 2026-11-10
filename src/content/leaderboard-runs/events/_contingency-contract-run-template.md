@@ -7,6 +7,8 @@ discordName: "Discord Name"
 # countryCode: DE # Nur mit Freigabe zur öffentlichen Anzeige.
 eventId: contingency-contract-v16
 version: v1.6
+# ccWeek: 1 for runs submitted before the next Risk/perk phase, 2 for the later phase.
+ccWeek: 1
 points: 45
 time: "04:45"
 video: "https://youtu.be/VIDEO_ID"
