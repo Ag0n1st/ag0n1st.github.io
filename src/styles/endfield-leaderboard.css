@@ -252,3 +252,16 @@
 .cl-contract-table thead th:nth-child(5){width:82px}
 @media(max-width:760px){.cl-contract-table .cl-run-points{text-align:right}}
 @media(max-width:460px){.cl-cc-score{min-width:54px;height:24px;gap:1.5px;padding:1.5px 3.5px 1.5px 5px}.cl-cc-score-value{font-size:13px}.cl-cc-score-mark{width:18px;height:18px;flex-basis:18px}}
+
+/* CC v1.6 week split: title stays on the left, compact event-style controls on the right. */
+.cl-cc-results-head{gap:12px;flex-wrap:wrap}
+.cl-cc-week-switch{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin-left:auto}
+.cl-cc-week-choice{min-height:42px;min-width:91px;padding:9px 13px;border:1px solid #65546c;border-radius:10px;background:#27202f;color:#e4d8ed;font:inherit;font-size:12px;font-weight:800;cursor:pointer;transition:background .15s,border-color .15s,opacity .15s}
+.cl-cc-week-choice:hover:not(:disabled){border-color:#c4a3df;background:#34273f}
+.cl-cc-week-choice[aria-pressed="true"]{border-color:var(--cyan);background:#183841;color:#e7ffff;box-shadow:inset 0 0 0 1px #4a9fac}
+.cl-cc-week-choice:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.cl-cc-week-choice:disabled{opacity:.4;filter:grayscale(.65);cursor:not-allowed;box-shadow:none}
+.cl-contract-table [data-cc-week-rows][hidden]{display:none!important}
+@media(max-width:760px){.cl-cc-results-head{align-items:stretch}.cl-cc-week-switch{width:100%;justify-content:flex-end;margin-left:0}}
+@media(max-width:460px){.cl-cc-week-switch{gap:7px}.cl-cc-week-choice{min-width:0;flex:1 1 0;min-height:40px}}
+@media(prefers-reduced-motion:reduce){.cl-cc-week-choice{transition:none}}
