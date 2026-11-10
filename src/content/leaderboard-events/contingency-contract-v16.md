@@ -5,6 +5,7 @@ kind: contingency-contract
 version: v1.6
 startsOn: "2026-11-05"
 endsOn: "2026-11-25"
+weekTwoStartsOn: "2026-11-15"
 image: "/images/endfield/leaderboard/contingency-contract-v16.webp"
 backgroundImage: "/images/endfield/leaderboard/contingency-contract-v16-background.webp"
 achievement:

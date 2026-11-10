@@ -45,6 +45,12 @@ Für größere Änderungen immer `npm run test:endfield`, `node scripts/endfield
 - Neue Eventgrafiken müssen zuerst unter `public/images/endfield/leaderboard/` vorhanden sein; Bildlinks in der Eventdefinition sind exakt zu übernehmen.
 
 
+## CC v1.6 – Woche 1 / Woche 2 (10.11.2026)
+- `weekTwoStartsOn: "2026-11-15"` ist in der Event-Metadatei hinterlegt. Bis einschließlich 14.11.2026 (Europe/Berlin) ist **Woche 1** ausgewählt; **Woche 2** ist ausgegraut und nicht bedienbar. Ab **15.11.2026** wird Woche 2 beim Seitenaufruf automatisch auswählbar und als Standard gezeigt. Woche 1 bleibt jederzeit verfügbar, auch nach dem Event im Archiv. Die Umschaltung erfolgt anhand des Berliner Kalendertages – nicht der Browser-Zeitzone – zusätzlich zum regulären 6-Stunden-Deployment.
+- CC-Run-Dateien benötigen `ccWeek: 1` für gültige Einreichungen der ersten Risk-/Perk-Phase bzw. `ccWeek: 2` für die zweite Phase. Bei neuen Videos **nicht** den bestehenden Woche-1-Run überschreiben: eine neue Markdown-Datei mit eindeutiger `runId` und derselben stabilen `playerId` anlegen.
+- Woche 1 bleibt auf CC-Einträge mit `ccWeek: 1` beschränkt. Woche 2 zeigt alle Woche-1-Ergebnisse sowie Woche-2-Submissions. Bei mehreren Videos desselben Spielers zählt **nur das beste Ergebnis** nach bestehendem CC-Ranking (höchste Punktzahl, bei Gleichstand kürzeste Ingame-Zeit). Das Woche-1-Ergebnis bleibt unberührt. Keine Duplikate des Spielers innerhalb einer Wochenansicht.
+- Vier vom Betreiber am 10.11.2026 ausdrücklich zur Anzeige eingereichte eigene Ergebnisse sind in verifizierten Markdown-Dateien gespeichert: Duality/Si 01:40 (auch allgemeiner Si-Boss), Nefarith 00:39 (v1.5), Alleikhreos 01:22 (v1.4), CC Risk 48 / 06:14 (Woche 1; v1.6). Die Links und P0–P5-Angaben entsprechen den Originaleinreichungen. Keine zusätzlichen Bildassets oder externen APIs.
+
 ## CC v1.6 – Design-Feinschliff (02.11.2026)
 - Bei angekündigten Events nur im Panel den einmaligen Start-Hinweis rendern. Schnellauswahl-Buttons zeigen lediglich den Eventtitel.
 - CC-Punkte erscheinen als goldener, zum Eventpassender Badge mit offizieller weißer Symbolquelle (lokale transparente WebP-Maske); der Wert bleibt les- und per `aria-label` zugänglich in beiden Sprachen. Punktesortierung bleibt rein numerisch.

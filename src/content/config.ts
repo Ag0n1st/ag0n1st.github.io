@@ -43,6 +43,7 @@ const leaderboardRuns=defineCollection({
     countryCode:z.string().regex(/^[A-Z]{2,3}$/).optional(),
     boss:z.string().regex(/^[a-z0-9-]+$/).optional(),
     points:z.number().int().min(0).optional(),
+    ccWeek:z.number().int().min(1).max(2).optional(),
     version:z.string().regex(/^v\d+\.\d+$/),
     time:z.string().regex(/^\d{2,}:[0-5]\d$/),
     video:z.string().url(),
@@ -67,6 +68,7 @@ const leaderboardEvents=defineCollection({
     version:z.string().regex(/^v\d+\.\d+$/),
     startsOn:z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     endsOn:z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    weekTwoStartsOn:z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
     image:z.string().startsWith("/images/endfield/"),
     backgroundImage:z.string().startsWith("/images/endfield/"),
     achievement:z.object({

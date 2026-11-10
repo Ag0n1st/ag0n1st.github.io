@@ -45,6 +45,10 @@ export function validateLeaderboardEntries({events,runs,bossSlugs,operatorSlugs}
       }
     }
     if(!validDate(event.startsOn)||!validDate(event.endsOn)||event.startsOn>event.endsOn)fail(context,"invalid event period");
+    if(event.weekTwoStartsOn!==undefined&&(
+      kind!=="contingency-contract"||!validDate(event.weekTwoStartsOn)||
+      event.weekTwoStartsOn<=event.startsOn||event.weekTwoStartsOn>event.endsOn))
+      fail(context,"invalid CC week 2 start date");
     if(!normalisedPath(event.slug).endsWith(event.eventId))fail(context,"filename must match eventId");
     const ruleIds=new Set();
     for(const rule of event.rules){
@@ -80,9 +84,12 @@ export function validateLeaderboardEntries({events,runs,bossSlugs,operatorSlugs}
         if(kind==="boss"){
           if(event.boss!==run.boss)fail(context,"boss differs from event");
           if(run.points!==undefined)fail(context,"boss run must not include points");
+          if(run.ccWeek!==undefined)fail(context,"boss run must not include CC week");
         }else if(kind==="contingency-contract"){
           if(run.boss!==undefined)fail(context,"Contingency Contract run must not define boss");
           if(!Number.isSafeInteger(run.points)||run.points<0)fail(context,"invalid points");
+          if(![1,2].includes(run.ccWeek))fail(context,"CC week must be 1 or 2");
+          if(run.ccWeek===2&&!event.weekTwoStartsOn)fail(context,"CC week 2 requires event start date");
           if(run.eligibleForCommunity)fail(context,"score runs are not eligible for Community Boss Leaderboard");
         }
       }
@@ -90,6 +97,7 @@ export function validateLeaderboardEntries({events,runs,bossSlugs,operatorSlugs}
     }else{
       if(run.eligibleForCommunity)fail(context,"eligibleForCommunity is only for event runs");
       if(run.points!==undefined)fail(context,"general boss runs must not include points");
+      if(run.ccWeek!==undefined)fail(context,"general boss run must not include CC week");
       if(!slug.startsWith("general/"+run.boss+"/"))fail(context,"general run must be inside general/<boss>/");
     }
     if(run.countryCode && !/^[A-Z]{2,3}$/.test(run.countryCode))fail(context,"invalid country code");

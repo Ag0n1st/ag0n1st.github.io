@@ -62,6 +62,32 @@ if(root){
     dialog.addEventListener("click",event=>{if(event.target===dialog)dialog.close();});
     dialog.addEventListener("close",()=>{if(!panel.hidden)trigger.focus();});
   }
+  // Date gating uses Berlin editorial calendar, not the viewer's local timezone.
+  // Week 1 is immutable: Week 2 shows week-1 submissions plus newer best scores.
+  const todayBerlin=()=>{
+    const parts=Object.fromEntries(new Intl.DateTimeFormat("en-GB",{
+      timeZone:"Europe/Berlin",year:"numeric",month:"2-digit",day:"2-digit"
+    }).formatToParts(new Date()).filter(part=>part.type!=="literal").map(part=>[part.type,part.value]));
+    return parts.year+"-"+parts.month+"-"+parts.day;
+  };
+  for(const switcher of root.querySelectorAll<HTMLElement>("[data-cc-week-switch]")){
+    const choices=[...switcher.querySelectorAll<HTMLButtonElement>("[data-cc-week-choice]")];
+    const result=switcher.closest<HTMLElement>(".cl-event-results");
+    const weeks=[...result?.querySelectorAll<HTMLTableSectionElement>("[data-cc-week-rows]")??[]];
+    const weekTwo=choices.find(choice=>choice.dataset.ccWeekChoice==="2");
+    const available=Boolean(switcher.dataset.weekTwoStart&&todayBerlin()>=switcher.dataset.weekTwoStart);
+    if(weekTwo)weekTwo.disabled=!available;
+    const choose=(week:1|2)=>{
+      if(week===2&&!available)return;
+      for(const choice of choices)choice.setAttribute("aria-pressed",String(Number(choice.dataset.ccWeekChoice)===week));
+      for(const section of weeks)section.hidden=Number(section.dataset.ccWeekRows)!==week;
+    };
+    for(const choice of choices)choice.addEventListener("click",()=>{
+      const week=Number(choice.dataset.ccWeekChoice);
+      if(week===1||week===2)choose(week);
+    });
+    choose(available?2:1);
+  }
   addEventListener("popstate",restore);
   restore();
 }
