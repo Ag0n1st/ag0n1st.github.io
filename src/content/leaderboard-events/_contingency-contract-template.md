@@ -7,6 +7,8 @@ kind: contingency-contract
 version: v1.7
 startsOn: "2027-01-01"
 endsOn: "2027-01-21"
+# Bei CC mit zwei Ausgaben den Start von Woche 2 hinterlegen; sonst Feld weglassen.
+# weekTwoStartsOn: "2027-01-11"
 image: "/images/endfield/leaderboard/REPLACE-BANNER.webp"
 backgroundImage: "/images/endfield/leaderboard/REPLACE-BACKGROUND.webp"
 achievement:
