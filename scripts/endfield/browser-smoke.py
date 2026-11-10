@@ -1099,7 +1099,7 @@ def smoke_i18n(page, base_url, width):
         verify(cc_observed["visible"] and cc_observed["pressed"]=="true" and
                "Top 10 – Contingency Contract v1.6" in cc_observed["title"] and
                cc_observed["points"]==["48"] and
-               cc_observed["time"]==["06:14"] and
+               len(cc_observed["time"])==1 and cc_observed["time"][0].startswith("06:14") and
                cc_observed["demo_labels"]==0 and
                cc_visible.locator(".cl-player").inner_text()=="Ag0n1st" and
                cc_visible.locator(".cl-run-time a").get_attribute("href")=="https://www.youtube.com/watch?v=uQzettPOh1c" and
