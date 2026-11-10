@@ -237,3 +237,37 @@ test("Duality Markdown source keeps the owner-approved run and two-language rule
  assert.match(page,/Das Community Leaderboard und das Event Leaderboard werden einmal pro Woche am Ende der Woche aktualisiert/);
  assert.match(page,/The Community Leaderboard and Event Leaderboard are updated once a week at the end of the week/);
 });
+
+
+test("Ag0n1st's four self-submitted runs retain supplied video links, team and versions",()=>{
+ const cases=[
+  ["events/duality/ag0n1st-0140.md","si","v1.6","01:40","tiTpIto8FpE",[["si",0],["arcane",0],["tangtang",0],["xaihi",5]]],
+  ["general/nefarith/ag0n1st-0039.md","nefarith","v1.5","00:39","Zw8B2F2nJP8",[["typhoeus",0],["arcane",0],["xaihi",5],["liino",0]]],
+  ["general/alleikhreos/ag0n1st-0122.md","alleikhreos","v1.4","01:22","qSIktISsLPQ",[["arcane",0],["rossi",0],["camille",0],["gilberta",0]]]
+ ];
+ for(const [file,boss,version,time,videoId,team] of cases){
+  const record=read("src/content/leaderboard-runs/"+file);
+  for(const snippet of ["playerId: ag0n1st","discordName: Ag0n1st","countryCode: DE",
+    "boss: "+boss,"version: "+version,'time: "'+time+'"',
+    "https://www.youtube.com/watch?v="+videoId,"status: verified"])
+    assert.ok(record.includes(snippet),file+" missing "+snippet);
+  assert.equal((record.match(/slug:/g)||[]).length,4,file+" needs four operators");
+  for(const [slug,potential] of team)
+    assert.ok(record.includes("{ slug: "+slug+", potential: "+potential+" }"),file+": "+slug+" P"+potential);
+ }
+ const duality=read("src/content/leaderboard-runs/events/duality/ag0n1st-0140.md");
+ assert.match(duality,/eventId: duality/);
+ assert.match(duality,/eligibleForCommunity: true/);
+ assert.ok(!existsSync("src/content/leaderboard-runs/general/si/ag0n1st-0140.md"),
+  "Si must appear through Duality alone, not as a duplicate Markdown entry");
+ const cc=read("src/content/leaderboard-runs/events/contingency-contract-v16/ag0n1st-risk48-0614.md");
+ for(const snippet of ["runId: cc-v16-ag0n1st-risk48-0614","playerId: ag0n1st","discordName: Ag0n1st",
+  "countryCode: DE","eventId: contingency-contract-v16","version: v1.6","ccWeek: 1","points: 48",
+  'time: "06:14"',"https://www.youtube.com/watch?v=uQzettPOh1c","eligibleForCommunity: false","status: verified"])
+  assert.ok(cc.includes(snippet),"CC owner record missing "+snippet);
+ for(const [slug,potential] of [["arcane",0],["si",2],["gilberta",1],["liino",0]])
+  assert.ok(cc.includes("{ slug: "+slug+", potential: "+potential+" }"));
+ assert.equal((cc.match(/slug:/g)||[]).length,4);
+ assert.match(page,/eventData\.verifiedRuns\.map\(run=>run\.version\)/);
+ assert.match(page,/eligibleForCommunity===true/);
+});
