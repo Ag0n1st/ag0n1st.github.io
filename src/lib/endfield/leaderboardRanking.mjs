@@ -91,3 +91,16 @@ export function flagForCountry(code){
   if(!/^[A-Z]{2}$/.test(alpha2))return "🌐";
   return [...alpha2].map(letter=>String.fromCodePoint(0x1f1e6+letter.charCodeAt(0)-65)).join("");
 }
+
+/**
+ * CC week 1 is a permanent snapshot; week 2 inherits its entries and replaces a
+ * player's displayed result only with their strongest eligible week-2 run.
+ * A shared playerId prevents duplicate rows; existing score/time tie rules remain.
+ */
+export function rankContingencyContractWeek(runs,{eventId,version,week=1,limit=10}={}){
+  if(week!==1&&week!==2)throw new RangeError("CC week must be 1 or 2");
+  return rankContingencyContractRuns(
+    runs.filter(run=>run.ccWeek===1||(week===2&&run.ccWeek===2)),
+    {eventId,version,limit}
+  );
+}
