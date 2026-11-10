@@ -1,7 +1,8 @@
 ---
 import leaderboard from "../../data/endfield/community-leaderboard.json";
 import {getOperatorImageUrl} from "../../lib/endfield/operatorAssets";
-import {rankVerifiedRuns,rankContingencyContractRuns,flagForCountry} from "../../lib/endfield/leaderboardRanking.mjs";
+import {rankVerifiedRuns,rankContingencyContractWeek,flagForCountry} from "../../lib/endfield/leaderboardRanking.mjs";
+import {berlinDayKey} from "../../lib/endfield/eventLifecycle.mjs";
 import type {loadLeaderboardContent} from "../../lib/endfield/leaderboardContent";
 type Content=Awaited<ReturnType<typeof loadLeaderboardContent>>;
 interface Props {lang?:"de"|"en";event:Content["events"][number];verifiedRuns:Content["verifiedRuns"];archived:boolean;hidden:boolean;upcoming?:boolean}
@@ -12,14 +13,19 @@ const isGermanFlag=(code?:string)=>code==="DEU"||code==="DE";
 const countryName=(code?:string)=>isGermanFlag(code)?l("Deutschland","Germany"):(code||l("Keine Angabe","Not specified"));
 const shortDate=(date:string)=>{const [year,month,day]=date.split("-");return year&&month&&day?day+"."+month+".":date;};
 const isContract=event.kind==="contingency-contract";
-const verified=isContract
-  ?rankContingencyContractRuns(verifiedRuns,{eventId:event.id,version:event.version})
-  :rankVerifiedRuns(verifiedRuns.filter(run=>run.eventId===event.id),{boss:event.boss,version:event.version});
+const weekTwoAvailable=isContract&&Boolean(event.weekTwoStartsOn)&&berlinDayKey()>=event.weekTwoStartsOn!;
+const defaultCcWeek=weekTwoAvailable?2:1;
+const verified=isContract?[]:
+  rankVerifiedRuns(verifiedRuns.filter(run=>run.eventId===event.id),{boss:event.boss,version:event.version});
 const bossDemo=archived?undefined:leaderboard.demoRuns.find(run=>run.id===event.demoRunId&&run.status==="demo"&&run.boss===event.boss&&run.version===event.version);
 const contractDemo=!archived&&isContract&&event.demoRun?{...event.demoRun,id:"demo-"+event.id,status:"demo",version:event.version,link:event.demoRun.video}:undefined;
 const demo=contractDemo??bossDemo;
-const rows=verified.length?verified:demo?[{...demo,rank:1}]:[];
-const demoOnly=rows.length>0&&rows.every(run=>run.status==="demo");
+const groups=isContract ? ([1,2] as const).map(week=>{
+  const ranks=rankContingencyContractWeek(verifiedRuns,{eventId:event.id,version:event.version,week});
+  return {week,rows:ranks.length?ranks:demo?[{...demo,rank:1}]:[]};
+}) : [{week:0,rows:verified.length?verified:demo?[{...demo,rank:1}]:[]}];
+const defaultRows=groups.find(group=>group.week===(isContract?defaultCcWeek:0))?.rows??[];
+const demoOnly=defaultRows.length>0&&defaultRows.every(run=>run.status==="demo");
 ---
 <div id={`cl-event-panel-${event.id}${archived?"-archive":""}`} class:list={["cl-event-panel",{"cl-event-archive-panel":archived}]} data-event-panel={event.id} data-event-background={event.backgroundImage} hidden={hidden} data-event-archived={archived?"true":"false"} style={archived ? '--cl-archive-background:url("'+event.backgroundImage+'")' : undefined}>
       {archived && <p class="cl-archive-final-label">{l("Abgeschlossen · Endergebnisse","Finished · Final standings")}</p>}
@@ -71,8 +77,12 @@ const demoOnly=rows.length>0&&rows.every(run=>run.status==="demo");
         </div>
       </dialog>}
       <div class="cl-event-results">
-        <div class="cl-results-head">
+        <div class:list={["cl-results-head",{"cl-cc-results-head":isContract}]}>
           <div><span class="cl-results-kicker">{event.version.toUpperCase()} · {archived?"ARCHIV":"EVENT"}</span><h3>Top 10 – {event.title}</h3></div>
+          {isContract&&<div class="cl-cc-week-switch" data-cc-week-switch data-week-two-start={event.weekTwoStartsOn} role="group" aria-label={l("Contingency-Contract-Woche auswählen","Choose Contingency Contract week")}>
+            <button type="button" class="cl-cc-week-choice" data-cc-week-choice="1" aria-controls={`cl-cc-${event.id}-${archived?"archive":"active"}-week-1`} aria-pressed={defaultCcWeek===1?"true":"false"}>{l("Woche 1","Week 1")}</button>
+            <button type="button" class="cl-cc-week-choice" data-cc-week-choice="2" aria-controls={`cl-cc-${event.id}-${archived?"archive":"active"}-week-2`} aria-pressed={defaultCcWeek===2?"true":"false"} disabled={!weekTwoAvailable} title={!weekTwoAvailable?l("Ab 15.11.2026","Available from 15 November 2026"):undefined}>{l("Woche 2","Week 2")}</button>
+          </div>}
         </div>
         {demoOnly && <p class="cl-demo-disclaimer">{l("Platzhaltereintrag zur Darstellung – kein verifizierter Event-Rekord.","Placeholder entry for display purposes – not a verified event record.")}</p>}
         <table class:list={["cl-rank-table",{"cl-contract-table":isContract}]} aria-label={"Top 10 – "+event.title}>
@@ -85,7 +95,7 @@ const demoOnly=rows.length>0&&rows.every(run=>run.status==="demo");
             <th scope="col">{l("Zeit","Time")}</th>
             <th scope="col">{l("Version","Version")}</th>
           </tr></thead>
-          <tbody>
+          {groups.map(({week,rows})=><tbody id={isContract?`cl-cc-${event.id}-${archived?"archive":"active"}-week-${week}`:undefined} data-cc-week-rows={isContract?week:undefined} hidden={isContract&&week!==defaultCcWeek}>
             {rows.length ? rows.map(run=><tr class:list={["cl-rank-row",{"is-demo":run.status==="demo"}]} data-run-status={run.status}>
               <th class="cl-rank-number" scope="row"><span class:list={["cl-placement",{"is-first":run.rank===1,"is-second":run.rank===2,"is-third":run.rank===3}]}>{run.rank}</span></th>
               <td class="cl-player">{run.discordName}{run.status==="demo"&&<span class="cl-placeholder-label">{l("Platzhalter","Placeholder")}</span>}</td>
@@ -98,7 +108,7 @@ const demoOnly=rows.length>0&&rows.every(run=>run.status==="demo");
               <td class="cl-run-time">{run.link?<a href={run.link} target="_blank" rel="noopener noreferrer" aria-label={run.status==="demo"?l("Platzhaltervideo auf YouTube öffnen","Open placeholder video on YouTube"):l("Run-Video öffnen","Open run video")}>{run.time} <span aria-hidden="true">↗</span></a>:<span>{run.time}</span>}</td>
               <td class="cl-run-version">{run.version}</td>
             </tr>) : <tr class="cl-empty-row"><td colspan={isContract?7:6}>{l("Noch keine verifizierten Runs für dieses Event eingetragen.","No verified runs have been submitted for this event yet.")}</td></tr>}
-          </tbody>
+          </tbody>)}
         </table>
         {isContract&&<p class="cl-ranking-note">{l("Wertung nach Punkten (absteigend); bei Punktgleichstand entscheidet die schnellere Ingame-Zeit (MM:SS). Pro Spieler zählt der beste gültige Run.","Ranked by points (highest first); the faster in-game time (MM:SS) breaks score ties. Each player’s best eligible run counts.")}</p>}
       </div>
