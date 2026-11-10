@@ -23,7 +23,7 @@ const isGermanFlag=(code?:string)=>code==="DEU"||code==="DE";
 const countryName=(code?:string)=>isGermanFlag(code)?l("Deutschland","Germany"):(code||l("Keine Angabe","Not specified"));
 // One authoritative submission: include event runs in general rankings only when
 // individually approved for the permanent Community Leaderboard.
-const generalRuns=[...leaderboard.verifiedRuns,...eventData.verifiedRuns.filter(run=>run.eventId&&run.boss&&run.eligibleForCommunity===true)];
+const generalRuns=[...leaderboard.verifiedRuns,...eventData.verifiedRuns.filter(run=>!run.eventId||(run.eventId&&run.boss&&run.eligibleForCommunity===true))];
 const generalLeaderboard={...leaderboard,verifiedRuns:generalRuns};
 ---
 <EndfieldPlaceholder title="Community Leaderboard" kicker="ARKNIGHTS: ENDFIELD · COMMUNITY LEADERBOARD" active="leaderboard" lang={lang} description={l("Verifizierte Boss-Speedruns, Bestenlisten und Community-Events in Arknights: Endfield.","Verified boss speedruns, rankings and community events in Arknights: Endfield.")}>
