@@ -26,7 +26,7 @@ test("Shared panel supports CC point column and does not alter boss table",()=>{
   const panel=read("src/components/endfield/LeaderboardEventPanel.astro");
   const eventUI=read("src/components/endfield/LeaderboardEvent.astro");
   const client=read("src/components/endfield/leaderboard-event-client.ts");
-  assert.match(panel,/rankContingencyContractRuns/);
+  assert.match(panel,/rankContingencyContractWeek/);
   assert.match(panel,/isContract&&<th scope="col">/);
   assert.match(panel,/cl-run-points/);
   assert.match(panel,/class="cl-cc-score"/);
