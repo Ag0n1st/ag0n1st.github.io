@@ -1072,22 +1072,23 @@ def smoke_i18n(page, base_url, width):
                label+": "+lang+" quick choice contains no repeated start date")
         cc_choice.click()
         cc_panel=event.locator('[data-event-panel="contingency-contract-v16"][data-event-archived="false"]')
+        cc_visible=cc_panel.locator(".cl-contract-table tbody:not([hidden])")
         cc_observed={
             "panel_count":cc_panel.count(),
             "all_panels":event.locator("[data-event-panel]").evaluate_all("(els)=>els.map(el=>({id:el.getAttribute('data-event-panel'),archived:el.getAttribute('data-event-archived'),hidden:el.hidden}))"),
             "visible":cc_panel.is_visible(),
             "pressed":cc_choice.get_attribute("aria-pressed"),
             "title":cc_panel.locator(".cl-event-results h3").all_inner_texts(),
-            "points":cc_panel.locator(".cl-run-points").all_inner_texts(),
-            "time":cc_panel.locator(".cl-run-time").all_inner_texts(),
-            "demo_labels":cc_panel.locator(".cl-placeholder-label").count()
+            "points":cc_visible.locator(".cl-run-points").all_inner_texts(),
+            "time":cc_visible.locator(".cl-run-time").all_inner_texts(),
+            "demo_labels":cc_visible.locator(".cl-placeholder-label").count()
         }
-        verify(cc_panel.locator(".cl-cc-score").count()==1 and
-               cc_panel.locator(".cl-cc-score-mark").count()==1 and
-               cc_panel.locator(".cl-cc-score").get_attribute("aria-label")==("45 Punkte" if lang=="de" else "45 points"),
+        verify(cc_visible.locator(".cl-cc-score").count()==1 and
+               cc_visible.locator(".cl-cc-score-mark").count()==1 and
+               cc_visible.locator(".cl-cc-score").get_attribute("aria-label")==("48 Punkte" if lang=="de" else "48 points"),
                label+": "+lang+" branded gold CC points badge with accessible label")
-        cc_score_box=cc_panel.locator(".cl-cc-score").bounding_box()
-        cc_icon_box=cc_panel.locator(".cl-cc-score-mark").bounding_box()
+        cc_score_box=cc_visible.locator(".cl-cc-score").bounding_box()
+        cc_icon_box=cc_visible.locator(".cl-cc-score-mark").bounding_box()
         expected_box=(54,24,18) if page.evaluate("innerWidth")<=460 else (64,27,21)
         verify(cc_score_box is not None and cc_icon_box is not None and
                abs(cc_score_box["width"]-expected_box[0])<2 and
@@ -1097,10 +1098,38 @@ def smoke_i18n(page, base_url, width):
                label+": "+lang+" CC score badge 30 percent smaller (badge "+str(cc_score_box)+", icon "+str(cc_icon_box)+")")
         verify(cc_observed["visible"] and cc_observed["pressed"]=="true" and
                "Top 10 – Contingency Contract v1.6" in cc_observed["title"] and
-               cc_observed["points"]==["45"] and
-               cc_observed["time"]==["04:45"] and
-               cc_observed["demo_labels"]==1,
-               label+": "+lang+" CC preview shows score/time/demo: "+str(cc_observed))
+               cc_observed["points"]==["48"] and
+               cc_observed["time"]==["06:14"] and
+               cc_observed["demo_labels"]==0 and
+               cc_visible.locator(".cl-player").inner_text()=="Ag0n1st" and
+               cc_visible.locator(".cl-run-time a").get_attribute("href")=="https://www.youtube.com/watch?v=uQzettPOh1c" and
+               cc_visible.locator(".cl-operator-potential").all_inner_texts()==["P0","P2","P1","P0"],
+               label+": "+lang+" CC week-one Risk 48: "+str(cc_observed))
+        from datetime import datetime
+        from zoneinfo import ZoneInfo
+        after_week_start=datetime.now(ZoneInfo("Europe/Berlin")).date().isoformat()>="2026-11-15"
+        cc_week_one=cc_panel.locator('[data-cc-week-choice="1"]')
+        cc_week_two=cc_panel.locator('[data-cc-week-choice="2"]')
+        verify(cc_week_one.count()==1 and cc_week_two.count()==1 and
+               cc_week_one.inner_text()==("Woche 1" if lang=="de" else "Week 1") and
+               cc_week_two.inner_text()==("Woche 2" if lang=="de" else "Week 2") and
+               cc_week_two.is_disabled()==(not after_week_start) and
+               cc_week_two.get_attribute("aria-pressed")==("true" if after_week_start else "false") and
+               cc_panel.locator('[data-cc-week-rows="1"]').count()==1 and
+               cc_panel.locator('[data-cc-week-rows="2"]').count()==1,
+               label+": "+lang+" CC week buttons respect 15 November Berlin start")
+        cc_week_one.click()
+        verify(cc_panel.locator('[data-cc-week-rows="1"]').is_visible() and
+               cc_panel.locator('[data-cc-week-rows="2"]').is_hidden() and
+               cc_panel.locator('[data-cc-week-rows="1"] .cl-player').inner_text()=="Ag0n1st",
+               label+": "+lang+" week 1 preserves the submitted Risk 48")
+        if after_week_start:
+            cc_week_two.click()
+            verify(cc_panel.locator('[data-cc-week-rows="2"]').is_visible() and
+                   cc_panel.locator('[data-cc-week-rows="1"]').is_hidden() and
+                   cc_panel.locator('[data-cc-week-rows="2"] .cl-player').inner_text()=="Ag0n1st",
+                   label+": "+lang+" week 2 inherits the original score")
+        check_overflow(page,label+" "+lang+" CC week selector")
         cc_banner=cc_panel.locator('img[src="/images/endfield/leaderboard/contingency-contract-v16.webp"]')
         cc_badge=event.locator('[data-event-achievement="contingency-contract-v16"]')
         verify(cc_banner.count()==1 and cc_banner.evaluate("(im)=>im.complete && im.naturalWidth===800 && im.naturalHeight===320") and
@@ -1221,8 +1250,9 @@ def smoke_i18n(page, base_url, width):
         rule_summary.click()
         verify(not details.evaluate("(el)=>el.open") and not details.locator(".cl-event-rule").first.is_visible(),
                label+": "+lang+" rules collapse again without affecting event results")
-        event_run=event_panel.locator(".cl-event-results .cl-rank-row")
-        verify(event_run.count()==1 and event_run.get_attribute("data-run-status")=="verified" and
+        event_run=event_panel.locator(".cl-event-results .cl-rank-row").first
+        verify(event_panel.locator(".cl-event-results .cl-rank-row").count()==2 and
+               event_run.count()==1 and event_run.get_attribute("data-run-status")=="verified" and
                event_run.locator(".cl-player").inner_text()=="Krombi" and
                event_run.locator(".cl-placeholder-label").count()==0 and
                event_run.locator(".cl-rank-number").inner_text().strip()=="1" and
@@ -1232,6 +1262,13 @@ def smoke_i18n(page, base_url, width):
                event_panel.locator(".cl-event-results .cl-empty-row").count()==0 and
                event_panel.locator(".cl-demo-disclaimer").count()==0,
                label+": "+lang+" Krombi is first verified Duality run with no placeholder label")
+        owner_duality=event_panel.locator(".cl-event-results .cl-rank-row").nth(1)
+        verify(owner_duality.locator(".cl-player").inner_text()=="Ag0n1st" and
+               owner_duality.locator(".cl-rank-number").inner_text().strip()=="2" and
+               owner_duality.locator(".cl-run-time a").inner_text().startswith("01:40") and
+               owner_duality.locator(".cl-run-time a").get_attribute("href")=="https://www.youtube.com/watch?v=tiTpIto8FpE" and
+               owner_duality.locator(".cl-operator-potential").all_inner_texts()==["P0","P0","P0","P5"],
+               label+": "+lang+" owner Duality time 01:40 appears after Krombi")
         verify([x.strip() for x in event_run.locator(".cl-operator-potential").all_text_contents()]==["P4","P3","P4","P2"] and
                [x.get_attribute("src") for x in event_run.locator(".cl-team-operator img").all()]==[
                   "/images/endfield/operators/si/official-icon.webp",
@@ -1257,15 +1294,15 @@ def smoke_i18n(page, base_url, width):
         boss_select=root.locator("[data-boss-select]")
         version_select=root.locator("[data-version-select]")
         verify(boss_select.input_value()=="si" and version_select.input_value()=="all-time" and
-               version_select.locator("option").all_text_contents()==["All-Time","v1.6"] and
+               version_select.locator("option").all_text_contents()==["All-Time","v1.6","v1.5","v1.4"] and
                root.locator('[data-boss-choice="si"]').get_attribute("aria-pressed")=="true",
                label+": "+lang+" Si is selected in both boss selectors by default")
         active=root.locator(".cl-results-panel:not([hidden])")
         verify(active.count()==1 and "Si" in active.locator("h3").inner_text() and
-               active.locator(".cl-rank-row").count()==1 and
-               active.locator(".cl-rank-number").inner_text().strip()=="1",
+               active.locator(".cl-rank-row").count()==2 and
+               active.locator(".cl-rank-number").first.inner_text().strip()=="1",
                label+": "+lang+" global Si All-Time shows the verified Krombi result")
-        row=active.locator(".cl-rank-row")
+        row=active.locator(".cl-rank-row").first
         verify(row.get_attribute("data-run-status")=="verified" and
                row.locator(".cl-player").inner_text()=="Krombi" and
                row.locator(".cl-placeholder-label").count()==0 and
@@ -1275,6 +1312,11 @@ def smoke_i18n(page, base_url, width):
                row.locator(".cl-team-operator").count()==4 and
                active.locator(".cl-demo-disclaimer").count()==0,
                label+": "+lang+" community Si leaderboard hides former demo and links real 01:29 record")
+        owner_global=active.locator(".cl-rank-row").nth(1)
+        verify(owner_global.locator(".cl-player").inner_text()=="Ag0n1st" and
+               owner_global.locator(".cl-rank-number").inner_text().strip()=="2" and
+               owner_global.locator(".cl-run-time a").get_attribute("href")=="https://www.youtube.com/watch?v=tiTpIto8FpE",
+               label+": "+lang+" general Si board includes owner through Duality source")
         flag=row.locator(".cl-country .cl-flag-de")
         verify(flag.count()==1 and
                flag.get_attribute("aria-label")==("Deutschland" if lang=="de" else "Germany") and
@@ -1304,17 +1346,33 @@ def smoke_i18n(page, base_url, width):
                label+": "+lang+" other boss has empty ranks, dropdown synced and link restored")
         boss_select.select_option("si")
         version_select.select_option("v1.6")
-        verify(root.locator(".cl-results-panel:not([hidden]) .cl-rank-row").count()==1 and
+        verify(root.locator(".cl-results-panel:not([hidden]) .cl-rank-row").count()==2 and
                "version=v1.6" in page.url and
-               root.locator(".cl-results-panel:not([hidden]) .cl-player").inner_text()=="Krombi",
+               root.locator(".cl-results-panel:not([hidden]) .cl-player").first.inner_text()=="Krombi",
                label+": "+lang+" v1.6 patch ranking uses the verified Krombi run")
         page.reload()
         root=page.locator("[data-community-leaderboard]")
         verify(root.locator("[data-boss-select]").input_value()=="si" and
                root.locator("[data-version-select]").input_value()=="v1.6" and
-               root.locator(".cl-results-panel:not([hidden]) .cl-rank-row").count()==1 and
+               root.locator(".cl-results-panel:not([hidden]) .cl-rank-row").count()==2 and
                root.locator('[data-event-panel="duality"]').is_visible(),
                label+": "+lang+" query and Duality event survive reload")
+        boss_select=root.locator("[data-boss-select]")
+        version_select=root.locator("[data-version-select]")
+        for boss,version,time,video,potentials in [
+            ("nefarith","v1.5","00:39","Zw8B2F2nJP8",["P0","P0","P5","P0"]),
+            ("alleikhreos","v1.4","01:22","qSIktISsLPQ",["P0","P0","P0","P0"])
+        ]:
+            boss_select.select_option(boss)
+            version_select.select_option(version)
+            selected=root.locator(".cl-results-panel:not([hidden]) .cl-rank-row")
+            verify(selected.count()==1 and selected.locator(".cl-player").inner_text()=="Ag0n1st" and
+                   selected.locator(".cl-run-time a").inner_text().startswith(time) and
+                   selected.locator(".cl-run-time a").get_attribute("href")=="https://www.youtube.com/watch?v="+video and
+                   selected.locator(".cl-operator-potential").all_inner_texts()==potentials,
+                   label+": "+lang+" owner "+boss+" "+version+" speedrun visible and linked")
+        boss_select.select_option("si")
+        version_select.select_option("v1.6")
         check_overflow(page,label+" "+lang+" leaderboard")
         page.goto(base_url+prefix+"/endfield/cheatsheets/")
         cheats_title=page.locator("main h1.endfield-cheatsheets-title")
