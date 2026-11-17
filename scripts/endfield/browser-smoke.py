@@ -1072,6 +1072,14 @@ def smoke_i18n(page, base_url, width):
                label+": "+lang+" quick choice contains no repeated start date")
         cc_choice.click()
         cc_panel=event.locator('[data-event-panel="contingency-contract-v16"][data-event-archived="false"]')
+        from datetime import datetime
+        from zoneinfo import ZoneInfo
+        after_week_start=datetime.now(ZoneInfo("Europe/Berlin")).date().isoformat()>="2026-11-15"
+        cc_week_one=cc_panel.locator('[data-cc-week-choice="1"]')
+        cc_week_two=cc_panel.locator('[data-cc-week-choice="2"]')
+        verify(cc_week_two.get_attribute("aria-pressed")==("true" if after_week_start else "false"),
+               label+": "+lang+" CC defaults to Week 2 from 15 November")
+        cc_week_one.click()
         cc_visible=cc_panel.locator(".cl-contract-table tbody:not([hidden])")
         cc_observed={
             "panel_count":cc_panel.count(),
@@ -1114,7 +1122,8 @@ def smoke_i18n(page, base_url, width):
                cc_week_one.inner_text()==("Woche 1" if lang=="de" else "Week 1") and
                cc_week_two.inner_text()==("Woche 2" if lang=="de" else "Week 2") and
                cc_week_two.is_disabled()==(not after_week_start) and
-               cc_week_two.get_attribute("aria-pressed")==("true" if after_week_start else "false") and
+               cc_week_one.get_attribute("aria-pressed")=="true" and
+               cc_week_two.get_attribute("aria-pressed")=="false" and
                cc_panel.locator('[data-cc-week-rows="1"]').count()==1 and
                cc_panel.locator('[data-cc-week-rows="2"]').count()==1,
                label+": "+lang+" CC week buttons respect 15 November Berlin start")
@@ -1125,10 +1134,16 @@ def smoke_i18n(page, base_url, width):
                label+": "+lang+" week 1 preserves the submitted Risk 48")
         if after_week_start:
             cc_week_two.click()
-            verify(cc_panel.locator('[data-cc-week-rows="2"]').is_visible() and
+            week_two_rows=cc_panel.locator('[data-cc-week-rows="2"]')
+            verify(week_two_rows.is_visible() and
                    cc_panel.locator('[data-cc-week-rows="1"]').is_hidden() and
-                   cc_panel.locator('[data-cc-week-rows="2"] .cl-player').inner_text()=="Ag0n1st",
-                   label+": "+lang+" week 2 inherits the original score")
+                   week_two_rows.locator(".cl-rank-row").count()==1 and
+                   week_two_rows.locator(".cl-player").inner_text()=="Ag0n1st" and
+                   week_two_rows.locator(".cl-run-points").inner_text()=="54" and
+                   week_two_rows.locator(".cl-run-time a").inner_text().startswith("06:28") and
+                   week_two_rows.locator(".cl-run-time a").get_attribute("href")=="https://youtu.be/5ANYUb6e070?is=V-6H00eDjkYMruFX" and
+                   week_two_rows.locator(".cl-operator-potential").all_inner_texts()==["P0","P2","P1","P0"],
+                   label+": "+lang+" Week 2 upgrades Ag0n1st to Risk 54 while Week 1 stays Risk 48")
         check_overflow(page,label+" "+lang+" CC week selector")
         cc_banner=cc_panel.locator('img[src="/images/endfield/leaderboard/contingency-contract-v16.webp"]')
         cc_badge=event.locator('[data-event-achievement="contingency-contract-v16"]')
