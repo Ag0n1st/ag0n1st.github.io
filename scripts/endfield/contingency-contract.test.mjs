@@ -110,3 +110,38 @@ test("CC v1.6 contains week 2 date and both week selectors with disabled future 
  assert.match(css,/\.cl-cc-week-choice:disabled/);
  assert.match(css,/\.cl-contract-table \[data-cc-week-rows\]\[hidden\]\{display:none!important\}/);
 });
+
+
+test("Ag0n1st Risk 54 is a separate Week 2 entry, replacing Risk 48 only in Week 2",()=>{
+ const w1=read("src/content/leaderboard-runs/events/contingency-contract-v16/ag0n1st-risk48-0614.md");
+ const w2=read("src/content/leaderboard-runs/events/contingency-contract-v16/ag0n1st-risk54-0628.md");
+ for(const snippet of [
+  "runId: cc-v16-ag0n1st-risk54-0628",
+  "playerId: ag0n1st",
+  "discordName: Ag0n1st",
+  "countryCode: DE",
+  "eventId: contingency-contract-v16",
+  "version: v1.6",
+  "ccWeek: 2",
+  "points: 54",
+  'time: "06:28"',
+  'video: "https://youtu.be/5ANYUb6e070?is=V-6H00eDjkYMruFX"',
+  "eligibleForCommunity: false",
+  "status: verified",
+  "{ slug: arcane, potential: 0 }",
+  "{ slug: si, potential: 2 }",
+  "{ slug: gilberta, potential: 1 }",
+  "{ slug: liino, potential: 0 }"
+ ])assert.ok(w2.includes(snippet),"Risk 54 missing: "+snippet);
+ for(const snippet of ["runId: cc-v16-ag0n1st-risk48-0614","ccWeek: 1","points: 48",'time: "06:14"'])
+  assert.ok(w1.includes(snippet),"Week 1 must remain unchanged: "+snippet);
+ const results=[
+  run("cc-v16-ag0n1st-risk48-0614","ag0n1st",48,"06:14",{ccWeek:1}),
+  run("cc-v16-ag0n1st-risk54-0628","ag0n1st",54,"06:28",{ccWeek:2})
+ ];
+ const weekOne=rankContingencyContractWeek(results,{eventId:"cc-test",version:"v1.6",week:1});
+ const weekTwo=rankContingencyContractWeek(results,{eventId:"cc-test",version:"v1.6",week:2});
+ assert.deepEqual(weekOne.map(r=>[r.points,r.time,r.runId]),[[48,"06:14","cc-v16-ag0n1st-risk48-0614"]]);
+ assert.deepEqual(weekTwo.map(r=>[r.points,r.time,r.runId]),[[54,"06:28","cc-v16-ag0n1st-risk54-0628"]]);
+ assert.equal(weekTwo.length,1,"Week 2 must not duplicate the same player");
+});
